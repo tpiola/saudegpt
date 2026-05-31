@@ -7,7 +7,8 @@ import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 
 export const metadata: Metadata = {
   title: "Trilhas",
-  description: "Explore as quatro trilhas da formação, da perfumaria aos medicamentos e à carreira.",
+  description:
+    "Explore as quatro trilhas da formação, da perfumaria aos medicamentos e à carreira.",
 };
 
 export default function TrilhasPage() {
@@ -32,7 +33,9 @@ export default function TrilhasPage() {
                   </span>
                   <div>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-semibold text-brand-600">Trilha {t.numero}</span>
+                      <span className="text-xs font-semibold text-brand-600">
+                        Trilha {t.numero}
+                      </span>
                       <Etiqueta tom="neutral">{t.subtitulo}</Etiqueta>
                       <Etiqueta tom="neutral">{t.nivelFaixa}</Etiqueta>
                     </div>

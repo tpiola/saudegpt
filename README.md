@@ -22,17 +22,17 @@ de carreira até a graduação em Farmácia.
 
 ## Arquitetura de páginas
 
-| Rota | Descrição |
-| --- | --- |
-| `/` | Landing cinematográfica + mandala pedagógica |
-| `/matriculas` | Matrícula/cadastro |
-| `/dashboard` | Painel do aluno (progresso, continuidade, recomendações, conquistas, notas) |
-| `/trilhas` | Biblioteca de trilhas |
-| `/trilhas/[trilhaId]` | Módulos e aulas da trilha |
-| `/aula/[trilhaId]/[aulaId]` | Aula com vídeo, blocos, simulação, checklist e quiz |
-| `/missoes` | Simulador de balcão (missões pontuadas) |
-| `/biblioteca` | Biblioteca regulatória "viva" |
-| `/indicadores` | Hub Power BI para atendentes |
+| Rota                        | Descrição                                                                   |
+| --------------------------- | --------------------------------------------------------------------------- |
+| `/`                         | Landing cinematográfica + mandala pedagógica                                |
+| `/matriculas`               | Matrícula/cadastro                                                          |
+| `/dashboard`                | Painel do aluno (progresso, continuidade, recomendações, conquistas, notas) |
+| `/trilhas`                  | Biblioteca de trilhas                                                       |
+| `/trilhas/[trilhaId]`       | Módulos e aulas da trilha                                                   |
+| `/aula/[trilhaId]/[aulaId]` | Aula com vídeo, blocos, simulação, checklist e quiz                         |
+| `/missoes`                  | Simulador de balcão (missões pontuadas)                                     |
+| `/biblioteca`               | Biblioteca regulatória "viva"                                               |
+| `/indicadores`              | Hub Power BI para atendentes                                                |
 
 ## Currículo
 

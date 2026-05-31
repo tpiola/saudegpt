@@ -8,18 +8,55 @@ import { Icon, type IconName } from "@/components/icons";
 import { site } from "@/lib/site";
 
 const recursos: { icone: IconName; titulo: string; texto: string }[] = [
-  { icone: "play", titulo: "Microlições de 3 a 8 min", texto: "Vídeo, cards comparativos, simulações e checklists. Nada de páginas longas e cansativas." },
-  { icone: "target", titulo: "Missões de atendimento", texto: "Casos reais de balcão pontuados por triagem, segurança, ética e encaminhamento." },
-  { icone: "sparkles", titulo: "Gamificação elegante", texto: "XP, níveis, badges e missões — funcional, sem infantilizar o aprendizado." },
-  { icone: "book", titulo: "Biblioteca regulatória viva", texto: "RDC 471/2021, GLP-1 (IN 360/2025) e Farmácia Popular 2025 sempre atualizados." },
-  { icone: "shield", titulo: "Segurança sanitária", texto: "Saber o que orientar, o que evitar e quando chamar o farmacêutico." },
-  { icone: "chart", titulo: "Power BI para atendentes", texto: "Ler faturamento, ticket, conversão, ruptura, NPS e aderência terapêutica." },
+  {
+    icone: "play",
+    titulo: "Microlições de 3 a 8 min",
+    texto:
+      "Vídeo, cards comparativos, simulações e checklists. Nada de páginas longas e cansativas.",
+  },
+  {
+    icone: "target",
+    titulo: "Missões de atendimento",
+    texto: "Casos reais de balcão pontuados por triagem, segurança, ética e encaminhamento.",
+  },
+  {
+    icone: "sparkles",
+    titulo: "Gamificação elegante",
+    texto: "XP, níveis, badges e missões — funcional, sem infantilizar o aprendizado.",
+  },
+  {
+    icone: "book",
+    titulo: "Biblioteca regulatória viva",
+    texto: "RDC 471/2021, GLP-1 (IN 360/2025) e Farmácia Popular 2025 sempre atualizados.",
+  },
+  {
+    icone: "shield",
+    titulo: "Segurança sanitária",
+    texto: "Saber o que orientar, o que evitar e quando chamar o farmacêutico.",
+  },
+  {
+    icone: "chart",
+    titulo: "Power BI para atendentes",
+    texto: "Ler faturamento, ticket, conversão, ruptura, NPS e aderência terapêutica.",
+  },
 ];
 
 const niveis = [
-  { nome: "Básico", texto: "O que é, para que serve, quando oferecer, quando não oferecer e quando chamar o farmacêutico." },
-  { nome: "Intermediário", texto: "Perguntas de triagem, associação de sintomas, sazonalidade, autocuidado e jornada do cliente." },
-  { nome: "Avançado", texto: "Adesão, risco sanitário, leitura de receita, condução ética de objeções e análise de resultado." },
+  {
+    nome: "Básico",
+    texto:
+      "O que é, para que serve, quando oferecer, quando não oferecer e quando chamar o farmacêutico.",
+  },
+  {
+    nome: "Intermediário",
+    texto:
+      "Perguntas de triagem, associação de sintomas, sazonalidade, autocuidado e jornada do cliente.",
+  },
+  {
+    nome: "Avançado",
+    texto:
+      "Adesão, risco sanitário, leitura de receita, condução ética de objeções e análise de resultado.",
+  },
 ];
 
 export default function Home() {
@@ -37,12 +74,12 @@ export default function Home() {
               <Icon name="sparkles" size={14} /> Plataforma-escola de saúde e atendimento
             </Etiqueta>
             <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
-              Formação para{" "}
-              <span className="text-gradient">Atendentes Premium</span> de Farmácia
+              Formação para <span className="text-gradient">Atendentes Premium</span> de Farmácia
             </h1>
             <p className="mt-5 max-w-xl text-lg text-muted">
-              Do iniciante absoluto ao nível avançado: saúde integral, atendimento humanizado, vendas consultivas,
-              segurança sanitária e evolução de carreira até a graduação em Farmácia.
+              Do iniciante absoluto ao nível avançado: saúde integral, atendimento humanizado,
+              vendas consultivas, segurança sanitária e evolução de carreira até a graduação em
+              Farmácia.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <ContinuarBotao />
@@ -54,7 +91,10 @@ export default function Home() {
               {[
                 { v: `${trilhas.length}`, l: "trilhas" },
                 { v: `${totalAulas()}+`, l: "aulas" },
-                { v: `${(xpTotalDisponivel() / 1000).toFixed(1)}k`, l: "XP disponível" },
+                {
+                  v: `${(xpTotalDisponivel() / 1000).toFixed(1)}k`,
+                  l: "XP disponível",
+                },
               ].map((s) => (
                 <div key={s.l}>
                   <div className="text-2xl font-bold text-brand-600">{s.v}</div>
@@ -83,7 +123,9 @@ export default function Home() {
               <div className="mt-5 space-y-3">
                 {["Pele e fotoproteção", "Dermocosméticos", "Universo infantil"].map((t, i) => (
                   <div key={t} className="flex items-center gap-3 rounded-xl bg-surface-2 p-3">
-                    <span className={`flex h-8 w-8 items-center justify-center rounded-lg text-white ${i === 0 ? "gradient-brand" : "bg-silver/60 text-graphite"}`}>
+                    <span
+                      className={`flex h-8 w-8 items-center justify-center rounded-lg text-white ${i === 0 ? "gradient-brand" : "bg-silver/60 text-graphite"}`}
+                    >
                       {i === 0 ? <Icon name="play" size={16} /> : <Icon name="lock" size={16} />}
                     </span>
                     <span className="text-sm font-medium">{t}</span>
@@ -183,11 +225,17 @@ export default function Home() {
       {/* NÍVEIS */}
       <section className="border-y border-border bg-surface">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <TituloSecao sobre="Do iniciante ao avançado" icone="trending" titulo="Cada módulo em três profundidades" />
+          <TituloSecao
+            sobre="Do iniciante ao avançado"
+            icone="trending"
+            titulo="Cada módulo em três profundidades"
+          />
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {niveis.map((n, i) => (
               <Card key={n.nome} className="relative h-full overflow-hidden">
-                <span className="absolute right-4 top-4 text-5xl font-black text-surface-2">{i + 1}</span>
+                <span className="absolute right-4 top-4 text-5xl font-black text-surface-2">
+                  {i + 1}
+                </span>
                 <h3 className="text-lg font-bold text-brand-600">{n.nome}</h3>
                 <p className="mt-3 text-sm text-muted">{n.texto}</p>
               </Card>
@@ -232,7 +280,8 @@ export default function Home() {
             Transforme o balcão em um ponto de cuidado
           </h2>
           <p className="relative mx-auto mt-4 max-w-2xl text-white/85">
-            Matricule-se e comece agora a jornada de Atendente Premium — com método, ética e saúde integral.
+            Matricule-se e comece agora a jornada de Atendente Premium — com método, ética e saúde
+            integral.
           </p>
           <div className="relative mt-8 flex flex-wrap justify-center gap-3">
             <Botao href="/matriculas" variante="soft" tamanho="lg">

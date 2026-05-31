@@ -42,10 +42,22 @@ export function PainelAluno() {
     .slice(0, 6);
 
   const stats: { icone: IconName; rotulo: string; valor: string }[] = [
-    { icone: "check", rotulo: "Aulas concluídas", valor: `${concluidasCount}/${totalCurso}` },
+    {
+      icone: "check",
+      rotulo: "Aulas concluídas",
+      valor: `${concluidasCount}/${totalCurso}`,
+    },
     { icone: "sparkles", rotulo: "XP total", valor: `${prog.xp}` },
-    { icone: "target", rotulo: "Pontos em missões", valor: `${prog.missoesPontos}` },
-    { icone: "award", rotulo: "Nota média", valor: mediaNotas != null ? `${mediaNotas}%` : "—" },
+    {
+      icone: "target",
+      rotulo: "Pontos em missões",
+      valor: `${prog.missoesPontos}`,
+    },
+    {
+      icone: "award",
+      rotulo: "Nota média",
+      valor: mediaNotas != null ? `${mediaNotas}%` : "—",
+    },
   ];
 
   return (
@@ -65,7 +77,9 @@ export function PainelAluno() {
                 <span className="text-sm text-subtle">faltam {prog.xpProximoNivel} XP</span>
               </div>
               <h1 className="mt-2 text-2xl font-bold">Olá, futuro Atendente Premium</h1>
-              <p className="text-muted">Continue sua jornada de saúde, atendimento e performance.</p>
+              <p className="text-muted">
+                Continue sua jornada de saúde, atendimento e performance.
+              </p>
             </div>
           </div>
           <div className="flex flex-col items-stretch gap-3 sm:flex-row lg:flex-col">
@@ -114,7 +128,9 @@ export function PainelAluno() {
                     </span>
                     <div>
                       <div className="text-sm font-bold">{t.titulo}</div>
-                      <div className="text-xs text-subtle">{p.feitas} de {p.total} aulas</div>
+                      <div className="text-xs text-subtle">
+                        {p.feitas} de {p.total} aulas
+                      </div>
                     </div>
                   </div>
                   <Link href={`/trilhas/${t.id}`} className="text-sm font-semibold text-brand-600">
@@ -152,7 +168,10 @@ export function PainelAluno() {
             {favoritas.map(
               (f) =>
                 f && (
-                  <Link key={chaveAula(f.trilha.id, f.aula.id)} href={`/aula/${f.trilha.id}/${f.aula.id}`}>
+                  <Link
+                    key={chaveAula(f.trilha.id, f.aula.id)}
+                    href={`/aula/${f.trilha.id}/${f.aula.id}`}
+                  >
                     <Card className="flex items-center gap-3 p-4 transition-all hover:border-brand-400">
                       <Icon name="heart" size={16} className="flex-none text-rose-500" />
                       <span className="truncate text-sm font-medium">{f.aula.titulo}</span>

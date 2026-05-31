@@ -7,7 +7,10 @@ import { Icon } from "@/components/icons";
 import { AulaInterativa } from "@/components/aula-interativa";
 
 export function generateStaticParams() {
-  return listarAulas().map((i) => ({ trilhaId: i.trilha.id, aulaId: i.aula.id }));
+  return listarAulas().map((i) => ({
+    trilhaId: i.trilha.id,
+    aulaId: i.aula.id,
+  }));
 }
 
 export async function generateMetadata({
@@ -65,9 +68,13 @@ export default async function AulaPage({
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
       {/* Trilha de migalhas */}
       <nav className="flex flex-wrap items-center gap-1.5 text-sm text-subtle">
-        <Link href="/trilhas" className="hover:text-brand-600">Trilhas</Link>
+        <Link href="/trilhas" className="hover:text-brand-600">
+          Trilhas
+        </Link>
         <Icon name="arrow" size={14} />
-        <Link href={`/trilhas/${trilha.id}`} className="hover:text-brand-600">{trilha.titulo}</Link>
+        <Link href={`/trilhas/${trilha.id}`} className="hover:text-brand-600">
+          {trilha.titulo}
+        </Link>
         <Icon name="arrow" size={14} />
         <span className="text-muted">{modulo.titulo}</span>
       </nav>
@@ -91,7 +98,9 @@ export default async function AulaPage({
           <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur">
             <Icon name="play" size={28} />
           </span>
-          <p className="mt-3 text-sm font-medium text-white/90">Vídeo principal · {aula.duracaoMin} min</p>
+          <p className="mt-3 text-sm font-medium text-white/90">
+            Vídeo principal · {aula.duracaoMin} min
+          </p>
           <p className="text-xs text-white/60">Player HLS / YouTube (integração de mídia)</p>
         </div>
       </div>
@@ -146,7 +155,10 @@ export default async function AulaPage({
         <Bloco icone="check" titulo="Checklist de bolso">
           <ul className="grid gap-2 sm:grid-cols-2">
             {aula.checklist.map((c) => (
-              <li key={c} className="flex items-start gap-2 rounded-lg bg-surface-2 px-3 py-2 text-sm">
+              <li
+                key={c}
+                className="flex items-start gap-2 rounded-lg bg-surface-2 px-3 py-2 text-sm"
+              >
                 <Icon name="check" size={15} className="mt-0.5 flex-none text-brand-600" /> {c}
               </li>
             ))}
@@ -179,7 +191,15 @@ export default async function AulaPage({
           aulaId={aula.id}
           xp={aula.xp}
           quiz={aula.quiz}
-          proxima={prox ? { trilhaId: prox.trilha.id, aulaId: prox.aula.id, titulo: prox.aula.titulo } : null}
+          proxima={
+            prox
+              ? {
+                  trilhaId: prox.trilha.id,
+                  aulaId: prox.aula.id,
+                  titulo: prox.aula.titulo,
+                }
+              : null
+          }
         />
       </div>
     </div>

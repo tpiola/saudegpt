@@ -53,14 +53,16 @@ export const missoes: Missao[] = [
     trilhaRelacionada: "perfumaria",
     opcoes: [
       {
-        texto: "Acolher, indicar pomada de barreira (óxido de zinco) e lenços sem álcool, e orientar sinais de alerta.",
+        texto:
+          "Acolher, indicar pomada de barreira (óxido de zinco) e lenços sem álcool, e orientar sinais de alerta.",
         pontos: 10,
         feedback: "Acolhimento + indicação correta + orientação de alerta. Excelente.",
       },
       {
         texto: "Mandar levar o bebê ao pronto-socorro imediatamente.",
         pontos: 3,
-        feedback: "Assadura leve não é emergência; reserve o encaminhamento para sinais de gravidade.",
+        feedback:
+          "Assadura leve não é emergência; reserve o encaminhamento para sinais de gravidade.",
       },
       {
         texto: "Indicar talco perfumado em grande quantidade.",
@@ -98,7 +100,8 @@ export const missoes: Missao[] = [
     trilhaRelacionada: "medicamentos",
     opcoes: [
       {
-        texto: "Explicar que o genérico tem o mesmo princípio ativo e é bioequivalente; encaminhar a troca ao farmacêutico.",
+        texto:
+          "Explicar que o genérico tem o mesmo princípio ativo e é bioequivalente; encaminhar a troca ao farmacêutico.",
         pontos: 10,
         feedback: "Informação correta e encaminhamento da substituição: perfeito.",
       },
@@ -118,7 +121,8 @@ export const missoes: Missao[] = [
     trilhaRelacionada: "medicamentos",
     opcoes: [
       {
-        texto: "Conferir validade e dados, reter a via conforme exigido e encaminhar ao farmacêutico.",
+        texto:
+          "Conferir validade e dados, reter a via conforme exigido e encaminhar ao farmacêutico.",
         pontos: 10,
         feedback: "Conferência + retenção + encaminhamento: conduta correta e legal.",
       },
@@ -138,7 +142,8 @@ export const missoes: Missao[] = [
     trilhaRelacionada: "medicamentos",
     opcoes: [
       {
-        texto: "Acolher, explicar que efeitos gastrointestinais iniciais são comuns e encaminhar ao farmacêutico para ajuste/orientação.",
+        texto:
+          "Acolher, explicar que efeitos gastrointestinais iniciais são comuns e encaminhar ao farmacêutico para ajuste/orientação.",
         pontos: 10,
         feedback: "Acolhimento + informação + encaminhamento clínico: ideal.",
       },
@@ -158,7 +163,8 @@ export const missoes: Missao[] = [
     trilhaRelacionada: "medicamentos",
     opcoes: [
       {
-        texto: "Sugerir organizador semanal, associar doses a refeições e lembretes; oferecer apoio do farmacêutico.",
+        texto:
+          "Sugerir organizador semanal, associar doses a refeições e lembretes; oferecer apoio do farmacêutico.",
         pontos: 10,
         feedback: "Plano de adesão prático e humano: excelente.",
       },
@@ -182,12 +188,68 @@ export interface Indicador {
 
 // Indicadores demonstrativos do hub "Power BI para atendentes".
 export const indicadores: Indicador[] = [
-  { id: "faturamento", nome: "Faturamento", descricao: "Receita total no período.", comoLer: "Volume de vendas; analise junto ao mix.", valorDemo: "R$ 184,2 mil", tendencia: "up" },
-  { id: "ticket", nome: "Ticket médio", descricao: "Valor médio por atendimento.", comoLer: "Cresce com cross-sell ético e mix.", valorDemo: "R$ 47,80", tendencia: "up" },
-  { id: "conversao", nome: "Conversão", descricao: "% de quem entra e compra.", comoLer: "Mede oportunidades aproveitadas no balcão.", valorDemo: "63%", tendencia: "flat" },
-  { id: "abc", nome: "Curva ABC", descricao: "Itens que mais pesam no resultado.", comoLer: "Classe A: poucos itens, muito impacto.", valorDemo: "A: 22% itens / 71% receita", tendencia: "flat" },
-  { id: "ruptura", nome: "Ruptura", descricao: "Venda perdida por falta de estoque.", comoLer: "Quanto menor, melhor; impacta NPS.", valorDemo: "4,1%", tendencia: "down" },
-  { id: "nps", nome: "NPS", descricao: "Satisfação e recomendação.", comoLer: "Acima de 70 é excelente no varejo de saúde.", valorDemo: "78", tendencia: "up" },
-  { id: "adesao", nome: "Aderência terapêutica", descricao: "Recompra no tempo certo.", comoLer: "Liga dados a saúde e continuidade do tratamento.", valorDemo: "69%", tendencia: "up" },
-  { id: "servicos", nome: "Serviços realizados", descricao: "Vacinas, aferições e orientações.", comoLer: "Mede a farmácia como ponto de cuidado.", valorDemo: "412/mês", tendencia: "up" },
+  {
+    id: "faturamento",
+    nome: "Faturamento",
+    descricao: "Receita total no período.",
+    comoLer: "Volume de vendas; analise junto ao mix.",
+    valorDemo: "R$ 184,2 mil",
+    tendencia: "up",
+  },
+  {
+    id: "ticket",
+    nome: "Ticket médio",
+    descricao: "Valor médio por atendimento.",
+    comoLer: "Cresce com cross-sell ético e mix.",
+    valorDemo: "R$ 47,80",
+    tendencia: "up",
+  },
+  {
+    id: "conversao",
+    nome: "Conversão",
+    descricao: "% de quem entra e compra.",
+    comoLer: "Mede oportunidades aproveitadas no balcão.",
+    valorDemo: "63%",
+    tendencia: "flat",
+  },
+  {
+    id: "abc",
+    nome: "Curva ABC",
+    descricao: "Itens que mais pesam no resultado.",
+    comoLer: "Classe A: poucos itens, muito impacto.",
+    valorDemo: "A: 22% itens / 71% receita",
+    tendencia: "flat",
+  },
+  {
+    id: "ruptura",
+    nome: "Ruptura",
+    descricao: "Venda perdida por falta de estoque.",
+    comoLer: "Quanto menor, melhor; impacta NPS.",
+    valorDemo: "4,1%",
+    tendencia: "down",
+  },
+  {
+    id: "nps",
+    nome: "NPS",
+    descricao: "Satisfação e recomendação.",
+    comoLer: "Acima de 70 é excelente no varejo de saúde.",
+    valorDemo: "78",
+    tendencia: "up",
+  },
+  {
+    id: "adesao",
+    nome: "Aderência terapêutica",
+    descricao: "Recompra no tempo certo.",
+    comoLer: "Liga dados a saúde e continuidade do tratamento.",
+    valorDemo: "69%",
+    tendencia: "up",
+  },
+  {
+    id: "servicos",
+    nome: "Serviços realizados",
+    descricao: "Vacinas, aferições e orientações.",
+    comoLer: "Mede a farmácia como ponto de cuidado.",
+    valorDemo: "412/mês",
+    tendencia: "up",
+  },
 ];

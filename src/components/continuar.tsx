@@ -17,13 +17,19 @@ export function ContinuarBotao({
   const todas = listarAulas();
   const primeira = todas[0];
 
-  const alvo = ultima ?? (primeira ? { trilhaId: primeira.trilha.id, aulaId: primeira.aula.id } : null);
+  const alvo =
+    ultima ?? (primeira ? { trilhaId: primeira.trilha.id, aulaId: primeira.aula.id } : null);
   if (!alvo) return null;
 
   const rotulo = carregado && ultima ? "Continuar de onde parei" : "Começar agora";
 
   return (
-    <Botao href={`/aula/${alvo.trilhaId}/${alvo.aulaId}`} tamanho={tamanho} iconeFim="arrow" className={className}>
+    <Botao
+      href={`/aula/${alvo.trilhaId}/${alvo.aulaId}`}
+      tamanho={tamanho}
+      iconeFim="arrow"
+      className={className}
+    >
       {rotulo}
     </Botao>
   );

@@ -4,7 +4,8 @@ import { TituloSecao } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Missões e simulador de balcão",
-  description: "Casos reais de atendimento pontuados por triagem, segurança, ética e encaminhamento.",
+  description:
+    "Casos reais de atendimento pontuados por triagem, segurança, ética e encaminhamento.",
 };
 
 export default function MissoesPage() {

@@ -55,7 +55,12 @@ export function Footer() {
             Patrocinado por{" "}
             {site.patrocinio.map((p, i) => (
               <span key={p.url}>
-                <a href={p.url} target="_blank" rel="noopener noreferrer" className="hover:text-brand-600">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand-600"
+                >
                   {p.url.replace("https://", "")}
                 </a>
                 {i < site.patrocinio.length - 1 ? " e " : ""}
@@ -64,8 +69,8 @@ export function Footer() {
           </p>
         </div>
         <p className="mt-4 text-xs text-subtle">
-          Conteúdo educativo. Não substitui a orientação do farmacêutico ou do médico. As decisões clínicas e a
-          dispensação de medicamentos controlados são atos do profissional habilitado.
+          Conteúdo educativo. Não substitui a orientação do farmacêutico ou do médico. As decisões
+          clínicas e a dispensação de medicamentos controlados são atos do profissional habilitado.
         </p>
       </div>
     </footer>

@@ -21,18 +21,17 @@ export async function generateMetadata({
   return { title: trilha.titulo, description: trilha.descricao };
 }
 
-export default async function TrilhaPage({
-  params,
-}: {
-  params: Promise<{ trilhaId: string }>;
-}) {
+export default async function TrilhaPage({ params }: { params: Promise<{ trilhaId: string }> }) {
   const { trilhaId } = await params;
   const trilha = getTrilha(trilhaId);
   if (!trilha) notFound();
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <Link href="/trilhas" className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand-600">
+      <Link
+        href="/trilhas"
+        className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand-600"
+      >
         <Icon name="arrow" size={16} className="rotate-180" /> Todas as trilhas
       </Link>
 

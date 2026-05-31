@@ -23,7 +23,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Remédio x Medicamento: conceitos essenciais",
           duracaoMin: 6,
           nivel: "basico",
-          resumo: "A diferença entre remédio, medicamento, droga e fármaco, e por que isso importa no balcão.",
+          resumo:
+            "A diferença entre remédio, medicamento, droga e fármaco, e por que isso importa no balcão.",
           resumoExecutivo: [
             "Remédio é qualquer recurso que alivia/cura (inclui não farmacológicos); medicamento é produto tecnicamente elaborado, com finalidade terapêutica e registro.",
             "Fármaco/princípio ativo é a substância responsável pelo efeito; droga é o termo genérico para a substância.",
@@ -61,8 +62,13 @@ export const trilhaMedicamentos: Trilha = {
             "Excipientes importam para alérgicos (ex.: lactose, corantes).",
             "Mesma ação terapêutica pode vir em apresentações diferentes.",
           ],
-          checklist: ["Localizar o princípio ativo na embalagem.", "Atenção a excipientes em alérgicos."],
-          quandoChamarFarmaceutico: ["Cliente com alergia a excipientes ou dúvida sobre composição."],
+          checklist: [
+            "Localizar o princípio ativo na embalagem.",
+            "Atenção a excipientes em alérgicos.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Cliente com alergia a excipientes ou dúvida sobre composição.",
+          ],
           errosComuns: ["Confundir excipiente com princípio ativo."],
           quiz: [
             q(
@@ -79,7 +85,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Formas farmacêuticas",
           duracaoMin: 7,
           nivel: "basico",
-          resumo: "Comprimidos, cápsulas, xaropes, suspensões, pomadas, supositórios, injetáveis e mais.",
+          resumo:
+            "Comprimidos, cápsulas, xaropes, suspensões, pomadas, supositórios, injetáveis e mais.",
           resumoExecutivo: [
             "A forma influencia velocidade de ação, sabor, dose e adesão.",
             "Suspensões precisam ser agitadas; efervescentes dissolvidos; sublinguais não engolidos.",
@@ -88,18 +95,29 @@ export const trilhaMedicamentos: Trilha = {
           comparativo: {
             titulo: "Forma x Situação",
             itens: [
-              { nome: "Líquido/suspensão", quando: "Crianças e quem tem dificuldade para engolir." },
+              {
+                nome: "Líquido/suspensão",
+                quando: "Crianças e quem tem dificuldade para engolir.",
+              },
               { nome: "Sublingual", quando: "Ação rápida; não engolir." },
               { nome: "Tópico (pomada/creme)", quando: "Ação local na pele." },
             ],
           },
-          checklist: ["Explicar o modo de uso de cada forma.", "Adequar a forma ao perfil do cliente."],
+          checklist: [
+            "Explicar o modo de uso de cada forma.",
+            "Adequar a forma ao perfil do cliente.",
+          ],
           quandoChamarFarmaceutico: ["Dúvida sobre conversão de dose entre formas."],
           errosComuns: ["Orientar engolir um comprimido sublingual."],
           quiz: [
             q(
               "Comprimido sublingual deve ser:",
-              ["Engolido com água", "Dissolvido embaixo da língua", "Mastigado sempre", "Diluído no suco"],
+              [
+                "Engolido com água",
+                "Dissolvido embaixo da língua",
+                "Mastigado sempre",
+                "Diluído no suco",
+              ],
               1,
               "O sublingual age pela mucosa sob a língua e não deve ser engolido.",
             ),
@@ -116,7 +134,10 @@ export const trilhaMedicamentos: Trilha = {
             "A via define rapidez e cuidados de uso (ex.: jejum, agitar, refrigerar).",
             "Parenteral (injetável) tem regras próprias de aplicação e descarte.",
           ],
-          checklist: ["Identificar a via na prescrição/bula.", "Orientar cuidados específicos da via."],
+          checklist: [
+            "Identificar a via na prescrição/bula.",
+            "Orientar cuidados específicos da via.",
+          ],
           quandoChamarFarmaceutico: ["Aplicação de injetáveis e técnica de inalação com dúvidas."],
           errosComuns: ["Confundir via tópica com uso oral."],
           quiz: [
@@ -134,7 +155,8 @@ export const trilhaMedicamentos: Trilha = {
     {
       id: "bula-classificacao",
       titulo: "Bula, Tarjas e Classificação",
-      descricao: "Leitura segura de bula, tarjas, MIP e a diferença entre genéricos, similares e referência.",
+      descricao:
+        "Leitura segura de bula, tarjas, MIP e a diferença entre genéricos, similares e referência.",
       aulas: [
         {
           id: "bula",
@@ -153,7 +175,10 @@ export const trilhaMedicamentos: Trilha = {
             itens: [
               { nome: "Indicações", quando: "'Para que serve?'" },
               { nome: "Posologia", quando: "'Quanto e quando tomar?'" },
-              { nome: "Contraindicações/Interações", quando: "'O que não posso fazer?'" },
+              {
+                nome: "Contraindicações/Interações",
+                quando: "'O que não posso fazer?'",
+              },
               { nome: "Reações adversas", quando: "'Quais sinais de alerta?'" },
             ],
           },
@@ -198,17 +223,34 @@ export const trilhaMedicamentos: Trilha = {
             titulo: "Tarja x Conduta",
             itens: [
               { nome: "Sem tarja (MIP)", quando: "Venda livre + orientação." },
-              { nome: "Tarja vermelha", quando: "Exige receita; pode ter retenção." },
-              { nome: "Tarja preta", quando: "Controle especial, retenção obrigatória." },
+              {
+                nome: "Tarja vermelha",
+                quando: "Exige receita; pode ter retenção.",
+              },
+              {
+                nome: "Tarja preta",
+                quando: "Controle especial, retenção obrigatória.",
+              },
             ],
           },
-          checklist: ["Identificar a tarja na embalagem.", "Conferir receita quando exigida.", "Encaminhar controlados ao farmacêutico."],
-          quandoChamarFarmaceutico: ["Toda dispensação de tarja preta/controlados e dúvidas de receita."],
+          checklist: [
+            "Identificar a tarja na embalagem.",
+            "Conferir receita quando exigida.",
+            "Encaminhar controlados ao farmacêutico.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Toda dispensação de tarja preta/controlados e dúvidas de receita.",
+          ],
           errosComuns: ["Vender tarja vermelha sem receita válida."],
           quiz: [
             q(
               "Medicamentos de tarja preta exigem:",
-              ["Venda livre", "Apenas orientação verbal", "Retenção obrigatória de receita e maior controle", "Nada de especial"],
+              [
+                "Venda livre",
+                "Apenas orientação verbal",
+                "Retenção obrigatória de receita e maior controle",
+                "Nada de especial",
+              ],
               2,
               "Tarja preta tem controle especial, com retenção obrigatória de receita.",
             ),
@@ -220,7 +262,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "MIP e autocuidado orientado",
           duracaoMin: 6,
           nivel: "intermediario",
-          resumo: "Medicamentos isentos de prescrição: o que pode ser orientado e os limites de segurança.",
+          resumo:
+            "Medicamentos isentos de prescrição: o que pode ser orientado e os limites de segurança.",
           resumoExecutivo: [
             "MIP/OTC tratam sintomas leves e autolimitados; orientação responsável é dever do balcão.",
             "Triagem básica evita mascarar problema grave (ex.: dor de cabeça persistente, febre alta prolongada).",
@@ -232,13 +275,24 @@ export const trilhaMedicamentos: Trilha = {
               "Como já dura alguns dias e não melhorou, é melhor avaliarmos com mais cuidado. Vou chamar o farmacêutico, pois dor persistente pede atenção e talvez avaliação médica.",
             falaEvitar: "Toma o dobro que passa.",
           },
-          checklist: ["Fazer triagem de sinais de alerta.", "Orientar dose e tempo de uso do MIP.", "Encaminhar quando ultrapassar o autocuidado."],
-          quandoChamarFarmaceutico: ["Sintomas persistentes, intensos, em grupos sensíveis ou com alerta."],
+          checklist: [
+            "Fazer triagem de sinais de alerta.",
+            "Orientar dose e tempo de uso do MIP.",
+            "Encaminhar quando ultrapassar o autocuidado.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sintomas persistentes, intensos, em grupos sensíveis ou com alerta.",
+          ],
           errosComuns: ["Indicar dose acima da bula.", "Tratar sintoma de alerta como simples."],
           quiz: [
             q(
               "Dor de cabeça intensa por vários dias sem melhora é caso de:",
-              ["Dobrar a dose do MIP", "Triagem e encaminhamento", "Ignorar", "Trocar de marca apenas"],
+              [
+                "Dobrar a dose do MIP",
+                "Triagem e encaminhamento",
+                "Ignorar",
+                "Trocar de marca apenas",
+              ],
               1,
               "Sinais persistentes pedem triagem e encaminhamento, não aumento de dose.",
             ),
@@ -250,7 +304,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Genéricos, similares e referência",
           duracaoMin: 6,
           nivel: "basico",
-          resumo: "Diferenças, bioequivalência, intercambialidade e como explicar ao cliente com segurança.",
+          resumo:
+            "Diferenças, bioequivalência, intercambialidade e como explicar ao cliente com segurança.",
           resumoExecutivo: [
             "Referência: o original, com pesquisa clínica. Genérico: mesmo princípio ativo, bioequivalente, intercambiável, identificado pela tarja com 'G'.",
             "Similar: marca própria, hoje com exigências de equivalência; intercambialidade segue regras.",
@@ -259,18 +314,35 @@ export const trilhaMedicamentos: Trilha = {
           comparativo: {
             titulo: "Categoria x Característica",
             itens: [
-              { nome: "Referência", quando: "Original, marca, pesquisa clínica." },
-              { nome: "Genérico", quando: "Mesmo ativo, bioequivalente, intercambiável." },
-              { nome: "Similar", quando: "Nome comercial próprio, com equivalência exigida." },
+              {
+                nome: "Referência",
+                quando: "Original, marca, pesquisa clínica.",
+              },
+              {
+                nome: "Genérico",
+                quando: "Mesmo ativo, bioequivalente, intercambiável.",
+              },
+              {
+                nome: "Similar",
+                quando: "Nome comercial próprio, com equivalência exigida.",
+              },
             ],
           },
-          checklist: ["Explicar a diferença sem desvalorizar opções.", "Encaminhar a troca ao farmacêutico."],
+          checklist: [
+            "Explicar a diferença sem desvalorizar opções.",
+            "Encaminhar a troca ao farmacêutico.",
+          ],
           quandoChamarFarmaceutico: ["Substituição/intercambialidade de medicamento prescrito."],
           errosComuns: ["Dizer que genérico 'é mais fraco' — é bioequivalente."],
           quiz: [
             q(
               "Sobre genéricos, é correto dizer:",
-              ["São mais fracos", "Têm o mesmo princípio ativo e são bioequivalentes ao referência", "Não têm registro", "São sempre piores"],
+              [
+                "São mais fracos",
+                "Têm o mesmo princípio ativo e são bioequivalentes ao referência",
+                "Não têm registro",
+                "São sempre piores",
+              ],
               1,
               "Genéricos têm o mesmo princípio ativo, comprovam bioequivalência e são intercambiáveis.",
             ),
@@ -296,13 +368,24 @@ export const trilhaMedicamentos: Trilha = {
             "Antissépticos (ex.: clorexidina, PVPI) são para pele/ferimentos superficiais.",
             "Febre alta persistente ou dor intensa exigem avaliação.",
           ],
-          checklist: ["Conferir dose máxima diária.", "Orientar tempo de uso.", "Triagem de sinais de alerta."],
-          quandoChamarFarmaceutico: ["Febre alta prolongada, dor intensa, uso em crianças/gestantes."],
+          checklist: [
+            "Conferir dose máxima diária.",
+            "Orientar tempo de uso.",
+            "Triagem de sinais de alerta.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Febre alta prolongada, dor intensa, uso em crianças/gestantes.",
+          ],
           errosComuns: ["Somar vários produtos com o mesmo princípio ativo (risco de superdose)."],
           quiz: [
             q(
               "Risco comum ao associar antigripais e analgésicos sem critério:",
-              ["Nenhum", "Superdose do mesmo princípio ativo (ex.: paracetamol)", "Melhora garantida", "Validade maior"],
+              [
+                "Nenhum",
+                "Superdose do mesmo princípio ativo (ex.: paracetamol)",
+                "Melhora garantida",
+                "Validade maior",
+              ],
               1,
               "Vários produtos podem conter o mesmo ativo, levando à superdose — atenção e encaminhamento.",
             ),
@@ -319,7 +402,10 @@ export const trilhaMedicamentos: Trilha = {
             "AINEs podem irritar o estômago e interagir com outros medicamentos; muitos exigem receita.",
             "Miorrelaxantes podem causar sonolência; orientar com cautela.",
           ],
-          checklist: ["Verificar exigência de receita.", "Alertar sobre estômago e direção/sonolência."],
+          checklist: [
+            "Verificar exigência de receita.",
+            "Alertar sobre estômago e direção/sonolência.",
+          ],
           quandoChamarFarmaceutico: ["Uso prolongado, gastrite, hipertensos, anticoagulados."],
           errosComuns: ["Indicar AINE para quem tem histórico gástrico sem avaliação."],
           quiz: [
@@ -337,7 +423,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antigripais, descongestionantes, antialérgicos e tosse",
           duracaoMin: 7,
           nivel: "intermediario",
-          resumo: "Sintomáticos respiratórios, antitussígenos x expectorantes e cuidados em grupos sensíveis.",
+          resumo:
+            "Sintomáticos respiratórios, antitussígenos x expectorantes e cuidados em grupos sensíveis.",
           resumoExecutivo: [
             "Antitussígeno seca a tosse seca; expectorante ajuda a eliminar secreção (tosse produtiva) — não combinar sem critério.",
             "Descongestionantes nasais podem causar efeito rebote se usados além do tempo.",
@@ -346,12 +433,20 @@ export const trilhaMedicamentos: Trilha = {
           comparativo: {
             titulo: "Tosse seca x produtiva",
             itens: [
-              { nome: "Tosse seca", quando: "Antitussígeno (suprime o reflexo)." },
-              { nome: "Tosse com catarro", quando: "Expectorante/mucolítico (fluidifica)." },
+              {
+                nome: "Tosse seca",
+                quando: "Antitussígeno (suprime o reflexo).",
+              },
+              {
+                nome: "Tosse com catarro",
+                quando: "Expectorante/mucolítico (fluidifica).",
+              },
             ],
           },
           checklist: ["Diferenciar tipo de tosse.", "Alertar sobre rebote nasal e sonolência."],
-          quandoChamarFarmaceutico: ["Tosse persistente (>2-3 semanas), falta de ar, sintomas em crianças."],
+          quandoChamarFarmaceutico: [
+            "Tosse persistente (>2-3 semanas), falta de ar, sintomas em crianças.",
+          ],
           errosComuns: ["Combinar antitussígeno com expectorante sem critério."],
           quiz: [
             q(
@@ -376,7 +471,9 @@ export const trilhaMedicamentos: Trilha = {
             "Laxativos não devem virar rotina sem avaliação.",
           ],
           checklist: ["Reforçar hidratação na diarreia.", "Orientar uso pontual, não crônico."],
-          quandoChamarFarmaceutico: ["Diarreia com sangue/febre, dor abdominal intensa, sintomas persistentes."],
+          quandoChamarFarmaceutico: [
+            "Diarreia com sangue/febre, dor abdominal intensa, sintomas persistentes.",
+          ],
           errosComuns: ["Focar só no antidiarreico e esquecer a hidratação."],
           quiz: [
             q(
@@ -393,19 +490,27 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antimicóticos, vitaminas, orexígenos, pediculicidas e escabicidas",
           duracaoMin: 6,
           nivel: "intermediario",
-          resumo: "Antifúngicos tópicos, suplementação, estimulantes de apetite e tratamento de piolho/sarna.",
+          resumo:
+            "Antifúngicos tópicos, suplementação, estimulantes de apetite e tratamento de piolho/sarna.",
           resumoExecutivo: [
             "Antimicóticos tópicos para micoses superficiais; lesões extensas exigem avaliação.",
             "Vitaminas não substituem alimentação; orientar uso racional.",
             "Pediculicidas/escabicidas pedem orientação de aplicação e repetição correta.",
           ],
           checklist: ["Orientar aplicação correta e tempo.", "Reforçar uso racional de vitaminas."],
-          quandoChamarFarmaceutico: ["Micoses extensas, suspeita de sarna disseminada, uso em crianças."],
+          quandoChamarFarmaceutico: [
+            "Micoses extensas, suspeita de sarna disseminada, uso em crianças.",
+          ],
           errosComuns: ["Indicar vitamina como 'cura' para tudo."],
           quiz: [
             q(
               "Sobre vitaminas, o correto é orientar que:",
-              ["Substituem a alimentação", "Não substituem alimentação e exigem uso racional", "Quanto mais, melhor", "Curam qualquer doença"],
+              [
+                "Substituem a alimentação",
+                "Não substituem alimentação e exigem uso racional",
+                "Quanto mais, melhor",
+                "Curam qualquer doença",
+              ],
               1,
               "Vitaminas complementam, não substituem alimentação; uso deve ser racional.",
             ),
@@ -424,13 +529,24 @@ export const trilhaMedicamentos: Trilha = {
             "A regra de referência atual para antimicrobianos é a RDC 471/2021, que substituiu a antiga RDC 20/2011.",
             "Reforçar adesão (não parar antes do fim) para evitar resistência bacteriana.",
           ],
-          checklist: ["Conferir validade e dados da receita.", "Reforçar uso completo do tratamento.", "Encaminhar ao farmacêutico."],
+          checklist: [
+            "Conferir validade e dados da receita.",
+            "Reforçar uso completo do tratamento.",
+            "Encaminhar ao farmacêutico.",
+          ],
           quandoChamarFarmaceutico: ["Toda dispensação de antimicrobiano e dúvidas de receita."],
-          errosComuns: ["Citar a RDC 20/2011 como regra vigente — foi substituída pela RDC 471/2021."],
+          errosComuns: [
+            "Citar a RDC 20/2011 como regra vigente — foi substituída pela RDC 471/2021.",
+          ],
           quiz: [
             q(
               "Qual norma é a referência atual para dispensação de antimicrobianos?",
-              ["RDC 20/2011", "RDC 471/2021 (substituiu a RDC 20/2011)", "Portaria 344/1998 apenas", "Nenhuma norma"],
+              [
+                "RDC 20/2011",
+                "RDC 471/2021 (substituiu a RDC 20/2011)",
+                "Portaria 344/1998 apenas",
+                "Nenhuma norma",
+              ],
               1,
               "A RDC 471/2021 substituiu a RDC 20/2011 como referência para antimicrobianos.",
             ),
@@ -459,18 +575,36 @@ export const trilhaMedicamentos: Trilha = {
           comparativo: {
             titulo: "Receita x Uso",
             itens: [
-              { nome: "Receita branca simples", quando: "Tarja vermelha sem retenção." },
-              { nome: "Controle especial (2 vias)", quando: "Retém uma via; listas C." },
-              { nome: "Notificação (A/B)", quando: "Entorpecentes/psicotrópicos; controle rígido." },
+              {
+                nome: "Receita branca simples",
+                quando: "Tarja vermelha sem retenção.",
+              },
+              {
+                nome: "Controle especial (2 vias)",
+                quando: "Retém uma via; listas C.",
+              },
+              {
+                nome: "Notificação (A/B)",
+                quando: "Entorpecentes/psicotrópicos; controle rígido.",
+              },
             ],
           },
-          checklist: ["Conferir validade e dados.", "Reter via quando exigido.", "Encaminhar controlados ao farmacêutico."],
+          checklist: [
+            "Conferir validade e dados.",
+            "Reter via quando exigido.",
+            "Encaminhar controlados ao farmacêutico.",
+          ],
           quandoChamarFarmaceutico: ["Toda receita controlada e divergências na prescrição."],
           errosComuns: ["Aceitar receita controlada vencida ou incompleta."],
           quiz: [
             q(
               "A base legal das substâncias sob controle especial é:",
-              ["Apenas a RDC 20/2011", "Portaria SVS/MS 344/1998, atualizada por RDCs posteriores", "Nenhuma", "Somente o Código Civil"],
+              [
+                "Apenas a RDC 20/2011",
+                "Portaria SVS/MS 344/1998, atualizada por RDCs posteriores",
+                "Nenhuma",
+                "Somente o Código Civil",
+              ],
               1,
               "A Portaria 344/1998 é a base, atualizada dinamicamente por RDCs (inclusive 2024).",
             ),
@@ -490,7 +624,8 @@ export const trilhaMedicamentos: Trilha = {
             "Exemplos: semaglutida, liraglutida, dulaglutida e tirzepatida. Foco em uso racional, nunca em 'glamour' de emagrecimento.",
           ],
           simulacao: {
-            cliente: "Cliente quer comprar uma caneta de GLP-1 'para emagrecer rápido', sem receita.",
+            cliente:
+              "Cliente quer comprar uma caneta de GLP-1 'para emagrecer rápido', sem receita.",
             falaBoa:
               "Esse medicamento passou a exigir retenção de receita. Sem a prescrição válida não posso dispensar. Vou chamar o farmacêutico para te orientar com segurança sobre o uso correto.",
             falaEvitar: "Posso dar um jeito sem receita.",
@@ -501,11 +636,19 @@ export const trilhaMedicamentos: Trilha = {
             "Encaminhar ao farmacêutico e focar uso racional.",
           ],
           quandoChamarFarmaceutico: ["Toda dispensação de GLP-1 e orientações de uso/efeitos."],
-          errosComuns: ["Dispensar GLP-1 sem retenção de receita.", "Tratar como produto de emagrecimento sem critério clínico."],
+          errosComuns: [
+            "Dispensar GLP-1 sem retenção de receita.",
+            "Tratar como produto de emagrecimento sem critério clínico.",
+          ],
           quiz: [
             q(
               "Desde quando os GLP-1 da IN 360/2025 exigem retenção de receita?",
-              ["Nunca exigiram", "Desde 23/06/2025, com validade de 90 dias", "Apenas em 2030", "Somente para genéricos"],
+              [
+                "Nunca exigiram",
+                "Desde 23/06/2025, com validade de 90 dias",
+                "Apenas em 2030",
+                "Somente para genéricos",
+              ],
               1,
               "A IN 360/2025 instituiu a retenção a partir de 23/06/2025, receita válida por 90 dias e escrituração interna.",
             ),
@@ -524,9 +667,14 @@ export const trilhaMedicamentos: Trilha = {
             "Cobertura de 12 indicações de saúde; inclui também fraldas geriátricas.",
             "Absorventes higiênicos para beneficiárias do Programa Dignidade Menstrual.",
           ],
-          checklist: ["Orientar o cidadão sobre gratuidade e documentos.", "Conectar à adesão e ao impacto social."],
+          checklist: [
+            "Orientar o cidadão sobre gratuidade e documentos.",
+            "Conectar à adesão e ao impacto social.",
+          ],
           quandoChamarFarmaceutico: ["Dúvidas de elegibilidade e dispensação pelo programa."],
-          errosComuns: ["Informar copagamento desatualizado — hoje há gratuidade de 100% do elenco."],
+          errosComuns: [
+            "Informar copagamento desatualizado — hoje há gratuidade de 100% do elenco.",
+          ],
           quiz: [
             q(
               "O que mudou no Farmácia Popular a partir de 14/02/2025?",
@@ -547,7 +695,8 @@ export const trilhaMedicamentos: Trilha = {
     {
       id: "cuidado-seguranca",
       titulo: "Cuidado, Segurança e Adesão",
-      descricao: "Primeiros socorros, injetáveis, sazonalidade, adesão ao tratamento e encaminhamento.",
+      descricao:
+        "Primeiros socorros, injetáveis, sazonalidade, adesão ao tratamento e encaminhamento.",
       aulas: [
         {
           id: "primeiros-socorros",
@@ -559,13 +708,21 @@ export const trilhaMedicamentos: Trilha = {
             "Saber estabilizar e orientar até ajuda especializada; conhecer os limites do papel.",
             "Em sinais graves (dor no peito, desmaio, falta de ar, sangramento intenso), acionar SAMU 192.",
           ],
-          checklist: ["Manter a calma e a segurança.", "Acionar farmacêutico e 192 quando necessário."],
+          checklist: [
+            "Manter a calma e a segurança.",
+            "Acionar farmacêutico e 192 quando necessário.",
+          ],
           quandoChamarFarmaceutico: ["Sempre que houver dúvida clínica ou sinais de gravidade."],
           errosComuns: ["Tentar resolver quadro grave sozinho, sem acionar emergência."],
           quiz: [
             q(
               "Diante de dor no peito intensa e falta de ar, a conduta é:",
-              ["Vender um analgésico", "Acionar emergência (192) e o farmacêutico", "Mandar esperar em casa", "Ignorar"],
+              [
+                "Vender um analgésico",
+                "Acionar emergência (192) e o farmacêutico",
+                "Mandar esperar em casa",
+                "Ignorar",
+              ],
               1,
               "Sinais de gravidade exigem acionar emergência imediatamente.",
             ),
@@ -577,14 +734,21 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Injetáveis e aplicação segura",
           duracaoMin: 7,
           nivel: "avancado",
-          resumo: "Tipos de injetáveis, cadeia de frio, descarte e aplicação como ato do farmacêutico/enfermagem.",
+          resumo:
+            "Tipos de injetáveis, cadeia de frio, descarte e aplicação como ato do farmacêutico/enfermagem.",
           resumoExecutivo: [
             "Aplicação de injetáveis e vacinas segue normas (ex.: RDC 197/2017 para serviços de vacinação) e é ato técnico.",
             "Cadeia de frio e descarte de perfurocortantes são essenciais.",
             "Canetas (ex.: GLP-1) exigem orientação de armazenamento, técnica e descarte.",
           ],
-          checklist: ["Garantir cadeia de frio.", "Orientar descarte correto.", "Encaminhar aplicação ao profissional habilitado."],
-          quandoChamarFarmaceutico: ["Aplicação, técnica e dúvidas de armazenamento de injetáveis."],
+          checklist: [
+            "Garantir cadeia de frio.",
+            "Orientar descarte correto.",
+            "Encaminhar aplicação ao profissional habilitado.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Aplicação, técnica e dúvidas de armazenamento de injetáveis.",
+          ],
           errosComuns: ["Orientar descarte de agulha no lixo comum."],
           quiz: [
             q(
@@ -614,13 +778,24 @@ export const trilhaMedicamentos: Trilha = {
               "Que tal montarmos uma rotina? Associe a doses a refeições, use um organizador semanal e lembretes no celular. Se esquecer uma dose, oriento como proceder conforme a bula — e o farmacêutico pode ajustar com você.",
             falaEvitar: "Toma quando lembrar, tanto faz.",
           },
-          checklist: ["Sugerir rotina e lembretes.", "Orientar conduta em esquecimento de dose.", "Acompanhar a recompra com ética."],
-          quandoChamarFarmaceutico: ["Reações adversas, ajustes e dúvidas de esquecimento de dose."],
+          checklist: [
+            "Sugerir rotina e lembretes.",
+            "Orientar conduta em esquecimento de dose.",
+            "Acompanhar a recompra com ética.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Reações adversas, ajustes e dúvidas de esquecimento de dose.",
+          ],
           errosComuns: ["Banalizar horários ('toma quando lembrar')."],
           quiz: [
             q(
               "O que aumenta a adesão ao tratamento?",
-              ["Não ter horários", "Rotina, lembretes e organização por dia/horário", "Parar quando melhorar", "Dobrar a dose esquecida sempre"],
+              [
+                "Não ter horários",
+                "Rotina, lembretes e organização por dia/horário",
+                "Parar quando melhorar",
+                "Dobrar a dose esquecida sempre",
+              ],
               1,
               "Rotina, lembretes e organização cronológica ajudam o paciente a seguir o tratamento.",
             ),
@@ -632,7 +807,8 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Encaminhamento ao farmacêutico e sazonalidade",
           duracaoMin: 5,
           nivel: "intermediario",
-          resumo: "Quando e como encaminhar, e como antecipar picos sazonais (gripe, alergia, calor).",
+          resumo:
+            "Quando e como encaminhar, e como antecipar picos sazonais (gripe, alergia, calor).",
           resumoExecutivo: [
             "Encaminhar não é fraqueza: é segurança. O farmacêutico tem atribuições clínicas (orientação, uso racional, avaliação de adesão).",
             "Sazonalidade orienta estoque e abordagem (inverno: respiratórios; verão: fotoproteção, repelentes).",
@@ -643,7 +819,12 @@ export const trilhaMedicamentos: Trilha = {
           quiz: [
             q(
               "Encaminhar ao farmacêutico significa:",
-              ["Perder a venda", "Garantir segurança e uso racional", "Fraqueza do atendente", "Empurrar problema"],
+              [
+                "Perder a venda",
+                "Garantir segurança e uso racional",
+                "Fraqueza do atendente",
+                "Empurrar problema",
+              ],
               1,
               "O encaminhamento é parte do cuidado: garante segurança e uso racional.",
             ),

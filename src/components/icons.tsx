@@ -94,7 +94,9 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M4 21a8 8 0 0 1 16 0" />
     </>
   ),
-  flame: <path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-1.5.5-2.5 1-3 .3 1 1 1.5 1.5 1.5C10 8 11 5 12 3Z" />,
+  flame: (
+    <path d="M12 3c1 3 4 4 4 8a4 4 0 0 1-8 0c0-1.5.5-2.5 1-3 .3 1 1 1.5 1.5 1.5C10 8 11 5 12 3Z" />
+  ),
   award: (
     <>
       <circle cx="12" cy="9" r="6" />

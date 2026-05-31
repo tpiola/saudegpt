@@ -81,7 +81,8 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Boas Práticas",
     atualizado: false,
-    resumo: "Estabelece requisitos mínimos para o funcionamento dos serviços de vacinação humana em farmácias.",
+    resumo:
+      "Estabelece requisitos mínimos para o funcionamento dos serviços de vacinação humana em farmácias.",
     pontosChave: [
       "Requisitos mínimos de estrutura e segurança para vacinação.",
       "Cadeia de frio e descarte adequados.",
@@ -148,7 +149,10 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     categoria: "Atribuições",
     atualizado: false,
     resumo: "Regula a prescrição farmacêutica dentro das competências do profissional.",
-    pontosChave: ["Limites e competências da prescrição farmacêutica.", "Atuação dentro do escopo legal."],
+    pontosChave: [
+      "Limites e competências da prescrição farmacêutica.",
+      "Atuação dentro do escopo legal.",
+    ],
   },
 ];
 

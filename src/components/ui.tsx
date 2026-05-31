@@ -136,7 +136,10 @@ export function BarraProgresso({ pct, className = "" }: { pct: number; className
       aria-valuemin={0}
       aria-valuemax={100}
     >
-      <div className="h-full gradient-brand transition-[width] duration-500" style={{ width: `${pct}%` }} />
+      <div
+        className="h-full gradient-brand transition-[width] duration-500"
+        style={{ width: `${pct}%` }}
+      />
     </div>
   );
 }
@@ -154,9 +157,19 @@ export function AnelProgresso({
   const circ = 2 * Math.PI * r;
   const off = circ - (pct / 100) * circ;
   return (
-    <div className="relative inline-flex items-center justify-center" style={{ width: tamanho, height: tamanho }}>
+    <div
+      className="relative inline-flex items-center justify-center"
+      style={{ width: tamanho, height: tamanho }}
+    >
       <svg width={tamanho} height={tamanho} className="-rotate-90">
-        <circle cx={tamanho / 2} cy={tamanho / 2} r={r} fill="none" strokeWidth={8} className="stroke-surface-2" />
+        <circle
+          cx={tamanho / 2}
+          cy={tamanho / 2}
+          r={r}
+          fill="none"
+          strokeWidth={8}
+          className="stroke-surface-2"
+        />
         <circle
           cx={tamanho / 2}
           cy={tamanho / 2}
@@ -200,7 +213,9 @@ export function TituloSecao({
   return (
     <div className={`${centralizado ? "text-center mx-auto" : ""} max-w-2xl`}>
       {sobre && (
-        <div className={`mb-2 flex items-center gap-2 text-sm font-semibold text-brand-600 ${centralizado ? "justify-center" : ""}`}>
+        <div
+          className={`mb-2 flex items-center gap-2 text-sm font-semibold text-brand-600 ${centralizado ? "justify-center" : ""}`}
+        >
           {icone && <Icon name={icone} size={18} />}
           {sobre}
         </div>

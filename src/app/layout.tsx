@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
@@ -13,7 +13,18 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+const baseUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://atendentes-premium-farmacia.vercel.app";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f5f8fc" },
+    { media: "(prefers-color-scheme: dark)", color: "#060b16" },
+  ],
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     default: site.nome,
     template: `%s · ${site.nomeCurto}`,

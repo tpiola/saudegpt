@@ -34,8 +34,14 @@ export const trilhaPerfumaria: Trilha = {
             titulo: "Espuma x Gel x Óleo de barbear",
             itens: [
               { nome: "Espuma", quando: "Barba rápida, boa para iniciantes." },
-              { nome: "Gel transparente", quando: "Quem desenha contornos e precisa enxergar a pele." },
-              { nome: "Óleo de barbear", quando: "Pele seca/sensível, maior deslize da lâmina." },
+              {
+                nome: "Gel transparente",
+                quando: "Quem desenha contornos e precisa enxergar a pele.",
+              },
+              {
+                nome: "Óleo de barbear",
+                quando: "Pele seca/sensível, maior deslize da lâmina.",
+              },
             ],
           },
           simulacao: {
@@ -87,9 +93,18 @@ export const trilhaPerfumaria: Trilha = {
           comparativo: {
             titulo: "Necessidade x Produto",
             itens: [
-              { nome: "Sensibilidade", quando: "Creme dessensibilizante, escova macia." },
-              { nome: "Gengiva inflamada", quando: "Enxaguante com clorexidina (orientar tempo de uso)." },
-              { nome: "Aparelho ortodôntico", quando: "Escova interdental e fio próprio." },
+              {
+                nome: "Sensibilidade",
+                quando: "Creme dessensibilizante, escova macia.",
+              },
+              {
+                nome: "Gengiva inflamada",
+                quando: "Enxaguante com clorexidina (orientar tempo de uso).",
+              },
+              {
+                nome: "Aparelho ortodôntico",
+                quando: "Escova interdental e fio próprio.",
+              },
             ],
           },
           checklist: [
@@ -108,7 +123,12 @@ export const trilhaPerfumaria: Trilha = {
           quiz: [
             q(
               "O que protege melhor a gengiva no dia a dia?",
-              ["Escova de cerdas duras", "Escova de cerdas macias", "Não usar fio dental", "Enxaguante com álcool sempre"],
+              [
+                "Escova de cerdas duras",
+                "Escova de cerdas macias",
+                "Não usar fio dental",
+                "Enxaguante com álcool sempre",
+              ],
               1,
               "Cerdas macias limpam bem e reduzem o risco de retração gengival.",
             ),
@@ -136,7 +156,12 @@ export const trilhaPerfumaria: Trilha = {
           quiz: [
             q(
               "Para pele seca, qual a melhor escolha?",
-              ["Antibacteriano diário", "Esfoliante diário", "Sabonete hidratante/glicerinado", "Sabonete íntimo"],
+              [
+                "Antibacteriano diário",
+                "Esfoliante diário",
+                "Sabonete hidratante/glicerinado",
+                "Sabonete íntimo",
+              ],
               2,
               "Pele seca pede sabonete hidratante; antibacteriano e esfoliante diários ressecam.",
             ),
@@ -153,13 +178,21 @@ export const trilhaPerfumaria: Trilha = {
             "Buchas e esponjas acumulam microrganismos — orientar troca e secagem.",
             "Escovas de cabo ajudam idosos e gestantes a alcançar as costas e pés.",
           ],
-          checklist: ["Sugerir item conforme mobilidade do cliente.", "Reforçar higiene e troca do acessório."],
+          checklist: [
+            "Sugerir item conforme mobilidade do cliente.",
+            "Reforçar higiene e troca do acessório.",
+          ],
           quandoChamarFarmaceutico: ["Lesões que pioram com uso de buchas/esfoliação."],
           errosComuns: ["Esquecer de orientar a higienização do acessório."],
           quiz: [
             q(
               "Por que orientar a troca de buchas e esponjas?",
-              ["Por estética", "Porque acumulam microrganismos", "Para vender mais", "Não é necessário"],
+              [
+                "Por estética",
+                "Porque acumulam microrganismos",
+                "Para vender mais",
+                "Não é necessário",
+              ],
               1,
               "Acessórios úmidos acumulam microrganismos; troca e secagem são importantes.",
             ),
@@ -171,7 +204,8 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene pessoal",
           duracaoMin: 5,
           nivel: "basico",
-          resumo: "Cuidados gerais, absorventes, lenços, antissépticos de uso doméstico e bem-estar.",
+          resumo:
+            "Cuidados gerais, absorventes, lenços, antissépticos de uso doméstico e bem-estar.",
           resumoExecutivo: [
             "Atendimento sensível: respeito e discrição em itens íntimos.",
             "Saber posicionar opções (absorvente, coletor, calcinha absorvente) sem julgamento.",
@@ -182,7 +216,12 @@ export const trilhaPerfumaria: Trilha = {
           quiz: [
             q(
               "Qual postura ideal em itens de higiene íntima?",
-              ["Pressa e constrangimento", "Discrição e respeito", "Insistir no mais caro", "Ignorar dúvidas"],
+              [
+                "Pressa e constrangimento",
+                "Discrição e respeito",
+                "Insistir no mais caro",
+                "Ignorar dúvidas",
+              ],
               1,
               "Discrição e respeito constroem confiança e fidelizam o cliente.",
             ),
@@ -203,12 +242,23 @@ export const trilhaPerfumaria: Trilha = {
           comparativo: {
             titulo: "Desodorante x Antitranspirante",
             itens: [
-              { nome: "Desodorante", quando: "Foco em odor, sem reduzir suor." },
-              { nome: "Antitranspirante", quando: "Suor excessivo; reduz transpiração." },
+              {
+                nome: "Desodorante",
+                quando: "Foco em odor, sem reduzir suor.",
+              },
+              {
+                nome: "Antitranspirante",
+                quando: "Suor excessivo; reduz transpiração.",
+              },
             ],
           },
-          checklist: ["Diferenciar odor x suor.", "Oferecer versão para pele sensível quando indicado."],
-          quandoChamarFarmaceutico: ["Suor excessivo incapacitante (hiperidrose) ou irritação persistente."],
+          checklist: [
+            "Diferenciar odor x suor.",
+            "Oferecer versão para pele sensível quando indicado.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Suor excessivo incapacitante (hiperidrose) ou irritação persistente.",
+          ],
           errosComuns: ["Tratar desodorante e antitranspirante como sinônimos."],
           quiz: [
             q(
@@ -243,7 +293,10 @@ export const trilhaPerfumaria: Trilha = {
             itens: [
               { nome: "Oleosa/acneica", quando: "Gel, oil-free, toque seco." },
               { nome: "Seca", quando: "Creme, com hidratação extra." },
-              { nome: "Com manchas", quando: "Com cor/antioxidantes (orientar dermocosmético)." },
+              {
+                nome: "Com manchas",
+                quando: "Com cor/antioxidantes (orientar dermocosmético).",
+              },
             ],
           },
           simulacao: {
@@ -252,16 +305,28 @@ export const trilhaPerfumaria: Trilha = {
               "Pela pele oleosa, sugiro protetor oil-free com toque seco e um hidratante leve. Posso te mostrar como usar de manhã e reaplicar ao longo do dia?",
             falaEvitar: "Esse creme aqui é o mais caro, então é o melhor.",
           },
-          checklist: ["Identificar tipo de pele.", "Reforçar FPS diário e reaplicação.", "Sugerir rotina simples (3 passos)."],
+          checklist: [
+            "Identificar tipo de pele.",
+            "Reforçar FPS diário e reaplicação.",
+            "Sugerir rotina simples (3 passos).",
+          ],
           quandoChamarFarmaceutico: [
             "Lesões suspeitas, manchas que mudam de cor/tamanho.",
             "Acne intensa/dolorosa, dúvida sobre interação com tratamento médico.",
           ],
-          errosComuns: ["Indicar FPS baixo para o dia a dia.", "Ignorar o tipo de pele ao recomendar textura."],
+          errosComuns: [
+            "Indicar FPS baixo para o dia a dia.",
+            "Ignorar o tipo de pele ao recomendar textura.",
+          ],
           quiz: [
             q(
               "Qual a recomendação geral de fotoproteção diária?",
-              ["FPS só na praia", "FPS 30+ todos os dias com reaplicação", "Não precisa em dia nublado", "Apenas hidratante"],
+              [
+                "FPS só na praia",
+                "FPS 30+ todos os dias com reaplicação",
+                "Não precisa em dia nublado",
+                "Apenas hidratante",
+              ],
               1,
               "A fotoproteção é diária; FPS 30+ com reaplicação a cada 2h em exposição.",
             ),
@@ -301,13 +366,21 @@ export const trilhaPerfumaria: Trilha = {
             "Bases tratamento ajudam unhas fracas/quebradiças.",
             "Removedor sem acetona resseca menos; orientar hidratação das cutículas.",
           ],
-          checklist: ["Identificar queixa (fraqueza, descamação).", "Sugerir base tratamento + hidratação."],
+          checklist: [
+            "Identificar queixa (fraqueza, descamação).",
+            "Sugerir base tratamento + hidratação.",
+          ],
           quandoChamarFarmaceutico: ["Alteração de cor/forma, suspeita de micose ungueal."],
           errosComuns: ["Ignorar sinais de micose e tratar só estética."],
           quiz: [
             q(
               "Unhas fracas e quebradiças se beneficiam de:",
-              ["Removedor com acetona diário", "Base tratamento fortalecedora", "Não usar nada", "Mais camadas de esmalte escuro"],
+              [
+                "Removedor com acetona diário",
+                "Base tratamento fortalecedora",
+                "Não usar nada",
+                "Mais camadas de esmalte escuro",
+              ],
               1,
               "Bases tratamento fortalecem; deve-se observar sinais de micose para encaminhamento.",
             ),
@@ -330,9 +403,18 @@ export const trilhaPerfumaria: Trilha = {
             titulo: "Ativo x Objetivo",
             itens: [
               { nome: "Ácido hialurônico", quando: "Hidratação e viço." },
-              { nome: "Vitamina C", quando: "Antioxidante, uniformiza o tom (manhã)." },
-              { nome: "Niacinamida", quando: "Controle de oleosidade e manchas." },
-              { nome: "Retinóide", quando: "Renovação (noite); evitar na gestação sem avaliação." },
+              {
+                nome: "Vitamina C",
+                quando: "Antioxidante, uniformiza o tom (manhã).",
+              },
+              {
+                nome: "Niacinamida",
+                quando: "Controle de oleosidade e manchas.",
+              },
+              {
+                nome: "Retinóide",
+                quando: "Renovação (noite); evitar na gestação sem avaliação.",
+              },
             ],
           },
           simulacao: {
@@ -390,12 +472,21 @@ export const trilhaPerfumaria: Trilha = {
           comparativo: {
             titulo: "Necessidade do fio",
             itens: [
-              { nome: "Ressecado/quebradiço", quando: "Reconstrução (proteínas)." },
+              {
+                nome: "Ressecado/quebradiço",
+                quando: "Reconstrução (proteínas).",
+              },
               { nome: "Sem brilho/maciez", quando: "Nutrição (óleos)." },
-              { nome: "Sem corpo/elasticidade", quando: "Hidratação (água/umectantes)." },
+              {
+                nome: "Sem corpo/elasticidade",
+                quando: "Hidratação (água/umectantes).",
+              },
             ],
           },
-          checklist: ["Diagnóstico do fio e couro.", "Indicar linha coerente (sh+cond+tratamento)."],
+          checklist: [
+            "Diagnóstico do fio e couro.",
+            "Indicar linha coerente (sh+cond+tratamento).",
+          ],
           quandoChamarFarmaceutico: ["Queda intensa, descamação severa, lesões no couro."],
           errosComuns: ["Indicar anticaspa para o comprimento do fio."],
           quiz: [
@@ -419,13 +510,22 @@ export const trilhaPerfumaria: Trilha = {
             "Volume da água oxigenada define clareamento; orientar com cuidado.",
             "Pós-coloração pede linha para cabelos coloridos.",
           ],
-          checklist: ["Orientar teste de alergia.", "Explicar oxidante/volume.", "Sugerir manutenção pós-cor."],
+          checklist: [
+            "Orientar teste de alergia.",
+            "Explicar oxidante/volume.",
+            "Sugerir manutenção pós-cor.",
+          ],
           quandoChamarFarmaceutico: ["Histórico de alergia a tinturas, reações no couro cabeludo."],
           errosComuns: ["Não orientar teste de toque para alergia."],
           quiz: [
             q(
               "Antes de uma coloração, é prudente orientar:",
-              ["Lavar com água quente", "Teste de toque para alergia 48h antes", "Usar mais produto", "Não molhar por uma semana"],
+              [
+                "Lavar com água quente",
+                "Teste de toque para alergia 48h antes",
+                "Usar mais produto",
+                "Não molhar por uma semana",
+              ],
               1,
               "O teste de toque reduz risco de reações alérgicas, especialmente com PPD.",
             ),
@@ -453,9 +553,15 @@ export const trilhaPerfumaria: Trilha = {
           comparativo: {
             titulo: "Concentração",
             itens: [
-              { nome: "Eau de Cologne", quando: "Leve, refrescante, dura pouco." },
+              {
+                nome: "Eau de Cologne",
+                quando: "Leve, refrescante, dura pouco.",
+              },
               { nome: "Eau de Toilette", quando: "Dia a dia, fixação média." },
-              { nome: "Eau de Parfum", quando: "Maior fixação, ocasiões marcantes." },
+              {
+                nome: "Eau de Parfum",
+                quando: "Maior fixação, ocasiões marcantes.",
+              },
             ],
           },
           checklist: ["Perguntar ocasião e preferência.", "Oferecer prova na pele."],
@@ -540,7 +646,12 @@ export const trilhaPerfumaria: Trilha = {
           quiz: [
             q(
               "Qual ajuda a prevenir assaduras?",
-              ["Lenço com álcool", "Pomada de barreira (óxido de zinco)", "Talco perfumado em excesso", "Banho muito quente"],
+              [
+                "Lenço com álcool",
+                "Pomada de barreira (óxido de zinco)",
+                "Talco perfumado em excesso",
+                "Banho muito quente",
+              ],
               1,
               "Pomadas de barreira protegem a pele contra umidade e atrito.",
             ),

@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { listarAulas, trilhas } from "@/content/curriculo";
 
 // Chave composta que identifica uma aula globalmente.
@@ -41,7 +34,11 @@ interface ProgressoContexto extends EstadoProgresso {
   adicionarPontosMissao: (pontos: number) => void;
   estaConcluida: (trilhaId: string, aulaId: string) => boolean;
   ehFavorita: (trilhaId: string, aulaId: string) => boolean;
-  progressoTrilha: (trilhaId: string) => { feitas: number; total: number; pct: number };
+  progressoTrilha: (trilhaId: string) => {
+    feitas: number;
+    total: number;
+    pct: number;
+  };
   nivel: number;
   xpProximoNivel: number;
   resetar: () => void;
@@ -110,7 +107,11 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const adicionarPontosMissao = useCallback((pontos: number) => {
-    setEstado((s) => ({ ...s, missoesPontos: s.missoesPontos + pontos, xp: s.xp + pontos }));
+    setEstado((s) => ({
+      ...s,
+      missoesPontos: s.missoesPontos + pontos,
+      xp: s.xp + pontos,
+    }));
   }, []);
 
   const estaConcluida = useCallback(
@@ -128,7 +129,11 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       const trilha = trilhas.find((t) => t.id === trilhaId);
       const total = trilha ? trilha.modulos.reduce((n, m) => n + m.aulas.length, 0) : 0;
       const feitas = estado.concluidas.filter((c) => c.startsWith(`${trilhaId}/`)).length;
-      return { feitas, total, pct: total ? Math.round((feitas / total) * 100) : 0 };
+      return {
+        feitas,
+        total,
+        pct: total ? Math.round((feitas / total) * 100) : 0,
+      };
     },
     [estado.concluidas],
   );

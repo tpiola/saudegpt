@@ -10,7 +10,12 @@ export function Mandala() {
 
   return (
     <div className="mx-auto w-full max-w-[460px]">
-      <svg viewBox={`0 0 ${tamanho} ${tamanho}`} className="h-auto w-full" role="img" aria-label="Mandala pedagógica de saúde integral">
+      <svg
+        viewBox={`0 0 ${tamanho} ${tamanho}`}
+        className="h-auto w-full"
+        role="img"
+        aria-label="Mandala pedagógica de saúde integral"
+      >
         {/* Anéis decorativos */}
         {RAIOS.map((r, i) => (
           <circle
@@ -51,10 +56,22 @@ export function Mandala() {
 
         {/* Centro: a pessoa */}
         <circle cx={c} cy={c} r={40} fill="url(#mandala-centro)" />
-        <text x={c} y={c - 2} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 700 }}>
+        <text
+          x={c}
+          y={c - 2}
+          textAnchor="middle"
+          className="fill-white"
+          style={{ fontSize: 11, fontWeight: 700 }}
+        >
           {mandalaCentro.split(" ")[0]}
         </text>
-        <text x={c} y={c + 12} textAnchor="middle" className="fill-white" style={{ fontSize: 11, fontWeight: 700 }}>
+        <text
+          x={c}
+          y={c + 12}
+          textAnchor="middle"
+          className="fill-white"
+          style={{ fontSize: 11, fontWeight: 700 }}
+        >
           {mandalaCentro.split(" ").slice(1).join(" ")}
         </text>
         <defs>

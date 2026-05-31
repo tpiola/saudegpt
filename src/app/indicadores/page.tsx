@@ -9,8 +9,16 @@ export const metadata: Metadata = {
 };
 
 const tendencia = {
-  up: { tom: "success" as const, icone: "trending" as const, rotulo: "Em alta" },
-  down: { tom: "success" as const, icone: "trending" as const, rotulo: "Reduzindo (bom)" },
+  up: {
+    tom: "success" as const,
+    icone: "trending" as const,
+    rotulo: "Em alta",
+  },
+  down: {
+    tom: "success" as const,
+    icone: "trending" as const,
+    rotulo: "Reduzindo (bom)",
+  },
   flat: { tom: "neutral" as const, icone: "chart" as const, rotulo: "Estável" },
 };
 
@@ -32,7 +40,11 @@ export default function IndicadoresPage() {
               <div className="flex items-center justify-between">
                 <span className="text-sm font-semibold text-muted">{ind.nome}</span>
                 <Etiqueta tom={t.tom}>
-                  <Icon name={t.icone} size={12} className={ind.tendencia === "down" ? "-scale-y-100" : ""} />
+                  <Icon
+                    name={t.icone}
+                    size={12}
+                    className={ind.tendencia === "down" ? "-scale-y-100" : ""}
+                  />
                 </Etiqueta>
               </div>
               <div className="mt-2 text-2xl font-extrabold text-brand-600">{ind.valorDemo}</div>
@@ -51,10 +63,11 @@ export default function IndicadoresPage() {
           <h2 className="text-lg font-bold">Por que dados importam para quem cuida</h2>
         </div>
         <p className="mt-3 text-sm text-muted">
-          Indicadores como faturamento, ticket médio, conversão, mix, sazonalidade, curva ABC, ruptura, NPS, serviços e
-          aderência terapêutica ligam saúde, negócio e planeta. O atendente que entende esses números percebe onde o
-          cuidado pode melhorar: menos ruptura significa não faltar o medicamento do paciente; maior aderência significa
-          tratamento que de fato funciona.
+          Indicadores como faturamento, ticket médio, conversão, mix, sazonalidade, curva ABC,
+          ruptura, NPS, serviços e aderência terapêutica ligam saúde, negócio e planeta. O atendente
+          que entende esses números percebe onde o cuidado pode melhorar: menos ruptura significa
+          não faltar o medicamento do paciente; maior aderência significa tratamento que de fato
+          funciona.
         </p>
       </Card>
     </div>

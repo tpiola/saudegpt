@@ -72,8 +72,10 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                     const correta = j === q.correta;
                     let estilo = "border-border bg-surface hover:border-brand-300";
                     if (enviado) {
-                      if (correta) estilo = "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20";
-                      else if (selecionada) estilo = "border-rose-400 bg-rose-50 dark:bg-rose-900/20";
+                      if (correta)
+                        estilo = "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20";
+                      else if (selecionada)
+                        estilo = "border-rose-400 bg-rose-50 dark:bg-rose-900/20";
                       else estilo = "border-border opacity-70";
                     } else if (selecionada) {
                       estilo = "border-brand-400 bg-brand-50 dark:bg-brand-900/30";
@@ -124,9 +126,13 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                 <Icon name={nota >= 60 ? "award" : "target"} size={22} />
               </span>
               <div>
-                <div className="font-bold">Você acertou {acertos} de {quiz.length} ({nota}%)</div>
+                <div className="font-bold">
+                  Você acertou {acertos} de {quiz.length} ({nota}%)
+                </div>
                 <div className="text-sm text-subtle">
-                  {nota >= 60 ? "Muito bem! Pode concluir a aula." : "Revise os pontos acima e tente de novo."}
+                  {nota >= 60
+                    ? "Muito bem! Pode concluir a aula."
+                    : "Revise os pontos acima e tente de novo."}
                 </div>
               </div>
             </div>
@@ -160,12 +166,20 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
 
         <div className="flex flex-wrap gap-3">
           {!concluida && (
-            <Botao onClick={concluir} icone="check" variante={quiz.length && !enviado ? "secondary" : "primary"}>
+            <Botao
+              onClick={concluir}
+              icone="check"
+              variante={quiz.length && !enviado ? "secondary" : "primary"}
+            >
               Marcar como concluída
             </Botao>
           )}
           {proxima ? (
-            <Botao href={`/aula/${proxima.trilhaId}/${proxima.aulaId}`} variante={concluida ? "primary" : "secondary"} iconeFim="arrow">
+            <Botao
+              href={`/aula/${proxima.trilhaId}/${proxima.aulaId}`}
+              variante={concluida ? "primary" : "secondary"}
+              iconeFim="arrow"
+            >
               Próxima aula
             </Botao>
           ) : (

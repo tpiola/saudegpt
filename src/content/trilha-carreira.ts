@@ -34,7 +34,12 @@ export const trilhaCarreira: Trilha = {
           quiz: [
             q(
               "O foco do Atendente Premium II é:",
-              ["Apenas perfumaria", "Triagem segura, receitas, adesão e encaminhamento", "Somente caixa", "Estoque apenas"],
+              [
+                "Apenas perfumaria",
+                "Triagem segura, receitas, adesão e encaminhamento",
+                "Somente caixa",
+                "Estoque apenas",
+              ],
               1,
               "O Premium II aprofunda a atuação técnica segura no balcão de medicamentos.",
             ),
@@ -70,7 +75,8 @@ export const trilhaCarreira: Trilha = {
           titulo: "Como se preparar para cursar Farmácia",
           duracaoMin: 5,
           nivel: "basico",
-          resumo: "Disciplina, base de estudo e visão de cuidado para quem quer seguir na profissão.",
+          resumo:
+            "Disciplina, base de estudo e visão de cuidado para quem quer seguir na profissão.",
           resumoExecutivo: [
             "Bases úteis: fisiologia, farmacologia, legislação, comunicação e visão de cuidado.",
             "Pensar como futuro farmacêutico: ética, estudo contínuo e foco no paciente.",
@@ -81,7 +87,12 @@ export const trilhaCarreira: Trilha = {
           quiz: [
             q(
               "Uma base importante para quem quer cursar Farmácia é:",
-              ["Apenas decorar preços", "Fisiologia, farmacologia e legislação", "Ignorar comunicação", "Evitar ética"],
+              [
+                "Apenas decorar preços",
+                "Fisiologia, farmacologia e legislação",
+                "Ignorar comunicação",
+                "Evitar ética",
+              ],
               1,
               "Fisiologia, farmacologia e legislação formam a base do raciocínio farmacêutico.",
             ),
@@ -112,24 +123,43 @@ export const trilhaCarreira: Trilha = {
             itens: [
               { nome: "Ticket médio", quando: "Valor médio por atendimento." },
               { nome: "Conversão", quando: "% de quem entra e compra." },
-              { nome: "Curva ABC", quando: "Itens que mais pesam no resultado." },
-              { nome: "Ruptura", quando: "Venda perdida por falta de estoque." },
+              {
+                nome: "Curva ABC",
+                quando: "Itens que mais pesam no resultado.",
+              },
+              {
+                nome: "Ruptura",
+                quando: "Venda perdida por falta de estoque.",
+              },
               { nome: "NPS", quando: "Satisfação e recomendação do cliente." },
             ],
           },
-          checklist: ["Ler o indicador certo para a pergunta certa.", "Conectar dados à melhoria do cuidado."],
+          checklist: [
+            "Ler o indicador certo para a pergunta certa.",
+            "Conectar dados à melhoria do cuidado.",
+          ],
           quandoChamarFarmaceutico: ["Indicadores de serviços clínicos e adesão."],
           errosComuns: ["Olhar só faturamento e ignorar ruptura e NPS."],
           quiz: [
             q(
               "Ruptura, em indicadores de loja, significa:",
-              ["Cliente satisfeito", "Venda perdida por falta de estoque", "Ticket médio alto", "Promoção"],
+              [
+                "Cliente satisfeito",
+                "Venda perdida por falta de estoque",
+                "Ticket médio alto",
+                "Promoção",
+              ],
               1,
               "Ruptura é a indisponibilidade do item, gerando venda perdida.",
             ),
             q(
               "Qual indicador conecta dados a saúde?",
-              ["Ticket médio", "Aderência terapêutica (recompra no tempo certo)", "Curva ABC", "Faturamento bruto"],
+              [
+                "Ticket médio",
+                "Aderência terapêutica (recompra no tempo certo)",
+                "Curva ABC",
+                "Faturamento bruto",
+              ],
               1,
               "A aderência terapêutica liga o desempenho ao cuidado e à continuidade do tratamento.",
             ),

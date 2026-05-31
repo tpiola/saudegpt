@@ -35,7 +35,9 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
-                ativo(item.href) ? "text-brand-600 bg-brand-50 dark:bg-brand-900/40" : "text-muted hover:text-foreground"
+                ativo(item.href)
+                  ? "text-brand-600 bg-brand-50 dark:bg-brand-900/40"
+                  : "text-muted hover:text-foreground"
               }`}
             >
               {item.label}
@@ -69,7 +71,9 @@ export function Header() {
                 href={item.href}
                 onClick={() => setAberto(false)}
                 className={`rounded-lg px-3 py-2.5 text-sm font-medium ${
-                  ativo(item.href) ? "text-brand-600 bg-brand-50 dark:bg-brand-900/40" : "text-muted"
+                  ativo(item.href)
+                    ? "text-brand-600 bg-brand-50 dark:bg-brand-900/40"
+                    : "text-muted"
                 }`}
               >
                 {item.label}

@@ -56,9 +56,7 @@ export function xpTotalDisponivel(): number {
 // Aula seguinte na ordem global (para o botão "Continuar de onde parei").
 export function proximaAula(trilhaId: string, aulaId: string): AulaLocalizada | undefined {
   const todas = listarAulas();
-  const idx = todas.findIndex(
-    (i) => i.trilha.id === trilhaId && i.aula.id === aulaId,
-  );
+  const idx = todas.findIndex((i) => i.trilha.id === trilhaId && i.aula.id === aulaId);
   if (idx === -1 || idx + 1 >= todas.length) return undefined;
   return todas[idx + 1];
 }

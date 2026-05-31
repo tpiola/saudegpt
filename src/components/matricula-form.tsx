@@ -27,7 +27,9 @@ export function MatriculaForm() {
       <p className="mt-1 text-sm text-muted">Cadastro rápido para começar a estudar agora.</p>
       <form className="mt-5 space-y-4" onSubmit={enviar}>
         <div>
-          <label htmlFor="nome" className="text-sm font-medium">Nome completo</label>
+          <label htmlFor="nome" className="text-sm font-medium">
+            Nome completo
+          </label>
           <input
             id="nome"
             required
@@ -38,7 +40,9 @@ export function MatriculaForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="text-sm font-medium">E-mail</label>
+          <label htmlFor="email" className="text-sm font-medium">
+            E-mail
+          </label>
           <input
             id="email"
             type="email"
@@ -53,7 +57,8 @@ export function MatriculaForm() {
           Começar a estudar
         </Botao>
         <p className="flex items-center gap-1.5 text-xs text-subtle">
-          <Icon name="shield" size={13} /> Seus dados ficam apenas neste dispositivo (demo, em conformidade com a LGPD).
+          <Icon name="shield" size={13} /> Seus dados ficam apenas neste dispositivo (demo, em
+          conformidade com a LGPD).
         </p>
       </form>
     </Card>

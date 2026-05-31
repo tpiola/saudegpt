@@ -48,7 +48,11 @@ export default function MatriculasPage() {
           <div className="mt-8 grid grid-cols-3 gap-3">
             {trilhas.slice(0, 3).map((t) => (
               <Card key={t.id} className="p-4">
-                <Icon name={t.icone as Parameters<typeof Icon>[0]["name"]} size={20} className="text-brand-600" />
+                <Icon
+                  name={t.icone as Parameters<typeof Icon>[0]["name"]}
+                  size={20}
+                  className="text-brand-600"
+                />
                 <div className="mt-2 text-xs font-semibold">{t.subtitulo}</div>
               </Card>
             ))}

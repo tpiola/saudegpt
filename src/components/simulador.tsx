@@ -25,7 +25,9 @@ export function Simulador() {
       <div className="sticky top-16 z-10 -mx-4 mb-6 flex items-center justify-between gap-3 border-b border-border glass px-4 py-3 sm:mx-0 sm:rounded-xl sm:border">
         <div className="flex items-center gap-2 text-sm">
           <Icon name="target" size={18} className="text-brand-600" />
-          <span className="font-semibold">{respondidas}/{missoes.length} missões</span>
+          <span className="font-semibold">
+            {respondidas}/{missoes.length} missões
+          </span>
         </div>
         <Etiqueta tom="brand">
           <Icon name="sparkles" size={14} /> {pontosSessao} pts nesta sessão
@@ -71,7 +73,9 @@ export function Simulador() {
                         <span className="flex items-center justify-between gap-3">
                           <span>{op.texto}</span>
                           {respondida && (
-                            <span className={`flex-none text-xs font-bold ${melhor ? "text-emerald-600" : "text-subtle"}`}>
+                            <span
+                              className={`flex-none text-xs font-bold ${melhor ? "text-emerald-600" : "text-subtle"}`}
+                            >
                               +{op.pontos}
                             </span>
                           )}
