@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/* Estratégia de tema escuro por classe (.dark) em vez de prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Design System — "Azul Clínico Premium"
+  Tokens base do produto. Tema claro e escuro derivados das mesmas variáveis.
+*/
+:root {
+  /* Superfícies */
+  --background: #f5f8fc;
+  --surface: #ffffff;
+  --surface-2: #eef3fb;
+  --surface-glass: rgba(255, 255, 255, 0.7);
+  --border: #d8e2f2;
+  --border-strong: #c2d2ec;
+
+  /* Texto */
+  --foreground: #0f1b2d;
+  --muted: #4a5b75;
+  --subtle: #76859c;
+
+  /* Azul premium (marca) */
+  --brand-50: #eaf2ff;
+  --brand-100: #d2e4ff;
+  --brand-200: #a8c8ff;
+  --brand-300: #74a4fb;
+  --brand-400: #4a82f0;
+  --brand-500: #2563eb;
+  --brand-600: #1d4ed8;
+  --brand-700: #1b3fae;
+  --brand-800: #1b3585;
+  --brand-900: #16285f;
+
+  /* Acentos clínicos */
+  --accent-cyan: #1fb6c9;
+  --accent-teal: #0fa3a3;
+
+  /* Estados */
+  --success: #15a06b;
+  --warning: #d98a00;
+  --danger: #d83a52;
+
+  /* Grafite azulado / prata */
+  --graphite: #233246;
+  --silver: #b9c4d6;
+
+  --radius: 16px;
+  --shadow-soft: 0 8px 30px rgba(22, 40, 95, 0.08);
+  --shadow-card: 0 4px 18px rgba(22, 40, 95, 0.06);
+  --ring: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+.dark {
+  --background: #060b16;
+  --surface: #0d1626;
+  --surface-2: #111e33;
+  --surface-glass: rgba(13, 22, 38, 0.6);
+  --border: #1c2c47;
+  --border-strong: #294063;
+
+  --foreground: #eaf1fb;
+  --muted: #a9b8d0;
+  --subtle: #7587a3;
+
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-teal: var(--accent-teal);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-graphite: var(--graphite);
+  --color-silver: var(--silver);
+
+  --font-sans: var(--font-sans-humanist), system-ui, sans-serif;
+
+  --radius-xl: var(--radius);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans-humanist), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fundo cinematográfico com gradiente clínico sutil */
+.bg-clinical {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(37, 99, 235, 0.16), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(31, 182, 201, 0.12), transparent 55%),
+    var(--background);
+}
+
+/* Cartão com superfície translúcida premium */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+}
+
+.glass {
+  background: var(--surface-glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+}
+
+.gradient-brand {
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-400) 60%, var(--accent-cyan));
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, var(--brand-700), var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(120deg, var(--brand-300), var(--accent-cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Foco acessível consistente */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: 8px;
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-float { animation: float-soft 6s ease-in-out infinite; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fade-up 0.6s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-fade-up { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Scrollbar discreta */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
