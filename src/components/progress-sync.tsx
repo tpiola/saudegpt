@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { lerPerfilAluno } from "@/lib/aluno";
 import { montarSnapshotProgresso, sincronizarProgressoComServidor } from "@/lib/cadastro-client";
 import { useProgresso } from "@/lib/progress";
+import { sincronizarProgressoNuvem } from "@/lib/supabase/auth-client";
 
 /** Sincroniza progresso com o servidor para o painel administrativo. */
 export function ProgressSync() {
@@ -30,6 +31,7 @@ export function ProgressSync() {
     ultimo.current = chave;
 
     void sincronizarProgressoComServidor(perfil.email, snapshot);
+    void sincronizarProgressoNuvem(snapshot);
   }, [prog]);
 
   return null;

@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { videosPiloto } from "./videos-piloto";
 
 // Trilha 3 — excelência operacional e vendas consultivas com ética.
 export const trilhaOperacional: Trilha = {
@@ -22,6 +23,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Acolhimento e primeira impressão",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosPiloto.operacionalAbertura,
           resumo: "Como receber o cliente com empatia, atenção e postura profissional.",
           resumoExecutivo: [
             "Contato visual, cumprimento e disponibilidade genuína criam confiança em segundos.",

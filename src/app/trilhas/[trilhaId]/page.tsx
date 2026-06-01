@@ -2,9 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getTrilha, trilhas } from "@/content/curriculo";
-import { Card, Etiqueta, NivelBadge } from "@/components/ui";
+import { Card, Etiqueta } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
-import { AulaStatusIcon, ProgressoTrilhaBadge } from "@/components/progresso-cliente";
+import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
+import { TrilhaNivelFiltro } from "@/components/trilha-nivel-filtro";
 
 export function generateStaticParams() {
   return trilhas.map((t) => ({ trilhaId: t.id }));
@@ -69,47 +70,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
         </Link>
       )}
 
-      <div className="mt-10 space-y-8">
-        {trilha.modulos.map((modulo, idx) => (
-          <section key={modulo.id}>
-            <div className="flex items-center gap-3">
-              <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm font-bold text-brand-700 dark:bg-brand-900/40 dark:text-brand-200">
-                {idx + 1}
-              </span>
-              <div className="flex-1">
-                <Link href={`/trilhas/${trilha.id}/${modulo.id}`} className="group">
-                  <h2 className="text-lg font-bold group-hover:text-brand-600">{modulo.titulo}</h2>
-                  <p className="text-sm text-subtle">{modulo.descricao}</p>
-                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
-                    Ver módulo e prova <Icon name="arrow" size={12} />
-                  </span>
-                </Link>
-              </div>
-            </div>
-
-            <div className="mt-4 space-y-2">
-              {modulo.aulas.map((aula) => (
-                <Link key={aula.id} href={`/aula/${trilha.id}/${aula.id}`}>
-                  <Card className="flex items-center gap-4 p-4 transition-all hover:border-brand-400 hover:bg-surface-2">
-                    <AulaStatusIcon trilhaId={trilha.id} aulaId={aula.id} />
-                    <div className="min-w-0 flex-1">
-                      <h3 className="truncate font-semibold">{aula.titulo}</h3>
-                      <p className="truncate text-sm text-muted">{aula.resumo}</p>
-                    </div>
-                    <div className="hidden flex-none items-center gap-2 sm:flex">
-                      <NivelBadge nivel={aula.nivel} />
-                      <Etiqueta tom="neutral">
-                        <Icon name="clock" size={12} /> {aula.duracaoMin} min
-                      </Etiqueta>
-                    </div>
-                    <Icon name="arrow" size={18} className="flex-none text-subtle" />
-                  </Card>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ))}
-      </div>
+      <TrilhaNivelFiltro trilha={trilha} />
     </div>
   );
 }

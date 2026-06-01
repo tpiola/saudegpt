@@ -5,6 +5,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
+import { PwaRegister } from "@/components/pwa-register";
 import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
@@ -48,7 +49,10 @@ export const metadata: Metadata = {
     description: site.descricao,
     locale: "pt_BR",
     type: "website",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: site.nome }],
+    images: [
+      { url: "/opengraph-image", width: 1200, height: 630, alt: site.nome },
+      { url: "/og.svg", width: 1200, height: 630, alt: site.nome },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -78,6 +82,7 @@ export default function RootLayout({
         <ThemeProvider>
           <ProgressProvider>
             <ProgressSync />
+            <PwaRegister />
             <Header />
             <main id="conteudo-principal" className="flex-1">
               {children}

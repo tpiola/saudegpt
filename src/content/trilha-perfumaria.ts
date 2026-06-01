@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { videosPiloto } from "./videos-piloto";
 
 // Trilha 1 — preserva integralmente o manual de perfumaria, reorganizado em
 // microlições com camada contemporânea (jornada do cliente, cross-sell ético).
@@ -23,6 +24,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Barba e cuidados masculinos",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: videosPiloto.perfumariaBarba,
           resumo:
             "Como orientar o cliente que faz a barba, evitando irritação, foliculite e pelos encravados.",
           resumoExecutivo: [

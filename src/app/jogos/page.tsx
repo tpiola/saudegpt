@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { jogoReceita, jogoTarjas, jogosMeta } from "@/content/jogos";
+import { jogoReceita, jogoSintomaCategoria, jogoTarjas, jogosMeta } from "@/content/jogos";
 import { JogoQuiz } from "@/components/jogo-quiz";
 import { TituloSecao } from "@/components/ui";
 
@@ -20,6 +20,7 @@ export default function JogosPage() {
       <div className="mt-10 space-y-8">
         <JogoQuiz titulo="Leitura de tarjas" questoes={jogoTarjas} />
         <JogoQuiz titulo="Receita sem erro" questoes={jogoReceita} />
+        <JogoQuiz titulo="Sintoma → categoria segura" questoes={jogoSintomaCategoria} />
       </div>
     </div>
   );

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { missoes } from "@/content/missoes";
+import { idsMissoesDaSemana, semanaISO } from "@/lib/missao-semanal";
 import { useProgresso } from "@/lib/progress";
 import { Card, Etiqueta, NivelBadge } from "./ui";
 import { Icon } from "./icons";
@@ -10,6 +11,7 @@ export function Simulador() {
   const { adicionarPontosMissao } = useProgresso();
   const [respostas, setRespostas] = useState<Record<string, number>>({});
   const [pontosSessao, setPontosSessao] = useState(0);
+  const destaqueSemana = idsMissoesDaSemana();
 
   function responder(missaoId: string, opcaoIdx: number, pontos: number) {
     if (respostas[missaoId] != null) return; // já respondida
@@ -22,6 +24,15 @@ export function Simulador() {
 
   return (
     <div>
+      <Card className="mb-6 border-l-4 border-l-brand-400 bg-brand-50/40 dark:bg-brand-900/20">
+        <div className="flex items-center gap-2 text-sm font-semibold text-brand-700 dark:text-brand-200">
+          <Icon name="flame" size={16} /> Missão da semana {semanaISO()}
+        </div>
+        <p className="mt-1 text-sm text-muted">
+          Três casos em destaque esta semana — complete-os para maximizar pontos no simulador.
+        </p>
+      </Card>
+
       <div className="sticky top-16 z-10 -mx-4 mb-6 flex items-center justify-between gap-3 border-b border-border glass px-4 py-3 sm:mx-0 sm:rounded-xl sm:border">
         <div className="flex items-center gap-2 text-sm">
           <Icon name="target" size={18} className="text-brand-600" />
@@ -37,6 +48,7 @@ export function Simulador() {
       <div className="space-y-5">
         {missoes.map((m) => {
           const respondida = respostas[m.id] != null;
+          const semana = destaqueSemana.has(m.id);
           return (
             <Card key={m.id}>
               <div className="flex flex-wrap items-center gap-2">
@@ -46,6 +58,11 @@ export function Simulador() {
                 <h3 className="text-base font-bold">{m.titulo}</h3>
                 <NivelBadge nivel={m.nivel} />
                 <Etiqueta tom="neutral">{m.contexto}</Etiqueta>
+                {semana && (
+                  <Etiqueta tom="brand">
+                    <Icon name="flame" size={12} /> Semana
+                  </Etiqueta>
+                )}
               </div>
 
               <blockquote className="mt-4 rounded-xl border-l-4 border-l-brand-400 bg-surface-2 px-4 py-3 text-sm italic text-muted">

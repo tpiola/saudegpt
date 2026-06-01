@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { videosPiloto } from "./videos-piloto";
 
 // Trilha 2 — preserva o manual técnico integralmente, com camada crítica de
 // atualização regulatória (RDC 471/2021, GLP-1 IN 360/2025, Farmácia Popular 2025).
@@ -23,6 +24,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Remédio x Medicamento: conceitos essenciais",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: videosPiloto.medicamentosConceitos,
           resumo:
             "A diferença entre remédio, medicamento, droga e fármaco, e por que isso importa no balcão.",
           resumoExecutivo: [
@@ -163,6 +165,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Bula e leitura segura (metodologia visual)",
           duracaoMin: 8,
           nivel: "intermediario",
+          videoUrl: videosPiloto.bula,
           resumo:
             "Transformar a bula em um roteiro: o que trata, como age, como usar, por quanto tempo, o que evitar e sinais de alerta.",
           resumoExecutivo: [
@@ -518,6 +521,71 @@ export const trilhaMedicamentos: Trilha = {
           xp: 55,
         },
         {
+          id: "antissepticos-topicos",
+          titulo: "Antissépticos tópicos e desinfecção de pequenos ferimentos",
+          duracaoMin: 6,
+          nivel: "intermediario",
+          resumo:
+            "Quando orientar antisséptico tópico, diferença para desinfetante de ambiente e limites do autocuidado.",
+          resumoExecutivo: [
+            "Antisséptico tópico é para pele íntegra ou ferimento superficial — não confundir com produtos de superfície.",
+            "Orientar limpeza com água/sabão antes; evitar uso crônico sem critério.",
+            "Ferimentos profundos, com pus ou sinais de infecção exigem encaminhamento.",
+          ],
+          checklist: [
+            "Confirmar tipo de lesão e tempo de evolução.",
+            "Diferenciar antisséptico tópico de desinfetante doméstico.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Ferimento extenso, diabético, imunossuprimido, sinais de infecção.",
+          ],
+          errosComuns: ["Indicar desinfetante de chão para ferimento."],
+          quiz: [
+            q(
+              "Antisséptico tópico no balcão deve ser orientado para:",
+              [
+                "Limpar bancadas",
+                "Pequenos ferimentos superficiais com triagem",
+                "Substituir antibiótico oral",
+                "Uso interno",
+              ],
+              1,
+              "Uso tópico em ferimento superficial com triagem; não substitui avaliação médica quando necessário.",
+            ),
+          ],
+          xp: 50,
+        },
+        {
+          id: "pediculicidas-escabicidas-foco",
+          titulo: "Pediculicidas e escabicidas — protocolo de balcão",
+          duracaoMin: 6,
+          nivel: "intermediario",
+          resumo:
+            "Aplicação, repetição de dose, tratamento de contactantes e higiene do ambiente — foco pedagógico separado.",
+          resumoExecutivo: [
+            "Piolho: tratar contactantes, pentear fino, repetir produto conforme bula.",
+            "Sarna: aplicar em todo o corpo (incluindo couro cabeludo conforme produto), lavar roupas/roupa de cama.",
+            "Nunca tratar suspeita grave sem farmacêutico.",
+          ],
+          checklist: ["Ler modo de uso e repetição.", "Orientar tratamento de contactantes."],
+          quandoChamarFarmaceutico: ["Crianças, gestantes, lesões extensas ou dúvida diagnóstica."],
+          errosComuns: ["Tratar só uma pessoa da casa no caso de piolho."],
+          quiz: [
+            q(
+              "No piolho, além do produto, é essencial orientar:",
+              [
+                "Só uma lavagem de cabelo",
+                "Tratar contactantes e pentear fino",
+                "Antibiótico oral",
+                "Nada além do xampu",
+              ],
+              1,
+              "Contactantes e remoção mecânica de lêndeas fazem parte do protocolo.",
+            ),
+          ],
+          xp: 55,
+        },
+        {
           id: "antibioticos",
           titulo: "Antibióticos e o uso racional",
           duracaoMin: 7,
@@ -565,6 +633,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Receitas simples e controladas",
           duracaoMin: 7,
           nivel: "avancado",
+          videoUrl: videosPiloto.receituarios,
           resumo:
             "Receita comum, controle especial e a base legal: Portaria SVS/MS 344/1998 atualizada por RDCs posteriores.",
           resumoExecutivo: [
@@ -610,6 +679,47 @@ export const trilhaMedicamentos: Trilha = {
             ),
           ],
           xp: 80,
+        },
+        {
+          id: "leitura-receitas-casos",
+          titulo: "Leitura de receitas — casos visuais no balcão",
+          duracaoMin: 8,
+          nivel: "avancado",
+          resumo:
+            "Prática guiada: conferir prescrição, validade, retenção e encaminhamento com exemplos do dia a dia.",
+          resumoExecutivo: [
+            "Sempre conferir prescritor, paciente, data e legibilidade antes de qualquer dispensação.",
+            "Antimicrobianos e GLP-1: retenção e registro conforme norma vigente.",
+            "Divergência entre receita e pedido do cliente → farmacêutico.",
+          ],
+          simulacao: {
+            cliente:
+              "Cliente apressado entrega receita amassada e pede 'o mais barato' de antibiótico.",
+            falaBoa:
+              "Vou conferir sua receita com calma e chamar o farmacêutico para garantir que está tudo certo com o medicamento prescrito.",
+            falaEvitar: "Dispensar rápido sem ler a receita.",
+          },
+          checklist: [
+            "Ler prescrição completa.",
+            "Verificar validade e retenção.",
+            "Não trocar por outro princípio sem autorização.",
+          ],
+          quandoChamarFarmaceutico: ["Toda receita com dúvida, controlado ou antimicrobiano."],
+          errosComuns: ["Priorizar preço em detrimento da prescrição."],
+          quiz: [
+            q(
+              "Receita ilegível no nome do paciente. Conduta:",
+              [
+                "Adivinhar",
+                "Não dispensar até esclarecer com farmacêutico",
+                "Copiar de outra receita",
+                "Dispensar se o cliente insistir",
+              ],
+              1,
+              "Ilegibilidade exige esclarecimento — não dispensar no escuro.",
+            ),
+          ],
+          xp: 75,
         },
         {
           id: "glp1",

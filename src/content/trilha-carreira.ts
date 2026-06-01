@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { videosPiloto } from "./videos-piloto";
 
 // Trilha 4 — carreira, ética e leitura de indicadores (Power BI para atendentes).
 export const trilhaCarreira: Trilha = {
@@ -22,6 +23,7 @@ export const trilhaCarreira: Trilha = {
           titulo: "Atendente Premium I e II",
           duracaoMin: 5,
           nivel: "intermediario",
+          videoUrl: videosPiloto.carreiraIntro,
           resumo: "As duas etapas da formação e como avançar de uma para a outra.",
           resumoExecutivo: [
             "Premium I: acolhimento, perfumaria, higiene, beleza, infantil e autocuidado.",

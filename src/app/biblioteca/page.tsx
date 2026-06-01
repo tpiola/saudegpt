@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { bibliotecaRegulatoria } from "@/content/biblioteca";
+import { bibliotecaRegulatoria, ultimaAtualizacaoBiblioteca } from "@/content/biblioteca";
 import { Card, Etiqueta, TituloSecao } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
@@ -21,6 +21,18 @@ export default function BibliotecaPage() {
         titulo="Biblioteca regulatória"
         descricao="Substitui o raciocínio antigo de 'terminal de consulta' estático. As normas mudam — o curso acompanha."
       />
+
+      <Card className="mt-6 border-l-4 border-l-cyan-500 bg-surface-2/80">
+        <p className="text-sm font-semibold text-brand-700 dark:text-brand-200">
+          Última revisão pedagógica do hub:{" "}
+          {ultimaAtualizacaoBiblioteca()
+            ? new Date(ultimaAtualizacaoBiblioteca() + "T12:00:00").toLocaleDateString("pt-BR")
+            : "—"}
+        </p>
+        <p className="mt-1 text-xs text-muted">
+          Consulte sempre a consolidação oficial na Anvisa/MS para alterações posteriores.
+        </p>
+      </Card>
 
       <section className="mt-10">
         <div className="flex items-center gap-2">

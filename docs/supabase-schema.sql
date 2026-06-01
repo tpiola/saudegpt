@@ -19,3 +19,20 @@ create policy "Usuario grava proprio progresso"
 create policy "Usuario atualiza proprio progresso"
   on progresso_aluno for update
   using (auth.uid() = user_id);
+
+-- Comando diário sincronizado (opcional)
+create table if not exists comando_diario_aluno (
+  user_id uuid primary key references auth.users (id) on delete cascade,
+  concluidos jsonb not null default '[]',
+  atualizado_em timestamptz not null default now()
+);
+
+alter table comando_diario_aluno enable row level security;
+
+create policy "Usuario le proprio comando diario"
+  on comando_diario_aluno for select
+  using (auth.uid() = user_id);
+
+create policy "Usuario grava proprio comando diario"
+  on comando_diario_aluno for all
+  using (auth.uid() = user_id);

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#1fb6c9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#0f1b2d"/>
+  <rect width="1200" height="630" fill="url(#bg)" opacity="0.35"/>
+  <text x="80" y="280" fill="#ffffff" font-family="system-ui,sans-serif" font-size="52" font-weight="800">
+    Atendentes Premium
+  </text>
+  <text x="80" y="340" fill="#d2e4ff" font-family="system-ui,sans-serif" font-size="28" font-weight="500">
+    Formação em farmácia e drogaria · Brasil
+  </text>
+  <text x="80" y="520" fill="#a8c8ff" font-family="system-ui,sans-serif" font-size="18">
+    Thiago B. G. Piola · CRF/SP 58.519
+  </text>
+</svg>

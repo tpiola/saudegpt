@@ -90,6 +90,20 @@ export function Mandala() {
           </div>
         ))}
       </div>
+
+      <ol className="sr-only">
+        {mandalaAneis.map((anel) => (
+          <li key={anel.nivel}>
+            <strong>
+              Anel {anel.nivel} — {anel.titulo}
+            </strong>
+            : {anel.itens.join(", ")}
+          </li>
+        ))}
+        <li>
+          <strong>Centro:</strong> {mandalaCentro}
+        </li>
+      </ol>
     </div>
   );
 }

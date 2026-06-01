@@ -87,7 +87,48 @@ export const jogoReceita: QuestaoJogo[] = [
   },
 ];
 
+export const jogoSintomaCategoria: QuestaoJogo[] = [
+  {
+    id: "s1",
+    pergunta: "Cliente com tosse com catarro há 3 dias, sem febre:",
+    opcoes: [
+      "Antitussígeno para secar",
+      "Expectorante/mucolítico com orientação",
+      "Antibiótico de venda livre",
+      "Não perguntar nada",
+    ],
+    correta: 1,
+    explicacao:
+      "Tosse produtiva pede expectorante e triagem; antibiótico exige receita e critério médico.",
+  },
+  {
+    id: "s2",
+    pergunta: "Idoso com dor no peito ao esforço pede analgésico forte:",
+    opcoes: [
+      "Vender o mais forte da prateleira",
+      "Encaminhar imediatamente ao farmacêutico/médico",
+      "Indicar vitamina C",
+      "Ignorar",
+    ],
+    correta: 1,
+    explicacao: "Dor torácica é sinal de alerta — encaminhamento urgente.",
+  },
+  {
+    id: "s3",
+    pergunta: "Mãe busca antitérmico para bebê de 2 meses com febre:",
+    opcoes: [
+      "Dipirona adulto fracionada",
+      "Não orientar dose sem farmacêutico/pediatra",
+      "Qualquer MIP serve",
+      "Aspirina",
+    ],
+    correta: 1,
+    explicacao: "Lactentes exigem avaliação profissional — não improvisar dose.",
+  },
+];
+
 export const jogosMeta = {
   titulo: "Jogos de balcão",
-  descricao: "Pratique leitura de tarjas e conferência de receitas com feedback imediato.",
+  descricao:
+    "Pratique leitura de tarjas, conferência de receitas e associação sintoma → conduta segura.",
 };
