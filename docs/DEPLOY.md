@@ -1,5 +1,11 @@
 # Deploy na Vercel
 
+## Repositório canônico
+
+**Único repositório oficial:** https://github.com/tpiola/appfarmacia  
+
+Branch de produção: `main`. Não use forks ou cópias antigas do projeto — conecte só este repo na Vercel.
+
 ## Pré-requisitos
 
 1. Repositório conectado à Vercel (GitHub `tpiola/appfarmacia`).
