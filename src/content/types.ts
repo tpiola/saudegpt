@@ -20,6 +20,20 @@ export interface Simulacao {
   falaEvitar: string; // antipadrão a evitar
 }
 
+/** Referência visual de produto ou categoria (imagens públicas / educativas). */
+export interface ProdutoMidia {
+  nome: string;
+  imagemUrl: string;
+  alt: string;
+  categoria?: string;
+}
+
+/** Marca para reconhecimento no balcão (logo em alta resolução). */
+export interface MarcaMidia {
+  nome: string;
+  logoUrl: string;
+}
+
 export interface Aula {
   id: string;
   titulo: string;
@@ -27,6 +41,12 @@ export interface Aula {
   nivel: Nivel;
   /** YouTube, Vimeo ou URL de embed/HLS */
   videoUrl?: string;
+  /** Imagem principal da aula (produto ou categoria). */
+  imagemHeroUrl?: string;
+  /** Galeria de produtos para reconhecimento no balcão. */
+  produtos?: ProdutoMidia[];
+  /** Logos de marcas comuns na categoria (referência visual). */
+  marcas?: MarcaMidia[];
   resumo: string;
   resumoExecutivo: string[];
   comparativo?: Comparativo;

@@ -5,6 +5,7 @@ import type { QuizQuestao } from "@/content/types";
 import { useProgresso } from "@/lib/progress";
 import { Botao, Card, Etiqueta } from "./ui";
 import { Icon } from "./icons";
+import { CelebracaoXp } from "./celebracao-xp";
 
 interface ProximaInfo {
   trilhaId: string;
@@ -34,6 +35,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
 
   const [respostas, setRespostas] = useState<Record<number, number>>({});
   const [enviado, setEnviado] = useState(false);
+  const [celebrar, setCelebrar] = useState(false);
 
   useEffect(() => {
     registrarVisita(trilhaId, aulaId);
@@ -61,12 +63,15 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
 
   function concluir() {
     concluirAula(trilhaId, aulaId, xp, quiz.length ? nota : undefined);
+    setCelebrar(true);
+    window.setTimeout(() => setCelebrar(false), 3000);
   }
 
   const favorita = carregado && ehFavorita(trilhaId, aulaId);
 
   return (
     <div className="space-y-6">
+      <CelebracaoXp xp={xp} ativo={celebrar} />
       {/* Quiz */}
       {quiz.length > 0 && (
         <Card id="quiz" className="scroll-mt-24">

@@ -330,3 +330,65 @@ body {
   background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.6));
   padding: 1.25rem;
 }
+
+/* Animações — ambiente de estudos dinâmico */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes xp-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(8px);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.05) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateY(-12px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.55s ease-out forwards;
+}
+
+.animate-xp-pop {
+  animation: xp-pop 2.6s ease-out forwards;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2.5s ease-in-out infinite;
+}
+
+.lms-sidebar {
+  box-shadow: var(--shadow-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-up,
+  .animate-xp-pop,
+  .animate-pulse-soft,
+  .animate-float {
+    animation: none !important;
+  }
+}

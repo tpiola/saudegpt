@@ -8,6 +8,9 @@ import { Icon } from "@/components/icons";
 import { AulaInterativa } from "@/components/aula-interativa";
 import { VideoPlayer, VideoPlaceholder } from "@/components/video-player";
 import { imagemAula } from "@/lib/aula-imagens";
+import { ProdutoShowcase } from "@/components/produto-showcase";
+import { AnimarEntrada } from "@/components/animar-entrada";
+import { midiaPadraoPorAulaId } from "@/content/midia-catalogo";
 
 export function generateStaticParams() {
   return listarAulas().map((i) => ({
@@ -66,6 +69,10 @@ export default async function AulaPage({
   if (!loc) notFound();
   const { aula, modulo, trilha } = loc;
   const prox = proximaAula(trilhaId, aulaId);
+  const midiaExtra = midiaPadraoPorAulaId(aula.id);
+  const heroSrc = aula.imagemHeroUrl ?? midiaExtra.imagemHeroUrl ?? imagemAula(trilha.id);
+  const produtos = aula.produtos ?? midiaExtra.produtos;
+  const marcas = aula.marcas ?? midiaExtra.marcas;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
@@ -95,15 +102,21 @@ export default async function AulaPage({
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight">{aula.titulo}</h1>
       <p className="mt-2 text-lg text-muted">{aula.resumo}</p>
 
-      <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
-        <Image
-          src={imagemAula(trilha.id)}
-          alt={`Ilustração pedagógica: ${aula.titulo}`}
-          width={800}
-          height={400}
-          className="h-48 w-full object-cover sm:h-56"
-          priority
-        />
+      <AnimarEntrada>
+        <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
+          <Image
+            src={heroSrc}
+            alt={`Referência visual: ${aula.titulo}`}
+            width={1280}
+            height={640}
+            className="h-52 w-full object-cover sm:h-64"
+            priority
+          />
+        </div>
+      </AnimarEntrada>
+
+      <div className="mt-8">
+        <ProdutoShowcase produtos={produtos} marcas={marcas} />
       </div>
 
       <div className="mt-6">

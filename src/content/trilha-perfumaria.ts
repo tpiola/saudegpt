@@ -1,6 +1,18 @@
-import type { Trilha } from "./types";
+import type { Aula, Trilha } from "./types";
 import { q } from "./_helpers";
-import { videosPiloto } from "./videos-piloto";
+import { modulosBemEstarExtra } from "./modulos-bem-estar-extra";
+import { midiaPadraoPorAulaId } from "./midia-catalogo";
+import { videosEducativos } from "./videos-educativos";
+
+function comMidia(aula: Aula): Aula {
+  const m = midiaPadraoPorAulaId(aula.id);
+  return {
+    ...aula,
+    imagemHeroUrl: aula.imagemHeroUrl ?? m.imagemHeroUrl,
+    produtos: aula.produtos ?? m.produtos,
+    marcas: aula.marcas ?? m.marcas,
+  };
+}
 
 // Trilha 1 — preserva integralmente o manual de perfumaria, reorganizado em
 // microlições com camada contemporânea (jornada do cliente, cross-sell ético).
@@ -24,7 +36,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Barba e cuidados masculinos",
           duracaoMin: 6,
           nivel: "basico",
-          videoUrl: videosPiloto.perfumariaBarba,
+          videoUrl: videosEducativos.barba,
           resumo:
             "Como orientar o cliente que faz a barba, evitando irritação, foliculite e pelos encravados.",
           resumoExecutivo: [
@@ -284,6 +296,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Pele e fotoproteção",
           duracaoMin: 7,
           nivel: "intermediario",
+          videoUrl: videosEducativos.fotoprotecao,
           resumo: "Tipos de pele, limpeza, hidratação e o papel central do protetor solar.",
           resumoExecutivo: [
             "Rotina base: limpar, hidratar e proteger; fotoproteção é diária, mesmo em dias nublados.",
@@ -394,6 +407,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Dermocosméticos",
           duracaoMin: 8,
           nivel: "avancado",
+          videoUrl: videosEducativos.skincareAtivos,
           resumo:
             "Ativos como ácido hialurônico, vitamina C, niacinamida e retinóides — leitura técnica e indicação responsável.",
           resumoExecutivo: [
@@ -662,5 +676,12 @@ export const trilhaPerfumaria: Trilha = {
         },
       ],
     },
+    ...modulosBemEstarExtra,
   ],
 };
+
+// Enriquece todas as aulas com mídia padrão (imagens e logos).
+trilhaPerfumaria.modulos = trilhaPerfumaria.modulos.map((mod) => ({
+  ...mod,
+  aulas: mod.aulas.map((a) => comMidia(a)),
+}));
