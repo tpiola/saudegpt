@@ -14,6 +14,8 @@ export type StatusCadastro = "pendente" | "aprovado" | "rejeitado";
 
 export interface CadastroRegistro {
   id: string;
+  /** ID da página no Notion (quando sincronizado). */
+  notionPageId?: string;
   nome: string;
   email: string;
   apelidoRanking?: string;

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { PROGRESSO_VAZIO } from "@/lib/cadastro-types";
-import { listarCadastros, salvarCadastros } from "@/lib/server/cadastros-store";
+import { obterPorEmail, upsertCadastro } from "@/lib/server/cadastros-store";
 
 export async function POST(request: Request) {
   const { nome, email, apelidoRanking } = await request.json();
@@ -13,8 +13,7 @@ export async function POST(request: Request) {
   }
 
   const norm = email.trim().toLowerCase();
-  const lista = await listarCadastros();
-  const existente = lista.find((c) => c.email.toLowerCase() === norm);
+  const existente = await obterPorEmail(norm);
 
   if (existente) {
     return NextResponse.json({
@@ -34,8 +33,7 @@ export async function POST(request: Request) {
     progresso: { ...PROGRESSO_VAZIO },
   };
 
-  lista.push(registro);
-  await salvarCadastros(lista);
+  const salvo = await upsertCadastro(registro);
 
-  return NextResponse.json({ ok: true, id: registro.id, status: registro.status });
+  return NextResponse.json({ ok: true, id: salvo.id, status: salvo.status });
 }

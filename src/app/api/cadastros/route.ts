@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { headerAdminAutorizado } from "@/lib/server/admin-auth";
-import { listarCadastros, salvarCadastros } from "@/lib/server/cadastros-store";
+import {
+  excluirCadastroPorId,
+  listarCadastros,
+  upsertCadastro,
+} from "@/lib/server/cadastros-store";
+import type { CadastroRegistro } from "@/lib/cadastro-types";
 
 export async function GET(request: Request) {
   if (!headerAdminAutorizado(request)) {
@@ -20,23 +25,25 @@ export async function PATCH(request: Request) {
   }
 
   const lista = await listarCadastros();
-  const idx = lista.findIndex((c) => c.id === id);
-  if (idx < 0) return NextResponse.json({ ok: false, erro: "Não encontrado" }, { status: 404 });
+  let alvo: CadastroRegistro | undefined = lista.find((c) => c.id === id);
+  if (!alvo) alvo = lista.find((c) => c.notionPageId === id);
+  if (!alvo) return NextResponse.json({ ok: false, erro: "Não encontrado" }, { status: 404 });
 
+  let atualizado: CadastroRegistro;
   if (acao === "aprovar") {
-    lista[idx] = {
-      ...lista[idx],
+    atualizado = {
+      ...alvo,
       status: "aprovado",
       aprovadoEm: new Date().toISOString(),
     };
   } else if (acao === "rejeitar") {
-    lista[idx] = { ...lista[idx], status: "rejeitado" };
+    atualizado = { ...alvo, status: "rejeitado" };
   } else {
     return NextResponse.json({ ok: false, erro: "Ação inválida" }, { status: 400 });
   }
 
-  await salvarCadastros(lista);
-  return NextResponse.json({ ok: true, cadastro: lista[idx] });
+  const salvo = await upsertCadastro(atualizado);
+  return NextResponse.json({ ok: true, cadastro: salvo });
 }
 
 export async function DELETE(request: Request) {
@@ -47,11 +54,15 @@ export async function DELETE(request: Request) {
   const id = searchParams.get("id");
   if (!id) return NextResponse.json({ ok: false }, { status: 400 });
 
-  const lista = await listarCadastros();
-  const filtrada = lista.filter((c) => c.id !== id);
-  if (filtrada.length === lista.length) {
+  const ok = await excluirCadastroPorId(id);
+  if (!ok) {
+    const lista = await listarCadastros();
+    const notion = lista.find((c) => c.notionPageId === id);
+    if (notion) {
+      const ok2 = await excluirCadastroPorId(notion.id);
+      if (ok2) return NextResponse.json({ ok: true });
+    }
     return NextResponse.json({ ok: false, erro: "Não encontrado" }, { status: 404 });
   }
-  await salvarCadastros(filtrada);
   return NextResponse.json({ ok: true });
 }

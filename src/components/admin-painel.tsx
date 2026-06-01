@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import type { CadastroRegistro } from "@/lib/cadastro-types";
 import { formatarTempoEstudo } from "@/lib/format-tempo";
 import { listarAulas } from "@/content/curriculo";
+import { NOTION_CADASTROS_LINKS } from "@/lib/notion-cadastros-links";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { bibliotecaRegulatoria } from "@/content/biblioteca";
 import { Icon } from "./icons";
@@ -347,6 +348,17 @@ export function AdminPainel() {
             <h2 className="text-lg font-bold text-white">Integrações</h2>
             <ul className="mt-3 space-y-1 text-sm text-slate-400">
               <li>NOTION_TOKEN → Comando Diário</li>
+              <li>
+                Cadastros no Notion:{" "}
+                <a
+                  href={NOTION_CADASTROS_LINKS.databaseUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-300 underline"
+                >
+                  abrir banco de alunos
+                </a>
+              </li>
               <li>Supabase → auth e sync na nuvem</li>
               <li>VERCEL → deploy contínuo</li>
             </ul>
