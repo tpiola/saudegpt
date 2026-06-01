@@ -8,7 +8,7 @@ import { usePerfilAluno, type PerfilAluno } from "@/lib/aluno";
 import { lerStatusLocal, salvarStatusLocal } from "@/lib/cadastro-client";
 import { PainelAluno } from "./painel-aluno";
 import { ContinuarBotao } from "./continuar";
-import { Botao, Card, Etiqueta, TituloSecao } from "./ui";
+import { Botao, Card, Etiqueta, DividerGlow } from "./ui";
 import { Icon, type IconName } from "./icons";
 import { ProgressoTrilhaBadge } from "./progresso-cliente";
 
@@ -17,7 +17,6 @@ type StatusMatricula = "verificando" | "pendente" | "rejeitado" | "aprovado";
 export function PortalInicio() {
   const { perfil, carregado: perfilOk } = usePerfilAluno();
 
-  // Enquanto não carregou, mostra hero + conteúdo para convidado (sem skeleton)
   if (!perfilOk) {
     return <PortalConvidadoHero />;
   }
@@ -29,53 +28,65 @@ export function PortalInicio() {
   return <PortalMatriculadoFluxo perfil={perfil} />;
 }
 
-/** Hero + conteúdo para visitantes — mostra IMEDIATAMENTE, sem skeleton */
 function PortalConvidadoHero() {
+  const totalAulasContagem = totalAulas();
+
+  const modulosResumo = trilhas.flatMap((t) =>
+    t.modulos.slice(0, 2).map((m) => ({
+      trilhaId: t.id,
+      trilhaNumero: t.numero,
+      trilhaTitulo: t.titulo,
+      moduloTitulo: m.titulo,
+      moduloId: m.id,
+      aulasCount: m.aulas.length,
+    })),
+  );
+
   return (
     <div>
-      {/* ═══ HERO SECTION ═══ */}
-      <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-brand-950 via-brand-900 to-brand-950 dark:from-black dark:via-brand-950 dark:to-black">
-        {/* Grid background */}
+      {/* ════════════════════════════════════════════
+          HERO — limpo, direto, premium
+          ════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-b border-border">
+        {/* Fundo com gradiente sutil e grid */}
+        <div className="absolute inset-0 bg-gradient-to-b from-brand-50/50 via-transparent to-transparent dark:from-brand-950/30" />
         <div
-          className="pointer-events-none absolute inset-0 opacity-[0.04] dark:opacity-[0.07]"
+          className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-            maskImage: "radial-gradient(ellipse 80% 60% at 50% 40%, black, transparent)",
+              "linear-gradient(rgba(37,99,235,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37,99,235,.1) 1px, transparent 1px)",
+            backgroundSize: "64px 64px",
           }}
           aria-hidden
         />
 
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:py-36">
-          <div className="mx-auto max-w-3xl text-center">
-            {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-400/20 bg-brand-400/10 px-4 py-1.5">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-brand-300">
-                Formação completa · 57 microlições
-              </span>
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:py-28">
+          <div className="mx-auto max-w-3xl">
+            {/* Indicador de credencial */}
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-surface/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-muted backdrop-blur-sm">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+              Criado por farmacêutico · CRF/SP 58.519
             </div>
 
-            {/* Headline */}
-            <h1 className="text-[clamp(2rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-tight text-white">
-              <span className="block">A formação mais completa</span>
-              <span className="block bg-gradient-to-r from-brand-200 via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                para atendentes de farmácia
-              </span>
+            {/* Título */}
+            <h1 className="text-[clamp(2rem,5.5vw,3.75rem)] font-extrabold leading-[1.08] tracking-tight text-foreground">
+              Formação para{" "}
+              <span className="text-gradient">Atendentes Premium de Farmácia</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-200/80 sm:text-lg">
-              Do iniciante ao avançado — trilhas, simuladores de balcão, biblioteca
-              regulatória e indicadores. Crieiro pelo Farmacêutico Thiago Piola, CRF/SP 58.519.
+            {/* Descrição */}
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+              {totalAulasContagem} microlições em 4 trilhas — de perfumaria e medicamentos a
+              operação de farmácia e desenvolvimento de carreira. Com vídeos, simuladores de
+              balcão, quizzes e certificação interna.
             </p>
 
             {/* CTAs */}
-            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Botao
                 href="/matriculas"
-                tamanho="lg"
+                tamanho="xl"
+                variante="premium"
                 iconeFim="arrow"
                 className="w-full sm:w-auto"
               >
@@ -84,136 +95,224 @@ function PortalConvidadoHero() {
               <ContinuarBotao />
             </div>
 
-            {/* Trust stats */}
-            <div className="mt-12 grid grid-cols-3 gap-6 border-t border-brand-400/10 pt-10">
-              {[
-                { value: `${totalAulas()}+`, label: "Microlições" },
-                { value: "4", label: "Trilhas completas" },
-                { value: "CRF/SP", label: "Criado por farmacêutico" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <p className="text-xl font-bold text-white sm:text-2xl">{s.value}</p>
-                  <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-300">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
+            {/* Números honestos */}
+            <div className="mt-10 flex flex-wrap gap-x-10 gap-y-3 text-sm text-muted">
+              <span className="flex items-center gap-2">
+                <Icon name="book" size={16} className="text-brand-500" />
+                <strong className="text-foreground">{totalAulasContagem}</strong> microlições
+              </span>
+              <span className="flex items-center gap-2">
+                <Icon name="target" size={16} className="text-brand-500" />
+                <strong className="text-foreground">4</strong> trilhas
+              </span>
+              <span className="flex items-center gap-2">
+                <Icon name="award" size={16} className="text-brand-500" />
+                <strong className="text-foreground">CRF/SP</strong> registro ativo
+              </span>
+              <span className="flex items-center gap-2">
+                <Icon name="clock" size={16} className="text-brand-500" />
+                <strong className="text-foreground">15+ anos</strong> em operação real
+              </span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ═══ CURSO EM DESTAQUE ═══ */}
-      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:py-10">
-        <Card className="overflow-hidden border-brand-200 dark:border-brand-800">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <Etiqueta tom="brand">
-                <Icon name="graduation" size={14} /> Plataforma EAD · Farmácia
-              </Etiqueta>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
-                Ambiente de estudos — Atendentes Premium
-              </h2>
-              <p className="mt-2 max-w-xl text-muted">
-                {totalAulas()}+ microlições, simuladores de balcão, biblioteca regulatória e
-                acompanhamento de progresso. Faça sua matrícula para salvar XP, notas e certificados
-                internos.
-              </p>
+      {/* ════════════════════════════════════════════
+          O QUE VOCÊ VAI ESTUDAR — módulos reais
+          ════════════════════════════════════════════ */}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+          <Icon name="book" size={14} /> Currículo
+        </div>
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          O que você vai estudar
+        </h2>
+        <p className="mt-2 max-w-xl text-muted">
+          {totalAulasContagem} aulas distribuídas em 4 trilhas. Cada módulo tem videoaula,
+          quiz de fixação e checklist prático.
+        </p>
+
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          {trilhas.map((t) => {
+            const totalModAulas = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
+            return (
+              <Card key={t.id} variante="elevated" className="p-6">
+                <div className="flex items-start gap-4">
+                  <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl gradient-brand text-white shadow-sm">
+                    <Icon name={t.icone as IconName} size={20} />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2 text-xs font-semibold text-brand-600">
+                      Trilha {t.numero} · {t.subtitulo}
+                    </div>
+                    <h3 className="mt-0.5 text-lg font-bold">{t.titulo}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted line-clamp-2">
+                      {t.descricao}
+                    </p>
+                    <div className="mt-3 flex items-center gap-3 text-xs text-subtle">
+                      <span>{t.modulos.length} módulos</span>
+                      <span className="h-3 w-px bg-border" />
+                      <span>{totalModAulas} aulas</span>
+                      <span className="h-3 w-px bg-border" />
+                      <span className="capitalize">{t.nivelFaixa}</span>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/trilhas"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
+          >
+            Ver currículo completo <Icon name="arrow" size={16} />
+          </Link>
+        </div>
+      </div>
+
+      <DividerGlow className="max-w-6xl mx-auto" />
+
+      {/* ════════════════════════════════════════════
+          COMO FUNCIONA — etapas reais
+          ════════════════════════════════════════════ */}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+          <Icon name="trending" size={14} /> Método
+        </div>
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          Como funciona
+        </h2>
+        <p className="mt-2 max-w-xl text-muted">
+          Matrícula gratuita. Estude no seu ritmo. Progresso salvo automaticamente.
+        </p>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
+          {[
+            {
+              passo: "01",
+              titulo: "Matricule-se",
+              texto: "Preencha seus dados. O acesso é liberado após aprovação da coordenação.",
+              icone: "user" as IconName,
+            },
+            {
+              passo: "02",
+              titulo: "Estude em microlições",
+              texto: "Vídeos de 5 a 15 minutos com quiz e checklist. Complete no seu ritmo.",
+              icone: "play" as IconName,
+            },
+            {
+              passo: "03",
+              titulo: "Acompanhe seu progresso",
+              texto: "Dashboard com XP, nível, streak, notas e trilhas concluídas.",
+              icone: "chart" as IconName,
+            },
+          ].map((p) => (
+            <Card key={p.passo} className="p-6">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/40">
+                <Icon name={p.icone} size={20} />
+              </span>
+              <div className="mt-4 flex items-center gap-2">
+                <span className="font-mono text-xs font-bold tracking-wider text-brand-500">
+                  {p.passo}
+                </span>
+                <span className="h-px flex-1 bg-border" />
+              </div>
+              <h3 className="mt-2 font-bold">{p.titulo}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-muted">{p.texto}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
+
+      <DividerGlow className="max-w-6xl mx-auto" />
+
+      {/* ════════════════════════════════════════════
+          SOBRE O CRIADOR — credencial real
+          ════════════════════════════════════════════ */}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+        <div className="mb-2 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
+          <Icon name="shield" size={14} /> Credencial
+        </div>
+        <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          Quem criou o curso
+        </h2>
+        <p className="mt-2 max-w-xl text-muted">
+          Conteúdo produzido por farmacêutico com atuação real em drogarias e hospitais.
+        </p>
+
+        <Card className="mt-8 p-6 sm:p-8">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start">
+            <div className="flex h-16 w-16 flex-none items-center justify-center rounded-2xl gradient-brand text-white text-xl font-bold shadow-md">
+              TP
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row lg:flex-col">
-              <Botao href="/matriculas" tamanho="lg" iconeFim="arrow">
-                Fazer matrícula
+            <div>
+              <h3 className="text-xl font-bold">Thiago Biasoli Garcia Piola</h3>
+              <p className="mt-1 text-sm font-semibold text-brand-600">
+                Farmacêutico CRF/SP 58.519
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted max-w-2xl">
+                Farmacêutico com mais de 15 anos de operação em drogarias, farmácia
+                hospitalar e gestão. Pós-graduando em Engenharia de IA, Google GEAR.
+                Founder da Rei das Vendas. Criou esta formação para resolver o que
+                mais falta no balcão: atendimento qualificado com base técnica e
+                humana.
+              </p>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {["Droga Raia", "Hospital Unimed", "CRF/SP Ativo", "Pós IA + Google GEAR"].map(
+                  (tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center gap-1 rounded-full border border-border bg-surface-2 px-3 py-1 text-[11px] font-semibold text-muted"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-emerald-500" />
+                      {tag}
+                    </span>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <DividerGlow className="max-w-6xl mx-auto" />
+
+      {/* ════════════════════════════════════════════
+          CTA FINAL
+          ════════════════════════════════════════════ */}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-20">
+        <Card className="overflow-hidden border-2 border-brand-100 dark:border-brand-800">
+          <div className="bg-gradient-to-br from-brand-50 via-white to-white p-8 text-center dark:from-brand-950 dark:via-brand-900 dark:to-brand-950 sm:p-12">
+            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
+              Comece sua formação agora
+            </h2>
+            <p className="mx-auto mt-3 max-w-lg text-muted">
+              Matrícula gratuita. Conteúdo criado por farmacêutico. Acesso imediato
+              após aprovação.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Botao
+                href="/matriculas"
+                tamanho="xl"
+                variante="premium"
+                iconeFim="arrow"
+                className="w-full sm:w-auto"
+              >
+                Quero me matricular
               </Botao>
               <ContinuarBotao />
             </div>
           </div>
         </Card>
-
-        {/* ═══ TRILHAS ═══ */}
-        <div className="mt-10">
-          <TituloSecao
-            sobre="Catálogo"
-            icone="book"
-            titulo="Trilhas do curso"
-            descricao="Explore o currículo. Após a matrícula aprovada, seu progresso é salvo em cada aula."
-          />
-          <div className="mt-6 space-y-4">
-            {trilhas.map((t) => (
-              <Card key={t.id} className="overflow-hidden">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div className="flex gap-4">
-                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl gradient-brand text-white">
-                      <Icon name={t.icone as IconName} size={22} />
-                    </span>
-                    <div>
-                      <span className="text-xs font-semibold text-brand-600">
-                        Trilha {t.numero} · {t.subtitulo}
-                      </span>
-                      <h3 className="text-lg font-bold">{t.titulo}</h3>
-                      <p className="mt-1 line-clamp-2 text-sm text-muted">{t.descricao}</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <ProgressoTrilhaBadge trilhaId={t.id} />
-                    <Link
-                      href={`/trilhas/${t.id}`}
-                      className="inline-flex items-center gap-1 rounded-xl border border-border-strong px-4 py-2 text-sm font-semibold text-brand-600 hover:border-brand-400"
-                    >
-                      Estudar <Icon name="arrow" size={16} />
-                    </Link>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        {/* ═══ FEATURES ═══ */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {[
-            {
-              icone: "play" as IconName,
-              titulo: "Aulas interativas",
-              texto: "Vídeo, quiz e checklist em cada microlição.",
-            },
-            {
-              icone: "target" as IconName,
-              titulo: "Simuladores",
-              texto: "Missões, jogos e OSCE de atendimento.",
-            },
-            {
-              icone: "chart" as IconName,
-              titulo: "Indicadores",
-              texto: "Leitura de KPIs com foco em saúde.",
-            },
-          ].map((f) => (
-            <Card key={f.titulo} className="p-5">
-              <Icon name={f.icone} size={22} className="text-brand-600" />
-              <h3 className="mt-3 font-bold">{f.titulo}</h3>
-              <p className="mt-1 text-sm text-muted">{f.texto}</p>
-            </Card>
-          ))}
-        </div>
-
-        {/* ═══ CTA FINAL ═══ */}
-        <div className="mt-12 rounded-2xl border border-brand-200 bg-gradient-to-br from-brand-50 via-white to-white p-8 text-center dark:border-brand-800 dark:from-brand-950 dark:via-brand-900 dark:to-brand-950">
-          <h2 className="text-2xl font-bold tracking-tight">
-            Pronto para transformar seu atendimento?
-          </h2>
-          <p className="mx-auto mt-2 max-w-md text-muted">
-            Matricule-se agora e comece sua jornada de aprendizado com conteúdo criado por
-            um farmacêutico com 15+ anos de operação real.
-          </p>
-          <Botao href="/matriculas" tamanho="lg" iconeFim="arrow" className="mt-6">
-            Quero me matricular
-          </Botao>
-        </div>
       </div>
     </div>
   );
 }
 
-/** Fluxo para usuário já logado */
 function PortalMatriculadoFluxo({ perfil }: { perfil: PerfilAluno }) {
   const router = useRouter();
   const [status, setStatus] = useState<StatusMatricula>(() => {
