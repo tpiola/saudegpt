@@ -16,7 +16,15 @@ export const navPrincipal = [
   { href: "/trilhas", label: "Trilhas" },
   { href: "/dashboard", label: "Meu painel" },
   { href: "/comando-diario", label: "Comando diário" },
+  { href: "/bulas-receitas", label: "Bulas e receitas" },
   { href: "/missoes", label: "Missões" },
+  { href: "/jogos", label: "Jogos" },
   { href: "/biblioteca", label: "Biblioteca regulatória" },
   { href: "/indicadores", label: "Power BI" },
+  { href: "/ranking", label: "Ranking" },
+];
+
+export const linksLegais = [
+  { href: "/privacidade", label: "Privacidade" },
+  { href: "/termos", label: "Termos de uso" },
 ];

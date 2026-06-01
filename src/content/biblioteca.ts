@@ -9,7 +9,16 @@ export interface NormaRegulatoria {
   resumo: string;
   pontosChave: string[];
   atualizado: boolean;
+  /** Data da última revisão pedagógica no curso (ISO YYYY-MM-DD) */
+  atualizadoEm: string;
   categoria: "Boas Práticas" | "Dispensação" | "Atribuições" | "Acesso" | "Controle";
+}
+
+export function ultimaAtualizacaoBiblioteca(): string {
+  return bibliotecaRegulatoria.reduce(
+    (max, n) => (n.atualizadoEm > max ? n.atualizadoEm : max),
+    "",
+  );
 }
 
 export const bibliotecaRegulatoria: NormaRegulatoria[] = [
@@ -20,6 +29,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Dispensação",
     atualizado: true,
+    atualizadoEm: "2025-06-01",
     resumo:
       "A RDC 471/2021 substituiu a antiga RDC 20/2011 como referência para o controle de antimicrobianos. O curso deve abandonar a RDC 20/2011 como regra vigente.",
     pontosChave: [
@@ -35,6 +45,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Controle",
     atualizado: true,
+    atualizadoEm: "2025-06-23",
     resumo:
       "Desde 23/06/2025, os agonistas do receptor de GLP-1 listados pela IN 360/2025 passaram a ser dispensados com retenção de receita.",
     pontosChave: [
@@ -51,6 +62,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Ministério da Saúde",
     categoria: "Acesso",
     atualizado: true,
+    atualizadoEm: "2025-02-14",
     resumo:
       "Desde 14/02/2025, o programa passou a disponibilizar gratuitamente 100% dos medicamentos e insumos do elenco.",
     pontosChave: [
@@ -67,6 +79,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Boas Práticas",
     atualizado: false,
+    atualizadoEm: "2009-10-16",
     resumo:
       "Define boas práticas farmacêuticas para o controle sanitário do funcionamento, dispensação e comercialização em farmácias e drogarias.",
     pontosChave: [
@@ -81,6 +94,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Boas Práticas",
     atualizado: false,
+    atualizadoEm: "2017-12-21",
     resumo:
       "Estabelece requisitos mínimos para o funcionamento dos serviços de vacinação humana em farmácias.",
     pontosChave: [
@@ -95,6 +109,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Dispensação",
     atualizado: true,
+    atualizadoEm: "2024-12-01",
     resumo:
       "Os MIP seguem a RDC 882/2024; a atualização expressa da LMIP está prevista para 2026. Orientação responsável continua sendo dever do balcão.",
     pontosChave: [
@@ -110,6 +125,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa",
     categoria: "Dispensação",
     atualizado: false,
+    atualizadoEm: "2022-12-15",
     resumo: "Trata de rotulagem e da distinção da venda de medicamentos sob prescrição.",
     pontosChave: ["Identificação de tarjas e exigência de receita.", "Clareza na rotulagem."],
   },
@@ -120,6 +136,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Anvisa / MS",
     categoria: "Controle",
     atualizado: true,
+    atualizadoEm: "2024-08-01",
     resumo:
       "Base das substâncias sujeitas a controle especial, atualizada dinamicamente por RDCs posteriores (inclusive 2024). É conteúdo de 'hub ao vivo', não de consulta estática.",
     pontosChave: [
@@ -134,6 +151,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Conselho Federal de Farmácia",
     categoria: "Atribuições",
     atualizado: false,
+    atualizadoEm: "2013-12-23",
     resumo:
       "Regulamenta as atribuições clínicas do farmacêutico: cuidado ao paciente, orientação, uso racional, apoio ao autocuidado, avaliação de adesão e encaminhamento.",
     pontosChave: [
@@ -148,6 +166,7 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
     orgao: "Conselho Federal de Farmácia",
     categoria: "Atribuições",
     atualizado: false,
+    atualizadoEm: "2013-12-23",
     resumo: "Regula a prescrição farmacêutica dentro das competências do profissional.",
     pontosChave: [
       "Limites e competências da prescrição farmacêutica.",

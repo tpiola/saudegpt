@@ -1,0 +1,18 @@
+{
+  "name": "Atendentes Premium de Farmácia",
+  "short_name": "Premium Farmácia",
+  "description": "Formação em saúde integral, balcão seguro e excelência no atendimento em farmácia.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f8fc",
+  "theme_color": "#2563eb",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

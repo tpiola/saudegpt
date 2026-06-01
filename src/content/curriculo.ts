@@ -66,3 +66,20 @@ export function aulasDaTrilha(trilhaId: string): Aula[] {
   if (!trilha) return [];
   return trilha.modulos.flatMap((m) => m.aulas);
 }
+
+export function getModulo(trilhaId: string, moduloId: string) {
+  const trilha = getTrilha(trilhaId);
+  if (!trilha) return undefined;
+  const modulo = trilha.modulos.find((m) => m.id === moduloId);
+  if (!modulo) return undefined;
+  return { trilha, modulo };
+}
+
+// Questões de prova do módulo (embaralhadas no cliente).
+export function questoesDoModulo(trilhaId: string, moduloId: string) {
+  const ctx = getModulo(trilhaId, moduloId);
+  if (!ctx) return [];
+  return ctx.modulo.aulas.flatMap((a) =>
+    a.quiz.map((q) => ({ ...q, aulaId: a.id, aulaTitulo: a.titulo })),
+  );
+}

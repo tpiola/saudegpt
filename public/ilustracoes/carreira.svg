@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="#0f1b2d"/>
+  <path d="M120 300 L400 80 L680 300 Z" fill="#1d4ed8" opacity="0.35"/>
+  <circle cx="400" cy="160" r="48" fill="#4a82f0"/>
+  <rect x="360" y="220" width="80" height="100" rx="8" fill="#2563eb"/>
+  <text x="400" y="360" text-anchor="middle" fill="#eaf1fb" font-family="system-ui" font-size="22" font-weight="700">Carreira Premium</text>
+</svg>

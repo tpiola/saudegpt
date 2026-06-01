@@ -6,6 +6,7 @@ import { ContinuarBotao } from "@/components/continuar";
 import { Botao, Card, Etiqueta, TituloSecao } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 import { site } from "@/lib/site";
+import { JsonLdCourse } from "@/components/json-ld-course";
 
 const recursos: { icone: IconName; titulo: string; texto: string }[] = [
   {
@@ -64,6 +65,7 @@ export default function Home() {
 
   return (
     <>
+      <JsonLdCourse />
       {/* HERO cinematográfico */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute -top-24 right-0 h-72 w-72 rounded-full bg-brand-400/20 blur-3xl" />

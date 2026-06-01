@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -5,6 +6,8 @@ import { getAula, listarAulas, proximaAula } from "@/content/curriculo";
 import { Card, Etiqueta, NivelBadge } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { AulaInterativa } from "@/components/aula-interativa";
+import { VideoPlayer, VideoPlaceholder } from "@/components/video-player";
+import { imagemAula } from "@/lib/aula-imagens";
 
 export function generateStaticParams() {
   return listarAulas().map((i) => ({
@@ -92,17 +95,23 @@ export default async function AulaPage({
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight">{aula.titulo}</h1>
       <p className="mt-2 text-lg text-muted">{aula.resumo}</p>
 
-      {/* Vídeo principal (placeholder de player) */}
-      <div className="mt-6 flex aspect-video items-center justify-center rounded-2xl border border-border gradient-brand text-white">
-        <div className="text-center">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur">
-            <Icon name="play" size={28} />
-          </span>
-          <p className="mt-3 text-sm font-medium text-white/90">
-            Vídeo principal · {aula.duracaoMin} min
-          </p>
-          <p className="text-xs text-white/60">Player HLS / YouTube (integração de mídia)</p>
-        </div>
+      <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
+        <Image
+          src={imagemAula(trilha.id, aula.id)}
+          alt={`Ilustração pedagógica: ${aula.titulo}`}
+          width={800}
+          height={400}
+          className="h-48 w-full object-cover sm:h-56"
+          priority
+        />
+      </div>
+
+      <div className="mt-6">
+        {aula.videoUrl ? (
+          <VideoPlayer url={aula.videoUrl} titulo={aula.titulo} />
+        ) : (
+          <VideoPlaceholder duracaoMin={aula.duracaoMin} />
+        )}
       </div>
 
       <div className="mt-8 space-y-6">

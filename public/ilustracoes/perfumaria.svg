@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="800" y2="400">
+      <stop stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#1fb6c9"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="400" fill="#0f1b2d"/>
+  <rect width="800" height="400" fill="url(#g1)" opacity="0.25"/>
+  <circle cx="200" cy="200" r="80" fill="#4a82f0" opacity="0.3"/>
+  <rect x="320" y="120" width="40" height="160" rx="12" fill="#eaf2ff" opacity="0.9"/>
+  <rect x="380" y="100" width="50" height="180" rx="14" fill="#d2e4ff"/>
+  <rect x="450" y="130" width="35" height="150" rx="10" fill="#a8c8ff"/>
+  <text x="400" y="340" text-anchor="middle" fill="#eaf1fb" font-family="system-ui" font-size="22" font-weight="700">Perfumaria &amp; Higiene</text>
+</svg>

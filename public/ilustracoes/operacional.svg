@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+  <rect width="800" height="400" fill="#111e33"/>
+  <rect x="150" y="80" width="500" height="240" rx="24" fill="#0d1626" stroke="#294063"/>
+  <rect x="190" y="120" width="180" height="24" rx="6" fill="#2563eb" opacity="0.6"/>
+  <rect x="190" y="160" width="420" height="16" rx="4" fill="#1c2c47"/>
+  <rect x="190" y="190" width="380" height="16" rx="4" fill="#1c2c47"/>
+  <rect x="190" y="220" width="300" height="16" rx="4" fill="#1c2c47"/>
+  <circle cx="600" cy="260" r="36" fill="#15a06b"/>
+  <text x="400" y="360" text-anchor="middle" fill="#a9b8d0" font-family="system-ui" font-size="22" font-weight="700">Operacional de Balcão</text>
+</svg>

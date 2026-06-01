@@ -21,8 +21,16 @@ interface Props {
 }
 
 export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
-  const { registrarVisita, concluirAula, estaConcluida, alternarFavorita, ehFavorita, carregado } =
-    useProgresso();
+  const {
+    registrarVisita,
+    concluirAula,
+    estaConcluida,
+    alternarFavorita,
+    ehFavorita,
+    carregado,
+    adicionarTempoEstudo,
+    registrarTentativaQuiz,
+  } = useProgresso();
 
   const [respostas, setRespostas] = useState<Record<number, number>>({});
   const [enviado, setEnviado] = useState(false);
@@ -30,6 +38,14 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
   useEffect(() => {
     registrarVisita(trilhaId, aulaId);
   }, [registrarVisita, trilhaId, aulaId]);
+
+  useEffect(() => {
+    const inicio = Date.now();
+    return () => {
+      const segundos = Math.round((Date.now() - inicio) / 1000);
+      if (segundos >= 10) adicionarTempoEstudo(segundos);
+    };
+  }, [adicionarTempoEstudo, trilhaId, aulaId]);
 
   // Derivado do contexto: ao concluir, o provider atualiza e isto reflete sozinho.
   const concluida = carregado && estaConcluida(trilhaId, aulaId);
@@ -39,6 +55,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
   const todasRespondidas = quiz.every((_, i) => respostas[i] != null);
 
   function enviar() {
+    registrarTentativaQuiz(trilhaId, aulaId);
     setEnviado(true);
   }
 

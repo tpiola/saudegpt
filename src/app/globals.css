@@ -197,6 +197,29 @@ body {
   animation: fade-up 0.6s ease both;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
   .animate-fade-up {
@@ -218,4 +241,92 @@ body {
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* Painel administrativo — tema universitário futurista */
+.admin-shell {
+  background: #030712;
+  color: #e2e8f0;
+}
+
+.admin-hero {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.12), transparent);
+}
+
+.admin-hero-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(600px 300px at 20% 0%, rgba(31, 182, 201, 0.2), transparent),
+    radial-gradient(500px 250px at 80% 20%, rgba(37, 99, 235, 0.25), transparent);
+  pointer-events: none;
+}
+
+.admin-badge {
+  display: inline-block;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.08);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #67e8f9;
+}
+
+.admin-glass {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(16px);
+}
+
+.admin-input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  color: #f8fafc;
+  outline: none;
+}
+
+.admin-input:focus {
+  border-color: rgba(34, 211, 238, 0.5);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.15);
+}
+
+.admin-btn-primary {
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: white;
+}
+
+.admin-btn-secondary {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.admin-btn-ghost {
+  border-radius: 0.75rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: #94a3b8;
+}
+
+.admin-stat-card {
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.6));
+  padding: 1.25rem;
 }

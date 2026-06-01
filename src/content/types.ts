@@ -25,6 +25,8 @@ export interface Aula {
   titulo: string;
   duracaoMin: number;
   nivel: Nivel;
+  /** YouTube, Vimeo ou URL de embed/HLS */
+  videoUrl?: string;
   resumo: string;
   resumoExecutivo: string[];
   comparativo?: Comparativo;

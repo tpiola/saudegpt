@@ -6,9 +6,12 @@ import { chaveAula, useProgresso } from "@/lib/progress";
 import { AnelProgresso, BarraProgresso, Botao, Card, Etiqueta } from "./ui";
 import { Icon, type IconName } from "./icons";
 import { ContinuarBotao } from "./continuar";
+import { usePerfilAluno } from "@/lib/aluno";
+import { formatarTempoEstudo } from "@/lib/format-tempo";
 
 export function PainelAluno() {
   const prog = useProgresso();
+  const { perfil, carregado: perfilOk } = usePerfilAluno();
   const todas = listarAulas();
 
   if (!prog.carregado) {
@@ -41,24 +44,39 @@ export function PainelAluno() {
     .filter(Boolean)
     .slice(0, 6);
 
+  const tentativasTotal = Object.values(prog.tentativasQuiz ?? {}).reduce((a, b) => a + b, 0);
+
   const stats: { icone: IconName; rotulo: string; valor: string }[] = [
     {
       icone: "check",
       rotulo: "Aulas concluídas",
       valor: `${concluidasCount}/${totalCurso}`,
     },
+    {
+      icone: "clock",
+      rotulo: "Tempo de estudo",
+      valor: formatarTempoEstudo(prog.tempoEstudoSegundos ?? 0),
+    },
     { icone: "sparkles", rotulo: "XP total", valor: `${prog.xp}` },
     {
       icone: "target",
-      rotulo: "Pontos em missões",
-      valor: `${prog.missoesPontos}`,
+      rotulo: "Tentativas em quiz",
+      valor: `${tentativasTotal}`,
     },
     {
       icone: "award",
       rotulo: "Nota média",
       valor: mediaNotas != null ? `${mediaNotas}%` : "—",
     },
+    {
+      icone: "flame",
+      rotulo: "Sequência",
+      valor: `${prog.streak} dia${prog.streak !== 1 ? "s" : ""}`,
+    },
   ];
+
+  const revisao = prog.aulasParaRevisao();
+  const primeiroNome = perfil?.nome?.split(" ")[0];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -76,9 +94,14 @@ export function PainelAluno() {
                 </Etiqueta>
                 <span className="text-sm text-subtle">faltam {prog.xpProximoNivel} XP</span>
               </div>
-              <h1 className="mt-2 text-2xl font-bold">Olá, futuro Atendente Premium</h1>
+              <h1 className="mt-2 text-2xl font-bold">
+                Olá{perfilOk && primeiroNome ? `, ${primeiroNome}` : ", futuro Atendente Premium"}
+              </h1>
               <p className="text-muted">
                 Continue sua jornada de saúde, atendimento e performance.
+                {prog.estudouHoje
+                  ? " Você já estudou hoje."
+                  : " Marque uma aula para manter a sequência."}
               </p>
             </div>
           </div>
@@ -99,7 +122,7 @@ export function PainelAluno() {
       </Card>
 
       {/* Estatísticas */}
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {stats.map((s) => (
           <Card key={s.rotulo} className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/40">
@@ -112,6 +135,31 @@ export function PainelAluno() {
           </Card>
         ))}
       </div>
+
+      {revisao.length > 0 && (
+        <div className="mt-10">
+          <h2 className="text-lg font-bold">Revisão espaçada</h2>
+          <p className="mt-1 text-sm text-muted">
+            Aulas com nota abaixo de 60% no quiz — vale reforçar.
+          </p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            {revisao.slice(0, 6).map((i) => (
+              <Link
+                key={chaveAula(i.trilha.id, i.aula.id)}
+                href={`/aula/${i.trilha.id}/${i.aula.id}`}
+              >
+                <Card className="p-4 transition-all hover:border-brand-400">
+                  <div className="text-xs text-brand-600">{i.trilha.titulo}</div>
+                  <div className="font-semibold">{i.aula.titulo}</div>
+                  <div className="text-xs text-subtle">
+                    Nota: {prog.notas[chaveAula(i.trilha.id, i.aula.id)]}%
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Progresso por trilha */}
       <div className="mt-10">

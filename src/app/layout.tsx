@@ -4,8 +4,10 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { ProgressProvider } from "@/lib/progress";
+import { ProgressSync } from "@/components/progress-sync";
 import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { site } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-sans-humanist",
@@ -13,8 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const baseUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://atendentes-premium-farmacia.vercel.app";
+const baseUrl = getSiteUrl();
 
 export const viewport: Viewport = {
   themeColor: [
@@ -47,7 +48,14 @@ export const metadata: Metadata = {
     description: site.descricao,
     locale: "pt_BR",
     type: "website",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: site.nome }],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: site.nome,
+    description: site.descricao,
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -61,10 +69,19 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
       </head>
       <body className="bg-clinical flex min-h-full flex-col">
+        <a
+          href="#conteudo-principal"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+        >
+          Pular para o conteúdo
+        </a>
         <ThemeProvider>
           <ProgressProvider>
+            <ProgressSync />
             <Header />
-            <main className="flex-1">{children}</main>
+            <main id="conteudo-principal" className="flex-1">
+              {children}
+            </main>
             <Footer />
           </ProgressProvider>
         </ThemeProvider>

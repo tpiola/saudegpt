@@ -76,9 +76,14 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
               <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-sm font-bold text-brand-700 dark:bg-brand-900/40 dark:text-brand-200">
                 {idx + 1}
               </span>
-              <div>
-                <h2 className="text-lg font-bold">{modulo.titulo}</h2>
-                <p className="text-sm text-subtle">{modulo.descricao}</p>
+              <div className="flex-1">
+                <Link href={`/trilhas/${trilha.id}/${modulo.id}`} className="group">
+                  <h2 className="text-lg font-bold group-hover:text-brand-600">{modulo.titulo}</h2>
+                  <p className="text-sm text-subtle">{modulo.descricao}</p>
+                  <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
+                    Ver módulo e prova <Icon name="arrow" size={12} />
+                  </span>
+                </Link>
               </div>
             </div>
 

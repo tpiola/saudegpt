@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { navPrincipal, site } from "@/lib/site";
+import { linksLegais, navPrincipal, site } from "@/lib/site";
+
+const linksCoordenacao = [{ href: "/admin", label: "Coordenação (admin)" }];
 import { Icon } from "./icons";
 
 export function Footer() {
@@ -68,7 +70,19 @@ export function Footer() {
             ))}
           </p>
         </div>
-        <p className="mt-4 text-xs text-subtle">
+        <p className="mt-4 flex flex-wrap gap-4 text-xs text-subtle">
+          {linksLegais.map((l) => (
+            <Link key={l.href} href={l.href} className="hover:text-brand-600">
+              {l.label}
+            </Link>
+          ))}
+          {linksCoordenacao.map((l) => (
+            <Link key={l.href} href={l.href} className="hover:text-brand-600">
+              {l.label}
+            </Link>
+          ))}
+        </p>
+        <p className="mt-2 text-xs text-subtle">
           Conteúdo educativo. Não substitui a orientação do farmacêutico ou do médico. As decisões
           clínicas e a dispensação de medicamentos controlados são atos do profissional habilitado.
         </p>
