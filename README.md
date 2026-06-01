@@ -30,6 +30,7 @@ de carreira até a graduação em Farmácia.
 | `/trilhas`                  | Biblioteca de trilhas                                                       |
 | `/trilhas/[trilhaId]`       | Módulos e aulas da trilha                                                   |
 | `/aula/[trilhaId]/[aulaId]` | Aula com vídeo, blocos, simulação, checklist e quiz                         |
+| `/comando-diario`           | Checklist diário de operação (rotina de loja + formação)                    |
 | `/missoes`                  | Simulador de balcão (missões pontuadas)                                     |
 | `/biblioteca`               | Biblioteca regulatória "viva"                                               |
 | `/indicadores`              | Hub Power BI para atendentes                                                |

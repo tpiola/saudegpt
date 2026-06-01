@@ -52,6 +52,23 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
         <ProgressoTrilhaBadge trilhaId={trilha.id} />
       </div>
 
+      {trilha.id === "operacional" && (
+        <Link href="/comando-diario" className="mt-6 block">
+          <Card className="flex items-center gap-4 border-brand-300 bg-brand-50/50 transition-all hover:border-brand-400 dark:bg-brand-900/20">
+            <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl gradient-brand text-white">
+              <Icon name="clock" size={22} />
+            </span>
+            <div className="min-w-0 flex-1">
+              <div className="font-bold">Comando diário de operação</div>
+              <p className="text-sm text-muted">
+                Checklist do turno conectado a esta trilha — marque itens e aprofunde nas aulas.
+              </p>
+            </div>
+            <Icon name="arrow" size={20} className="flex-none text-brand-600" />
+          </Card>
+        </Link>
+      )}
+
       <div className="mt-10 space-y-8">
         {trilha.modulos.map((modulo, idx) => (
           <section key={modulo.id}>

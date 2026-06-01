@@ -15,6 +15,7 @@ export const site = {
 export const navPrincipal = [
   { href: "/trilhas", label: "Trilhas" },
   { href: "/dashboard", label: "Meu painel" },
+  { href: "/comando-diario", label: "Comando diário" },
   { href: "/missoes", label: "Missões" },
   { href: "/biblioteca", label: "Biblioteca regulatória" },
   { href: "/indicadores", label: "Power BI" },
