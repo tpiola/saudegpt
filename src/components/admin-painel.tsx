@@ -54,7 +54,12 @@ export function AdminPainel() {
       body: JSON.stringify({ usuario, senha }),
     });
     if (!res.ok) {
-      setErro("Usuário ou senha incorretos. Padrão: admin / admin");
+      const body = (await res.json().catch(() => ({}))) as { motivo?: string };
+      if (res.status === 503 && body.motivo) {
+        setErro(body.motivo);
+      } else {
+        setErro("Usuário ou senha incorretos. Padrão em dev: admin / admin");
+      }
       return;
     }
     const header = `Basic ${btoa(`${usuario}:${senha}`)}`;

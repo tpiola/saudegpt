@@ -16,8 +16,6 @@ jobs:
           node-version: "22"
           cache: npm
       - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
-      - run: npm run build
+      - run: npm run validate
       - run: npm run test:e2e:install
       - run: npm run test:e2e

@@ -1,21 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useProgresso } from "@/lib/progress";
 import { usePerfilAluno } from "@/lib/aluno";
 import { lerRanking, registrarNoRanking, type EntradaRanking } from "@/lib/ranking";
 import { Botao, Card, Etiqueta } from "./ui";
 import { Icon } from "./icons";
 
+function listaRankingInicial(): EntradaRanking[] {
+  if (typeof window === "undefined") return [];
+  return lerRanking();
+}
+
 export function RankingBoard() {
   const { xp, carregado } = useProgresso();
   const { perfil } = usePerfilAluno();
-  const [lista, setLista] = useState<EntradaRanking[]>([]);
+  const [lista, setLista] = useState<EntradaRanking[]>(listaRankingInicial);
   const [optIn, setOptIn] = useState(false);
-
-  useEffect(() => {
-    setLista(lerRanking());
-  }, []);
 
   function participar() {
     const apelido = perfil?.apelidoRanking ?? perfil?.nome?.split(" ")[0] ?? "Aluno";

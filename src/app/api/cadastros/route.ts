@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { headerAdminAutorizado } from "@/lib/server/admin-auth";
+import {
+  adminBloqueadoPorCredencialPadrao,
+  headerAdminAutorizado,
+  MENSAGEM_ADMIN_BLOQUEADO,
+} from "@/lib/server/admin-auth";
 import {
   excluirCadastroPorId,
   listarCadastros,
@@ -7,7 +11,16 @@ import {
 } from "@/lib/server/cadastros-store";
 import type { CadastroRegistro } from "@/lib/cadastro-types";
 
+function bloqueioAdmin() {
+  if (adminBloqueadoPorCredencialPadrao()) {
+    return NextResponse.json({ ok: false, erro: MENSAGEM_ADMIN_BLOQUEADO }, { status: 503 });
+  }
+  return null;
+}
+
 export async function GET(request: Request) {
+  const bloqueado = bloqueioAdmin();
+  if (bloqueado) return bloqueado;
   if (!headerAdminAutorizado(request)) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }
@@ -16,6 +29,8 @@ export async function GET(request: Request) {
 }
 
 export async function PATCH(request: Request) {
+  const bloqueado = bloqueioAdmin();
+  if (bloqueado) return bloqueado;
   if (!headerAdminAutorizado(request)) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }
@@ -47,6 +62,8 @@ export async function PATCH(request: Request) {
 }
 
 export async function DELETE(request: Request) {
+  const bloqueado = bloqueioAdmin();
+  if (bloqueado) return bloqueado;
   if (!headerAdminAutorizado(request)) {
     return NextResponse.json({ ok: false }, { status: 401 });
   }

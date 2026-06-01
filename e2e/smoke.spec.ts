@@ -37,4 +37,12 @@ test.describe("Smoke — plataforma", () => {
     await page.goto("/bulas-receitas");
     await expect(page.getByRole("heading", { name: /bulas e receitas/i })).toBeVisible();
   });
+
+  test("SEO: sitemap e robots respondem", async ({ request }) => {
+    const sitemap = await request.get("/sitemap.xml");
+    expect(sitemap.ok()).toBeTruthy();
+    const robots = await request.get("/robots.txt");
+    expect(robots.ok()).toBeTruthy();
+    expect(await robots.text()).toMatch(/sitemap/i);
+  });
 });

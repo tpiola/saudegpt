@@ -9,9 +9,17 @@ import { Icon } from "./icons";
 
 type Status = "pendente" | "aprovado" | "rejeitado" | null;
 
+function statusLocalInicial(): Status | "carregando" {
+  if (typeof window === "undefined") return "carregando";
+  const local = lerStatusLocal();
+  if (local === "aprovado") return "aprovado";
+  if (local === "rejeitado") return "rejeitado";
+  return "carregando";
+}
+
 export function CadastroGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const [status, setStatus] = useState<Status | "carregando">("carregando");
+  const [status, setStatus] = useState<Status | "carregando">(statusLocalInicial);
 
   useEffect(() => {
     const perfil = lerPerfilAluno();
@@ -21,18 +29,11 @@ export function CadastroGuard({ children }: { children: React.ReactNode }) {
     }
 
     const local = lerStatusLocal();
-    if (local === "aprovado") {
-      setStatus("aprovado");
-      return;
-    }
-    if (local === "rejeitado") {
-      setStatus("rejeitado");
-      return;
-    }
     if (local === "pendente") {
       router.replace("/aguardando-aprovacao");
       return;
     }
+    if (local === "aprovado" || local === "rejeitado") return;
 
     fetch(`/api/cadastros/status?email=${encodeURIComponent(perfil.email)}`)
       .then((r) => r.json())
@@ -48,7 +49,7 @@ export function CadastroGuard({ children }: { children: React.ReactNode }) {
           setStatus("aprovado");
         }
       })
-      .catch(() => setStatus("pendente"));
+      .catch(() => router.replace("/aguardando-aprovacao"));
   }, [router]);
 
   if (status === "carregando") {

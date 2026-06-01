@@ -29,10 +29,6 @@ function lerEmail(prop: { email?: string | null } | undefined): string {
   return prop?.email ?? "";
 }
 
-function lerNumero(prop: { number?: number | null } | undefined): number {
-  return prop?.number ?? 0;
-}
-
 function lerSelect(prop: { select?: { name: string } | null } | undefined): StatusCadastro {
   const n = prop?.select?.name;
   if (n === "aprovado" || n === "rejeitado" || n === "pendente") return n;

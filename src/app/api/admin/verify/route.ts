@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
-import { credenciaisAdminValidas } from "@/lib/server/admin-auth";
+import {
+  adminBloqueadoPorCredencialPadrao,
+  credenciaisAdminValidas,
+  MENSAGEM_ADMIN_BLOQUEADO,
+} from "@/lib/server/admin-auth";
 
 export async function POST(request: Request) {
+  if (adminBloqueadoPorCredencialPadrao()) {
+    return NextResponse.json({ ok: false, motivo: MENSAGEM_ADMIN_BLOQUEADO }, { status: 503 });
+  }
+
   const body = await request.json();
   const usuario = (body.usuario as string | undefined) ?? "admin";
   const senha = body.senha as string;

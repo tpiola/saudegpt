@@ -97,7 +97,7 @@ export default async function AulaPage({
 
       <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
         <Image
-          src={imagemAula(trilha.id, aula.id)}
+          src={imagemAula(trilha.id)}
           alt={`Ilustração pedagógica: ${aula.titulo}`}
           width={800}
           height={400}

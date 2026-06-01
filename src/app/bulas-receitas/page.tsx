@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Botao, Card, TituloSecao } from "@/components/ui";
 import { Icon } from "@/components/icons";

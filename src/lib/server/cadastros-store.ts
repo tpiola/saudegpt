@@ -12,7 +12,6 @@ import {
 const ARQUIVO = path.join(process.cwd(), "data", "cadastros.json");
 
 declare global {
-  // eslint-disable-next-line no-var
   var __fapCadastrosCache: CadastroRegistro[] | undefined;
 }
 
