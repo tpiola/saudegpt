@@ -128,10 +128,10 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                         </span>
                       )}
 
-                      {/* Indicador de external link para Power BI */}
-                      {item.href === "/indicadores" && (
+                      {/* Indicador de external link para trilha de vendas */}
+                      {item.href === "/trilhas/vendas" && (
                         <span className="ml-auto text-[9px] font-semibold uppercase tracking-wider text-accent-cyan/70">
-                          BI
+                          Novo
                         </span>
                       )}
                     </Link>

@@ -2,13 +2,13 @@ import type { Aula, Modulo, Trilha } from "./types";
 import { trilhaPerfumaria } from "./trilha-perfumaria";
 import { trilhaMedicamentos } from "./trilha-medicamentos";
 import { trilhaOperacional } from "./trilha-operacional";
-import { trilhaCarreira } from "./trilha-carreira";
+import { trilhaVendas } from "./trilha-vendas";
 
 export const trilhas: Trilha[] = [
   trilhaPerfumaria,
   trilhaMedicamentos,
   trilhaOperacional,
-  trilhaCarreira,
+  trilhaVendas,
 ];
 
 export function getTrilha(id: string): Trilha | undefined {

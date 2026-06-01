@@ -39,7 +39,7 @@ export const secoesNavLms: SecaoNavLms[] = [
   {
     titulo: "Desempenho",
     itens: [
-      { href: "/indicadores", label: "Indicadores (Power BI)", icone: "chart" },
+      { href: "/trilhas/vendas", label: "Vendas Consultivas", icone: "trending" },
       { href: "/ranking", label: "Ranking opt-in", icone: "award" },
     ],
   },
