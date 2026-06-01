@@ -3,7 +3,7 @@ import { PortalInicio } from "@/components/portal-inicio";
 import { JsonLdCourse } from "@/components/json-ld-course";
 
 export const metadata: Metadata = {
-  title: "Início",
+  title: "A formação mais completa para atendentes de farmácia",
   description:
     "Ambiente de estudos da Formação para Atendentes Premium de Farmácia — trilhas, simuladores e progresso.",
 };
