@@ -62,7 +62,7 @@ export const atalhosComando: AtalhoComando[] = [
     descricao: "Ler faturamento, ruptura, NPS e adesão",
   },
   {
-    href: "/dashboard",
+    href: "/",
     titulo: "Meu painel",
     descricao: "Progresso, XP e continuar de onde parei",
   },

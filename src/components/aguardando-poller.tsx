@@ -18,7 +18,7 @@ export function AguardandoPoller() {
       const j = (await res.json()) as { status?: string };
       if (j.status === "aprovado") {
         salvarStatusLocal("aprovado");
-        router.replace("/dashboard");
+        router.replace("/");
       }
     }
 

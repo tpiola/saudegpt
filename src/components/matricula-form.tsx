@@ -39,7 +39,7 @@ export function MatriculaForm() {
       const r = await tentarCadastroSupabase(email, senha);
       if (r.erro) setErro(r.erro);
     }
-    router.push(reg.status === "aprovado" ? "/dashboard" : "/aguardando-aprovacao");
+    router.push(reg.status === "aprovado" ? "/" : "/aguardando-aprovacao");
   }
 
   return (

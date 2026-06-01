@@ -1,16 +1,6 @@
-import type { Metadata } from "next";
-import { CadastroGuard } from "@/components/cadastro-guard";
-import { PainelAluno } from "@/components/painel-aluno";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Meu painel",
-  description: "Progresso, continuidade, recomendações, conquistas e notas do aluno.",
-};
-
+/** Painel unificado na página inicial do ambiente de estudos. */
 export default function DashboardPage() {
-  return (
-    <CadastroGuard>
-      <PainelAluno />
-    </CadastroGuard>
-  );
+  redirect("/");
 }

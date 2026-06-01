@@ -200,7 +200,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
               Próxima aula
             </Botao>
           ) : (
-            <Botao href="/dashboard" variante="secondary" iconeFim="arrow">
+            <Botao href="/" variante="secondary" iconeFim="arrow">
               Ir para o painel
             </Botao>
           )}

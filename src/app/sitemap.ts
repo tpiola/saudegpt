@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/matriculas",
     "/bulas-receitas",
     "/ranking",
+    "/osce",
+    "/sobre",
     "/privacidade",
     "/termos",
   ].map((path) => ({

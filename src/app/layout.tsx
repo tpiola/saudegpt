@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { LmsShell } from "@/components/lms-shell";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
@@ -83,11 +82,9 @@ export default function RootLayout({
           <ProgressProvider>
             <ProgressSync />
             <PwaRegister />
-            <Header />
-            <main id="conteudo-principal" className="flex-1">
-              {children}
-            </main>
-            <Footer />
+            <LmsShell>
+              <main id="conteudo-principal">{children}</main>
+            </LmsShell>
           </ProgressProvider>
         </ThemeProvider>
       </body>

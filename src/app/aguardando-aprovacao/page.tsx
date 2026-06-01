@@ -32,7 +32,7 @@ export default function AguardandoAprovacaoPage() {
           </p>
           <p className="mt-4 text-sm text-subtle">
             Dica: mantenha esta página aberta ou volte mais tarde — ao aprovar, acesse{" "}
-            <Link href="/dashboard" className="font-semibold text-brand-600">
+            <Link href="/" className="font-semibold text-brand-600">
               Meu painel
             </Link>
             .

@@ -1,10 +1,12 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("Smoke — plataforma", () => {
-  test("landing carrega e exibe trilhas", async ({ page }) => {
+  test("portal EAD carrega com catálogo de trilhas", async ({ page }) => {
     await page.goto("/");
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-    await expect(page.getByRole("link", { name: /trilhas/i }).first()).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /ambiente de estudos|olá/i }).first(),
+    ).toBeVisible();
+    await expect(page.getByRole("link", { name: /estudar|trilhas/i }).first()).toBeVisible();
   });
 
   test("lista de trilhas abre", async ({ page }) => {
@@ -14,7 +16,9 @@ test.describe("Smoke — plataforma", () => {
 
   test("aula com quiz responde e conclui", async ({ page }) => {
     await page.goto("/aula/perfumaria/barba");
-    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(
+      page.locator("#conteudo-principal").getByRole("heading", { level: 1 }),
+    ).toBeVisible();
 
     const opcoes = page.locator("#quiz button[type='button']");
     const count = await opcoes.count();
@@ -35,7 +39,9 @@ test.describe("Smoke — plataforma", () => {
 
   test("hub bulas e receitas", async ({ page }) => {
     await page.goto("/bulas-receitas");
-    await expect(page.getByRole("heading", { name: /bulas e receitas/i })).toBeVisible();
+    await expect(
+      page.locator("#conteudo-principal").getByRole("heading", { name: /bulas e receitas/i }),
+    ).toBeVisible();
   });
 
   test("SEO: sitemap e robots respondem", async ({ request }) => {
