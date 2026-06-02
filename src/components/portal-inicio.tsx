@@ -94,7 +94,7 @@ function PortalConvidadoHero() {
                 </span>
                 <br />
                 <span className="text-gradient-premium">
-                  atendentes em referências
+                  atendentes em cuidadores
                 </span>
               </h1>
             </ScrollReveal>
@@ -102,9 +102,9 @@ function PortalConvidadoHero() {
             {/* Subtítulo de impacto */}
             <ScrollReveal delay={300} direction="up">
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg sm:leading-relaxed">
-                Do acolhimento à venda consultiva. Da perfumaria aos medicamentos. 
+                Do acolhimento ao cuidado contínuo. Da perfumaria aos medicamentos. 
                 O único treinamento do Brasil que forma atendentes completos — 
-                com técnica, ética e habilidade de vendas.
+                com técnica, empatia e amor pelo que fazem.
               </p>
             </ScrollReveal>
 
@@ -130,8 +130,8 @@ function PortalConvidadoHero() {
                 {[
                   { valor: totalAulasContagem, label: "Microlições", sufixo: "+" },
                   { valor: 4, label: "Trilhas de formação", sufixo: "" },
-                  { valor: 18, label: "Aulas de vendas", sufixo: "" },
-                  { valor: 15, label: "Anos de experiência", sufixo: "+" },
+                  { valor: 15, label: "Anos cuidando", sufixo: "+" },
+                  { valor: 1, label: "Missão: cuidar bem", sufixo: "" },
                 ].map((stat) => (
                   <div key={stat.label} className="border-l border-white/10 pl-4">
                     <div className="text-[clamp(1.5rem,3vw,2.5rem)] font-extrabold tracking-tight text-white">
@@ -175,17 +175,17 @@ function PortalConvidadoHero() {
                 </div>
                 <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
                   O balcão da farmácia{" "}
-                  <span className="text-rose-400">não perdoa</span>
+                  <span className="text-rose-400">precisa de cuidado</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-muted leading-relaxed">
                   <p className="text-lg">
-                    Atendentes são jogados no balcão sem preparo. Sabem empurrar produto, 
-                    mas não sabem ouvir. Sabem o preço, mas não sabem o valor.
+                    Atendentes são jogados no balcão sem preparo. Sabem o preço, 
+                    mas não sabem ouvir. Sabem o produto, mas não sabem cuidar.
                   </p>
                   <p>
-                    Clientes insatisfeitos vão embora. Oportunidades de venda 
-                    viram custo. O atendente se frustra, o dono perde dinheiro, 
-                    e o paciente sai sem o cuidado que merece.
+                    Clientes saem insatisfeitos. Oportunidades de cuidado viram 
+                    venda perdida. O atendente se frustra, e o paciente vai 
+                    embora sem a atenção que merece.
                   </p>
                 </div>
               </div>
@@ -194,10 +194,10 @@ function PortalConvidadoHero() {
             <ScrollReveal direction="right" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "close", texto: "Atendente sem preparo no balcão", cor: "rose" },
-                  { icone: "close", texto: "Venda empurrada sem contexto", cor: "rose" },
-                  { icone: "close", texto: "Cliente que não volta", cor: "rose" },
-                  { icone: "close", texto: "Oportunidade perdida todo dia", cor: "rose" },
+                  { icone: "close", texto: "Atendente sem preparo para cuidar", cor: "rose" },
+                  { icone: "close", texto: "Cliente que não se sente acolhido", cor: "rose" },
+                  { icone: "close", texto: "Paciente que não volta", cor: "rose" },
+                  { icone: "close", texto: "Cuidado que fica pela metade", cor: "rose" },
                 ].map((item) => (
                   <div
                     key={item.texto}
@@ -228,11 +228,11 @@ function PortalConvidadoHero() {
               </div>
               <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
                 Um treinamento que{" "}
-                <span className="text-gradient">forma completos</span>
+                <span className="text-gradient">ensina a cuidar</span>
               </h2>
               <p className="mt-6 text-lg text-muted leading-relaxed">
-                Não é só farmácia. É técnica, comunicação, vendas e fidelização — 
-                tudo que um atendente precisa para virar referência no balcão.
+                Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo — 
+                tudo que um atendente precisa para fazer a diferença na vida de quem chega ao balcão.
               </p>
             </ScrollReveal>
           </div>
@@ -241,26 +241,26 @@ function PortalConvidadoHero() {
             {[
               {
                 numero: "01",
-                titulo: "Técnica farmacêutica",
-                descricao: "Medicamentos, receitas, classes terapêuticas, ANVISA. A base técnica que todo atendente precisa.",
+                titulo: "Técnica e segurança",
+                descricao: "Medicamentos, receitas, classes terapêuticas, ANVISA. A base técnica para cuidar com segurança.",
                 cor: "from-blue-500 to-blue-600",
               },
               {
                 numero: "02",
-                titulo: "Vendas consultivas",
-                descricao: "Como oferecer, persuadir com ética, lidar com objeções e fechar com confiança.",
+                titulo: "Acolhimento que cura",
+                descricao: "Como ouvir, acolher e fazer o cliente se sentir cuidado desde o primeiro contato.",
                 cor: "from-emerald-500 to-emerald-600",
               },
               {
                 numero: "03",
-                titulo: "Comunicação que vende",
-                descricao: "Rapport, escuta ativa, perguntas poderosas. A linguagem que transforma atendimento em venda.",
+                titulo: "Comunicação de cuidado",
+                descricao: "Escuta ativa, empatia, linguagem de acolhimento. A comunicação que transforma atendimento em cuidado.",
                 cor: "from-violet-500 to-violet-600",
               },
               {
                 numero: "04",
-                titulo: "Fidelização real",
-                descricao: "Pós-venda, cliente recorrente, como ser o atendente que o cliente pede pelo nome.",
+                titulo: "Cliente que volta",
+                descricao: "Pós-atendimento, cuidado contínuo, como ser o profissional que o paciente confia e procura sempre.",
                 cor: "from-amber-500 to-amber-600",
               },
             ].map((item, idx) => (
@@ -291,10 +291,10 @@ function PortalConvidadoHero() {
             <ScrollReveal direction="left" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "check", texto: "Atendente que entende do balcão", cor: "emerald" },
-                  { icone: "check", texto: "Oferta consultiva que o cliente aceita", cor: "emerald" },
-                  { icone: "check", texto: "Cliente que volta e pede pelo nome", cor: "emerald" },
-                  { icone: "check", texto: "Venda com ética e resultado", cor: "emerald" },
+                  { icone: "check", texto: "Atendente que entende do cuidado", cor: "emerald" },
+                  { icone: "check", texto: "Cliente que se sente acolhido", cor: "emerald" },
+                  { icone: "check", texto: "Paciente que volta e confia", cor: "emerald" },
+                  { icone: "check", texto: "Cuidado completo, do início ao fim", cor: "emerald" },
                 ].map((item) => (
                   <div
                     key={item.texto}
@@ -316,19 +316,19 @@ function PortalConvidadoHero() {
                   A transformação
                 </div>
                 <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
-                  O atendente que o cliente{" "}
-                  <span className="text-gradient">pede pelo nome</span>
+                  O profissional que o paciente{" "}
+                  <span className="text-gradient">confia e volta</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-muted leading-relaxed">
                   <p className="text-lg">
                     Depois do treinamento, o atendente não é mais o mesmo. 
                     Ele entende de pele, de medicamento, de receita — e também 
-                    de gente. Sabe ouvir, perguntar, oferecer e fidelizar.
+                    de gente. Sabe ouvir, acolher, se importar.
                   </p>
                   <p>
-                    Cliente que se sente cuidado volta. Volta e traz indicação. 
-                    Vira cliente fiel. É assim que o balcão deixa de ser custo 
-                    e se transforma no maior ativo da farmácia.
+                    Cliente que se sente cuidado volta. Volta e traz a família. 
+                    Vira paciente fiel. É assim que o balcão deixa de ser um 
+                    ponto de passagem e se transforma em um lugar de cuidado.
                   </p>
                 </div>
               </div>
@@ -494,11 +494,11 @@ function PortalConvidadoHero() {
                     Comece agora
                   </div>
                   <h2 className="text-[clamp(1.8rem,4.5vw,3.5rem)] font-extrabold tracking-tight leading-tight">
-                    Transforme seu balcão{" "}
-                    <span className="text-gradient">em referência</span>
+                    Transforme seu atendimento{" "}
+                    <span className="text-gradient">em cuidado</span>
                   </h2>
                   <p className="mx-auto mt-4 max-w-lg text-muted text-lg">
-                    {totalAulasContagem} microlições. 4 trilhas. Simulador de balcão. 
+                    {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real. 
                     Criado por farmacêutico com 15+ anos de balcão. Matrícula gratuita.
                   </p>
                   <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

@@ -129,7 +129,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                         </span>
                       )}
 
-                      {/* Indicador de external link para trilha de vendas */}
+                      {/* Indicador para trilha de cuidado humanizado */}
                       {item.href === "/trilhas/vendas" && (
                         <span className="ml-auto text-[9px] font-semibold uppercase tracking-wider text-accent-cyan/70">
                           Novo

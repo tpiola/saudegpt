@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: "Treinamento Atendente Premium de Farmácia",
     template: `%s · Treinamento Atendente`,
   },
-  description: "Curso profissional de Treinamento para Atendentes de Farmácia — superior ao CEBRAC e SENAC. Criado por Farmacêutico CRF/SP 58.519. Dispensação, medicamentos, atendimento consultivo, legislação ANVISA, receituários e vendas éticas.",
+  description: "Curso profissional de Treinamento para Atendentes de Farmácia — superior ao CEBRAC e SENAC. Criado por Farmacêutico CRF/SP 58.519. Acolhimento, medicamentos, cuidado humanizado, legislação ANVISA e atendimento que encanta.",
   keywords: [
     "treinamento atendente farmácia",
     "curso atendente farmácia",

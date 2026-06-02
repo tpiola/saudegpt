@@ -14,44 +14,44 @@ export const metadata: Metadata = {
 
 const beneficios = [
   {
-    icone: "trending",
-    titulo: "Vendas Consultivas",
-    descricao: "Técnicas de oferecimento, persuasão ética e fechamento para o balcão",
-  },
-  {
-    icone: "star",
-    titulo: "Persuasão Ética",
-    descricao: "Gatilhos mentais reais sem apelação — o cliente compra porque confia",
-  },
-  {
     icone: "heart",
-    titulo: "Comunicação no Balcão",
-    descricao: "Rapport, perguntas poderosas, escuta ativa e linguagem que vende",
+    titulo: "Atendimento Humanizado",
+    descricao: "Acolhimento, escuta ativa e cuidado genuíno que faz o paciente confiar",
   },
   {
     icone: "shield",
-    titulo: "Fidelização de Clientes",
-    descricao: "Pós-venda, retenção e como ser o atendente que o cliente pede pelo nome",
+    titulo: "Técnica e Segurança",
+    descricao: "Medicamentos, receitas, ANVISA — a base para cuidar com responsabilidade",
+  },
+  {
+    icone: "star",
+    titulo: "Comunicação de Cuidado",
+    descricao: "Empatia, linguagem de acolhimento e como transmitir segurança ao paciente",
+  },
+  {
+    icone: "sparkles",
+    titulo: "Encantamento no Atendimento",
+    descricao: "Pós-atendimento, cuidado contínuo e como ser o profissional que o paciente procura",
   },
   {
     icone: "book",
     titulo: `${totalAulas()}+ Microlições`,
-    descricao: "Vídeos, simulações interativas com falas reais e quizzes de fixação",
+    descricao: "Vídeos, simulações reais de atendimento e quizzes de fixação",
   },
   {
     icone: "target",
-    titulo: "Simulador de Balcão",
-    descricao: "Missões pontuadas com cenários reais — você escolhe a abordagem e recebe feedback",
+    titulo: "Simulador de Atendimento",
+    descricao: "Situações reais de balcão — você escolhe a abordagem e recebe feedback",
   },
   {
     icone: "award",
     titulo: "4 Trilhas Completas",
-    descricao: "Perfumaria, Medicamentos, Operacional e Vendas Consultivas",
+    descricao: "Perfumaria, Medicamentos, Operacional e Cuidado Humanizado",
   },
   {
-    icone: "sparkles",
-    titulo: "Gamificação Completa",
-    descricao: "XP, níveis, badges e ranking para motivar seus estudos",
+    icone: "trending",
+    titulo: "Gamificação de Estudos",
+    descricao: "XP, níveis, badges e ranking para acompanhar sua evolução no cuidado",
   },
 ];
 
@@ -92,11 +92,11 @@ export default function MatriculasPage() {
               </span>
               <br />
               <span className="text-white">
-                em vendas consultivas
+                em cuidado humanizado
               </span>
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-              {site.descricao} Agora com foco em <strong className="text-white/90">oferecimento, persuasão ética, comunicação e fidelização</strong> — habilidades que transformam atendentes em referência no balcão.
+              {site.descricao} Agora com foco em <strong className="text-white/90">acolhimento, cuidado genuíno, comunicação empática e encantamento</strong> — habilidades que transformam atendentes em profissionais de cuidado.
             </p>
 
             {/* Stats rápidas */}
@@ -111,7 +111,7 @@ export default function MatriculasPage() {
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Icon name="trending" size={16} className="text-accent-cyan" />
-                <span><strong className="text-white">{aulasVendas}</strong> aulas de vendas</span>
+                <span><strong className="text-white">{aulasVendas}</strong> aulas de cuidado</span>
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <Icon name="award" size={16} className="text-accent-cyan" />

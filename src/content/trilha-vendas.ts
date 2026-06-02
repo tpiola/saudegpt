@@ -5,10 +5,10 @@ import { q } from "./_helpers";
 export const trilhaVendas: Trilha = {
   id: "vendas",
   numero: 4,
-  titulo: "Vendas Consultivas e Persuasão Ética",
-  subtitulo: "Do acolhimento ao fechamento",
+  titulo: "Cuidado Humanizado e Atendimento que Encanta",
+  subtitulo: "Do acolhimento ao cuidado contínuo",
   descricao:
-    "Como oferecer com confiança, persuadir com ética, fidelizar com consistência. Técnicas reais de venda no balcão da farmácia — sem pressão, sem enganação, com resultado.",
+    "Como atender com excelência, acolher com empatia, comunicar com clareza e fazer o cliente se sentir cuidado — porque cliente bem atendido volta naturalmente.",
   nivelFaixa: "Básico ao avançado",
   icone: "trending",
   modulos: [
@@ -17,23 +17,23 @@ export const trilhaVendas: Trilha = {
        ════════════════════════════════════════════════ */
     {
       id: "oferecimento",
-      titulo: "Oferecimento e Persuasão Ética",
+      titulo: "Atendimento Humanizado e Cuidado com o Paciente",
       descricao:
-        "Oferecer sem ser invasivo. Persuadir sem enganar. Técnicas reais de venda no balcão que funcionam porque respeitam o cliente.",
+        "Atender é cuidar. O cliente que se sente acolhido, ouvido e respeitado confia — e confiança é a base de todo cuidado continuado.",
       aulas: [
         {
           id: "momento-certo",
-          titulo: "O momento certo de oferecer",
+          titulo: "O momento certo de acolher",
           duracaoMin: 6,
           nivel: "basico",
           resumo:
-            "Nem toda hora é hora. Identificar o timing ideal para apresentar um produto complementar sem atrapalhar o acolhimento.",
+            "Antes de qualquer oferta, o cliente precisa se sentir acolhido. Como criar um ambiente de confiança desde o primeiro contato.",
           resumoExecutivo: [
-            "Antes de oferecer: ouça. O cliente precisa se sentir acolhido primeiro.",
-            "O melhor momento é durante a orientação, não no fim do atendimento.",
-            "Oferecer na hora errada quebra a confiança. O cliente percebe o oportunismo.",
+            "Antes de qualquer oferta: ouça. O cliente precisa se sentir acolhido primeiro.",
+            "O acolhimento genuíno é o que faz o cliente lembrar de você na próxima visita.",
+            "Nunca ofereça antes de concluir a orientação inicial — o cliente percebe o oportunismo.",
             "Sinal verde: cliente relaxou, fez contato visual, concordou com a orientação inicial.",
-            "Sinal vermelho: cliente com pressa, irritado, ou claramente sem recursos.",
+            "Sinal vermelho: cliente com pressa, irritado, ou claramente sem recursos — respeite.",
           ],
           simulacao: {
             cliente: '"Sabe o que eu tô sentindo? Uma coceira no couro cabeludo, já usei vários xampus e nada resolve."',
@@ -305,23 +305,23 @@ export const trilhaVendas: Trilha = {
        ════════════════════════════════════════════════ */
     {
       id: "comunicacao",
-      titulo: "Comunicação que Vende",
+      titulo: "Comunicação que Acolhe e Cura",
       descricao:
-        "Cada palavra importa. Do rapport inicial à linguagem positiva na objeção — como a comunicação transforma um atendente em referência.",
+        "Cada palavra importa no cuidado. Do rapport inicial à linguagem de acolhimento — como a comunicação transforma um atendente em referência de cuidado.",
       aulas: [
         {
           id: "rapport",
-          titulo: "Rapport na abertura: a primeira impressão que vende",
+          titulo: "Acolhimento na abertura: a primeira impressão que cuida",
           duracaoMin: 5,
           nivel: "basico",
           resumo:
-            "Os primeiros 5 segundos definem o tom do atendimento. Como criar conexão instantânea com o cliente e abrir caminho para a venda.",
+            "Os primeiros 5 segundos definem o tom do atendimento. Como criar conexão instantânea com o cliente e mostrar que ele está em boas mãos.",
           resumoExecutivo: [
             "Sorriso genuíno e contato visual — não tem substituto. Cliente sente se é automático.",
-            'Espelhar o tom do cliente: se ele fala baixo, baixe o tom. Se está apressado, seja direto.',
+            'Espelhar o tom do cliente: se ele fala baixo, baixe o tom. Se está apreensivo, seja calmo.',
             "Usar o nome do cliente uma ou duas vezes no atendimento cria intimidade sem ser invasivo.",
-            "Evite 'Pois não?' ou 'Posso ajudar?' — soa robótico. Prefira 'Olá, seja bem-vindo! O que te traz aqui hoje?'",
-            "Clientes que se sentem bem recebidos gastam 30% mais (estudo de varejo).",
+            "Evite 'Pois não?' ou 'Posso ajudar?' — soa robótico. Prefira 'Olá, seja bem-vindo! Como posso te ajudar hoje?'",
+            "Clientes que se sentem bem acolhidos confiam mais — e confiança é a base do cuidado.",
           ],
           simulacao: {
             cliente: "Entra na farmácia com expressão fechada, olhando as prateleiras sem rumo.",
@@ -594,17 +594,17 @@ export const trilhaVendas: Trilha = {
        ════════════════════════════════════════════════ */
     {
       id: "fidelizacao",
-      titulo: "Fidelização e Retenção de Clientes",
+      titulo: "Encantamento e Cuidado Contínuo",
       descricao:
-        "Vender uma vez é fácil. Fazer o cliente voltar é uma arte. Como construir relacionamento, criar hábito de compra e ser a referência do cliente na farmácia.",
+        "O cliente volta não porque foi 'fidelizado' — volta porque foi bem cuidado. Como construir relacionamento duradouro baseado em confiança e cuidado genuíno.",
       aulas: [
         {
           id: "pos-venda",
-          titulo: "Pós-venda no balcão: o momento mais esquecido",
+          titulo: "Pós-atendimento: o momento mais esquecido do cuidado",
           duracaoMin: 5,
           nivel: "basico",
           resumo:
-            "A venda só termina quando o cliente sai satisfeito. Como encerrar o atendimento de forma que ele queira voltar.",
+            "O cuidado só termina quando o cliente sai satisfeito. Como encerrar o atendimento de forma que ele queira voltar.",
           resumoExecutivo: [
             "Nunca encerre o atendimento com 'Tchau' seco. Recapitule como usar, agradeça e convide a voltar.",
             'Use o fechamento de relacionamento: "Foi um prazer te atender. Se tiver qualquer dúvida sobre o produto, pode voltar que eu mesma te ajudo."',
