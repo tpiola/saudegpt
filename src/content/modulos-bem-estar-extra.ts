@@ -331,6 +331,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Vitaminas, minerais e polivitamínicos",
         duracaoMin: 7,
         nivel: "intermediario",
+        videoUrl: videosEducativos.suplementos,
         resumo:
           "Quando indicar polivitamínico, vitamina C, D, complexo B, ferro e cálcio — sem substituir prescrição médica.",
         resumoExecutivo: [
@@ -382,6 +383,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Whey protein, colágeno e suplementos esportivos",
         duracaoMin: 7,
         nivel: "intermediario",
+        videoUrl: videosEducativos.suplementos,
         resumo:
           "Whey, colágeno hidrolisado, albumina, BCAA — para quem são e como orientar o consumo.",
         resumoExecutivo: [
@@ -441,6 +443,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Hidratação dos pés, calos e calosidades",
         duracaoMin: 5,
         nivel: "basico",
+        videoUrl: videosEducativos.higieneMaos,
         resumo:
           "Cremes hidratantes específicos, lixas, pedras-pomes e produtos para calos e rachaduras.",
         resumoExecutivo: [
@@ -488,6 +491,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Palmilhas, meias e calçados ortopédicos",
         duracaoMin: 5,
         nivel: "basico",
+        videoUrl: videosEducativos.suplementos,
         resumo:
           "Palmilhas de silicone, gel, ortopédicas, meias de compressão e calçados para conforto.",
         resumoExecutivo: [
@@ -644,6 +648,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Higiene do sono e relaxamento",
         duracaoMin: 6,
         nivel: "basico",
+        videoUrl: videosEducativos.higieneSono,
         resumo:
           "Rotina noturna, melatonina (suplemento), chás calmantes, difusores e óleos essenciais para o sono.",
         resumoExecutivo: [
@@ -700,6 +705,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Travesseiros, máscaras e acessórios do sono",
         duracaoMin: 5,
         nivel: "basico",
+        videoUrl: videosEducativos.higieneSono,
         resumo:
           "Travesseiros ortopédicos, máscaras noturnas, protetores auriculares, cobertores ponderados e almofadas ergonômicas.",
         resumoExecutivo: [
@@ -755,6 +761,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Kit verão: protetor solar, repelente e pós-sol",
         duracaoMin: 6,
         nivel: "basico",
+        videoUrl: videosEducativos.fotoprotecao,
         resumo:
           "Fotoproteção avançada, repelente de insetos, cuidados pós-exposição e hidratação intensiva no verão.",
         resumoExecutivo: [
@@ -811,6 +818,7 @@ export const modulosBemEstarExtra: Modulo[] = [
         titulo: "Kit inverno: hidratação intensiva, lábios e imunidade",
         duracaoMin: 6,
         nivel: "basico",
+        videoUrl: videosEducativos.suplementos,
         resumo:
           "Hidratantes corporais ricos, lip balm, vitaminas de estação, umidificadores e cuidados com pele ressecada pelo frio.",
         resumoExecutivo: [

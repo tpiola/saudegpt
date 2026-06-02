@@ -97,6 +97,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene oral",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneOral,
           resumo:
             "Escovas, cremes dentais, fio, enxaguantes e quando indicar cada item conforme a necessidade.",
           resumoExecutivo: [
@@ -154,6 +155,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Sabonetes",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneMaos,
           resumo: "Barra, líquido, glicerinado, antibacteriano e esfoliante: para quem é cada um.",
           resumoExecutivo: [
             "Pele seca se beneficia de sabonete hidratante/glicerinado; antibacteriano não é para uso diário em todo corpo.",
@@ -187,6 +189,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Acessórios para banho",
           duracaoMin: 4,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneMaos,
           resumo: "Esponjas, buchas, escovas corporais e higienização correta dos acessórios.",
           resumoExecutivo: [
             "Buchas e esponjas acumulam microrganismos — orientar troca e secagem.",
@@ -218,6 +221,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene pessoal",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneMaos,
           resumo:
             "Cuidados gerais, absorventes, lenços, antissépticos de uso doméstico e bem-estar.",
           resumoExecutivo: [
@@ -247,6 +251,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Desodorantes e antitranspirantes",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneMaos,
           resumo: "Diferença entre desodorante e antitranspirante, formatos e pele sensível.",
           resumoExecutivo: [
             "Desodorante combate odor; antitranspirante reduz o suor (sais de alumínio).",
@@ -353,6 +358,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Maquiagem",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: videosEducativos.skincareBasico,
           resumo: "Base, corretivo, pó, tons de pele e produtos para pele sensível/acneica.",
           resumoExecutivo: [
             "Identificar subtom (quente/frio/neutro) ajuda a acertar a base.",
@@ -376,6 +382,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Unhas",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.skincareBasico,
           resumo: "Esmaltes, bases fortalecedoras, removedores e cuidados com cutícula.",
           resumoExecutivo: [
             "Bases tratamento ajudam unhas fracas/quebradiças.",
@@ -479,6 +486,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Cabelos",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: videosEducativos.cabelos,
           resumo: "Tipos de fio, couro cabeludo, shampoo/condicionador e tratamentos.",
           resumoExecutivo: [
             "Identificar tipo de fio e couro cabeludo (oleoso, seco, com caspa) guia a indicação.",
@@ -520,6 +528,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Coloração",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: videosEducativos.cabelos,
           resumo: "Tons, oxidantes, teste de mecha/toque e cuidados com alergia.",
           resumoExecutivo: [
             "Teste de toque (alergia) 48h antes é recomendado, sobretudo em tinturas com PPD.",
@@ -560,6 +569,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Perfumes e fragrâncias",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: videosEducativos.perfumes,
           resumo: "Eau de parfum x toilette, famílias olfativas, ocasião e fixação.",
           resumoExecutivo: [
             "Maior concentração (parfum/EDP) = maior fixação e preço.",
@@ -605,6 +615,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Linha infantil",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.cuidadosBebe,
           resumo: "Produtos suaves, sem álcool, hipoalergênicos e adequados à idade.",
           resumoExecutivo: [
             "Pele do bebê é mais fina e sensível: produtos específicos, sem álcool e com pH adequado.",
@@ -628,6 +639,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Acessórios infantis",
           duracaoMin: 4,
           nivel: "basico",
+          videoUrl: videosEducativos.cuidadosBebe,
           resumo: "Mamadeiras, chupetas, bicos, termômetros e higienizadores.",
           resumoExecutivo: [
             "Bicos e mamadeiras têm fases por idade; orientar esterilização.",
@@ -651,6 +663,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene infantil",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: videosEducativos.higieneBebe,
           resumo: "Fraldas, lenços umedecidos, pomadas para assadura e banho do bebê.",
           resumoExecutivo: [
             "Pomada de assadura com barreira (óxido de zinco) ajuda na prevenção.",
