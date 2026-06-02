@@ -26,9 +26,9 @@ export function PainelAluno() {
 
   if (!prog.carregado) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
         <Skeleton className="h-48 rounded-2xl" />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2 md:gap-8 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
           {Array.from({ length: 6 }).map((_, i) => (
             <Skeleton key={i} className="h-20 rounded-xl" />
           ))}
@@ -95,7 +95,7 @@ export function PainelAluno() {
   const primeiroNome = perfil?.nome?.split(" ")[0];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* ── Hero Card ── */}
       <Card variante="glass" className="overflow-hidden">
           <div className="relative rounded-2xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600)_60%,var(--terracota-600))] p-6 sm:p-8">
@@ -105,7 +105,7 @@ export function PainelAluno() {
             className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-20 blur-3xl"
           />
 
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between lg:flex-row lg:items-center lg:justify-between">
             <div className="flex items-center gap-5">
               <div className="relative shrink-0">
                 <AnelProgresso pct={pctGeral} tamanho={120} legenda="curso" stroke={7} />
@@ -151,7 +151,7 @@ export function PainelAluno() {
       </Card>
 
       {/* ── Stats Grid ── */}
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <div className="mt-8 grid gap-4 sm:gap-6 sm:grid-cols-2 md:gap-8 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
         {stats.map((s) => (
           <StatCard key={s.rotulo} icone={s.icone} valor={s.valor} rotulo={s.rotulo} />
         ))}
@@ -168,7 +168,7 @@ export function PainelAluno() {
             descricao="Aulas com nota abaixo de 60% no quiz — vale reforçar."
             icone="book"
           />
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:gap-4 sm:grid-cols-2 md:gap-5 md:grid-cols-2">
             {revisao.slice(0, 6).map((i) => (
               <Link
                 key={chaveAula(i.trilha.id, i.aula.id)}
@@ -212,7 +212,7 @@ export function PainelAluno() {
         descricao="Acompanhe seu avanço em cada módulo do curso."
         icone="graduation"
       />
-      <div className="mt-6 grid gap-4 sm:grid-cols-2">
+      <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2 md:gap-8 md:grid-cols-2">
         {trilhas.map((t) => {
           const p = prog.progressoTrilha(t.id);
           return (
@@ -251,7 +251,7 @@ export function PainelAluno() {
         descricao="Cada badge representa um marco alcançado na sua jornada."
         icone="award"
       />
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-5">
         {concluidasCount >= 1 && (
           <div className="badge-premium flex items-center gap-2 rounded-xl px-4 py-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
@@ -307,7 +307,7 @@ export function PainelAluno() {
             descricao="Suas aulas marcadas para acesso rápido."
             icone="heart"
           />
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid gap-3 sm:gap-4 sm:grid-cols-2 md:gap-5 md:grid-cols-3 lg:grid-cols-3">
             {favoritas.map(
               (f) =>
                 f && (

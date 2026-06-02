@@ -28,7 +28,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
   if (!trilha) notFound();
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       <Link
         href="/trilhas"
         className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand-600"
@@ -36,7 +36,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
         <Icon name="arrow" size={16} className="rotate-180" /> Todas as trilhas
       </Link>
 
-      <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mt-6 flex flex-col gap-4 sm:gap-6 md:gap-8 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex gap-4">
           <span className="flex h-16 w-16 flex-none items-center justify-center rounded-2xl gradient-brand text-white">
             <Icon name={trilha.icone as IconName} size={30} />

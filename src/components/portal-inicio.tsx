@@ -52,7 +52,7 @@ function PortalConvidadoHero() {
       {/* ════════════════════════════════════════════
           HERO CINEMATOGRÁFICO
           ════════════════════════════════════════════ */}
-      <section className="hero-image-gradient relative min-h-[90vh] flex items-center overflow-hidden">
+      <section className="hero-image-gradient relative min-h-[80vh] sm:min-h-[90vh] flex items-center overflow-hidden">
         {/* Imagem de fundo */}
         <Image
           src="/pharmacy-hero.jpg"
@@ -70,9 +70,9 @@ function PortalConvidadoHero() {
         {/* Grid sutil */}
         <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-15" />
 
-        {/* Orbs cinematográficos */}
-        <div className="pointer-events-none absolute -left-48 -top-48 h-[500px] w-[500px] orb bg-forest-500/20" />
-        <div className="pointer-events-none absolute -bottom-48 -right-48 h-[400px] w-[400px] orb bg-terracota-500/15" />
+        {/* Orbs cinematográficos — responsivos */}
+        <div className="pointer-events-none absolute -left-24 sm:-left-48 -top-24 sm:-top-48 h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] orb bg-forest-500/20" />
+        <div className="pointer-events-none absolute -bottom-24 sm:-bottom-48 -right-24 sm:-right-48 h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] orb bg-terracota-500/15" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full">
           <div className="max-w-4xl">
@@ -124,7 +124,7 @@ function PortalConvidadoHero() {
 
             {/* Stats com contadores */}
             <ScrollReveal delay={600} direction="up">
-              <div className="mt-14 grid grid-cols-3 gap-6 sm:grid-cols-3">
+              <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                 {[
                   { valor: totalAulasContagem, label: "Microlições", sufixo: "+" },
                   { valor: 4, label: "Trilhas de formação", sufixo: "" },
@@ -162,8 +162,8 @@ function PortalConvidadoHero() {
           ════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--forest-900)/[0.05],transparent)] pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-center">
             <ScrollReveal direction="left">
               <div>
                 <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-terracota-400">
@@ -216,7 +216,7 @@ function PortalConvidadoHero() {
           SEÇÃO 2 — A SOLUÇÃO: MANDALA DOS 5 PILARES
           ════════════════════════════════════════════ */}
       <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
@@ -261,8 +261,8 @@ function PortalConvidadoHero() {
           ════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh-gradient pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+          <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-center">
             <ScrollReveal direction="left" delay={200}>
               <div className="grid gap-4">
                 {[
@@ -316,7 +316,7 @@ function PortalConvidadoHero() {
           SEÇÃO 4 — CURRÍCULO (JORNADA)
           ════════════════════════════════════════════ */}
       <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
@@ -379,7 +379,7 @@ function PortalConvidadoHero() {
           SEÇÃO 5 — DICAS POR FAIXA ETÁRIA
           ════════════════════════════════════════════ */}
       <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
               <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
@@ -473,14 +473,14 @@ function PortalConvidadoHero() {
           ════════════════════════════════════════════ */}
       <section className="relative">
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.04],var(--surface))]" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:pb-28">
+        <div className="relative mx-auto max-w-6xl px-4 pb-14 sm:px-6 sm:pb-20 lg:pb-28">
           <ScrollReveal>
             <Card className="relative overflow-hidden border-2 border-forest-200/40 dark:border-forest-800/30">
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,var(--forest-50),white,var(--sage-50)/[0.5])] dark:bg-[linear-gradient(135deg,var(--forest-950),var(--forest-900)/[0.4],var(--forest-950))]" />
               <div className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full orb bg-forest-400/10 dark:bg-forest-300/5" />
               <div className="pointer-events-none absolute -bottom-32 -left-32 h-[300px] w-[300px] rounded-full orb bg-terracota-500/10" />
 
-              <div className="relative px-8 py-16 text-center sm:px-16 sm:py-20">
+              <div className="relative px-6 py-12 text-center sm:px-16 sm:py-20">
                 <div className="mx-auto max-w-2xl">
                   <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-forest-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest-700 dark:bg-forest-900/40 dark:text-forest-300">
                     <Icon name="sparkles" size={14} />

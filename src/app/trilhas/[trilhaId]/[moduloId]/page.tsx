@@ -33,7 +33,7 @@ export default async function ModuloPage({
   const { trilha, modulo } = ctx;
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-5xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       <Link
         href={`/trilhas/${trilha.id}`}
         className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand-600"
@@ -41,7 +41,7 @@ export default async function ModuloPage({
         <Icon name="arrow" size={16} className="rotate-180" /> {trilha.titulo}
       </Link>
 
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mt-6 flex flex-col gap-4 sm:gap-6 md:gap-8 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold sm:text-3xl">{modulo.titulo}</h1>
           <p className="mt-2 max-w-2xl text-muted">{modulo.descricao}</p>

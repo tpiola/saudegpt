@@ -6,12 +6,12 @@ const linksCoordenacao = [{ href: "/admin", label: "Coordenação (admin)" }];
 
 export function Footer() {
   return (
-    <footer className="mt-20 border-t border-border bg-surface">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-          <div>
+    <footer className="mt-16 sm:mt-20 border-t border-border bg-surface">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+          <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white">
                 <Icon name="shield" size={20} />
               </span>
               <span className="text-sm font-bold">{site.nomeCurto}</span>
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 sm:mt-10 flex flex-col gap-3 border-t border-border pt-5 sm:pt-6 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
           <p className="font-medium text-muted">{site.assinatura}</p>
           <p>
             Patrocinado por{" "}
@@ -65,7 +65,7 @@ export function Footer() {
             ))}
           </p>
         </div>
-        <p className="mt-4 flex flex-wrap gap-4 text-xs text-subtle">
+        <p className="mt-3 sm:mt-4 flex flex-wrap gap-x-4 gap-y-1 text-xs text-subtle">
           {linksLegais.map((l) => (
             <Link key={l.href} href={l.href} className="hover:text-forest-600 transition-colors">
               {l.label}

@@ -126,7 +126,7 @@ export function ComandoDiarioChecklist() {
 
       <section>
         <TituloSecao sobre="Atalhos" icone="sparkles" titulo="Recursos da plataforma" />
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {atalhosComando.map((a) => (
             <Link key={a.href} href={a.href}>
               <Card className="h-full transition-all hover:border-brand-400 hover:-translate-y-0.5">

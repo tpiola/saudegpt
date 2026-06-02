@@ -52,13 +52,13 @@ export function BannerPatrocinio({ variante = "default" }: { variante?: "default
               href={p.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-4 transition-all hover:border-forest-300 hover:shadow-md min-w-[160px]"
+              className="group flex flex-1 items-center gap-3 rounded-xl border border-border bg-surface p-3 sm:p-4 transition-all hover:border-forest-300 hover:shadow-md min-w-0 sm:min-w-[160px]"
             >
-              <span className={`flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br ${p.cor} text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform`}>
+              <span className={`flex h-9 w-9 sm:h-10 sm:w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-br ${p.cor} text-white font-bold text-sm shadow-sm group-hover:scale-105 transition-transform`}>
                 {p.nome.charAt(0)}
               </span>
-              <div>
-                <div className="text-sm font-bold text-foreground group-hover:text-forest-600 transition-colors">
+              <div className="min-w-0">
+                <div className="text-sm font-bold text-foreground group-hover:text-forest-600 transition-colors truncate">
                   {p.nome}
                 </div>
                 <div className="text-[11px] text-subtle">{p.tagline}</div>

@@ -282,7 +282,7 @@ export function ProvaModulo({
             </div>
           </div>
 
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             {!aprovado && (
               <Botao
                 onClick={() => {

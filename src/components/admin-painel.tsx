@@ -246,7 +246,7 @@ export function AdminPainel() {
         {/* ════════════════════════════════════════════
             STATS CARDS
             ════════════════════════════════════════════ */}
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-8">
           {[
             { valor: String(cadastros.length), rotulo: "Alunos", sub: `${pendentes.length} pendentes`, icone: "user" },
             { valor: String(aprovados.length), rotulo: "Aprovados", sub: `${Math.round((aprovados.length / (cadastros.length || 1)) * 100)}% do total`, icone: "check" },
@@ -272,7 +272,7 @@ export function AdminPainel() {
         {/* ════════════════════════════════════════════
             ROW 2 — TOP ALUNOS + PRECISAM ATENÇÃO
             ════════════════════════════════════════════ */}
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {/* ── TOP 5 ── */}
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
             <div className="flex items-center gap-2">
@@ -385,7 +385,7 @@ export function AdminPainel() {
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
                 placeholder="Buscar por nome ou email…"
-                className="w-48 rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none"
+                className="w-full rounded-lg border border-slate-700 bg-slate-800 px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:border-blue-500 focus:outline-none sm:w-48"
               />
               <select
                 value={ordenar}
@@ -550,7 +550,7 @@ export function AdminPainel() {
         {/* ════════════════════════════════════════════
             DISTRIBUIÇÃO + INTEGRAÇÕES
             ════════════════════════════════════════════ */}
-        <div className="mt-8 grid gap-6 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Distribuição de progresso */}
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
             <h2 className="text-sm font-bold text-white">Distribuição de progresso</h2>
@@ -683,7 +683,7 @@ function AlunoDetalhes({
   return (
     <div className="space-y-5">
       {/* Grid de métricas do aluno */}
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
         <div className="rounded-xl bg-slate-800/50 px-4 py-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Progresso geral</div>
           <div className="mt-1 flex items-center gap-2">
@@ -743,7 +743,7 @@ function AlunoDetalhes({
       </div>
 
       {/* Tempo de estudo */}
-      <div className="flex flex-wrap gap-4 text-xs text-slate-400">
+      <div className="flex flex-wrap gap-4 sm:gap-6 text-xs text-slate-400">
         <span>
           ⏱ Tempo total: <strong className="text-white">{formatarTempoEstudo(p.tempoEstudoSegundos ?? 0)}</strong>
         </span>

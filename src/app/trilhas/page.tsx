@@ -23,7 +23,7 @@ export default function TrilhasPage() {
   const totalGeral = totalAulas();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       <TituloSecao
         sobre="Currículo"
         icone="book"
@@ -32,7 +32,7 @@ export default function TrilhasPage() {
       />
 
       {/* Contagem geral premium */}
-      <div className="mt-8 flex flex-wrap items-center gap-3 rounded-2xl border border-border-strong/50 bg-surface-2/50 px-5 py-3 backdrop-blur-sm">
+      <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4 md:gap-5 rounded-2xl border border-border-strong/50 bg-surface-2/50 px-5 py-3 backdrop-blur-sm">
         <span className="flex items-center gap-2 text-sm font-semibold text-foreground">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white shadow-sm">
             <Icon name="book" size={16} />
@@ -65,7 +65,7 @@ export default function TrilhasPage() {
                 aria-hidden
               />
 
-              <div className="flex flex-col gap-6 pl-5 lg:flex-row lg:items-center">
+              <div className="flex flex-col gap-6 pl-5 md:flex-row md:items-center lg:flex-row lg:items-center">
                 {/* Ícone e informações principais */}
                 <div className="flex flex-1 gap-5">
                   <span className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl gradient-brand text-white shadow-md transition-transform duration-300 group-hover:scale-105">
@@ -103,7 +103,7 @@ export default function TrilhasPage() {
                 </div>
 
                 {/* Progresso e ação */}
-                <div className="flex items-center gap-4 lg:flex-col lg:items-end lg:gap-3">
+                <div className="flex items-center gap-4 md:flex-col md:items-end md:gap-3 lg:flex-col lg:items-end lg:gap-3">
                   <ProgressoTrilhaBadge trilhaId={t.id} />
                   <Botao
                     href={`/trilhas/${t.id}`}

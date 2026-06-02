@@ -37,10 +37,10 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
   const titulo = tituloPagina(pathname);
 
   return (
-    <div className="flex min-h-[calc(100vh-0px)] flex-col lg:flex-row">
+    <div className="flex min-h-screen flex-col lg:flex-row">
       {/* Sidebar — ambiente de estudos */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-200 lg:static lg:z-auto lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out lg:static lg:z-auto lg:translate-x-0 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -182,11 +182,11 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         </div>
       </aside>
 
-      {/* Overlay mobile */}
+      {/* Overlay mobile com backdrop blur */}
       {menuAberto && (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-black/40 lg:hidden"
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
           aria-label="Fechar menu"
           onClick={() => setMenuAberto(false)}
         />
@@ -194,21 +194,21 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
       {/* Conteúdo principal */}
       <div className="flex min-w-0 flex-1 flex-col lg:pl-0">
-        <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-3 border-b border-border bg-surface/95 px-4 backdrop-blur-md sm:px-6">
-          <div className="flex min-w-0 items-center gap-3">
+        <header className="sticky top-0 z-30 flex h-12 sm:h-14 items-center justify-between gap-2 sm:gap-3 border-b border-border bg-surface/95 px-3 sm:px-6 backdrop-blur-md">
+          <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-border-strong text-muted lg:hidden"
+              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-border-strong text-muted lg:hidden"
               onClick={() => setMenuAberto(true)}
               aria-label="Abrir menu"
             >
-              <Icon name="menu" size={20} />
+              <Icon name="menu" size={18} />
             </button>
-            <span className="truncate text-base font-bold sm:text-lg" aria-current="page">
+            <span className="truncate text-sm font-bold sm:text-base sm:font-bold md:text-lg" aria-current="page">
               {titulo}
             </span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <ThemeToggle />
             {!perfil && (
               <Botao href="/matriculas" tamanho="sm" className="hidden sm:inline-flex">

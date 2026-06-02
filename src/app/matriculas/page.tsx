@@ -124,7 +124,7 @@ export default function MatriculasPage() {
 
       {/* ── Grid principal: Benefícios + Form ── */}
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-2 lg:items-start">
           {/* Coluna esquerda: Benefícios + Trilhas */}
           <div>
             <TituloSecao
@@ -134,7 +134,7 @@ export default function MatriculasPage() {
             />
 
             {/* Benefícios em cards feature */}
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+            <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
               {beneficios.map((b) => (
                 <Card
                   key={b.titulo}
@@ -160,7 +160,7 @@ export default function MatriculasPage() {
                 descricao="Cada trilha foi desenhada para cobrir todas as competências essenciais — da técnica à venda consultiva."
               />
 
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
                 {trilhas.map((t) => (
                   <Card
                     key={t.id}

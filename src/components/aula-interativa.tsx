@@ -165,7 +165,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       )}
 
       {/* Ações: concluir / favoritar / continuar */}
-      <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <Card className="flex flex-col gap-4 sm:gap-6 md:gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           {concluida ? (
             <Etiqueta tom="success">

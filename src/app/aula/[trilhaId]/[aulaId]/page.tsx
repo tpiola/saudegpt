@@ -75,7 +75,7 @@ export default async function AulaPage({
   const marcas = aula.marcas ?? midiaExtra.marcas;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-3xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* Trilha de migalhas */}
       <nav className="flex flex-wrap items-center gap-1.5 text-sm text-subtle">
         <Link href="/trilhas" className="hover:text-brand-600">
@@ -100,7 +100,7 @@ export default async function AulaPage({
       </div>
 
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight">{aula.titulo}</h1>
-      <p className="mt-2 text-lg text-muted">{aula.resumo}</p>
+      <p className="mt-2 text-base sm:text-lg text-muted">{aula.resumo}</p>
 
       <AnimarEntrada>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
@@ -143,7 +143,7 @@ export default async function AulaPage({
 
         {aula.comparativo && (
           <Bloco icone="chart" titulo={aula.comparativo.titulo}>
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-2">
               {aula.comparativo.itens.map((it) => (
                 <div key={it.nome} className="rounded-xl bg-surface-2 p-4">
                   <div className="text-sm font-bold text-brand-600">{it.nome}</div>
@@ -157,7 +157,7 @@ export default async function AulaPage({
         {aula.simulacao && (
           <Bloco icone="user" titulo="Simulação de atendimento">
             <p className="text-sm font-medium">{aula.simulacao.cliente}</p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-2">
               <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 dark:border-emerald-800 dark:bg-emerald-900/20">
                 <div className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-300">
                   <Icon name="check" size={15} /> Conduta recomendada
@@ -175,7 +175,7 @@ export default async function AulaPage({
         )}
 
         <Bloco icone="check" titulo="Checklist de bolso">
-          <ul className="grid gap-2 sm:grid-cols-2">
+          <ul className="grid gap-2 sm:grid-cols-2 md:grid-cols-2">
             {aula.checklist.map((c) => (
               <li
                 key={c}
@@ -187,7 +187,7 @@ export default async function AulaPage({
           </ul>
         </Bloco>
 
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2">
           <Bloco icone="shield" titulo="Quando chamar o farmacêutico" tom="brand">
             <ul className="space-y-2">
               {aula.quandoChamarFarmaceutico.map((c) => (
