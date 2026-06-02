@@ -82,7 +82,7 @@ function PortalConvidadoHero() {
             <ScrollReveal delay={0} direction="up">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50 animate-pulse-soft" />
-                Criado por farmacêutico · CRF/SP 58.519 · 15+ anos de balcão
+                Formação profissional para atendentes de farmácia
               </div>
             </ScrollReveal>
 
@@ -126,11 +126,10 @@ function PortalConvidadoHero() {
 
             {/* Stats cinematográficas com contadores animados */}
             <ScrollReveal delay={600} direction="up">
-              <div className="mt-14 grid grid-cols-2 gap-6 sm:grid-cols-4">
+              <div className="mt-14 grid grid-cols-3 gap-6 sm:grid-cols-3">
                 {[
                   { valor: totalAulasContagem, label: "Microlições", sufixo: "+" },
                   { valor: 4, label: "Trilhas de formação", sufixo: "" },
-                  { valor: 15, label: "Anos cuidando", sufixo: "+" },
                   { valor: 1, label: "Missão: cuidar bem", sufixo: "" },
                 ].map((stat) => (
                   <div key={stat.label} className="border-l border-white/10 pl-4">
@@ -411,70 +410,6 @@ function PortalConvidadoHero() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SEÇÃO 6 — CRIADOR
-          ════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/5 via-transparent to-surface pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-          <div className="grid gap-10 lg:grid-cols-5 lg:items-center">
-            <ScrollReveal direction="left" className="lg:col-span-2">
-              <div className="relative mx-auto max-w-[280px] lg:mx-0">
-                <div className="aspect-[3/4] overflow-hidden rounded-2xl bg-gradient-to-br from-brand-500/20 to-accent-cyan/20">
-                  <Image
-                    src="/health-professional.jpg"
-                    alt="Thiago Piola — Farmacêutico"
-                    width={560}
-                    height={747}
-                    className="h-full w-full object-cover opacity-80"
-                  />
-                </div>
-                {/* Badge sobreposto */}
-                <div className="absolute -bottom-3 -right-3 rounded-2xl gradient-brand px-4 py-3 text-white shadow-xl">
-                  <div className="text-[10px] font-semibold uppercase tracking-wider opacity-80">CRF/SP</div>
-                  <div className="text-lg font-bold">58.519</div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="right" delay={200} className="lg:col-span-3">
-              <div>
-                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-brand-500">
-                  <span className="h-3 w-[2px] rounded-full bg-brand-500" />
-                  Quem criou
-                </div>
-                <h2 className="text-[clamp(1.5rem,3.5vw,2.5rem)] font-extrabold tracking-tight leading-tight">
-                  Conteúdo de quem{" "}
-                  <span className="text-gradient">vive o balcão</span>
-                </h2>
-                <p className="mt-4 text-lg text-muted leading-relaxed">
-                  Thiago Biasoli Garcia Piola — farmacêutico CRF/SP 58.519 com mais de 15 anos 
-                  de operação em drogarias, farmácia hospitalar e gestão. Pós-graduando em 
-                  Engenharia de IA, Google GEAR, founder da Rei das Vendas.
-                </p>
-                <p className="mt-3 text-muted leading-relaxed">
-                  Criou esta formação porque sabe o que falta no balcão: atendentes que 
-                  dominam a técnica, a comunicação e a venda consultiva. Não é teoria — 
-                  é o que ele ensina no dia a dia há 15 anos.
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {["Droga Raia", "Hospital Unimed", "CRF/SP Ativo", "Pós IA + Google GEAR", "Rei das Vendas"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center gap-1 rounded-full border border-border bg-surface-2 px-3 py-1 text-[11px] font-semibold text-muted"
-                      >
-                        <span className="h-1 w-1 rounded-full bg-emerald-500" />
-                        {tag}
-                      </span>
-                    ),
-                  )}
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
       {/* ════════════════════════════════════════════
           SEÇÃO 7 — CTA FINAL IMPACTANTE
           ════════════════════════════════════════════ */}
@@ -499,7 +434,7 @@ function PortalConvidadoHero() {
                   </h2>
                   <p className="mx-auto mt-4 max-w-lg text-muted text-lg">
                     {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real. 
-                    Criado por farmacêutico com 15+ anos de balcão. Matrícula gratuita.
+                    Matrícula gratuita.
                   </p>
                   <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <Botao

@@ -11,8 +11,8 @@ export function JsonLdCourse() {
     description: site.descricao,
     provider: {
       "@type": "Organization",
-      name: "Thiago B. G. Piola",
-      description: site.assinatura,
+      name: "Formação para Atendentes Premium de Farmácia",
+      description: "Curso profissional criado e revisado por farmacêutico CRF/SP 58.519",
     },
     inLanguage: "pt-BR",
     url,

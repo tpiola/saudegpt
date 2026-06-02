@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     default: "Treinamento Atendente Premium de Farmácia",
     template: `%s · Treinamento Atendente`,
   },
-  description: "Curso profissional de Treinamento para Atendentes de Farmácia — superior ao CEBRAC e SENAC. Criado por Farmacêutico CRF/SP 58.519. Acolhimento, medicamentos, cuidado humanizado, legislação ANVISA e atendimento que encanta.",
+  description: "Curso profissional de Treinamento para Atendentes de Farmácia — com técnica, acolhimento, medicamentos, cuidado humanizado, legislação ANVISA e atendimento que encanta.",
   keywords: [
     "treinamento atendente farmácia",
     "curso atendente farmácia",
@@ -63,10 +63,10 @@ export const metadata: Metadata = {
     "ABC Farma treinamento",
     "Conselho Federal Farmácia educação",
   ],
-  authors: [{ name: "Thiago B. G. Piola, CRF/SP 58.519" }],
+  authors: [{ name: "Formação para Atendentes Premium de Farmácia" }],
   openGraph: {
     title: "Treinamento Atendente Premium de Farmácia",
-    description: "O treinamento mais completo para atendentes de farmácia do Brasil. Criado por farmacêutico com 15+ anos. Superior ao CEBRAC e SENAC.",
+    description: "O treinamento mais completo para atendentes de farmácia do Brasil. Supera CEBRAC e SENAC.",
     locale: "pt_BR",
     type: "website",
     images: [
