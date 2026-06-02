@@ -16,6 +16,16 @@ export const imagensCategoria = {
   higieneOral: foto("photo-1622372738946-62e02505fe3b"),
   absorvente: foto("photo-1583947211879-46b31de8a573"),
   barba: foto("photo-1621605815971-fbc98d665ca7"),
+  suplementos: foto("photo-1576671081837-4900028a1b2f"),
+  proteinas: foto("photo-1593095948071-474c5cc2c1cf"),
+  pes: foto("photo-1544027993-37dbfc435a3a"),
+  palmilhas: foto("photo-1606107557195-0e29a2b5ee4c"),
+  cleanBeauty: foto("photo-1609050470947-f35aa6071497"),
+  sustentabilidade: foto("photo-1542601906990-b4d3fb778b09"),
+  sono: foto("photo-1541781774459-bb2af2f05b55"),
+  travesseiro: foto("photo-1631049307264-da0ec9d70304"),
+  verao: foto("photo-1507525428034-b723cf961d3e"),
+  inverno: foto("photo-1567016526105-22da3c84e4e4"),
 } as const;
 
 /** Logos via Wikimedia Commons (identificação educativa no balcão). */
@@ -172,6 +182,29 @@ export function midiaPadraoPorAulaId(aulaId: string): {
       produtos: produtosDermocosmetico,
     },
     cabelos: { imagemHeroUrl: imagensCategoria.shampoo },
+    // NOVOS MÓDULOS
+    "vitaminas-minerais": {
+      imagemHeroUrl: imagensCategoria.suplementos,
+      produtos: [
+        { nome: "Polivitamínicos", imagemUrl: imagensCategoria.suplementos, alt: "Vitaminas e minerais", categoria: "Suplementos" },
+        { nome: "Vitamina D", imagemUrl: imagensCategoria.suplementos, alt: "Vitamina D", categoria: "Suplementos" },
+      ],
+    },
+    "suplementos-proteina": {
+      imagemHeroUrl: imagensCategoria.proteinas,
+      produtos: [
+        { nome: "Whey protein", imagemUrl: imagensCategoria.proteinas, alt: "Suplemento proteico", categoria: "Suplementos" },
+        { nome: "Colágeno hidrolisado", imagemUrl: imagensCategoria.proteinas, alt: "Colágeno", categoria: "Suplementos" },
+      ],
+    },
+    "pes-hidratacao-calos": { imagemHeroUrl: imagensCategoria.pes },
+    "calcados-palmilhas": { imagemHeroUrl: imagensCategoria.palmilhas },
+    "cosmeticos-naturais": { imagemHeroUrl: imagensCategoria.cleanBeauty },
+    "sustentabilidade-beleza": { imagemHeroUrl: imagensCategoria.sustentabilidade },
+    "higiene-sono": { imagemHeroUrl: imagensCategoria.sono },
+    "travesseiros-acessorios-sono": { imagemHeroUrl: imagensCategoria.travesseiro },
+    "sazonal-verao": { imagemHeroUrl: imagensCategoria.verao },
+    "sazonal-inverno": { imagemHeroUrl: imagensCategoria.inverno },
   };
   return mapa[aulaId] ?? {};
 }

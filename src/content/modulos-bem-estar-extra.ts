@@ -92,6 +92,12 @@ export const modulosBemEstarExtra: Modulo[] = [
             { nome: "Dia a dia", quando: "Leite UHT ou em pó conforme preferência." },
           ],
         },
+        simulacao: {
+          cliente: "Senhor de 78 anos, magro, 'perdeu o apetite' depois de uma cirurgia. Filha pergunta se 'esse leite em pó fortificado' ajuda.",
+          falaBoa:
+            "Entendo, depois de cirurgia é comum o apetite cair. Esse suplemento é calórico e proteico, então pode ajudar a manter o peso enquanto ele se recupera. Mas eu sugiro conversar com nosso farmacêutico — ele vai avaliar se a fórmula é a mais indicada para o caso, considerando os medicamentos e a condição clínica. Também posso preparar uma amostra para ele experimentar hoje.",
+          falaEvitar: "Esse é o mais caro, então é o melhor. Pode comprar logo dois.",
+        },
         checklist: [
           "Perguntar idade, patologias e objetivo (ganho, manutenção).",
           "Verificar lactose e diabetes.",
@@ -150,6 +156,12 @@ export const modulosBemEstarExtra: Modulo[] = [
             { nome: "Noturna", quando: "Maior absorção para dormir." },
           ],
         },
+        simulacao: {
+          cliente: "Mãe de primeira viagem com bebê de 3 semanas. A fralda tamanho RN está apertando, mas ela não sabe se pode subir para P. O bebê está com assadura nas dobrinhas.",
+          falaBoa:
+            "É bem comum essa dúvida! Vamos ver pelo peso do bebê: se ele já passou de 4 kg, o tamanho P vai ficar melhor e evitar vazamentos. Sobre a assadura, posso sugerir uma pomada de barreira com óxido de zinco — ela protege a pele contra a umidade. Aplicar a cada troca, secando bem as dobrinhas antes. Se a assadura não melhorar em dois dias, vale o farmacêutico dar uma olhada.",
+          falaEvitar: "Só compra a P que é maior, dura mais. E passa essa pomada genérica.",
+        },
         checklist: [
           "Perguntar peso aproximado do bebê.",
           "Orientar barreira preventiva.",
@@ -195,6 +207,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Sintomas de infecção, atraso menstrual com dúvida, sangramento anormal.",
         ],
         errosComuns: ["Pressionar marca sem perguntar preferência de formato."],
+        simulacao: {
+          cliente: "Cliente jovem entra com vergonha, olhando para os absorventes. Fala baixinho: 'É que… meu fluxo está muito forte, fico preocupada'.",
+          falaBoa:
+            "Pode ficar tranquila, estou aqui pra ajudar. Fluxo intenso é mais comum do que parece. Posso sugerir um absorvente noturno com maior capacidade ou até a calcinha absorvente, dependendo do que você preferir. Se o fluxo vier com cólica forte, dor ou atraso, aí vale conversar com o farmacêutico. Por enquanto, quer ver as opções de absorção máxima que chegaram?",
+          falaEvitar: "Isso é normal, compra esse pacotão. Próximo!",
+        },
         quiz: [
           q(
             "Postura correta na venda de absorventes:",
@@ -241,7 +259,16 @@ export const modulosBemEstarExtra: Modulo[] = [
         quandoChamarFarmaceutico: [
           "Gestação, acne severa, rosácea ou uso de receita dermatológica.",
         ],
-        errosComuns: ["Vender muitos produtos de uma vez."],
+        errosComuns: [
+          "Vender muitos produtos de uma vez.",
+          "Indicar ácidos para iniciantes sem orientação de uso.",
+        ],
+        simulacao: {
+          cliente: "Moça de 22 anos, nunca fez skincare, quer 'um creme de rosto para começar'. Pele oleosa, disse que já teve acne na adolescência.",
+          falaBoa:
+            "Que bom que você quer começar! O ideal é ir com calma — três passos simples: um sabonete suave para limpar, um hidratante oil-free e um protetor solar para usar de manhã. À noite, você repete a limpeza e o hidratante. Se quiser prevenir as manchas e a oleosidade, depois de algumas semanas a gente pode conversar sobre incluir um ativo como niacinamida. O mais importante é o protetor solar todo dia, combinado?",
+          falaEvitar: "Vou montar um kit completo com cinco produtos e dois ácidos — você já usa em casa.",
+        },
         quiz: [
           q(
             "Qual passo não pode faltar de manhã?",
@@ -267,6 +294,12 @@ export const modulosBemEstarExtra: Modulo[] = [
         checklist: ["Identificar queixa principal.", "Sugerir textura adequada."],
         quandoChamarFarmaceutico: ["Dermatite, alergia a fragrância intensa."],
         errosComuns: ["Perfume em excesso em pele sensibilizada."],
+        simulacao: {
+          cliente: "Senhora de 50+ anos, pele do braço e pernas muito ressecada no inverno. 'Parece casca de cobra, coça de noite'.",
+          falaBoa: "Essa sensação de repuxamento e descamação é bem típica do frio. Para isso, um hidratante com manteiga de karité ou ureia vai repor a barreira da pele. Aplicar depois do banho, com a pele ainda úmida, ajuda a fixar melhor. Se a coceira atrapalhar o sono, pode ser um sinal de dermatite — sugiro passar com o farmacêutico para avaliar. Enquanto isso, quer sentir a textura desse creme aqui?",
+          falaEvitar: "Só passar esse perfume que disfarça.",
+        },
+
         quiz: [
           q(
             "Pele muito ressecada no corpo pede:",
@@ -315,12 +348,6 @@ export const modulosBemEstarExtra: Modulo[] = [
             { nome: "Ferro (sulfato ferroso)", quando: "Prevenção e tratamento de anemia (com prescrição)." },
           ],
         },
-        simulacao: {
-          cliente: "Cliente se sente cansado e pede 'uma vitamina para dar energia'.",
-          falaBoa:
-            "Cansaço pode ter várias causas. Posso sugerir um polivitamínico como reforço, mas se o cansaço persistir ou vier acompanhado de falta de ar, palidez, vale consultar o médico para investigar.",
-          falaEvitar: "Toma esse aqui que acaba com o cansaço.",
-        },
         checklist: [
           "Perguntar sobre medicamentos em uso (interações).",
           "Reforçar que suplemento não substitui alimentação.",
@@ -334,6 +361,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Vender megadoses de vitamina sem orientação.",
           "Prometer disposição/energia como se fosse medicamento.",
         ],
+        simulacao: {
+          cliente: "Cliente se sente cansado e pede 'uma vitamina para dar energia'. Também menciona que tem dores nas pernas e já ouviu que pode ser falta de vitamina D.",
+          falaBoa: "Cansaço pode ter várias causas — desde uma rotina pesada até deficiências nutricionais. Posso sugerir um polivitamínico como reforço, mas como você mencionou dores nas pernas e suspeita de vitamina D baixa, o ideal é conversar com o farmacêutico — ele pode avaliar se faz sentido solicitar um exame de sangue. A vitamina D é lipossolúvel e o excesso também faz mal, então o ideal é suplementar com base em exame. Enquanto isso, que tal começar com um polivitamínico suave e agendar uma conversa com o farmacêutico?",
+          falaEvitar: "Compra essa vitamina D de 5000 UI que resolve tudo.",
+        },
+
         quiz: [
           q(
             "Qual vitamina está mais associada à imunidade e saúde óssea?",
@@ -379,6 +412,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Sugerir whey para emagrecer sem contexto de déficit calórico.",
           "Prometer resultados milagrosos com colágeno.",
         ],
+        simulacao: {
+          cliente: "Rapaz de 28 anos, treina musculação, pede 'um whey bom' mas nunca tomou. Orçamento limitado, dúvida se precisa de BCAA junto.",
+          falaBoa: "Ótimo que você quer começar com suplementação! O whey protein é uma proteína prática para o pós-treino. Para iniciante, um whey concentrado de boa qualidade já atende bem. Sobre BCAA, a ciência atual mostra que se você já come proteína suficiente, o BCAA não faz diferença significativa. Sugiro começar só com o whey, ver como seu corpo responde, e depois avaliamos se precisa de algo a mais. Tem alguma restrição alimentar ou intolerância?",
+          falaEvitar: "Leva o combo whey + BCAA + termogênico que você fica gigante em um mês.",
+        },
+
         quiz: [
           q(
             "Para melhor absorção do colágeno hidrolisado, é recomendado associar:",
@@ -423,6 +462,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Indicar lâmina ou bisturi para remover calos em diabéticos.",
           "Ignorar diferença entre calo (ósseo) e calosidade (pele).",
         ],
+        simulacao: {
+          cliente: "Senhor de 62 anos, diabético diagnosticado há 5 anos. Notou uma área mais grossa na sola do pé, 'acha que é calo'. Quer uma pedra-pomes para lixar.",
+          falaBoa: "Seu cuidado é muito importante! Como você tem diabetes, a pele dos pés precisa de atenção redobrada — qualquer machucado pode demorar a cicatrizar. Em vez de lixar, o mais seguro é hidratar com um creme específico para pés, com ureia, aplicar todos os dias. E esse calo eu sugiro que o farmacêutico avalie — ele pode indicar se precisa de acompanhamento com um podólogo. Vou chamá-lo para dar uma olhada, ok?",
+          falaEvitar: "Pode lixar à vontade, esse creme aqui resolve tudo.",
+        },
+
         quiz: [
           q(
             "Paciente diabético com calo no pé: conduta correta?",
@@ -463,6 +508,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Indicar meia de compressão alta sem avaliação.",
           "Confundir palmilha de conforto com palmilha ortopédica sob medida.",
         ],
+        simulacao: {
+          cliente: "Profissional que passa o dia em pé (cabeleireira). 'Meus pés doem no fim do dia, minhas costas também'. Nunca usou palmilha.",
+          falaBoa: "Passar o dia em pé sobrecarrega os pés e a coluna mesmo. Uma palmilha de gel ou silicone pode absorver o impacto e aliviar muito o cansaço. O ideal é uma palmilha que encaixe bem no tênis que você usa no trabalho. Se a dor nas costas persistir depois de algumas semanas usando a palmilha, vale uma avaliação com ortopedista. Quer experimentar a sensação de uma palmilha de gel aqui?",
+          falaEvitar: "Compra essa palmilha ortopédica sob medida que custa 300 reais.",
+        },
+
         quiz: [
           q(
             "Meias de compressão com grau elevado exigem:",
@@ -513,6 +564,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Afirmar que natural é sempre melhor ou mais seguro.",
           "Confundir vegano com hipoalergênico.",
         ],
+        simulacao: {
+          cliente: "Rapaz de 24 anos, cabelo cacheado, 'quer um shampoo natural porque viu no TikTok que sulfato faz mal'. Nunca usou produto profissional.",
+          falaBoa: "Legal que você está buscando entender melhor os produtos! Shampoo sem sulfato realmente limpa de forma mais suave e preserva a oleosidade natural do cabelo — ótimo para cabelos crespos e cacheados. Mas 'natural' não significa que sirva para todo mundo. Alguns shampoos naturais têm óleos essenciais que podem irritar o couro cabeludo sensível. Posso te mostrar duas opções sem sulfato e com ingredientes suaves para você experimentar?",
+          falaEvitar: "Tudo que é natural é melhor, leva esse e pronto.",
+        },
+
         quiz: [
           q(
             "Um cosmético cruelty-free significa que:",
@@ -553,6 +610,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Menosprezar produtos sustentáveis como 'modinha'.",
           "Não saber explicar a diferença de uso de um shampoo sólido.",
         ],
+        simulacao: {
+          cliente: "Cliente ecoconsciente, 'só compro produto que não testa em animais'. Quer um shampoo sólido mas 'já tentou e não espuma'.",
+          falaBoa: "Que bom que você se preocupa com isso! Sobre o shampoo sólido não espumar tanto quanto o líquido — isso é normal, porque ele não tem água e tem menos agentes espumantes. A técnica é: esfregar a barra entre as mãos molhadas ou diretão no cabelo molhado, massagear bem o couro cabeludo. Depois de alguns usos você pega o jeito. Quer ver aqui como ele funciona?",
+          falaEvitar: "Esse é hipster, põe na sacola e tenta em casa.",
+        },
+
         quiz: [
           q(
             "Qual a principal vantagem do formato refil?",
@@ -611,6 +674,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Vender melatonina como solução mágica sem orientar higiene do sono.",
           "Recomendar óleo essencial para ingestão oral (uso apenas difusor/ml tópico).",
         ],
+        simulacao: {
+          cliente: "Cliente de 35 anos, 'não consigo dormir, fico rolando na cama pensando no trabalho'. Já tentou chá, não funcionou. Ouviu falar de melatonina.",
+          falaBoa: "Entendo, a mente acelerada atrapalha muito o descanso. Antes de pensar em melatonina — que é um suplemento regulador, não um indutor do sono — vale tentar ajustar a rotina: desligar telas uma hora antes, criar um ritual noturno (um chá, luz baixa, som calmo). Se isso não melhorar, a melatonina pode ajudar a regular o ciclo, em doses baixas (0,21 a 3 mg), 30 minutos antes de dormir. Mas se a insônia passar de 2 semanas, sugiro conversar com o farmacêutico para investigar causas mais profundas.",
+          falaEvitar: "Toma 10 mg de melatonina que você apaga na hora.",
+        },
+
         quiz: [
           q(
             "Antes de indicar melatonina, o atendente deve:",
@@ -652,6 +721,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Indicar travesseiro ortopédico sem perguntar posição de dormir.",
           "Sugerir cobertor pesado para criança sem orientação de peso.",
         ],
+        simulacao: {
+          cliente: "Acorda com dor no pescoço toda manhã. 'Meu travesseiro é velho, acho que está na hora de trocar'. Dorme de lado.",
+          falaBoa: "Dor no pescoço ao acordar é um sinal clássico de que o travesseiro não está dando o suporte adequado. Como você dorme de lado, o ideal é um travesseiro mais alto e firme para preencher o espaço entre o ombro e a cabeça, mantendo a coluna reta. Um travesseiro ortopédico com elevação lateral ou um modelo em pluma com altura ajustável pode resolver. Depois de escolher, dou um prazo de 3 a 5 noites para adaptação — se a dor persistir, vale uma avaliação.",
+          falaEvitar: "Compra o mais caro que é ortopédico e pronto.",
+        },
+
         quiz: [
           q(
             "Ao indicar um travesseiro ortopédico, o primeiro passo é:",
@@ -710,6 +785,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Indicar protetor FPS baixo para exposição direta.",
           "Não orientar reaplicação do protetor.",
         ],
+        simulacao: {
+          cliente: "Família vai para a praia passar o dia. Mãe com dois filhos pequenos, 'preciso de protetor, repelente, tudo'. Filhos têm pele sensível.",
+          falaBoa: "Que delícia, viagem à praia! Vou montar um combo completo. Para as crianças, sugiro um protetor solar infantil FPS 60, resistente à água, em loção — mais fácil de espalhar. Para você, um FPS 50 toque seco. O repelente para todos, mas atenção: aplicar o protetor primeiro em todo o corpo, esperar secar, e depois passar o repelente por cima. Não esquecer de reaplicar o protetor a cada 2 horas e depois de entrar no mar. Para o pós-praia, levo um pós-sol com aloe vera para acalmar a pele de todos. Quer que eu monte o kit?",
+          falaEvitar: "Pega três protetores FPS 15 que é tudo igual.",
+        },
+
         quiz: [
           q(
             "A ordem correta de aplicação é:",
@@ -760,6 +841,12 @@ export const modulosBemEstarExtra: Modulo[] = [
           "Indicar loção leve para pele ressecada pelo frio.",
           "Prometer que vitamina C previne gripe com certeza.",
         ],
+        simulacao: {
+          cliente: "Senhora de 45 anos, 'toda listrada de ressecada no inverno. Lábios rachados. Também quero prevenir gripe'.",
+          falaBoa: "O inverno realmente exige cuidados extras! Para a pele, sugiro um hidratante com manteiga de karité ou ureia — use depois do banho, com a pele ainda úmida, que fixa melhor. Para os lábios, esse balm com óleo de rícino e manteiga de cacau é excelente — evite passar saliva, que resseca ainda mais. Sobre prevenir gripe, vitamina C e zinco podem dar um suporte para a imunidade, mas o mais importante é manter a alimentação equilibrada e se vacinar. Quer levar o hidratante, o balm e a vitamina C? Posso separar tudo.",
+          falaEvitar: "Compra esse hidratante barato e vitamina C em alta dose — não pega gripe.",
+        },
+
         quiz: [
           q(
             "No inverno, a pele ressecada pede hidratante com:",
