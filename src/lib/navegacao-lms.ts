@@ -39,7 +39,7 @@ export const secoesNavLms: SecaoNavLms[] = [
   {
     titulo: "Desempenho",
     itens: [
-      { href: "/trilhas/vendas", label: "Cuidado Humanizado", icone: "heart" },
+      { href: "/trilhas/encantamento", label: "Cuidado Humanizado", icone: "heart" },
       { href: "/ranking", label: "Ranking opt-in", icone: "award" },
     ],
   },

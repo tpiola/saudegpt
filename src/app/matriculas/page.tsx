@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Matrículas",
   description:
-    "Matricule-se na Formação para Atendentes Premium de Farmácia — com foco em vendas consultivas, oferecimento e persuasão ética no balcão.",
+    "Matricule-se na Formação para Atendentes Premium de Farmácia — com foco em acolhimento, cuidado humanizado, comunicação empática e encantamento no balcão.",
 };
 
 const beneficios = [
@@ -57,7 +57,7 @@ const beneficios = [
 
 export default function MatriculasPage() {
   const totalAulasContagem = totalAulas();
-  const trilhaVendas = trilhas.find((t) => t.id === "vendas");
+  const trilhaVendas = trilhas.find((t) => t.id === "encantamento");
   const aulasVendas = trilhaVendas?.modulos.reduce((n, m) => n + m.aulas.length, 0) ?? 0;
 
   return (

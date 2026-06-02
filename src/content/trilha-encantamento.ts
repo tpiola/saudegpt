@@ -3,7 +3,7 @@ import { q } from "./_helpers";
 
 // Trilha 4 — Vendas, Persuasão e Atendimento Consultivo no Balcão.
 export const trilhaVendas: Trilha = {
-  id: "vendas",
+  id: "encantamento",
   numero: 4,
   titulo: "Cuidado Humanizado e Atendimento que Encanta",
   subtitulo: "Do acolhimento ao cuidado contínuo",
@@ -41,29 +41,29 @@ export const trilhaVendas: Trilha = {
             falaEvitar: '"Temos um shampoo anticaspa excelente em promoção hoje, leva dois e ganha 10%."',
           },
           comparativo: {
-            titulo: "Sinais verdes vs. Sinais vermelhos para oferecer",
+            titulo: "Sinais verdes vs. Sinais vermelhos para sugerir",
             itens: [
-              { nome: "Sinal verde — pode oferecer", quando: "Cliente relaxou, fez contato visual, concordou com a orientação inicial, fez perguntas sobre o produto." },
-              { nome: "Sinal vermelho — não ofereça", quando: "Cliente com pressa, irritado, olhando o relógio, com expressão fechada ou claramente sem recursos." },
+              { nome: "Sinal verde — pode sugerir", quando: "Cliente relaxou, fez contato visual, concordou com a orientação inicial, fez perguntas sobre o produto." },
+              { nome: "Sinal vermelho — não insista", quando: "Cliente com pressa, irritado, olhando o relógio, com expressão fechada ou claramente sem recursos." },
               { nome: "Sinal amarelo — investigue antes", quando: "Cliente hesitante, faz careta ao ouvir o preço, pergunta 'será que resolve?' sem convicção." },
             ],
           },
           checklist: [
-            "Só oferecer depois de ouvir e entender a necessidade.",
+            "Só sugerir depois de ouvir e entender a necessidade.",
             "Observar linguagem corporal do cliente antes de propor.",
-            "Nunca oferecer antes de concluir a orientação inicial.",
+            "Nunca sugerir antes de concluir a orientação inicial.",
           ],
           quandoChamarFarmaceutico: [
-            "Quando o cliente demonstrar desconfiança depois de uma oferta.",
+            "Quando o cliente demonstrar desconfiança depois de uma sugestão.",
             "Para validar se uma associação de produtos é segura.",
           ],
           errosComuns: [
-            "Oferecer antes de ouvir — parece desespero e quebra o rapport.",
+            "Sugerir antes de ouvir — parece desespero e quebra o rapport.",
             "Usar o mesmo script para todo cliente sem adaptar.",
           ],
           quiz: [
             q(
-              "Qual o melhor momento para oferecer um produto complementar?",
+              "Qual o melhor momento para sugerir um produto complementar?",
               [
                 "Assim que o cliente entra na loja",
                 "Depois de acolher, ouvir e orientar, durante a conversa",
@@ -71,10 +71,10 @@ export const trilhaVendas: Trilha = {
                 "Antes mesmo do cliente falar o que quer",
               ],
               1,
-              "O cliente precisa se sentir ouvido primeiro. Oferecer antes disso é oportunismo.",
+              "O cliente precisa se sentir ouvido primeiro. Sugerir antes disso é oportunismo.",
             ),
             q(
-              "Qual é um sinal VERDE de que o cliente está aberto a uma oferta?",
+              "Qual é um sinal VERDE de que o cliente está aberto a uma sugestão?",
               [
                 "Cliente cruza os braços e franze a testa",
                 "Cliente faz perguntas sobre o produto e concorda com a orientação",
@@ -87,8 +87,8 @@ export const trilhaVendas: Trilha = {
             q(
               "O que fazer quando o cliente demonstra sinais vermelhos (pressa, irritação)?",
               [
-                "Ignorar e oferecer mesmo assim",
-                "Respeitar o momento — agilizar o atendimento e não fazer ofertas adicionais",
+                "Ignorar e sugerir mesmo assim",
+                "Respeitar o momento — agilizar o atendimento e não fazer sugestões adicionais",
                 "Chamar o gerente",
                 "Aumentar o tom de voz para chamar atenção",
               ],
@@ -96,7 +96,7 @@ export const trilhaVendas: Trilha = {
               "Respeitar o estado emocional do cliente é a base do cuidado. Cliente irritado ou com pressa não está receptivo.",
             ),
             q(
-              "Por que oferecer antes da orientação inicial é prejudicial?",
+              "Por que sugerir antes da orientação inicial é prejudicial?",
               [
                 "Porque o cliente pode comprar mais",
                 "Porque o cliente percebe oportunismo e perde a confiança no atendente",
@@ -104,18 +104,18 @@ export const trilhaVendas: Trilha = {
                 "Porque o farmacêutico não autorizou",
               ],
               1,
-              "Oferecer antes de orientar soa como 'quero vender' em vez de 'quero ajudar'. A confiança se perde em segundos.",
+              "Sugerir antes de orientar soa como 'quero vender' em vez de 'quero ajudar'. A confiança se perde em segundos.",
             ),
           ],
           xp: 60,
         },
         {
           id: "gatilhos-mentais",
-          titulo: "Gatilhos mentais éticos na farmácia",
+          titulo: "Encantar com ética e informação",
           duracaoMin: 7,
           nivel: "intermediario",
           resumo:
-            "Como usar gatilhos de urgência, prova social, reciprocidade e autoridade sem apelar — com exemplos reais de balcão.",
+            "Como usar gatilhos de urgência, prova social, reciprocidade e autoridade para informar e encantar com transparência — exemplos reais de como fortalecer a confiança no balcão.",
           resumoExecutivo: [
             "Gatilho da prova social: 'Muitos clientes com o mesmo problema usam esse e voltam pra comprar de novo.'",
             "Gatilho da autoridade: 'O farmacêutico sempre recomenda essa linha porque tem respaldo clínico.'",
@@ -140,10 +140,10 @@ export const trilhaVendas: Trilha = {
           },
           checklist: [
             "Usar prova social como informação, não como pressão.",
-            "Nunca criar urgência falsa — destruir a confiança é mais caro que perder uma venda.",
+            "Nunca criar urgência falsa — destruir a confiança é mais caro que perder um cliente.",
           ],
           quandoChamarFarmaceutico: [
-            "Para respaldar tecnicamente ofertas de maior valor.",
+            "Para respaldar tecnicamente sugestoes de maior valor.",
             "Quando o cliente mostra resistência e o farmacêutico pode agregar credibilidade.",
           ],
           errosComuns: [
@@ -211,11 +211,11 @@ export const trilhaVendas: Trilha = {
         },
         {
           id: "como-oferecer",
-          titulo: "Como oferecer sem ser invasivo",
+          titulo: "Como sugerir com cuidado",
           duracaoMin: 6,
           nivel: "basico",
           resumo:
-            "A arte de sugerir sem empurrar: vocabulário, tom, timing e a diferença entre oferta consultiva e oferta predatória.",
+            "A arte de sugerir com cuidado: vocabulário, tom, timing e a diferença entre sugestão consultiva e abordagem invasiva.",
           resumoExecutivo: [
             "Nunca comece com 'Você quer levar também?' — isso soa automático e genérico.",
             "Ofereça contextualizando: 'Já que você está levando o antialérgico, esse soro fisiológico ajuda a complementar o tratamento.'",
@@ -229,12 +229,12 @@ export const trilhaVendas: Trilha = {
             falaEvitar: '"Não quer levar um antitérmico também? Tá em promoção."',
           },
           comparativo: {
-            titulo: "Oferta consultiva vs. Oferta predatória",
+            titulo: "Sugestão consultiva vs. Abordagem invasiva",
             itens: [
-              { nome: "Abordagem consultiva", quando: "Contextualiza: 'Já que voce esta levando o antialergico, esse soro ajuda a complementar.' Mostra cuidado." },
-              { nome: "Abordagem predatória", quando: "Generica: 'Quer levar mais alguma coisa?' — parece robo, nao agrega valor." },
-              { nome: "Uso do 'porque'", quando: "Consultivo: 'Isso ajuda porque...' (justifica). Predatorio: 'Leva que ta barato.' (apela ao preco)." },
-              { nome: "Resposta ao 'nao'", quando: "Consultivo: aceita na hora. Predatorio: insiste, argumenta, faz o cliente se sentir mal." },
+              { nome: "Sugestão consultiva", quando: "Contextualiza: 'Já que voce esta levando o antialergico, esse soro ajuda a complementar.' Mostra cuidado." },
+              { nome: "Abordagem invasiva", quando: "Generica: 'Quer levar mais alguma coisa?' — parece robo, nao agrega valor." },
+              { nome: "Uso do 'porque'", quando: "Consultivo: 'Isso ajuda porque...' (justifica). Invasivo: 'Leva que ta barato.' (apela ao preco)." },
+              { nome: "Resposta ao 'nao'", quando: "Consultivo: aceita na hora. Invasivo: insiste, argumenta, faz o cliente se sentir mal." },
             ],
           },
           checklist: [
@@ -288,11 +288,11 @@ export const trilhaVendas: Trilha = {
         },
         {
           id: "objecoes",
-          titulo: "Como lidar com objeções de preço e necessidade",
+          titulo: "Lidar com objeções com empatia",
           duracaoMin: 8,
           nivel: "intermediario",
           resumo:
-            "Não é resistência — é dúvida. Técnicas para ouvir a objeção, validar o sentimento e reposicionar o valor sem pressionar.",
+            "Não é resistência — é dúvida. Técnicas para ouvir a objeção, validar o sentimento e reposicionar o valor com empatia, sem pressionar.",
           resumoExecutivo: [
             "Objeção de preço quase nunca é sobre o valor. É sobre falta de entendimento do benefício.",
             'Nunca responda com desconto imediato. Primeiro entenda: "O que te faz pensar que é caro?"',
@@ -376,11 +376,11 @@ export const trilhaVendas: Trilha = {
         },
         {
           id: "cross-sell-upsell",
-          titulo: "Cross-sell e up-sell no balcão da farmácia",
+          titulo: "Complementar com cuidado",
           duracaoMin: 7,
           nivel: "intermediario",
           resumo:
-            "Como aumentar o ticket médio oferecendo complementos e upgrades que realmente agregam ao tratamento do cliente.",
+            "Como complementar o cuidado do cliente com sugestões que realmente agregam ao bem-estar dele — sem pressão, com propósito genuíno.",
           resumoExecutivo: [
             "Cross-sell é oferecer algo que complementa: protetor solar + pós-sol; antialérgico + soro fisiológico.",
             "Up-sell é oferecer uma versão melhor do mesmo produto: um xarope com mais princípios ativos, uma pomada com fórmula mais completa.",
@@ -394,11 +394,11 @@ export const trilhaVendas: Trilha = {
             falaEvitar: '"Tem o fator 60 também por R$ 30 a mais."',
           },
           comparativo: {
-            titulo: "Cross-sell vs. Up-sell na prática",
+            titulo: "Complementar com cuidado vs. Simplesmente empurrar",
             itens: [
-              { nome: "Cross-sell", quando: "Complemento: protetor solar + pos-sol; antialergico + soro fisiologico; xarope + mel." },
-              { nome: "Up-sell", quando: "Upgrade: fator 30 para fator 60; versao generica para versao com mais principios ativos." },
-              { nome: "Limite recomendado", quando: "Cross-sell: maximo 2 complementos. Up-sell: 1 upgrade por atendimento." },
+              { nome: "Complemento com propósito", quando: "Complemento: protetor solar + pos-sol; antialergico + soro fisiologico; xarope + mel." },
+              { nome: "Upgrade consciente", quando: "Upgrade com beneficio real: fator 30 para fator 60; versao generica para versao com mais principios ativos." },
+              { nome: "Limite recomendado", quando: "Maximo 2 sugestoes de complemento e 1 upgrade por atendimento." },
               { nome: "Quando evitar", quando: "Cliente com pressa, cliente irritado, cliente com orcamento limitado evidente." },
             ],
           },
@@ -464,11 +464,11 @@ export const trilhaVendas: Trilha = {
         },
         {
           id: "fechamento",
-          titulo: "Técnicas de fechamento que funcionam",
+          titulo: "Concluir com confiança",
           duracaoMin: 6,
           nivel: "avancado",
           resumo:
-            "Como conduzir o cliente até a decisão de compra sem pressão. Fechamento assumido, alternativo, resumo e silêncio.",
+            "Como conduzir o cliente até a decisão de cuidado sem pressão. Fechamento assumido, alternativo, resumo e silêncio.",
           resumoExecutivo: [
             "Fechamento assumido: agir como se a compra já estivesse decidida. 'Vou separar aqui pra você.'",
             "Fechamento alternativo: dar duas opções boas. 'Você prefere o de 30ml ou o de 60ml?'",
@@ -491,16 +491,16 @@ export const trilhaVendas: Trilha = {
             ],
           },
           checklist: [
-            "Identificar sinais de compra: tocar no produto, perguntar detalhes, concordar com a orientação.",
-            "Escolher a técnica de fechamento certa para cada perfil.",
-            "Depois do fechamento, ficar em silêncio.",
+            "Identificar sinais de abertura: tocar no produto, perguntar detalhes, concordar com a orientação.",
+            "Escolher a técnica de conclusão certa para cada perfil.",
+            "Depois de concluir, ficar em silêncio.",
           ],
           quandoChamarFarmaceutico: [
-            "Fechamento de vendas de medicamentos que exigem validação técnica.",
+            "Conclusão de atendimentos de medicamentos que exigem validação técnica.",
           ],
           errosComuns: [
-            "Falar depois de fechar a venda — você tira o cliente da decisão.",
-            "Fechamento agressivo: pressionar o cliente a decidir na hora.",
+            "Falar depois de concluir — você tira o cliente da decisão.",
+            "Conclusão agressiva: pressionar o cliente a decidir na hora.",
           ],
           quiz: [
             q(
@@ -1004,11 +1004,11 @@ export const trilhaVendas: Trilha = {
         },
         {
           id: "falar-de-preco",
-          titulo: "Como falar de preço sem perder a venda",
+          titulo: "Como falar de preço mantendo a confiança",
           duracaoMin: 6,
           nivel: "intermediario",
           resumo:
-            "Preço é uma conversa sobre valor. Técnicas para apresentar preço com confiança e transformar objeção de preço em decisão de compra.",
+            "Preço é uma conversa sobre valor. Técnicas para apresentar preço com confiança e transformar objeção em diálogo produtivo, mantendo a relação de cuidado.",
           resumoExecutivo: [
             "Nunca fale o preço sem contexto. Antes do valor, entregue os benefícios.",
             "Âncora de preço: apresente a opção mais cara primeiro, depois a intermediária. A intermediária parece 'mais em conta'.",

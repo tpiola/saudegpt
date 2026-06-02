@@ -2,7 +2,7 @@ import type { Aula, Modulo, Trilha } from "./types";
 import { trilhaPerfumaria } from "./trilha-perfumaria";
 import { trilhaMedicamentos } from "./trilha-medicamentos";
 import { trilhaOperacional } from "./trilha-operacional";
-import { trilhaVendas } from "./trilha-vendas";
+import { trilhaVendas } from "./trilha-encantamento";
 
 export const trilhas: Trilha[] = [
   trilhaPerfumaria,
