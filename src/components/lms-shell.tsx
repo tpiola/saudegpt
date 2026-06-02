@@ -38,24 +38,24 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-[calc(100vh-0px)] flex-col lg:flex-row">
-      {/* Sidebar — ambiente de estudos (visual premium) */}
+      {/* Sidebar — ambiente de estudos */}
       <aside
-        className={`lms-sidebar fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-200 lg:static lg:z-auto lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-200 lg:static lg:z-auto lg:translate-x-0 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Gradiente decorativo sutil no topo */}
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-400 via-accent-cyan to-brand-500 opacity-60" />
+        {/* Barra decorativa no topo — forest gradient */}
+        <div className="absolute inset-x-0 top-0 h-1 bg-[linear-gradient(to_right,var(--forest-500),var(--sage-500),var(--terracota-500))] opacity-80" />
 
         {/* Header: logo + nome */}
         <div className="relative flex h-16 items-center gap-3 border-b border-border px-4">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-brand-500/[0.04] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-[linear-gradient(to_bottom,var(--forest-500)/[0.06],transparent)] pointer-events-none" />
           <Link
             href="/"
             className="flex min-w-0 flex-1 items-center gap-2.5"
             onClick={() => setMenuAberto(false)}
           >
-            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl gradient-brand text-white shadow-md shadow-brand-500/25">
+            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white shadow-md shadow-forest-500/25">
               <Icon name="graduation" size={20} />
             </span>
             <span className="min-w-0 leading-tight">
@@ -77,16 +77,15 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <nav className="flex-1 overflow-y-auto px-3 py-5">
           {secoesNavLms.map((secao, idx) => (
             <div key={secao.titulo} className={idx > 0 ? "mt-5 pt-5 relative" : ""}>
-              {/* Separador decorativo entre seções (exceto a primeira) */}
+              {/* Separador decorativo */}
               {idx > 0 && (
                 <div className="absolute inset-x-2 -top-px flex items-center gap-2">
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="h-px flex-1 bg-[linear-gradient(to_right,transparent,var(--border),transparent)]" />
                   <span className="h-1 w-1 rounded-full bg-border shrink-0" />
-                  <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border to-transparent" />
+                  <div className="h-px flex-1 bg-[linear-gradient(to_right,transparent,var(--border),transparent)]" />
                 </div>
               )}
 
-              {/* Título da seção */}
               <p className="mb-2.5 px-2 text-[10px] font-bold uppercase tracking-wider text-subtle">
                 {secao.titulo}
               </p>
@@ -99,39 +98,38 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                       onClick={() => setMenuAberto(false)}
                       className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
-                          ? "bg-gradient-to-r from-brand-500/10 via-brand-400/5 to-transparent text-foreground shadow-sm"
+                          ? "bg-[linear-gradient(to_right,var(--forest-500)/[0.10],transparent)] text-foreground shadow-sm"
                           : "text-muted hover:glass hover:text-foreground"
                       }`}
                     >
                       {/* Barra de destaque no item ativo */}
                       {ativo(item.href) && (
-                        <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-brand-400 to-accent-cyan" />
+                        <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-[linear-gradient(to_bottom,var(--forest-500),var(--sage-500))]" />
                       )}
 
-                      {/* Ícone com cor da marca quando ativo */}
                       <Icon
                         name={item.icone}
                         size={18}
                         className={`shrink-0 transition-colors duration-200 ${
                           ativo(item.href)
-                            ? "text-brand-600 dark:text-brand-400"
+                            ? "text-forest-600 dark:text-forest-400"
                             : "group-hover:text-foreground"
                         }`}
                       />
 
                       {item.label}
 
-                      {/* Badge de notificação (exemplo: Missões) */}
+                      {/* Badge de notificação - Missões */}
                       {item.href === "/missoes" && (
-                        <span className="badge-premium badge-brand ml-auto">
-                          <span className="h-1.5 w-1.5 rounded-full bg-brand-500 animate-pulse" />
+                        <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-[linear-gradient(135deg,var(--forest-500),var(--brand-500))] px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">
+                          <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
                           Novo
                         </span>
                       )}
 
                       {/* Indicador para trilha de cuidado humanizado */}
                       {item.href === "/trilhas/vendas" && (
-                        <span className="ml-auto text-[9px] font-semibold uppercase tracking-wider text-accent-cyan/70">
+                        <span className="ml-auto text-[9px] font-semibold uppercase tracking-wider text-sage-500">
                           Novo
                         </span>
                       )}
@@ -143,15 +141,14 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           ))}
         </nav>
 
-        {/* Footer com gradiente e perfil */}
+        {/* Footer da sidebar */}
         <div className="relative border-t border-border px-4 pb-4 pt-3">
-          {/* Gradiente sutil no footer */}
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-brand-500/[0.03] via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-[linear-gradient(to_top,var(--forest-500)/[0.04],transparent)] pointer-events-none" />
 
           {perfil ? (
             <div className="relative mb-3 rounded-xl bg-surface-2/80 px-3 py-2.5 backdrop-blur-sm border border-border">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white text-xs font-bold shadow-sm">
+                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white text-xs font-bold shadow-sm">
                   {perfil.nome.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -166,20 +163,19 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             </Botao>
           )}
 
-          {/* Links legais com separador decorativo */}
           <div className="relative flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-subtle">
             <div className="mb-1.5 flex w-full items-center gap-2">
-              <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/60 to-transparent" />
+              <div className="h-px flex-1 bg-[linear-gradient(to_right,transparent,var(--border)/[0.6],transparent)]" />
             </div>
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-brand-600 transition-colors">
+              <Link key={l.href} href={l.href} className="hover:text-forest-600 transition-colors">
                 {l.label}
               </Link>
             ))}
-            <Link href="/sobre" className="hover:text-brand-600 transition-colors">
+            <Link href="/sobre" className="hover:text-forest-600 transition-colors">
               Sobre o curso
             </Link>
-            <Link href="/admin" className="hover:text-brand-600 transition-colors">
+            <Link href="/admin" className="hover:text-forest-600 transition-colors">
               Admin
             </Link>
           </div>

@@ -14,8 +14,8 @@ export function WhatsAppButton() {
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
       {/* Balão de mensagem */}
       {aberto && (
-        <div className="animate-slide-up rounded-2xl border border-emerald-200 bg-white p-4 shadow-xl dark:border-emerald-800 dark:bg-slate-900 max-w-xs">
-          <p className="text-sm font-semibold text-emerald-700 dark:text-emerald-300">
+        <div className="animate-slide-up rounded-2xl border border-sage-300 bg-white p-4 shadow-xl dark:border-sage-700 dark:bg-slate-900 max-w-xs">
+          <p className="text-sm font-semibold text-sage-700 dark:text-sage-300">
             Precisa de ajuda?
           </p>
           <p className="mt-1 text-xs text-muted">
@@ -25,7 +25,7 @@ export function WhatsAppButton() {
             href={LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-emerald-500"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sage-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sage-500"
           >
             <Icon name="sparkles" size={16} />
             Falar agora
@@ -37,7 +37,7 @@ export function WhatsAppButton() {
       <button
         type="button"
         onClick={() => setAberto(!aberto)}
-        className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-600 text-white shadow-xl shadow-emerald-600/30 transition-all hover:bg-emerald-500 hover:scale-105 active:scale-95"
+        className="flex h-14 w-14 items-center justify-center rounded-full bg-sage-600 text-white shadow-xl shadow-sage-600/30 transition-all hover:bg-sage-500 hover:scale-105 active:scale-95"
         aria-label="Falar no WhatsApp"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-7 w-7">

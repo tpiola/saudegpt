@@ -2,20 +2,22 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Icon, type IconName } from "./icons";
 
-type Variante = "primary" | "secondary" | "ghost" | "soft" | "glass" | "premium";
+type Variante = "primary" | "secondary" | "ghost" | "soft" | "glass" | "premium" | "terracota";
 type Tamanho = "sm" | "md" | "lg" | "xl";
 
 const variantes: Record<Variante, string> = {
   primary:
-    "gradient-brand text-white shadow-[0_4px_20px_rgba(37,99,235,0.3)] hover:brightness-110 hover:shadow-[0_8px_32px_rgba(37,99,235,0.4)]",
+    "bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white shadow-[0_4px_20px_rgba(26,77,42,0.3)] hover:brightness-110 hover:shadow-[0_8px_32px_rgba(26,77,42,0.4)]",
   secondary:
-    "bg-surface text-foreground border border-border-strong hover:border-brand-400 hover:text-brand-600 hover:shadow-sm",
+    "bg-surface text-foreground border border-border-strong hover:border-forest-400 hover:text-forest-600 hover:shadow-sm",
   ghost: "text-muted hover:text-foreground hover:bg-surface-2",
-  soft: "bg-brand-50 text-brand-700 hover:bg-brand-100 dark:bg-brand-900/40 dark:text-brand-200 dark:hover:bg-brand-900/60",
+  soft: "bg-forest-50 text-forest-700 hover:bg-forest-100 dark:bg-forest-900/40 dark:text-forest-200 dark:hover:bg-forest-900/60",
   glass:
-    "glass-heavy text-foreground hover:border-brand-300 hover:shadow-lg",
+    "glass-heavy text-foreground hover:border-forest-300 hover:shadow-lg",
   premium:
-    "bg-[linear-gradient(135deg,var(--brand-600),var(--brand-400)60%,var(--accent-cyan))] text-white shadow-[0_4px_24px_rgba(37,99,235,0.35)] hover:brightness-110 hover:shadow-[0_8px_36px_rgba(37,99,235,0.45)] hover:-translate-y-0.5 active:translate-y-0",
+    "bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600)_60%,var(--sage-500))] text-white shadow-[0_4px_24px_rgba(26,77,42,0.35)] hover:brightness-110 hover:shadow-[0_8px_36px_rgba(26,77,42,0.45)] hover:-translate-y-0.5 active:translate-y-0",
+  terracota:
+    "bg-[linear-gradient(135deg,var(--terracota-500),var(--terracota-600))] text-white shadow-[0_4px_20px_rgba(214,110,15,0.3)] hover:brightness-110 hover:shadow-[0_8px_32px_rgba(214,110,15,0.4)] hover:-translate-y-0.5",
 };
 
 const tamanhos: Record<Tamanho, string> = {
@@ -77,13 +79,14 @@ export function Card({
 }
 
 const tonsBadge: Record<string, string> = {
-  brand: "bg-brand-50 text-brand-700 dark:bg-brand-900/40 dark:text-brand-200 border border-brand-200/50 dark:border-brand-800",
-  cyan: "bg-cyan-50 text-cyan-700 dark:bg-cyan-900/30 dark:text-cyan-200 border border-cyan-200/50",
-  success: "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-200 border border-emerald-200/50",
-  warning: "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-200 border border-amber-200/50",
+  brand: "bg-forest-50 text-forest-700 dark:bg-forest-900/40 dark:text-forest-200 border border-forest-200/50 dark:border-forest-800",
+  sage: "bg-sage-50 text-sage-700 dark:bg-sage-900/30 dark:text-sage-200 border border-sage-200/50",
+  terracota: "bg-terracota-50 text-terracota-700 dark:bg-terracota-900/30 dark:text-terracota-200 border border-terracota-200/50",
+  success: "bg-sage-50 text-sage-700 dark:bg-sage-900/30 dark:text-sage-200 border border-sage-200/50",
+  warning: "bg-terracota-50 text-terracota-700 dark:bg-terracota-900/30 dark:text-terracota-200 border border-terracota-200/50",
   danger: "bg-rose-50 text-rose-700 dark:bg-rose-900/30 dark:text-rose-200 border border-rose-200/50",
   neutral: "bg-surface-2 text-muted border border-border",
-  premium: "badge-brand",
+  premium: "badge-premium badge-brand",
 };
 
 export function Etiqueta({ children, tom = "brand", className = "", }: {
@@ -99,7 +102,7 @@ export function Etiqueta({ children, tom = "brand", className = "", }: {
 const rotuloNivel: Record<string, { texto: string; tom: keyof typeof tonsBadge }> = {
   basico: { texto: "Básico", tom: "success" },
   intermediario: { texto: "Intermediário", tom: "brand" },
-  avancado: { texto: "Avançado", tom: "warning" },
+  avancado: { texto: "Avançado", tom: "terracota" },
 };
 export function NivelBadge({ nivel }: { nivel: string }) {
   const r = rotuloNivel[nivel] ?? rotuloNivel.basico;
@@ -110,7 +113,7 @@ export function BarraProgresso({ pct, className = "", height = 6 }: { pct: numbe
   return (
     <div className={`w-full overflow-hidden rounded-full bg-surface-2 ${className}`} role="progressbar"
       aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
-      <div className="h-full gradient-brand transition-[width] duration-700 ease-out rounded-full"
+      <div className="h-full bg-[linear-gradient(90deg,var(--forest-500),var(--sage-500))] transition-[width] duration-700 ease-out rounded-full"
         style={{ width: `${Math.min(pct, 100)}%`, height }} />
     </div>
   );
@@ -131,8 +134,8 @@ export function AnelProgresso({ pct, tamanho = 92, legenda, stroke = 6 }: {
           className="transition-[stroke-dashoffset] duration-700" />
         <defs>
           <linearGradient id="grad-anel" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#1d4ed8" />
-            <stop offset="100%" stopColor="#1fb6c9" />
+            <stop offset="0%" stopColor="#1a4d2a" />
+            <stop offset="100%" stopColor="#4ca15d" />
           </linearGradient>
         </defs>
       </svg>
@@ -168,7 +171,7 @@ export function Skeleton({ className = "" }: { className?: string }) {
 }
 
 export function DividerGlow({ className = "" }: { className?: string }) {
-  return <div className={`divider-glow ${className}`} />;
+  return <div className="h-px bg-[linear-gradient(to_right,transparent,var(--border-strong),transparent)] my-8" />
 }
 
 export function StatCard({ icone, valor, rotulo, className = "" }: {

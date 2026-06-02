@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { linksLegais, navPrincipal, site } from "@/lib/site";
+import { Icon } from "./icons";
 
 const linksCoordenacao = [{ href: "/admin", label: "Coordenação (admin)" }];
-import { Icon } from "./icons";
 
 export function Footer() {
   return (
@@ -11,12 +11,12 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl gradient-brand text-white">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600))] text-white">
                 <Icon name="shield" size={20} />
               </span>
               <span className="text-sm font-bold">{site.nomeCurto}</span>
             </div>
-            <p className="mt-4 max-w-sm text-sm text-muted">{site.descricao}</p>
+            <p className="mt-4 max-w-sm text-sm text-muted leading-relaxed">{site.descricao}</p>
           </div>
 
           <div>
@@ -24,7 +24,7 @@ export function Footer() {
             <ul className="mt-3 space-y-2">
               {navPrincipal.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-muted hover:text-brand-600">
+                  <Link href={item.href} className="text-sm text-muted hover:text-forest-600 transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -41,7 +41,7 @@ export function Footer() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-muted hover:text-brand-600"
+                    className="text-sm text-muted hover:text-forest-600 transition-colors"
                   >
                     {p.nome}
                   </a>
@@ -57,12 +57,7 @@ export function Footer() {
             Patrocinado por{" "}
             {site.patrocinio.map((p, i) => (
               <span key={p.url}>
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand-600"
-                >
+                <a href={p.url} target="_blank" rel="noopener noreferrer" className="hover:text-forest-600 transition-colors">
                   {p.url.replace("https://", "")}
                 </a>
                 {i < site.patrocinio.length - 1 ? " e " : ""}
@@ -72,17 +67,17 @@ export function Footer() {
         </div>
         <p className="mt-4 flex flex-wrap gap-4 text-xs text-subtle">
           {linksLegais.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-brand-600">
+            <Link key={l.href} href={l.href} className="hover:text-forest-600 transition-colors">
               {l.label}
             </Link>
           ))}
           {linksCoordenacao.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-brand-600">
+            <Link key={l.href} href={l.href} className="hover:text-forest-600 transition-colors">
               {l.label}
             </Link>
           ))}
         </p>
-        <p className="mt-2 text-xs text-subtle">
+        <p className="mt-2 text-xs text-subtle leading-relaxed">
           Conteúdo educativo. Não substitui a orientação do farmacêutico ou do médico. As decisões
           clínicas e a dispensação de medicamentos controlados são atos do profissional habilitado.
         </p>

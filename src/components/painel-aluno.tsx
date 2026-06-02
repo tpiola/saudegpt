@@ -98,7 +98,7 @@ export function PainelAluno() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
       {/* ── Hero Card ── */}
       <Card variante="glass" className="overflow-hidden">
-        <div className="gradient-brand-warm relative rounded-2xl p-6 sm:p-8">
+          <div className="relative rounded-2xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600)_60%,var(--terracota-600))] p-6 sm:p-8">
           {/* Brilho decorativo */}
           <div
             aria-hidden

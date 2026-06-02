@@ -26,7 +26,7 @@ export function PortalInicio() {
 }
 
 /* ═══════════════════════════════════════════════
-   HERO CINEMATOGRÁFICO
+   HERO CINEMATOGRÁFICO — RD SAÚDE INSPIRED
    ═══════════════════════════════════════════════ */
 function PortalConvidadoHero() {
   const totalAulasContagem = totalAulas();
@@ -38,24 +38,22 @@ function PortalConvidadoHero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Módulos de vendas para seção currículo
-  const modulosVendas = trilhas
-    .find((t) => t.id === "vendas")
-    ?.modulos.slice(0, 3)
-    .map((m) => ({
-      id: m.id,
-      titulo: m.titulo,
-      descricao: m.descricao,
-      aulasCount: m.aulas.length,
-    })) ?? [];
+  // Mandala dos 5 Pilares
+  const pilares = [
+    { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-sage-500" },
+    { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-forest-600 to-forest-400" },
+    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-sage-500 to-sage-400" },
+    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-terracota-500 to-terracota-400" },
+    { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-forest-400 to-terracota-500" },
+  ];
 
   return (
     <div>
       {/* ════════════════════════════════════════════
-          HERO — Cinematográfico, Full-Screen
+          HERO CINEMATOGRÁFICO
           ════════════════════════════════════════════ */}
-      <section className="hero-image-gradient relative min-h-[90vh] flex items-center">
-        {/* Imagem de fundo cinematográfica */}
+      <section className="hero-image-gradient relative min-h-[90vh] flex items-center overflow-hidden">
+        {/* Imagem de fundo */}
         <Image
           src="/pharmacy-hero.jpg"
           alt=""
@@ -66,29 +64,29 @@ function PortalConvidadoHero() {
         />
         <div className="hero-overlay" />
 
-        {/* Gradiente dramático adicional */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#040812] via-transparent to-[#040812]/30" />
+        {/* Gradiente adicional — forest + terracota */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--forest-900),transparent_40%,var(--forest-900)/[0.3])]" />
 
         {/* Grid sutil */}
-        <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-20" />
+        <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-15" />
 
         {/* Orbs cinematográficos */}
-        <div className="pointer-events-none absolute -left-48 -top-48 h-[500px] w-[500px] orb bg-brand-500/15" />
-        <div className="pointer-events-none absolute -bottom-48 -right-48 h-[400px] w-[400px] orb bg-accent-cyan/10" />
+        <div className="pointer-events-none absolute -left-48 -top-48 h-[500px] w-[500px] orb bg-forest-500/20" />
+        <div className="pointer-events-none absolute -bottom-48 -right-48 h-[400px] w-[400px] orb bg-terracota-500/15" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full">
           <div className="max-w-4xl">
-            {/* Tagline de autoridade — minimalista */}
+            {/* Tagline de autoridade */}
             <ScrollReveal delay={0} direction="up">
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50 animate-pulse-soft" />
+                <span className="h-1.5 w-1.5 rounded-full bg-sage-400 shadow-lg shadow-sage-400/50 animate-pulse-soft" />
                 Formação profissional para atendentes de farmácia
               </div>
             </ScrollReveal>
 
             {/* Título cinematográfico */}
             <ScrollReveal delay={150} direction="up">
-              <h1 className="text-[clamp(2.5rem,7vw,5rem)] font-extrabold leading-[1.02] tracking-[-0.03em]">
+              <h1 className="text-[clamp(2.5rem,7vw,5rem)] font-[800] leading-[1.02] tracking-[-0.03em]">
                 <span className="text-white">
                   O treinamento que transforma
                 </span>
@@ -99,7 +97,7 @@ function PortalConvidadoHero() {
               </h1>
             </ScrollReveal>
 
-            {/* Subtítulo de impacto */}
+            {/* Subtítulo */}
             <ScrollReveal delay={300} direction="up">
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg sm:leading-relaxed">
                 Do acolhimento ao cuidado contínuo. Da perfumaria aos medicamentos. 
@@ -124,7 +122,7 @@ function PortalConvidadoHero() {
               </div>
             </ScrollReveal>
 
-            {/* Stats cinematográficas com contadores animados */}
+            {/* Stats com contadores */}
             <ScrollReveal delay={600} direction="up">
               <div className="mt-14 grid grid-cols-3 gap-6 sm:grid-cols-3">
                 {[
@@ -133,7 +131,7 @@ function PortalConvidadoHero() {
                   { valor: 1, label: "Missão: cuidar bem", sufixo: "" },
                 ].map((stat) => (
                   <div key={stat.label} className="border-l border-white/10 pl-4">
-                    <div className="text-[clamp(1.5rem,3vw,2.5rem)] font-extrabold tracking-tight text-white">
+                    <div className="text-[clamp(1.5rem,3vw,2.5rem)] font-[800] tracking-tight text-white">
                       <ContadorAnimado
                         valor={stat.valor}
                         sufixo={stat.sufixo}
@@ -154,7 +152,7 @@ function PortalConvidadoHero() {
         <ScrollReveal delay={1000} direction="up">
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
             <span className="text-[9px] uppercase tracking-[0.2em]">Role</span>
-            <div className="h-8 w-[1px] bg-gradient-to-b from-white/30 to-transparent animate-float" />
+            <div className="h-8 w-[1px] bg-[linear-gradient(to_bottom,white/[0.3],transparent)] animate-float" />
           </div>
         </ScrollReveal>
       </section>
@@ -163,18 +161,18 @@ function PortalConvidadoHero() {
           SEÇÃO 1 — O PROBLEMA (ANTES)
           ════════════════════════════════════════════ */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-950/5 via-transparent to-surface pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--forest-900)/[0.05],transparent)] pointer-events-none" />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <ScrollReveal direction="left">
               <div>
-                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-rose-400">
-                  <span className="h-3 w-[2px] rounded-full bg-rose-500" />
+                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-terracota-400">
+                  <span className="h-3 w-[2px] rounded-full bg-terracota-500" />
                   A realidade
                 </div>
-                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
+                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
                   O balcão da farmácia{" "}
-                  <span className="text-rose-400">precisa de cuidado</span>
+                  <span className="text-terracota-500">precisa de cuidado</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-muted leading-relaxed">
                   <p className="text-lg">
@@ -193,16 +191,16 @@ function PortalConvidadoHero() {
             <ScrollReveal direction="right" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "close", texto: "Atendente sem preparo para cuidar", cor: "rose" },
-                  { icone: "close", texto: "Cliente que não se sente acolhido", cor: "rose" },
-                  { icone: "close", texto: "Paciente que não volta", cor: "rose" },
-                  { icone: "close", texto: "Cuidado que fica pela metade", cor: "rose" },
+                  { icone: "close", texto: "Atendente sem preparo para cuidar", cor: "terracota" },
+                  { icone: "close", texto: "Cliente que não se sente acolhido", cor: "terracota" },
+                  { icone: "close", texto: "Paciente que não volta", cor: "terracota" },
+                  { icone: "close", texto: "Cuidado que fica pela metade", cor: "terracota" },
                 ].map((item) => (
                   <div
                     key={item.texto}
-                    className="flex items-center gap-3 rounded-xl border border-rose-200/50 bg-rose-50/30 px-4 py-3 dark:border-rose-900/20 dark:bg-rose-950/10"
+                    className="flex items-center gap-3 rounded-xl border border-terracota-200/50 bg-terracota-50/30 px-4 py-3 dark:border-terracota-900/20 dark:bg-terracota-950/10"
                   >
-                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-rose-100 text-rose-500 dark:bg-rose-900/30">
+                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-terracota-100 text-terracota-500 dark:bg-terracota-900/30">
                       <Icon name={item.icone as IconName} size={16} />
                     </span>
                     <span className="text-sm font-medium text-muted">{item.texto}</span>
@@ -215,19 +213,19 @@ function PortalConvidadoHero() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SEÇÃO 2 — A SOLUÇÃO (O TREINAMENTO)
+          SEÇÃO 2 — A SOLUÇÃO: MANDALA DOS 5 PILARES
           ════════════════════════════════════════════ */}
-      <section className="relative bg-gradient-to-b from-surface via-brand-950/[0.02] to-surface">
+      <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-brand-500">
-                <span className="h-3 w-[2px] rounded-full bg-brand-500" />
+              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
+                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
                 A solução
               </div>
-              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
+              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
                 Um treinamento que{" "}
-                <span className="text-gradient">ensina a cuidar</span>
+                <span className="text-gradient-brand">ensina a cuidar</span>
               </h2>
               <p className="mt-6 text-lg text-muted leading-relaxed">
                 Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo — 
@@ -236,43 +234,21 @@ function PortalConvidadoHero() {
             </ScrollReveal>
           </div>
 
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                numero: "01",
-                titulo: "Técnica e segurança",
-                descricao: "Medicamentos, receitas, classes terapêuticas, ANVISA. A base técnica para cuidar com segurança.",
-                cor: "from-blue-500 to-blue-600",
-              },
-              {
-                numero: "02",
-                titulo: "Acolhimento que cura",
-                descricao: "Como ouvir, acolher e fazer o cliente se sentir cuidado desde o primeiro contato.",
-                cor: "from-emerald-500 to-emerald-600",
-              },
-              {
-                numero: "03",
-                titulo: "Comunicação de cuidado",
-                descricao: "Escuta ativa, empatia, linguagem de acolhimento. A comunicação que transforma atendimento em cuidado.",
-                cor: "from-violet-500 to-violet-600",
-              },
-              {
-                numero: "04",
-                titulo: "Cliente que volta",
-                descricao: "Pós-atendimento, cuidado contínuo, como ser o profissional que o paciente confia e procura sempre.",
-                cor: "from-amber-500 to-amber-600",
-              },
-            ].map((item, idx) => (
-              <ScrollReveal key={item.titulo} delay={idx * 100} direction="up">
-                <Card className="group relative overflow-hidden p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                  <div className={`absolute top-0 left-0 h-full w-1 rounded-l-xl bg-gradient-to-b ${item.cor} opacity-60 group-hover:opacity-100 transition-opacity`} />
-                  <div className="pl-4">
-                    <span className="font-mono text-[10px] font-bold tracking-widest text-brand-500">
-                      {item.numero}
-                    </span>
-                    <h3 className="mt-2 text-lg font-bold leading-snug">{item.titulo}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">{item.descricao}</p>
-                  </div>
+          {/* Mandala dos 5 Pilares */}
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {pilares.map((pilar, idx) => (
+              <ScrollReveal key={pilar.titulo} delay={idx * 80} direction="up">
+                <Card className="group relative overflow-hidden p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl text-center h-full">
+                  {/* Top gradient bar */}
+                  <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${pilar.cor} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                  
+                  {/* Icon circle */}
+                  <span className={`mx-auto mb-4 mt-1 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pilar.cor} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                    <Icon name={pilar.icone as IconName} size={24} />
+                  </span>
+                  
+                  <h3 className="text-sm font-bold leading-snug">{pilar.titulo}</h3>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{pilar.desc}</p>
                 </Card>
               </ScrollReveal>
             ))}
@@ -290,16 +266,16 @@ function PortalConvidadoHero() {
             <ScrollReveal direction="left" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "check", texto: "Atendente que entende do cuidado", cor: "emerald" },
-                  { icone: "check", texto: "Cliente que se sente acolhido", cor: "emerald" },
-                  { icone: "check", texto: "Paciente que volta e confia", cor: "emerald" },
-                  { icone: "check", texto: "Cuidado completo, do início ao fim", cor: "emerald" },
+                  { icone: "check", texto: "Atendente que entende do cuidado", cor: "sage" },
+                  { icone: "check", texto: "Cliente que se sente acolhido", cor: "sage" },
+                  { icone: "check", texto: "Paciente que volta e confia", cor: "sage" },
+                  { icone: "check", texto: "Cuidado completo, do início ao fim", cor: "sage" },
                 ].map((item) => (
                   <div
                     key={item.texto}
-                    className="flex items-center gap-3 rounded-xl border border-emerald-200/50 bg-emerald-50/30 px-4 py-3 dark:border-emerald-900/20 dark:bg-emerald-950/10"
+                    className="flex items-center gap-3 rounded-xl border border-sage-200/50 bg-sage-50/30 px-4 py-3 dark:border-sage-900/20 dark:bg-sage-950/10"
                   >
-                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-emerald-100 text-emerald-500 dark:bg-emerald-900/30">
+                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-sage-100 text-sage-600 dark:bg-sage-900/30">
                       <Icon name={item.icone as IconName} size={16} />
                     </span>
                     <span className="text-sm font-medium text-muted">{item.texto}</span>
@@ -310,13 +286,13 @@ function PortalConvidadoHero() {
 
             <ScrollReveal direction="right">
               <div>
-                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-emerald-400">
-                  <span className="h-3 w-[2px] rounded-full bg-emerald-500" />
+                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-sage-500">
+                  <span className="h-3 w-[2px] rounded-full bg-sage-500" />
                   A transformação
                 </div>
-                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
+                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
                   O profissional que o paciente{" "}
-                  <span className="text-gradient">confia e volta</span>
+                  <span className="text-gradient-brand">confia e volta</span>
                 </h2>
                 <div className="mt-6 space-y-4 text-muted leading-relaxed">
                   <p className="text-lg">
@@ -337,19 +313,19 @@ function PortalConvidadoHero() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SEÇÃO 4 — CURRÍCULO (JORNADA, NÃO LISTA)
+          SEÇÃO 4 — CURRÍCULO (JORNADA)
           ════════════════════════════════════════════ */}
       <section className="relative">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-brand-500">
-                <span className="h-3 w-[2px] rounded-full bg-brand-500" />
+              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
+                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
                 A jornada
               </div>
-              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-extrabold tracking-tight leading-tight">
+              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
                 O que você vai{" "}
-                <span className="text-gradient">aprender</span>
+                <span className="text-gradient-brand">aprender</span>
               </h2>
               <p className="mt-6 text-lg text-muted">{totalAulasContagem} microlições em 4 trilhas</p>
             </ScrollReveal>
@@ -358,18 +334,19 @@ function PortalConvidadoHero() {
           <div className="mt-14 grid gap-4 lg:grid-cols-4">
             {trilhas.map((t, idx) => {
               const totalModAulas = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
+              const gradientMap = [
+                "from-forest-400 to-sage-500",
+                "from-forest-500 to-forest-400",
+                "from-forest-500 to-terracota-500",
+                "from-sage-500 to-forest-500",
+              ];
               return (
                 <ScrollReveal key={t.id} delay={idx * 80} direction="up">
                   <Card className="group relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg min-h-[200px] flex flex-col">
-                    <span className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${
-                      idx === 0 ? "from-emerald-400 to-emerald-600" :
-                      idx === 1 ? "from-blue-400 to-blue-600" :
-                      idx === 2 ? "from-amber-400 to-rose-500" :
-                      "from-violet-400 to-fuchsia-500"
-                    } text-white`}>
+                    <span className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${gradientMap[idx]} text-white`}>
                       <Icon name={t.icone as IconName} size={20} />
                     </span>
-                    <div className="text-xs font-bold uppercase tracking-wider text-brand-500">
+                    <div className="text-xs font-bold uppercase tracking-wider text-forest-500">
                       Trilha {t.numero}
                     </div>
                     <h3 className="mt-0.5 font-bold leading-snug">{t.titulo}</h3>
@@ -389,7 +366,7 @@ function PortalConvidadoHero() {
             <div className="mt-10 text-center">
               <Link
                 href="/trilhas"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-600 hover:text-forest-700 transition-colors"
               >
                 Ver currículo completo <Icon name="arrow" size={16} />
               </Link>
@@ -399,7 +376,89 @@ function PortalConvidadoHero() {
       </section>
 
       {/* ════════════════════════════════════════════
-          SEÇÃO 5 — PATROCÍNIO
+          SEÇÃO 5 — DICAS POR FAIXA ETÁRIA
+          ════════════════════════════════════════════ */}
+      <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
+        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
+          <div className="mx-auto max-w-3xl text-center">
+            <ScrollReveal>
+              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
+                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
+                Para cada idade, um cuidado
+              </div>
+              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+                Como atender bem{" "}
+                <span className="text-gradient-brand">cada fase da vida</span>
+              </h2>
+              <p className="mt-6 text-lg text-muted">
+                Adolescente, adulto ou idoso — cada um chega ao balcão com uma história, 
+                uma necessidade e um jeito de ser acolhido.
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                faixa: "Adolescentes",
+                icone: "heart",
+                bg: "from-forest-500 to-sage-500",
+                dicas: [
+                  "Linguagem simples e sem julgamento",
+                  "Respeito à timidez e vergonha",
+                  "Acne, anticoncepcional, saúde íntima",
+                  "Atendimento rápido e discreto",
+                  "Orientação sem alarmismo",
+                ]
+              },
+              {
+                faixa: "Adultos",
+                icone: "trending",
+                bg: "from-forest-600 to-terracota-500",
+                dicas: [
+                  "Escuta ativa das queixas do dia a dia",
+                  "Produtos para rotina corrida",
+                  "Cuidado com automedicação",
+                  "Oferta de serviços complementares",
+                  "Fidelização pelo cuidado genuíno",
+                ]
+              },
+              {
+                faixa: "Idosos",
+                icone: "shield",
+                bg: "from-sage-500 to-forest-600",
+                dicas: [
+                  "Paciência e tom de voz adequado",
+                  "Polifarmácia e interações medicamentosas",
+                  "Letra grande nos materiais",
+                  "Acompanhamento do tratamento",
+                  "Acolhimento com respeito e dignidade",
+                ]
+              },
+            ].map((f, idx) => (
+              <ScrollReveal key={f.faixa} delay={idx * 100} direction="up">
+                <Card className="group h-full overflow-hidden p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
+                  <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${f.bg} text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                    <Icon name={f.icone as IconName} size={24} />
+                  </div>
+                  <h3 className="text-xl font-bold">{f.faixa}</h3>
+                  <ul className="mt-4 space-y-2">
+                    {f.dicas.map((dica) => (
+                      <li key={dica} className="flex items-start gap-2 text-sm text-muted">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-forest-400" />
+                        {dica}
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          SEÇÃO 6 — PATROCÍNIO
           ════════════════════════════════════════════ */}
       <section className="bg-surface py-8">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -410,27 +469,26 @@ function PortalConvidadoHero() {
       </section>
 
       {/* ════════════════════════════════════════════
-      {/* ════════════════════════════════════════════
-          SEÇÃO 7 — CTA FINAL IMPACTANTE
+          SEÇÃO 7 — CTA FINAL
           ════════════════════════════════════════════ */}
       <section className="relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-brand-950/[0.03] to-surface" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.04],var(--surface))]" />
         <div className="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6 lg:pb-28">
           <ScrollReveal>
-            <Card className="relative overflow-hidden border-2 border-brand-200/40 dark:border-brand-800/30">
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-brand-50/50 dark:from-brand-950 dark:via-brand-900/40 dark:to-brand-950" />
-              <div className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full orb bg-brand-400/10 dark:bg-brand-300/5" />
-              <div className="pointer-events-none absolute -bottom-32 -left-32 h-[300px] w-[300px] rounded-full orb bg-accent-cyan/10" />
+            <Card className="relative overflow-hidden border-2 border-forest-200/40 dark:border-forest-800/30">
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,var(--forest-50),white,var(--sage-50)/[0.5])] dark:bg-[linear-gradient(135deg,var(--forest-950),var(--forest-900)/[0.4],var(--forest-950))]" />
+              <div className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full orb bg-forest-400/10 dark:bg-forest-300/5" />
+              <div className="pointer-events-none absolute -bottom-32 -left-32 h-[300px] w-[300px] rounded-full orb bg-terracota-500/10" />
 
               <div className="relative px-8 py-16 text-center sm:px-16 sm:py-20">
                 <div className="mx-auto max-w-2xl">
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-brand-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                  <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-forest-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest-700 dark:bg-forest-900/40 dark:text-forest-300">
                     <Icon name="sparkles" size={14} />
                     Comece agora
                   </div>
-                  <h2 className="text-[clamp(1.8rem,4.5vw,3.5rem)] font-extrabold tracking-tight leading-tight">
+                  <h2 className="text-[clamp(1.8rem,4.5vw,3.5rem)] font-[700] tracking-tight leading-tight">
                     Transforme seu atendimento{" "}
-                    <span className="text-gradient">em cuidado</span>
+                    <span className="text-gradient-brand">em cuidado</span>
                   </h2>
                   <p className="mx-auto mt-4 max-w-lg text-muted text-lg">
                     {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real. 
@@ -495,24 +553,19 @@ function PortalMatriculadoFluxo({ perfil }: { perfil: PerfilAluno }) {
   if (status === "verificando") {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-        <div className="h-48 animate-pulse rounded-2xl bg-surface-2" />
+        <div className="h-48 skeleton rounded-2xl" />
       </div>
     );
   }
 
   if (status === "rejeitado") {
-    return (
-      <div className="mx-auto max-w-lg px-4 py-16">
-        <Card className="text-center">
-          <Icon name="shield" size={40} className="mx-auto text-rose-500" />
-          <h2 className="mt-4 text-xl font-bold">Matrícula não aprovada</h2>
-          <p className="mt-2 text-sm text-muted">
-            Entre em contato com a coordenação para mais informações.
-          </p>
-        </Card>
-      </div>
-    );
+    router.replace("/matriculas");
+    return null;
   }
 
-  return <PainelAluno />;
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+      <PainelAluno />
+    </div>
+  );
 }
