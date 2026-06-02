@@ -26,6 +26,7 @@ export const trilhaVendas: Trilha = {
           titulo: "O momento certo de acolher",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Antes de qualquer oferta, o cliente precisa se sentir acolhido. Como criar um ambiente de confiança desde o primeiro contato.",
           resumoExecutivo: [
@@ -114,6 +115,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Encantar com ética e informação",
           duracaoMin: 7,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Como usar gatilhos de urgência, prova social, reciprocidade e autoridade para informar e encantar com transparência — exemplos reais de como fortalecer a confiança no balcão.",
           resumoExecutivo: [
@@ -214,6 +216,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Como sugerir com cuidado",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "A arte de sugerir com cuidado: vocabulário, tom, timing e a diferença entre sugestão consultiva e abordagem invasiva.",
           resumoExecutivo: [
@@ -291,6 +294,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Lidar com objeções com empatia",
           duracaoMin: 8,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Não é resistência — é dúvida. Técnicas para ouvir a objeção, validar o sentimento e reposicionar o valor com empatia, sem pressionar.",
           resumoExecutivo: [
@@ -379,6 +383,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Complementar com cuidado",
           duracaoMin: 7,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Como complementar o cuidado do cliente com sugestões que realmente agregam ao bem-estar dele — sem pressão, com propósito genuíno.",
           resumoExecutivo: [
@@ -467,6 +472,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Concluir com confiança",
           duracaoMin: 6,
           nivel: "avancado",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Como conduzir o cliente até a decisão de cuidado sem pressão. Fechamento assumido, alternativo, resumo e silêncio.",
           resumoExecutivo: [
@@ -566,6 +572,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Acolhimento na abertura: a primeira impressão que cuida",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Os primeiros 5 segundos definem o tom do atendimento. Como criar conexão instantânea com o cliente e mostrar que ele está em boas mãos.",
           resumoExecutivo: [
@@ -655,6 +662,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Tom de voz, postura e presença no balcão",
           duracaoMin: 6,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "O corpo fala antes da boca. Postura aberta, tom confiante e presença que transmite segurança e credibilidade.",
           resumoExecutivo: [
@@ -743,6 +751,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Perguntas poderosas que revelam a necessidade",
           duracaoMin: 7,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "A qualidade da venda é determinada pela qualidade das perguntas. Como fazer perguntas abertas, investigativas e direcionadoras.",
           resumoExecutivo: [
@@ -831,6 +840,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Escuta ativa: o segredo do atendente nota 10",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Não é só ouvir. É demonstrar que você ouviu. Paráfrase, validação e resumo como ferramentas de venda.",
           resumoExecutivo: [
@@ -919,6 +929,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Linguagem positiva: o que dizer e o que evitar",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Palavras que vendem e palavras que afastam. Como transformar objeções em conversas e criar uma experiência positiva de compra.",
           resumoExecutivo: [
@@ -1007,6 +1018,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Como falar de preço mantendo a confiança",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Preço é uma conversa sobre valor. Técnicas para apresentar preço com confiança e transformar objeção em diálogo produtivo, mantendo a relação de cuidado.",
           resumoExecutivo: [
@@ -1107,6 +1119,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Adesão ao tratamento: o que é e por que importa",
            duracaoMin: 6,
            nivel: "intermediario",
+           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
            resumo:
              "70% dos pacientes abandonam o tratamento nos primeiros 30 dias. O farmacêutico e a equipe têm um papel crucial na adesão — e isso começa com um simples contato de acompanhamento.",
            resumoExecutivo: [
@@ -1198,6 +1211,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Como contatar o paciente sem parecer telemarketing",
            duracaoMin: 5,
            nivel: "intermediario",
+           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
            resumo:
              "A diferença entre um contato de cuidado e uma ligação de telemarketing é a INTENÇÃO. O tom, a abordagem e o timing transformam um simples telefonema em um gesto de cuidado que o paciente nunca esquece.",
            resumoExecutivo: [
@@ -1289,6 +1303,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Mensagens de apoio: WhatsApp e SMS que encantam",
            duracaoMin: 5,
            nivel: "basico",
+           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
            resumo:
              "Nem todo paciente quer ou quer falar ao telefone. Uma mensagem de WhatsApp ou SMS bem escrita pode ser um gesto de cuidado ainda mais bem recebido.",
            resumoExecutivo: [
@@ -1379,6 +1394,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Calendário de cuidado: quando e como acompanhar",
            duracaoMin: 5,
            nivel: "intermediario",
+           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
            resumo:
              "Acompanhamento não é um evento único. É um processo. Um calendário simples de papel ou planilha já basta para transformar o atendimento em cuidado contínuo.",
            resumoExecutivo: [
@@ -1470,6 +1486,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Envolvendo a família no cuidado",
            duracaoMin: 5,
            nivel: "intermediario",
+           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
            resumo:
              "Pacientes idosos, crianças e pessoas com condições crônicas geralmente têm um cuidador. Envolver essa pessoa no acompanhamento dobra a chance de adesão ao tratamento.",
            resumoExecutivo: [
@@ -1561,6 +1578,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Indicadores de cuidado: como saber se está funcionando",
            duracaoMin: 6,
            nivel: "avancado",
+           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
            resumo:
              "Não precisa de dashboard caro. Um caderno ou planilha simples já permite acompanhar o impacto do seu cuidado na vida dos pacientes.",
            resumoExecutivo: [

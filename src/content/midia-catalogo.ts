@@ -55,6 +55,12 @@ export const imagensCategoria = {
   injetaveis: foto("photo-1581595219315-a1b0c2a3dc52"),
   adesao: foto("photo-1579684453375-5f0e9e3c8f4b"),
   encaminhamento: foto("photo-1559757175-5700dde675bc"),
+  // ATENDIMENTO E VENDAS
+  atendimento: foto("photo-1559839734-2b71ea197ec2"),
+  vendas: foto("photo-1551836022-d5d88e9218df"),
+  comunicacao: foto("photo-1573497019940-1c28c88b4f3e"),
+  organizacao: foto("photo-1544717297-fa95b6eb9642"),
+  equipe: foto("photo-1522071820081-009f0129c71c"),
 } as const;
 
 /** Logos via Wikimedia Commons (identificação educativa no balcão). */
@@ -265,6 +271,26 @@ export function midiaPadraoPorAulaId(aulaId: string): {
     "travesseiros-acessorios-sono": { imagemHeroUrl: imagensCategoria.travesseiro },
     "sazonal-verao": { imagemHeroUrl: imagensCategoria.verao },
     "sazonal-inverno": { imagemHeroUrl: imagensCategoria.inverno },
+    // AULAS FALTANTES
+    bula: { imagemHeroUrl: imagensCategoria.medicamentos },
+    acolhimento: { imagemHeroUrl: imagensCategoria.atendimento },
+    "momento-certo": { imagemHeroUrl: imagensCategoria.vendas },
+    "como-oferecer": { imagemHeroUrl: imagensCategoria.vendas },
+    objecoes: { imagemHeroUrl: imagensCategoria.vendas },
+    "cross-sell-upsell": { imagemHeroUrl: imagensCategoria.vendas },
+    fechamento: { imagemHeroUrl: imagensCategoria.vendas },
+    "gatilhos-mentais": { imagemHeroUrl: imagensCategoria.comunicacao },
+    rapport: { imagemHeroUrl: imagensCategoria.comunicacao },
+    "tom-voz-postura": { imagemHeroUrl: imagensCategoria.comunicacao },
+    "perguntas-poderosas": { imagemHeroUrl: imagensCategoria.comunicacao },
+    "escuta-ativa": { imagemHeroUrl: imagensCategoria.comunicacao },
+    "linguagem-positiva": { imagemHeroUrl: imagensCategoria.comunicacao },
+    "falar-de-preco": { imagemHeroUrl: imagensCategoria.comunicacao },
+    encantamento: { imagemHeroUrl: imagensCategoria.atendimento },
+    "cross-sell": { imagemHeroUrl: imagensCategoria.vendas },
+    planograma: { imagemHeroUrl: imagensCategoria.organizacao },
+    "rotina-organizacao": { imagemHeroUrl: imagensCategoria.organizacao },
+    "sazonalidade-equipe": { imagemHeroUrl: imagensCategoria.equipe },
   };
   return mapa[aulaId] ?? {};
 }

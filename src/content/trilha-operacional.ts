@@ -272,6 +272,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Cross-sell ético e bundles de bem-estar",
           duracaoMin: 6,
           nivel: "avancado",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo: "Sugerir itens complementares que fazem sentido — nunca empurrar.",
           resumoExecutivo: [
             "Cross-sell ético parte da necessidade: protetor solar + pós-sol, antibiótico + orientação de adesão.",
@@ -357,6 +358,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Rotina, pontualidade e organização",
           duracaoMin: 5,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo: "Disciplina operacional: abertura, reposição, validade e limpeza.",
           resumoExecutivo: [
             "Rotina previsível reduz erros: conferência de validade (PVPS), reposição e limpeza.",
@@ -439,6 +441,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Planograma e exposição",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo: "Como organizar categorias e gôndolas para facilitar a jornada do cliente.",
           resumoExecutivo: [
             "Organização por categoria (medicamentos, beleza, higiene, mamãe e bebê, dermocosméticos) facilita o autosserviço assistido.",
@@ -521,6 +524,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Picos sazonais e trabalho em equipe",
           duracaoMin: 5,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo: "Antecipar demandas do calendário e atuar em equipe nos picos.",
           resumoExecutivo: [
             "Inverno: respiratórios e gripe; verão: fotoproteção e repelentes; campanhas de vacinação.",

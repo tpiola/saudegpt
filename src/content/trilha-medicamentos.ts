@@ -773,6 +773,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Analgésicos, antitérmicos e antissépticos",
           duracaoMin: 7,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo: "Dor e febre leves, antissépticos de uso comum e limites do autocuidado.",
           resumoExecutivo: [
             "Paracetamol e dipirona são comuns para dor/febre; respeitar dose máxima diária.",
@@ -1777,6 +1778,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Primeiros socorros no balcão",
           duracaoMin: 6,
           nivel: "intermediario",
+          videoUrl: "https://www.youtube.com/watch?v=Q2bHNFVEO0k",
           resumo: "Condutas básicas, limites do atendente e quando acionar emergência (192).",
           resumoExecutivo: [
             "Saber estabilizar e orientar até ajuda especializada; conhecer os limites do papel.",
