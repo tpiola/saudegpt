@@ -38,6 +38,11 @@ export const trilhaMedicamentos: Trilha = {
           ],
           quandoChamarFarmaceutico: ["Qualquer dúvida clínica que ultrapasse a orientação de MIP."],
           errosComuns: ["Tratar todo 'remédio' como se pudesse ser indicado livremente."],
+        simulacao: {
+          cliente: "Cliente pergunta se cha de boldo e remedio de farmacia sao a mesma coisa.",
+          falaBoa: "Medicamento e produto registrado na Anvisa com dose padronizada. Remedio caseiro nao tem controle de dose. Para sintomas especificos o medicamento e mais seguro.",
+          falaEvitar: "Tudo e igual compra o mais barato.",
+        },
           quiz: [
             q(
               "Qual afirmação é correta?",
@@ -72,6 +77,11 @@ export const trilhaMedicamentos: Trilha = {
             "Cliente com alergia a excipientes ou dúvida sobre composição.",
           ],
           errosComuns: ["Confundir excipiente com princípio ativo."],
+        simulacao: {
+          cliente: "Cliente com alergia a lactose quer saber se o generico tem lactose.",
+          falaBoa: "Vamos olhar a bula na secao de composicao. Se tiver lactose aparece aqui. Posso chamar o farmaceutico para a melhor alternativa.",
+          falaEvitar: "Nao tem nada disso pode comprar.",
+        },
           quiz: [
             q(
               "O que produz o efeito terapêutico?",
@@ -111,6 +121,11 @@ export const trilhaMedicamentos: Trilha = {
           ],
           quandoChamarFarmaceutico: ["Dúvida sobre conversão de dose entre formas."],
           errosComuns: ["Orientar engolir um comprimido sublingual."],
+        simulacao: {
+          cliente: "Idosa com dificuldade para engolir comprimidos.",
+          falaBoa: "Alguns medicamentos tem versao liquida ou orodispersivel. Nao recomendo quebrar sem verificar. Vou chamar o farmaceutico.",
+          falaEvitar: "Pode quebrar no meio que da no mesmo.",
+        },
           quiz: [
             q(
               "Comprimido sublingual deve ser:",
@@ -245,6 +260,11 @@ export const trilhaMedicamentos: Trilha = {
             "Toda dispensação de tarja preta/controlados e dúvidas de receita.",
           ],
           errosComuns: ["Vender tarja vermelha sem receita válida."],
+        simulacao: {
+          cliente: "Traz receita tarja vermelha vencida para comprar so mais uma caixa.",
+          falaBoa: "Receita vencida nao posso dispensar por seguranca. Sugiro ligar pro consultorio medico para renovar.",
+          falaEvitar: "Receita vencida nao vale fazer o que.",
+        },
           quiz: [
             q(
               "Medicamentos de tarja preta exigem:",
@@ -337,6 +357,11 @@ export const trilhaMedicamentos: Trilha = {
           ],
           quandoChamarFarmaceutico: ["Substituição/intercambialidade de medicamento prescrito."],
           errosComuns: ["Dizer que genérico 'é mais fraco' — é bioequivalente."],
+        simulacao: {
+          cliente: "Desconfiado de genérico acha que é mais fraco que o de marca.",
+          falaBoa: "Genérico tem o mesmo princípio ativo na mesma dose. Passa por testes de bioequivalência aprovados pela Anvisa. A diferença é o preço mais acessível.",
+          falaEvitar: "É tudo igual marca é caro por causa de propaganda.",
+        },
           quiz: [
             q(
               "Sobre genéricos, é correto dizer:",
@@ -380,6 +405,11 @@ export const trilhaMedicamentos: Trilha = {
             "Febre alta prolongada, dor intensa, uso em crianças/gestantes.",
           ],
           errosComuns: ["Somar vários produtos com o mesmo princípio ativo (risco de superdose)."],
+        simulacao: {
+          cliente: "Jovem com dor de cabeca e febre 38C ha 1 dia. Estomago vazio.",
+          falaBoa: "Dipirona ou paracetamol sao melhores de estomago vazio que ibuprofeno que pode irritar. Se febre passar de 3 dias busque avaliacao medica.",
+          falaEvitar: "Toma ibuprofeno que resolve jejum nao faz mal.",
+        },
           quiz: [
             q(
               "Risco comum ao associar antigripais e analgésicos sem critério:",
@@ -411,6 +441,11 @@ export const trilhaMedicamentos: Trilha = {
           ],
           quandoChamarFarmaceutico: ["Uso prolongado, gastrite, hipertensos, anticoagulados."],
           errosComuns: ["Indicar AINE para quem tem histórico gástrico sem avaliação."],
+        simulacao: {
+          cliente: "Senhor com dor nas costas ha 2 dias. Tem pressao alta controlada.",
+          falaBoa: "Anti-inflamatorios podem interferir com medicacao de pressao. Vou chamar o farmaceutico para a combinacao mais segura.",
+          falaEvitar: "Toma esse anti-inflamatorio forte que passa.",
+        },
           quiz: [
             q(
               "AINEs (anti-inflamatórios) costumam exigir cautela com:",
@@ -451,6 +486,11 @@ export const trilhaMedicamentos: Trilha = {
             "Tosse persistente (>2-3 semanas), falta de ar, sintomas em crianças.",
           ],
           errosComuns: ["Combinar antitussígeno com expectorante sem critério."],
+        simulacao: {
+          cliente: "Mae com filho de 4 anos tossindo muito a noite.",
+          falaBoa: "Se tosse seca com espirros pode ser alergia. Se tem secrecao ou febre e resfriado. Criancas pequenas leve ao pediatra se nao melhorar.",
+          falaEvitar: "Compra xarope que para tosse na hora.",
+        },
           quiz: [
             q(
               "Para tosse com catarro (produtiva), o indicado geralmente é:",
@@ -478,6 +518,11 @@ export const trilhaMedicamentos: Trilha = {
             "Diarreia com sangue/febre, dor abdominal intensa, sintomas persistentes.",
           ],
           errosComuns: ["Focar só no antidiarreico e esquecer a hidratação."],
+        simulacao: {
+          cliente: "Moca com azia frequente toda semana.",
+          falaBoa: "Azia semanal merece investigacao. Antiacido alivia mas pode mascarar refluxo. Sugiro conversar com o farmaceutico.",
+          falaEvitar: "Toma inibidor de bomba que e mais forte.",
+        },
           quiz: [
             q(
               "Na diarreia aguda, a prioridade é:",
@@ -505,6 +550,11 @@ export const trilhaMedicamentos: Trilha = {
             "Micoses extensas, suspeita de sarna disseminada, uso em crianças.",
           ],
           errosComuns: ["Indicar vitamina como 'cura' para tudo."],
+        simulacao: {
+          cliente: "Senhora com unha amarelada e grossa.",
+          falaBoa: "Pode ser micose mas o diagnostico ideal e do farmaceutico ou dermatologista. Tratamento e longo meses.",
+          falaEvitar: "Passa esmalte antimicotico que some em 2 semanas.",
+        },
           quiz: [
             q(
               "Sobre vitaminas, o correto é orientar que:",
@@ -540,6 +590,11 @@ export const trilhaMedicamentos: Trilha = {
             "Ferimento extenso, diabético, imunossuprimido, sinais de infecção.",
           ],
           errosComuns: ["Indicar desinfetante de chão para ferimento."],
+        simulacao: {
+          cliente: "Mae com filho que caiu e ralou o joelho.",
+          falaBoa: "Lavar com agua e sabao neutro primeiro. Depois clorexidina aquosa. Alcool 70 nao e indicado para ferida aberta.",
+          falaEvitar: "Passa alcool que arde mas limpa.",
+        },
           quiz: [
             q(
               "Antisséptico tópico no balcão deve ser orientado para:",
@@ -570,6 +625,11 @@ export const trilhaMedicamentos: Trilha = {
           checklist: ["Ler modo de uso e repetição.", "Orientar tratamento de contactantes."],
           quandoChamarFarmaceutico: ["Crianças, gestantes, lesões extensas ou dúvida diagnóstica."],
           errosComuns: ["Tratar só uma pessoa da casa no caso de piolho."],
+        simulacao: {
+          cliente: "Mae filho voltou da escola com piolho. Volta depois de uma semana.",
+          falaBoa: "Lozao pediculicida mata piolhos mas ovos podem sobreviver. Repetir apos 7 dias. Pente fino. Lavar roupas em agua quente.",
+          falaEvitar: "Passa inseticida de barata.",
+        },
           quiz: [
             q(
               "No piolho, além do produto, é essencial orientar:",
@@ -606,6 +666,11 @@ export const trilhaMedicamentos: Trilha = {
           errosComuns: [
             "Citar a RDC 20/2011 como regra vigente — foi substituída pela RDC 471/2021.",
           ],
+        simulacao: {
+          cliente: "Quer comprar amoxicilina para dor de garganta. Nao tem receita.",
+          falaBoa: "Antibiotico sem receita e proibido por lei. Dor de garganta pode ser viral. Precisa de avaliacao medica.",
+          falaEvitar: "Nao vendo sem receita.",
+        },
           quiz: [
             q(
               "Qual norma é a referência atual para dispensação de antimicrobianos?",
@@ -785,6 +850,11 @@ export const trilhaMedicamentos: Trilha = {
           errosComuns: [
             "Informar copagamento desatualizado — hoje há gratuidade de 100% do elenco.",
           ],
+        simulacao: {
+          cliente: "Idoso nao consegue mais comprar remedio pelo programa.",
+          falaBoa: "Farmacia Popular cobre alguns medicamentos. Vou verificar o CPF. Sugiro conversar com o medico sobre alternativas.",
+          falaEvitar: "Programa mudou paga do bolso.",
+        },
           quiz: [
             q(
               "O que mudou no Farmácia Popular a partir de 14/02/2025?",
@@ -860,6 +930,11 @@ export const trilhaMedicamentos: Trilha = {
             "Aplicação, técnica e dúvidas de armazenamento de injetáveis.",
           ],
           errosComuns: ["Orientar descarte de agulha no lixo comum."],
+        simulacao: {
+          cliente: "Comprou injecao de vitamina B12 para aplicar em casa.",
+          falaBoa: "Injecao intramuscular exige tecnica. Agulha esteril e descarte seguro. O ideal e profissional de saude.",
+          falaEvitar: "E facil so espetar no braco.",
+        },
           quiz: [
             q(
               "Serviços de vacinação em farmácias têm requisitos mínimos na:",
@@ -926,6 +1001,11 @@ export const trilhaMedicamentos: Trilha = {
           checklist: ["Encaminhar com clareza e acolhimento.", "Antecipar demandas sazonais."],
           quandoChamarFarmaceutico: ["Sempre que ultrapassar o autocuidado orientado."],
           errosComuns: ["Insistir em resolver sozinho para 'não perder a venda'."],
+        simulacao: {
+          cliente: "Tosse persistente ha mais de 3 semanas.",
+          falaBoa: "Tosse por 3 semanas merece investigacao. Pode ser alergia refluxo ou asma. Vou chamar o farmaceutico.",
+          falaEvitar: "Tosse demora compra outro xarope.",
+        },
           quiz: [
             q(
               "Encaminhar ao farmacêutico significa:",
