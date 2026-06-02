@@ -1,6 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useCallback, useMemo } from "react";
 import type { CadastroRegistro } from "@/lib/cadastro-types";
 import { formatarTempoEstudo } from "@/lib/format-tempo";
 import { listarAulas } from "@/content/curriculo";
@@ -70,10 +72,26 @@ type OrdenarPor = "recente" | "xp" | "tempo" | "streak" | "nota";
 // ── Componente principal ──────────────────────────
 
 export function AdminPainel() {
-  const [usuario, setUsuario] = useState("admin");
-  const [senha, setSenha] = useState("");
-  const [authHeader, setAuthHeader] = useState<string | null>(null);
-  const [erro, setErro] = useState("");
+  const router = useRouter();
+  const [autenticado, setAutenticado] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("fap-admin-token");
+    if (!token) {
+      router.replace("/admin");
+      return;
+    }
+    setAutenticado(true);
+  }, [router]);
+
+  if (autenticado !== true) {
+    return (
+      <div className="flex min-h-[50vh] items-center justify-center">
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand-500" />
+      </div>
+    );
+  }
+
   const [cadastros, setCadastros] = useState<CadastroRegistro[]>([]);
   const [filtro, setFiltro] = useState<FiltroStatus>("todos");
   const [ordenar, setOrdenar] = useState<OrdenarPor>("recente");
@@ -83,10 +101,13 @@ export function AdminPainel() {
 
   const totalCurso = listarAulas().length;
 
-  const carregar = useCallback(async (header: string) => {
+  const authToken = typeof window !== "undefined" ? localStorage.getItem("fap-admin-token") : null;
+
+  const carregar = useCallback(async () => {
+    if (!authToken) return;
     setCarregando(true);
     try {
-      const res = await fetch("/api/cadastros", { headers: { Authorization: header } });
+      const res = await fetch("/api/cadastros", { headers: { Authorization: `Basic ${authToken}` } });
       if (res.ok) {
         const json = (await res.json()) as { cadastros: CadastroRegistro[] };
         setCadastros(json.cadastros);
@@ -94,120 +115,45 @@ export function AdminPainel() {
     } finally {
       setCarregando(false);
     }
-  }, []);
+  }, [authToken]);
 
   useEffect(() => {
-    const salvo = sessionStorage.getItem("fap-admin-auth");
-    if (salvo) {
-      setAuthHeader(salvo);
-      void carregar(salvo);
+    if (authToken) {
+      void carregar();
     }
-  }, [carregar]);
-
-  async function entrar(e: React.FormEvent) {
-    e.preventDefault();
-    setErro("");
-    const res = await fetch("/api/admin/verify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ usuario, senha }),
-    });
-    if (!res.ok) {
-      const body = (await res.json().catch(() => ({}))) as { motivo?: string };
-      setErro(res.status === 503 && body.motivo ? body.motivo : "Usuário ou senha incorretos.");
-      return;
-    }
-    const header = `Basic ${btoa(`${usuario}:${senha}`)}`;
-    sessionStorage.setItem("fap-admin-auth", header);
-    setAuthHeader(header);
-    await carregar(header);
-  }
+  }, [authToken, carregar]);
 
   async function acao(id: string, acao_tipo: "aprovar" | "rejeitar") {
-    if (!authHeader) return;
+    if (!authToken) return;
+    const header = `Basic ${authToken}`;
     await fetch("/api/cadastros", {
       method: "PATCH",
-      headers: { Authorization: authHeader, "Content-Type": "application/json" },
+      headers: { Authorization: header, "Content-Type": "application/json" },
       body: JSON.stringify({ id, acao: acao_tipo }),
     });
-    await carregar(authHeader);
+    await carregar();
   }
 
   async function excluir(id: string) {
-    if (!authHeader || !confirm("Excluir este aluno permanentemente?")) return;
+    if (!authToken || !confirm("Excluir este aluno permanentemente?")) return;
+    const header = `Basic ${authToken}`;
     await fetch(`/api/cadastros?id=${id}`, {
       method: "DELETE",
-      headers: { Authorization: authHeader },
+      headers: { Authorization: header },
     });
-    await carregar(authHeader);
+    await carregar();
   }
 
   function sair() {
-    sessionStorage.removeItem("fap-admin-auth");
-    setAuthHeader(null);
+    localStorage.removeItem("fap-admin-token");
     setCadastros([]);
     setAlunoExpandido(null);
+    window.location.href = "/admin";
   }
 
-  // ── Login screen ──
-  if (!authHeader) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4">
-        <form onSubmit={entrar} className="w-full max-w-md space-y-6">
-          <div className="text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-400 shadow-lg shadow-blue-500/25">
-              <Icon name="shield" size={28} className="text-white" />
-            </div>
-            <h1 className="text-2xl font-extrabold tracking-tight text-white">
-              Portal do Administrador
-            </h1>
-            <p className="mt-2 text-sm text-slate-400">
-              Aprove matrículas, acompanhe progresso, notas e engajamento dos alunos.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-xl">
-            <div className="space-y-4">
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                  Usuário
-                </label>
-                <input
-                  value={usuario}
-                  onChange={(e) => setUsuario(e.target.value)}
-                  className="mt-1.5 block w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
-                  autoComplete="username"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold uppercase tracking-wider text-slate-400">
-                  Senha
-                </label>
-                <input
-                  type="password"
-                  value={senha}
-                  onChange={(e) => setSenha(e.target.value)}
-                  className="mt-1.5 block w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none"
-                  autoComplete="current-password"
-                />
-              </div>
-              {erro && (
-                <p className="rounded-lg bg-rose-500/10 px-3 py-2 text-sm text-rose-300">{erro}</p>
-              )}
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-4 py-2.5 text-sm font-bold text-white shadow-lg shadow-blue-500/25 transition-all hover:shadow-xl hover:shadow-blue-500/30 hover:scale-[1.02]"
-              >
-                Entrar no painel
-              </button>
-            </div>
-          </div>
-          <p className="text-center text-xs text-slate-600">
-            Credencial padrão: <span className="text-slate-400">admin</span> /{" "}
-            <span className="text-slate-400">admin</span>
-          </p>
-        </form>
-      </div>
-    );
+  // ── Auth check ──
+  if (!authToken) {
+    return null; // Will redirect via useEffect
   }
 
   // ── Dados processados ──
@@ -279,7 +225,7 @@ export function AdminPainel() {
             </span>
             <button
               type="button"
-              onClick={() => authHeader && carregar(authHeader)}
+              onClick={() => carregar()}
               disabled={carregando}
               className="rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
             >
