@@ -284,4 +284,492 @@ export const modulosBemEstarExtra: Modulo[] = [
       },
     ],
   },
+  // ════════════════════════════════════════════════
+  // NOVOS MÓDULOS — Suplementos, Pés, Clean Beauty, Sono, Sazonais
+  // ════════════════════════════════════════════════
+  {
+    id: "suplementos-vitaminas",
+    titulo: "Suplementos Alimentares, Vitaminas e Minerais",
+    descricao:
+      "Polivitamínicos, whey protein, colágeno, ômega 3 e suplementos esportivos — orientação responsável no balcão.",
+    aulas: [
+      {
+        id: "vitaminas-minerais",
+        titulo: "Vitaminas, minerais e polivitamínicos",
+        duracaoMin: 7,
+        nivel: "intermediario",
+        resumo:
+          "Quando indicar polivitamínico, vitamina C, D, complexo B, ferro e cálcio — sem substituir prescrição médica.",
+        resumoExecutivo: [
+          "Polivitamínico é preventivo, não tratamento; não prometer 'cura' para nada.",
+          "Vitamina D e cálcio andam juntas na saúde óssea; idosos e menopausa são público-chave.",
+          "Ferro sem prescrição é vendido apenas como suplemento de baixa dosagem; anemia precisa de diagnóstico médico.",
+          "Vitamina C em altas doses tem efeito antioxidante, não previne gripe isoladamente.",
+        ],
+        comparativo: {
+          titulo: "Suplemento x Função principal",
+          itens: [
+            { nome: "Polivitamínico", quando: "Rotina, prevenção de carência leve." },
+            { nome: "Vitamina D", quando: "Imunidade, ossos — deficiência comum em brasileiros." },
+            { nome: "Complexo B", quando: "Energia, metabolismo — idosos e vegetarianos." },
+            { nome: "Ferro (sulfato ferroso)", quando: "Prevenção e tratamento de anemia (com prescrição)." },
+          ],
+        },
+        simulacao: {
+          cliente: "Cliente se sente cansado e pede 'uma vitamina para dar energia'.",
+          falaBoa:
+            "Cansaço pode ter várias causas. Posso sugerir um polivitamínico como reforço, mas se o cansaço persistir ou vier acompanhado de falta de ar, palidez, vale consultar o médico para investigar.",
+          falaEvitar: "Toma esse aqui que acaba com o cansaço.",
+        },
+        checklist: [
+          "Perguntar sobre medicamentos em uso (interações).",
+          "Reforçar que suplemento não substitui alimentação.",
+          "Encaminhar ao farmacêutico se houver suspeita de deficiência grave.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Suspeita de anemia, carência grave, gestantes, polifarmácia.",
+          "Cliente em tratamento oncológico ou com insuficiência renal.",
+        ],
+        errosComuns: [
+          "Vender megadoses de vitamina sem orientação.",
+          "Prometer disposição/energia como se fosse medicamento.",
+        ],
+        quiz: [
+          q(
+            "Qual vitamina está mais associada à imunidade e saúde óssea?",
+            ["Vitamina C", "Vitamina D", "Complexo B", "Ferro"],
+            1,
+            "A vitamina D atua na imunidade e na absorção de cálcio para os ossos.",
+          ),
+        ],
+        xp: 60,
+      },
+      {
+        id: "suplementos-proteina",
+        titulo: "Whey protein, colágeno e suplementos esportivos",
+        duracaoMin: 7,
+        nivel: "intermediario",
+        resumo:
+          "Whey, colágeno hidrolisado, albumina, BCAA — para quem são e como orientar o consumo.",
+        resumoExecutivo: [
+          "Whey protein é complemento proteico; não substitui refeição sem orientação nutricional.",
+          "Colágeno hidrolisado age na pele e articulações; associar à vitamina C melhora absorção.",
+          "BCAA e termogênicos têm público específico; termogênico com cafeína exige cuidado com hipertensos.",
+          "Sempre perguntar sobre objetivo e condições de saúde antes de indicar.",
+        ],
+        comparativo: {
+          titulo: "Suplemento x Indicação principal",
+          itens: [
+            { nome: "Whey protein", quando: "Suplementação proteica, pós-treino ou idosos com sarcopenia." },
+            { nome: "Colágeno hidrolisado", quando: "Pele, unhas, articulações — efeito visível em semanas." },
+            { nome: "Albumina", quando: "Alternativa ao whey para intolerantes à lactose." },
+            { nome: "BCAA", quando: "Treino de resistência; controverso na literatura recente." },
+          ],
+        },
+        checklist: [
+          "Perguntar sobre objetivo (emagrecer, ganhar massa, pele).",
+          "Checar alergias e intolerâncias.",
+          "Orientar consumo conforme a necessidade real.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Hipertensos querendo termogênico com cafeína.",
+          "Dúvidas sobre interação com medicamentos.",
+        ],
+        errosComuns: [
+          "Sugerir whey para emagrecer sem contexto de déficit calórico.",
+          "Prometer resultados milagrosos com colágeno.",
+        ],
+        quiz: [
+          q(
+            "Para melhor absorção do colágeno hidrolisado, é recomendado associar:",
+            ["Cafeína", "Vitamina C", "Ferro", "Cálcio"],
+            1,
+            "A vitamina C potencializa a síntese de colágeno no organismo.",
+          ),
+        ],
+        xp: 60,
+      },
+    ],
+  },
+  {
+    id: "cuidados-pes",
+    titulo: "Cuidados com os Pés e Calçados",
+    descricao:
+      "Hidratação, calos, calosidades, palmilhas, meias e calçados ortopédicos — conforto e saúde dos pés no balcão.",
+    aulas: [
+      {
+        id: "pes-hidratacao-calos",
+        titulo: "Hidratação dos pés, calos e calosidades",
+        duracaoMin: 5,
+        nivel: "basico",
+        resumo:
+          "Cremes hidratantes específicos, lixas, pedras-pomes e produtos para calos e rachaduras.",
+        resumoExecutivo: [
+          "Calos e calosidades são mecanismos de proteção; não remover com lâmina sem orientação.",
+          "Pés secos e rachados pedem cremes com ureia ou ceramidas, aplicação diária.",
+          "Esfoliação semanal + hidratação noturna com meia de algodão potencializa o tratamento.",
+          "Diabetes exige cuidado redobrado — nunca lixar os pés sem liberação médica.",
+        ],
+        checklist: [
+          "Perguntar sobre diabetes e circulação.",
+          "Orientar hidratação diária e esfoliação suave.",
+          "Encaminhar ao farmacêutico se houver feridas ou infecção.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Paciente diabético com feridas, calos dolorosos ou alteração de cor.",
+          "Rachaduras profundas com sangramento ou sinais de infecção.",
+        ],
+        errosComuns: [
+          "Indicar lâmina ou bisturi para remover calos em diabéticos.",
+          "Ignorar diferença entre calo (ósseo) e calosidade (pele).",
+        ],
+        quiz: [
+          q(
+            "Paciente diabético com calo no pé: conduta correta?",
+            [
+              "Indicar lixamento imediato",
+              "Orientar hidratação suave e encaminhar ao farmacêutico/médico",
+              "Passar pomada e ignorar",
+              "Dizer que é normal",
+            ],
+            1,
+            "Pé diabético exige cuidado extremo; lixamento pode causar úlcera.",
+          ),
+        ],
+        xp: 45,
+      },
+      {
+        id: "calcados-palmilhas",
+        titulo: "Palmilhas, meias e calçados ortopédicos",
+        duracaoMin: 5,
+        nivel: "basico",
+        resumo:
+          "Palmilhas de silicone, gel, ortopédicas, meias de compressão e calçados para conforto.",
+        resumoExecutivo: [
+          "Palmilha de gel/silicone alivia impacto; ortopédica exige avaliação profissional.",
+          "Meia de compressão tem gradação (leve, média, alta) — não indicar grau alto sem prescrição.",
+          "Calçados ortopédicos são para deformidades; palmilhas são para conforto e postura.",
+        ],
+        checklist: [
+          "Perguntar se há prescrição ou recomendação médica.",
+          "Orientar grau correto de compressão.",
+          "Sugerir palmilha de gel para alívio imediato de cansaço.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Dores persistentes nos pés, joelhos ou coluna.",
+          "Varizes intensas, inchaço, suspeita de trombose.",
+        ],
+        errosComuns: [
+          "Indicar meia de compressão alta sem avaliação.",
+          "Confundir palmilha de conforto com palmilha ortopédica sob medida.",
+        ],
+        quiz: [
+          q(
+            "Meias de compressão com grau elevado exigem:",
+            ["Compra imediata", "Prescrição médica", "Uso só à noite", "Indicação do atendente"],
+            1,
+            "Compressão alta deve ser prescrita por profissional devido a riscos circulatórios.",
+          ),
+        ],
+        xp: 40,
+      },
+    ],
+  },
+  {
+    id: "clean-beauty",
+    titulo: "Clean Beauty e Cosméticos Sustentáveis",
+    descricao:
+      "Cosméticos naturais, veganos, cruelty-free, sem parabenos — tendência crescente e como orientar o cliente consciente.",
+    aulas: [
+      {
+        id: "cosmeticos-naturais",
+        titulo: "Cosméticos naturais e veganos",
+        duracaoMin: 6,
+        nivel: "intermediario",
+        resumo:
+          "Diferença entre natural, vegano, orgânico e cruelty-free; selos e certificações; indicação correta.",
+        resumoExecutivo: [
+          "Vegano não significa hipoalergênico — ingredientes naturais também podem causar alergia.",
+          "Cruelty-free não garante que o produto seja orgânico ou livre de sintéticos.",
+          "Cliente que busca clean beauty geralmente valoriza transparência e sustentabilidade.",
+          "Saber ler rótulos: 'sem parabenos', 'sem sulfatos', 'sem petrolatos' são alegações comuns.",
+        ],
+        comparativo: {
+          titulo: "Conceito x Significado real",
+          itens: [
+            { nome: "Natural", quando: "Ingredientes de origem vegetal/mineral; pode conter conservantes suaves." },
+            { nome: "Vegano", quando: "Sem ingredientes de origem animal; não necessariamente orgânico." },
+            { nome: "Cruelty-free", quando: "Não testado em animais; não garante composição natural." },
+            { nome: "Orgânico", quando: "Matéria-prima cultivada sem agrotóxicos; exige certificação." },
+          ],
+        },
+        checklist: [
+          "Perguntar o que o cliente busca: evitar crueldade, alergia, sustentabilidade?",
+          "Explicar diferenças sem julgar a escolha do cliente.",
+          "Mostrar opções disponíveis na gôndola com os selos corretos.",
+        ],
+        quandoChamarFarmaceutico: ["Reações alérgicas a cosméticos 'naturais'."],
+        errosComuns: [
+          "Afirmar que natural é sempre melhor ou mais seguro.",
+          "Confundir vegano com hipoalergênico.",
+        ],
+        quiz: [
+          q(
+            "Um cosmético cruelty-free significa que:",
+            [
+              "É 100% orgânico",
+              "Não foi testado em animais",
+              "É vegano",
+              "Não tem conservantes",
+            ],
+            1,
+            "Cruelty-free se refere apenas a testes em animais; não garante composição vegana ou orgânica.",
+          ),
+        ],
+        xp: 50,
+      },
+      {
+        id: "sustentabilidade-beleza",
+        titulo: "Sustentabilidade na beleza e refil",
+        duracaoMin: 5,
+        nivel: "basico",
+        resumo:
+          "Produtos refil, embalagens recicláveis, barras sólidas (shampoo, condicionador) e consumo consciente.",
+        resumoExecutivo: [
+          "Refil reduz embalagem; orientar o cliente a reutilizar o frasco original.",
+          "Shampoo e condicionador sólidos são tendência — explicar modo de uso diferente do líquido.",
+          "Maquiagem sustentável (barras, potes de vidro) atrai público jovem e engajado.",
+          "Valorizar pequenas ações: consumidor que compra refil já é parte da mudança.",
+        ],
+        checklist: [
+          "Apresentar opção refil sempre que disponível.",
+          "Explicar uso de produtos sólidos (espumar, aplicar, conservar seco).",
+          "Reforçar que sustentabilidade não abre mão de qualidade.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Clientes com dermatite de contato que buscam alternativas mais puras.",
+        ],
+        errosComuns: [
+          "Menosprezar produtos sustentáveis como 'modinha'.",
+          "Não saber explicar a diferença de uso de um shampoo sólido.",
+        ],
+        quiz: [
+          q(
+            "Qual a principal vantagem do formato refil?",
+            [
+              "Ser mais caro",
+              "Reduzir embalagem e gerar menos resíduo",
+              "Durar menos",
+              "Ser mais perfumado",
+            ],
+            1,
+            "Refil reduz resíduo de embalagem, mantendo a qualidade do produto.",
+          ),
+        ],
+        xp: 40,
+      },
+    ],
+  },
+  {
+    id: "bem-estar-sono",
+    titulo: "Bem-Estar do Sono e Relaxamento",
+    descricao:
+      "Higiene do sono, melatonina (MIP), travesseiros ortopédicos, difusores, chás e velas — como o balcão pode ajudar no descanso.",
+    aulas: [
+      {
+        id: "higiene-sono",
+        titulo: "Higiene do sono e relaxamento",
+        duracaoMin: 6,
+        nivel: "basico",
+        resumo:
+          "Rotina noturna, melatonina (suplemento), chás calmantes, difusores e óleos essenciais para o sono.",
+        resumoExecutivo: [
+          "Melatonina é suplemento, não medicamento; auxilia na regulação do sono, mas não trata insônia crônica.",
+          "Higiene do sono: horário fixo, telas desligadas 1h antes, ambiente escuro e fresco.",
+          "Óleos essenciais (lavanda, camomila) em difusor criam ambiente propício ao relaxamento.",
+          "Chás de camomila, melissa e maracujá têm efeito suave; não substituem tratamento medicamentoso.",
+        ],
+        comparativo: {
+          titulo: "Abordagem para o sono",
+          itens: [
+            { nome: "Higiene do sono", quando: "Base para qualquer queixa; orientar sempre primeiro." },
+            { nome: "Melatonina", quando: "Suplemento para regulação; 0,21–10 mg, tomar 30–60 min antes de deitar." },
+            { nome: "Óleos essenciais/difusor", quando: "Complementar, cria ambiente; não trata insônia." },
+            { nome: "Chás calmantes", quando: "Ritual noturno; efeito leve a moderado." },
+          ],
+        },
+        checklist: [
+          "Perguntar hábitos de sono (horário, telas, café).",
+          "Orientar higiene do sono antes de qualquer suplemento.",
+          "Encaminhar ao farmacêutico se insônia persistir por mais de 2 semanas.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Insônia crônica, uso de medicamentos para dormir, suspeita de apneia.",
+          "Gestantes ou lactantes para uso de melatonina.",
+        ],
+        errosComuns: [
+          "Vender melatonina como solução mágica sem orientar higiene do sono.",
+          "Recomendar óleo essencial para ingestão oral (uso apenas difusor/ml tópico).",
+        ],
+        quiz: [
+          q(
+            "Antes de indicar melatonina, o atendente deve:",
+            [
+              "Vender a dosagem mais alta possível",
+              "Orientar higiene do sono e perguntar sobre hábitos",
+              "Ignorar outras causas",
+              "Dizer que melatonina cura insônia",
+            ],
+            1,
+            "Higiene do sono é a base; melatonina é coadjuvante, não tratamento principal.",
+          ),
+        ],
+        xp: 55,
+      },
+      {
+        id: "travesseiros-acessorios-sono",
+        titulo: "Travesseiros, máscaras e acessórios do sono",
+        duracaoMin: 5,
+        nivel: "basico",
+        resumo:
+          "Travesseiros ortopédicos, máscaras noturnas, protetores auriculares, cobertores ponderados e almofadas ergonômicas.",
+        resumoExecutivo: [
+          "Travesseiro ortopédico alinha coluna cervical; perguntar se dorme de lado, costas ou barriga.",
+          "Máscara noturna com bloqueio total de luz melhora qualidade do sono em ambientes claros.",
+          "Cobertor ponderado (weighted blanket) tem evidência em ansiedade e autismo; peso sugerido é 10% do corporal.",
+          "Protetor auricular é solução simples para ruído ambiente; não substitui tratamento de zumbido.",
+        ],
+        checklist: [
+          "Perguntar posição de dormir para travesseiro.",
+          "Sugerir máscara + protetor para ambientes claros/barulhentos.",
+          "Orientar peso correto do cobertor ponderado.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Dor cervical persistente mesmo com travesseiro adequado.",
+          "Zumbido, insônia grave, apneia do sono.",
+        ],
+        errosComuns: [
+          "Indicar travesseiro ortopédico sem perguntar posição de dormir.",
+          "Sugerir cobertor pesado para criança sem orientação de peso.",
+        ],
+        quiz: [
+          q(
+            "Ao indicar um travesseiro ortopédico, o primeiro passo é:",
+            [
+              "Escolher o mais caro",
+              "Perguntar a posição de dormir",
+              "Não perguntar nada",
+              "Indicar o mais firme",
+            ],
+            1,
+            "A posição de dormir define a altura e firmeza ideal do travesseiro.",
+          ),
+        ],
+        xp: 40,
+      },
+    ],
+  },
+  {
+    id: "produtos-sazonais",
+    titulo: "Produtos Sazonais e Estacionais",
+    descricao:
+      "Verão (protetor solar, repelente, pós-sol) e inverno (hidratante intensivo, lip balm, vitaminas de estação) — antecipar necessidades sazonais do cliente.",
+    aulas: [
+      {
+        id: "sazonal-verao",
+        titulo: "Kit verão: protetor solar, repelente e pós-sol",
+        duracaoMin: 6,
+        nivel: "basico",
+        resumo:
+          "Fotoproteção avançada, repelente de insetos, cuidados pós-exposição e hidratação intensiva no verão.",
+        resumoExecutivo: [
+          "Protetor solar com FPS 50+ para exposição direta; reaplicação a cada 2h é essencial.",
+          "Repelente com DEET, Icaridina ou IR3535; não passar sobre protetor solar — aplicar por cima.",
+          "Pós-sol com aloe vera ou calamina acalma a pele; hidratante noturno potencializa regeneração.",
+          "Oferecer combo sazonal: protetor + repelente + pós-sol como kit inteligente.",
+        ],
+        comparativo: {
+          titulo: "Cuidado sazonal — Verão",
+          itens: [
+            { nome: "Protetor solar (FPS 50+)", quando: "Dia a dia e exposição direta; reaplicar." },
+            { nome: "Repelente", quando: "Áreas de mata, fim de tarde, regiões endêmicas." },
+            { nome: "Pós-sol / Aloe vera", quando: "Após exposição; acalma e hidrata." },
+            { nome: "Hidratante noturno leve", quando: "Reposição da barreira cutânea pós-sol." },
+          ],
+        },
+        checklist: [
+          "Oferecer protetor + repelente como combinação obrigatória.",
+          "Orientar ordem de aplicação (protetor primeiro, repelente depois).",
+          "Sugerir pós-sol se o cliente for passar o dia na praia/piscina.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Alergia a protetor solar ou repelente.",
+          "Cliente com fotossensibilidade por medicamentos.",
+        ],
+        errosComuns: [
+          "Indicar protetor FPS baixo para exposição direta.",
+          "Não orientar reaplicação do protetor.",
+        ],
+        quiz: [
+          q(
+            "A ordem correta de aplicação é:",
+            [
+              "Repelente → protetor",
+              "Protetor → repelente",
+              "Misturar os dois",
+              "Só protetor é suficiente",
+            ],
+            1,
+            "Protetor primeiro, depois repelente por cima para não reduzir a proteção.",
+          ),
+        ],
+        xp: 50,
+      },
+      {
+        id: "sazonal-inverno",
+        titulo: "Kit inverno: hidratação intensiva, lábios e imunidade",
+        duracaoMin: 6,
+        nivel: "basico",
+        resumo:
+          "Hidratantes corporais ricos, lip balm, vitaminas de estação, umidificadores e cuidados com pele ressecada pelo frio.",
+        resumoExecutivo: [
+          "Frio resseca a pele: hidratante com manteigas (karité, cacau) ou ceramidas é mais eficaz que loção leve.",
+          "Lábios rachados pedem balm com óleo de rícino, lanolina ou vaselina; evitar passar saliva.",
+          "Vitamina C e zinco ajudam na imunidade; não prometer prevenção total de gripes.",
+          "Umidificador de ambiente alivia ressecamento de pele e vias aéreas.",
+        ],
+        comparativo: {
+          titulo: "Cuidado sazonal — Inverno",
+          itens: [
+            { nome: "Hidratante rico (manteigas)", quando: "Pele ressecada, áreas ásperas (cotovelos, joelhos)." },
+            { nome: "Lip balm / protetor labial", quando: "Lábios rachados, uso diário no frio." },
+            { nome: "Vitamina C + Zinco", quando: "Reforço imunológico sazonal." },
+            { nome: "Umidificador de ar", quando: "Ambientes muito secos, rinite, pele ressecada." },
+          ],
+        },
+        checklist: [
+          "Oferecer hidratante intensivo + lip balm como dupla essencial.",
+          "Sugerir vitamina C como preventivo sazonal.",
+          "Perguntar sobre alergias respiratórias para indicar umidificador.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Pele com fissuras profundas, sinais de infecção.",
+          "Sintomas gripais intensos (febre alta, falta de ar).",
+        ],
+        errosComuns: [
+          "Indicar loção leve para pele ressecada pelo frio.",
+          "Prometer que vitamina C previne gripe com certeza.",
+        ],
+        quiz: [
+          q(
+            "No inverno, a pele ressecada pede hidratante com:",
+            ["Loção oil-free", "Manteigas ou ceramidas", "Álcool", "Toque seco"],
+            1,
+            "Texturas ricas repõem lipídios da barreira cutânea, mais afetados no frio.",
+          ),
+        ],
+        xp: 50,
+      },
+    ],
+  },
 ];
