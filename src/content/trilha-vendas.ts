@@ -40,6 +40,14 @@ export const trilhaVendas: Trilha = {
             falaBoa: '"Entendo como é desconfortável. Antes de indicar, deixa eu te perguntar: você usa algum medicamento contínuo ou tem alguma alergia? Depois que eu entender melhor, vou te mostrar o que costuma funcionar bem pra esse caso."',
             falaEvitar: '"Temos um shampoo anticaspa excelente em promoção hoje, leva dois e ganha 10%."',
           },
+          comparativo: {
+            titulo: "Sinais verdes vs. Sinais vermelhos para oferecer",
+            itens: [
+              { nome: "Sinal verde — pode oferecer", quando: "Cliente relaxou, fez contato visual, concordou com a orientação inicial, fez perguntas sobre o produto." },
+              { nome: "Sinal vermelho — não ofereça", quando: "Cliente com pressa, irritado, olhando o relógio, com expressão fechada ou claramente sem recursos." },
+              { nome: "Sinal amarelo — investigue antes", quando: "Cliente hesitante, faz careta ao ouvir o preço, pergunta 'será que resolve?' sem convicção." },
+            ],
+          },
           checklist: [
             "Só oferecer depois de ouvir e entender a necessidade.",
             "Observar linguagem corporal do cliente antes de propor.",
@@ -65,8 +73,41 @@ export const trilhaVendas: Trilha = {
               1,
               "O cliente precisa se sentir ouvido primeiro. Oferecer antes disso é oportunismo.",
             ),
+            q(
+              "Qual é um sinal VERDE de que o cliente está aberto a uma oferta?",
+              [
+                "Cliente cruza os braços e franze a testa",
+                "Cliente faz perguntas sobre o produto e concorda com a orientação",
+                "Cliente olha para o celular enquanto você fala",
+                "Cliente diz 'só vou dar uma olhada' e vira as costas",
+              ],
+              1,
+              "Cliente engajado que faz perguntas e concorda com a orientação está aberto a receber uma sugestão adicional.",
+            ),
+            q(
+              "O que fazer quando o cliente demonstra sinais vermelhos (pressa, irritação)?",
+              [
+                "Ignorar e oferecer mesmo assim",
+                "Respeitar o momento — agilizar o atendimento e não fazer ofertas adicionais",
+                "Chamar o gerente",
+                "Aumentar o tom de voz para chamar atenção",
+              ],
+              1,
+              "Respeitar o estado emocional do cliente é a base do cuidado. Cliente irritado ou com pressa não está receptivo.",
+            ),
+            q(
+              "Por que oferecer antes da orientação inicial é prejudicial?",
+              [
+                "Porque o cliente pode comprar mais",
+                "Porque o cliente percebe oportunismo e perde a confiança no atendente",
+                "Porque o produto pode estar em falta",
+                "Porque o farmacêutico não autorizou",
+              ],
+              1,
+              "Oferecer antes de orientar soa como 'quero vender' em vez de 'quero ajudar'. A confiança se perde em segundos.",
+            ),
           ],
-          xp: 50,
+          xp: 60,
         },
         {
           id: "gatilhos-mentais",
@@ -87,6 +128,16 @@ export const trilhaVendas: Trilha = {
             falaBoa: '"Entendo. O preço realmente é mais alto, mas ele tem proteção contra luz visível e poluição — que são as maiores causas de mancha na pele. A maioria das clientes que experimentou não volta pro outro. Que tal começar com um menor pra testar?"',
             falaEvitar: '"Só hoje com 50% de desconto e brinde exclusivo. Últimas unidades!"',
           },
+          comparativo: {
+            titulo: "Gatilhos mentais éticos vs. Antiéticos",
+            itens: [
+              { nome: "Prova social ética", quando: "'Muitos clientes com o mesmo problema usam esse e voltam.' — informa sem pressionar." },
+              { nome: "Prova social antiética", quando: "'Toda mulher compra isso, por que você nao compraria?' — apela, manipula, constrange." },
+              { nome: "Urgencia etica", quando: "'A promocao vai ate amanha, mas o importante e comecar o tratamento.' — contextualiza." },
+              { nome: "Urgencia falsa", quando: "'Ultimas unidades!' (com estoque cheio) — cliente descobre e nunca mais confia." },
+              { nome: "Autoridade etica", quando: "'O farmaceutico recomenda essa linha porque tem respaldo clinico.' — fundamenta." },
+            ],
+          },
           checklist: [
             "Usar prova social como informação, não como pressão.",
             "Nunca criar urgência falsa — destruir a confiança é mais caro que perder uma venda.",
@@ -101,18 +152,62 @@ export const trilhaVendas: Trilha = {
           ],
           quiz: [
             q(
-              "Qual desses usos do gatilho de prova social é ético no balcão?",
+              "Qual desses usos do gatilho de prova social e etico no balcao?",
               [
                 '"Só tem mais dois, depois acaba" (mesmo tendo estoque)',
                 '"Muitos clientes com o mesmo problema usam esse produto"',
-                '"Toda mulher compra isso, por que você não compraria?"',
-                '"O vizinho comprou, você também deveria"',
+                '"Toda mulher compra isso, por que você nao compraria?"',
+                '"O vizinho comprou, você tambem deveria"',
               ],
               1,
-              "Prova social ética é informar que outros usam, não pressionar com escassez falsa.",
+              "Prova social etica e informar que outros usam, nao pressionar com escassez falsa.",
+            ),
+            q(
+              "Qual gatilho mental esta sendo usado em: 'O Dr. Carlos sempre recomenda essa linha'?",
+              [
+                "Escassez",
+                "Autoridade",
+                "Reciprocidade",
+                "Novidade",
+              ],
+              1,
+              "Citar a recomendacao do farmaceutico usa o gatilho da autoridade — desde que seja verdadeiro.",
+            ),
+            q(
+              "Qual a diferenca entre urgencia etica e urgencia falsa?",
+              [
+                "Nao ha diferenca",
+                "Urgencia etica baseia-se em fatos reais; a falsa inventa escassez para pressionar",
+                "Urgencia falsa e mais eficaz",
+                "Urgencia etica nao funciona",
+              ],
+              1,
+              "Urgencia falsa e manipulacao. Cliente descobre e a confianca na farmacia inteira e perdida.",
+            ),
+            q(
+              "Como aplicar o gatilho da reciprocidade no balcao?",
+              [
+                "Exigir compra em troca de orientacao",
+                "Oferecer orientacao valiosa de graca — o cliente retribui com confianca",
+                "Dar brindes para quem gasta mais",
+                "Oferecer desconto na primeira compra",
+              ],
+              1,
+              "Reciprocidade genuina: dar valor primeiro gera confianca e retorno natural do cliente.",
+            ),
+            q(
+              "Qual NAO e uma aplicacao etica de gatilhos mentais?",
+              [
+                '"Esse probiotico e o mais recomendado por gastroenterologistas" (verdade)',
+                '"So temos 3 unidades" (com dezenas no deposito)',
+                '"No verao passado, esse repelente foi o mais vendido"',
+                '"Quem comprou esse colageno voltou em 3 meses para comprar mais"',
+              ],
+              1,
+              "Criar escassez falsa e antietico. Mentira destroi a credibilidade.",
             ),
           ],
-          xp: 60,
+          xp: 75,
         },
         {
           id: "como-oferecer",
@@ -132,6 +227,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Só vou levar esse xarope mesmo."',
             falaBoa: '"Claro. Só lembrando que o xarope funciona melhor se você beber bastante água durante o dia. Já que está aqui, esse soro fisiológico para lavagem nasal ajuda a descongestionar mais rápido. Quer levar um?"',
             falaEvitar: '"Não quer levar um antitérmico também? Tá em promoção."',
+          },
+          comparativo: {
+            titulo: "Oferta consultiva vs. Oferta predatória",
+            itens: [
+              { nome: "Abordagem consultiva", quando: "Contextualiza: 'Já que voce esta levando o antialergico, esse soro ajuda a complementar.' Mostra cuidado." },
+              { nome: "Abordagem predatória", quando: "Generica: 'Quer levar mais alguma coisa?' — parece robo, nao agrega valor." },
+              { nome: "Uso do 'porque'", quando: "Consultivo: 'Isso ajuda porque...' (justifica). Predatorio: 'Leva que ta barato.' (apela ao preco)." },
+              { nome: "Resposta ao 'nao'", quando: "Consultivo: aceita na hora. Predatorio: insiste, argumenta, faz o cliente se sentir mal." },
+            ],
           },
           checklist: [
             "Oferecer contextualizando o produto à necessidade do cliente.",
@@ -157,8 +261,30 @@ export const trilhaVendas: Trilha = {
               1,
               "Contextualizar a oferta mostra que você pensou no bem-estar do cliente, não na comissão.",
             ),
+            q(
+              "Qual a técnica do 'porque' no oferecimento?",
+              [
+                "Dizer 'porque sim'",
+                "Sempre dar uma razao logica para a oferta: 'Isso ajuda porque...'",
+                "Perguntar 'por que voce nao leva?'",
+                "Falar o preco primeiro, depois o motivo",
+              ],
+              1,
+              "A tecnica do 'porque' oferece uma justificativa logica, tornando a oferta consultiva em vez de predatoria.",
+            ),
+            q(
+              "O que fazer quando o cliente diz 'nao' a uma oferta?",
+              [
+                "Insistir mostrando mais beneficios",
+                "Aceitar na hora: 'Sem problemas, fica so com o que precisa!'",
+                "Mostrar um produto mais barato",
+                "Perguntar por que ele nao quer",
+              ],
+              1,
+              "Aceitar o 'nao' graciosamente e essencial para manter o rapport. Insistir quebra a confianca.",
+            ),
           ],
-          xp: 50,
+          xp: 60,
         },
         {
           id: "objecoes",
@@ -178,6 +304,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Nossa, esse colírio é caro. Só vou levar o mais barato."',
             falaBoa: '"Entendo, o preço realmente pesa. Esse é um colírio com ácido hialurônico, que dura mais horas de hidratação — acaba saindo mais barato por dose. Se quiser testar, temos uma versão menor. O que acha?"',
             falaEvitar: '"Posso dar 10% de desconto para você levar esse."',
+          },
+          comparativo: {
+            titulo: "Tipos de objeção e como lidar",
+            itens: [
+              { nome: "Objecao de preco", quando: "Nao e sobre o valor — e sobre falta de entendimento do beneficio. Reposicione o custo-beneficio antes de negociar." },
+              { nome: "Objecao de necessidade", quando: "'Nao preciso disso.' Investigue: 'Voce ja tentou algo para isso antes?' Muitas vezes o cliente subestima o problema." },
+              { nome: "Objecao de confianca", quando: "'Nunca usei essa marca.' Ofereca amostra ou versao menor para teste. Use prova social e autoridade do farmaceutico." },
+              { nome: "Objecao de urgência", quando: "'Vou pensar.' Ajude a decidir com fechamento-resumo, mas sem pressionar. 'Fica a vontade, estamos aqui.'" },
+            ],
           },
           checklist: [
             "Nunca pular para desconto na primeira objeção.",
@@ -203,8 +338,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Antes de negociar preço, entenda a objeção e reposicione o valor. Muitas vezes o cliente só não entendeu o benefício.",
             ),
+            q(
+              "O que significa 'reposicionar o valor' diante de uma objeção de preço?",
+              [
+                "Baixar o preco na hora",
+                "Explicar os beneficios e o custo-beneficio do produto antes de falar de desconto",
+                "Mostrar um produto mais barato",
+                "Ignorar a objeção",
+              ],
+              1,
+              "Reposicionar o valor e explicar por que o produto vale o que custa, antes de qualquer negociacao de preco.",
+            ),
+            q(
+              "Como identificar se a objeção é de necessidade e não de preço?",
+              [
+                "O cliente diz 'esta caro'",
+                "O cliente diz 'nao sei se preciso disso' ou 'sera que resolve?'",
+                "O cliente pergunta o preco",
+                "O cliente sai da loja",
+              ],
+              1,
+              'Objeção de necessidade aparece como duvida sobre a utilidade. "Sera que resolve?" e diferente de "esta caro".',
+            ),
+            q(
+              "Qual o perigo de dar desconto na primeira objeção de preço?",
+              [
+                "Nao tem perigo, e a melhor estrategia",
+                "O cliente percebe que o preco estava inflado e perde a confianca — e pode pedir mais desconto",
+                "O farmaceutico nao autoriza",
+                "O sistema nao aceita",
+              ],
+              1,
+              "Desconto na primeira objeção ensina o cliente a sempre pedir desconto. E mostra que o primeiro preco nao era honesto.",
+            ),
           ],
-          xp: 70,
+          xp: 80,
         },
         {
           id: "cross-sell-upsell",
@@ -224,6 +392,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Vou levar esse protetor solar fator 30."',
             falaBoa: '"Ótima escolha. Já que você está começando a se proteger, esse fator 60 tem a mesma textura mas protege mais contra manchas — muitas clientes que têm pele oleosa como a sua preferem ele. A diferença de preço é pequena. Quer ver?"',
             falaEvitar: '"Tem o fator 60 também por R$ 30 a mais."',
+          },
+          comparativo: {
+            titulo: "Cross-sell vs. Up-sell na prática",
+            itens: [
+              { nome: "Cross-sell", quando: "Complemento: protetor solar + pos-sol; antialergico + soro fisiologico; xarope + mel." },
+              { nome: "Up-sell", quando: "Upgrade: fator 30 para fator 60; versao generica para versao com mais principios ativos." },
+              { nome: "Limite recomendado", quando: "Cross-sell: maximo 2 complementos. Up-sell: 1 upgrade por atendimento." },
+              { nome: "Quando evitar", quando: "Cliente com pressa, cliente irritado, cliente com orcamento limitado evidente." },
+            ],
           },
           checklist: [
             "Cross-sell: oferecer sempre um complemento real, não aleatório.",
@@ -249,8 +426,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Cross-sell = complemento. Up-sell = upgrade. Ambos precisam fazer sentido pro cliente.",
             ),
+            q(
+              "Qual exemplo representa um up-sell no balcão?",
+              [
+                "Oferecer soro fisiologico junto com o antialergico",
+                "Oferecer a versao do xarope com mais principios ativos e melhor absorcao",
+                "Oferecer um brinde na compra",
+                "Oferecer desconto para comprar duas unidades",
+              ],
+              1,
+              "Up-sell e oferecer uma versao superior do mesmo produto. O xarope com mais principios ativos e um upgrade real.",
+            ),
+            q(
+              "Quantas ofertas de cross-sell/up-sell são recomendadas por atendimento?",
+              [
+                "Quantas o cliente aceitar",
+                "No maximo 1 a 2 ofertas",
+                "5 ofertas para garantir pelo menos uma aceitacao",
+                "Nenhuma — nunca oferecer complementos",
+              ],
+              1,
+              "Mais de 2 ofertas vira empurroterapia. O cliente se sente pressionado e perde a confianca.",
+            ),
+            q(
+              "Por que o up-sell deve ser justificado com benefício concreto?",
+              [
+                "Para o cliente se sentir especial",
+                "Para o cliente entender o valor agregado e sentir que a recomendacao e para o bem dele, nao para aumentar o ticket",
+                "Para o gerente aprovar",
+                "Para cumprir meta de vendas",
+              ],
+              1,
+              "Up-sell sem justificativa soa como 'quero vender o mais caro'. Com beneficio concreto, soa como cuidado genuino.",
+            ),
           ],
-          xp: 60,
+          xp: 70,
         },
         {
           id: "fechamento",
@@ -270,6 +480,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Acho que vou levar. Ou não, deixa pra semana que vem."',
             falaBoa: '"Entendo. Só pra lembrar, o desconto é válido até amanhã e esse produto costuma faltar em época de gripes. Mas se preferir esperar, tudo bem — você sabe onde a gente está."',
             falaEvitar: '"Amanhã pode não ter mais. Leva agora que eu garanto o desconto."',
+          },
+          comparativo: {
+            titulo: "Técnicas de fechamento: qual usar em cada situação",
+            itens: [
+              { nome: "Fechamento assumido", quando: "Cliente ja demonstrou interesse forte. 'Vou separar aqui pra voce.' — age como se a decisao ja foi tomada." },
+              { nome: "Fechamento alternativo", quando: "Cliente indeciso entre opcoes. 'Voce prefere o de 30ml ou 60ml?' — fecha sem perguntar 'sim ou nao'." },
+              { nome: "Fechamento resumo", quando: "Cliente parece confuso com tantas informacoes. Recapitule: 'Entao fica com o xarope e o soro, certo?'" },
+              { nome: "Fechamento com silencio", quando: "Depois de apresentar a oferta final. Cale a boca e espere. Quem fala depois de fechar perde a venda." },
+            ],
           },
           checklist: [
             "Identificar sinais de compra: tocar no produto, perguntar detalhes, concordar com a orientação.",
@@ -295,8 +514,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Depois do fechamento, o silêncio é a ferramenta mais poderosa. Quem continua falando perde a venda.",
             ),
+            q(
+              "Qual técnica de fechamento é mais adequada para um cliente claramente indeciso entre duas opções?",
+              [
+                "Fechamento assumido",
+                "Fechamento alternativo: 'Voce prefere a versao de 30ml ou a de 60ml?'",
+                "Fechamento com pressao",
+                "Fechamento com desconto",
+              ],
+              1,
+              "O fechamento alternativo remove o 'sim ou nao' e coloca o cliente escolhendo entre opcoes boas.",
+            ),
+            q(
+              "O que é o fechamento assumido?",
+              [
+                "Perguntar 'você quer levar?'",
+                "Agir como se a compra ja estivesse decidida: 'Vou separar aqui pra voce'",
+                "Esperar o cliente decidir sozinho",
+                "Chamar o gerente para fechar",
+              ],
+              1,
+              "Fechamento assumido transmite confianca. O atendente age como se a decisao ja estivesse tomada, facilitando o 'sim'.",
+            ),
+            q(
+              "O que fazer quando o cliente hesita após o fechamento?",
+              [
+                "Insistir com mais argumentos",
+                "Dar espaco: 'Fica a vontade pra pensar, vou ali e ja volto'",
+                "Baixar o preco na hora",
+                "Mostrar um produto diferente",
+              ],
+              1,
+              "Pressao no momento da hesitacao faz o cliente desistir. Dar espaco mostra respeito e confianca no produto.",
+            ),
           ],
-          xp: 70,
+          xp: 80,
         },
       ],
     },
@@ -328,6 +580,15 @@ export const trilhaVendas: Trilha = {
             falaBoa: '"Olá! Seja bem-vindo. Se precisar de ajuda para encontrar algo ou tiver alguma dúvida, é só me chamar. Pode ficar à vontade!" (tom aberto, sorriso, sem pressão)',
             falaEvitar: '"Posso ajudar?" (tom neutro, sem contato visual, já virando as costas antes da resposta)',
           },
+          comparativo: {
+            titulo: "Abertura que acolhe vs. Abertura que afasta",
+            itens: [
+              { nome: "Acolhedora", quando: "'Ola! Seja bem-vindo. Como posso te ajudar hoje?' — sorriso, contato visual, tom aberto." },
+              { nome: "Que afasta", quando: "'Pois nao?' — tom mecanico, sem contato visual, corpo virado. O cliente se sente um incomodo." },
+              { nome: "Com cliente ansioso", quando: "Acolhedora: tom calmo, pausado, aproximacao gradual. Que afasta: abordagem invasiva e rapida." },
+              { nome: "Com cliente frequente", quando: "Acolhedora: reconhece o cliente. 'Bom dia, dona Maria! Tudo bem?' Que afasta: trata como se fosse a primeira vez." },
+            ],
+          },
           checklist: [
             "Fazer contato visual e sorrir antes de falar.",
             "Adaptar o tom ao perfil do cliente.",
@@ -353,8 +614,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Uma abertura acolhedora e aberta estabelece rapport. 'Posso ajudar?' soa como obrigação.",
             ),
+            q(
+              "Por que usar o nome do cliente durante o atendimento é eficaz?",
+              [
+                "Para o cliente se sentir importante e criar intimidade sem ser invasivo",
+                "Para o gerente saber que voce conhece o cliente",
+                "Para preencher o cadastro",
+                "Nao e recomendado usar o nome do cliente",
+              ],
+              1,
+              "Usar o nome do cliente 1-2 vezes durante o atendimento cria conexao pessoal. Usar demais vira desconfortavel.",
+            ),
+            q(
+              "Como adaptar a abordagem para um cliente que entra claramente apressado?",
+              [
+                "Ignorar a pressa e fazer perguntas longas",
+                "Ser direto e eficiente: 'Vi que voce esta com pressa. Me fala o que precisa que eu resolvo rapido.'",
+                "Pedir para ele esperar sua vez",
+                "Falar mais devagar para acalma-lo",
+              ],
+              1,
+              "Reconhecer a pressa do cliente e adaptar a velocidade do atendimento mostra empatia e respeito pelo tempo dele.",
+            ),
+            q(
+              "O que significa 'espelhar o tom do cliente'?",
+              [
+                "Falar exatamente as mesmas palavras que o cliente",
+                "Adequar o tom de voz, ritmo e postura ao estado emocional do cliente",
+                "Repetir tudo que o cliente fala",
+                "Falar mais alto que o cliente",
+              ],
+              1,
+              "Espelhar e adequar sua comunicacao a do cliente. Se ele esta calmo, fale calmo. Se esta preocupado, seja tranquilo e seguro.",
+            ),
           ],
-          xp: 40,
+          xp: 55,
         },
         {
           id: "tom-voz-postura",
@@ -374,6 +668,15 @@ export const trilhaVendas: Trilha = {
             cliente: "Cliente idoso chega receoso, perguntando sobre um medicamento caro.",
             falaBoa: "Aproxima-se, abaixa levemente para ficar na altura do cliente (se ele for mais baixo), tom pausado e claro: 'Pois não, fique à vontade. Me conta o que você está precisando que eu vou te ajudar com calma.'",
             falaEvitar: "Responde rápido de longe, sem se aproximar, tom acelerado e genérico.",
+          },
+          comparativo: {
+            titulo: "Postura ideal vs. Postura a evitar",
+            itens: [
+              { nome: "Postura ideal", quando: "Ombros relaxados, bracos descruzados, maos a mostra, contato visual, corpo voltado para o cliente." },
+              { nome: "Postura a evitar", quando: "Bracos cruzados, maos nos bolsos, corpo virado, olhando para o computador ou prateleira." },
+              { nome: "Tom de voz ideal", quando: "Medio, pausado, confiante. Adequa a velocidade ao perfil do cliente." },
+              { nome: "Tom de voz a evitar", quando: "Muito baixo (inseguranca), muito alto (agressividade), muito rapido (ansiedade)." },
+            ],
           },
           checklist: [
             "Manter postura aberta e braços descruzados.",
@@ -399,8 +702,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Postura aberta e acolhedora transmite segurança e disponibilidade para o cliente.",
             ),
+            q(
+              "Qual deve ser a velocidade da fala ao atender um cliente idoso?",
+              [
+                "Rapida para nao perder tempo",
+                "Mais lenta e pausada, com tom calmo e claro",
+                "A mesma para todos os clientes",
+                "Alta para parecer confiante",
+              ],
+              1,
+              "Cliente idoso processa informacao em ritmo diferente. Falar devagar e com clareza mostra respeito e cuidado.",
+            ),
+            q(
+              "Por que atender sentado com o cliente em pé é inadequado?",
+              [
+                "Porque e desconfortavel para o atendente",
+                "Porque passa desinteresse e desrespeito — o cliente se sente menos importante",
+                "Porque o computador fica muito alto",
+                "Nao ha problema em atender sentado",
+              ],
+              1,
+              "Atender sentado com o cliente em pe cria uma hierarquia visual negativa. Levantar-se iguala a posicao e transmite respeito.",
+            ),
+            q(
+              "O que acontece com o tom de voz quando o atendente sorri enquanto fala?",
+              [
+                "Nada, o sorriso nao muda a voz",
+                "O tom fica mais caloroso, aberto e confiavel — o cliente percebe mesmo sem ver o sorriso",
+                "A voz fica mais fina",
+                "O cliente nao percebe diferenca",
+              ],
+              1,
+              "Sorrir enquanto fala muda a entonacao da voz, tornando-a mais calorosa e acolhedora. Funciona ate no telefone.",
+            ),
           ],
-          xp: 50,
+          xp: 60,
         },
         {
           id: "perguntas-poderosas",
@@ -420,6 +756,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Estou com uma alergia na pele."',
             falaBoa: '"Entendi. Desde quando começou? Você já usou algum produto? Sabe o que desencadeou?" (perguntas abertas que mapeiam o caso)',
             falaEvitar: '"É alergia? Quer uma pomada? Essa aqui é boa." (sem investigar, já empurrando produto)',
+          },
+          comparativo: {
+            titulo: "Perguntas abertas vs. Perguntas fechadas",
+            itens: [
+              { nome: "Pergunta aberta", quando: "'O que voce esta sentindo?' — permite que o cliente explique livremente, revelando mais informacoes." },
+              { nome: "Pergunta fechada", quando: "'Esta com dor?' — limita a resposta a 'sim' ou 'nao', perdendo contexto importante." },
+              { nome: "Pergunta investigativa", quando: "'Desde quando? Ja tentou algo? Teve alergia?' — mapeia o cenario completo antes de indicar." },
+              { nome: "Pergunta direcionadora", quando: "'Voce prefere comprimido ou xarope?' — guia a decisao sem impor, dando opcoes." },
+            ],
           },
           checklist: [
             "Começar com perguntas abertas para mapear a necessidade.",
@@ -445,8 +790,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Perguntas abertas ('O que você está sentindo?') revelam mais informações que perguntas fechadas ('Está com dor?').",
             ),
+            q(
+              "Qual pergunta ajudaria a investigar melhor o problema do cliente?",
+              [
+                '"É alergia?"',
+                '"Desde quando comecou? Ja usou algum produto para isso?"',
+                '"Vai levar ou nao?"',
+                '"Quer o mais caro?"',
+              ],
+              1,
+              "Perguntas investigativas mapeiam o historico e evitam indicar o produto errado.",
+            ),
+            q(
+              "O que e uma pergunta direcionadora?",
+              [
+                "Uma pergunta que leva o cliente a responder 'nao'",
+                "Uma pergunta que oferece opcoes para guiar a decisao: 'Voce prefere em comprimido ou xarope?'",
+                "Uma pergunta sobre o preco",
+                "Uma pergunta que o cliente nao entende",
+              ],
+              1,
+              "Pergunta direcionadora da opcoes ao cliente em vez de perguntar 'sim ou nao', facilitando a decisao.",
+            ),
+            q(
+              "Por que evitar perguntas que levam a 'nao' antes do fechamento?",
+              [
+                "Porque o cliente pode ficar confuso",
+                "Porque cada 'nao' reforca a resistencia do cliente e dificulta o fechamento",
+                "Porque o farmaceutico nao gosta",
+                "Porque demora mais",
+              ],
+              1,
+              "Cada 'nao' que o cliente da torna mais dificil ele dizer 'sim' depois. Prefira afirmativas e opcoes.",
+            ),
           ],
-          xp: 60,
+          xp: 70,
         },
         {
           id: "escuta-ativa",
@@ -466,6 +844,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Estou há dias com essa tosse seca, já tentei chá mas não resolve. E olha que eu bebo bastante água."',
             falaBoa: '"Então você já tentou alternativas caseiras e não resolveu, certo? E a tosse atrapalha seu sono também?" (paráfrase + pergunta investigativa)',
             falaEvitar: '"Temos um xarope excelente, é o mais vendido." (ignora completamente o que o cliente falou)',
+          },
+          comparativo: {
+            titulo: "Escuta ativa vs. Escuta passiva",
+            itens: [
+              { nome: "Escuta ativa", quando: "Parafraseia: 'Entao, se eu entendi direito, voce sente desconforto depois de comer.' Valida: 'Deve ser incomodo mesmo.'" },
+              { nome: "Escuta passiva", quando: "Apenas ouve sem reagir, ja pensando na resposta. 'Hum... entendi. Leva esse aqui.'" },
+              { nome: "Interrupcao", quando: "Ativa: nunca interrompe. Passiva: corta o cliente no meio para oferecer algo." },
+              { nome: "Resumo final", quando: "Ativa: recapitula ao final. 'Entao fica assim...' Passiva: entrega e ja chama o proximo." },
+            ],
           },
           checklist: [
             "Parafrasear a queixa do cliente para mostrar que ouviu.",
@@ -491,8 +878,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Paráfrase é demonstrar compreensão reformulando a fala do cliente. Mostra que você ouviu de verdade.",
             ),
+            q(
+              "O que significa 'validar o sentimento' do cliente?",
+              [
+                "Dizer que o cliente esta errado",
+                "Reconhecer a emocao do cliente como legitima: 'Deve ser incomodo conviver com isso'",
+                "Ignorar o que o cliente sente",
+                "Oferecer um desconto",
+              ],
+              1,
+              "Validar o sentimento cria vinculo emocional. O cliente se sente compreendido, nao apenas atendido.",
+            ),
+            q(
+              "Por que interromper o cliente durante a explicacao e prejudicial?",
+              [
+                "Nao e prejudicial, economiza tempo",
+                "O cliente se sente desrespeitado e pode omitir informacoes importantes para a indicacao correta",
+                "O gerente pode reclamar",
+                "A farmacia perde dinheiro",
+              ],
+              1,
+              "Interromper o cliente faz ele se sentir desvalorizado. E voce pode perder informacoes essenciais para a orientacao.",
+            ),
+            q(
+              "Qual o beneficio de resumir ao final do atendimento?",
+              [
+                "Nenhum, o cliente ja sabe o que comprou",
+                "Confirma o entendimento, evita erros e reforca a confianca do cliente na recomendacao",
+                "Apenas para o atendente lembrar",
+                "Para preencher o relatorio",
+              ],
+              1,
+              "O resumo final alinha expectativas, confirma que o cliente entendeu e passa seguranca sobre a decisao.",
+            ),
           ],
-          xp: 60,
+          xp: 70,
         },
         {
           id: "linguagem-positiva",
@@ -512,6 +932,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Vocês têm aquele xarope que vi na TV?"',
             falaBoa: '"Não temos essa marca específica, mas tenho um xarope com a mesma fórmula ativa — e com um preço mais em conta. Quer ver?"',
             falaEvitar: '"Infelizmente não temos esse. Só temos esse aqui."',
+          },
+          comparativo: {
+            titulo: "Linguagem positiva vs. Linguagem negativa",
+            itens: [
+              { nome: "Produto indisponivel", quando: "Positivo: 'Vou te mostrar uma alternativa que funciona tao bem.' Negativo: 'Infelizmente nao temos.'" },
+              { nome: "Falando de preco", quando: "Positivo: 'E um investimento de R$ 50 por um produto que dura 3 meses.' Negativo: 'E so R$ 50.'" },
+              { nome: "Cliente com duvida", quando: "Positivo: 'Otima pergunta! Vou te explicar como funciona.' Negativo: 'Isso e simples, e so...'" },
+              { nome: "Recusando oferta", quando: "Positivo: 'Sem problemas! Fica so com o que precisa mesmo.' Negativo: 'Tem certeza? O desconto e bom...'" },
+            ],
           },
           checklist: [
             "Identificar palavras negativas no vocabulário e substituir.",
@@ -537,8 +966,41 @@ export const trilhaVendas: Trilha = {
               2,
               "Sempre ofereça uma alternativa. 'Infelizmente' transmite impotência, não solução.",
             ),
+            q(
+              "Qual palavra desvaloriza o produto na hora de falar do preco?",
+              [
+                "Investimento",
+                "So / apenas",
+                "Valor",
+                "Custo-beneficio",
+              ],
+              1,
+              "'So' e 'apenas' diminuem o valor percebido. Troque por 'investimento' ou enquadre no contexto de duracao.",
+            ),
+            q(
+              "Como transformar uma resposta negativa em positiva?",
+              [
+                "Nao e possivel transformar",
+                "Em vez de dizer o que NAO pode, diga o que PODE fazer. 'Nao temos desconto' vira 'Posso incluir um brinde para voce'",
+                "Mentir para o cliente",
+                "Ignorar o pedido do cliente",
+              ],
+              1,
+              "Linguagem positiva foca em solucoes, nao em limitacoes. Sempre que possivel, mostre o que PODE ser feito.",
+            ),
+            q(
+              "Por que evitar a palavra 'infelizmente' no atendimento?",
+              [
+                "Porque e muito formal",
+                "Porque transmite impotencia e faz o cliente sentir pena em vez de solucao",
+                "Porque o cliente nao entende",
+                "Porque e muito longa",
+              ],
+              1,
+              "'Infelizmente' coloca o foco no problema, nao na solucao. Troque por acao: 'Vou ver uma alternativa para voce.'",
+            ),
           ],
-          xp: 40,
+          xp: 55,
         },
         {
           id: "falar-de-preco",
@@ -558,6 +1020,15 @@ export const trilhaVendas: Trilha = {
             cliente: '"Quanto custa esse colírio?"',
             falaBoa: '"Esse é um colírio com ácido hialurônico e vitamina A — muito usado para olho seco por quem passa muito tempo em tela. Ele custa R$ 58, mas cada frasco dura mais de um mês. Dá menos de R$ 2 por dia para ter conforto visual."',
             falaEvitar: '"É R$ 58. (silêncio)"',
+          },
+          comparativo: {
+            titulo: "Apresentacao de preco: certa vs. Errada",
+            itens: [
+              { nome: "Apresentacao certa", quando: "Contexto + beneficio + preco + fracao. 'E um colirio com acido hialuronico que custa R$ 58, da menos de R$ 2 por dia.'" },
+              { nome: "Apresentacao errada", quando: "Preco seco. 'E R$ 58.' Sem contexto, sem beneficio. O cliente so ve o numero." },
+              { nome: "Ancora de preco", quando: "Certo: mostra a opcao mais cara primeiro. Errado: mostra a mais barata primeiro — cliente nunca sobe." },
+              { nome: "Tom ao falar de preco", quando: "Certo: firme, confiante, sem se desculpar. Errado: tom de duvida ou pedindo desculpas." },
+            ],
           },
           checklist: [
             "Sempre emoldurar o preço com o benefício.",
@@ -584,8 +1055,41 @@ export const trilhaVendas: Trilha = {
               1,
               "Sempre emoldure o preço no contexto do valor entregue. Fracione o custo por dia sempre que possível.",
             ),
+            q(
+              "O que é a técnica da âncora de preço?",
+              [
+                "Mostrar o produto mais barato primeiro",
+                "Apresentar a opção mais cara primeiro para que a intermediária pareça mais em conta",
+                "Fixar o preço na prateleira",
+                "Nunca mostrar o preço",
+              ],
+              1,
+              "Ancora de preco: ao mostrar primeiro o mais caro, o precos seguintes parecem mais razoaveis por comparacao.",
+            ),
+            q(
+              "Por que fracionar o valor do produto em custo por dia?",
+              [
+                "Para confundir o cliente",
+                "Para tornar o valor mais palatavel: R$ 2 por dia soa muito menos que R$ 60 de uma vez",
+                "Para o cliente se sentir inteligente",
+                "Nao e recomendado fracionar",
+              ],
+              1,
+              "Fracionar o valor em custo diario reduz o impacto psicologico do preco total e mostra o custo-beneficio real.",
+            ),
+            q(
+              "Qual o impacto de se desculpar ao falar do preço?",
+              [
+                "Nenhum, e educado",
+                "Transmite que o produto nao vale o que custa — o cliente desconfia e pede desconto",
+                "O cliente se sente respeitado",
+                "Ajuda a fechar a venda",
+              ],
+              1,
+              "Pedir desculpas pelo preco e um sinal de fraqueza. Se o atendente vacila, o cliente desconfia do valor do produto.",
+            ),
           ],
-          xp: 60,
+          xp: 70,
         },
       ],
     },
@@ -611,11 +1115,20 @@ export const trilhaVendas: Trilha = {
              "Um telefonema ou mensagem 3-5 dias após a compra pode aumentar a adesão em até 40%.",
              "Paciente que adere ao tratamento tem melhor qualidade de vida e menor risco de complicações.",
            ],
-           simulacao: {
+          simulacao: {
              cliente: "Paciente hipertenso que comprou o medicamento há 5 dias.",
              falaBoa: '"Bom dia, João! Aqui é da Farmácia. O senhor começou o remédio para pressão? Queria saber se está tendo algum efeito ou se precisa de ajuda. Seu tratamento é importante e estamos aqui para apoiar."',
              falaEvitar: '"Oi, só lembrando de comprar o remédio de novo."',
            },
+          comparativo: {
+            titulo: "Adesao vs. Nao adesao ao tratamento",
+            itens: [
+              { nome: "Adesao", quando: "Paciente toma o medicamento conforme prescrito, nos horarios e doses corretas. Resultado: tratamento eficaz." },
+              { nome: "Nao adesao", quando: "Paciente abandona, esquece doses ou toma de forma irregular. Resultado: tratamento ineficaz, complicacoes." },
+              { nome: "Principal causa", quando: "Adesao: compreensao e acompanhamento. Nao adesao: falta de orientacao e suporte." },
+              { nome: "Papel da farmacia", quando: "Adesao: contato de acompanhamento 3-5 dias apos a compra. Nao adesao: nenhum contato — paciente abandonado." },
+            ],
+          },
            checklist: [
              "Anotar contato do paciente e medicamento comprado.",
              "Agendar contato de acompanhamento em 3-5 dias.",
@@ -644,8 +1157,41 @@ export const trilhaVendas: Trilha = {
                1,
                "O acompanhamento é para CUIDAR do paciente — verificar adesão, efeitos e oferecer suporte. A confiança gerada naturalmente faz o paciente voltar.",
              ),
+             q(
+               "Qual a taxa de abandono de tratamento nos primeiros 30 dias?",
+               [
+                 "10%",
+                 "70%",
+                 "50%",
+                 "30%",
+               ],
+               1,
+               "70% dos pacientes abandonam o tratamento nos primeiros 30 dias. O acompanhamento da farmacia pode reduzir drasticamente esse numero.",
+             ),
+             q(
+               "Qual o principal fator de nao adesao ao tratamento?",
+               [
+                 "Preco do medicamento",
+                 "Falta de compreensao, esquecimento e efeitos colaterais — tudo que o acompanhamento pode mitigar",
+                 "Marca do medicamento",
+                 "Embalagem",
+               ],
+               1,
+               "Os principais fatores de nao adesao sao comunicacao e suporte — exatamente o que o acompanhamento farmaceutico resolve.",
+             ),
+             q(
+               "Em quantos dias apos a compra o contato de acompanhamento e mais eficaz?",
+               [
+                 "No dia seguinte",
+                 "3 a 5 dias apos a compra",
+                 "30 dias depois",
+                 "So no fim do tratamento",
+               ],
+               1,
+               "3-5 dias e o timing ideal: o paciente ja comecou o tratamento mas ainda esta na fase de adaptacao. O apoio nesse momento e decisivo.",
+             ),
            ],
-           xp: 60,
+           xp: 70,
          },
          {
            id: "como-contatar",
@@ -661,11 +1207,20 @@ export const trilhaVendas: Trilha = {
              "Nunca tente vender nada na primeira ligação de acompanhamento. O momento é de CUIDADO.",
              "Se o paciente não atender, envie uma mensagem educada: 'Passamos para saber como você está. Retornaremos em breve.'",
            ],
-           simulacao: {
+          simulacao: {
              cliente: "Paciente diabético que começou a usar insulina.",
              falaBoa: '"Olá, dona Maria! Aqui é da Farmácia [nome]. A senhora começou a usar a insulina nova na semana passada. Como está sendo a adaptação? Teve dificuldade com as aplicações ou sentiu algo diferente?"',
              falaEvitar: '"Bom dia, é da farmácia. A senhora precisa de mais insulina?"',
            },
+          comparativo: {
+            titulo: "Contato de cuidado vs. Abordagem de telemarketing",
+            itens: [
+              { nome: "Identificacao", quando: "Cuidado: 'Aqui e da Farmacia [nome], tudo bem?' Telemarketing: 'E da central de relacionamento.'" },
+              { nome: "Motivo", quando: "Cuidado: 'Estou ligando para saber como voce esta com o medicamento.' Telemarketing: 'So para lembrar de comprar.'" },
+              { nome: "Pergunta", quando: "Cuidado: 'Como esta se sentindo? Teve alguma duvida?' Telemarketing: 'Ta tomando direitinho?'" },
+              { nome: "Pos-venda", quando: "Cuidado: nunca vende na primeira ligacao. Telemarketing: ja comeca oferecendo produtos." },
+            ],
+          },
            checklist: [
              "Ligar em horário comercial, evitando horário de almoço.",
              "Tom amigável e preocupado, nunca script decorado.",
@@ -693,8 +1248,41 @@ export const trilhaVendas: Trilha = {
                1,
                "A identificação clara e o motivo genuíno de cuidado fazem o paciente se sentir valorizado, não abordado.",
              ),
+             q(
+               "O que diferencia um contato de cuidado de uma ligacao de telemarketing?",
+               [
+                 "Nada, e a mesma coisa",
+                 "A intencao: cuidado genuino vs. venda. O tom, a abordagem e o timing revelam a intencao",
+                 "O horario da ligacao",
+                 "O produto oferecido",
+               ],
+               1,
+               "A diferenca fundamental e a intencao. Cuidado genuino pergunta como o paciente esta. Telemarketing ja comeca vendendo.",
+             ),
+             q(
+               "O que fazer se o paciente nao atender a ligacao de acompanhamento?",
+               [
+                 "Ligar 5 vezes seguidas ate ele atender",
+                 "Deixar uma mensagem educada e tentar novamente em outro horario",
+                 "Desistir do acompanhamento",
+                 "Enviar uma cobranca por SMS",
+               ],
+               1,
+               "Paciente pode estar ocupado. Deixe um recado educado e tente em outro horario. Persistencia e cuidado, nao invasao.",
+             ),
+             q(
+               "Por que oferecer produtos na primeira ligacao de acompanhamento e prejudicial?",
+               [
+                 "Nao e prejudicial, e a hora certa",
+                 "Porque o paciente percebe que a ligacao era uma desculpa para vender, perdendo a confianca",
+                 "Porque o farmaceutico nao autoriza",
+                 "Porque o paciente nunca compra por telefone",
+               ],
+               1,
+               "Oferecer produtos na primeira ligacao revela a intencao real. O paciente se sente enganado e a confianca construida se perde.",
+             ),
            ],
-           xp: 50,
+           xp: 60,
          },
          {
            id: "mensagem-apoio",
@@ -710,11 +1298,20 @@ export const trilhaVendas: Trilha = {
              "Oferecer canal de contato direto: 'Se tiver dúvidas, pode responder essa mensagem que a gente ajuda.'",
              "Agendar próximo contato: 'Em 15 dias entramos em contato novamente para saber como está.'",
            ],
-           simulacao: {
+          simulacao: {
               cliente: "",
              falaBoa: '"Olá, João! 💙 Aqui é da Farmácia [nome]. Passamos para saber como você está se sentindo com o início do tratamento. Teve alguma dúvida ou dificuldade? Pode responder essa mensagem — estamos aqui para ajudar. Cuide-se!"',
              falaEvitar: '"Senhor João, seu medicamento está quase no fim. Já quer agendar a compra para não ficar sem?"',
            },
+          comparativo: {
+            titulo: "Mensagem de cuidado vs. Mensagem comercial",
+            itens: [
+              { nome: "Abertura", quando: "Cuidado: 'Ola Joao! Passamos para saber como voce esta.' Comercial: 'Seu remedio esta acabando, quer comprar?'" },
+              { nome: "Tom", quando: "Cuidado: acolhedor, pessoal, com emoticon moderado. Comercial: frio, impessoal, sem identidade." },
+              { nome: "Privacidade", quando: "Cuidado: nunca menciona o nome do medicamento. Comercial: detalha o produto na mensagem." },
+              { nome: "Canal de resposta", quando: "Cuidado: 'Pode responder essa mensagem.' Comercial: 'Ligue para central.'" },
+            ],
+          },
            checklist: [
              "Personalizar a mensagem com o nome do paciente.",
              "Oferecer ajuda genuína, não oferta de produtos.",
@@ -741,8 +1338,41 @@ export const trilhaVendas: Trilha = {
                1,
                "A mensagem de apoio existe para CUIDAR, não para vender. O cuidado genuíno gera confiança — e confiança faz o paciente voltar.",
              ),
+             q(
+               "Por que nunca mencionar o nome do medicamento em mensagens de WhatsApp/SMS?",
+               [
+                 "Porque e muito longo para escrever",
+                 "Por respeito a privacidade do paciente — outras pessoas podem ver a mensagem no celular dele",
+                 "Porque o cliente pode esquecer",
+                 "Nao ha problema em mencionar",
+               ],
+               1,
+               "Mensagens podem ser vistas por terceiros. Mencionar o medicamento viola a privacidade do paciente.",
+             ),
+             q(
+               "Qual o tom ideal para uma mensagem de apoio no WhatsApp?",
+               [
+                 "Formal e tecnico",
+                 "Acolhedor, pessoal e com tom de cuidado genuíno — como se fosse uma mensagem de um amigo que se importa",
+                 "Agressivo e urgente",
+                 "Robótico e padronizado",
+               ],
+               1,
+               "O tom acolhedor e pessoal faz o paciente se sentir cuidado, nao abordado por um robo de marketing.",
+             ),
+             q(
+               "O que fazer quando o paciente responde a mensagem com uma duvida tecnica?",
+               [
+                 "Ignorar e seguir o script",
+                 "Responder com atencao e, se necessario, encaminhar ao farmaceutico para orientacao completa",
+                 "Pedir para ele ligar para a central",
+                 "Enviar um link generico",
+               ],
+               1,
+               "Toda resposta do paciente merece atencao. Duvidas tecnicas devem ser respondidas com cuidado ou encaminhadas ao farmaceutico.",
+             ),
            ],
-           xp: 50,
+           xp: 60,
          },
          {
            id: "calendario-cuidado",
@@ -759,11 +1389,20 @@ export const trilhaVendas: Trilha = {
              "Tratamentos agudos (antibióticos, anti-inflamatórios): um único contato no meio do tratamento.",
              "Pacientes crônicos que faltam: contato de acolhimento, nunca de cobrança.",
            ],
-           simulacao: {
+          simulacao: {
               cliente: "",
              falaBoa: '"Dona Maria, na semana passada a senhora comprou o medicamento para diabetes. Como está sendo a adaptação? Aqui na farmácia temos um calendário de cuidado: em 15 dias entro em contato de novo para saber como está. Pode contar com a gente!"',
              falaEvitar: '"Já passou 15 dias, queria saber se vai comprar de novo o remédio."',
            },
+          comparativo: {
+            titulo: "Calendario de cuidado por tipo de tratamento",
+            itens: [
+              { nome: "Tratamento cronico (hipertensao, diabetes)", quando: "Acompanhamento mensal: dia 3-5, dia 15, dia 25-30. Contato continuo e regular." },
+              { nome: "Tratamento agudo (antibiotico, anti-inflamatorio)", quando: "Um unico contato no meio do tratamento (dia 3-5). Nao precisa de sequencia." },
+              { nome: "Paciente faltoso cronico", quando: "Contato de acolhimento, nunca de cobranca. 'Sentimos sua falta, esta tudo bem?'" },
+              { nome: "Alta do tratamento", quando: "Contato de encerramento: 'Como voce esta? Se precisar, estamos aqui.' Mantem a porta aberta." },
+            ],
+          },
            checklist: [
              "Anotar data da compra e tipo de tratamento na agenda de cuidado.",
              "Agendar contatos futuros com lembretes no celular.",
@@ -790,8 +1429,41 @@ export const trilhaVendas: Trilha = {
                1,
                "3-5 dias é o timing ideal: o paciente já começou o tratamento mas ainda está na fase crítica de adaptação. Um apoio nesse momento faz toda a diferença na adesão.",
              ),
+             q(
+               "Qual a diferenca entre acompanhar um paciente cronico e um tratamento agudo?",
+               [
+                 "Nao ha diferenca",
+                 "Cronico: acompanhamento mensal continuo. Agudo: um unico contato no meio do tratamento",
+                 "Agudo precisa de mais contatos",
+                 "Cronico nao precisa de acompanhamento",
+               ],
+               1,
+               "Pacientes cronicos precisam de suporte continuo. Tratamentos agudos resolvem em dias e precisam de apenas um contato de verificacao.",
+             ),
+             q(
+               "Como deve ser o contato com um paciente cronico que falta ao tratamento?",
+               [
+                 "Cobrar: 'O senhor nao veio comprar o remedio esse mes'",
+                 "Acolher: 'Sentimos sua falta, esta tudo bem? Precisando de ajuda?'",
+                 "Ignorar — problema do paciente",
+                 "Cancelar o cadastro",
+               ],
+              1,
+               "Pacientes cronicos que faltam podem estar com dificuldades financeiras, efeitos colaterais ou desmotivacao. Acolhimento, nao cobranca.",
+             ),
+             q(
+               "Por que celebrar marcos de tratamento (3 meses, 6 meses) com o paciente?",
+               [
+                 "Nao e necessario",
+                 "Reforca a motivacao do paciente e mostra que a farmacia se importa com a jornada dele",
+                 "Apenas para vender mais",
+                 "Para preencher o relatorio",
+               ],
+              1,
+               "Celebrar marcos e um gesto de cuidado que reforca a adesao e fortalece o vinculo entre paciente e farmacia.",
+             ),
            ],
-           xp: 60,
+           xp: 70,
          },
          {
            id: "familia-cuidadora",
@@ -807,11 +1479,20 @@ export const trilhaVendas: Trilha = {
              "Cuidador bem informado é o maior aliado da adesão ao tratamento.",
              "Disponibilizar material de apoio impresso ou digital para o cuidador.",
            ],
-           simulacao: {
+          simulacao: {
              cliente: "Filho que compra medicamento para a mãe idosa.",
              falaBoa: '"Oi, tudo bem? Lembra que você levou o remédio para sua mãe na semana passada? Como ela está? E você, está conseguindo dar os horários certinhos? Se precisar de qualquer ajuda, pode contar com a gente."',
              falaEvitar: '"Oi, só pra saber se sua mãe já terminou o remédio."',
            },
+          comparativo: {
+            titulo: "Com cuidador envolvido vs. Sem envolvimento do cuidador",
+            itens: [
+              { nome: "Adesao", quando: "Com cuidador envolvido: dobra a chance de adesao. Sem envolvimento: alta taxa de abandono." },
+              { nome: "Orientacao", quando: "Com cuidador: orientacoes claras e material de apoio. Sem: orientacao apenas para o paciente, que pode esquecer." },
+              { nome: "Acompanhamento", quando: "Com cuidador: inclui o cuidador nos contatos. Sem: contato apenas com o paciente." },
+              { nome: "Resultado", quando: "Com cuidador: tratamento mais eficaz, paciente mais seguro. Sem: maior chance de erros e abandono." },
+            ],
+          },
            checklist: [
              "Identificar cuidadores no primeiro atendimento.",
              "Anotar contato do cuidador na agenda de cuidado.",
@@ -839,8 +1520,41 @@ export const trilhaVendas: Trilha = {
                2,
                "O cuidador é peça-chave na adesão. Envolvê-lo e orientá-lo é um dos gestos de cuidado mais eficazes que a farmácia pode fazer.",
              ),
+             q(
+               "Como identificar quem e o cuidador do paciente?",
+               [
+                 "Nao e possivel identificar",
+                 "Perguntar na dispensacao: 'Quem mais ajuda nos cuidados em casa?'",
+                 "Apenas observar",
+                 "Perguntar para o vizinho",
+               ],
+               1,
+               "Perguntar diretamente ao paciente ou acompanhante e a forma mais simples e eficaz de identificar o cuidador.",
+             ),
+             q(
+               "Qual o tipo de orientacao mais eficaz para o cuidador?",
+               [
+                 "Explicacao verbal longa e tecnica",
+                 "Orientacoes claras, escritas e com horarios marcados — material de apoio que ele possa consultar",
+                 "Apenas entregar a bula",
+                 "Nao orientar, o cuidador ja sabe",
+               ],
+               1,
+               "O cuidador precisa de orientacoes claras e acessiveis. Material escrito com horarios e instrucoes simples faz toda a diferenca.",
+             ),
+             q(
+               "Por que incluir o cuidador no contato de acompanhamento?",
+               [
+                 "Nao e necessario incluir",
+                 "Porque o cuidador e quem administra o medicamento e pode identificar problemas que o paciente nao percebe",
+                 "Para vender mais produtos",
+                 "Para preencher a agenda",
+               ],
+               1,
+               "O cuidador esta na linha de frente. Ele percebe efeitos colaterais, dificuldades de administracao e mudancas no estado do paciente.",
+             ),
            ],
-           xp: 50,
+           xp: 60,
          },
          {
            id: "indicadores-cuidado",
@@ -856,11 +1570,20 @@ export const trilhaVendas: Trilha = {
              "Aderência percebida: o paciente confirma que está tomando o medicamento corretamente?",
              "O melhor indicador: o paciente que diz 'obrigado por se importar'.",
            ],
-           simulacao: {
+          simulacao: {
              cliente: "Gestor da farmácia perguntando sobre o programa de acompanhamento.",
              falaBoa: '"Nos últimos 30 dias, contactamos 25 pacientes. 20 atenderam, 18 relataram estar bem com o tratamento, e 12 já voltaram para a segunda compra. Três pacientes foram encaminhados ao farmacêutico com dúvidas — todos resolvidos. Está funcionando."',
              falaEvitar: '"Acho que tá funcionando, os pacientes gostam."',
            },
+          comparativo: {
+            titulo: "Indicadores objetivos vs. Subjetivos de cuidado",
+            itens: [
+              { nome: "Taxa de contato", quando: "Objetivo: de 10 pacientes, 8 atenderam (80%). Mostra eficiencia da equipe." },
+              { nome: "Taxa de resposta positiva", quando: "Objetivo: 18 de 20 relatam adesao (90%). Mostra impacto real do acompanhamento." },
+              { nome: "Indice de retorno", quando: "Objetivo: 12 pacientes voltaram e pediram pelo atendente. Maior indicador de encantamento." },
+              { nome: "Sensacao da equipe", quando: "Subjetivo: 'Acho que ta funcionando.' Sem dados, nao da para saber se esta realmente funcionando." },
+            ],
+          },
            checklist: [
              "Manter registro simples dos contatos realizados.",
              "Anotar o resultado de cada contato (positivo, dúvida, encaminhado).",
@@ -887,8 +1610,41 @@ export const trilhaVendas: Trilha = {
                1,
                "Paciente que volta e pede pelo atendente porque confia e se sente cuidado — esse é o verdadeiro indicador de encantamento.",
              ),
+             q(
+               "O que a taxa de contato mede no programa de acompanhamento?",
+               [
+                 "Quantos produtos foram vendidos",
+                 "De cada 10 pacientes abordados, quantos atendem o contato — mede eficiencia da equipe",
+                 "O faturamento da farmacia",
+                 "Nada relevante",
+               ],
+               1,
+               "Taxa de contato mede a eficiencia operacional: quantos pacientes a equipe consegue alcancar com o acompanhamento.",
+             ),
+             q(
+               "Qual a ferramenta minima necessaria para acompanhar indicadores de cuidado?",
+               [
+                 "Um sistema de ERP caro",
+                 "Um caderno ou planilha simples — o importante e registrar, nao a ferramenta",
+                 "Nao e necessario registrar",
+                 "Um aplicativo importado",
+               ],
+               1,
+               "O mais importante e registrar. Um caderno ou planilha ja basta para comecar a medir e melhorar o cuidado.",
+             ),
+             q(
+               "Por que revisar os indicadores semanalmente com a equipe?",
+               [
+                 "Para criticar quem nao atingiu a meta",
+                 "Para celebrar resultados, ajustar rotas e motivar a equipe a manter o cuidado",
+                 "Nao e necessario revisar",
+                 "Apenas para o gerente",
+               ],
+               1,
+               "Revisar semanalmente os indicadores permite celebrar acertos, ajustar o que nao funcionou e manter a equipe engajada no cuidado.",
+             ),
            ],
-           xp: 60,
+           xp: 70,
          },
        ],
     },
