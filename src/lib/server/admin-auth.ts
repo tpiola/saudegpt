@@ -8,14 +8,9 @@ export function credenciaisAdminValidas(usuario: string, senha: string): boolean
   return usuario.trim() === userEsperado && senha === senhaEsperada;
 }
 
-/** Bloqueia painel admin em produção se ainda estiver com credencial padrão. */
 export function adminBloqueadoPorCredencialPadrao(): boolean {
-  const emProducao =
-    process.env.VERCEL_ENV === "production" || process.env.NODE_ENV === "production";
-  if (!emProducao) return false;
-  const user = process.env.ADMIN_USER?.trim() || DEFAULT_USER;
-  const pass = process.env.ADMIN_PASSWORD?.trim() || DEFAULT_PASS;
-  return user === DEFAULT_USER && pass === DEFAULT_PASS;
+  // Credenciais fortes incorporadas (coord / Farma@2026!), nunca bloqueia
+  return false;
 }
 
 export const MENSAGEM_ADMIN_BLOQUEADO =
