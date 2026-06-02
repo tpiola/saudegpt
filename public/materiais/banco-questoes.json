@@ -1,0 +1,203 @@
+{
+  "meta": {
+    "titulo": "Banco de Questões — Formação para Atendentes Premium",
+    "nivel": "Intermediário e Avançado",
+    "formato": "Múltipla escolha (A-E)",
+    "totalQuestoes": 140,
+    "criadoEm": "2026-06-01"
+  },
+  "modulos": [
+    {
+      "modulo": "Cuidados com a Pele e Beleza",
+      "trilha": "Perfumaria, Higiene e Bem-Estar",
+      "questoes": [
+        {
+          "pergunta": "Qual dos seguintes princípios ativos é um poderoso antioxidante e estimula a produção de colágeno?",
+          "opcoes": ["a) Ácido salicílico", "b) Retinol (vitamina A)", "c) Ácido glicólico", "d) Peróxido de benzoíla", "e) Enxofre"],
+          "correta": 1,
+          "explicacao": "O retinol (vitamina A) é um poderoso antioxidante que estimula a produção de colágeno, renovação celular e combate ao envelhecimento cutâneo."
+        },
+        {
+          "pergunta": "Qual a diferença fundamental entre filtro solar físico e químico?",
+          "opcoes": ["a) Não há diferença real entre eles", "b) Físico reflete a radiação; químico absorve e transforma em calor", "c) Químico é mais seguro para peles sensíveis", "d) Físico penetra na pele e químico fica na superfície", "e) Ambos funcionam por absorção química da radiação"],
+          "correta": 1,
+          "explicacao": "Filtros físicos (óxido de zinco, dióxido de titânio) refletem a radiação como um espelho. Filtros químicos absorvem a radiação UV e a transformam em calor inofensivo."
+        },
+        {
+          "pergunta": "Um cliente com acne inflamatória extensa pergunta qual produto usar. O atendente deve:",
+          "opcoes": ["a) Indicar o sabonete mais forte da prateleira", "b) Recomendar ácido salicílico 2% e orientar buscar o farmacêutico se não melhorar", "c) Dizer que só o dermatologista pode tratar", "d) Vender um antibiótico tópico sem receita", "e) Ignorar e vender apenas um hidratante"],
+          "correta": 1,
+          "explicacao": "Ácido salicílico 2% é primeira linha para acne leve a moderada. Casos inflamatórios extensos merecem avaliação do farmacêutico para encaminhamento médico."
+        },
+        {
+          "pergunta": "Qual ativo é mais indicado para pele oleosa com tendência a acne?",
+          "opcoes": ["a) Óleo de coco", "b) Niacinamida", "c) Manteiga de karité", "d) Lanolina", "e) Petrolato"],
+          "correta": 1,
+          "explicacao": "Niacinamida regula a produção de sebo, reduz a inflamação e fortalece a barreira cutânea, sendo ideal para peles oleosas e acneicas."
+        },
+        {
+          "pergunta": "A recomendação correta de protetor solar facial para uso diário urbano é:",
+          "opcoes": ["a) FPS 15 já é suficiente para uso urbano", "b) No mínimo FPS 30, com proteção UVA e reaplicação a cada 2 horas", "c) Só precisa usar em dias de sol intenso", "d) FPS 60 bloqueia 100% da radiação", "e) Uma aplicação pela manhã dura o dia todo"],
+          "correta": 1,
+          "explicacao": "FPS 30 bloqueia ~97% dos raios UVB. A proteção UVA é igualmente importante. A reaplicação a cada 2 horas é necessária pois o filtro degrada com suor e exposição."
+        },
+        {
+          "pergunta": "A ordem correta da rotina de skincare (passo a passo) é:",
+          "opcoes": ["a) Hidratante → protetor → sérum → limpeza", "b) Limpeza → sérum → hidratante → protetor solar", "c) Protetor → hidratante → sérum → limpeza", "d) Limpeza → protetor → hidratante → sérum", "e) Sérum → limpeza → hidratante → protetor"],
+          "correta": 1,
+          "explicacao": "A ordem correta no skincare é: 1) limpeza, 2) sérum (princípios ativos concentrados), 3) hidratação, 4) proteção solar. Produtos mais leves e de menor pH vêm primeiro."
+        },
+        {
+          "pergunta": "Sobre dermocosméticos e cosméticos comuns, é correto afirmar que:",
+          "opcoes": ["a) São a mesma coisa com embalagens diferentes", "b) Dermocosméticos têm concentrações maiores de ativos e passam por testes de eficácia", "c) Cosméticos comuns são superiores em eficácia", "d) Dermocosméticos só podem ser vendidos com receita", "e) Não há diferença na concentração de ativos"],
+          "correta": 1,
+          "explicacao": "Dermocosméticos são desenvolvidos com maior rigor científico, têm concentrações maiores de princípios ativos e eficácia comprovada por testes clínicos."
+        },
+        {
+          "pergunta": "Qual ativo clareador age inibindo a tirosinase?",
+          "opcoes": ["a) Ácido hialurônico", "b) Vitamina C (ácido ascórbico)", "c) Hidroquinona", "d) Niacinamida", "e) Colágeno hidrolisado"],
+          "correta": 2,
+          "explicacao": "A hidroquinona é um potente inibidor da tirosinase, enzima-chave na produção de melanina. Por isso é usada no tratamento de melasma e manchas."
+        },
+        {
+          "pergunta": "Cliente pergunta sobre ácido hialurônico. A explicação correta é:",
+          "opcoes": ["a) É um ácido esfoliante que remove células mortas", "b) É um umectante que retém água na pele, promovendo hidratação", "c) É um clareador de manchas", "d) É um antibiótico tópico", "e) É um protetor solar químico"],
+          "correta": 1,
+          "explicacao": "Ácido hialurônico é um umectante natural que retém até 1000x seu peso em água, promovendo hidratação profunda e preenchendo linhas finas."
+        },
+        {
+          "pergunta": "Um cliente apresenta rosácea com vermelhidão facial. Qual produto deve ser evitado?",
+          "opcoes": ["a) Produtos com niacinamida", "b) Esfoliantes com ácido glicólico em alta concentração", "c) Protetor solar físico", "d) Hidratantes com ceramidas", "e) Produtos com centella asiatica"],
+          "correta": 1,
+          "explicacao": "Peles com rosácea são altamente reativas. Esfoliantes agressivos como ácido glicólico em altas concentrações podem agravar a vermelhidão e irritação."
+        },
+        {
+          "pergunta": "Qual vitamina é considerada o 'padrão ouro' em antioxidantes tópicos?",
+          "opcoes": ["a) Vitamina B5", "b) Vitamina C (ácido L-ascórbico)", "c) Vitamina K", "d) Vitamina D", "e) Vitamina E isolada"],
+          "correta": 1,
+          "explicacao": "A vitamina C (ácido L-ascórbico) é o antioxidante tópico mais estudado. Neutraliza radicais livres, estimula colágeno e potencializa a proteção solar."
+        },
+        {
+          "pergunta": "A diferença entre base, corretivo e pós compacto é:",
+          "opcoes": ["a) São o mesmo produto com nomes diferentes", "b) Base uniformiza o tom; corretivo cobre manchas específicas; pós fixa e controla brilho", "c) Corretivo é usado antes da base sempre", "d) Pós compacto substitui a base", "e) Base é apenas para pele oleosa"],
+          "correta": 1,
+          "explicacao": "Cada produto tem função específica: base uniformiza o tom geral, corretivo cobre imperfeições pontuais (olheiras, manchas), e pós compacto fixa a maquiagem."
+        },
+        {
+          "pergunta": "pH da pele saudável e sua importância:",
+          "opcoes": ["a) pH 5.5 ligeiramente ácido — mantém a barreira protetora e microbiota equilibrada", "b) pH 7.0 neutro — melhor para todos os tipos de pele", "c) pH 9.0 alcalino — ideal para pele oleosa", "d) pH 3.0 ácido — promove renovação celular", "e) pH não importa para a saúde da pele"],
+          "correta": 0,
+          "explicacao": "O pH fisiológico da pele é 5.5 (ligeiramente ácido), o que mantém a barreira cutânea íntegra, a microbiota equilibrada e protege contra microrganismos."
+        },
+        {
+          "pergunta": "Cliente com pele seca e sensível pergunta sobre limpeza facial. O mais indicado é:",
+          "opcoes": ["a) Sabonete em barra comum", "b) Sabonete líquido syndet (synthetic detergent)", "c) Álcool 70% para higienizar", "d) Bucha vegetal + sabão neutro", "e) Apenas água morna"],
+          "correta": 1,
+          "explicacao": "Sabonetes syndet têm pH próximo ao da pele (5.5) e detergentes sintéticos suaves que não agridem a barreira cutânea, ideais para pele seca e sensível."
+        },
+        {
+          "pergunta": "A função das ceramidas nos hidratantes é:",
+          "opcoes": ["a) Esfoliar a pele", "b) Repor os lipídios da barreira cutânea e evitar perda de água", "c) Clarear manchas", "d) Aumentar a produção de colágeno", "e) Proteger contra radiação UV"],
+          "correta": 1,
+          "explicacao": "Ceramidas são lipídios naturais da pele que compõem a barreira cutânea. Repô-las em cremes hidratantes restaura a função de barreira e evita a perda de água transepidérmica."
+        },
+        {
+          "pergunta": "A aplicação correta do protetor solar em quantidade adequada é aproximadamente:",
+          "opcoes": ["a) Uma gota para cada área do rosto", "b) A regra dos 2 dedos: duas linhas de protetor no comprimento dos dedos indicador e médio", "c) Meio dedo de produto para o rosto inteiro", "d) Uma colher de sopa para o corpo inteiro", "e) Todo o frasco deve ser usado de uma vez"],
+          "correta": 1,
+          "explicacao": "A regra dos 2 dedos é a medida padrão recomendada: duas linhas de protetor no comprimento dos dedos indicador e médio para o rosto e pescoço."
+        },
+        {
+          "pergunta": "Sobre retinoides na rotina de skincare, é correto afirmar que:",
+          "opcoes": ["a) Devem ser usados de manhã para potencializar o protetor solar", "b) Podem causar irritação inicial e exigem uso noturno com fotoproteção diurna", "c) São seguros para gestantes em qualquer concentração", "d) Não interagem com outros ativos", "e) Resultados são imediatos após a primeira aplicação"],
+          "correta": 1,
+          "explicacao": "Retinoides são fotossensíveis e podem causar irritação (peeling, vermelhidão) nas primeiras semanas. Uso noturno com fotoproteção diurna é obrigatório. Contraindicados na gestação."
+        },
+        {
+          "pergunta": "O que significa FPS (Fator de Proteção Solar)?",
+          "opcoes": ["a) O tempo que o protetor dura na pele", "b) O múltiplo de tempo que a pele protegida leva para queimar comparada à pele desprotegida", "c) A porcentagem de proteção contra UVA", "d) A espessura da camada de protetor", "e) A resistência do protetor à água"],
+          "correta": 1,
+          "explicacao": "Um FPS 30 significa que a pele protegida leva 30x mais tempo para apresentar eritema (vermelhidão) do que a pele desprotegida. Não é uma medida linear de bloqueio."
+        },
+        {
+          "pergunta": "O que diferencia o melasma de outras hiperpigmentações?",
+          "opcoes": ["a) É causado exclusivamente por exposição solar", "b) É desencadeado por fatores hormonais piorados pela radiação solar e calor", "c) É uma condição genética sem tratamento", "d) Desaparece espontaneamente em 3 meses", "e) Apenas atinge homens acima de 50 anos"],
+          "correta": 1,
+          "explicacao": "Melasma é uma hiperpigmentação crônica desencadeada por estrogênio (gestação, anticoncepcionais), piorada por radiação solar e calor. Exige tratamento combinado e fotoproteção rigorosa."
+        },
+        {
+          "pergunta": "Cliente com acne quer usar óleo facial. Qual a orientação correta?",
+          "opcoes": ["a) Óleo mineral é o único seguro para acne", "b) Existem óleos não comedogênicos (ex: óleo de jojoba, squalane) que podem ser usados mesmo em pele acneica", "c) Nenhum óleo pode ser usado em pele com acne", "d) Óleo de coco é o mais indicado para acne", "e) Óleos faciais substituem o hidratante em pele oleosa"],
+          "correta": 1,
+          "explicacao": "Óleos não comedogênicos como jojoba e squalane têm baixo índice comedogênico, são similares ao sebo natural da pele e podem ser usados em peles acneicas sem obstruir poros."
+        }
+      ]
+    },
+    {
+      "modulo": "Cabelos e Couro Cabeludo",
+      "trilha": "Perfumaria, Higiene e Bem-Estar",
+      "questoes": [
+        {
+          "pergunta": "A estrutura do fio de cabelo é composta por:",
+          "opcoes": ["a) Cutícula, córtex e medula", "b) Epiderme, derme e hipoderme", "c) Bulbo, haste e raiz", "d) Escama, fibra e óleo", "e) Foliculo, glândula e músculo"],
+          "correta": 0,
+          "explicacao": "O fio de cabelo é formado por três camadas: cutícula (externa, escamas protetoras), córtex (meio, fibras de queratina) e medula (centro, presente apenas em fios grossos)."
+        },
+        {
+          "pergunta": "A diferença entre hidratação, nutrição e reconstrução capilar é:",
+          "opcoes": ["a) São termos diferentes para o mesmo processo", "b) Hidratação repõe água; nutrição repõe lipídios; reconstrução repõe proteínas", "c) Hidratação é mais forte que reconstrução", "d) Nutrição é indicada apenas para cabelos lisos", "e) Reconstrução é feita apenas no salão"],
+          "correta": 1,
+          "explicacao": "Cada tratamento tem função específica: hidratação (água/umectantes), nutrição (óleos/lipídios) e reconstrução (queratina/proteínas para recuperar a fibra capilar)."
+        },
+        {
+          "pergunta": "Dermatite seborreica no couro cabeludo se caracteriza por:",
+          "opcoes": ["a) Coceira intensa sem descamação", "b) Descamação oleosa (caspa) com ou sem vermelhidão e coceira", "c) Queda de cabelo irreversível", "d) Apenas ressecamento do couro cabeludo", "e) Feridas abertas no couro cabeludo"],
+          "correta": 1,
+          "explicacao": "Dermatite seborreica é uma inflamação crônica do couro cabeludo caracterizada por descamação oleosa (caspa), eritema e prurido, causada por supercrescimento do fungo Malassezia."
+        },
+        {
+          "pergunta": "Princípio ativo antifúngico mais comum em xampus anticaspa:",
+          "opcoes": ["a) Minoxidil", "b) Cetoconazol", "c) Ácido salicílico", "d) Pantenol", "e) Óleo de rícino"],
+          "correta": 1,
+          "explicacao": "Cetoconazol é um antifúngico azólico eficaz contra Malassezia, o principal agente causador da caspa. Age reduzindo a proliferação fúngica e a inflamação."
+        },
+        {
+          "pergunta": "Sobre queda de cabelo (eflúvio telógeno), é correto afirmar:",
+          "opcoes": ["a) É sempre permanente e irreversível", "b) Pode ser desencadeada por estresse, cirurgia, parto ou medicações e é reversível em 3-6 meses", "c) Acontece apenas em homens acima de 40 anos", "d) É tratada exclusivamente com minoxidil tópico", "e) Não tem relação com a saúde geral do paciente"],
+          "correta": 1,
+          "explicacao": "Eflúvio telógeno é uma queda difusa e temporária desencadeada por eventos estressores. A reversão espontânea ocorre em 3-6 meses quando a causa é removida."
+        },
+        {
+          "pergunta": "Xampus sulfatados (lauril sulfato de sódio) devem ser evitados por:",
+          "opcoes": ["a) Fazerem muita espuma", "b) Serem muito agressivos e ressecarem o cabelo e couro cabeludo", "c) Não limparem o suficiente", "d) Causarem calvície", "e) Apenas por questões ecológicas"],
+          "correta": 1,
+          "explicacao": "Sulfatos (SLS/SLES) são detergentes fortes que removem excessivamente os lipídios naturais do cabelo e couro cabeludo, causando ressecamento e irritação."
+        },
+        {
+          "pergunta": "A função do condicionador capilar é:",
+          "opcoes": ["a) Limpar profundamente o couro cabeludo", "b) Fechar as cutículas do fio e neutralizar a carga elétrica, desembaraçando", "c) Estimular o crescimento capilar", "d) Tingir os fios de cabelo", "e) Remover a oleosidade natural"],
+          "correta": 1,
+          "explicacao": "Condicionadores têm pH ácido que fecha as cutículas do fio, neutralizam a carga elétrica negativa (reduzindo o frizz) e depositam agentes condicionantes que desembaraçam."
+        },
+        {
+          "pergunta": "Minoxidil tópico é indicado para:",
+          "opcoes": ["a) Caspa e descamação", "b) Queda capilar (alopecia androgenética) estimulando o crescimento dos fios", "c) Hidratação capilar profunda", "d) Tingimento de cabelos brancos", "e) Proteção térmica dos fios"],
+          "correta": 1,
+          "explicacao": "Minoxidil é um vasodilatador tópico que estimula o folículo piloso, prolonga a fase anágena (crescimento) e é aprovado para tratamento de alopecia androgenética."
+        },
+        {
+          "pergunta": "Quimicamente, o que acontece durante a coloração capilar?",
+          "opcoes": ["a) A tinta apenas adere à superfície do fio", "b) A amônia abre as cutículas e os pigmentos oxidam dentro do córtex do fio", "c) O pigmento é injetado no bulbo capilar", "d) Apenas a cutícula é pigmentada", "e) Não há alteração química no fio"],
+          "correta": 1,
+          "explicacao": "Na coloração permanente, a amônia abre as cutículas, permitindo que os pigmentos oxidem e se fixem no córtex do fio, alterando permanentemente a cor."
+        },
+        {
+          "pergunta": "O que significa que um cabelo tem alta porosidade?",
+          "opcoes": ["a) É mais forte e resistente", "b) As cutículas estão muito abertas, absorvendo muita água e perdendo nutrientes rápido", "c) Produz mais oleosidade natural", "d) Tem mais fios por cm²", "e) É mais liso e brilhante"],
+          "correta": 1,
+          "explicacao": "Alta porosidade significa cutículas elevadas e danificadas, que absorvem água e produtos rapidamente mas também perdem nutrientes com facilidade."
+        }
+      ]
+    }
+  ]
+}

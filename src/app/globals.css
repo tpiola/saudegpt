@@ -967,7 +967,83 @@ h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+  background: var(--subtle);
+}
+
+/* ══════════════════════════════════════════════
+   ANTI-CÓPIA — Proteção de conteúdo
+   ══════════════════════════════════════════════ */
+
+/* Bloqueia seleção de texto em toda a plataforma */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Permite seleção APENAS em inputs e textareas */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Bloqueia menu de contexto (right-click) */
+body {
+  -webkit-touch-callout: none;
+}
+
+/* Bloqueia drag de imagens */
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+/* Print blocking */
+@media print {
+  body { display: none !important; }
+}
+
+/* ══════════════════════════════════════════════
+   CONFETTI + CELEBRAÇÃO
+   ══════════════════════════════════════════════ */
+
+@keyframes confetti-pop {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1.5) rotate(720deg); opacity: 0; }
+}
+
+@keyframes celebration-modal-in {
+  0% { transform: scale(0.8) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+@keyframes celebration-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.celebrate-modal {
+  animation: celebration-modal-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.celebrate-pulse {
+  animation: celebration-pulse 2s ease-in-out infinite;
+}
+
+@keyframes xp-float-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-80px) scale(1.3); opacity: 0; }
+}
+
+.xp-float {
+  animation: xp-float-up 1.5s ease-out forwards;
 }
 
 /* ══════════════════════════════════════════════

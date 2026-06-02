@@ -1,0 +1,98 @@
+{
+  "meta": {
+    "titulo": "Roteiros para Podcast — Formação para Atendentes Premium",
+    "formato": "2 participantes (Thiago + convidado/aluno)",
+    "duracao": "15-20 min cada",
+    "tom": "Profissional e acessível, linguagem de balcão"
+  },
+  "episodios": [
+    {
+      "titulo": "A arte de oferecer sem ser invasivo",
+      "tema": "Módulo: Oferecimento e Persuasão Ética",
+      "participantes": "Thiago + atendente convidado",
+      "abertura": "[30s] Thiago: 'Vender no balcão não é empurrar produto. É entender, conectar e oferecer no momento certo. No episódio de hoje, vou contar o que separa um oferecimento consultivo de um empurroterapia.'",
+      "bloco1": {
+        "titulo": "Por que a abordagem errada afasta clientes?",
+        "falas": [
+          "Thiago: 'Já reparou como o cliente muda a expressão quando ouve \"quer levar mais alguma coisa?\"? É quase automático — ele se fecha. Por quê? Porque a pergunta é genérica, não mostra interesse real.'",
+          "Convidado: 'Verdade. Eu mesma percebo que quando pergunto \"já que está levando o antialérgico, esse soro ajuda a complementar\" o cliente para, pensa e diz \"boa ideia\"'",
+          "Thiago: 'Exato. O segredo está no PORQUÊ. Toda oferta precisa de uma justificativa lógica. Se você não consegue explicar POR que está oferecendo aquele produto, é melhor não oferecer.'"
+        ]
+      },
+      "bloco2": {
+        "titulo": "Os 3 sinais de que é hora de oferecer",
+        "falas": [
+          "Thiago: 'Existem três sinais verdes que mostram que o cliente está aberto a ouvir uma oferta. Primeiro: ele relaxou o corpo. Segundo: concordou com a orientação que você deu. Terceiro: fez contato visual.'",
+          "Convidado: 'Interessante. E quais são os sinais vermelhos?'",
+          "Thiago: 'Cliente com pressa, olhando o relógio, respondendo monossilabicamente — esses não querem oferta. Querem ir embora. Respeitar isso é o que faz o cliente voltar.'"
+        ]
+      },
+      "encerramento": "[30s] Thiago: 'Lembre-se: oferecer sem contexto é empurrar. Oferecer com contexto é consultar. E consultoria no balcão é o que separa um atendente mediano de um atendente nota 10. Até o próximo episódio!'",
+      "nicho": "Áudio curto para WhatsApp ou plataforma de estudos"
+    },
+    {
+      "titulo": "Gatilhos mentais éticos que funcionam de verdade",
+      "tema": "Persuasão no balcão sem apelação",
+      "participantes": "Thiago + farmacêutica convidada",
+      "abertura": "[30s] Thiago: 'Gatilho mental não é manipulação. Quando usado com ética, é informação na hora certa. No episódio de hoje, vamos destrinchar os gatilhos que funcionam no balcão sem fazer o cliente se sentir pressionado.'",
+      "bloco1": {
+        "titulo": "Prova social bem-feita (e a mal-feita)",
+        "falas": [
+          "Thiago: 'A diferença entre prova social ética e não-ética é sutil mas crucial. \"Muitos clientes com o mesmo problema usam esse e voltam\" é ético. \"Todo mundo está comprando\" é pressão.'",
+          "Farmacêutica: 'Fora que cliente percebe quando é verdade. Se você diz que todo mundo comprou e ele é o único na loja, perde a credibilidade toda.'",
+          "Thiago: 'Exatamente. Prova social funciona porque valida a decisão. Não porque intimida.'"
+        ]
+      },
+      "bloco2": {
+        "titulo": "Reciprocidade que gera venda",
+        "falas": [
+          "Thiago: 'O gatilho mais poderoso na farmácia é o mais simples: dar antes de pedir. Quando você dá uma orientação valiosa de graça — ensina algo que o cliente não sabia — ele naturalmente retribui com atenção e compra.'",
+          "Farmacêutica: 'Já percebi isso. Quando explico por que um xarope é melhor que outro, mostrando a diferença na prática, o cliente compra com muito mais confiança.'"
+        ]
+      },
+      "encerramento": "[20s] Thiago: 'Gatilhos mentais éticos são ferramentas de comunicação, não de enganação. Use com respeito que o cliente volta. Até mais!'"
+    },
+    {
+      "titulo": "Fidelização no balcão: como ser o atendente que o cliente pede pelo nome",
+      "tema": "Módulo: Fidelização e Retenção",
+      "participantes": "Thiago + gestor de farmácia",
+      "abertura": "[30s] Thiago: 'Na farmácia existem dois tipos de atendente: os que o cliente pede pelo nome e os que o cliente aceita quando não tem jeito. Qual você quer ser? No episódio de hoje, o passo a passo para virar referência.'",
+      "bloco1": {
+        "titulo": "O poder de lembrar do cliente",
+        "falas": [
+          "Gestor: 'Na minha loja, a atendente mais requisitada não é a que mais sabe de medicamentos. É a que lembra o nome de cada cliente e pergunta \"a sua mãe melhorou?\"'",
+          "Thiago: 'Isso é fidelização pura. Cliente não é fiel a produto. É fiel a quem o reconhece. Lembrar de um detalhe pessoal vale mais que qualquer desconto.'"
+        ]
+      },
+      "bloco2": {
+        "titulo": "Pós-venda que gera retorno",
+        "falas": [
+          "Thiago: 'A venda não termina no \"tchau\". Termina no \"volte sempre, se precisar de ajuda é só aparecer\". Cliente que sai com um pós-venda quente volta 3x mais.'",
+          "Gestor: 'E é de graça. Não custa nada. Mas 90% dos atendentes não fazem. Viraram as costas antes do cliente sair.'"
+        ]
+      },
+      "encerramento": "[20s] Thiago: 'Fidelização não precisa de sistema caro. Precisa de memória, genuinidade e pós-venda. Faça isso e você será a atendente que o cliente pede pelo nome.'"
+    },
+    {
+      "titulo": "Como falar de preço sem perder a venda",
+      "tema": "Comunicação que Vende",
+      "participantes": "Thiago + especialista em comunicação",
+      "abertura": "[30s] Thiago: 'Preço é uma das objeções mais comuns no balcão. Mas a maioria dos atendentes erra ao responder. Hoje vou ensinar a técnica de emoldurar o preço — como falar de valor antes de falar de custo.'",
+      "bloco1": {
+        "titulo": "Por que \"é R$ 50\" é a pior resposta",
+        "falas": [
+          "Especialista: 'Quando o atendente responde o preço seco, o cliente só ouve o número. Não ouve o benefício. Aí o cérebro dele compara com o que ele tem no bolso e a resposta automática é \"caro\".'",
+          "Thiago: 'O segredo é sempre emoldurar: mostrar o BENEFÍCIO antes do PREÇO. \"Esse xarope tem um princípio ativo que age direto na causa da tosse, não só nos sintomas. Ele custa R$ 35, mas rende o mês inteiro\"'"
+        ]
+      },
+      "bloco2": {
+        "titulo": "Técnica do fracionamento",
+        "falas": [
+          "Thiago: 'Fracionar o valor é a técnica mais eficaz. \"São R$ 60, mas dividindo por mês dá R$ 2 por dia para cuidar da sua saúde\". Ninguém reclama de R$ 2.'",
+          "Especialista: 'E funciona porque o cérebro processa valores pequenos com menos resistência. A decisão de compra fica mais fácil.'"
+        ]
+      },
+      "encerramento": "[20s] Thiago: 'Preço é uma conversa sobre valor. Quanto mais você falar de benefício antes do número, menos objeção de preço você vai ouvir. Até o próximo episódio!'"
+    }
+  ]
+}

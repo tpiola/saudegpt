@@ -9,6 +9,7 @@ import { Icon } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
+import { WhatsAppButton } from "./whatsapp-button";
 
 function tituloPagina(pathname: string): string {
   if (pathname === "/") return "Início";
@@ -222,6 +223,8 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         </header>
 
         <div className="flex-1 bg-background">{children}</div>
+
+        <WhatsAppButton />
 
         <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6">
           <p>{site.assinatura}</p>

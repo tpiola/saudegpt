@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "nome": "Formação para Atendentes Premium de Farmácia",
+    "criador": "Thiago B. G. Piola — CRF/SP 58.519",
+    "versao": 1,
+    "criadoEm": "2026-06-01"
+  },
+  "trilhas": [
+    {
+      "nome": "Perfumaria, Higiene e Bem-Estar",
+      "modulos": [
+        {
+          "nome": "Cuidados com a Pele e Beleza",
+          "aulas": ["Identificação de tipos de pele e necessidades",
+            "Rotina de skincare: limpeza, hidratação e proteção",
+            "Princípios ativos: ácido hialurônico, retinol, vitamina C, niacinamida",
+            "Protetores solares: diferença entre filtros físicos e químicos",
+            "Cosmiatria: dermocosméticos x cosméticos comuns",
+            "Maquiagem: diferenças entre bases, corretivos e pós"]
+        },
+        {
+          "nome": "Cabelos e Couro Cabeludo",
+          "aulas": ["Estrutura do fio de cabelo e tipos capilares",
+            "Xampus, condicionadores e finalizadores: o que cada um faz",
+            "Tratamentos capilares: hidratação, nutrição e reconstrução",
+            "Couro cabeludo: dermatite seborreica, caspa e oleosidade",
+            "Queda capilar: causas, prevenção e produtos recomendados",
+            "Coloração e alisamento: cuidados e contraindicações"]
+        },
+        {
+          "nome": "Higiene Oral e Corporal",
+          "aulas": ["Saúde bucal: escovas, pastas, fio dental e enxaguantes",
+            "Halitose: causas e produtos específicos",
+            "Higiene íntima: produtos específicos por gênero e faixa etária",
+            "Desodorantes e antitranspirantes: diferenças e indicações",
+            "Sabonetes: líquido, sólido, syndet e antibacteriano",
+            "Produtos para bebês: cuidados com a pele sensível"]
+        },
+        {
+          "nome": "Universo Infantil e Mamães",
+          "aulas": ["Assaduras: prevenção e pomadas de barreira",
+            "Cólica do bebê: produtos e orientações",
+            "Hidratação infantil: loções e óleos específicos",
+            "Gestação: estrias, hidratação e cuidados com a pele",
+            "Amamentação: acessórios, cremes e cuidados",
+            "Fraldas: tipos, absorção e escolha correta"]
+        }
+      ]
+    },
+    {
+      "nome": "Medicamentos e Atendimento Clínico",
+      "modulos": [
+        {
+          "nome": "Conceitos Fundamentais de Medicamentos",
+          "aulas": ["Formas farmacêuticas: comprimido, cápsula, drágea, xarope, solução",
+            "Vias de administração e suas particularidades",
+            "Classificação de medicamentos: referência, genérico e similar",
+            "Bioequivalência: o que é e como explicar ao cliente",
+            "Interações medicamentosas básicas: o que o atendente precisa saber",
+            "Conservação e validade: armazenamento correto na farmácia"]
+        },
+        {
+          "nome": "Classes Terapêuticas Essenciais",
+          "aulas": ["Anti-inflamatórios: AINEs e corticoides — indicações e alertas",
+            "Analgésicos: dipirona, paracetamol, opioides — quando indicar cada um",
+            "Antitérmicos: mecanismo de ação e orientações de uso",
+            "Antibióticos: classes principais e resistência bacteriana",
+            "Antialérgicos e anti-histamínicos: 1ª e 2ª geração",
+            "Descongestionantes e expectorantes: diferenças e associações"]
+        },
+        {
+          "nome": "Atendimento no Balcão de Medicamentos",
+          "aulas": ["Triagem farmacêutica: como identificar sinais de alerta",
+            "Dispensação de MIPs (Medicamentos Isentos de Prescrição)",
+            "Leitura de receitas: dados obrigatórios e validade",
+            "Receituários de controle especial: Portaria 344/98",
+            "Antimicrobianos: RDC 471/2021 e retenção de receita",
+            "GLP-1 e canetas injetáveis: adesão ao tratamento e orientação"]
+        }
+      ]
+    },
+    {
+      "nome": "Operação de Farmácia e Excelência Operacional",
+      "modulos": [
+        {
+          "nome": "Rotina e Operações Diárias",
+          "aulas": ["Abertura e fechamento de loja: procedimentos padrão",
+            "Recebimento e conferência de mercadorias",
+            "Organização de estoque: primeiro que vence, primeiro que sai",
+            "Precificação e etiquetagem: margem e legislação",
+            "Troca e devolução: direitos do consumidor e procedimentos",
+            "Atendimento no caixa: agilidade com segurança"]
+        }
+      ]
+    },
+    {
+      "nome": "Vendas Consultivas e Persuasão Ética",
+      "modulos": [
+        {
+          "nome": "Oferecimento e Persuasão Ética",
+          "aulas": ["Momento certo de oferecer",
+            "Gatilhos mentais éticos na farmácia",
+            "Como oferecer sem ser invasivo",
+            "Como lidar com objeções de preço e necessidade",
+            "Cross-sell e up-sell no balcão",
+            "Técnicas de fechamento que funcionam"]
+        },
+        {
+          "nome": "Comunicação que Vende",
+          "aulas": ["Rapport na abertura",
+            "Tom de voz, postura e presença no balcão",
+            "Perguntas poderosas que revelam a necessidade",
+            "Escuta ativa",
+            "Linguagem positiva",
+            "Como falar de preço"]
+        },
+        {
+          "nome": "Fidelização e Retenção",
+          "aulas": ["Pós-venda no balcão",
+            "Cliente ocasional em recorrente",
+            "Programa de fidelidade que funciona",
+            "Como virar referência na farmácia",
+            "Indicadores de sucesso",
+            "Como ser lembrado"]
+        }
+      ]
+    }
+  ]
+}

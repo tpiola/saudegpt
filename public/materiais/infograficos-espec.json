@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "titulo": "Especificações para Infográficos — Formação Atendentes Premium",
+    "formato": "1080x1920px vertical (stories) ou 1200x800px horizontal (posts)",
+    "criador": "Thiago Piola — thiagopiola.com.br",
+    "ferramenta": "Canva Pro recomentada"
+  },
+  "infograficos": [
+    {
+      "id": "inf001",
+      "titulo": "Ordem correta do skincare passo a passo",
+      "formato": "1080x1920 vertical",
+      "descricao": "Infográfico vertical mostrando em 5 etapas a ordem: 1) Limpeza → 2) Sérum → 3) Hidratante → 4) Protetor Solar → 5) (opcional) Maquiagem. Cada etapa com ícone e dica rápida em 3 palavras.",
+      "cores": "Azul claro (#5b9bd5), branco, toques de verde (#15a06b) para destaque",
+      "elementos": [
+        "Título: 'Sua rotina de skincare no passo certo'",
+        "5 etapas com ícones circulares numerados",
+        "Dica extra no rodapé: 'Produto mais leve primeiro, mais pesado depois'",
+        "Selos de patrocínio: thiagopiola.com.br e reidasvendas.com.br"
+      ]
+    },
+    {
+      "id": "inf002",
+      "titulo": "Tipos de protetor solar: físico x químico",
+      "formato": "1080x1920 vertical",
+      "descricao": "Comparativo lado a lado entre protetor físico (óxido de zinco, dióxido de titânio) x químico (avobenzona, octocrileno). Tabela visual com: como funciona, textura, indicação.",
+      "cores": "Amarelo-ouro (#d4af37) para físico, azul (#2563eb) para químico",
+      "elementos": [
+        "Título: 'Físico x Químico: qual escolher?'",
+        "Duas colunas lado a lado",
+        "Indicação por tipo de pele",
+        "Selo: 'FPS 30 é o mínimo recomendado'"
+      ]
+    },
+    {
+      "id": "inf003",
+      "titulo": "Tipos de cabelo e tratamentos ideais",
+      "formato": "1080x1920 vertical",
+      "descricao": "Grid 2x2 com os 4 tipos de curvatura capilar (2A-4C). Cada quadrante mostra: tipo, características, produto ideal.",
+      "cores": "Tom neutro (#0c2340), toques de azul e dourado",
+      "elementos": [
+        "Título: 'Qual seu tipo de cabelo?'",
+        "Grid 2x2 com ilustrações",
+        "Dica: 'Quanto mais crespo, mais hidratação e menos xampu precisa'"
+      ]
+    },
+    {
+      "id": "inf004",
+      "titulo": "Como oferecer no balcão: o que falar e o que evitar",
+      "formato": "1080x1920 vertical",
+      "descricao": "Dois cards lado a lado: ✅ Abordagem consultiva (verde) / ❌ Empurroterapia (vermelho). Frases reais de balcão lado a lado.",
+      "cores": "Verde (#15a06b) x Vermelho (#d83a52)",
+      "elementos": [
+        "Título: 'A arte de oferecer no balcão'",
+        "Card verde: 'Já que está levando o xarope, esse soro ajuda a complementar'",
+        "Card vermelho: 'Não quer levar um antitérmico também?'",
+        "Regra de ouro: 'Toda oferta precisa de um PORQUÊ'"
+      ]
+    },
+    {
+      "id": "inf005",
+      "titulo": "Classes de medicamentos: o que cada um faz",
+      "formato": "1200x800 horizontal",
+      "descricao": "Cards horizontais com as 6 principais classes: AINEs, analgésicos, antibióticos, antialérgicos, corticoides, expectorantes. Cada card com cor, ícone e alerta.",
+      "cores": "Azul escuro (#0c2340), cards com cores variadas",
+      "elementos": [
+        "Título: 'Medicamentos no balcão: guia rápido'",
+        "6 cards com ícones de alerta",
+        "Aviso: 'Sempre encaminhe ao farmacêutico em caso de dúvida'"
+      ]
+    },
+    {
+      "id": "inf006",
+      "titulo": "Os 3 pilares da fidelização na farmácia",
+      "formato": "1080x1920 vertical",
+      "descricao": "3 pilares visuais: 1) Pós-venda genuíno, 2) Reconhecimento do cliente, 3) Consistência. Cada pilar com dica prática.",
+      "cores": "Dourado (#d4af37), azul (#2563eb), verde (#15a06b)",
+      "elementos": [
+        "Título: 'Como fazer o cliente voltar sempre'",
+        "3 colunas com pilares",
+        "Frase-chave: 'Cliente fiel é fiel a pessoas, não a descontos'"
+      ]
+    },
+    {
+      "id": "inf007",
+      "titulo": "Etapas do atendimento consultivo no balcão",
+      "formato": "1200x800 horizontal",
+      "descricao": "Fluxo horizontal em 5 etapas: Acolher → Investigar → Orientar → Oferecer → Fidelizar. Cada etapa com 3 palavras de descrição.",
+      "cores": "Gradiente azul-cyan (#2563eb → #1fb6c9)",
+      "elementos": [
+        "Título: 'Atendimento consultivo passo a passo'",
+        "Setas conectando as 5 etapas",
+        "Dica no final: 'O cliente que se sente ouvido compra mais'"
+      ]
+    }
+  ]
+}

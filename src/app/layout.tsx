@@ -94,7 +94,23 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <script dangerouslySetInnerHTML={{ __html: `
+document.addEventListener('contextmenu', function(e) {
+  if (!e.target.closest('input, textarea, [contenteditable]')) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('copy', function(e) {
+  if (!e.target.closest('input, textarea, [contenteditable]')) {
+    e.preventDefault();
+  }
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'PrintScreen' || (e.ctrlKey && e.key === 'p') || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.key === 'u')) {
+    e.preventDefault();
+  }
+});
+`}} />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="bg-clinical flex min-h-full flex-col" style={{ fontFamily: 'var(--font-sans-humanist), system-ui, sans-serif' }}>

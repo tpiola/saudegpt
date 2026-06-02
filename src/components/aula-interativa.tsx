@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { QuizQuestao } from "@/content/types";
 import { useProgresso } from "@/lib/progress";
 import { Botao, Card, Etiqueta } from "./ui";
 import { Icon } from "./icons";
 import { CelebracaoXp } from "./celebracao-xp";
+import { Confete } from "./confete";
 
 interface ProximaInfo {
   trilhaId: string;
@@ -71,6 +72,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
 
   return (
     <div className="space-y-6">
+      <Confete ativo={celebrar} origemX={0.5} origemY={0.35} />
       <CelebracaoXp xp={xp} ativo={celebrar} />
       {/* Quiz */}
       {quiz.length > 0 && (
