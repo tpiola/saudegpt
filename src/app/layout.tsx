@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Montserrat, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { LmsShell } from "@/components/lms-shell";
 import { ProgressProvider } from "@/lib/progress";
@@ -9,9 +9,25 @@ import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
-const jakarta = Plus_Jakarta_Sans({
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const montserrat = Montserrat({
   variable: "--font-sans-humanist",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const dancing = Dancing_Script({
+  variable: "--font-script",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -19,48 +35,48 @@ const baseUrl = getSiteUrl();
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f8fc" },
-    { media: "(prefers-color-scheme: dark)", color: "#060b16" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
   ],
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: site.nome,
-    template: `%s · ${site.nomeCurto}`,
+    default: "Treinamento Atendente Premium de Farmácia",
+    template: `%s · Treinamento Atendente`,
   },
-  description: site.descricao,
+  description: "Curso profissional de Treinamento para Atendentes de Farmácia — superior ao CEBRAC e SENAC. Criado por Farmacêutico CRF/SP 58.519. Dispensação, medicamentos, atendimento consultivo, legislação ANVISA, receituários e vendas éticas.",
   keywords: [
-    "curso atendente de farmácia",
-    "curso balconista de drogaria",
-    "curso vendas consultivas em farmácia",
-    "curso persuasão no balcão",
-    "como oferecer produtos na farmácia",
-    "curso oferecimento e fidelização",
-    "técnicas de venda em farmácia",
-    "curso comunicação no balcão",
-    "curso atendimento farmacêutico",
-    "curso perfumaria e higiene",
-    "curso leitura de receitas",
-    "curso genéricos e similares",
-    "curso GLP-1",
+    "treinamento atendente farmácia",
+    "curso atendente farmácia",
+    "curso balconista farmácia",
+    "curso dispensação medicamentos",
+    "curso legislação farmácia ANVISA",
+    "curso farmácia melhor que SENAC",
+    "curso farmácia melhor que CEBRAC",
+    "treinamento balcão farmácia",
+    "atendimento farmacêutico consultivo",
+    "curso receituário controlado portaria 344",
+    "curso RDC 471 antimicrobianos",
+    "farmacêutico CRF SP",
+    "ABC Farma treinamento",
+    "Conselho Federal Farmácia educação",
   ],
-  authors: [{ name: "Thiago B. G. Piola" }],
+  authors: [{ name: "Thiago B. G. Piola, CRF/SP 58.519" }],
   openGraph: {
-    title: site.nome,
-    description: site.descricao,
+    title: "Treinamento Atendente Premium de Farmácia",
+    description: "O treinamento mais completo para atendentes de farmácia do Brasil. Criado por farmacêutico com 15+ anos. Superior ao CEBRAC e SENAC.",
     locale: "pt_BR",
     type: "website",
     images: [
-      { url: "/opengraph-image", width: 1200, height: 630, alt: site.nome },
-      { url: "/og.svg", width: 1200, height: 630, alt: site.nome },
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Treinamento Atendente Premium" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: site.nome,
-    description: site.descricao,
+    title: "Treinamento Atendente Premium de Farmácia",
+    description: "O treinamento mais completo para atendentes de farmácia do Brasil.",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -71,14 +87,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${jakarta.variable} h-full`} suppressHydrationWarning>
+    <html
+      lang="pt-BR"
+      className={`${cormorant.variable} ${montserrat.variable} ${dancing.variable} h-full`}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-clinical flex min-h-full flex-col">
+      <body className="bg-clinical flex min-h-full flex-col" style={{ fontFamily: 'var(--font-sans-humanist), system-ui, sans-serif' }}>
         <a
           href="#conteudo-principal"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-black focus:px-4 focus:py-2 focus:text-white"
         >
           Pular para o conteúdo
         </a>
