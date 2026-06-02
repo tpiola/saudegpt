@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { imagensCategoria } from "./midia-catalogo";
 
 // Trilha 4 — Vendas, Persuasão e Atendimento Consultivo no Balcão.
 export const trilhaVendas: Trilha = {
@@ -20,6 +21,7 @@ export const trilhaVendas: Trilha = {
       titulo: "Atendimento Humanizado e Cuidado com o Paciente",
       descricao:
         "Atender é cuidar. O cliente que se sente acolhido, ouvido e respeitado confia — e confiança é a base de todo cuidado continuado.",
+      imagemHeroUrl: imagensCategoria.oferecimento,
       aulas: [
         {
           id: "momento-certo",
@@ -566,6 +568,7 @@ export const trilhaVendas: Trilha = {
       titulo: "Comunicação que Acolhe e Cura",
       descricao:
         "Cada palavra importa no cuidado. Do rapport inicial à linguagem de acolhimento — como a comunicação transforma um atendente em referência de cuidado.",
+      imagemHeroUrl: imagensCategoria.comunicacaoPessoas,
       aulas: [
         {
           id: "rapport",
@@ -1113,6 +1116,7 @@ export const trilhaVendas: Trilha = {
        titulo: "Apoio ao Tratamento e Cuidado Contínuo",
        descricao:
          "O atendimento não termina quando o cliente sai da farmácia. Acompanhar a adesão, ligar ou enviar mensagem para saber como o paciente está — isso é cuidado de verdade. Cliente acompanhado adere mais, volta mais e confia mais.",
+       imagemHeroUrl: imagensCategoria.apoio,
        aulas: [
          {
            id: "adesao-terapeutica",

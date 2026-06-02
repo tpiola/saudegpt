@@ -1,6 +1,7 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
 import { videosPiloto } from "./videos-piloto";
+import { imagensCategoria } from "./midia-catalogo";
 
 // Trilha 2 — preserva o manual técnico integralmente, com camada crítica de
 // atualização regulatória (RDC 471/2021, GLP-1 IN 360/2025, Farmácia Popular 2025).
@@ -18,6 +19,7 @@ export const trilhaMedicamentos: Trilha = {
       id: "fundamentos",
       titulo: "Fundamentos do Medicamento",
       descricao: "Conceitos, princípio ativo, formas farmacêuticas e vias de administração.",
+      imagemHeroUrl: imagensCategoria.fundamentos,
       aulas: [
         {
           id: "conceitos",
@@ -379,6 +381,7 @@ export const trilhaMedicamentos: Trilha = {
       titulo: "Bula, Tarjas e Classificação",
       descricao:
         "Leitura segura de bula, tarjas, MIP e a diferença entre genéricos, similares e referência.",
+      imagemHeroUrl: imagensCategoria.bula,
       aulas: [
         {
           id: "bula",
@@ -767,6 +770,7 @@ export const trilhaMedicamentos: Trilha = {
       titulo: "Classes Terapêuticas",
       descricao:
         "Panorama das principais classes do balcão: analgésicos, anti-inflamatórios, antigripais, gastrointestinais, antimicrobianos e mais.",
+      imagemHeroUrl: imagensCategoria.classes,
       aulas: [
         {
           id: "analgesicos-antitermicos",
@@ -1425,6 +1429,7 @@ export const trilhaMedicamentos: Trilha = {
       id: "receituarios-programas",
       titulo: "Receituários, Controlados e Programas Públicos",
       descricao: "Tipos de receita, controle especial, atualização de GLP-1 e Farmácia Popular.",
+      imagemHeroUrl: imagensCategoria.receituarios,
       aulas: [
         {
           id: "receituarios",
@@ -1772,6 +1777,7 @@ export const trilhaMedicamentos: Trilha = {
       titulo: "Cuidado, Segurança e Adesão",
       descricao:
         "Primeiros socorros, injetáveis, sazonalidade, adesão ao tratamento e encaminhamento.",
+      imagemHeroUrl: imagensCategoria.seguranca,
       aulas: [
         {
           id: "primeiros-socorros",

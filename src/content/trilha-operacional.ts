@@ -1,6 +1,7 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
 import { videosPiloto } from "./videos-piloto";
+import { imagensCategoria } from "./midia-catalogo";
 
 // Trilha 3 — excelência operacional e vendas consultivas com ética.
 export const trilhaOperacional: Trilha = {
@@ -17,6 +18,7 @@ export const trilhaOperacional: Trilha = {
       id: "atendimento-humano",
       titulo: "Atendimento Humano de Alto Padrão",
       descricao: "Acolhimento, escuta ativa e o roteiro de encantamento ético.",
+      imagemHeroUrl: imagensCategoria.atendimentoHumano,
       aulas: [
         {
           id: "acolhimento",
@@ -352,6 +354,7 @@ export const trilhaOperacional: Trilha = {
       id: "operacao-loja",
       titulo: "Operação e Organização de Loja",
       descricao: "Rotina, planograma, exposição e gestão de picos sazonais.",
+      imagemHeroUrl: imagensCategoria.operacionalLoja,
       aulas: [
         {
           id: "rotina-organizacao",

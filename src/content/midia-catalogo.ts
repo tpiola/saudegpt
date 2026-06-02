@@ -61,6 +61,22 @@ export const imagensCategoria = {
   comunicacao: foto("photo-1573497019940-1c28c88b4f3e"),
   organizacao: foto("photo-1544717297-fa95b6eb9642"),
   equipe: foto("photo-1522071820081-009f0129c71c"),
+  // MÓDULOS — FUNDOS CINEMATOGRÁFICOS
+  fundamentos: foto("photo-1584308666744-19c4e5e9e0b1"),
+  bula: foto("photo-1450101499163-c8848c66ca85"),
+  classes: foto("photo-1579154204601-01588f351e67"),
+  receituarios: foto("photo-1586281380349-632531db7ed4"),
+  seguranca: foto("photo-1584515933487-779824d29309"),
+  oferecimento: foto("photo-1559839734-2b71ea197ec2"),
+  comunicacaoPessoas: foto("photo-1573497019940-1c28c88b4f3e"),
+  apoio: foto("photo-1579684453375-5f0e9e3c8f4b"),
+  atendimentoHumano: foto("photo-1559839734-2b71ea197ec2"),
+  operacionalLoja: foto("photo-1556742049-0cfed4f6a45d"),
+  higieneProdutos: foto("photo-1556228578-8c89e0a6d41f"),
+  peleCuidados: foto("photo-1612817288484-6f91600613a5"),
+  cabelosTratamento: foto("photo-1526947425960-945c6e72858f"),
+  perfumesModulo: foto("photo-1541643600914-78b084683601"),
+  infantilModulo: foto("photo-1584464491033-06628f3a6b7b"),
 } as const;
 
 /** Logos via Wikimedia Commons (identificação educativa no balcão). */

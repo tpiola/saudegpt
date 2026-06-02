@@ -62,6 +62,8 @@ export interface Modulo {
   id: string;
   titulo: string;
   descricao: string;
+  /** Imagem de fundo do módulo na listagem (Unsplash). */
+  imagemHeroUrl?: string;
   aulas: Aula[];
 }
 

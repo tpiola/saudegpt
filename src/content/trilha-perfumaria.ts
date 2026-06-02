@@ -1,7 +1,7 @@
 import type { Aula, Trilha } from "./types";
 import { q } from "./_helpers";
 import { modulosBemEstarExtra } from "./modulos-bem-estar-extra";
-import { midiaPadraoPorAulaId } from "./midia-catalogo";
+import { midiaPadraoPorAulaId, imagensCategoria } from "./midia-catalogo";
 import { videosEducativos } from "./videos-educativos";
 
 function comMidia(aula: Aula): Aula {
@@ -30,6 +30,7 @@ export const trilhaPerfumaria: Trilha = {
       id: "cuidados-higiene",
       titulo: "Cuidados Masculinos e Higiene Diária",
       descricao: "Barba, higiene oral, banho e proteção do dia a dia.",
+      imagemHeroUrl: imagensCategoria.higieneProdutos,
       aulas: [
         {
           id: "barba",
@@ -622,6 +623,7 @@ export const trilhaPerfumaria: Trilha = {
       id: "pele-beleza",
       titulo: "Pele, Beleza e Dermocosméticos",
       descricao: "Fotoproteção, maquiagem, unhas e a camada técnica dos dermocosméticos.",
+      imagemHeroUrl: imagensCategoria.peleCuidados,
       aulas: [
         {
           id: "pele-fotoprotecao",
@@ -1011,6 +1013,7 @@ export const trilhaPerfumaria: Trilha = {
       id: "cabelos",
       titulo: "Cabelos e Coloração",
       descricao: "Diagnóstico capilar simples, linha de tratamento e coloração com segurança.",
+      imagemHeroUrl: imagensCategoria.cabelosTratamento,
       aulas: [
         {
           id: "cabelos",
@@ -1157,6 +1160,7 @@ export const trilhaPerfumaria: Trilha = {
       id: "perfumes",
       titulo: "Perfumes",
       descricao: "Famílias olfativas, fixação e venda consultiva de fragrâncias.",
+      imagemHeroUrl: imagensCategoria.perfumesModulo,
       aulas: [
         {
           id: "perfumes",
@@ -1230,6 +1234,7 @@ export const trilhaPerfumaria: Trilha = {
       id: "infantil",
       titulo: "Universo Infantil",
       descricao: "Linha infantil, acessórios e higiene do bebê com segurança.",
+      imagemHeroUrl: imagensCategoria.infantilModulo,
       aulas: [
         {
           id: "linha-infantil",
