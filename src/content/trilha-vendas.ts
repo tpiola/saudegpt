@@ -589,291 +589,308 @@ export const trilhaVendas: Trilha = {
         },
       ],
     },
-    /* ════════════════════════════════════════════════
-       MÓDULO 3 — Fidelização e Retenção
+         /* ════════════════════════════════════════════════
+       MÓDULO 3 — Apoio ao Tratamento e Cuidado Contínuo
        ════════════════════════════════════════════════ */
-    {
-      id: "fidelizacao",
-      titulo: "Encantamento e Cuidado Contínuo",
-      descricao:
-        "O cliente volta não porque foi 'fidelizado' — volta porque foi bem cuidado. Como construir relacionamento duradouro baseado em confiança e cuidado genuíno.",
-      aulas: [
-        {
-          id: "pos-venda",
-          titulo: "Pós-atendimento: o momento mais esquecido do cuidado",
-          duracaoMin: 5,
-          nivel: "basico",
-          resumo:
-            "O cuidado só termina quando o cliente sai satisfeito. Como encerrar o atendimento de forma que ele queira voltar.",
-          resumoExecutivo: [
-            "Nunca encerre o atendimento com 'Tchau' seco. Recapitule como usar, agradeça e convide a voltar.",
-            'Use o fechamento de relacionamento: "Foi um prazer te atender. Se tiver qualquer dúvida sobre o produto, pode voltar que eu mesma te ajudo."',
-            "Anote o nome do cliente (se possível) e use na despedida. 'Tchau, Maria, melhoras!'",
-            "Pós-venda não precisa de sistema caro. Um 'Volte sempre' genuíno vale mais que SMS automático.",
-            "Cliente que se sente importante no pós-venda volta 3x mais que cliente tratado como número.",
-          ],
-          simulacao: {
-            cliente: "Cliente comprando pela primeira vez na farmácia.",
-            falaBoa: '"Prontinho, Maria. Esse xarope você toma 3x ao dia, depois das refeições. Melhoras hein! E qualquer coisa, pode voltar que a gente ajuda. Vai ser um prazer te atender de novo!"',
-            falaEvitar: '"Pronto, R$ 48,50. (entrega a nota e já vira para o próximo cliente)"',
-          },
-          checklist: [
-            "Recapitular brevemente como usar o produto.",
-            "Personalizar a despedida com o nome do cliente.",
-            "Convidar a voltar de forma genuína.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Quando o produto exige um acompanhamento que o farmacêutico deve fazer.",
-          ],
-          errosComuns: [
-            "Encerrar o atendimento de forma automática, como se o cliente já não importasse.",
-            "Entregar o produto e virar as costas sem despedida.",
-          ],
-          quiz: [
-            q(
-              "Como encerrar um atendimento de forma que o cliente queira voltar?",
-              [
-                '"Tchau, obrigado"',
-                '"Prontinho, aqui está" (entrega e vira)',
-                '"Foi um prazer te atender. Se precisar de ajuda com o produto, pode voltar que eu ajudo"',
-                '"Espero que melhore" (sem contato visual)',
-              ],
-              2,
-              "Um pós-venda personalizado e genuíno é o que faz o cliente lembrar de você na próxima visita.",
-            ),
-          ],
-          xp: 40,
-        },
-        {
-          id: "cliente-recorrente",
-          titulo: "Como transformar cliente ocasional em recorrente",
-          duracaoMin: 6,
-          nivel: "intermediario",
-          resumo:
-            "Estratégias práticas para criar o hábito de compra: lembretes, constância, diferenciação e o poder de ser o atendente de referência.",
-          resumoExecutivo: [
-            "Clientes de medicamentos contínuos (hipertensão, diabetes) são os mais fáceis de fidelizar — marque a data de retorno.",
-            'Diferencial que cria hábito: "Daqui a 30 dias eu vou estar aqui de novo. Quando seu remédio acabar, passa aqui que eu já sei o que você usa."',
-            "Conheça o cliente pelo nome e pelo produto. Nada fideliza mais que ser reconhecido.",
-            "Pequenas gentilezas criam grandes vínculos: segurar a receita, perguntar como foi o tratamento, lembrar de uma queixa passada.",
-            "Cliente recorrente não é fiel ao produto — é fiel a quem atende bem.",
-          ],
-          simulacao: {
-            cliente: "Cliente de medicamento contínuo (hipertenso) na 2ª compra.",
-            falaBoa: '"Oi, João! De novo o losartana, certo? Essa caixa dura mais 30 dias. No mês que vem, passa aqui que eu já separo pra você. Se precisar antes, é só aparecer."',
-            falaEvitar: '"O mesmo de sempre?" (digitando no computador sem olhar)',
-          },
-          checklist: [
-            "Identificar clientes de medicamentos contínuos e marcar retorno.",
-            "Usar o nome do cliente e lembrar do produto que ele usa.",
-            "Convidar pro retorno de forma personalizada.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Para reforçar a adesão ao tratamento com clientes de medicamentos contínuos.",
-          ],
-          errosComuns: [
-            "Tratar todo cliente como anônimo mesmo na 5ª compra.",
-            "Não aproveitar o histórico para personalizar o atendimento.",
-          ],
-          quiz: [
-            q(
-              "Qual a principal razão que faz um cliente voltar à mesma farmácia?",
-              [
-                "O preço mais baixo",
-                "Ser atendido por quem o conhece e lembra do seu nome",
-                "O estacionamento",
-                "A propaganda na TV",
-              ],
-              1,
-              "Preço atrai uma vez. Ser reconhecido e bem atendido faz o cliente voltar sempre.",
-            ),
-          ],
-          xp: 60,
-        },
-        {
-          id: "programa-fidelidade",
-          titulo: "Programa de fidelidade que funciona (sem app caro)",
-          duracaoMin: 5,
-          nivel: "basico",
-          resumo:
-            "Fidelidade não precisa de sistema caro. Técnicas de papel e caneta que criam vínculo real com o cliente.",
-          resumoExecutivo: [
-            'O melhor programa de fidelidade é o atendente que lembra do cliente. Sistema nenhum substitui "Oi, Maria! Veio buscar o remédio do joelho?"',
-            'Cartão de fidelidade físico: "A cada 5 compras, ganhe um brinde" funciona e custa centavos.',
-            "Cliente que participa de programa de fidelidade gasta em média 20% mais por visita.",
-            "O segredo não é o desconto — é o reconhecimento. Cliente quer se sentir especial, não só ter preço baixo.",
-            "Aniversário do cliente: um parabéns genuíno na data certa vale mais que qualquer desconto.",
-          ],
-          simulacao: {
-            cliente: "Cliente fazendo a 4ª compra no mês.",
-            falaBoa: '"João, olha só: com essa compra você completa o cartão fidelidade. Mais uma e ganha um brinde. Quer levar mais alguma coisa para completar hoje?"',
-            falaEvitar: '"Tem cartão fidelidade? Não? Quer fazer?"',
-          },
-          checklist: [
-            "Oferecer o programa de fidelidade como benefício, não como burocracia.",
-            "Usar o cartão físico como ferramenta de relacionamento, não de desconto.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Para sugerir brindes educativos relacionados à saúde do cliente.",
-          ],
-          errosComuns: [
-            "Tratar fidelidade como burocracia em vez de relacionamento.",
-            "Empurrar cartão sem explicar o benefício real.",
-          ],
-          quiz: [
-            q(
-              "O que mais fideliza o cliente em uma farmácia?",
-              [
-                "Preço baixo sempre",
-                "Ser reconhecido e bem atendido pelo nome e histórico",
-                "Estacionamento gratuito",
-                "App com cashback",
-              ],
-              1,
-              "Reconhecimento pessoal vale mais que preço baixo ou app. Cliente fiel é fiel a pessoas, não a descontos.",
-            ),
-          ],
-          xp: 40,
-        },
-        {
-          id: "ser-referencia",
-          titulo: "Como virar a atendente de referência na farmácia",
-          duracaoMin: 6,
-          nivel: "intermediario",
-          resumo:
-            "O atendente que o cliente pede pelo nome. Como construir reputação, autoridade e confiança para ser a primeira pessoa que o cliente procura.",
-          resumoExecutivo: [
-            "Clientes que pedem pelo nome são responsáveis por 40% do faturamento dos melhores atendentes.",
-            "Para ser referência: seja consistente, presente e interessada. Cliente precisa saber que você estará lá.",
-            "Conhecimento técnico é pré-requisito. Conhecimento do cliente é diferencial.",
-"Anote preferências dos clientes recorrentes (mentalmente ou no caderno) - saber o que cada um prefere é o maior diferencial.",
-            "Seja proativa: se o cliente está com gripe e você sabe que no mês passado ele comprou xarope, pergunte como foi.",
-          ],
-          simulacao: {
-            cliente: "Cliente antigo chega e outra atendente vai atendê-lo.",
-            falaBoa: 'Atendente A se aproxima: "Dona Maria! A senhora veio buscar o óleo de fígado de bacalhau de novo? A senhora achou bom mesmo?" Cliente: "Nossa, você lembrou! Que memória!"',
-            falaEvitar: '"Bom dia. Vai levar o quê?" (como se nunca tivesse visto a cliente antes, mesmo sendo a 10ª vez)',
-          },
-          checklist: [
-            "Lembrar preferências e histórico dos clientes frequentes.",
-            "Ser consistente na presença e qualidade do atendimento.",
-            "Construir conhecimento técnico para ser autoridade.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Para reforçar a credibilidade com o cliente quando necessário.",
-          ],
-          errosComuns: [
-            "Tratar cliente antigo como novo a cada visita.",
-            "Fingir que lembra quando não lembra — cliente percebe.",
-          ],
-          quiz: [
-            q(
-              "O que mais contribui para um atendente virar referência na farmácia?",
-              [
-                "Conhecer todos os preços de cor",
-                "Lembrar dos clientes, suas preferências e seu histórico",
-                "Ser a mais rápida no caixa",
-                "Usar jaleco branco",
-              ],
-              1,
-              "Conhecimento do cliente + consistência + memória = atendente de referência que o cliente pede pelo nome.",
-            ),
-          ],
-          xp: 60,
-        },
-        {
-          id: "indicador-sucesso",
-          titulo: "Indicadores de sucesso no atendimento (sem Power BI)",
-          duracaoMin: 5,
-          nivel: "intermediario",
-          resumo:
-            "Não precisa de dashboard. Os indicadores que realmente importam no dia a dia do balcão e como acompanhá-los de cabeça ou no caderno.",
-          resumoExecutivo: [
-            "Ticket médio do próprio atendimento: quanto cada cliente gasta quando você atende vs. a média da loja.",
-            "Índice de volta: quantos clientes voltam e pedem por você. Anote nomes numa agenda.",
-            "Taxa de oferta aceita: de cada 10 ofertas que você faz, quantas o cliente aceita? Isso mede sua comunicação.",
-            "Cliente que sai satisfeito não é métrica — é missão. Mas você percebe pela despedida: 'Volto mais vezes agora.'",
-            "O melhor indicador de sucesso é o cliente que entra, te vê e sorri. Nenhum dashboard captura isso.",
-          ],
-          simulacao: {
-            cliente: "Gerente perguntando como está o atendimento.",
-            falaBoa: '"Atendi 30 clientes hoje. Em 20 eu consegui oferecer um complemento, 12 aceitaram. E 3 clientes novos perguntaram meu nome. Foi um bom dia!"',
-            falaEvitar: '"Atendi bastante, acho que foi bem."',
-          },
-          checklist: [
-            "Acompanhar mentalmente quantas ofertas são aceitas por dia.",
-            "Anotar nomes de clientes novos que voltam.",
-            "Observar seu ticket médio pessoal comparado à média da loja.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Para comparar indicadores com o desempenho geral da farmácia.",
-          ],
-          errosComuns: [
-            "Achar que indicador é coisa de gerente — todo atendente que quer crescer precisa saber seus números.",
-            "Medir só quantidade de vendas, ignorando qualidade do atendimento.",
-          ],
-          quiz: [
-            q(
-              "Qual indicador pessoal um atendente pode acompanhar sem sistema?",
-              [
-                "Margem de lucro da loja",
-                "Número de ofertas aceitas por dia (de cada 10, quantas viram venda)",
-                "Faturamento total da farmácia",
-                "Curva ABC de produtos",
-              ],
-              1,
-              "A taxa de oferta aceita mede sua eficiência em comunicação e persuasão. E você pode contar na mão.",
-            ),
-          ],
-          xp: 50,
-        },
-        {
-          id: "ser-lembrado",
-          titulo: "Como ser lembrado: o atendente que o cliente não esquece",
-          duracaoMin: 5,
-          nivel: "basico",
-          resumo:
-            "No final, não importa o produto — importa como o cliente se sentiu. Os pequenos gestos que transformam um atendimento em experiência memorável.",
-          resumoExecutivo: [
-            'Clientes esquecem o que você vendeu. Lembram como você os fez sentir. Essa é a regra número 1.',
-            "Gestos que marcam: lembrar de um detalhe pessoal, perguntar pela família, dar uma informação útil além da venda.",
-            "A alta temporada de fidelização é quando o cliente está vulnerável (doente, inseguro). Um atendimento humano nessa hora cria vínculo vitalício.",
-            "Cliente memorável não é o que mais gasta. É o que confia. E confiança se constrói em pequenos momentos.",
-            'Seu maior marketing é o cliente que sai e diz: "Fui muito bem atendido, vou voltar lá."',
-          ],
-          simulacao: {
-            cliente: "Cliente que comprou um remédio para dor nas costas na semana passada e voltou hoje.",
-            falaBoa: '"Oi, Carlos! E aí, melhorou das costas? Aquele anti-inflamatório fez efeito?" (mostrando que lembra e se importa)',
-            falaEvitar: '"Bom dia, o que vai levar hoje?" (como se nunca tivesse visto)',
-          },
-          checklist: [
-            "Lembrar de detalhes da vida do cliente (profissão, família, queixa anterior).",
-            "Perguntar como foi o resultado do produto recomendado antes.",
-            "Transformar cada atendimento em uma experiência humana, não transacional.",
-          ],
-          quandoChamarFarmaceutico: [
-            "Para envolver o farmacêutico em casos onde o acompanhamento clínico fortalece o vínculo.",
-          ],
-          errosComuns: [
-            "Tratar venda como transação: entrega, cobra, tchau.",
-            "Não lembrar do cliente no retorno — ele se sente invisível.",
-          ],
-          quiz: [
-            q(
-              "O que o cliente mais lembra depois de um atendimento?",
-              [
-                "O preço que pagou",
-                "O nome do produto que comprou",
-                "Como ele se sentiu durante o atendimento",
-                "A marca do produto",
-              ],
-              2,
-              "Cliente pode esquecer o que comprou, mas nunca esquece como foi tratado.",
-            ),
-          ],
-          xp: 50,
-        },
-      ],
+     {
+       id: "apoio-tratamento",
+       titulo: "Apoio ao Tratamento e Cuidado Contínuo",
+       descricao:
+         "O atendimento não termina quando o cliente sai da farmácia. Acompanhar a adesão, ligar ou enviar mensagem para saber como o paciente está — isso é cuidado de verdade. Cliente acompanhado adere mais, volta mais e confia mais.",
+       aulas: [
+         {
+           id: "adesao-terapeutica",
+           titulo: "Adesão ao tratamento: o que é e por que importa",
+           duracaoMin: 6,
+           nivel: "intermediario",
+           resumo:
+             "70% dos pacientes abandonam o tratamento nos primeiros 30 dias. O farmacêutico e a equipe têm um papel crucial na adesão — e isso começa com um simples contato de acompanhamento.",
+           resumoExecutivo: [
+             "Adesão é o paciente tomar o medicamento conforme prescrito, no horário, na dose e pelo tempo certo.",
+             "As principais causas de não adesão: esquecimento, efeitos colaterais, falta de compreensão e custo.",
+             "Um telefonema ou mensagem 3-5 dias após a compra pode aumentar a adesão em até 40%.",
+             "Paciente que adere ao tratamento tem melhor qualidade de vida e menor risco de complicações.",
+           ],
+           simulacao: {
+             cliente: "Paciente hipertenso que comprou o medicamento há 5 dias.",
+             falaBoa: '"Bom dia, João! Aqui é da Farmácia. O senhor começou o remédio para pressão? Queria saber se está tendo algum efeito ou se precisa de ajuda. Seu tratamento é importante e estamos aqui para apoiar."',
+             falaEvitar: '"Oi, só lembrando de comprar o remédio de novo."',
+           },
+           checklist: [
+             "Anotar contato do paciente e medicamento comprado.",
+             "Agendar contato de acompanhamento em 3-5 dias.",
+             "Perguntar sobre efeitos colaterais e dificuldades.",
+             "Orientar e encaminhar ao farmacêutico se necessário.",
+           ],
+           quandoChamarFarmaceutico: [
+             "Paciente relata efeitos colaterais importantes.",
+             "Dúvida sobre interação medicamentosa.",
+             "Suspeita de erro na prescrição ou posologia.",
+           ],
+           errosComuns: [
+             "Ligar apenas para 'vender' mais — paciente percebe e perde a confiança.",
+             "Não se apresentar adequadamente — parece telemarketing.",
+             "Ignorar sinais de alerta relatados pelo paciente.",
+           ],
+           quiz: [
+             q(
+               "Qual o principal objetivo do contato de acompanhamento?",
+               [
+                 "Oferecer mais produtos",
+                 "Apoiar a adesão e verificar como o paciente está",
+                 "Avaliar a satisfação com o preço",
+                 "Confirmar dados cadastrais",
+               ],
+               1,
+               "O acompanhamento é para CUIDAR do paciente — verificar adesão, efeitos e oferecer suporte. A confiança gerada naturalmente faz o paciente voltar.",
+             ),
+           ],
+           xp: 60,
+         },
+         {
+           id: "como-contatar",
+           titulo: "Como contatar o paciente sem parecer telemarketing",
+           duracaoMin: 5,
+           nivel: "intermediario",
+           resumo:
+             "A diferença entre um contato de cuidado e uma ligação de telemarketing é a INTENÇÃO. O tom, a abordagem e o timing transformam um simples telefonema em um gesto de cuidado que o paciente nunca esquece.",
+           resumoExecutivo: [
+             "Sempre se identifique: 'Aqui é da Farmácia [nome], tudo bem?' — nunca 'É da central de relacionamento'.",
+             "Explique o motivo genuíno: 'Estou ligando para saber como você está com o novo medicamento'.",
+             "Perguntas abertas: 'Como está se sentindo?', 'Teve alguma dúvida?' — não 'Tá tomando direitinho?'.",
+             "Nunca tente vender nada na primeira ligação de acompanhamento. O momento é de CUIDADO.",
+             "Se o paciente não atender, envie uma mensagem educada: 'Passamos para saber como você está. Retornaremos em breve.'",
+           ],
+           simulacao: {
+             cliente: "Paciente diabético que começou a usar insulina.",
+             falaBoa: '"Olá, dona Maria! Aqui é da Farmácia [nome]. A senhora começou a usar a insulina nova na semana passada. Como está sendo a adaptação? Teve dificuldade com as aplicações ou sentiu algo diferente?"',
+             falaEvitar: '"Bom dia, é da farmácia. A senhora precisa de mais insulina?"',
+           },
+           checklist: [
+             "Ligar em horário comercial, evitando horário de almoço.",
+             "Tom amigável e preocupado, nunca script decorado.",
+             "Se não atender, deixar recado educado e tentar novamente em outro horário.",
+             "Registrar o resultado do contato para o farmacêutico.",
+           ],
+           quandoChamarFarmaceutico: [
+             "Paciente relata dificuldade com o uso do medicamento.",
+             "Dúvidas sobre efeitos adversos ou interações.",
+           ],
+           errosComuns: [
+             "Ler script — parece robô e perde a humanidade do cuidado.",
+             "Falar rápido demais — paciente se sente pressionado.",
+             "Não ouvir a resposta — fazer pergunta e não dar tempo de responder.",
+           ],
+           quiz: [
+             q(
+               "Qual a melhor forma de iniciar um contato de acompanhamento com o paciente?",
+               [
+                 '"É da central de relacionamento, preciso confirmar seus dados"',
+                 '"Aqui é da Farmácia [nome], tudo bem? Estou ligando para saber como você está se adaptando ao medicamento"',
+                 '"Sua receita está quase vencendo, quer agendar a compra?"',
+                 '"O senhor precisa de mais algum produto hoje?"',
+               ],
+               1,
+               "A identificação clara e o motivo genuíno de cuidado fazem o paciente se sentir valorizado, não abordado.",
+             ),
+           ],
+           xp: 50,
+         },
+         {
+           id: "mensagem-apoio",
+           titulo: "Mensagens de apoio: WhatsApp e SMS que encantam",
+           duracaoMin: 5,
+           nivel: "basico",
+           resumo:
+             "Nem todo paciente quer ou quer falar ao telefone. Uma mensagem de WhatsApp ou SMS bem escrita pode ser um gesto de cuidado ainda mais bem recebido.",
+           resumoExecutivo: [
+             "Mensagem inicial: 'Olá, [nome]! Aqui é da Farmácia [nome]. Passamos para saber como você está com o tratamento. Se precisar de qualquer ajuda, é só nos chamar. Estamos aqui por você! 💙'",
+             "Anexar material educativo: dica de cuidado, guia de uso do medicamento.",
+             "Respeitar a privacidade: nunca mencionar o nome do medicamento na mensagem.",
+             "Oferecer canal de contato direto: 'Se tiver dúvidas, pode responder essa mensagem que a gente ajuda.'",
+             "Agendar próximo contato: 'Em 15 dias entramos em contato novamente para saber como está.'",
+           ],
+           simulacao: {
+              cliente: "",
+             falaBoa: '"Olá, João! 💙 Aqui é da Farmácia [nome]. Passamos para saber como você está se sentindo com o início do tratamento. Teve alguma dúvida ou dificuldade? Pode responder essa mensagem — estamos aqui para ajudar. Cuide-se!"',
+             falaEvitar: '"Senhor João, seu medicamento está quase no fim. Já quer agendar a compra para não ficar sem?"',
+           },
+           checklist: [
+             "Personalizar a mensagem com o nome do paciente.",
+             "Oferecer ajuda genuína, não oferta de produtos.",
+             "Usar tom acolhedor e emoticons com moderação.",
+             "Sempre se identificar e dar um canal de resposta.",
+           ],
+           quandoChamarFarmaceutico: [
+             "Paciente responde com dúvida técnica sobre o medicamento.",
+           ],
+           errosComuns: [
+             "Mensagem genérica que parece automática/disparada.",
+             "Já começar oferecendo produto em vez de perguntar como o paciente está.",
+             "Não dar a opção de não responder — paciente se sente obrigado.",
+           ],
+           quiz: [
+             q(
+               "Em uma mensagem de apoio ao tratamento, o mais importante é:",
+               [
+                 "Oferecer um desconto no próximo produto",
+                 "Demonstrar cuidado genuíno e oferecer canal de ajuda",
+                 "Lembrar o paciente de comprar o remédio",
+                 "Confirmar endereço e dados cadastrais",
+               ],
+               1,
+               "A mensagem de apoio existe para CUIDAR, não para vender. O cuidado genuíno gera confiança — e confiança faz o paciente voltar.",
+             ),
+           ],
+           xp: 50,
+         },
+         {
+           id: "calendario-cuidado",
+           titulo: "Calendário de cuidado: quando e como acompanhar",
+           duracaoMin: 5,
+           nivel: "intermediario",
+           resumo:
+             "Acompanhamento não é um evento único. É um processo. Um calendário simples de papel ou planilha já basta para transformar o atendimento em cuidado contínuo.",
+           resumoExecutivo: [
+             "Dia 3-5 após a compra: contato inicial para verificar adesão e efeitos.",
+             "Dia 15: segunda verificação, reforçar a importância do tratamento.",
+             "Dia 25-30: antes do fim do medicamento, oferecer suporte para continuidade.",
+             "Medicamentos contínuos (hipertensão, diabetes, colesterol): acompanhamento mensal.",
+             "Tratamentos agudos (antibióticos, anti-inflamatórios): um único contato no meio do tratamento.",
+             "Pacientes crônicos que faltam: contato de acolhimento, nunca de cobrança.",
+           ],
+           simulacao: {
+              cliente: "",
+             falaBoa: '"Dona Maria, na semana passada a senhora comprou o medicamento para diabetes. Como está sendo a adaptação? Aqui na farmácia temos um calendário de cuidado: em 15 dias entro em contato de novo para saber como está. Pode contar com a gente!"',
+             falaEvitar: '"Já passou 15 dias, queria saber se vai comprar de novo o remédio."',
+           },
+           checklist: [
+             "Anotar data da compra e tipo de tratamento na agenda de cuidado.",
+             "Agendar contatos futuros com lembretes no celular.",
+             "Manter discrição (nunca deixar anotações visíveis para outros clientes).",
+             "Celebrar marcos: 'Parabéns, 3 meses de tratamento! Como está se sentindo?'",
+           ],
+           quandoChamarFarmaceutico: [
+             "Paciente com múltiplos medicamentos que precisa de reconciliação.",
+           ],
+           errosComuns: [
+             "Acompanhar para cobrar, não para cuidar.",
+             "Ser invasivo ou insistente — paciente precisa sentir que pode recusar.",
+             "Não registrar os contatos — perde o histórico do cuidado.",
+           ],
+           quiz: [
+             q(
+               "Quando deve ser feito o primeiro contato de acompanhamento pós-compra?",
+               [
+                 "No dia seguinte",
+                 "Entre o 3º e 5º dia após a compra",
+                 "Só no fim do tratamento",
+                 "Nunca — o paciente que deve procurar a farmácia",
+               ],
+               1,
+               "3-5 dias é o timing ideal: o paciente já começou o tratamento mas ainda está na fase crítica de adaptação. Um apoio nesse momento faz toda a diferença na adesão.",
+             ),
+           ],
+           xp: 60,
+         },
+         {
+           id: "familia-cuidadora",
+           titulo: "Envolvendo a família no cuidado",
+           duracaoMin: 5,
+           nivel: "intermediario",
+           resumo:
+             "Pacientes idosos, crianças e pessoas com condições crônicas geralmente têm um cuidador. Envolver essa pessoa no acompanhamento dobra a chance de adesão ao tratamento.",
+           resumoExecutivo: [
+             'Ao dispensar, pergunte: "Quem mais ajuda nos cuidados em casa?"',
+             "Se houver cuidador, inclua essa pessoa no contato de acompanhamento.",
+             "Orientações claras para o cuidador: como administrar, horários, sinais de alerta.",
+             "Cuidador bem informado é o maior aliado da adesão ao tratamento.",
+             "Disponibilizar material de apoio impresso ou digital para o cuidador.",
+           ],
+           simulacao: {
+             cliente: "Filho que compra medicamento para a mãe idosa.",
+             falaBoa: '"Oi, tudo bem? Lembra que você levou o remédio para sua mãe na semana passada? Como ela está? E você, está conseguindo dar os horários certinhos? Se precisar de qualquer ajuda, pode contar com a gente."',
+             falaEvitar: '"Oi, só pra saber se sua mãe já terminou o remédio."',
+           },
+           checklist: [
+             "Identificar cuidadores no primeiro atendimento.",
+             "Anotar contato do cuidador na agenda de cuidado.",
+             "Incluir o cuidador nos contatos de acompanhamento.",
+             "Fornecer orientações escritas quando possível.",
+           ],
+           quandoChamarFarmaceutico: [
+             "Cuidador relata dificuldade com a administração do medicamento.",
+             "Paciente com regime terapêutico complexo (múltiplos medicamentos).",
+           ],
+           errosComuns: [
+             "Ignorar o cuidador — ele é a pessoa que mais influencia a adesão.",
+             "Dar orientações complexas demais para o cuidador.",
+             "Não verificar se o cuidador entendeu as instruções.",
+           ],
+           quiz: [
+             q(
+               "Qual o papel do cuidador na adesão ao tratamento?",
+               [
+                 "Não tem papel relevante",
+                 "Apenas comprar o medicamento quando acabar",
+                 "É o maior aliado — cuidadores bem orientados aumentam a adesão significativamente",
+                 "Deve ser ignorado nos contatos de acompanhamento",
+               ],
+               2,
+               "O cuidador é peça-chave na adesão. Envolvê-lo e orientá-lo é um dos gestos de cuidado mais eficazes que a farmácia pode fazer.",
+             ),
+           ],
+           xp: 50,
+         },
+         {
+           id: "indicadores-cuidado",
+           titulo: "Indicadores de cuidado: como saber se está funcionando",
+           duracaoMin: 6,
+           nivel: "avancado",
+           resumo:
+             "Não precisa de dashboard caro. Um caderno ou planilha simples já permite acompanhar o impacto do seu cuidado na vida dos pacientes.",
+           resumoExecutivo: [
+             "Taxa de contato: de cada 10 pacientes, quantos você consegue contactar? Serve de medida de eficiência.",
+             "Taxa de resposta positiva: quantos pacientes relatam estar bem e aderindo ao tratamento? Isso mede seu impacto.",
+             "Índice de retorno: quantos pacientes voltam e pedem por você depois do acompanhamento? Esse é o maior indicador de encantamento.",
+             "Aderência percebida: o paciente confirma que está tomando o medicamento corretamente?",
+             "O melhor indicador: o paciente que diz 'obrigado por se importar'.",
+           ],
+           simulacao: {
+             cliente: "Gestor da farmácia perguntando sobre o programa de acompanhamento.",
+             falaBoa: '"Nos últimos 30 dias, contactamos 25 pacientes. 20 atenderam, 18 relataram estar bem com o tratamento, e 12 já voltaram para a segunda compra. Três pacientes foram encaminhados ao farmacêutico com dúvidas — todos resolvidos. Está funcionando."',
+             falaEvitar: '"Acho que tá funcionando, os pacientes gostam."',
+           },
+           checklist: [
+             "Manter registro simples dos contatos realizados.",
+             "Anotar o resultado de cada contato (positivo, dúvida, encaminhado).",
+             "Revisar semanalmente o número de contatos e resultados.",
+             "Compartilhar os resultados com a equipe para celebrar o cuidado.",
+           ],
+           quandoChamarFarmaceutico: [
+             "Revisão mensal dos indicadores de cuidado com a equipe.",
+           ],
+           errosComuns: [
+             "Não registrar — perde a chance de mostrar o valor do cuidado.",
+             "Focar só em números, esquecendo da qualidade do contato.",
+             "Desanimar se um paciente não responder — persistência é cuidado.",
+           ],
+           quiz: [
+             q(
+               "Qual o melhor indicador de que o cuidado está gerando encantamento no paciente?",
+               [
+                 "O paciente compra mais caro",
+                 "O paciente volta e pede pelo nome do atendente",
+                 "O paciente gasta menos",
+                 "O paciente não reclama",
+               ],
+               1,
+               "Paciente que volta e pede pelo atendente porque confia e se sente cuidado — esse é o verdadeiro indicador de encantamento.",
+             ),
+           ],
+           xp: 60,
+         },
+       ],
     },
   ],
 };
