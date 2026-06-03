@@ -3,9 +3,9 @@ import { PortalInicio } from "@/components/portal-inicio";
 import { JsonLdCourse } from "@/components/json-ld-course";
 
 export const metadata: Metadata = {
-  title: "A formação mais completa para atendentes de farmácia",
+  title: "Home | Atendentes Premium de Farmácia",
   description:
-    "Ambiente de estudos da Formação para Atendentes Premium de Farmácia — trilhas, simuladores e progresso.",
+    "A formação mais completa do Brasil para atendentes de drogaria e perfumaria — trilhas, simuladores, cuidado humanizado e atendimento de excelência.",
 };
 
 export default function Home() {
