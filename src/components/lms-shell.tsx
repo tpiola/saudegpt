@@ -12,7 +12,7 @@ import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
 
 function tituloPagina(pathname: string): string {
-  if (pathname === "/") return "Início";
+  if (pathname === "/") return "Home";
   const flat = secoesNavLms.flatMap((s) => s.itens);
   const exato = flat.find((i) => i.href === pathname);
   if (exato) return exato.label;
@@ -175,9 +175,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             <Link href="/sobre" className="hover:text-forest-600 transition-colors">
               Sobre o curso
             </Link>
-            <Link href="/admin" className="hover:text-forest-600 transition-colors">
-              Admin
-            </Link>
+            
           </div>
         </div>
       </aside>
