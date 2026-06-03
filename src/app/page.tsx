@@ -4,6 +4,7 @@ import Link from "next/link";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { MatriculaForm } from "@/components/matricula-form";
 import { MoleculesBackground } from "@/components/molecules-background";
+import { FadeUp } from "@/components/fade-up";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,9 +26,31 @@ export default function HomePage() {
   return (
     <div className="relative">
       {/* ════════════════════════════════════════════
+         NAVEGAÇÃO SUPERIOR — LANDING PAGE
+         ════════════════════════════════════════════ */}
+      <nav className="fixed top-0 inset-x-0 z-50 h-14 sm:h-16 border-b border-white/5 bg-navy-900/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-12">
+          <a href="/" className="flex items-center gap-2.5">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-accent-500 to-accent-600 text-white text-xs font-bold shadow-lg shadow-accent-500/20">
+              AP
+            </span>
+            <span className="hidden sm:block text-sm font-bold text-white/90">Atendentes Premium</span>
+          </a>
+          <div className="flex items-center gap-3">
+            <a href="/dashboard" className="text-xs text-white/50 hover:text-white/80 transition-colors font-medium">
+              Entrar
+            </a>
+            <a href="#matricular" className="inline-flex items-center gap-1.5 rounded-lg bg-accent-500 hover:bg-accent-600 transition-colors px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white shadow-lg shadow-accent-500/20">
+              Matricular
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* ════════════════════════════════════════════
          HERO CINEMATOGRÁFICO — MOLÉCULAS FLUTUANTES
          ════════════════════════════════════════════ */}
-      <section className="hero-academic">
+      <section className="hero-academic pt-14 sm:pt-16">
         {/* Imagem de fundo sutil */}
         <Image
           src="/hero-matricula.jpg"
