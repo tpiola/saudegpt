@@ -123,7 +123,7 @@ export function PainelAluno() {
                   </span>
                 </div>
                 <h1 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
-                  Olá{perfilOk && primeiroNome ? `, ${primeiroNome}` : ", futuro Atendente Premium"}
+                  Olá{perfilOk && primeiroNome ? `, ${primeiroNome}` : ", futuro Atendente"}
                 </h1>
                 <p className="mt-1 max-w-xl text-muted leading-relaxed">
                   Continue sua jornada de saúde, atendimento e performance.

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Icon } from "./icons";
 
 const NUMERO = "5516992838378";
-const MENSAGEM = "Olá, estou com uma dúvida sobre a Formação para Atendentes Premium de Farmácia. Pode me ajudar?";
+const MENSAGEM = "Olá, estou com uma dúvida sobre a Formação para Atendentes de Farmácia. Pode me ajudar?";
 const LINK = `https://wa.me/${NUMERO}?text=${encodeURIComponent(MENSAGEM)}`;
 
 export function WhatsAppButton() {

@@ -1,8 +1,8 @@
 // Constantes institucionais do produto.
 
 export const site = {
-  nome: "Formação para Atendentes Premium de Farmácia",
-  nomeCurto: "Atendentes Premium",
+  nome: "Formação para Atendentes de Farmácia",
+  nomeCurto: "Atendentes de Farmácia",
   assinatura: "Criado pelo Farmacêutico Thiago B. G. Piola, CRF/SP 58.519",
   descricao:
     "A formação mais completa do Brasil para atendentes de drogaria e perfumaria — do iniciante ao avançado, com foco em saúde integral, atendimento humanizado e segurança sanitária.",

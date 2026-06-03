@@ -16,7 +16,7 @@ export default function SobrePage() {
       <TituloSecao
         sobre="Institucional"
         icone="graduation"
-        titulo="Formação para Atendentes Premium de Farmácia"
+        titulo="Formação para Atendentes de Farmácia"
         descricao={site.descricao}
       />
 

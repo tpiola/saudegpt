@@ -644,7 +644,7 @@ export function AdminPainel() {
             FOOTER
             ════════════════════════════════════════════ */}
         <div className="mt-8 border-t border-slate-800 pt-4 text-center text-[10px] text-slate-600">
-          Formação para Atendentes Premium de Farmácia · {new Date().getFullYear()} · Criado e revisado por farmacêutico CRF/SP 58.519
+          Formação para Atendentes de Farmácia · {new Date().getFullYear()} · Criado e revisado por farmacêutico CRF/SP 58.519
         </div>
       </div>
     </div>

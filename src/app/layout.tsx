@@ -43,7 +43,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Treinamento Atendente Premium de Farmácia",
+    default: "Treinamento Atendente de Farmácia",
     template: `%s · Treinamento Atendente`,
   },
   description: "Curso profissional de Treinamento para Atendentes de Farmácia — com técnica, acolhimento, medicamentos, cuidado humanizado, legislação ANVISA e atendimento que encanta.",
@@ -63,19 +63,19 @@ export const metadata: Metadata = {
     "ABC Farma treinamento",
     "Conselho Federal Farmácia educação",
   ],
-  authors: [{ name: "Formação para Atendentes Premium de Farmácia" }],
+  authors: [{ name: "Formação para Atendentes de Farmácia" }],
   openGraph: {
-    title: "Treinamento Atendente Premium de Farmácia",
+    title: "Treinamento Atendente de Farmácia",
     description: "O treinamento mais completo para atendentes de farmácia do Brasil. Supera CEBRAC e SENAC.",
     locale: "pt_BR",
     type: "website",
     images: [
-      { url: "/opengraph-image", width: 1200, height: 630, alt: "Treinamento Atendente Premium" },
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "Treinamento Atendente" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Treinamento Atendente Premium de Farmácia",
+    title: "Treinamento Atendente de Farmácia",
     description: "O treinamento mais completo para atendentes de farmácia do Brasil.",
   },
   manifest: "/manifest.webmanifest",

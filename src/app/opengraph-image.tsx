@@ -22,7 +22,7 @@ export default function OpenGraphImage() {
     >
       <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>Plataforma-escola</div>
       <div style={{ fontSize: 52, fontWeight: 800, lineHeight: 1.15, maxWidth: 900 }}>
-        Atendentes Premium de Farmácia
+        Atendentes de Farmácia
       </div>
       <div style={{ fontSize: 24, marginTop: 24, opacity: 0.92, maxWidth: 800 }}>
         Saúde integral, balcão seguro e formação do iniciante ao avançado

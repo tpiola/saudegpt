@@ -198,7 +198,7 @@ export const secoesComando: SecaoComando[] = [
   {
     id: "formacao",
     titulo: "Formação do dia",
-    descricao: "Evoluir como Atendente Premium I e II.",
+    descricao: "Evoluir como Atendente I e II.",
     itens: [
       {
         id: "fm-1",

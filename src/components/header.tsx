@@ -29,7 +29,7 @@ export function Header() {
             <Icon name="shield" size={18} />
           </span>
           <span className="hidden flex-col leading-tight sm:flex min-w-0">
-            <span className="truncate text-sm font-bold tracking-tight">Atendentes Premium</span>
+            <span className="truncate text-sm font-bold tracking-tight">Atendentes</span>
             <span className="text-[11px] text-subtle">Formação em Farmácia</span>
           </span>
         </Link>

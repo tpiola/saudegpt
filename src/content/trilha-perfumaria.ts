@@ -20,7 +20,7 @@ export const trilhaPerfumaria: Trilha = {
   id: "perfumaria",
   numero: 1,
   titulo: "Perfumaria, Bem-Estar e Saúde do Dia a Dia",
-  subtitulo: "Atendente Premium I",
+  subtitulo: "Atendente I",
   descricao:
     "Acolhimento, repertório de balcão e autocuidado. Aprenda a entender a necessidade do cliente — não apenas a prateleira — em higiene, beleza, linha infantil e dermocosméticos.",
   nivelFaixa: "Do iniciante ao intermediário",

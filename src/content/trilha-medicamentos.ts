@@ -9,7 +9,7 @@ export const trilhaMedicamentos: Trilha = {
   id: "medicamentos",
   numero: 2,
   titulo: "Medicamentos, Balcão Seguro e Saúde Integral",
-  subtitulo: "Atendente Premium II",
+  subtitulo: "Atendente II",
   descricao:
     "Leitura de receitas, triagem segura, OTC/MIP, classes terapêuticas, adesão ao tratamento e encaminhamento ao farmacêutico — sempre com foco no uso racional.",
   nivelFaixa: "Do intermediário ao avançado",

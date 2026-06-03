@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Política de privacidade",
-  description: "Como tratamos dados na plataforma de formação Atendentes Premium.",
+  description: "Como tratamos dados na plataforma de formação Atendentes.",
 };
 
 export default function PrivacidadePage() {

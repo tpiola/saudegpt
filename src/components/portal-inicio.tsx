@@ -30,27 +30,31 @@ export function PortalInicio() {
 function VideoBanner() {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: "340px" }}>
-      {/* Vídeo de drogaria passando ao fundo */}
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ filter: "brightness(0.55) saturate(1.1)" }}
-        poster="/hero-dashboard.jpg"
-      >
-        <source src="https://cdn.pixabay.com/video/2022/09/19/132267-751668805_large.mp4" type="video/mp4" />
-        <source src="https://www.pexels.com/download/video/5794730/" type="video/mp4" />
-        {/* Fallback image */}
-      </video>
+      {/* Fundo com imagem + gradiente animado */}
+      <div className="absolute inset-0 bg-navy-900">
+        <Image
+          src="/hero-dashboard.jpg"
+          alt=""
+          fill
+          className="object-cover opacity-30"
+          priority
+          sizes="100vw"
+        />
+        {/* Gradiente pulsante sutil */}
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 via-navy-800/40 to-accent-900/20 animate-pulse-slow" />
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage: "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "40px 40px",
+          }}
+        />
+      </div>
 
-      {/* Overlay gradiente institucional */}
-      <div
-        className="absolute inset-0 z-10"
+      {/* Overlay gradiente */}
+      <div className="absolute inset-0 z-10"
         style={{
-          background:
-            "linear-gradient(to bottom, rgba(4,11,13,0.82) 0%, rgba(13,43,46,0.45) 40%, rgba(4,11,13,0.88) 100%)",
+          background: "linear-gradient(to bottom, rgba(4,11,13,0.82) 0%, rgba(15,27,46,0.45) 40%, rgba(4,11,13,0.88) 100%)",
         }}
       />
 
@@ -77,7 +81,7 @@ function VideoBanner() {
               color: "rgba(255,255,255,0.65)",
             }}
           >
-            Formação profissional — Atendentes Premium de Farmácia
+            Formação para Atendentes de Farmácia
           </span>
         </div>
 
