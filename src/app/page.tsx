@@ -1,237 +1,252 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { MatriculaForm } from "@/components/matricula-form";
-import { Botao, Card, TituloSecao, DividerGlow } from "@/components/ui";
-import { Icon } from "@/components/icons";
+import { MoleculesBackground } from "@/components/molecules-background";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Matrícula Gratuita — Formação para Atendentes de Farmácia",
+  title: "Formação para Atendentes Premium de Farmácia",
   description:
-    "Matricule-se na Formação para Atendentes Premium de Farmácia — com foco em acolhimento, cuidado humanizado, comunicação empática e encantamento no balcão.",
+    "A formação mais completa do Brasil para atendentes de drogaria e perfumaria. Acolhimento, cuidado humanizado e excelência profissional.",
   openGraph: {
-    title: "Matrícula Gratuita — Formação para Atendentes de Farmácia",
+    title: "Formação para Atendentes Premium de Farmácia",
     description:
-      "Matricule-se na Formação para Atendentes Premium de Farmácia — com foco em acolhimento, cuidado humanizado, comunicação empática e encantamento no balcão.",
+      "A formação mais completa do Brasil para atendentes de drogaria e perfumaria.",
     url: "https://www.saudegpt.com",
     siteName: site.nome,
   },
 };
 
-const beneficios = [
-  {
-    icone: "heart",
-    titulo: "Atendimento Humanizado",
-    descricao: "Acolhimento, escuta ativa e cuidado genuíno que faz o paciente confiar",
-  },
-  {
-    icone: "shield",
-    titulo: "Técnica e Segurança",
-    descricao: "Medicamentos, receitas, ANVISA — a base para cuidar com responsabilidade",
-  },
-  {
-    icone: "star",
-    titulo: "Comunicação de Cuidado",
-    descricao: "Empatia, linguagem de acolhimento e como transmitir segurança ao paciente",
-  },
-  {
-    icone: "sparkles",
-    titulo: "Encantamento no Atendimento",
-    descricao: "Pós-atendimento, cuidado contínuo e como ser o profissional que o paciente procura",
-  },
-  {
-    icone: "book",
-    titulo: `${totalAulas()}+ Microlições`,
-    descricao: "Vídeos, simulações reais de atendimento e quizzes de fixação",
-  },
-  {
-    icone: "target",
-    titulo: "Simulador de Atendimento",
-    descricao: "Situações reais de balcão — você escolhe a abordagem e recebe feedback",
-  },
-  {
-    icone: "award",
-    titulo: "4 Trilhas Completas",
-    descricao: "Perfumaria, Medicamentos, Operacional e Cuidado Humanizado",
-  },
-  {
-    icone: "trending",
-    titulo: "Gamificação de Estudos",
-    descricao: "XP, níveis, badges e ranking para acompanhar sua evolução no cuidado",
-  },
-];
-
 export default function HomePage() {
   const totalAulasContagem = totalAulas();
-  const trilhaVendas = trilhas.find((t) => t.id === "encantamento");
-  const aulasVendas = trilhaVendas?.modulos.reduce((n, m) => n + m.aulas.length, 0) ?? 0;
 
   return (
     <div className="relative">
-      {/* ── Hero com imagem ── */}
-      <section className="hero-image-gradient relative overflow-hidden">
+      {/* ════════════════════════════════════════════
+         HERO CINEMATOGRÁFICO — MOLÉCULAS FLUTUANTES
+         ════════════════════════════════════════════ */}
+      <section className="hero-academic">
+        {/* Imagem de fundo sutil */}
         <Image
           src="/hero-matricula.jpg"
-          alt="Atendimento ao cliente"
+          alt=""
           fill
           className="hero-bg"
           priority
           sizes="100vw"
         />
-        <div className="hero-overlay" />
-        <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-20" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/8 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-white/70 backdrop-blur-md">
-              <Icon
-                name="sparkles"
-                size={12}
-                className="text-accent-cyan"
-              />
-              Matrícula gratuita
+        {/* Canvas de moléculas interativas */}
+        <MoleculesBackground />
+
+        {/* Grid sutil */}
+        <div className="pointer-events-none absolute inset-0 z-[2] opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        {/* Conteúdo */}
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="mx-auto max-w-3xl">
+            {/* Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent-400 animate-pulse" />
+              Formação gratuita
             </div>
 
-            <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-tight leading-tight">
+            {/* Título principal */}
+            <h1 className="text-[clamp(2.2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">
               <span className="text-gradient-premium">
-                Comece sua formação
+                Atendentes Premium
               </span>
               <br />
-              <span className="text-white">
-                em cuidado humanizado
+              <span className="text-white/90 font-light">
+                de Farmácia
               </span>
             </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
-              {site.descricao} Agora com foco em <strong className="text-white/90">acolhimento, cuidado genuíno, comunicação empática e encantamento</strong> — habilidades que transformam atendentes em profissionais de cuidado.
+
+            {/* Subtítulo */}
+            <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-white/50 font-light">
+              A formação que transforma atendentes em{" "}
+              <span className="text-white/80 font-medium">profissionais de cuidado</span>
+              {" "}— com acolhimento, técnica e excelência no balcão.
             </p>
 
-            {/* Stats rápidas */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-white/60">
-              <span className="inline-flex items-center gap-1.5">
-                <Icon name="book" size={16} className="text-accent-cyan" />
-                <span><strong className="text-white">4</strong> trilhas</span>
+            {/* Stats */}
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              {[
+                { value: "4", label: "trilhas" },
+                { value: `${totalAulasContagem}+`, label: "aulas" },
+                { value: "8", label: "badges" },
+                { value: "100%", label: "gratuito" },
+              ].map((s) => (
+                <div key={s.label} className="flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl font-bold text-accent-400 tabular-nums">
+                    {s.value}
+                  </span>
+                  <span className="text-[11px] uppercase tracking-[0.12em] text-white/40 font-medium">
+                    {s.label}
+                  </span>
+                  <span className="hidden sm:block w-px h-4 bg-white/10 last:hidden" />
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+              <a
+                href="#matricular"
+                className="btn-premium text-sm px-8 py-4"
+              >
+                Quero me matricular
+              </a>
+              <a
+                href="/trilhas"
+                className="btn-premium-outline text-white/70 border-white/15 hover:border-accent-400/50 hover:text-accent-400"
+              >
+                Ver trilhas
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <span className="text-[8px] uppercase tracking-[0.25em] text-white/15">Role</span>
+          <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent animate-pulse" />
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+         SEÇÃO DE MATRÍCULA — MINIMALISTA
+         ════════════════════════════════════════════ */}
+      <section id="matricular" className="relative py-20 sm:py-28 bg-surface">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
+            {/* Esquerda: Informações */}
+            <div className="flex flex-col justify-center">
+              <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-accent-500">
+                Matrícula gratuita
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Icon name="play" size={16} className="text-accent-cyan" />
-                <span><strong className="text-white">{totalAulasContagem}+</strong> aulas</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Icon name="trending" size={16} className="text-accent-cyan" />
-                <span><strong className="text-white">{aulasVendas}</strong> aulas de cuidado</span>
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Icon name="award" size={16} className="text-accent-cyan" />
-                <span><strong className="text-white">8</strong> badges</span>
-              </span>
+              <h2 className="mt-3 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-800 dark:text-white">
+                Comece sua jornada
+              </h2>
+              <p className="mt-4 text-base leading-relaxed text-muted max-w-lg">
+                {site.descricao}
+              </p>
+
+              {/* Pilares */}
+              <div className="mt-10 space-y-5">
+                {[
+                  { icon: "🎯", title: "Aprendizado ativo", desc: "Microlições, quizzes e simulações reais de balcão" },
+                  { icon: "🧠", title: "Base científica", desc: "Conteúdo criado e revisado por farmacêutico" },
+                  { icon: "🌟", title: "Cuidado humanizado", desc: "Acolhimento e empatia como pilares do atendimento" },
+                ].map((p) => (
+                  <div key={p.title} className="flex gap-4">
+                    <span className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent-50 dark:bg-accent-900/20 text-lg">
+                      {p.icon}
+                    </span>
+                    <div>
+                      <h3 className="text-sm font-semibold text-navy-700 dark:text-white/90">{p.title}</h3>
+                      <p className="text-sm text-subtle leading-relaxed">{p.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Direita: Formulário */}
+            <div className="lg:pt-0">
+              <div className="rounded-2xl border border-border bg-surface-2/50 p-6 sm:p-8 shadow-sm">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-100 dark:bg-accent-900/30">
+                    <svg className="h-5 w-5 text-accent-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">Cadastro</p>
+                    <p className="text-xs text-subtle">Pré-requisito: maior de 18 anos</p>
+                  </div>
+                </div>
+                <MatriculaForm />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Grid principal: Benefícios + Form ── */}
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-2 lg:items-start">
-          {/* Coluna esquerda: Benefícios + Trilhas */}
-          <div>
-            <TituloSecao
-              sobre="Benefícios"
-              titulo="Tudo que você vai receber"
-              descricao="Uma formação completa para transformar sua carreira no balcão da farmácia — com habilidades de vendas que realmente funcionam."
-            />
-
-            {/* Benefícios em cards feature */}
-            <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
-              {beneficios.map((b) => (
-                <Card
-                  key={b.titulo}
-                  variante="elevated"
-                  className="group p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                >
-                  <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-100 dark:bg-brand-900/30 dark:group-hover:bg-brand-900/50">
-                    <Icon name={b.icone as Parameters<typeof Icon>[0]["name"]} size={20} />
-                  </span>
-                  <h3 className="text-sm font-semibold">{b.titulo}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">{b.descricao}</p>
-                </Card>
-              ))}
-            </div>
-
-            {/* Trilhas preview */}
-            <DividerGlow className="my-10" />
-
-            <div>
-              <TituloSecao
-                sobre="Trilhas"
-                titulo="Conheça as trilhas da formação"
-                descricao="Cada trilha foi desenhada para cobrir todas as competências essenciais — da técnica à venda consultiva."
-              />
-
-              <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2">
-                {trilhas.map((t) => (
-                  <Card
-                    key={t.id}
-                    variante="elevated"
-                    className="group p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    <span className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-100 dark:bg-brand-900/30 dark:group-hover:bg-brand-900/50">
-                      <Icon name={t.icone as Parameters<typeof Icon>[0]["name"]} size={20} />
-                    </span>
-                    <div className="text-xs font-semibold text-brand-600">{t.subtitulo}</div>
-                    <p className="mt-0.5 text-sm font-bold">{t.titulo}</p>
-                    <p className="mt-1 text-[11px] leading-relaxed text-subtle line-clamp-2">
-                      {t.descricao}
-                    </p>
-                  </Card>
-                ))}
-              </div>
-
-              <div className="mt-4 text-center">
-                <Botao href="/trilhas" variante="ghost" tamanho="sm" iconeFim="arrow">
-                  Ver detalhes das trilhas
-                </Botao>
-              </div>
-            </div>
+      {/* ════════════════════════════════════════════
+         TRILHAS — PREVIEW
+         ════════════════════════════════════════════ */}
+      <section className="relative py-20 sm:py-28 bg-background">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="text-center">
+            <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-accent-500">
+              Currículo
+            </span>
+            <h2 className="mt-3 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-navy-800 dark:text-white">
+              Quatro trilhas, uma formação completa
+            </h2>
           </div>
 
-          {/* Coluna direita: Formulário */}
-          <div className="lg:sticky lg:top-24">
-            <Card variante="glass" className="p-6 sm:p-8">
-              <div className="mb-2 flex items-center gap-2">
-                <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-200">
-                  <Icon name="graduation" size={16} />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {trilhas.map((t, idx) => (
+              <Link
+                key={t.id}
+                href={`/trilhas/${t.id}`}
+                className="group relative overflow-hidden rounded-xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-accent-300/50"
+              >
+                {/* Barra superior */}
+                <div className={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${
+                  ["from-accent-400 to-accent-500", "from-sky-400 to-sky-500", "from-navy-400 to-navy-500", "from-accent-300 to-accent-400"][idx]
+                }`} />
+
+                <span className="mt-3 flex h-10 w-10 items-center justify-center rounded-lg text-xl">
+                  {["💊", "🧪", "📋", "🤝"][idx]}
                 </span>
-                <span className="text-xs font-semibold uppercase tracking-wider text-subtle">
-                  Matrícula
-                </span>
-              </div>
-              <MatriculaForm />
-            </Card>
+                <h3 className="mt-4 text-sm font-bold text-foreground">
+                  {t.titulo}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-subtle line-clamp-2">
+                  {t.subtitulo || t.descricao}
+                </p>
+                <div className="mt-4 text-xs font-medium text-accent-500 group-hover:underline underline-offset-2">
+                  {t.modulos.reduce((n, m) => n + m.aulas.length, 0)} aulas →
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <a href="/trilhas" className="btn-premium-outline text-sm">
+              Explorar todas as trilhas
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ── Selo de confiança ── */}
-      <div className="mx-auto max-w-6xl px-4 pb-12 sm:px-6">
-        <DividerGlow className="mb-8" />
-        <div className="flex flex-wrap items-center justify-center gap-8 text-xs text-subtle">
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="shield" size={14} className="text-emerald-500" />
-            Dados protegidos
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="lock" size={14} className="text-emerald-500" />
-            Cadastro seguro
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Icon name="heart" size={14} className="text-rose-500" />
-            Suporte humanizado
-          </span>
+      {/* ════════════════════════════════════════════
+         FOOTER — MINIMAL
+         ════════════════════════════════════════════ */}
+      <footer className="border-t border-border bg-surface py-10">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <p className="text-xs text-subtle leading-relaxed max-w-md">
+              {site.assinatura}
+            </p>
+            <div className="divider-glow w-24" />
+            <p className="text-[10px] text-subtle/60">
+              Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
+            </p>
+          </div>
         </div>
-
-        <DividerGlow className="my-8" />
-        <p className="text-center text-sm text-subtle">{site.assinatura}</p>
-      </div>
+      </footer>
     </div>
   );
 }
