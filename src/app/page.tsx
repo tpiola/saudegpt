@@ -387,60 +387,6 @@ export default function HomePage() {
       <div className="divider-wave divider-wave-flip" />
 
       {/* ══════════════════════════════════════════════
-          SEÇÃO: DEPOIMENTO DO FARMACÊUTICO
-          ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-forest-600 via-forest-500 to-forest-700 py-20 sm:py-24">
-        <div className="pattern-grid pointer-events-none absolute inset-0 opacity-[0.05]" />
-        <div className="pointer-events-none absolute -left-40 -top-40 h-[500px] w-[500px] rounded-full bg-orange-500/8 blur-[140px]" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 h-[400px] w-[400px] rounded-full bg-green-400/5 blur-[120px]" />
-
-        <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm sm:p-12">
-              {/* Aspas decorativas GRANDES */}
-              <span className="absolute -left-4 -top-6 select-none text-[10rem] font-serif leading-none text-white/[0.06]">
-                &ldquo;
-              </span>
-
-              <div className="flex items-center gap-4">
-                <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-400/25 to-orange-500/15 text-3xl ring-1 ring-white/10 shadow-[0_0_30px_rgba(214,110,15,0.1)]">
-                  🧑‍⚕️
-                </span>
-                <div>
-                  <h3 className={`${h3Cls} text-white`}>
-                    Palavra do farmacêutico
-                  </h3>
-                  <p className="text-sm text-white/50">
-                    Thiago B. G. Piola ·{" "}
-                    <span className="font-semibold text-orange-300">CRF/SP 58.519</span>
-                  </p>
-                </div>
-              </div>
-
-              <blockquote className="relative mt-6 text-lg leading-relaxed text-white/80 sm:text-xl sm:leading-relaxed">
-                <span className="absolute -left-2 top-0 text-2xl text-orange-400/40 select-none">&ldquo;</span>
-                Sempre consulte o(a) farmacêutico(a) para orientação
-                personalizada. Solicite o segundo visto para prescrições e
-                anote corretamente na etiqueta de posologia. O cuidado seguro
-                começa com informação de qualidade.
-                <span className="text-2xl text-orange-400/40 select-none">&rdquo;</span>
-              </blockquote>
-
-              <div className="mt-6 h-px w-20 bg-gradient-to-r from-orange-400 to-transparent" />
-
-              <p className="mt-4 text-sm text-white/40">
-                Conteúdo educativo criado por farmacêutico — referência em
-                treinamento de atendentes.
-              </p>
-            </div>
-          </FadeUp>
-        </div>
-      </section>
-
-      {/* ─── DIVIDER WAVE ─── */}
-      <div className="divider-wave" />
-
-      {/* ══════════════════════════════════════════════
           SEÇÃO: GAMIFICAÇÃO (VISUAL DE GAME) — MELHORADA
           ══════════════════════════════════════════════ */}
       <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/10 to-background py-20 sm:py-24">

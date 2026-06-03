@@ -9,7 +9,7 @@ interface HeroVideoProps {
 }
 
 /** IDs de vídeos de saúde/medical do Mixkit */
-const VIDEO_IDS = [6562, 46365, 49226, 29933] as const;
+const VIDEO_IDS = [4414, 17475, 4176, 6562] as const;
 const CROSSFADE_MS = 8000; // 8s entre trocas
 
 /** Seeds determinísticos para partículas (evita Math.random no SSR) */
