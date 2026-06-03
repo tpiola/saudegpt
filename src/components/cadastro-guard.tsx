@@ -24,7 +24,7 @@ export function CadastroGuard({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const perfil = lerPerfilAluno();
     if (!perfil?.email) {
-      router.replace("/matriculas");
+      router.replace("/");
       return;
     }
 
@@ -39,7 +39,7 @@ export function CadastroGuard({ children }: { children: React.ReactNode }) {
       .then((r) => r.json())
       .then((j: { status?: Status }) => {
         if (!j.status) {
-          router.replace("/matriculas");
+          router.replace("/");
           return;
         }
         if (j.status === "pendente") router.replace("/aguardando-aprovacao");

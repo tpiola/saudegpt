@@ -45,4 +45,4 @@ export const secoesNavLms: SecaoNavLms[] = [
   },
 ];
 
-export const rotasSemSidebarCompacta: string[] = ["/matriculas", "/aguardando-aprovacao"];
+export const rotasSemSidebarCompacta: string[] = ["/", "/aguardando-aprovacao"];

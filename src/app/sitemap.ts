@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/jogos",
     "/biblioteca",
     "/indicadores",
-    "/matriculas",
+    "/",
     "/bulas-receitas",
     "/ranking",
     "/osce",

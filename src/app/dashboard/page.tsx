@@ -1,6 +1,18 @@
-import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+import { PortalInicio } from "@/components/portal-inicio";
+import { JsonLdCourse } from "@/components/json-ld-course";
 
-/** Painel unificado na página inicial do ambiente de estudos. */
+export const metadata: Metadata = {
+  title: "Meu Painel — Formação para Atendentes de Farmácia",
+  description:
+    "Ambiente de estudos da Formação para Atendentes Premium de Farmácia — trilhas, simuladores e progresso.",
+};
+
 export default function DashboardPage() {
-  redirect("/");
+  return (
+    <>
+      <JsonLdCourse />
+      <PortalInicio />
+    </>
+  );
 }

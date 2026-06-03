@@ -19,7 +19,7 @@ function tituloPagina(pathname: string): string {
   if (pathname.startsWith("/aula/")) return "Aula";
   if (pathname.startsWith("/prova/")) return "Prova do módulo";
   if (pathname.startsWith("/trilhas/")) return "Trilha";
-  if (pathname === "/matriculas") return "Matrícula";
+  if (pathname === "/") return "Matrícula";
   if (pathname === "/admin") return "Coordenação";
   return site.nomeCurto;
 }
@@ -158,7 +158,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
           ) : (
-            <Botao href="/matriculas" className="relative mb-3 w-full" tamanho="sm">
+            <Botao href="/" className="relative mb-3 w-full" tamanho="sm">
               Entrar / matricular
             </Botao>
           )}
@@ -209,7 +209,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-1.5 sm:gap-2">
             <ThemeToggle />
             {!perfil && (
-              <Botao href="/matriculas" tamanho="sm" className="hidden sm:inline-flex">
+              <Botao href="/" tamanho="sm" className="hidden sm:inline-flex">
                 Matricular
               </Botao>
             )}
