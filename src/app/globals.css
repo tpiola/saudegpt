@@ -10,16 +10,16 @@
    ══════════════════════════════════════════════════════════ */
 
 @theme inline {
-  --color-forest-50: #edf5f2;
-  --color-forest-100: #d1e8de;
-  --color-forest-200: #a3d1be;
-  --color-forest-300: #70b59a;
+  --color-forest-50: #edf7f4;
+  --color-forest-100: #cde8de;
+  --color-forest-200: #9dd1be;
+  --color-forest-300: #66b59a;
   --color-forest-400: #4ca15d;
-  --color-forest-500: #0a2f2a;
-  --color-forest-600: #082521;
-  --color-forest-700: #061e1a;
-  --color-forest-800: #041613;
-  --color-forest-900: #020e0c;
+  --color-forest-500: #0d3a32;
+  --color-forest-600: #0a2f2a;
+  --color-forest-700: #082521;
+  --color-forest-800: #051714;
+  --color-forest-900: #030e0c;
 
   --color-green-50: #f0f8f1;
   --color-green-100: #d8eeda;
@@ -69,14 +69,14 @@
   --subtle: #767676;
 
   /* Forest Green */
-  --forest-50: #edf5f2;
-  --forest-100: #d1e8de;
-  --forest-200: #a3d1be;
-  --forest-300: #70b59a;
+  --forest-50: #edf7f4;
+  --forest-100: #cde8de;
+  --forest-200: #9dd1be;
+  --forest-300: #66b59a;
   --forest-400: #4ca15d;
-  --forest-500: #0a2f2a;
-  --forest-600: #082521;
-  --forest-700: #061e1a;
+  --forest-500: #0d3a32;
+  --forest-600: #0a2f2a;
+  --forest-700: #082521;
 
   /* Vibrant Green */
   --green-50: #f0f8f1;
@@ -433,6 +433,28 @@ h4, h5, h6 {
 
 .animate-pulse-slow {
   animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE — ANIMAÇÕES & TRANSIÇÕES SUAVES
+   ══════════════════════════════════════════════ */
+
+/* Transição suave em elementos-chave ao alternar tema */
+.bg-surface,
+.bg-surface-2,
+.border-border,
+.glass,
+.card,
+.card-elevated,
+.card-glass {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Brilho sutil em elementos interativos no dark mode */
+.dark a:hover,
+.dark button:hover {
+  filter: brightness(1.1);
+  transition: filter 0.2s ease;
 }
 
 /* ══════════════════════════════════════════════

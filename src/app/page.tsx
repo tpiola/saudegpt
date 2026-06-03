@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { MatriculaForm } from "@/components/matricula-form";
+import { HeroVideo } from "@/components/hero-video";
 import { site } from "@/lib/site";
+import { LogoAcademico } from "@/components/logo-academico";
 
 export const metadata: Metadata = {
   title: "Formação para Atendentes de Farmácia",
@@ -29,8 +31,8 @@ export default function HomePage() {
       <nav className="fixed top-0 inset-x-0 z-50 h-14 sm:h-16 border-b border-white/5 bg-forest-500/80 backdrop-blur-xl">
         <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-6 sm:px-8 lg:px-12">
           <a href="/" className="flex items-center gap-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold shadow-lg shadow-orange-500/20">
-              AP
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-forest-500 shadow-lg">
+              <LogoAcademico size={28} />
             </span>
             <span className="hidden sm:block text-sm font-bold text-white/90">Atendentes</span>
           </a>
@@ -49,15 +51,8 @@ export default function HomePage() {
          HERO — RD SAÚDE INSPIRED
          ════════════════════════════════════════════ */}
       <section className="hero-rd pt-14 sm:pt-16">
-        {/* Imagem de fundo sutil */}
-        <Image
-          src="/hero-matricula.jpg"
-          alt=""
-          fill
-          className="hero-bg"
-          priority
-          sizes="100vw"
-        />
+        {/* Vídeo cinematográfico de drogaria */}
+        <HeroVideo />
 
         {/* Grid pattern */}
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />

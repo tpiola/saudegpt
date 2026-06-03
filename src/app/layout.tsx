@@ -104,6 +104,17 @@ document.addEventListener('keydown', function(e) {
   }
 });
 `}} />
+        {/* Favicon / Icones do Site */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        {/* SEO: Google Site Verification (substitua pelo código do Search Console) */}
+        {/* <meta name="google-site-verification" content="SEU_CODIGO_AQUI" /> */}
+        {/* Geo Tags */}
+        <meta name="geo.region" content="BR" />
+        <meta name="geo.placename" content="Brasil" />
+        <meta name="geo.position" content="-14.2350;-51.9253" />
+        <meta name="ICBM" content="-14.2350, -51.9253" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body className="flex min-h-full flex-col" style={{ fontFamily: 'var(--font-body), system-ui, sans-serif' }}>

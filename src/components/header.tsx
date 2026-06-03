@@ -6,18 +6,17 @@ import { useState, useEffect } from "react";
 import { navPrincipal } from "@/lib/site";
 import { Icon } from "./icons";
 import { ThemeToggle } from "./theme-toggle";
+import { LogoAcademico } from "./logo-academico";
 import { Botao } from "./ui";
 
 export function Header() {
   const pathname = usePathname();
   const [aberto, setAberto] = useState(false);
 
-  // Fecha o menu ao navegar
   useEffect(() => {
     setAberto(false);
   }, [pathname]);
 
-  // Detecta se está na landing page (raiz) para header transparente
   const isLanding = pathname === "/";
 
   function ativo(href: string) {
@@ -34,12 +33,8 @@ export function Header() {
     >
       <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1 sm:flex-initial" onClick={() => setAberto(false)}>
-          <span className={`flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full ${
-            isLanding
-              ? "bg-orange-500 text-white shadow-md shadow-orange-500/25"
-              : "bg-orange-500 text-white shadow-md shadow-orange-500/25"
-          }`}>
-            <Icon name="shield" size={18} />
+          <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-forest-500 shadow-md">
+            <LogoAcademico size={isLanding ? 32 : 32} />
           </span>
           <span className="hidden flex-col leading-tight sm:flex min-w-0">
             <span className={`truncate text-sm font-bold tracking-tight ${isLanding ? "text-white/90" : ""}`}>Atendentes</span>

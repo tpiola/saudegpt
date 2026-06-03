@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { linksLegais, navPrincipal, site } from "@/lib/site";
 import { Icon } from "./icons";
+import { LogoAcademico } from "./logo-academico";
 
 export function Footer() {
   return (
@@ -10,8 +11,8 @@ export function Footer() {
           {/* Brand + Descrição */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-500 text-white shadow-md">
-                <Icon name="shield" size={20} />
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest-500 text-white shadow-md">
+                <LogoAcademico size={22} />
               </span>
               <span className="text-sm font-bold text-white/90">{site.nomeCurto}</span>
             </div>
