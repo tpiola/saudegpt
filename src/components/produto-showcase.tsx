@@ -64,7 +64,7 @@ export function ProdutoShowcase({
                   </div>
                   <div className="p-4">
                     {p.categoria && (
-                      <span className="text-xs font-semibold text-brand-600">{p.categoria}</span>
+                      <span className="text-xs font-semibold text-green-600">{p.categoria}</span>
                     )}
                     <p className="mt-1 font-semibold">{p.nome}</p>
                   </div>

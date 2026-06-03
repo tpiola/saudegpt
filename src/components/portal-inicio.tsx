@@ -124,8 +124,8 @@ function PortalConvidadoHero() {
   const pilares = [
     { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-green-400" },
     { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-forest-600 to-forest-400" },
-    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-green-400 to-sage-400" },
-    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-orange-500 to-terracota-400" },
+    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-green-400 to-green-400" },
+    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-orange-500 to-orange-400" },
     { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-forest-400 to-orange-500" },
   ];
 
@@ -367,7 +367,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Um treinamento que{" "}
-                <span className="text-gradient-brand">ensina a cuidar</span>
+                <span className="text-bg-gradient-to-r from-green-500 to-green-600">ensina a cuidar</span>
               </h2>
               <p className="mt-6" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo —
@@ -422,7 +422,7 @@ function PortalConvidadoHero() {
                   >
                     <span
                       className="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
-                      style={{ background: "rgba(221,239,218,0.7)", color: "var(--sage-600)" }}
+                      style={{ background: "rgba(221,239,218,0.7)", color: "var(--green-600)" }}
                     >
                       <Icon name="check" size={16} />
                     </span>
@@ -450,7 +450,7 @@ function PortalConvidadoHero() {
                   }}
                 >
                   O profissional que o paciente{" "}
-                  <span className="text-gradient-brand">confia e volta</span>
+                  <span className="text-bg-gradient-to-r from-green-500 to-green-600">confia e volta</span>
                 </h2>
                 <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
                   <p style={{ fontSize: "1.05rem" }}>
@@ -491,7 +491,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 O que você vai{" "}
-                <span className="text-gradient-brand">aprender</span>
+                <span className="text-bg-gradient-to-r from-green-500 to-green-600">aprender</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)" }}>
                 {totalAulasContagem} microlições em 4 trilhas — do iniciante ao profissional de referência
@@ -569,7 +569,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Como atender bem{" "}
-                <span className="text-gradient-brand">cada fase da vida</span>
+                <span className="text-bg-gradient-to-r from-green-500 to-green-600">cada fase da vida</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Adolescente, adulto ou idoso — cada um chega ao balcão com uma história,
@@ -661,14 +661,14 @@ function PortalConvidadoHero() {
                     }}
                   >
                     Transforme seu atendimento{" "}
-                    <span className="text-gradient-brand">em cuidado</span>
+                    <span className="text-bg-gradient-to-r from-green-500 to-green-600">em cuidado</span>
                   </h2>
                   <p
                     className="mx-auto mt-4"
                     style={{ maxWidth: "500px", fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.6 }}
                   >
                     {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real.
-                    Acesso gratuito.
+                    Acesso completo.
                   </p>
                   <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <Botao

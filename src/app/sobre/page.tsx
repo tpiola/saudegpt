@@ -22,15 +22,15 @@ export default function SobrePage() {
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-brand-600">{trilhas.length}</div>
+          <div className="text-2xl font-bold text-green-600">{trilhas.length}</div>
           <div className="text-xs text-subtle">trilhas</div>
         </Card>
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-brand-600">{totalAulas()}+</div>
+          <div className="text-2xl font-bold text-green-600">{totalAulas()}+</div>
           <div className="text-xs text-subtle">aulas</div>
         </Card>
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-brand-600">3</div>
+          <div className="text-2xl font-bold text-green-600">3</div>
           <div className="text-xs text-subtle">níveis por módulo</div>
         </Card>
       </div>
@@ -45,6 +45,28 @@ export default function SobrePage() {
         </div>
       </div>
 
+      {/* 🧑‍⚕️ Mensagens do farmacêutico */}
+      <div className="mt-12 grid gap-4 sm:grid-cols-3">
+        <div className="flex items-start gap-3 rounded-xl border border-green-100 bg-green-50/60 p-4 dark:border-green-900/30 dark:bg-green-900/10">
+          <span className="mt-0.5 text-lg">🧑‍⚕️</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
+          </p>
+        </div>
+        <div className="flex items-start gap-3 rounded-xl border border-orange-100 bg-orange-50/60 p-4 dark:border-orange-900/30 dark:bg-orange-900/10">
+          <span className="mt-0.5 text-lg">📝</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
+          </p>
+        </div>
+        <div className="flex items-start gap-3 rounded-xl border border-green-100 bg-green-50/60 p-4 dark:border-green-900/30 dark:bg-green-900/10">
+          <span className="mt-0.5 text-lg">🏷️</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Anote corretamente</strong> as informações na etiqueta de posologia.
+          </p>
+        </div>
+      </div>
+
       <p className="mt-10 text-center text-sm text-subtle">{site.assinatura}</p>
       <div className="mt-6 flex justify-center">
         <Botao href="/" iconeFim="arrow">
@@ -52,7 +74,7 @@ export default function SobrePage() {
         </Botao>
       </div>
       <p className="mt-4 text-center text-sm">
-        <Link href="/dashboard" className="text-brand-600 hover:underline">
+        <Link href="/dashboard" className="text-green-600 hover:underline">
           Voltar ao ambiente de estudos
         </Link>
       </p>

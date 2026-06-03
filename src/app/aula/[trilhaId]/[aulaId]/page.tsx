@@ -39,12 +39,12 @@ function Bloco({
   icone: Parameters<typeof Icon>[0]["name"];
   titulo: string;
   children: React.ReactNode;
-  tom?: "neutral" | "danger" | "brand";
+  tom?: "neutral" | "danger" | "green";
 }) {
   const cores = {
-    neutral: "bg-brand-50 text-brand-600 dark:bg-brand-900/40",
-    danger: "bg-rose-50 text-rose-600 dark:bg-rose-900/30",
-    brand: "bg-brand-50 text-brand-600 dark:bg-brand-900/40",
+    neutral: "bg-green-50 text-green-600 dark:bg-green-900/40",
+    danger: "bg-orange-50 text-orange-600 dark:bg-orange-900/30",
+    green: "bg-green-50 text-green-600 dark:bg-green-900/40",
   };
   return (
     <Card>
@@ -78,11 +78,11 @@ export default async function AulaPage({
     <div className="mx-auto max-w-3xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* Trilha de migalhas */}
       <nav className="flex flex-wrap items-center gap-1.5 text-sm text-subtle">
-        <Link href="/trilhas" className="hover:text-brand-600">
+        <Link href="/trilhas" className="hover:text-green-600">
           Trilhas
         </Link>
         <Icon name="arrow" size={14} />
-        <Link href={`/trilhas/${trilha.id}`} className="hover:text-brand-600">
+        <Link href={`/trilhas/${trilha.id}`} className="hover:text-green-600">
           {trilha.titulo}
         </Link>
         <Icon name="arrow" size={14} />
@@ -94,7 +94,7 @@ export default async function AulaPage({
         <Etiqueta tom="neutral">
           <Icon name="clock" size={12} /> {aula.duracaoMin} min
         </Etiqueta>
-        <Etiqueta tom="brand">
+        <Etiqueta tom="green">
           <Icon name="sparkles" size={12} /> +{aula.xp} XP
         </Etiqueta>
       </div>
@@ -132,7 +132,7 @@ export default async function AulaPage({
           <ul className="space-y-2.5">
             {aula.resumoExecutivo.map((item) => (
               <li key={item} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-brand-50 text-brand-600 dark:bg-brand-900/40">
+                <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-green-50 text-green-600 dark:bg-green-900/40">
                   <Icon name="check" size={13} />
                 </span>
                 <span className="text-sm text-muted">{item}</span>
@@ -146,7 +146,7 @@ export default async function AulaPage({
             <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-2">
               {aula.comparativo.itens.map((it) => (
                 <div key={it.nome} className="rounded-xl bg-surface-2 p-4">
-                  <div className="text-sm font-bold text-brand-600">{it.nome}</div>
+                  <div className="text-sm font-bold text-green-600">{it.nome}</div>
                   <div className="mt-1 text-sm text-muted">{it.quando}</div>
                 </div>
               ))}
@@ -158,14 +158,14 @@ export default async function AulaPage({
           <Bloco icone="user" titulo="Simulação de atendimento">
             <p className="text-sm font-medium">{aula.simulacao.cliente}</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2 md:grid-cols-2">
-              <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 dark:border-emerald-800 dark:bg-emerald-900/20">
-                <div className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-300">
+              <div className="rounded-xl border border-green-300 bg-green-50 p-4 dark:border-green-800 dark:bg-green-900/20">
+                <div className="flex items-center gap-1.5 text-sm font-bold text-green-700 dark:text-green-300">
                   <Icon name="check" size={15} /> Conduta recomendada
                 </div>
                 <p className="mt-2 text-sm text-muted">{aula.simulacao.falaBoa}</p>
               </div>
-              <div className="rounded-xl border border-rose-300 bg-rose-50 p-4 dark:border-rose-800 dark:bg-rose-900/20">
-                <div className="flex items-center gap-1.5 text-sm font-bold text-rose-700 dark:text-rose-300">
+              <div className="rounded-xl border border-orange-300 bg-orange-50 p-4 dark:border-orange-800 dark:bg-orange-900/20">
+                <div className="flex items-center gap-1.5 text-sm font-bold text-orange-700 dark:text-orange-300">
                   <Icon name="close" size={15} /> Evite
                 </div>
                 <p className="mt-2 text-sm text-muted">{aula.simulacao.falaEvitar}</p>
@@ -181,27 +181,27 @@ export default async function AulaPage({
                 key={c}
                 className="flex items-start gap-2 rounded-lg bg-surface-2 px-3 py-2 text-sm"
               >
-                <Icon name="check" size={15} className="mt-0.5 flex-none text-brand-600" /> {c}
+                <Icon name="check" size={15} className="mt-0.5 flex-none text-green-600" /> {c}
               </li>
             ))}
           </ul>
         </Bloco>
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-2">
-          <Bloco icone="shield" titulo="Quando chamar o farmacêutico" tom="brand">
+          <Bloco icone="shield" titulo="Quando chamar o farmacêutico" tom="green">
             <ul className="space-y-2">
               {aula.quandoChamarFarmaceutico.map((c) => (
                 <li key={c} className="flex items-start gap-2 text-sm text-muted">
-                  <Icon name="arrow" size={14} className="mt-1 flex-none text-brand-600" /> {c}
+                  <Icon name="arrow" size={14} className="mt-1 flex-none text-green-600" /> {c}
                 </li>
               ))}
             </ul>
           </Bloco>
-          <Bloco icone="close" titulo="Erros que não posso cometer" tom="danger">
+          <Bloco icone="close" titulo="Erros que não posso cometer" tom="green">
             <ul className="space-y-2">
               {aula.errosComuns.map((c) => (
                 <li key={c} className="flex items-start gap-2 text-sm text-muted">
-                  <Icon name="close" size={14} className="mt-1 flex-none text-rose-500" /> {c}
+                  <Icon name="close" size={14} className="mt-1 flex-none text-orange-500" /> {c}
                 </li>
               ))}
             </ul>
@@ -223,6 +223,28 @@ export default async function AulaPage({
               : null
           }
         />
+      </div>
+
+      {/* 🧑‍⚕️ Mensagem do farmacêutico */}
+      <div className="mt-8 grid gap-4 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-5 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-forest-500 sm:grid-cols-3">
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 text-lg">🧑‍⚕️</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
+          </p>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 text-lg">📝</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
+          </p>
+        </div>
+        <div className="flex items-start gap-3">
+          <span className="mt-0.5 text-lg">🏷️</span>
+          <p className="text-xs leading-relaxed text-muted">
+            <strong className="text-forest-700 dark:text-white">Anote corretamente</strong> as informações na etiqueta de posologia.
+          </p>
+        </div>
       </div>
     </div>
   );

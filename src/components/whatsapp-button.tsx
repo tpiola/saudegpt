@@ -14,8 +14,8 @@ export function WhatsAppButton() {
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3">
       {/* Balão de mensagem */}
       {aberto && (
-        <div className="animate-slide-up rounded-2xl border border-sage-300 bg-white p-4 shadow-xl dark:border-sage-700 dark:bg-slate-900 w-[min(calc(100vw-2rem),20rem)] sm:max-w-xs">
-          <p className="text-sm font-semibold text-sage-700 dark:text-sage-300">
+        <div className="animate-slide-up rounded-2xl border border-green-300 bg-white p-4 shadow-xl dark:border-green-700 dark:bg-slate-900 w-[min(calc(100vw-2rem),20rem)] sm:max-w-xs">
+          <p className="text-sm font-semibold text-green-700 dark:text-green-300">
             Precisa de ajuda?
           </p>
           <p className="mt-1 text-xs text-muted">
@@ -25,7 +25,7 @@ export function WhatsAppButton() {
             href={LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-sage-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-sage-500"
+            className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-green-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-green-500"
           >
             <Icon name="sparkles" size={16} />
             Falar agora
@@ -37,7 +37,7 @@ export function WhatsAppButton() {
       <button
         type="button"
         onClick={() => setAberto(!aberto)}
-        className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-sage-600 text-white shadow-xl shadow-sage-600/30 transition-all hover:bg-sage-500 hover:scale-105 active:scale-95"
+        className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-green-600 text-white shadow-xl shadow-green-600/30 transition-all hover:bg-green-500 hover:scale-105 active:scale-95"
         aria-label="Falar no WhatsApp"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 sm:h-7 sm:w-7">

@@ -58,10 +58,10 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
       <h3 className="mt-2 text-lg font-bold">{q.pergunta}</h3>
       <div className="mt-4 space-y-2">
         {q.opcoes.map((op, i) => {
-          let estilo = "border-border hover:border-brand-300";
+          let estilo = "border-border hover:border-green-300";
           if (escolha != null) {
-            if (i === q.correta) estilo = "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20";
-            else if (i === escolha) estilo = "border-rose-400 bg-rose-50 dark:bg-rose-900/20";
+            if (i === q.correta) estilo = "border-green-400 bg-green-50 dark:bg-green-900/20";
+            else if (i === escolha) estilo = "border-orange-400 bg-orange-50 dark:bg-orange-900/20";
           }
           return (
             <button
@@ -79,7 +79,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
       {escolha != null && (
         <>
           <p className="mt-3 text-sm text-muted">
-            <Icon name="sparkles" size={14} className="mr-1 inline text-brand-600" />
+            <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
             {q.explicacao}
           </p>
           <Botao className="mt-4" onClick={proxima} iconeFim="arrow">

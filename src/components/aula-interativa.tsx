@@ -78,7 +78,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       {quiz.length > 0 && (
         <Card id="quiz" className="scroll-mt-24">
           <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/40">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-900/40">
               <Icon name="target" size={18} />
             </span>
             <h2 className="text-lg font-bold">Quiz rápido</h2>
@@ -94,15 +94,15 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                   {q.opcoes.map((op, j) => {
                     const selecionada = respostas[i] === j;
                     const correta = j === q.correta;
-                    let estilo = "border-border bg-surface hover:border-brand-300";
+                    let estilo = "border-border bg-surface hover:border-green-300";
                     if (enviado) {
                       if (correta)
-                        estilo = "border-emerald-400 bg-emerald-50 dark:bg-emerald-900/20";
+                        estilo = "border-green-400 bg-green-50 dark:bg-green-900/20";
                       else if (selecionada)
-                        estilo = "border-rose-400 bg-rose-50 dark:bg-rose-900/20";
+                        estilo = "border-orange-400 bg-orange-50 dark:bg-orange-900/20";
                       else estilo = "border-border opacity-70";
                     } else if (selecionada) {
-                      estilo = "border-brand-400 bg-brand-50 dark:bg-brand-900/30";
+                      estilo = "border-green-400 bg-green-50 dark:bg-green-900/30";
                     }
                     return (
                       <button
@@ -115,7 +115,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                         <span
                           className={`flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[11px] font-bold ${
                             selecionada || (enviado && correta)
-                              ? "border-transparent gradient-brand text-white"
+                              ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white"
                               : "border-border-strong text-subtle"
                           }`}
                         >
@@ -128,7 +128,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                 </div>
                 {enviado && (
                   <p className="rounded-lg bg-surface-2 px-3 py-2 text-sm text-muted">
-                    <Icon name="sparkles" size={14} className="mr-1 inline text-brand-600" />
+                    <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
                     {q.explicacao}
                   </p>
                 )}
@@ -144,7 +144,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
             <div className="mt-6 flex items-center gap-3 rounded-xl bg-surface-2 p-4">
               <span
                 className={`flex h-11 w-11 items-center justify-center rounded-xl text-white ${
-                  nota >= 60 ? "gradient-brand" : "bg-rose-500"
+                  nota >= 60 ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-orange-500"
                 }`}
               >
                 <Icon name={nota >= 60 ? "award" : "target"} size={22} />
@@ -168,20 +168,20 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       <Card className="flex flex-col gap-4 sm:gap-6 md:gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           {concluida ? (
-            <Etiqueta tom="success">
+            <Etiqueta tom="green">
               <Icon name="check" size={14} /> Aula concluída · +{xp} XP
             </Etiqueta>
           ) : (
             <span className="text-sm text-muted">
-              Conclua para ganhar <strong className="text-brand-600">+{xp} XP</strong>
+              Conclua para ganhar <strong className="text-green-600">+{xp} XP</strong>
             </span>
           )}
           <button
             type="button"
             onClick={() => alternarFavorita(trilhaId, aulaId)}
             aria-pressed={favorita}
-            className={`inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium transition-colors ${
-              favorita ? "text-rose-500" : "text-subtle hover:text-foreground"
+            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1.5 text-sm font-medium transition-colors ${
+              favorita ? "text-orange-500" : "text-subtle hover:text-foreground"
             }`}
           >
             <Icon name="heart" size={16} /> {favorita ? "Favorita" : "Favoritar"}

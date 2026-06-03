@@ -16,6 +16,7 @@ export const site = {
 export const navPrincipal = [
   { href: "/dashboard", label: "Painel" },
   { href: "/trilhas", label: "Trilhas" },
+  { href: "/curiosidades", label: "Curiosidades" },
   { href: "/comando-diario", label: "Comando diário" },
   { href: "/bulas-receitas", label: "Bulas e receitas" },
   { href: "/missoes", label: "Missões" },

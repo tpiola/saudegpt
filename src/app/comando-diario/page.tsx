@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ComandoDiarioPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <Etiqueta tom="brand">
+      <Etiqueta tom="green">
         <Icon name="clock" size={14} /> Operação e formação
       </Etiqueta>
       <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -22,9 +22,9 @@ export default function ComandoDiarioPage() {
       <p className="mt-2 text-lg text-muted">{comandoDiarioMeta.subtitulo}</p>
       <p className="mt-3 text-muted">{comandoDiarioMeta.descricao}</p>
 
-      <Card className="mt-8 border-l-4 border-l-brand-500">
+      <Card className="mt-8 border-l-4 border-l-green-500">
         <div className="flex items-start gap-3">
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl gradient-brand text-white">
+          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
             <Icon name="star" size={20} />
           </span>
           <div className="text-sm text-muted">

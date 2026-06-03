@@ -39,7 +39,7 @@ export function VideoPlayer({ url, titulo }: { url: string; titulo: string }) {
 
 export function VideoPlaceholder({ duracaoMin }: { duracaoMin: number }) {
   return (
-    <div className="flex aspect-video items-center justify-center rounded-2xl border border-border gradient-brand text-white">
+    <div className="flex aspect-video items-center justify-center rounded-2xl border border-border bg-gradient-to-r from-green-500 to-green-600 text-white">
       <div className="text-center">
         <p className="text-sm font-medium text-white/90">Vídeo principal · {duracaoMin} min</p>
         <p className="mt-1 text-xs text-white/60">

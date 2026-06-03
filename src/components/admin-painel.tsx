@@ -87,7 +87,7 @@ export function AdminPainel() {
   if (autenticado !== true) {
     return (
       <div className="flex min-h-[50vh] items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand-500" />
+        <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500" />
       </div>
     );
   }
@@ -211,7 +211,7 @@ export function AdminPainel() {
       <header className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
           <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-cyan-400 text-white shadow-lg">
+            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-forest-600 to-green-500 text-white shadow-lg">
               <Icon name="shield" size={18} />
             </span>
             <div>
@@ -234,7 +234,7 @@ export function AdminPainel() {
             <button
               type="button"
               onClick={sair}
-              className="rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-400 transition hover:bg-rose-600/20 hover:text-rose-300"
+              className="rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-semibold text-slate-400 transition hover:bg-orange-600/20 hover:text-orange-300"
             >
               Sair
             </button>
@@ -261,7 +261,7 @@ export function AdminPainel() {
               key={k.rotulo}
               className="rounded-xl border border-slate-800 bg-slate-900/60 p-4 transition hover:border-slate-700 hover:bg-slate-900"
             >
-              <Icon name={k.icone as any} size={18} className="text-cyan-400" />
+              <Icon name={k.icone as any} size={18} className="text-green-400" />
               <div className="mt-2 text-xl font-bold text-white">{k.valor}</div>
               <div className="text-xs font-medium text-slate-400">{k.rotulo}</div>
               <div className="mt-0.5 text-[10px] text-slate-600">{k.sub}</div>
@@ -276,7 +276,7 @@ export function AdminPainel() {
           {/* ── TOP 5 ── */}
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
             <div className="flex items-center gap-2">
-              <Icon name="award" size={16} className="text-amber-400" />
+              <Icon name="award" size={16} className="text-orange-400" />
               <h2 className="text-sm font-bold text-white">Top 5 — Mais XP</h2>
             </div>
             <div className="mt-4 space-y-2">
@@ -292,7 +292,7 @@ export function AdminPainel() {
                     key={c.id}
                     className="flex items-center gap-3 rounded-xl bg-slate-800/60 px-3 py-2.5 transition hover:bg-slate-800"
                   >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-amber-400 to-amber-600 text-[11px] font-bold text-white shadow">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-orange-600 text-[11px] font-bold text-white shadow">
                       {idx + 1}
                     </span>
                     <div className="min-w-0 flex-1">
@@ -301,7 +301,7 @@ export function AdminPainel() {
                     </div>
                     <div className="h-6 w-16 overflow-hidden rounded-full bg-slate-700">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-400 transition-all"
+                        className="h-full rounded-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all"
                         style={{ width: `${pct}%` }}
                       />
                     </div>
@@ -314,7 +314,7 @@ export function AdminPainel() {
           {/* ── PRECISAM ATENÇÃO ── */}
           <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5">
             <div className="flex items-center gap-2">
-              <Icon name="sparkles" size={16} className="text-rose-400" />
+              <Icon name="sparkles" size={16} className="text-orange-400" />
               <h2 className="text-sm font-bold text-white">Precisam de atenção</h2>
             </div>
             <div className="mt-4 space-y-2">
@@ -328,7 +328,7 @@ export function AdminPainel() {
                 >
                   <div className="min-w-0 flex-1">
                     <div className="text-sm font-semibold text-white truncate">{c.nome}</div>
-                    <div className="text-[10px] text-rose-400">
+                    <div className="text-[10px] text-orange-400">
                       {(c.progresso.concluidas?.length ?? 0) === 0
                         ? "Nunca estudou"
                         : `Streak: ${calcularStreak(c.progresso.diasEstudo ?? [])}d`}
@@ -345,7 +345,7 @@ export function AdminPainel() {
                   >
                     <div className="min-w-0 flex-1">
                       <div className="text-sm font-semibold text-white truncate">{c.nome}</div>
-                      <div className="text-[10px] text-amber-400">Nota média: {media}%</div>
+                      <div className="text-[10px] text-orange-400">Nota média: {media}%</div>
                     </div>
                   </div>
                 );
@@ -368,7 +368,7 @@ export function AdminPainel() {
                   onClick={() => setFiltro(f)}
                   className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                     filtro === f
-                      ? "bg-cyan-500/20 text-cyan-200 ring-1 ring-cyan-400/50"
+                      ? "bg-green-500/20 text-green-200 ring-1 ring-green-400/50"
                       : "text-slate-500 hover:text-slate-300"
                   }`}
                 >
@@ -443,7 +443,7 @@ export function AdminPainel() {
                         >
                           <td className="px-4 py-3.5">
                             <div className="flex items-center gap-2.5">
-                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-cyan-500 text-xs font-bold text-white shadow">
+                              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-forest-600 to-green-500 text-xs font-bold text-white shadow">
                                 {c.nome.charAt(0).toUpperCase()}
                               </span>
                               <div>
@@ -456,10 +456,10 @@ export function AdminPainel() {
                             <span
                               className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
                                 c.status === "aprovado"
-                                  ? "bg-emerald-500/15 text-emerald-300"
+                                  ? "bg-green-500/15 text-green-300"
                                   : c.status === "pendente"
-                                    ? "bg-amber-500/15 text-amber-200"
-                                    : "bg-rose-500/15 text-rose-300"
+                                    ? "bg-orange-500/15 text-orange-200"
+                                    : "bg-orange-500/15 text-orange-300"
                               }`}
                             >
                               {c.status}
@@ -475,7 +475,7 @@ export function AdminPainel() {
                               </span>
                               <div className="h-1.5 w-16 overflow-hidden rounded-full bg-slate-700">
                                 <div
-                                  className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                                  className="h-full rounded-full bg-gradient-to-r from-forest-500 to-green-400"
                                   style={{ width: `${pct}%` }}
                                 />
                               </div>
@@ -483,7 +483,7 @@ export function AdminPainel() {
                           </td>
                           <td className="px-4 py-3.5 text-sm text-white">
                             {media != null ? (
-                              <span className={media >= 60 ? "text-emerald-300" : "text-amber-300"}>
+                              <span className={media >= 60 ? "text-green-300" : "text-orange-300"}>
                                 {media}%
                               </span>
                             ) : (
@@ -495,7 +495,7 @@ export function AdminPainel() {
                           </td>
                           <td className="px-4 py-3.5">
                             {streak > 0 ? (
-                              <span className="inline-flex items-center gap-1 text-sm text-amber-400">
+                              <span className="inline-flex items-center gap-1 text-sm text-orange-400">
                                 <Icon name="flame" size={14} />
                                 {streak}
                               </span>
@@ -503,14 +503,14 @@ export function AdminPainel() {
                               <span className="text-slate-600">—</span>
                             )}
                           </td>
-                          <td className="px-4 py-3.5 text-sm text-cyan-300">{p.xp ?? 0}</td>
+                          <td className="px-4 py-3.5 text-sm text-green-300">{p.xp ?? 0}</td>
                           <td className="px-4 py-3.5">
                             <div className="flex gap-1.5" onClick={(e) => e.stopPropagation()}>
                               {c.status === "pendente" && (
                                 <button
                                   type="button"
                                   onClick={() => acao(c.id, "aprovar")}
-                                  className="rounded-lg bg-emerald-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-emerald-500"
+                                  className="rounded-lg bg-green-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-green-500"
                                 >
                                   Aprovar
                                 </button>
@@ -518,7 +518,7 @@ export function AdminPainel() {
                               <button
                                 type="button"
                                 onClick={() => excluir(c.id)}
-                                className="rounded-lg bg-rose-600/60 px-2 py-1 text-[10px] font-bold text-white hover:bg-rose-500"
+                                className="rounded-lg bg-orange-600/60 px-2 py-1 text-[10px] font-bold text-white hover:bg-orange-500"
                               >
                                 Excluir
                               </button>
@@ -556,7 +556,7 @@ export function AdminPainel() {
             <h2 className="text-sm font-bold text-white">Distribuição de progresso</h2>
             <div className="mt-4 space-y-2.5">
               {[
-                { label: "0-25%", count: aprovados.filter((c) => (c.progresso.concluidas?.length ?? 0) <= totalCurso * 0.25).length, color: "bg-rose-500" },
+                { label: "0-25%", count: aprovados.filter((c) => (c.progresso.concluidas?.length ?? 0) <= totalCurso * 0.25).length, color: "bg-orange-500" },
                 { label: "25-50%", count: aprovados.filter((c) => {
                   const f = c.progresso.concluidas?.length ?? 0;
                   return f > totalCurso * 0.25 && f <= totalCurso * 0.5;
@@ -590,7 +590,7 @@ export function AdminPainel() {
             <h2 className="text-sm font-bold text-white">Currículo</h2>
             <ul className="mt-3 space-y-2 text-xs text-slate-400">
               <li className="flex items-center gap-2">
-                <Icon name="book" size={14} className="text-cyan-400" />
+                <Icon name="book" size={14} className="text-green-400" />
                 {trilhas.length} trilhas · {totalAulas()} aulas
               </li>
               {trilhas.map((t) => {
@@ -603,7 +603,7 @@ export function AdminPainel() {
                 );
               })}
               <li className="flex items-center gap-2 mt-2">
-                <Icon name="shield" size={14} className="text-cyan-400" />
+                <Icon name="shield" size={14} className="text-green-400" />
                 {bibliotecaRegulatoria.length} normas na biblioteca
               </li>
             </ul>
@@ -623,7 +623,7 @@ export function AdminPainel() {
                   href={NOTION_CADASTROS_LINKS.databaseUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-cyan-300 underline"
+                  className="text-green-300 underline"
                 >
                   Banco de alunos no Notion
                 </a>
@@ -634,7 +634,7 @@ export function AdminPainel() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
-                Dados locais em <code className="text-cyan-300">data/cadastros.json</code>
+                Dados locais em <code className="text-green-300">data/cadastros.json</code>
               </li>
             </ul>
           </div>
@@ -689,26 +689,26 @@ function AlunoDetalhes({
           <div className="mt-1 flex items-center gap-2">
             <span className="text-lg font-bold text-white">{pctGeral}%</span>
             <div className="h-2 flex-1 rounded-full bg-slate-700">
-              <div className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400" style={{ width: `${pctGeral}%` }} />
+              <div className="h-full rounded-full bg-gradient-to-r from-forest-500 to-green-400" style={{ width: `${pctGeral}%` }} />
             </div>
           </div>
           <div className="text-xs text-slate-500">{aulasFeitas}/{totalCurso} aulas</div>
         </div>
         <div className="rounded-xl bg-slate-800/50 px-4 py-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">XP</div>
-          <div className="mt-1 text-lg font-bold text-cyan-300">{p.xp ?? 0}</div>
+          <div className="mt-1 text-lg font-bold text-green-300">{p.xp ?? 0}</div>
           <div className="text-xs text-slate-500">Nível {Math.floor((p.xp ?? 0) / 250) + 1}</div>
         </div>
         <div className="rounded-xl bg-slate-800/50 px-4 py-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Nota média</div>
-          <div className={`mt-1 text-lg font-bold ${media != null && media >= 60 ? "text-emerald-300" : "text-amber-300"}`}>
+          <div className={`mt-1 text-lg font-bold ${media != null && media >= 60 ? "text-green-300" : "text-orange-300"}`}>
             {media != null ? `${media}%` : "—"}
           </div>
           <div className="text-xs text-slate-500">{tent} tentativas de quiz</div>
         </div>
         <div className="rounded-xl bg-slate-800/50 px-4 py-3">
           <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">Streak</div>
-          <div className="mt-1 flex items-center gap-1 text-lg font-bold text-amber-400">
+          <div className="mt-1 flex items-center gap-1 text-lg font-bold text-orange-400">
             <Icon name="flame" size={18} />
             {streak} dias
           </div>
@@ -730,7 +730,7 @@ function AlunoDetalhes({
               <span className="w-40 text-xs text-slate-300 truncate">{t.nome}</span>
               <div className="flex-1 h-2 rounded-full bg-slate-700">
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                  className="h-full rounded-full bg-gradient-to-r from-forest-500 to-green-400"
                   style={{ width: `${t.pct}%` }}
                 />
               </div>

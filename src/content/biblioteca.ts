@@ -57,16 +57,16 @@ export const bibliotecaRegulatoria: NormaRegulatoria[] = [
   },
   {
     id: "farmacia-popular-2025",
-    titulo: "Farmácia Popular — gratuidade ampliada",
+    titulo: "Farmácia Popular — cobertura ampliada",
     norma: "Programa Farmácia Popular (2025)",
     orgao: "Ministério da Saúde",
     categoria: "Acesso",
     atualizado: true,
     atualizadoEm: "2025-02-14",
     resumo:
-      "Desde 14/02/2025, o programa passou a disponibilizar gratuitamente 100% dos medicamentos e insumos do elenco.",
+      "Desde 14/02/2025, o programa passou a disponibilizar sem custo 100% dos medicamentos e insumos do elenco.",
     pontosChave: [
-      "Gratuidade de 100% do elenco desde 14/02/2025.",
+      "Cobertura total do elenco desde 14/02/2025.",
       "Cobertura de 12 indicações de saúde.",
       "Inclui fraldas geriátricas.",
       "Absorventes higiênicos para beneficiárias do Programa Dignidade Menstrual.",

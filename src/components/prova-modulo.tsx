@@ -137,7 +137,7 @@ export function ProvaModulo({
                 <div className="h-2 w-16 overflow-hidden rounded-full bg-surface-2">
                   <div
                     className={`h-full rounded-full transition-all duration-1000 ${
-                      tempoCritico ? "bg-rose-500" : "gradient-brand"
+                      tempoCritico ? "bg-rose-500" : "bg-gradient-to-r from-green-500 to-green-600"
                     }`}
                     style={{ width: `${porcentagemTempo}%` }}
                   />
@@ -163,11 +163,11 @@ export function ProvaModulo({
       {selecionadas.map((q, i) => (
         <Card key={`${trilhaId}-${moduloId}-${i}`} className={enviado ? "" : "scroll-mt-28"}>
           <div className="flex items-start gap-2">
-            <span className="flex h-6 w-6 flex-none items-center justify-center rounded-lg gradient-brand text-[11px] font-bold text-white">
+            <span className="flex h-6 w-6 flex-none items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 text-[11px] font-bold text-white">
               {i + 1}
             </span>
             <div className="min-w-0 flex-1">
-              <p className="text-xs text-brand-600">{q.aulaTitulo}</p>
+              <p className="text-xs text-green-600">{q.aulaTitulo}</p>
               <p className="mt-1 font-semibold">{q.pergunta}</p>
             </div>
           </div>
@@ -176,14 +176,14 @@ export function ProvaModulo({
             {q.opcoes.map((op, j) => {
               const selecionada = respostas[i] === j;
               const correta = j === q.correta;
-              let estilo = "border-border hover:border-brand-300";
+              let estilo = "border-border hover:border-green-300";
 
               if (enviado) {
-                if (correta) estilo = "border-emerald-400 bg-emerald-50/50 dark:bg-emerald-900/15";
-                else if (selecionada) estilo = "border-rose-400 bg-rose-50/50 dark:bg-rose-900/15";
+                if (correta) estilo = "border-green-400 bg-green-50/50 dark:bg-green-900/15";
+                else if (selecionada) estilo = "border-orange-400 bg-orange-50/50 dark:bg-orange-900/15";
                 else estilo = "border-border opacity-50";
               } else if (selecionada) {
-                estilo = "border-brand-400 bg-brand-50/50 dark:bg-brand-900/25";
+                estilo = "border-green-400 bg-green-50/50 dark:bg-green-900/25";
               }
 
               return (
@@ -199,7 +199,7 @@ export function ProvaModulo({
                   <span
                     className={`flex h-6 w-6 flex-none items-center justify-center rounded-full border text-[11px] font-bold ${
                       selecionada || (enviado && correta)
-                        ? "border-transparent gradient-brand text-white"
+                        ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white"
                         : "border-border-strong text-subtle"
                     }`}
                   >
@@ -223,7 +223,7 @@ export function ProvaModulo({
           {enviado && (
             <div className="mt-3 rounded-lg bg-surface-2 px-4 py-3">
               <p className="text-sm text-muted">
-                <Icon name="sparkles" size={14} className="mr-1 inline text-brand-600" />
+                <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
                 {q.explicacao}
               </p>
             </div>
@@ -253,7 +253,7 @@ export function ProvaModulo({
             <span
               className={`flex h-16 w-16 flex-none items-center justify-center rounded-2xl shadow-lg ${
                 aprovado
-                  ? "gradient-brand"
+                  ? "bg-gradient-to-r from-green-500 to-green-600"
                   : "bg-gradient-to-br from-amber-400 to-amber-600"
               }`}
             >

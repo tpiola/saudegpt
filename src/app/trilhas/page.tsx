@@ -1,124 +1,404 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { trilhas, totalAulas } from "@/content/curriculo";
-import { Botao, Card, Etiqueta, TituloSecao, DividerGlow } from "@/components/ui";
+import { Botao, Card, Etiqueta, DividerGlow } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 
 export const metadata: Metadata = {
-  title: "Trilhas",
+  title: "Trilhas da Formação",
   description:
-    "Explore as quatro trilhas da formação, da perfumaria aos medicamentos e à carreira.",
+    "Explore as quatro trilhas da formação completa para atendentes de farmácia — da perfumaria aos medicamentos, excelência operacional e atendimento humanizado.",
 };
 
-// Paleta de gradientes laterais — uma cor distinta por trilha
-const accentGradients = [
-  "bg-gradient-to-b from-emerald-400 via-emerald-500 to-emerald-600",
-  "bg-gradient-to-b from-sky-400 via-blue-500 to-indigo-600",
-  "bg-gradient-to-b from-amber-400 via-orange-500 to-rose-600",
-  "bg-gradient-to-b from-violet-400 via-purple-500 to-fuchsia-600",
+// Imagens de trilha disponíveis em /public/
+const trilhaImagens = [
+  "/trilha-perfumaria.jpg",
+  "/trilha-medicamentos.jpg",
+  "/trilha-operacional.jpg",
+  "/trilha-encantamento.jpg",
+];
+
+const coresTrilha = [
+  { barra: "bg-gradient-to-r from-green-400 to-green-500", badge: "green" },
+  { barra: "bg-gradient-to-r from-orange-400 to-orange-500", badge: "orange" },
+  { barra: "bg-gradient-to-r from-forest-400 to-green-400", badge: "green" },
+  { barra: "bg-gradient-to-r from-orange-400 to-orange-500", badge: "orange" },
+];
+
+// 💡 Cards de sabia que? sobre saúde preventiva + 4Ps
+const sabiaQueCards = [
+  {
+    emoji: "💤",
+    titulo: "Qualidade do sono e saúde",
+    texto:
+      "Dormir bem regula o sistema imunológico, melhora a memória e reduz o estresse. Na farmácia, perguntar sobre o sono do cliente pode revelar necessidades de suplementos ou fitoterápicos.",
+    badge: "Saúde preventiva",
+  },
+  {
+    emoji: "💧",
+    titulo: "A importância da hidratação",
+    texto:
+      "Beber água suficiente melhora a absorção de medicamentos, a elasticidade da pele e o funcionamento dos rins. Lembre os clientes: 2 litros por dia é a meta mínima.",
+    badge: "Bem-estar",
+  },
+  {
+    emoji: "📐",
+    titulo: "Bioimpedância na farmácia",
+    texto:
+      "A bioimpedância avalia composição corporal — gordura, massa magra e hidratação. É um serviço farmacêutico que agrega valor e fideliza clientes (Produto + Serviço).",
+    badge: "Inovação",
+  },
+  {
+    emoji: "🧘",
+    titulo: "Higienização do sono",
+    texto:
+      "Criar uma rotina noturna consistente — sem telas 1h antes, quarto escuro e fresco — melhora a qualidade do sono. Ofereça dicas + produtos como melatonina (com orientação).",
+    badge: "Sleep hygiene",
+  },
 ];
 
 export default function TrilhasPage() {
   const totalGeral = totalAulas();
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
-      <TituloSecao
-        sobre="Currículo"
-        icone="book"
-        titulo="Trilhas da formação"
-        descricao="Perfumaria primeiro, medicamentos depois, excelência operacional e carreira. Estude em microlições, do básico ao avançado."
-      />
+    <div className="relative">
+      {/* ════════════════════════════════════════════
+          HERO — Forest Green + Grid Pattern
+          ════════════════════════════════════════════ */}
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
+        <Image
+          src="/hero-matricula.jpg"
+          alt=""
+          fill
+          className="hero-bg"
+          priority
+          sizes="100vw"
+        />
+        <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
 
-      {/* Contagem geral premium */}
-      <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4 md:gap-5 rounded-2xl border border-border-strong/50 bg-surface-2/50 px-5 py-3 backdrop-blur-sm">
-        <span className="flex items-center gap-2 text-sm font-semibold text-foreground">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white shadow-sm">
-            <Icon name="book" size={16} />
-          </span>
-          <span>{trilhas.length} {trilhas.length === 1 ? "trilha" : "trilhas"}</span>
-        </span>
-        <span className="hidden h-5 w-px bg-border-strong sm:block" />
-        <span className="flex items-center gap-2 text-sm text-muted">
-          <Icon name="play" size={16} className="text-subtle" />
-          {totalGeral} {totalGeral === 1 ? "aula" : "aulas"}
-        </span>
-      </div>
+        {/* Glow orbe */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-[400px] w-[400px] rounded-full bg-orange-500/5 blur-[120px]" />
 
-      <DividerGlow className="my-8" />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="max-w-3xl">
+            {/* Badge */}
+            <div className="badge-orange mb-6 inline-flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
+              Formação completa
+            </div>
 
-      <div className="space-y-6">
-        {trilhas.map((t, idx) => {
-          const totalAulasTrilha = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
-          const accent = accentGradients[idx % accentGradients.length];
+            <h1 className="text-[clamp(2.2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">
+              <span className="text-white">Trilhas da</span>
+              <br />
+              <span className="text-white/70 font-light">Formação</span>
+            </h1>
 
-          return (
-            <Card
-              key={t.id}
-              variante="elevated"
-              className="group relative overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-            >
-              {/* Faixa gradiente vertical na lateral esquerda */}
-              <div
-                className={`absolute left-0 top-0 h-full w-1.5 rounded-l-xl ${accent} opacity-80 group-hover:opacity-100 transition-opacity`}
-                aria-hidden
-              />
+            <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-white/50 font-light">
+              Da perfumaria aos medicamentos, da excelência operacional ao{" "}
+              <span className="text-white/80 font-medium">atendimento humanizado</span>
+              {" "}— uma progressão leve e estruturada do básico ao avançado.
+            </p>
 
-              <div className="flex flex-col gap-6 pl-5 md:flex-row md:items-center lg:flex-row lg:items-center">
-                {/* Ícone e informações principais */}
-                <div className="flex flex-1 gap-5">
-                  <span className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl gradient-brand text-white shadow-md transition-transform duration-300 group-hover:scale-105">
-                    <Icon name={t.icone as IconName} size={26} />
+            {/* Stats minimalistas */}
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              {[
+                { value: trilhas.length.toString(), label: trilhas.length === 1 ? "trilha" : "trilhas" },
+                { value: `${totalGeral}+`, label: totalGeral === 1 ? "aula" : "aulas" },
+                { value: "Do zero", label: "ao avançado" },
+                { value: "100%", label: "online" },
+              ].map((s) => (
+                <div key={s.label} className="flex items-center gap-2">
+                  <span className="text-xl sm:text-2xl font-bold text-orange-400 tabular-nums">
+                    {s.value}
                   </span>
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="inline-flex items-center gap-1 rounded-md bg-brand-50 px-2 py-0.5 text-xs font-semibold text-brand-700 dark:bg-brand-900/40 dark:text-brand-200">
-                        Trilha {t.numero}
-                      </span>
-                      <Etiqueta tom="neutral">{t.subtitulo}</Etiqueta>
-                      <Etiqueta tom="neutral">{t.nivelFaixa}</Etiqueta>
+                  <span className="text-[11px] uppercase tracking-[0.12em] text-white/40 font-medium">
+                    {s.label}
+                  </span>
+                  <span className="hidden sm:block w-px h-4 bg-white/10 last:hidden" />
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-10">
+              <a href="#trilhas-lista" className="btn-rd-outline">
+                Explorar trilhas
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+          <span className="text-[8px] uppercase tracking-[0.25em] text-white/15">Navegar</span>
+          <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent animate-pulse" />
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          SABIA QUE? — Saúde preventiva + 4Ps
+          ════════════════════════════════════════════ */}
+      <section className="relative py-16 sm:py-20 bg-surface-2">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="text-center fade-in-up">
+            <span className="badge-green inline-flex">
+              💡 Sabia que?
+            </span>
+            <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+              Saúde e bem-estar no dia a dia
+            </h2>
+            <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
+              Pequenos hábitos transformam a saúde — e o atendente de farmácia pode fazer toda diferença na orientação.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {sabiaQueCards.map((card) => (
+              <div
+                key={card.titulo}
+                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-orange-300/50"
+              >
+                <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-green-400 to-orange-400" />
+                <span className="mt-2 block text-3xl">{card.emoji}</span>
+                <span className="mt-2 inline-block badge-green text-[10px]">{card.badge}</span>
+                <h3 className="mt-3 text-sm font-bold text-foreground font-display">
+                  {card.titulo}
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-subtle">
+                  {card.texto}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* 💊 Mensagem do farmacêutico */}
+          <div className="mt-8 rounded-2xl bg-gradient-to-r from-orange-50 to-green-50 border border-orange-200/50 p-5 dark:from-orange-900/10 dark:to-forest-800">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg dark:bg-orange-900/30">
+                🧑‍⚕️
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-orange-600 dark:text-orange-400">
+                  Sempre consulte o(a) farmacêutico(a)
+                </p>
+                <p className="mt-1 text-sm text-muted leading-relaxed">
+                  Para orientação personalizada sobre medicamentos, suplementos e cuidados com a saúde, 
+                  solicite o segundo visto do farmacêutico(a) — ele(a) é o profissional habilitado para 
+                  avaliar cada caso com segurança e responsabilidade.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          LISTA DE TRILHAS — Premium Cards
+          ════════════════════════════════════════════ */}
+      <section id="trilhas-lista" className="relative py-20 sm:py-28 bg-surface">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="text-center fade-in-up">
+            <span className="badge-orange inline-flex">
+              <Icon name="book" size={12} />
+              Currículo completo
+            </span>
+            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+              Escolha sua trilha
+            </h2>
+            <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
+              Quatro jornadas de aprendizado que se complementam — estude no seu ritmo, do zero à excelência.
+            </p>
+          </div>
+
+          <DividerGlow className="my-10" />
+
+          <div className="space-y-8">
+            {trilhas.map((t, idx) => {
+              const totalAulasTrilha = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
+              const cor = coresTrilha[idx % coresTrilha.length];
+              const img = trilhaImagens[idx % trilhaImagens.length];
+
+              return (
+                <div
+                  key={t.id}
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-orange-300/40"
+                >
+                  {/* Grid de imagem + conteúdo */}
+                  <div className="flex flex-col md:flex-row">
+                    {/* Imagem lateral */}
+                    <div className="relative h-48 w-full shrink-0 overflow-hidden md:h-auto md:w-72 lg:w-80">
+                      <Image
+                        src={img}
+                        alt=""
+                        fill
+                        className="object-cover transition-all duration-700 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 320px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 via-transparent to-transparent md:bg-gradient-to-r md:from-forest-500/40 md:via-transparent md:to-transparent" />
                     </div>
 
-                    <h3 className="mt-2 text-xl font-bold tracking-tight text-foreground group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
-                      {t.titulo}
-                    </h3>
+                    {/* Conteúdo */}
+                    <div className="flex flex-1 flex-col p-6 sm:p-8">
+                      {/* Badges */}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
+                          cor.badge === "green"
+                            ? "bg-green-50 text-green-700 dark:bg-green-900/40 dark:text-green-200"
+                            : "bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-200"
+                        }`}>
+                          Trilha {t.numero}
+                        </span>
+                        <Etiqueta tom="neutral">{t.subtitulo}</Etiqueta>
+                        <Etiqueta tom="neutral">{t.nivelFaixa}</Etiqueta>
+                      </div>
 
-                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                      {t.descricao}
-                    </p>
+                      <h3 className="mt-3 text-xl font-bold tracking-tight text-foreground group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors font-display">
+                        {t.titulo}
+                      </h3>
 
-                    {/* Badges de módulos e aulas */}
-                    <div className="mt-4 flex flex-wrap gap-3">
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
-                        <Icon name="book" size={14} />
-                        {t.modulos.length} {t.modulos.length === 1 ? "módulo" : "módulos"}
-                      </span>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
-                        <Icon name="play" size={14} />
-                        {totalAulasTrilha} {totalAulasTrilha === 1 ? "aula" : "aulas"}
-                      </span>
+                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+                        {t.descricao}
+                      </p>
+
+                      {/* Stats */}
+                      <div className="mt-4 flex flex-wrap gap-3">
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
+                          <Icon name="book" size={14} />
+                          {t.modulos.length} {t.modulos.length === 1 ? "módulo" : "módulos"}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
+                          <Icon name="play" size={14} />
+                          {totalAulasTrilha} {totalAulasTrilha === 1 ? "aula" : "aulas"}
+                        </span>
+                      </div>
+
+                      {/* Para quem é esta trilha — 4Ps natural */}
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {t.id === "perfumaria" && (
+                          <>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                              🧴 Produto: categorias e marcas
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                              🏪 Praça: organização da loja
+                            </span>
+                          </>
+                        )}
+                        {t.id === "medicamentos" && (
+                          <>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                              💊 Produto: classes e segurança
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                              💰 Preço: estratégias de desconto legal
+                            </span>
+                          </>
+                        )}
+                        {t.id === "operacional" && (
+                          <>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                              📋 Promoção: ações no PDV
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                              🏪 Praça: fluxo e exposição
+                            </span>
+                          </>
+                        )}
+                        {t.id === "encantamento" && (
+                          <>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
+                              🤝 Promoção: relacionamento e fidelização
+                            </span>
+                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
+                              💰 Preço: valor percebido no cuidado
+                            </span>
+                          </>
+                        )}
+                      </div>
+
+                      {/* Ação */}
+                      <div className="mt-5 flex items-center justify-between gap-4">
+                        <ProgressoTrilhaBadge trilhaId={t.id} />
+                        <Botao
+                          href={`/trilhas/${t.id}`}
+                          variante="primary"
+                          tamanho="md"
+                          iconeFim="arrow"
+                        >
+                          Acessar trilha
+                        </Botao>
+                      </div>
                     </div>
                   </div>
                 </div>
+              );
+            })}
+          </div>
 
-                {/* Progresso e ação */}
-                <div className="flex items-center gap-4 md:flex-col md:items-end md:gap-3 lg:flex-col lg:items-end lg:gap-3">
-                  <ProgressoTrilhaBadge trilhaId={t.id} />
-                  <Botao
-                    href={`/trilhas/${t.id}`}
-                    variante="primary"
-                    tamanho="md"
-                    iconeFim="arrow"
-                  >
-                    Abrir trilha
-                  </Botao>
+          {/* 💡 Card de sabia que? — Bioimpedância e hidratação */}
+          <div className="mt-10 rounded-2xl border border-green-200/50 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-800">
+            <div className="flex items-start gap-4">
+              <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-xl dark:bg-green-900/30">
+                💡
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-green-600 dark:text-green-400">
+                  Sabia que? A bioimpedância virou serviço de farmácia
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted">
+                  A bioimpedância avalia composição corporal (massa magra, gordura e hidratação). 
+                  Cada vez mais farmácias oferecem o serviço como diferencial — é o <strong>Produto</strong> 
+                  (serviço agregado) que fortalece a <strong>Praça</strong> (a farmácia como centro de saúde) 
+                  e gera <strong>Promoção</strong> boca a boca. E o melhor de tudo: incentiva o cliente a 
+                  cuidar da saúde preventivamente. Beba água, durma bem e meça sua composição regularmente!
+                </p>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  <span className="text-xs font-medium text-green-600 dark:text-green-400">
+                    ✅ Qualidade do sono
+                  </span>
+                  <span className="text-xs font-medium text-orange-600 dark:text-orange-400">
+                    💧 Hidratação
+                  </span>
+                  <span className="text-xs font-medium text-green-600 dark:text-green-400">
+                    📊 Bioimpedância
+                  </span>
+                  <span className="text-xs font-medium text-orange-600 dark:text-orange-400">
+                    🧘 Higienização do sono
+                  </span>
                 </div>
               </div>
-            </Card>
-          );
-        })}
-      </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+          CTA FINAL
+          ════════════════════════════════════════════ */}
+      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
+        <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
+          <span className="badge-orange inline-flex">
+            Acesse agora
+          </span>
+          <h2 className="mt-5 text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-[-0.03em] text-white">
+          Pronto para transformar seu atendimento?
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-base text-white/50">
+            Junte-se a centenas de atendentes que já estão se capacitando com a formação mais completa do Brasil.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <Link href="/" className="btn-rd-white text-base px-10 py-3">
+              Quero começar
+            </Link>
+            <Link href="/curiosidades" className="btn-rd-outline text-base px-8 py-3">
+              Ver curiosidades
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

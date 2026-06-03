@@ -42,7 +42,7 @@ export function MatriculaForm() {
           required
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-accent-400 focus:ring-1 focus:ring-accent-400/20"
+          className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-orange-400 focus:ring-1 focus:ring-orange-400/20"
           placeholder="Seu nome completo"
         />
       </div>
@@ -56,11 +56,11 @@ export function MatriculaForm() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-accent-400 focus:ring-1 focus:ring-accent-400/20"
+          className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-orange-400 focus:ring-1 focus:ring-orange-400/20"
           placeholder="voce@email.com"
         />
       </div>
-      {erro && <p className="text-sm text-rose-600">{erro}</p>}
+      {erro && <p className="text-sm text-orange-600">{erro}</p>}
       <Botao
         type="submit"
         className="w-full"

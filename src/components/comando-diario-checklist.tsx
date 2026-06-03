@@ -12,14 +12,14 @@ import { useComandoDiario } from "@/lib/comando-diario";
 import { Icon } from "./icons";
 import { BarraProgresso, Botao, Card, Etiqueta, TituloSecao } from "./ui";
 
-const tomCategoria: Record<CategoriaComando, "brand" | "cyan" | "success" | "warning" | "neutral"> =
+const tomCategoria: Record<CategoriaComando, "green" | "orange" | "neutral"> =
   {
-    abertura: "brand",
-    balcao: "cyan",
-    estoque: "success",
-    dados: "warning",
+    abertura: "green",
+    balcao: "orange",
+    estoque: "green",
+    dados: "orange",
     fechamento: "neutral",
-    formacao: "brand",
+    formacao: "green",
   };
 
 export function ComandoDiarioChecklist() {
@@ -40,7 +40,7 @@ export function ComandoDiarioChecklist() {
       <Card className="overflow-hidden">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <Etiqueta tom="brand">
+            <Etiqueta tom="green">
               <Icon name="clock" size={12} /> {data}
             </Etiqueta>
             <h2 className="mt-2 text-lg font-bold">Progresso do dia</h2>
@@ -80,15 +80,15 @@ export function ComandoDiarioChecklist() {
                   <label
                     className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-all ${
                       feito
-                        ? "border-brand-300 bg-brand-50/80 dark:bg-brand-900/25"
-                        : "border-border bg-surface hover:border-brand-300"
+                        ? "border-green-300 bg-green-50/80 dark:bg-green-900/25"
+                        : "border-border bg-surface hover:border-green-300"
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={feito}
                       onChange={() => alternar(item.id)}
-                      className="mt-1 h-4 w-4 rounded border-border-strong text-brand-600 focus:ring-brand-500"
+                      className="mt-1 h-4 w-4 rounded border-border-strong text-green-600 focus:ring-green-500"
                     />
                     <span className="min-w-0 flex-1">
                       <span className="flex flex-wrap items-center gap-2">
@@ -110,7 +110,7 @@ export function ComandoDiarioChecklist() {
                         <Link
                           href={item.aulaHref}
                           onClick={(e) => e.stopPropagation()}
-                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-600 hover:underline"
+                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-green-600 hover:underline"
                         >
                           Aprofundar na aula <Icon name="arrow" size={12} />
                         </Link>
@@ -129,10 +129,10 @@ export function ComandoDiarioChecklist() {
         <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {atalhosComando.map((a) => (
             <Link key={a.href} href={a.href}>
-              <Card className="h-full transition-all hover:border-brand-400 hover:-translate-y-0.5">
-                <h4 className="font-bold text-brand-600">{a.titulo}</h4>
+              <Card className="h-full transition-all hover:border-green-400 hover:-translate-y-0.5">
+                <h4 className="font-bold text-green-600">{a.titulo}</h4>
                 <p className="mt-1 text-sm text-muted">{a.descricao}</p>
-                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand-600">
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-green-600">
                   Abrir <Icon name="arrow" size={14} />
                 </span>
               </Card>

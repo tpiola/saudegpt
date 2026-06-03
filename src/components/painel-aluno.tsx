@@ -112,10 +112,10 @@ export function PainelAluno() {
               </div>
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <Etiqueta tom="brand">
+                  <Etiqueta tom="green">
                     <Icon name="trending" size={12} /> Nível {prog.nivel}
                   </Etiqueta>
-                  <Etiqueta tom="premium">
+                  <Etiqueta tom="orange">
                     <Icon name="sparkles" size={12} /> {prog.xp} XP
                   </Etiqueta>
                   <span className="text-sm text-subtle">
@@ -192,7 +192,7 @@ export function PainelAluno() {
                     <div className="mt-1 truncate font-semibold">{i.aula.titulo}</div>
                   </div>
                   <div className="shrink-0 text-right">
-                    <div className="text-lg font-bold text-amber-500">
+                    <div className="text-lg font-bold text-orange-500">
                       {prog.notas[chaveAula(i.trilha.id, i.aula.id)]}%
                     </div>
                     <div className="text-xs text-subtle">nota</div>
@@ -219,7 +219,7 @@ export function PainelAluno() {
             <Card key={t.id} variante="elevated">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl gradient-brand text-white">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
                     <Icon name={t.icone as IconName} size={20} />
                   </span>
                   <div>
@@ -254,7 +254,7 @@ export function PainelAluno() {
       <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-5">
         {concluidasCount >= 1 && (
           <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
               <Icon name="play" size={16} />
             </span>
             <span className="text-sm font-semibold">Primeiros passos</span>
@@ -262,7 +262,7 @@ export function PainelAluno() {
         )}
         {prog.xp >= 250 && (
           <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
               <Icon name="sparkles" size={16} />
             </span>
             <span className="text-sm font-semibold">Nível 2 alcançado</span>
@@ -270,7 +270,7 @@ export function PainelAluno() {
         )}
         {prog.missoesPontos >= 30 && (
           <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
               <Icon name="target" size={16} />
             </span>
             <span className="text-sm font-semibold">Missões de balcão</span>
@@ -281,7 +281,7 @@ export function PainelAluno() {
             key={b.trilha.id}
             className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
               <Icon name="award" size={16} />
             </span>
             <span className="text-sm font-semibold">
@@ -318,9 +318,9 @@ export function PainelAluno() {
                   >
                     <Card
                       variante="elevated"
-                      className="flex items-center gap-3 p-4 transition-all group-hover:border-rose-300"
+                      className="flex items-center gap-3 p-4 transition-all group-hover:border-orange-300"
                     >
-                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-rose-50 text-rose-500 dark:bg-rose-900/30">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-orange-50 text-orange-500 dark:bg-orange-900/30">
                         <Icon name="heart" size={16} />
                       </span>
                       <div className="min-w-0 flex-1">
@@ -353,7 +353,7 @@ export function PainelAluno() {
             if (confirm("Tem certeza que deseja zerar todo o seu progresso?"))
               prog.resetar();
           }}
-          className="text-xs text-subtle underline-offset-2 hover:text-rose-500 underline transition-colors"
+          className="text-xs text-subtle underline-offset-2 hover:text-orange-500 underline transition-colors"
         >
           Zerar progresso
         </button>

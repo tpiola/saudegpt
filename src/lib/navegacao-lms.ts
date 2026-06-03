@@ -24,6 +24,7 @@ export const secoesNavLms: SecaoNavLms[] = [
     titulo: "Prática no balcão",
     itens: [
       { href: "/comando-diario", label: "Comando diário", icone: "check" },
+      { href: "/curiosidades", label: "Curiosidades", icone: "sparkles" },
       { href: "/missoes", label: "Missões", icone: "target" },
       { href: "/jogos", label: "Simuladores", icone: "sparkles" },
       { href: "/osce", label: "OSCE prático", icone: "shield" },

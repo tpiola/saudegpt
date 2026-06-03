@@ -34,7 +34,7 @@ export default async function ProvaPage({
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <Link
         href={`/trilhas/${trilhaId}/${moduloId}`}
-        className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-brand-600"
+        className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-green-600"
       >
         <Icon name="arrow" size={16} className="rotate-180" /> Voltar ao módulo
       </Link>

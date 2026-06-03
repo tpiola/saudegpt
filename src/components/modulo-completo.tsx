@@ -29,31 +29,31 @@ export function ModuloCompleto({ moduloTitulo, xpGanho, notaMedia, ativo, onFech
     <>
       <Confete ativo={true} origemX={0.5} origemY={0.3} />
       <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-        <div className="celebrate-modal relative mx-auto max-w-md w-full overflow-hidden rounded-3xl border border-emerald-300/30 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 text-center shadow-2xl shadow-emerald-500/20">
+        <div className="celebrate-modal relative mx-auto max-w-md w-full overflow-hidden rounded-3xl border border-green-300/30 bg-gradient-to-br from-forest-800 via-forest-700 to-forest-800 p-8 text-center shadow-2xl shadow-green-500/20">
           {/* Orbs decorativos */}
-          <div className="pointer-events-none absolute -left-20 -top-20 h-48 w-48 rounded-full orb bg-emerald-500/20" />
-          <div className="pointer-events-none absolute -bottom-16 -right-16 h-32 w-32 rounded-full orb bg-cyan-500/15" />
+          <div className="pointer-events-none absolute -left-20 -top-20 h-48 w-48 rounded-full orb bg-green-500/20" />
+          <div className="pointer-events-none absolute -bottom-16 -right-16 h-32 w-32 rounded-full orb bg-green-500/15" />
 
           <div className="relative">
             {/* Ícone de troféu com pulse */}
-            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400 via-emerald-500 to-emerald-600 shadow-xl shadow-emerald-500/30 celebrate-pulse">
+            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-green-400 via-green-500 to-green-600 shadow-xl shadow-green-500/30 celebrate-pulse">
               <Icon name="award" size={36} className="text-white" />
             </div>
 
             <h2 className="text-2xl font-extrabold text-white">
               Módulo completo! 🎉
             </h2>
-            <p className="mt-2 text-emerald-300 font-semibold">
+            <p className="mt-2 text-green-300 font-semibold">
               {moduloTitulo}
             </p>
 
             <div className="mt-6 grid grid-cols-2 gap-3">
               <div className="rounded-xl bg-white/10 px-4 py-3">
-                <div className="text-2xl font-bold text-emerald-300">+{xpGanho}</div>
+                <div className="text-2xl font-bold text-green-300">+{xpGanho}</div>
                 <div className="text-xs text-slate-400">XP ganhos</div>
               </div>
               <div className="rounded-xl bg-white/10 px-4 py-3">
-                <div className={`text-2xl font-bold ${notaMedia >= 80 ? "text-emerald-300" : "text-amber-300"}`}>
+                <div className={`text-2xl font-bold ${notaMedia >= 80 ? "text-green-300" : "text-orange-300"}`}>
                   {notaMedia}%
                 </div>
                 <div className="text-xs text-slate-400">Nota média</div>
@@ -61,7 +61,7 @@ export function ModuloCompleto({ moduloTitulo, xpGanho, notaMedia, ativo, onFech
             </div>
 
             {notaMedia >= 80 && (
-              <p className="mt-4 text-sm text-emerald-200/80">
+              <p className="mt-4 text-sm text-green-200/80">
                 ★ Desempenho excelente! Você está dominando o conteúdo.
               </p>
             )}

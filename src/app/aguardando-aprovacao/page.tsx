@@ -22,7 +22,7 @@ export default function AguardandoAprovacaoPage() {
           }}
         />
         <div className="relative">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl gradient-brand text-white">
+          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white">
             <Icon name="clock" size={32} />
           </span>
           <h1 className="mt-6 text-2xl font-extrabold">Cadastro em análise</h1>
@@ -32,7 +32,7 @@ export default function AguardandoAprovacaoPage() {
           </p>
           <p className="mt-4 text-sm text-subtle">
             Dica: mantenha esta página aberta ou volte mais tarde — ao aprovar, acesse{" "}
-            <Link href="/" className="font-semibold text-brand-600">
+            <Link href="/" className="font-semibold text-green-600">
               Meu painel
             </Link>
             .

@@ -68,7 +68,7 @@ export default function HomePage() {
             {/* Badge */}
             <div className="badge-orange mb-6 inline-flex">
               <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
-              Formação gratuita
+              Formação completa
             </div>
 
             {/* Título principal */}
@@ -97,7 +97,7 @@ export default function HomePage() {
                 { value: "4", label: "trilhas" },
                 { value: `${totalAulasContagem}+`, label: "aulas" },
                 { value: "Do zero", label: "ao avançado" },
-                { value: "100%", label: "gratuito" },
+                { value: "100%", label: "online" },
               ].map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
                   <span className="text-xl sm:text-2xl font-bold text-orange-400 tabular-nums">
@@ -321,7 +321,7 @@ export default function HomePage() {
             {/* Esquerda: Informações */}
             <div className="flex flex-col justify-center">
               <span className="badge-orange inline-flex w-fit">
-                Matrícula gratuita
+                Matrícula
               </span>
               <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
                 Comece sua jornada
@@ -425,13 +425,74 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════════════════════════════════
+         SABIA QUE? + FARMACÊUTICO + 4Ps
+         ════════════════════════════════════════════ */}
+      <section className="relative py-20 sm:py-28 bg-surface overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-3">
+
+            {/* Card: Sabia que? — Sono */}
+            <div className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 text-lg">
+                  😴
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Sabia que?</h3>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Dormir bem regula hormônios da fome e ajuda no controle de peso.
+                <strong className="text-forest-600"> 7 a 9 horas por noite</strong> fazem diferença no balcão e na vida.
+              </p>
+            </div>
+
+            {/* Card: Farmacêutico */}
+            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 text-lg">
+                  🧑‍⚕️
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Farmacêutico sempre</h3>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Sempre consulte o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
+                Solicite o segundo visto em prescrições e <strong className="text-orange-600">anote corretamente na etiqueta de posologia</strong>.
+              </p>
+            </div>
+
+            {/* Card: 4Ps */}
+            <div className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 text-lg">
+                  🏷️
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Os 4Ps no balcão</h3>
+              </div>
+              <div className="mt-3 space-y-1.5">
+                {[
+                  ["🧴 Produto", "Conheça cada item que sai da prateleira"],
+                  ["💰 Preço", "Domine os valores e descontos da loja"],
+                  ["📍 Praça", "Saiba onde encontrar cada produto"],
+                  ["📣 Promoção", "Comunique ofertas com clareza e ética"],
+                ].map(([emoji, txt]) => (
+                  <p key={emoji} className="text-sm text-muted">
+                    <strong className="text-forest-600">{emoji}</strong> — {txt}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
          CTA FINAL — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <span className="badge-orange inline-flex">
-            Gratuito
+            Acesse agora
           </span>
           <h2 className="mt-5 text-[clamp(1.8rem,4vw,2.8rem)] font-extrabold tracking-[-0.03em] text-white">
             Pronto para transformar seu atendimento?

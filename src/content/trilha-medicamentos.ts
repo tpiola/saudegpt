@@ -1695,26 +1695,26 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           resumo:
-            "O programa mudou: hoje oferece gratuidade ampliada e novos itens. Conecte balcão, orientação e impacto público.",
+            "O programa mudou: hoje oferece cobertura ampliada e novos itens. Conecte balcão, orientação e impacto público.",
           resumoExecutivo: [
-            "Desde 14/02/2025, o programa passou a disponibilizar gratuitamente 100% dos medicamentos e insumos do elenco.",
+            "Desde 14/02/2025, o programa passou a disponibilizar sem custo 100% dos medicamentos e insumos do elenco.",
             "Cobertura de 12 indicações de saúde; inclui também fraldas geriátricas.",
             "Absorventes higiênicos para beneficiárias do Programa Dignidade Menstrual.",
           ],
           checklist: [
-            "Orientar o cidadão sobre gratuidade e documentos.",
+            "Orientar o cidadão sobre acesso sem custo e documentos.",
             "Conectar à adesão e ao impacto social.",
           ],
           quandoChamarFarmaceutico: ["Dúvidas de elegibilidade e dispensação pelo programa."],
           errosComuns: [
-            "Informar copagamento desatualizado — hoje há gratuidade de 100% do elenco.",
+            "Informar copagamento desatualizado — hoje há cobertura total do elenco.",
           ],
           comparativo: {
             titulo: "Farmácia Popular antes x depois de 14/02/2025",
             itens: [
               { nome: "Antes de 14/02/2025", quando: "Copagamento (paciente pagava parte); elenco restrito." },
-              { nome: "Após 14/02/2025", quando: "100% gratuito; 12 indicações de saúde; fraldas geriátricas incluídas." },
-              { nome: "Dignidade Menstrual", quando: "Absorventes higiênicos gratuitos para beneficiárias do programa." },
+              { nome: "Após 14/02/2025", quando: "100% custeado pelo governo; 12 indicações de saúde; fraldas geriátricas incluídas." },
+              { nome: "Dignidade Menstrual", quando: "Absorventes higiênicos sem custo para beneficiárias do programa." },
             ],
           },
         simulacao: {
@@ -1727,12 +1727,12 @@ export const trilhaMedicamentos: Trilha = {
               "O que mudou no Farmácia Popular a partir de 14/02/2025?",
               [
                 "Acabou o programa",
-                "Passou a oferecer gratuitamente 100% do elenco, com 12 indicações, fraldas geriátricas e absorventes (Dignidade Menstrual)",
+                "Passou a oferecer sem custo 100% do elenco, com 12 indicações, fraldas geriátricas e absorventes (Dignidade Menstrual)",
                 "Só atende particulares",
                 "Subiu o copagamento",
               ],
               1,
-              "Desde 14/02/2025 há gratuidade de 100% do elenco, 12 indicações, fraldas geriátricas e absorventes.",
+              "Desde 14/02/2025 há cobertura total do elenco, 12 indicações, fraldas geriátricas e absorventes.",
             ),
             q(
               "O Farmácia Popular cobre medicamentos para quantas indicações de saúde?",
@@ -1759,13 +1759,13 @@ export const trilhaMedicamentos: Trilha = {
             q(
               "Um cliente diz que 'o Farmácia Popular agora é tudo pago'. Como o atendente deve orientar?",
               [
-                "Confirmar que realmente acabou a gratuidade",
-                "Corrigir a informação: desde 14/02/2025 o programa oferece gratuidade de 100% do elenco para as indicações cobertas",
+                "Confirmar que realmente acabou a cobertura sem custo",
+                "Corrigir a informação: desde 14/02/2025 o programa oferece cobertura total do elenco para as indicações cobertas",
                 "Falar que não sabe",
                 "Dizer que só vale para idosos",
               ],
               1,
-              "Houve desinformação; na verdade o programa ampliou a gratuidade para 100% do elenco. O atendente deve corrigir com segurança.",
+              "Houve desinformação; na verdade o programa ampliou a cobertura para todo o elenco. O atendente deve corrigir com segurança.",
             ),
           ],
           xp: 60,

@@ -23,7 +23,7 @@ export function Footer() {
                 href="#matricular"
                 className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-forest-700 transition-all hover:bg-white/90"
               >
-                Matricule-se grátis
+                Matricule-se
               </a>
             </div>
           </div>
@@ -50,6 +50,7 @@ export function Footer() {
               <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Capacitação em Medicamentos</Link></li>
               <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Receitas e Legislação</Link></li>
               <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Atendimento Humanizado</Link></li>
+              <li><Link href="/curiosidades" className="text-sm text-white/50 hover:text-white transition-colors">Curiosidades do Setor</Link></li>
               <li><Link href="/comando-diario" className="text-sm text-white/50 hover:text-white transition-colors">Comando Diário</Link></li>
             </ul>
           </div>

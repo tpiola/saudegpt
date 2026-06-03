@@ -22,8 +22,8 @@ export default function BibliotecaPage() {
         descricao="Substitui o raciocínio antigo de 'terminal de consulta' estático. As normas mudam — o curso acompanha."
       />
 
-      <Card className="mt-6 border-l-4 border-l-cyan-500 bg-surface-2/80">
-        <p className="text-sm font-semibold text-brand-700 dark:text-brand-200">
+      <Card className="mt-6 border-l-4 border-l-green-500 bg-surface-2/80">
+        <p className="text-sm font-semibold text-green-700 dark:text-green-200">
           Última revisão pedagógica do hub:{" "}
           {ultimaAtualizacaoBiblioteca()
             ? new Date(ultimaAtualizacaoBiblioteca() + "T12:00:00").toLocaleDateString("pt-BR")
@@ -36,25 +36,25 @@ export default function BibliotecaPage() {
 
       <section className="mt-10">
         <div className="flex items-center gap-2">
-          <Icon name="flame" size={18} className="text-amber-500" />
+          <Icon name="flame" size={18} className="text-orange-500" />
           <h2 className="text-lg font-bold">Atualizações críticas</h2>
         </div>
         <div className="mt-4 grid gap-4 md:grid-cols-2">
           {atualizadas.map((n) => (
-            <Card key={n.id} className="border-l-4 border-l-amber-400">
+            <Card key={n.id} className="border-l-4 border-l-orange-400">
               <div className="flex items-center justify-between">
                 <Etiqueta tom="warning">Atualizado</Etiqueta>
                 <span className="text-xs text-subtle">{n.categoria}</span>
               </div>
               <h3 className="mt-3 text-base font-bold">{n.titulo}</h3>
-              <p className="mt-0.5 text-xs font-semibold text-brand-600">
+              <p className="mt-0.5 text-xs font-semibold text-green-600">
                 {n.norma} · {n.orgao}
               </p>
               <p className="mt-2 text-sm text-muted">{n.resumo}</p>
               <ul className="mt-3 space-y-1.5">
                 {n.pontosChave.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-sm text-muted">
-                    <Icon name="check" size={14} className="mt-0.5 flex-none text-brand-600" /> {p}
+                    <Icon name="check" size={14} className="mt-0.5 flex-none text-green-600" /> {p}
                   </li>
                 ))}
               </ul>
@@ -73,12 +73,12 @@ export default function BibliotecaPage() {
                 <span className="text-xs text-subtle">{n.orgao}</span>
               </div>
               <h3 className="mt-3 text-base font-bold">{n.titulo}</h3>
-              <p className="mt-0.5 text-xs font-semibold text-brand-600">{n.norma}</p>
+              <p className="mt-0.5 text-xs font-semibold text-green-600">{n.norma}</p>
               <p className="mt-2 text-sm text-muted">{n.resumo}</p>
               <ul className="mt-3 space-y-1.5">
                 {n.pontosChave.map((p) => (
                   <li key={p} className="flex items-start gap-2 text-sm text-muted">
-                    <Icon name="check" size={14} className="mt-0.5 flex-none text-brand-600" /> {p}
+                    <Icon name="check" size={14} className="mt-0.5 flex-none text-green-600" /> {p}
                   </li>
                 ))}
               </ul>

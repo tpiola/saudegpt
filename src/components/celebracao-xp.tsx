@@ -12,7 +12,7 @@ export function CelebracaoXp({ xp, ativo }: { xp: number; ativo: boolean }) {
       role="status"
       aria-live="polite"
     >
-      <div className="animate-xp-pop flex items-center gap-2 rounded-2xl gradient-brand px-5 py-3 text-white shadow-lg">
+      <div className="animate-xp-pop flex items-center gap-2 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 px-5 py-3 text-white shadow-lg">
         <Icon name="sparkles" size={22} />
         <span className="font-bold">+{xp} XP conquistados!</span>
       </div>

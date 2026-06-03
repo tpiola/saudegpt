@@ -78,8 +78,8 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
             onClick={() => setNivel(n.id)}
             className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
               nivel === n.id
-                ? "gradient-brand text-white shadow-lg shadow-brand-500/20 scale-105"
-                : "border border-border bg-surface/80 backdrop-blur-sm text-muted hover:border-terracota-400 hover:text-terracota-500 hover:shadow-md"
+                ? "bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg shadow-green-500/20 scale-105"
+                : "border border-border bg-surface/80 backdrop-blur-sm text-muted hover:border-orange-400 hover:text-orange-500 hover:shadow-md"
             }`}
           >
             {n.rotulo}
@@ -108,7 +108,7 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                       <div className="absolute inset-0 bg-gradient-to-r from-forest-900/40 to-transparent" />
                     </>
                   ) : (
-                    <div className="absolute inset-0 gradient-brand opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 opacity-90" />
                   )}
                 </div>
 
@@ -127,7 +127,7 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                           href={`/trilhas/${trilha.id}/${modulo.id}`}
                           className="group"
                         >
-                          <h2 className="text-2xl font-bold text-white group-hover:text-terracota-300 transition-colors drop-shadow-sm sm:text-3xl">
+                          <h2 className="text-2xl font-bold text-white group-hover:text-orange-300 transition-colors drop-shadow-sm sm:text-3xl">
                             {modulo.titulo}
                           </h2>
                         </Link>
@@ -170,11 +170,11 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                   <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {modulo.aulas.map((aula) => (
                       <Link key={aula.id} href={`/aula/${trilha.id}/${aula.id}`}>
-                        <Card className="group/card h-full border-white/10 bg-white/5 backdrop-blur-md p-4 transition-all duration-300 hover:bg-white/15 hover:border-terracota-400/50 hover:shadow-2xl hover:shadow-black/30 hover:-translate-y-1">
+                        <Card className="group/card h-full border-white/10 bg-white/5 backdrop-blur-md p-4 transition-all duration-300 hover:bg-white/15 hover:border-orange-400/50 hover:shadow-2xl hover:shadow-black/30 hover:-translate-y-1">
                           <div className="flex items-start gap-3">
                             <AulaStatusIcon trilhaId={trilha.id} aulaId={aula.id} />
                             <div className="min-w-0 flex-1">
-                              <div className="truncate font-semibold text-white group-hover/card:text-terracota-200 transition-colors">
+                              <div className="truncate font-semibold text-white group-hover/card:text-orange-200 transition-colors">
                                 {aula.titulo}
                               </div>
                               <p className="mt-1 line-clamp-2 text-sm text-white/60 group-hover/card:text-white/70">
@@ -187,7 +187,7 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                                   {aula.duracaoMin} min
                                 </span>
                                 {aula.videoUrl && (
-                                  <span className="text-terracota-400 font-medium">
+                                  <span className="text-orange-400 font-medium">
                                     🎬 Vídeo
                                   </span>
                                 )}
@@ -196,7 +196,7 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                             <Icon
                               name="arrow"
                               size={14}
-                              className="flex-none text-white/30 group-hover/card:text-terracota-400 transition-colors"
+                              className="flex-none text-white/30 group-hover/card:text-orange-400 transition-colors"
                             />
                           </div>
                         </Card>

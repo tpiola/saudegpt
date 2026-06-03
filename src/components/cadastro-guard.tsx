@@ -64,7 +64,7 @@ export function CadastroGuard({ children }: { children: React.ReactNode }) {
     return (
       <div className="mx-auto max-w-lg px-4 py-16">
         <Card className="text-center">
-          <Icon name="shield" size={40} className="mx-auto text-rose-500" />
+          <Icon name="shield" size={40} className="mx-auto text-orange-500" />
           <h1 className="mt-4 text-xl font-bold">Acesso não liberado</h1>
           <p className="mt-2 text-sm text-muted">
             Seu cadastro não foi aprovado. Entre em contato com a coordenação do curso.

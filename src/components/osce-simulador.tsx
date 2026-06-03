@@ -33,13 +33,13 @@ export function OsceSimulador() {
     return (
       <Card>
         <h3 className="text-lg font-bold">Resultado OSCE</h3>
-        <p className="mt-2 text-2xl font-bold text-brand-600">{pct}%</p>
+        <p className="mt-2 text-2xl font-bold text-green-600">{pct}%</p>
         <p className="text-sm text-muted">
           Triagem, segurança, ética e encaminhamento em 3 estações.
         </p>
         <button
           type="button"
-          className="mt-4 text-sm font-semibold text-brand-600"
+          className="mt-4 text-sm font-semibold text-green-600"
           onClick={() => {
             setNotas([]);
             setIdx(0);
@@ -83,13 +83,13 @@ export function OsceSimulador() {
       {mostrar && escolha != null && (
         <div className="mt-4">
           <p className="text-sm text-muted">
-            <Icon name="sparkles" size={14} className="inline text-brand-600" />{" "}
+            <Icon name="sparkles" size={14} className="inline text-green-600" />{" "}
             {caso.opcoes[escolha].feedback} (+{pontos} pts)
           </p>
           <button
             type="button"
             onClick={avancar}
-            className="mt-4 rounded-xl gradient-brand px-4 py-2.5 text-sm font-semibold text-white"
+            className="mt-4 rounded-xl bg-gradient-to-r from-green-500 to-green-600 px-4 py-2.5 text-sm font-semibold text-white"
           >
             Próxima estação
           </button>
