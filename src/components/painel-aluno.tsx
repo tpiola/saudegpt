@@ -98,7 +98,7 @@ export function PainelAluno() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* ── Hero Card ── */}
       <Card variante="glass" className="overflow-hidden">
-          <div className="relative rounded-2xl bg-[linear-gradient(135deg,var(--forest-600),var(--brand-600)_60%,var(--terracota-600))] p-6 sm:p-8">
+          <div className="relative rounded-2xl bg-[linear-gradient(135deg,var(--forest-600),var(--green-600)_60%,var(--orange-600))] p-6 sm:p-8">
           {/* Brilho decorativo */}
           <div
             aria-hidden
@@ -177,7 +177,7 @@ export function PainelAluno() {
               >
                 <Card
                   variante="elevated"
-                  className="flex items-center justify-between gap-3 p-4 transition-all group-hover:border-brand-400"
+                  className="flex items-center justify-between gap-3 p-4 transition-all group-hover:border-green-400"
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
@@ -231,7 +231,7 @@ export function PainelAluno() {
                 </div>
                 <Link
                   href={`/trilhas/${t.id}`}
-                  className="text-sm font-semibold text-brand-600 hover:text-brand-500 transition-colors"
+                  className="text-sm font-semibold text-green-600 hover:text-green-500 transition-colors"
                 >
                   Abrir
                 </Link>
@@ -253,7 +253,7 @@ export function PainelAluno() {
       />
       <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-5">
         {concluidasCount >= 1 && (
-          <div className="badge-premium flex items-center gap-2 rounded-xl px-4 py-2.5">
+          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
               <Icon name="play" size={16} />
             </span>
@@ -261,7 +261,7 @@ export function PainelAluno() {
           </div>
         )}
         {prog.xp >= 250 && (
-          <div className="badge-premium flex items-center gap-2 rounded-xl px-4 py-2.5">
+          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
               <Icon name="sparkles" size={16} />
             </span>
@@ -269,7 +269,7 @@ export function PainelAluno() {
           </div>
         )}
         {prog.missoesPontos >= 30 && (
-          <div className="badge-premium flex items-center gap-2 rounded-xl px-4 py-2.5">
+          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
               <Icon name="target" size={16} />
             </span>
@@ -279,7 +279,7 @@ export function PainelAluno() {
         {badgesTrilha.map((b) => (
           <div
             key={b.trilha.id}
-            className="badge-premium flex items-center gap-2 rounded-xl px-4 py-2.5"
+            className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-lg gradient-brand text-white">
               <Icon name="award" size={16} />

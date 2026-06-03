@@ -107,7 +107,7 @@ export default function TrilhasPage() {
                   <ProgressoTrilhaBadge trilhaId={t.id} />
                   <Botao
                     href={`/trilhas/${t.id}`}
-                    variante="premium"
+                    variante="primary"
                     tamanho="md"
                     iconeFim="arrow"
                   >

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Montserrat, Dancing_Script } from "next/font/google";
+import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { LmsShell } from "@/components/lms-shell";
 import { ProgressProvider } from "@/lib/progress";
@@ -9,25 +9,18 @@ import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const montserrat = Montserrat({
-  variable: "--font-sans-humanist",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
-const dancing = Dancing_Script({
-  variable: "--font-script",
+const dmSans = DM_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -36,7 +29,7 @@ const baseUrl = getSiteUrl();
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+    { media: "(prefers-color-scheme: dark)", color: "#020e0c" },
   ],
 };
 
@@ -89,7 +82,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${cormorant.variable} ${montserrat.variable} ${dancing.variable} h-full`}
+      className={`${dmSans.variable} ${inter.variable} h-full`}
       suppressHydrationWarning
     >
       <head>
@@ -113,10 +106,10 @@ document.addEventListener('keydown', function(e) {
 `}} />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="bg-clinical flex min-h-full flex-col" style={{ fontFamily: 'var(--font-sans-humanist), system-ui, sans-serif' }}>
+      <body className="flex min-h-full flex-col" style={{ fontFamily: 'var(--font-body), system-ui, sans-serif' }}>
         <a
           href="#conteudo-principal"
-          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-xl focus:bg-black focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-forest-500 focus:px-4 focus:py-2 focus:text-white"
         >
           Pular para o conteúdo
         </a>

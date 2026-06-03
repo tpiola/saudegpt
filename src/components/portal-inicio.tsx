@@ -31,7 +31,7 @@ function VideoBanner() {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: "340px" }}>
       {/* Fundo com imagem + gradiente animado */}
-      <div className="absolute inset-0 bg-navy-900">
+      <div className="absolute inset-0 bg-forest-500">
         <Image
           src="/hero-dashboard.jpg"
           alt=""
@@ -41,7 +41,7 @@ function VideoBanner() {
           sizes="100vw"
         />
         {/* Gradiente pulsante sutil */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900/60 via-navy-800/40 to-accent-900/20 animate-pulse-slow" />
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-500/60 via-forest-600/40 to-orange-900/20 animate-pulse-slow" />
         {/* Grid */}
         <div className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -122,11 +122,11 @@ function PortalConvidadoHero() {
   const totalAulasContagem = totalAulas();
 
   const pilares = [
-    { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-sage-500" },
+    { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-green-400" },
     { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-forest-600 to-forest-400" },
-    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-sage-500 to-sage-400" },
-    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-terracota-500 to-terracota-400" },
-    { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-forest-400 to-terracota-500" },
+    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-green-400 to-sage-400" },
+    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-orange-500 to-terracota-400" },
+    { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-forest-400 to-orange-500" },
   ];
 
   return (
@@ -157,7 +157,7 @@ function PortalConvidadoHero() {
 
         {/* Orbs ambientais */}
         <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] orb bg-forest-500/15" />
-        <div className="pointer-events-none absolute -bottom-40 -right-40 h-[320px] w-[320px] orb bg-terracota-500/12" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 h-[320px] w-[320px] orb bg-orange-500/12" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full py-16 sm:py-20">
           <div className="max-w-4xl">
@@ -199,7 +199,7 @@ function PortalConvidadoHero() {
               >
                 <span style={{ color: "#fff" }}>O treinamento que transforma</span>
                 <br />
-                <span className="text-gradient-premium">atendentes em cuidadores</span>
+                <span className="text-gradient-forest">atendentes em cuidadores</span>
               </h1>
             </ScrollReveal>
 
@@ -224,7 +224,7 @@ function PortalConvidadoHero() {
                 <Botao
                   href="/trilhas"
                   tamanho="xl"
-                  variante="premium"
+                  variante="primary"
                   iconeFim="arrow"
                   className="w-full sm:w-auto shadow-glow-strong text-base"
                 >
@@ -285,9 +285,9 @@ function PortalConvidadoHero() {
               <div>
                 <div
                   className="mb-4 inline-flex items-center gap-2"
-                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--terracota-500)" }}
+                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--orange-500)" }}
                 >
-                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--terracota-500)", display: "inline-block" }} />
+                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--orange-500)", display: "inline-block" }} />
                   A realidade do balcão
                 </div>
                 <h2
@@ -299,7 +299,7 @@ function PortalConvidadoHero() {
                   }}
                 >
                   O balcão da farmácia{" "}
-                  <span style={{ color: "var(--terracota-500)" }}>precisa de mais</span>
+                  <span style={{ color: "var(--orange-500)" }}>precisa de mais</span>
                 </h2>
                 <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
                   <p style={{ fontSize: "1.05rem" }}>
@@ -327,13 +327,13 @@ function PortalConvidadoHero() {
                     key={texto}
                     className="flex items-center gap-3 rounded-xl px-4 py-3"
                     style={{
-                      border: "1px solid rgba(var(--terracota-500-rgb,214,110,15),0.2)",
+                      border: "1px solid rgba(var(--orange-500-rgb,214,110,15),0.2)",
                       background: "rgba(253,242,234,0.25)",
                     }}
                   >
                     <span
                       className="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
-                      style={{ background: "rgba(253,228,210,0.6)", color: "var(--terracota-500)" }}
+                      style={{ background: "rgba(253,228,210,0.6)", color: "var(--orange-500)" }}
                     >
                       <Icon name="close" size={16} />
                     </span>
@@ -436,9 +436,9 @@ function PortalConvidadoHero() {
               <div>
                 <div
                   className="mb-4 inline-flex items-center gap-2"
-                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--sage-500)" }}
+                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--green-400)" }}
                 >
-                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--sage-500)", display: "inline-block" }} />
+                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--green-400)", display: "inline-block" }} />
                   A transformação
                 </div>
                 <h2
@@ -503,10 +503,10 @@ function PortalConvidadoHero() {
             {trilhas.map((t, idx) => {
               const totalModAulas = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
               const gradientMap = [
-                "from-forest-400 to-sage-500",
+                "from-forest-400 to-green-400",
                 "from-forest-500 to-forest-400",
-                "from-forest-500 to-terracota-500",
-                "from-sage-500 to-forest-500",
+                "from-forest-500 to-orange-500",
+                "from-green-400 to-forest-500",
               ];
               return (
                 <ScrollReveal key={t.id} delay={idx * 80} direction="up">
@@ -583,19 +583,19 @@ function PortalConvidadoHero() {
               {
                 faixa: "Adolescentes",
                 icone: "heart",
-                bg: "from-forest-500 to-sage-500",
+                bg: "from-forest-500 to-green-400",
                 dicas: ["Linguagem simples e sem julgamento", "Respeito à timidez e vergonha", "Acne, anticoncepcional, saúde íntima", "Atendimento rápido e discreto", "Orientação sem alarmismo"],
               },
               {
                 faixa: "Adultos",
                 icone: "trending",
-                bg: "from-forest-600 to-terracota-500",
+                bg: "from-forest-600 to-orange-500",
                 dicas: ["Escuta ativa das queixas do dia a dia", "Produtos para rotina corrida", "Cuidado com automedicação", "Oferta de serviços complementares", "Fidelização pelo cuidado genuíno"],
               },
               {
                 faixa: "Idosos",
                 icone: "shield",
-                bg: "from-sage-500 to-forest-600",
+                bg: "from-green-400 to-forest-600",
                 dicas: ["Paciência e tom de voz adequado", "Polifarmácia e interações medicamentosas", "Letra grande nos materiais", "Acompanhamento do tratamento", "Acolhimento com respeito e dignidade"],
               },
             ].map((f, idx) => (
@@ -674,7 +674,7 @@ function PortalConvidadoHero() {
                     <Botao
                       href="/trilhas"
                       tamanho="xl"
-                      variante="premium"
+                      variante="primary"
                       iconeFim="arrow"
                       className="w-full sm:w-auto shadow-glow-strong text-base"
                     >

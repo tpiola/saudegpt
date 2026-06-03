@@ -12,7 +12,7 @@ const PATROCINADORES = [
     nome: "Rei das Vendas",
     url: "https://www.reidasvendas.com.br",
     tagline: "Funil + CRM",
-    cor: "from-terracota-500 to-terracota-600",
+    cor: "from-orange-500 to-orange-600",
   },
 ];
 
@@ -39,7 +39,7 @@ export function BannerPatrocinio({ variante = "default" }: { variante?: "default
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border/80 bg-gradient-to-br from-surface to-surface-2">
-      <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--forest-500)/[0.04],transparent_50%,var(--terracota-500)/[0.03])] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,var(--forest-500)/[0.04],transparent_50%,var(--orange-500)/[0.03])] pointer-events-none" />
       <div className="relative px-6 py-5">
         <div className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-subtle">
           <Icon name="sparkles" size={12} />

@@ -88,25 +88,25 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-screen flex-col lg:flex-row">
       {/* ════════════════════════════════════════════
-         SIDEBAR — ACADEMIC PREMIUM
+         SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <aside
         className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out lg:static lg:z-auto lg:translate-x-0 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        {/* Barra decorativa — navy + gold */}
-        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-navy-500 via-accent-400 to-navy-500 opacity-80" />
+        {/* Barra decorativa — forest green + orange */}
+        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-forest-500 via-orange-400 to-forest-500 opacity-80" />
 
         {/* Header: logo */}
         <div className="relative flex h-16 items-center gap-3 border-b border-border px-4">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-navy-500/[0.04] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-forest-500/[0.04] to-transparent pointer-events-none" />
           <Link
             href="/dashboard"
             className="flex min-w-0 flex-1 items-center gap-2.5"
             onClick={() => setMenuAberto(false)}
           >
-            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gradient-to-br from-navy-600 to-brand-500 text-white shadow-md shadow-navy-500/25">
+            <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-orange-500 text-white shadow-md">
               <Icon name="graduation" size={20} />
             </span>
             <span className="min-w-0 leading-tight">
@@ -148,12 +148,12 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                       onClick={() => setMenuAberto(false)}
                       className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
-                          ? "bg-gradient-to-r from-navy-500/[0.08] to-transparent text-foreground shadow-sm"
+                          ? "bg-gradient-to-r from-forest-500/[0.08] to-transparent text-foreground shadow-sm"
                           : "text-muted hover:bg-surface-2/50 hover:text-foreground"
                       }`}
                     >
                       {ativo(item.href) && (
-                        <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-accent-500 to-accent-400" />
+                        <span className="absolute left-0 top-1/2 h-5 w-0.5 -translate-y-1/2 rounded-full bg-gradient-to-b from-orange-500 to-orange-400" />
                       )}
 
                       <Icon
@@ -161,7 +161,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                         size={18}
                         className={`shrink-0 transition-colors duration-200 ${
                           ativo(item.href)
-                            ? "text-navy-600 dark:text-navy-400"
+                            ? "text-forest-600 dark:text-forest-400"
                             : "group-hover:text-foreground"
                         }`}
                       />
@@ -169,7 +169,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                       {item.label}
 
                       {item.href === "/missoes" && (
-                        <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-accent-500 to-accent-600 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">
+                        <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">
                           <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
                           Novo
                         </span>
@@ -184,12 +184,12 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
         {/* Footer */}
         <div className="relative border-t border-border px-4 pb-4 pt-3">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-navy-500/[0.03] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-forest-500/[0.03] to-transparent pointer-events-none" />
 
           {perfil ? (
             <div className="relative mb-3 rounded-xl bg-surface-2/80 px-3 py-2.5 backdrop-blur-sm border border-border">
               <div className="flex items-center gap-2.5">
-                <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-navy-600 to-brand-500 text-white text-xs font-bold shadow-sm">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-white text-xs font-bold shadow-sm">
                   {perfil.nome.charAt(0).toUpperCase()}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -209,11 +209,11 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/[0.6] to-transparent" />
             </div>
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-accent-500 transition-colors">
+              <Link key={l.href} href={l.href} className="hover:text-orange-500 transition-colors">
                 {l.label}
               </Link>
             ))}
-            <Link href="/sobre" className="hover:text-accent-500 transition-colors">
+            <Link href="/sobre" className="hover:text-orange-500 transition-colors">
               Sobre o curso
             </Link>
           </div>
@@ -238,7 +238,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl border border-border-strong text-muted lg:hidden"
+              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-border-strong text-muted lg:hidden"
               onClick={() => setMenuAberto(true)}
               aria-label="Abrir menu"
             >
