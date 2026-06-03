@@ -14,7 +14,7 @@ export const site = {
 
 /** Legado — navegação principal está em `navegacao-lms.ts` (sidebar). */
 export const navPrincipal = [
-  { href: "/", label: "Início" },
+  { href: "/", label: "Home" },
   { href: "/trilhas", label: "Trilhas" },
   { href: "/comando-diario", label: "Comando diário" },
   { href: "/bulas-receitas", label: "Bulas e receitas" },
