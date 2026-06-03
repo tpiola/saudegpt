@@ -38,7 +38,7 @@ function VideoBanner() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
         style={{ filter: "brightness(0.55) saturate(1.1)" }}
-        poster="/pharmacy-hero.jpg"
+        poster="/hero-dashboard.jpg"
       >
         <source src="https://cdn.pixabay.com/video/2022/09/19/132267-751668805_large.mp4" type="video/mp4" />
         <source src="https://www.pexels.com/download/video/5794730/" type="video/mp4" />
@@ -141,7 +141,7 @@ function PortalConvidadoHero() {
         }}
       >
         <Image
-          src="/pharmacy-hero.jpg"
+          src="/hero-dashboard.jpg"
           alt=""
           fill
           className="hero-bg scale-105"

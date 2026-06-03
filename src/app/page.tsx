@@ -72,7 +72,7 @@ export default function HomePage() {
       {/* ── Hero com imagem ── */}
       <section className="hero-image-gradient relative overflow-hidden">
         <Image
-          src="/customer-service.jpg"
+          src="/hero-matricula.jpg"
           alt="Atendimento ao cliente"
           fill
           className="hero-bg"
