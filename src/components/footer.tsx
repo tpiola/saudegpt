@@ -2,7 +2,7 @@ import Link from "next/link";
 import { linksLegais, navPrincipal, site } from "@/lib/site";
 import { Icon } from "./icons";
 
-const linksCoordenacao = [{ href: "/admin", label: "Coordenação (admin)" }];
+
 
 export function Footer() {
   return (
@@ -71,11 +71,7 @@ export function Footer() {
               {l.label}
             </Link>
           ))}
-          {linksCoordenacao.map((l) => (
-            <Link key={l.href} href={l.href} className="hover:text-forest-600 transition-colors">
-              {l.label}
-            </Link>
-          ))}
+          
         </p>
         <p className="mt-2 text-xs text-subtle leading-relaxed">
           Conteúdo educativo. Não substitui a orientação do farmacêutico ou do médico. As decisões
