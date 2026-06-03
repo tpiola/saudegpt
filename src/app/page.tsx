@@ -35,7 +35,7 @@ export default function HomePage() {
           HERO — 100vh CINEMATOGRÁFICO PREMIUM
           ══════════════════════════════════════════════ */}
       <section className="hero-rd relative flex h-screen items-center overflow-hidden">
-        <HeroVideo videoId="4122" overlay="forest" />
+        <HeroVideo />
 
         {/* Grid pattern overlay */}
         <div className="pattern-grid pointer-events-none absolute inset-0 z-[2] opacity-30" />
