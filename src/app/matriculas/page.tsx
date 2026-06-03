@@ -9,7 +9,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Matrículas",
   description:
-    "Matricule-se na Formação para Atendentes Premium de Farmácia — com foco em acolhimento, cuidado humanizado, comunicação empática e encantamento no balcão.",
+    "Acesse gratuitamente a Formação para Atendentes Premium de Farmácia — trilhas completas, simuladores e cuidado humanizado.",
 };
 
 const beneficios = [
@@ -83,7 +83,7 @@ export default function MatriculasPage() {
                 size={12}
                 className="text-accent-cyan"
               />
-              Matrícula gratuita
+              Acesso gratuito
             </div>
 
             <h1 className="text-[clamp(2rem,5vw,3.5rem)] font-extrabold tracking-tight leading-tight">
