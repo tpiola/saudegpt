@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,6 @@ import { ContinuarBotao } from "./continuar";
 import { Botao, Card } from "./ui";
 import { Icon, type IconName } from "./icons";
 import { ScrollReveal, ContadorAnimado } from "./animacoes";
-import { BannerPatrocinio } from "./banner-patrocinio";
 
 type StatusMatricula = "verificando" | "pendente" | "rejeitado" | "aprovado";
 
@@ -26,19 +25,98 @@ export function PortalInicio() {
 }
 
 /* ═══════════════════════════════════════════════
-   HERO CINEMATOGRÁFICO — RD SAÚDE INSPIRED
-   ═══════════════════════════════════════════════ */
+   VIDEO BACKGROUND HERO — DROGARIA
+═══════════════════════════════════════════════ */
+function VideoBanner() {
+  return (
+    <div className="relative w-full overflow-hidden" style={{ height: "340px" }}>
+      {/* Vídeo de drogaria passando ao fundo */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ filter: "brightness(0.55) saturate(1.1)" }}
+        poster="/pharmacy-hero.jpg"
+      >
+        <source src="https://cdn.pixabay.com/video/2022/09/19/132267-751668805_large.mp4" type="video/mp4" />
+        <source src="https://www.pexels.com/download/video/5794730/" type="video/mp4" />
+        {/* Fallback image */}
+      </video>
+
+      {/* Overlay gradiente institucional */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(to bottom, rgba(4,11,13,0.82) 0%, rgba(13,43,46,0.45) 40%, rgba(4,11,13,0.88) 100%)",
+        }}
+      />
+
+      {/* Conteúdo do banner de vídeo */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center px-4 text-center">
+        <div
+          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4"
+          style={{
+            background: "rgba(255,255,255,0.07)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            backdropFilter: "blur(8px)",
+          }}
+        >
+          <span
+            className="h-2 w-2 rounded-full"
+            style={{ background: "#6db860", boxShadow: "0 0 8px #6db860" }}
+          />
+          <span
+            style={{
+              fontSize: "10px",
+              fontWeight: 700,
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(255,255,255,0.65)",
+            }}
+          >
+            Formação profissional — Atendentes Premium de Farmácia
+          </span>
+        </div>
+
+        <h2
+          style={{
+            fontSize: "clamp(1.4rem, 3.5vw, 2.4rem)",
+            fontWeight: 800,
+            color: "#fff",
+            letterSpacing: "-0.02em",
+            lineHeight: 1.1,
+            maxWidth: "640px",
+          }}
+        >
+          O cuidado começa{" "}
+          <span style={{ color: "#ef9145" }}>no balcão</span>
+        </h2>
+        <p
+          style={{
+            marginTop: "12px",
+            fontSize: "clamp(0.85rem, 1.8vw, 1rem)",
+            color: "rgba(255,255,255,0.55)",
+            maxWidth: "480px",
+            lineHeight: 1.55,
+          }}
+        >
+          Uma drogaria que cuida começa com um atendente que sabe cuidar.
+          Esse é o propósito desta formação.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════
+   HERO CINEMATOGRÁFICO — SEM MATRÍCULA
+═══════════════════════════════════════════════ */
 function PortalConvidadoHero() {
   const totalAulasContagem = totalAulas();
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Mandala dos 5 Pilares
   const pilares = [
     { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-sage-500" },
     { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-forest-600 to-forest-400" },
@@ -49,11 +127,19 @@ function PortalConvidadoHero() {
 
   return (
     <div>
-      {/* ════════════════════════════════════════════
-          HERO CINEMATOGRÁFICO
-          ════════════════════════════════════════════ */}
-      <section className="hero-image-gradient relative min-h-[80vh] sm:min-h-[90vh] flex items-center overflow-hidden">
-        {/* Imagem de fundo */}
+      {/* ═════ VÍDEO BANNER ACIMA DO HERO ═════ */}
+      <VideoBanner />
+
+      {/* ═════ HERO PRINCIPAL ═════ */}
+      <section
+        className="relative overflow-hidden"
+        style={{
+          minHeight: "78vh",
+          display: "flex",
+          alignItems: "center",
+          background: "var(--forest-900)",
+        }}
+      >
         <Image
           src="/pharmacy-hero.jpg"
           alt=""
@@ -63,82 +149,114 @@ function PortalConvidadoHero() {
           sizes="100vw"
         />
         <div className="hero-overlay" />
-
-        {/* Gradiente adicional — forest + terracota */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--forest-900),transparent_40%,var(--forest-900)/[0.3])]" />
-
-        {/* Grid sutil */}
         <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-15" />
 
-        {/* Orbs cinematográficos — responsivos */}
-        <div className="pointer-events-none absolute -left-24 sm:-left-48 -top-24 sm:-top-48 h-[300px] w-[300px] sm:h-[500px] sm:w-[500px] orb bg-forest-500/20" />
-        <div className="pointer-events-none absolute -bottom-24 sm:-bottom-48 -right-24 sm:-right-48 h-[250px] w-[250px] sm:h-[400px] sm:w-[400px] orb bg-terracota-500/15" />
+        {/* Orbs ambientais */}
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] orb bg-forest-500/15" />
+        <div className="pointer-events-none absolute -bottom-40 -right-40 h-[320px] w-[320px] orb bg-terracota-500/12" />
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full py-16 sm:py-20">
           <div className="max-w-4xl">
-            {/* Tagline de autoridade */}
             <ScrollReveal delay={0} direction="up">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.15em] text-white/60 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-sage-400 shadow-lg shadow-sage-400/50 animate-pulse-soft" />
-                Formação profissional para atendentes de farmácia
+              <div
+                className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-1.5"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.10)",
+                  background: "rgba(255,255,255,0.05)",
+                  backdropFilter: "blur(10px)",
+                }}
+              >
+                <span
+                  className="h-1.5 w-1.5 rounded-full animate-pulse-soft"
+                  style={{ background: "#6db860", boxShadow: "0 0 6px #6db860" }}
+                />
+                <span
+                  style={{
+                    fontSize: "10px",
+                    fontWeight: 700,
+                    letterSpacing: "0.15em",
+                    textTransform: "uppercase",
+                    color: "rgba(255,255,255,0.55)",
+                  }}
+                >
+                  Formação profissional para atendentes de farmácia
+                </span>
               </div>
             </ScrollReveal>
 
-            {/* Título cinematográfico */}
             <ScrollReveal delay={150} direction="up">
-              <h1 className="text-[clamp(2.5rem,7vw,5rem)] font-[800] leading-[1.02] tracking-[-0.03em]">
-                <span className="text-white">
-                  O treinamento que transforma
-                </span>
+              <h1
+                style={{
+                  fontSize: "clamp(2.4rem,7vw,5rem)",
+                  fontWeight: 800,
+                  lineHeight: 1.02,
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                <span style={{ color: "#fff" }}>O treinamento que transforma</span>
                 <br />
-                <span className="text-gradient-premium">
-                  atendentes em cuidadores
-                </span>
+                <span className="text-gradient-premium">atendentes em cuidadores</span>
               </h1>
             </ScrollReveal>
 
-            {/* Subtítulo */}
             <ScrollReveal delay={300} direction="up">
-              <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg sm:leading-relaxed">
-                Do acolhimento ao cuidado contínuo. Da perfumaria aos medicamentos. 
-                O único treinamento do Brasil que forma atendentes completos — 
+              <p
+                style={{
+                  marginTop: "24px",
+                  maxWidth: "600px",
+                  fontSize: "clamp(0.95rem,2vw,1.12rem)",
+                  lineHeight: 1.65,
+                  color: "rgba(255,255,255,0.58)",
+                }}
+              >
+                Do acolhimento ao cuidado contínuo. Da perfumaria aos medicamentos.
+                O único treinamento do Brasil que forma atendentes completos —
                 com técnica, empatia e amor pelo que fazem.
               </p>
             </ScrollReveal>
 
-            {/* CTAs */}
             <ScrollReveal delay={450} direction="up">
               <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                 <Botao
-                  href="/matriculas"
+                  href="/trilhas"
                   tamanho="xl"
                   variante="premium"
                   iconeFim="arrow"
                   className="w-full sm:w-auto shadow-glow-strong text-base"
                 >
-                  Começar treinamento
+                  Ver as trilhas
                 </Botao>
                 <ContinuarBotao />
               </div>
             </ScrollReveal>
 
-            {/* Stats com contadores */}
             <ScrollReveal delay={600} direction="up">
-              <div className="mt-10 sm:mt-14 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
+              <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">
                 {[
                   { valor: totalAulasContagem, label: "Microlições", sufixo: "+" },
                   { valor: 4, label: "Trilhas de formação", sufixo: "" },
-                  { valor: 1, label: "Missão: cuidar bem", sufixo: "" },
+                  { valor: 8, label: "Badges de conquista", sufixo: "" },
                 ].map((stat) => (
-                  <div key={stat.label} className="border-l border-white/10 pl-4">
-                    <div className="text-[clamp(1.5rem,3vw,2.5rem)] font-[800] tracking-tight text-white">
-                      <ContadorAnimado
-                        valor={stat.valor}
-                        sufixo={stat.sufixo}
-                        duracao={2500}
-                      />
+                  <div key={stat.label} style={{ borderLeft: "1px solid rgba(255,255,255,0.10)", paddingLeft: "16px" }}>
+                    <div
+                      style={{
+                        fontSize: "clamp(1.5rem,3vw,2.5rem)",
+                        fontWeight: 800,
+                        letterSpacing: "-0.02em",
+                        color: "#fff",
+                      }}
+                    >
+                      <ContadorAnimado valor={stat.valor} sufixo={stat.sufixo} duracao={2500} />
                     </div>
-                    <div className="mt-1 text-xs uppercase tracking-[0.12em] text-white/40">
+                    <div
+                      style={{
+                        marginTop: "4px",
+                        fontSize: "10px",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.12em",
+                        color: "rgba(255,255,255,0.38)",
+                      }}
+                    >
                       {stat.label}
                     </div>
                   </div>
@@ -149,40 +267,45 @@ function PortalConvidadoHero() {
         </div>
 
         {/* Scroll indicator */}
-        <ScrollReveal delay={1000} direction="up">
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
-            <span className="text-[9px] uppercase tracking-[0.2em]">Role</span>
-            <div className="h-8 w-[1px] bg-[linear-gradient(to_bottom,white/[0.3],transparent)] animate-float" />
-          </div>
-        </ScrollReveal>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2" style={{ color: "rgba(255,255,255,0.25)" }}>
+          <span style={{ fontSize: "9px", textTransform: "uppercase", letterSpacing: "0.2em" }}>Role</span>
+          <div className="h-8 w-px animate-float" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)" }} />
+        </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 1 — O PROBLEMA (ANTES)
-          ════════════════════════════════════════════ */}
+      {/* ═════ SEÇÃO: O PROBLEMA ═════ */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--forest-900)/[0.05],transparent)] pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
-          <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <ScrollReveal direction="left">
               <div>
-                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-terracota-400">
-                  <span className="h-3 w-[2px] rounded-full bg-terracota-500" />
-                  A realidade
+                <div
+                  className="mb-4 inline-flex items-center gap-2"
+                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--terracota-500)" }}
+                >
+                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--terracota-500)", display: "inline-block" }} />
+                  A realidade do balcão
                 </div>
-                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+                <h2
+                  style={{
+                    fontSize: "clamp(1.8rem,4vw,3rem)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.1,
+                  }}
+                >
                   O balcão da farmácia{" "}
-                  <span className="text-terracota-500">precisa de cuidado</span>
+                  <span style={{ color: "var(--terracota-500)" }}>precisa de mais</span>
                 </h2>
-                <div className="mt-6 space-y-4 text-muted leading-relaxed">
-                  <p className="text-lg">
-                    Atendentes são jogados no balcão sem preparo. Sabem o preço, 
+                <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
+                  <p style={{ fontSize: "1.05rem" }}>
+                    Atendentes são jogados no balcão sem preparo. Sabem o preço,
                     mas não sabem ouvir. Sabem o produto, mas não sabem cuidar.
                   </p>
                   <p>
-                    Clientes saem insatisfeitos. Oportunidades de cuidado viram 
-                    venda perdida. O atendente se frustra, e o paciente vai 
-                    embora sem a atenção que merece.
+                    Clientes saem insatisfeitos. Oportunidades de cuidado viram
+                    venda perdida. O atendente se frustra, e o paciente vai embora
+                    sem a atenção que merece.
                   </p>
                 </div>
               </div>
@@ -191,19 +314,26 @@ function PortalConvidadoHero() {
             <ScrollReveal direction="right" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "close", texto: "Atendente sem preparo para cuidar", cor: "terracota" },
-                  { icone: "close", texto: "Cliente que não se sente acolhido", cor: "terracota" },
-                  { icone: "close", texto: "Paciente que não volta", cor: "terracota" },
-                  { icone: "close", texto: "Cuidado que fica pela metade", cor: "terracota" },
-                ].map((item) => (
+                  "Atendente sem preparo para cuidar",
+                  "Cliente que não se sente acolhido",
+                  "Paciente que não volta",
+                  "Cuidado que fica pela metade",
+                ].map((texto) => (
                   <div
-                    key={item.texto}
-                    className="flex items-center gap-3 rounded-xl border border-terracota-200/50 bg-terracota-50/30 px-4 py-3 dark:border-terracota-900/20 dark:bg-terracota-950/10"
+                    key={texto}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3"
+                    style={{
+                      border: "1px solid rgba(var(--terracota-500-rgb,214,110,15),0.2)",
+                      background: "rgba(253,242,234,0.25)",
+                    }}
                   >
-                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-terracota-100 text-terracota-500 dark:bg-terracota-900/30">
-                      <Icon name={item.icone as IconName} size={16} />
+                    <span
+                      className="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                      style={{ background: "rgba(253,228,210,0.6)", color: "var(--terracota-500)" }}
+                    >
+                      <Icon name="close" size={16} />
                     </span>
-                    <span className="text-sm font-medium text-muted">{item.texto}</span>
+                    <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--muted)" }}>{texto}</span>
                   </div>
                 ))}
               </div>
@@ -212,43 +342,55 @@ function PortalConvidadoHero() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 2 — A SOLUÇÃO: MANDALA DOS 5 PILARES
-          ════════════════════════════════════════════ */}
-      <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+      {/* ═════ SEÇÃO: OS 5 PILARES ═════ */}
+      <section style={{ background: "linear-gradient(to bottom, var(--surface), rgba(13,43,46,0.03), var(--surface))" }}>
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
-                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
+              <div
+                className="mb-4 inline-flex items-center gap-2"
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+              >
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
                 A solução
               </div>
-              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+              <h2
+                style={{
+                  fontSize: "clamp(1.8rem,4vw,3rem)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.1,
+                }}
+              >
                 Um treinamento que{" "}
                 <span className="text-gradient-brand">ensina a cuidar</span>
               </h2>
-              <p className="mt-6 text-lg text-muted leading-relaxed">
-                Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo — 
+              <p className="mt-6" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo —
                 tudo que um atendente precisa para fazer a diferença na vida de quem chega ao balcão.
               </p>
             </ScrollReveal>
           </div>
 
-          {/* Mandala dos 5 Pilares */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
             {pilares.map((pilar, idx) => (
               <ScrollReveal key={pilar.titulo} delay={idx * 80} direction="up">
-                <Card className="group relative overflow-hidden p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl text-center h-full">
-                  {/* Top gradient bar */}
-                  <div className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${pilar.cor} opacity-60 group-hover:opacity-100 transition-opacity`} />
-                  
-                  {/* Icon circle */}
-                  <span className={`mx-auto mb-4 mt-1 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pilar.cor} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                <Card
+                  className="group relative overflow-hidden p-6 h-full text-center"
+                  style={{ transition: "all 0.4s ease" }}
+                >
+                  <div
+                    className={`absolute inset-x-0 top-0 h-1 bg-gradient-to-r ${pilar.cor}`}
+                    style={{ opacity: 0.6, transition: "opacity 0.3s" }}
+                  />
+                  <span
+                    className={`mx-auto mb-4 mt-1 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${pilar.cor} text-white shadow-lg`}
+                    style={{ transition: "transform 0.3s" }}
+                  >
                     <Icon name={pilar.icone as IconName} size={24} />
                   </span>
-                  
-                  <h3 className="text-sm font-bold leading-snug">{pilar.titulo}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-muted">{pilar.desc}</p>
+                  <h3 style={{ fontSize: "13px", fontWeight: 700, lineHeight: 1.3 }}>{pilar.titulo}</h3>
+                  <p style={{ marginTop: "8px", fontSize: "12px", lineHeight: 1.55, color: "var(--muted)" }}>{pilar.desc}</p>
                 </Card>
               </ScrollReveal>
             ))}
@@ -256,29 +398,33 @@ function PortalConvidadoHero() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 3 — A TRANSFORMAÇÃO (DEPOIS)
-          ════════════════════════════════════════════ */}
+      {/* ═════ SEÇÃO: A TRANSFORMAÇÃO ═════ */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-mesh-gradient pointer-events-none" />
-        <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
-          <div className="grid gap-10 sm:gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <ScrollReveal direction="left" delay={200}>
               <div className="grid gap-4">
                 {[
-                  { icone: "check", texto: "Atendente que entende do cuidado", cor: "sage" },
-                  { icone: "check", texto: "Cliente que se sente acolhido", cor: "sage" },
-                  { icone: "check", texto: "Paciente que volta e confia", cor: "sage" },
-                  { icone: "check", texto: "Cuidado completo, do início ao fim", cor: "sage" },
-                ].map((item) => (
+                  "Atendente que entende do cuidado",
+                  "Cliente que se sente acolhido",
+                  "Paciente que volta e confia",
+                  "Cuidado completo, do início ao fim",
+                ].map((texto) => (
                   <div
-                    key={item.texto}
-                    className="flex items-center gap-3 rounded-xl border border-sage-200/50 bg-sage-50/30 px-4 py-3 dark:border-sage-900/20 dark:bg-sage-950/10"
+                    key={texto}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3"
+                    style={{
+                      border: "1px solid rgba(109,184,96,0.2)",
+                      background: "rgba(238,247,236,0.25)",
+                    }}
                   >
-                    <span className="flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-sage-100 text-sage-600 dark:bg-sage-900/30">
-                      <Icon name={item.icone as IconName} size={16} />
+                    <span
+                      className="flex h-8 w-8 flex-none items-center justify-center rounded-lg"
+                      style={{ background: "rgba(221,239,218,0.7)", color: "var(--sage-600)" }}
+                    >
+                      <Icon name="check" size={16} />
                     </span>
-                    <span className="text-sm font-medium text-muted">{item.texto}</span>
+                    <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--muted)" }}>{texto}</span>
                   </div>
                 ))}
               </div>
@@ -286,23 +432,33 @@ function PortalConvidadoHero() {
 
             <ScrollReveal direction="right">
               <div>
-                <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-sage-500">
-                  <span className="h-3 w-[2px] rounded-full bg-sage-500" />
+                <div
+                  className="mb-4 inline-flex items-center gap-2"
+                  style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--sage-500)" }}
+                >
+                  <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--sage-500)", display: "inline-block" }} />
                   A transformação
                 </div>
-                <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+                <h2
+                  style={{
+                    fontSize: "clamp(1.8rem,4vw,3rem)",
+                    fontWeight: 700,
+                    letterSpacing: "-0.02em",
+                    lineHeight: 1.1,
+                  }}
+                >
                   O profissional que o paciente{" "}
                   <span className="text-gradient-brand">confia e volta</span>
                 </h2>
-                <div className="mt-6 space-y-4 text-muted leading-relaxed">
-                  <p className="text-lg">
-                    Depois do treinamento, o atendente não é mais o mesmo. 
-                    Ele entende de pele, de medicamento, de receita — e também 
+                <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
+                  <p style={{ fontSize: "1.05rem" }}>
+                    Depois do treinamento, o atendente não é mais o mesmo.
+                    Ele entende de pele, de medicamento, de receita — e também
                     de gente. Sabe ouvir, acolher, se importar.
                   </p>
                   <p>
-                    Cliente que se sente cuidado volta. Volta e traz a família. 
-                    Vira paciente fiel. É assim que o balcão deixa de ser um 
+                    Cliente que se sente cuidado volta. Volta e traz a família.
+                    Vira paciente fiel. É assim que o balcão deixa de ser um
                     ponto de passagem e se transforma em um lugar de cuidado.
                   </p>
                 </div>
@@ -312,22 +468,32 @@ function PortalConvidadoHero() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 4 — CURRÍCULO (JORNADA)
-          ════════════════════════════════════════════ */}
-      <section className="relative">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+      {/* ═════ SEÇÃO: TRILHAS ═════ */}
+      <section>
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
-                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
+              <div
+                className="mb-4 inline-flex items-center gap-2"
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+              >
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
                 A jornada
               </div>
-              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+              <h2
+                style={{
+                  fontSize: "clamp(1.8rem,4vw,3rem)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.1,
+                }}
+              >
                 O que você vai{" "}
                 <span className="text-gradient-brand">aprender</span>
               </h2>
-              <p className="mt-6 text-lg text-muted">{totalAulasContagem} microlições em 4 trilhas</p>
+              <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)" }}>
+                {totalAulasContagem} microlições em 4 trilhas — do iniciante ao profissional de referência
+              </p>
             </ScrollReveal>
           </div>
 
@@ -342,18 +508,23 @@ function PortalConvidadoHero() {
               ];
               return (
                 <ScrollReveal key={t.id} delay={idx * 80} direction="up">
-                  <Card className="group relative overflow-hidden p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg min-h-[200px] flex flex-col">
-                    <span className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${gradientMap[idx]} text-white`}>
+                  <Card
+                    className="group relative overflow-hidden p-5 flex flex-col"
+                    style={{ minHeight: "200px", transition: "all 0.3s ease" }}
+                  >
+                    <span
+                      className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br ${gradientMap[idx]} text-white`}
+                    >
                       <Icon name={t.icone as IconName} size={20} />
                     </span>
-                    <div className="text-xs font-bold uppercase tracking-wider text-forest-500">
+                    <div style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--forest-500)" }}>
                       Trilha {t.numero}
                     </div>
-                    <h3 className="mt-0.5 font-bold leading-snug">{t.titulo}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-muted line-clamp-2 flex-1">{t.subtitulo}</p>
-                    <div className="mt-3 flex items-center gap-2 text-[10px] text-subtle">
+                    <h3 style={{ marginTop: "2px", fontWeight: 700, lineHeight: 1.25 }}>{t.titulo}</h3>
+                    <p style={{ marginTop: "4px", fontSize: "12px", lineHeight: 1.5, color: "var(--muted)", flex: 1 }} className="line-clamp-2">{t.subtitulo}</p>
+                    <div style={{ marginTop: "12px", display: "flex", alignItems: "center", gap: "8px", fontSize: "10px", color: "var(--subtle)" }}>
                       <span>{t.modulos.length} módulos</span>
-                      <span className="h-3 w-px bg-border" />
+                      <span style={{ width: "1px", height: "12px", background: "var(--border)" }} />
                       <span>{totalModAulas} aulas</span>
                     </div>
                   </Card>
@@ -366,7 +537,8 @@ function PortalConvidadoHero() {
             <div className="mt-10 text-center">
               <Link
                 href="/trilhas"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-forest-600 hover:text-forest-700 transition-colors"
+                className="inline-flex items-center gap-1.5 transition-colors"
+                style={{ fontSize: "14px", fontWeight: 600, color: "var(--forest-600)" }}
               >
                 Ver currículo completo <Icon name="arrow" size={16} />
               </Link>
@@ -375,23 +547,31 @@ function PortalConvidadoHero() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 5 — DICAS POR FAIXA ETÁRIA
-          ════════════════════════════════════════════ */}
-      <section className="relative bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.03],var(--surface))]">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-28">
+      {/* ═════ SEÇÃO: PARA CADA FAIXA ═════ */}
+      <section style={{ background: "linear-gradient(to bottom, var(--surface), rgba(13,43,46,0.03), var(--surface))" }}>
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <ScrollReveal>
-              <div className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-forest-500">
-                <span className="h-3 w-[2px] rounded-full bg-forest-500" />
+              <div
+                className="mb-4 inline-flex items-center gap-2"
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+              >
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
                 Para cada idade, um cuidado
               </div>
-              <h2 className="text-[clamp(1.8rem,4vw,3rem)] font-[700] tracking-tight leading-tight">
+              <h2
+                style={{
+                  fontSize: "clamp(1.8rem,4vw,3rem)",
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.1,
+                }}
+              >
                 Como atender bem{" "}
                 <span className="text-gradient-brand">cada fase da vida</span>
               </h2>
-              <p className="mt-6 text-lg text-muted">
-                Adolescente, adulto ou idoso — cada um chega ao balcão com uma história, 
+              <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
+                Adolescente, adulto ou idoso — cada um chega ao balcão com uma história,
                 uma necessidade e um jeito de ser acolhido.
               </p>
             </ScrollReveal>
@@ -403,49 +583,33 @@ function PortalConvidadoHero() {
                 faixa: "Adolescentes",
                 icone: "heart",
                 bg: "from-forest-500 to-sage-500",
-                dicas: [
-                  "Linguagem simples e sem julgamento",
-                  "Respeito à timidez e vergonha",
-                  "Acne, anticoncepcional, saúde íntima",
-                  "Atendimento rápido e discreto",
-                  "Orientação sem alarmismo",
-                ]
+                dicas: ["Linguagem simples e sem julgamento", "Respeito à timidez e vergonha", "Acne, anticoncepcional, saúde íntima", "Atendimento rápido e discreto", "Orientação sem alarmismo"],
               },
               {
                 faixa: "Adultos",
                 icone: "trending",
                 bg: "from-forest-600 to-terracota-500",
-                dicas: [
-                  "Escuta ativa das queixas do dia a dia",
-                  "Produtos para rotina corrida",
-                  "Cuidado com automedicação",
-                  "Oferta de serviços complementares",
-                  "Fidelização pelo cuidado genuíno",
-                ]
+                dicas: ["Escuta ativa das queixas do dia a dia", "Produtos para rotina corrida", "Cuidado com automedicação", "Oferta de serviços complementares", "Fidelização pelo cuidado genuíno"],
               },
               {
                 faixa: "Idosos",
                 icone: "shield",
                 bg: "from-sage-500 to-forest-600",
-                dicas: [
-                  "Paciência e tom de voz adequado",
-                  "Polifarmácia e interações medicamentosas",
-                  "Letra grande nos materiais",
-                  "Acompanhamento do tratamento",
-                  "Acolhimento com respeito e dignidade",
-                ]
+                dicas: ["Paciência e tom de voz adequado", "Polifarmácia e interações medicamentosas", "Letra grande nos materiais", "Acompanhamento do tratamento", "Acolhimento com respeito e dignidade"],
               },
             ].map((f, idx) => (
               <ScrollReveal key={f.faixa} delay={idx * 100} direction="up">
-                <Card className="group h-full overflow-hidden p-6 transition-all duration-500 hover:-translate-y-2 hover:shadow-xl">
-                  <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${f.bg} text-white shadow-lg group-hover:scale-110 transition-transform`}>
+                <Card className="group h-full overflow-hidden p-6" style={{ transition: "all 0.5s ease" }}>
+                  <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${f.bg} text-white shadow-lg`}
+                    style={{ transition: "transform 0.3s" }}
+                  >
                     <Icon name={f.icone as IconName} size={24} />
                   </div>
-                  <h3 className="text-xl font-bold">{f.faixa}</h3>
+                  <h3 style={{ fontSize: "1.2rem", fontWeight: 700 }}>{f.faixa}</h3>
                   <ul className="mt-4 space-y-2">
                     {f.dicas.map((dica) => (
-                      <li key={dica} className="flex items-start gap-2 text-sm text-muted">
-                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-forest-400" />
+                      <li key={dica} className="flex items-start gap-2" style={{ fontSize: "14px", color: "var(--muted)" }}>
+                        <span style={{ marginTop: "6px", width: "6px", height: "6px", borderRadius: "50%", background: "var(--forest-400)", flexShrink: 0 }} />
                         {dica}
                       </li>
                     ))}
@@ -457,52 +621,65 @@ function PortalConvidadoHero() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════════════
-          SEÇÃO 6 — PATROCÍNIO
-          ════════════════════════════════════════════ */}
-      <section className="bg-surface py-8">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <ScrollReveal>
-            <BannerPatrocinio />
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* ════════════════════════════════════════════
-          SEÇÃO 7 — CTA FINAL
-          ════════════════════════════════════════════ */}
+      {/* ═════ CTA FINAL ═════ */}
       <section className="relative">
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,var(--surface),var(--forest-900)/[0.04],var(--surface))]" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-14 sm:px-6 sm:pb-20 lg:pb-28">
+        <div className="relative mx-auto max-w-6xl px-4 pb-16 sm:px-6 sm:pb-20 lg:pb-28">
           <ScrollReveal>
-            <Card className="relative overflow-hidden border-2 border-forest-200/40 dark:border-forest-800/30">
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,var(--forest-50),white,var(--sage-50)/[0.5])] dark:bg-[linear-gradient(135deg,var(--forest-950),var(--forest-900)/[0.4],var(--forest-950))]" />
-              <div className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full orb bg-forest-400/10 dark:bg-forest-300/5" />
-              <div className="pointer-events-none absolute -bottom-32 -left-32 h-[300px] w-[300px] rounded-full orb bg-terracota-500/10" />
+            <Card
+              className="relative overflow-hidden"
+              style={{ border: "2px solid rgba(13,43,46,0.15)" }}
+            >
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background: "linear-gradient(135deg, var(--forest-50), #fff, rgba(238,247,236,0.5))",
+                }}
+              />
+              <div
+                className="pointer-events-none absolute -right-40 -top-40 h-[400px] w-[400px] rounded-full"
+                style={{ background: "rgba(77,133,53,0.07)", filter: "blur(80px)" }}
+              />
+              <div
+                className="pointer-events-none absolute -bottom-32 -left-32 h-[300px] w-[300px] rounded-full"
+                style={{ background: "rgba(214,110,15,0.07)", filter: "blur(60px)" }}
+              />
 
               <div className="relative px-6 py-12 text-center sm:px-16 sm:py-20">
                 <div className="mx-auto max-w-2xl">
-                  <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-forest-100 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-forest-700 dark:bg-forest-900/40 dark:text-forest-300">
+                  <div
+                    className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5"
+                    style={{ background: "var(--forest-100)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--forest-700)" }}
+                  >
                     <Icon name="sparkles" size={14} />
                     Comece agora
                   </div>
-                  <h2 className="text-[clamp(1.8rem,4.5vw,3.5rem)] font-[700] tracking-tight leading-tight">
+                  <h2
+                    style={{
+                      fontSize: "clamp(1.8rem,4.5vw,3.5rem)",
+                      fontWeight: 700,
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1.1,
+                    }}
+                  >
                     Transforme seu atendimento{" "}
                     <span className="text-gradient-brand">em cuidado</span>
                   </h2>
-                  <p className="mx-auto mt-4 max-w-lg text-muted text-lg">
-                    {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real. 
-                    Matrícula gratuita.
+                  <p
+                    className="mx-auto mt-4"
+                    style={{ maxWidth: "500px", fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.6 }}
+                  >
+                    {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real.
+                    Acesso gratuito.
                   </p>
                   <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                     <Botao
-                      href="/matriculas"
+                      href="/trilhas"
                       tamanho="xl"
                       variante="premium"
                       iconeFim="arrow"
                       className="w-full sm:w-auto shadow-glow-strong text-base"
                     >
-                      Quero me matricular
+                      Acessar as trilhas
                     </Botao>
                     <ContinuarBotao />
                   </div>
@@ -518,7 +695,7 @@ function PortalConvidadoHero() {
 
 /* ═══════════════════════════════════════════════
    FLUXO — Aluno matriculado
-   ═══════════════════════════════════════════════ */
+═══════════════════════════════════════════════ */
 function PortalMatriculadoFluxo({ perfil }: { perfil: PerfilAluno }) {
   const router = useRouter();
   const [status, setStatus] = useState<StatusMatricula>(() => {
@@ -545,9 +722,9 @@ function PortalMatriculadoFluxo({ perfil }: { perfil: PerfilAluno }) {
           setStatus("aprovado");
         } else if (j.status === "rejeitado") setStatus("rejeitado");
         else if (j.status === "pendente") router.replace("/aguardando-aprovacao");
-        else router.replace("/matriculas");
+        else router.replace("/trilhas");
       })
-      .catch(() => router.replace("/matriculas"));
+      .catch(() => router.replace("/trilhas"));
   }, [perfil.email, router, status]);
 
   if (status === "verificando") {
@@ -559,7 +736,7 @@ function PortalMatriculadoFluxo({ perfil }: { perfil: PerfilAluno }) {
   }
 
   if (status === "rejeitado") {
-    router.replace("/matriculas");
+    router.replace("/trilhas");
     return null;
   }
 
