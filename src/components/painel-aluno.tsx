@@ -18,11 +18,23 @@ import { Icon, type IconName } from "./icons";
 import { ContinuarBotao } from "./continuar";
 import { usePerfilAluno } from "@/lib/aluno";
 import { formatarTempoEstudo } from "@/lib/format-tempo";
+import { lerRanking } from "@/lib/ranking";
+import { useEffect, useState } from "react";
 
 export function PainelAluno() {
   const prog = useProgresso();
   const { perfil, carregado: perfilOk } = usePerfilAluno();
   const todas = listarAulas();
+  const [minhaPosicao, setMinhaPosicao] = useState<number | null>(null);
+  const [totalRanking, setTotalRanking] = useState(0);
+
+  useEffect(() => {
+    const ranking = lerRanking();
+    setTotalRanking(ranking.length);
+    const apelido = perfil?.apelidoRanking ?? perfil?.nome?.split(" ")[0] ?? "Aluno";
+    const idx = ranking.findIndex((e) => e.apelido === apelido);
+    setMinhaPosicao(idx >= 0 ? idx + 1 : null);
+  }, [perfil]);
 
   if (!prog.carregado) {
     return (
@@ -94,6 +106,19 @@ export function PainelAluno() {
   const revisao = prog.aulasParaRevisao();
   const primeiroNome = perfil?.nome?.split(" ")[0];
 
+  // Marcos de XP
+  const xpPctNivel = Math.round(((prog.xp % 250) / 250) * 100);
+  const marcosBadges: { icone: string; label: string; ativo: boolean }[] = [
+    { icone: "🎓", label: "Primeira aula", ativo: concluidasCount >= 1 },
+    { icone: "⭐", label: "Nível 2", ativo: prog.xp >= 250 },
+    { icone: "🌟", label: "Nível 3", ativo: prog.xp >= 500 },
+    { icone: "💎", label: "Nível 5", ativo: prog.xp >= 1000 },
+    { icone: "🏅", label: "Nível 10", ativo: prog.xp >= 2250 },
+    { icone: "🔥", label: "Streak 7 dias", ativo: prog.streak >= 7 },
+    { icone: "📚", label: "10 aulas", ativo: concluidasCount >= 10 },
+    { icone: "🎯", label: "Missões 30pts", ativo: prog.missoesPontos >= 30 },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* ── Hero Card ── */}
@@ -118,19 +143,27 @@ export function PainelAluno() {
                   <Etiqueta tom="orange">
                     <Icon name="sparkles" size={12} /> {prog.xp} XP
                   </Etiqueta>
-                  <span className="text-sm text-subtle">
+                  <span className="text-sm text-white/70">
                     faltam {prog.xpProximoNivel} XP
                   </span>
                 </div>
-                <h1 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">
+                <h1 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl text-white">
                   Olá{perfilOk && primeiroNome ? `, ${primeiroNome}` : ", futuro Atendente"}
                 </h1>
-                <p className="mt-1 max-w-xl text-muted leading-relaxed">
+                <p className="mt-1 max-w-xl text-white/60 leading-relaxed">
                   Continue sua jornada de saúde, atendimento e performance.
                   {prog.estudouHoje
-                    ? " Você já estudou hoje."
+                    ? " Você já estudou hoje. 🔥"
                     : " Marque uma aula para manter a sequência."}
                 </p>
+                {/* Level XP bar */}
+                <div className="mt-3 max-w-[280px]">
+                  <div className="flex items-center justify-between text-[11px] text-white/60 mb-1">
+                    <span>Progresso Nv. {prog.nivel}</span>
+                    <span>{prog.xp % 250} / 250 XP</span>
+                  </div>
+                  <BarraProgresso pct={xpPctNivel} height={6} className="[&>div]:bg-white/30 [&>div]:[&>div]:bg-gradient-to-r [&>div]:[&>div]:from-orange-400 [&>div]:[&>div]:to-green-400" />
+                </div>
               </div>
             </div>
             <div className="flex flex-col items-stretch gap-3 sm:flex-row lg:flex-col">
@@ -140,6 +173,7 @@ export function PainelAluno() {
                   href={`/aula/${recomendada.trilha.id}/${recomendada.aula.id}`}
                   variante="secondary"
                   iconeFim="arrow"
+                  className="bg-white/10 text-white border-white/20 hover:bg-white/20"
                 >
                   Recomendada: {recomendada.aula.titulo.slice(0, 22)}
                   {recomendada.aula.titulo.length > 22 ? "…" : ""}
@@ -155,6 +189,69 @@ export function PainelAluno() {
         {stats.map((s) => (
           <StatCard key={s.rotulo} icone={s.icone} valor={s.valor} rotulo={s.rotulo} />
         ))}
+      </div>
+
+      <DividerGlow className="my-10" />
+
+      {/* ── Nível e Ranking (Gamificação) ── */}
+      <div className="grid gap-6 md:grid-cols-2 mb-10">
+        {/* Card de Nível */}
+        <Card className="p-6 border-l-4 border-l-green-400">
+          <div className="flex items-start gap-4">
+            <div className="xp-level-badge shrink-0">{prog.nivel}</div>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-base font-bold">Nível {prog.nivel}</h3>
+              <p className="text-sm text-muted mt-1">
+                {prog.xp} XP total · faltam {prog.xpProximoNivel} XP para nível {prog.nivel + 1}
+              </p>
+              <BarraProgresso pct={xpPctNivel} className="mt-3" height={8} />
+              <div className="mt-2 flex items-center gap-4 text-xs text-subtle">
+                <span className="flex items-center gap-1">
+                  <Icon name="flame" size={12} className="text-orange-500" /> Streak: {prog.streak} dias
+                </span>
+                <span className="flex items-center gap-1">
+                  <Icon name="award" size={12} className="text-green-500" /> {badgesTrilha.length + (prog.xp >= 250 ? 1 : 0) + (concluidasCount >= 1 ? 1 : 0) + (concluidasCount >= 10 ? 1 : 0) + (prog.missoesPontos >= 30 ? 1 : 0)} badges
+                </span>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Card de Ranking */}
+        <Link href="/ranking" className="block group">
+          <Card className="p-6 border-l-4 border-l-orange-400 transition-all group-hover:shadow-md">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/20">
+                🏆
+              </span>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-bold group-hover:text-orange-500 transition-colors">
+                  Ranking de estudos
+                </h3>
+                <p className="text-sm text-muted mt-1">
+                  {minhaPosicao != null
+                    ? `Sua posição: #${minhaPosicao} de ${totalRanking} participantes`
+                    : "Participe do ranking para aparecer aqui"}
+                </p>
+                {minhaPosicao != null && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <BarraProgresso
+                      pct={Math.max(0, Math.round(((totalRanking - minhaPosicao + 1) / totalRanking) * 100))}
+                      height={5}
+                      className="max-w-[120px]"
+                    />
+                    <span className="text-xs text-subtle">
+                      Top {Math.round((minhaPosicao / totalRanking) * 100)}%
+                    </span>
+                  </div>
+                )}
+                <div className="mt-2 text-xs font-medium text-orange-500 group-hover:gap-2 transition-all inline-flex items-center gap-1">
+                  Ver ranking completo →
+                </div>
+              </div>
+            </div>
+          </Card>
+        </Link>
       </div>
 
       <DividerGlow className="my-10" />
@@ -215,17 +312,19 @@ export function PainelAluno() {
       <div className="mt-6 grid gap-4 sm:gap-6 sm:grid-cols-2 md:gap-8 md:grid-cols-2">
         {trilhas.map((t) => {
           const p = prog.progressoTrilha(t.id);
+          const concluida = p.total > 0 && p.feitas === p.total;
           return (
-            <Card key={t.id} variante="elevated">
+            <Card key={t.id} variante="elevated" className={concluida ? "border-l-4 border-l-green-400" : ""}>
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${concluida ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-gradient-to-r from-forest-500 to-green-500"} text-white`}>
                     <Icon name={t.icone as IconName} size={20} />
                   </span>
                   <div>
                     <div className="text-sm font-bold">{t.titulo}</div>
-                    <div className="text-xs text-subtle">
+                    <div className="text-xs text-subtle flex items-center gap-1.5">
                       {p.feitas} de {p.total} aulas
+                      {concluida && <span className="text-green-600 font-semibold">✓ Concluída</span>}
                     </div>
                   </div>
                 </div>
@@ -244,56 +343,115 @@ export function PainelAluno() {
 
       <DividerGlow className="my-10" />
 
-      {/* ── Conquistas ── */}
+      {/* ── Conquistas / Badges ── */}
       <TituloSecao
         sobre="Conquistas"
         titulo="Badges e marcos"
         descricao="Cada badge representa um marco alcançado na sua jornada."
         icone="award"
       />
-      <div className="mt-6 flex flex-wrap gap-3 sm:gap-4 md:gap-5">
-        {concluidasCount >= 1 && (
-          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
-              <Icon name="play" size={16} />
-            </span>
-            <span className="text-sm font-semibold">Primeiros passos</span>
-          </div>
-        )}
-        {prog.xp >= 250 && (
-          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
-              <Icon name="sparkles" size={16} />
-            </span>
-            <span className="text-sm font-semibold">Nível 2 alcançado</span>
-          </div>
-        )}
-        {prog.missoesPontos >= 30 && (
-          <div className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
-              <Icon name="target" size={16} />
-            </span>
-            <span className="text-sm font-semibold">Missões de balcão</span>
-          </div>
-        )}
-        {badgesTrilha.map((b) => (
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-3">
+        {marcosBadges.map((m) => (
           <div
-            key={b.trilha.id}
-            className="bg-green-50 text-green-700 border border-green-200 flex items-center gap-2 rounded-xl px-4 py-2.5"
+            key={m.label}
+            className={`flex flex-col items-center gap-2 rounded-xl p-4 text-center transition-all ${
+              m.ativo
+                ? "bg-gradient-to-b from-green-50 to-green-50/50 border border-green-200 dark:from-green-900/30 dark:to-green-900/20 dark:border-green-800"
+                : "bg-surface-2 border border-border opacity-50 dark:bg-surface-3"
+            }`}
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white">
-              <Icon name="award" size={16} />
-            </span>
-            <span className="text-sm font-semibold">
-              Trilha {b.trilha.numero} concluída
+            <span className={`text-2xl ${m.ativo ? "" : "grayscale"}`}>{m.icone}</span>
+            <span className={`text-[11px] font-semibold leading-tight ${m.ativo ? "text-green-700 dark:text-green-300" : "text-subtle"}`}>
+              {m.label}
             </span>
           </div>
         ))}
-        {concluidasCount === 0 && (
-          <p className="text-sm text-subtle px-2">
-            Conclua aulas e missões para desbloquear badges.
-          </p>
-        )}
+      </div>
+
+      {/* Badges de trilha concluída */}
+      {badgesTrilha.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-2">
+          {badgesTrilha.map((b) => (
+            <Etiqueta key={b.trilha.id} tom="green">
+              <Icon name="award" size={12} /> Trilha {b.trilha.numero} concluída
+            </Etiqueta>
+          ))}
+        </div>
+      )}
+
+      {concluidasCount === 0 && (
+        <p className="text-sm text-subtle mt-4 px-2">
+          Conclua aulas e missões para desbloquear badges.
+        </p>
+      )}
+
+      <DividerGlow className="my-10" />
+
+      {/* ── Missões ── */}
+      <div className="grid gap-6 lg:grid-cols-2 mb-10">
+        <Link href="/missoes" className="block group">
+          <Card className="p-6 border-l-4 border-l-green-400 transition-all group-hover:shadow-md">
+            <div className="flex items-start gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/20">
+                🎯
+              </span>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-base font-bold group-hover:text-green-500 transition-colors">
+                  Missões de balcão
+                </h3>
+                <p className="text-sm text-muted mt-1">
+                  Casos reais de atendimento para testar seus conhecimentos
+                </p>
+                <div className="mt-3 flex items-center gap-2">
+                  <span className="text-sm font-bold text-green-600">{prog.missoesPontos}</span>
+                  <span className="text-xs text-subtle">pontos em missões</span>
+                </div>
+                {prog.missoesPontos > 0 && (
+                  <div className="mt-2 flex items-center gap-1">
+                    <BarraProgresso pct={Math.min(100, (prog.missoesPontos / 100) * 100)} height={5} className="max-w-[120px]" />
+                    <span className="text-xs text-subtle">{prog.missoesPontos}/100 pts</span>
+                  </div>
+                )}
+                <div className="mt-2 text-xs font-medium text-green-500 group-hover:gap-2 transition-all inline-flex items-center gap-1">
+                  Ir para missões →
+                </div>
+              </div>
+            </div>
+          </Card>
+        </Link>
+
+        {/* Streak Card */}
+        <Card className="p-6 border-l-4 border-l-orange-400">
+          <div className="flex items-start gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/20">
+              {prog.estudouHoje ? "🔥" : "⏰"}
+            </span>
+            <div className="flex-1 min-w-0">
+              <h3 className="text-base font-bold">
+                {prog.estudouHoje ? "Sequência ativa!" : "Hora de estudar"}
+              </h3>
+              <p className="text-sm text-muted mt-1">
+                {prog.estudouHoje
+                  ? `Você está em uma sequência de ${prog.streak} dias. Continue assim!`
+                  : "Estude hoje para não perder sua sequência."}
+              </p>
+              <div className="mt-3 flex items-center gap-2">
+                {Array.from({ length: 7 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className={`h-8 w-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all ${
+                      i < prog.streak
+                        ? "bg-gradient-to-br from-orange-400 to-orange-500 text-white shadow-md"
+                        : "bg-surface-2 text-subtle dark:bg-surface-3"
+                    }`}
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Card>
       </div>
 
       <DividerGlow className="my-10" />
@@ -344,7 +502,7 @@ export function PainelAluno() {
       <div className="flex items-center justify-between">
         <p className="text-xs text-muted">
           {prog.estudouHoje
-            ? "✓ Estudo registrado hoje"
+            ? "✓ Estudo registrado hoje 🔥"
             : "— Nenhum estudo registrado hoje"}
         </p>
         <button

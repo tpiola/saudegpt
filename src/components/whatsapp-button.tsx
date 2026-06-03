@@ -14,7 +14,7 @@ export function WhatsAppButton() {
     <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end gap-2 sm:gap-3">
       {/* Balão de mensagem */}
       {aberto && (
-        <div className="animate-slide-up rounded-2xl border border-green-300 bg-white p-4 shadow-xl dark:border-green-700 dark:bg-slate-900 w-[min(calc(100vw-2rem),20rem)] sm:max-w-xs">
+        <div className="animate-slide-up rounded-2xl border border-green-300 bg-white p-4 shadow-xl dark:border-green-700 dark:bg-surface w-[min(calc(100vw-2rem),20rem)] sm:max-w-xs">
           <p className="text-sm font-semibold text-green-700 dark:text-green-300">
             Precisa de ajuda?
           </p>

@@ -323,7 +323,7 @@ export default function CuriosidadesPage() {
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 Dormir bem é tão importante quanto comer bem para a saúde do coração. 
-                <strong className="text-orange-600"> 7 a 9 horas de sono</strong> por noite regulam 
+                <strong className="text-orange-600 dark:text-orange-400"> 7 a 9 horas de sono</strong> por noite regulam 
                 hormônios, controlam a pressão e ajudam a manter o peso.
               </p>
             </div>

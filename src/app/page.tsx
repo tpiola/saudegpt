@@ -4,8 +4,9 @@ import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
-import { Botao, Card } from "@/components/ui";
+import { Botao, Card, BarraProgresso } from "@/components/ui";
 import type { Trilha } from "@/content/types";
+import { Icon } from "@/components/icons";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -440,7 +441,7 @@ export default function HomePage() {
       <div className="divider-wave" />
 
       {/* ══════════════════════════════════════════════
-          SEÇÃO: GAMIFICAÇÃO (VISUAL DE GAME)
+          SEÇÃO: GAMIFICAÇÃO (VISUAL DE GAME) — MELHORADA
           ══════════════════════════════════════════════ */}
       <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/10 to-background py-20 sm:py-24">
         <div className="pointer-events-none absolute -right-40 top-1/3 h-[400px] w-[400px] rounded-full bg-orange-500/3 blur-[120px]" />
@@ -451,7 +452,7 @@ export default function HomePage() {
               <span className="badge-green mb-3">Gamificação</span>
               <h2 className={h2Cls}>Como funciona</h2>
               <p className="mt-3 text-muted leading-relaxed">
-                Estude, acumule pontos, suba no ranking e conquiste badges.
+                Estude, acumule XP, suba de nível no ranking e conquiste badges.
                 Aprender nunca foi tão envolvente.
               </p>
             </div>
@@ -460,7 +461,6 @@ export default function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
             <FadeUp delay={100}>
               <div className="glass-premium group flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
-                {/* Ícone grande */}
                 <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:scale-110 transition-all duration-300">
                   🎯
                 </span>
@@ -469,65 +469,88 @@ export default function HomePage() {
                   Cada aula concluída rende XP. Quanto mais você estuda, mais
                   pontos acumula.
                 </p>
-                {/* XP Bar visual */}
-                <div className="mt-5">
+                {/* XP Bar visual aprimorada */}
+                <div className="mt-5 w-full max-w-[220px] mx-auto">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="flex items-center gap-1 text-xs font-semibold text-green-600 dark:text-green-400">
+                      <Icon name="sparkles" size={12} /> XP
+                    </span>
+                    <div className="flex items-center gap-1 text-[10px] text-muted">
+                      <span className="inline-block h-2 w-2 rounded-full bg-orange-500" />
+                      <span>Nível atual</span>
+                    </div>
+                  </div>
                   <div className="xp-bar">
                     <div className="xp-bar-fill" style={{ width: "62%" }} />
                   </div>
                   <div className="mt-2 flex items-center justify-between text-[11px] text-muted">
-                    <span>XP atual</span>
-                    <span className="font-semibold text-foreground">620 / 1000</span>
+                    <span className="flex items-center gap-1">
+                      🎮 Lv. 3
+                    </span>
+                    <span className="font-semibold text-foreground">620 / 1000 XP</span>
                   </div>
                 </div>
               </div>
             </FadeUp>
 
             <FadeUp delay={200}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
-                <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
-                  🏆
-                </span>
-                <h3 className={h3Cls}>Suba no ranking</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">
-                  Compare seu progresso com outros alunos e veja quem está
-                  liderando o aprendizado.
-                </p>
-                {/* Podium visual */}
-                <div className="mt-5 podium-visual">
-                  <div className="podium-bar podium-bar-3" />
-                  <div className="podium-bar podium-bar-1" />
-                  <div className="podium-bar podium-bar-2" />
+              <Link href="/ranking" className="block group h-full">
+                <div className="glass-premium flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
+                  <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
+                    🏆
+                  </span>
+                  <h3 className={h3Cls}>Suba no ranking</h3>
+                  <p className="mt-2 text-sm text-muted leading-relaxed">
+                    Compare seu progresso com outros alunos e veja quem está
+                    liderando o aprendizado.
+                  </p>
+                  {/* Podium visual aprimorado */}
+                  <div className="mt-5 game-podium-compact">
+                    <div className="game-podium-bar bar-3" />
+                    <div className="game-podium-bar bar-1" />
+                    <div className="game-podium-bar bar-2" />
+                  </div>
+                  <div className="mt-2 flex items-center justify-center gap-4 text-[11px] text-muted">
+                    <span>🥉 3º</span>
+                    <span className="font-semibold text-orange-500">🥇 1º</span>
+                    <span>🥈 2º</span>
+                  </div>
+                  <div className="mt-3 inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 group-hover:gap-2 transition-all">
+                    Ver ranking completo →
+                  </div>
                 </div>
-                <div className="mt-2 flex items-center justify-center gap-4 text-[11px] text-muted">
-                  <span>🥉 3º</span>
-                  <span className="font-semibold text-orange-500">🥇 1º</span>
-                  <span>🥈 2º</span>
-                </div>
-              </div>
+              </Link>
             </FadeUp>
 
             <FadeUp delay={300}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
-                <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
-                  🎖️
-                </span>
-                <h3 className={h3Cls}>Desbloqueie badges</h3>
-                <p className="mt-2 text-sm text-muted leading-relaxed">
-                  Complete missões especiais, desbloqueie conquistas e mostre
-                  seu nível de conhecimento.
-                </p>
-                {/* Badges visual */}
-                <div className="mt-5 badge-visual">
-                  <span className="badge-medal gold">★</span>
-                  <span className="badge-medal silver">★</span>
-                  <span className="badge-medal bronze">★</span>
-                  <span className="badge-medal" style={{ background: "linear-gradient(135deg, #4ca15d, #66b59a)", color: "white" }}>★</span>
-                  <span className="badge-medal" style={{ background: "linear-gradient(135deg, #f49b44, #f8b773)", color: "white" }}>★</span>
+              <Link href="/missoes" className="block group h-full">
+                <div className="glass-premium flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
+                  <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
+                    🎖️
+                  </span>
+                  <h3 className={h3Cls}>Desbloqueie badges</h3>
+                  <p className="mt-2 text-sm text-muted leading-relaxed">
+                    Complete missões especiais, desbloqueie conquistas e mostre
+                    seu nível de conhecimento.
+                  </p>
+                  {/* Badges visual aprimorado */}
+                  <div className="mt-5 badge-visual">
+                    <span className="badge-medal gold">🏅</span>
+                    <span className="badge-medal silver">🏅</span>
+                    <span className="badge-medal bronze">🏅</span>
+                    <span className="badge-medal" style={{ background: "linear-gradient(135deg, #4ca15d, #66b59a)", color: "white" }}>🏅</span>
+                    <span className="badge-medal" style={{ background: "linear-gradient(135deg, #f49b44, #f8b773)", color: "white" }}>🏅</span>
+                  </div>
+                  <div className="mt-3 flex items-center justify-center gap-3 text-[11px] text-muted">
+                    <span className="font-semibold text-foreground">8 badges</span>
+                    <span className="w-px h-3 bg-border/50" />
+                    <span>disponíveis</span>
+                  </div>
+                  <div className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400 group-hover:gap-2 transition-all">
+                    Ver missões de balcão →
+                  </div>
                 </div>
-                <div className="mt-2 text-[11px] text-muted">
-                  <span className="font-semibold text-foreground">5 badges</span> desbloqueadas
-                </div>
-              </div>
+              </Link>
             </FadeUp>
           </div>
         </div>
@@ -714,6 +737,22 @@ export default function HomePage() {
                     className="text-sm text-white/50 transition-colors hover:text-white link-underline"
                   >
                     Trilhas
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/ranking"
+                    className="text-sm text-white/50 transition-colors hover:text-white link-underline"
+                  >
+                    Ranking
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/missoes"
+                    className="text-sm text-white/50 transition-colors hover:text-white link-underline"
+                  >
+                    Missões
                   </Link>
                 </li>
                 <li>

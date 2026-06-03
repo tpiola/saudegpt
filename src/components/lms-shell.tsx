@@ -111,7 +111,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-bold">{site.nomeCurto}</span>
-              <span className="block text-[10px] text-subtle">Ambiente de estudos</span>
+              <span className="block text-[10px] text-subtle dark:text-muted">Ambiente de estudos</span>
             </span>
           </Link>
           <button
@@ -136,7 +136,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                 </div>
               )}
 
-              <p className="mb-2.5 px-2 text-[10px] font-bold uppercase tracking-wider text-subtle">
+              <p className="mb-2.5 px-2 text-[10px] font-bold uppercase tracking-wider text-subtle dark:text-muted">
                 {secao.titulo}
               </p>
 
@@ -194,7 +194,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                 </span>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-xs font-semibold">{perfil.nome}</p>
-                  <p className="truncate text-[10px] text-subtle">{perfil.email}</p>
+                  <p className="truncate text-[10px] text-subtle dark:text-muted">{perfil.email}</p>
                 </div>
               </div>
             </div>
@@ -204,7 +204,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             </Botao>
           )}
 
-          <div className="relative flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-subtle">
+          <div className="relative flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-subtle dark:text-muted">
             <div className="mb-1.5 flex w-full items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/[0.6] to-transparent" />
             </div>

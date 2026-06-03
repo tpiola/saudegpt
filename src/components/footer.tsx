@@ -16,7 +16,7 @@ export function Footer() {
               </span>
               <span className="text-sm font-bold text-white/90">{site.nomeCurto}</span>
             </div>
-            <p className="mt-4 max-w-sm text-sm text-white/50 leading-relaxed">
+            <p className="mt-4 max-w-sm text-sm text-white/60 leading-relaxed">
               {site.descricao}
             </p>
             <div className="mt-6 flex gap-3">
@@ -35,7 +35,7 @@ export function Footer() {
             <ul className="mt-4 space-y-2.5">
               {navPrincipal.slice(0, 5).map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/50 hover:text-white transition-colors">
+                  <Link href={item.href} className="text-sm text-white/70 hover:text-white transition-colors">
                     {item.label}
                   </Link>
                 </li>
@@ -47,13 +47,13 @@ export function Footer() {
           <div>
             <h5 className="text-sm font-semibold" style={{ color: "#fffec7" }}>Aprendizado</h5>
             <ul className="mt-4 space-y-2.5">
-              <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Perfumaria e Cosméticos</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Capacitação em Medicamentos</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Receitas e Legislação</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Atendimento Humanizado</Link></li>
-              <li><Link href="/curiosidades" className="text-sm text-white/50 hover:text-white transition-colors">Curiosidades do Setor</Link></li>
-              <li><Link href="/pressao-arterial" className="text-sm text-white/50 hover:text-white transition-colors">Pressão Arterial</Link></li>
-              <li><Link href="/comando-diario" className="text-sm text-white/50 hover:text-white transition-colors">Comando Diário</Link></li>
+              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Perfumaria e Cosméticos</Link></li>
+              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Capacitação em Medicamentos</Link></li>
+              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Receitas e Legislação</Link></li>
+              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Atendimento Humanizado</Link></li>
+              <li><Link href="/curiosidades" className="text-sm text-white/70 hover:text-white transition-colors">Curiosidades do Setor</Link></li>
+              <li><Link href="/pressao-arterial" className="text-sm text-white/70 hover:text-white transition-colors">Pressão Arterial</Link></li>
+              <li><Link href="/comando-diario" className="text-sm text-white/70 hover:text-white transition-colors">Comando Diário</Link></li>
             </ul>
           </div>
 
@@ -67,7 +67,7 @@ export function Footer() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/50 hover:text-white transition-colors"
+                    className="text-sm text-white/70 hover:text-white transition-colors"
                   >
                     {p.nome}
                   </a>
@@ -79,19 +79,19 @@ export function Footer() {
 
         {/* Footer bottom */}
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/40">
+          <p className="text-sm text-white/60">
             {site.assinatura}
           </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/30">
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/50">
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-white/60 transition-colors">
+              <Link key={l.href} href={l.href} className="hover:text-white/80 transition-colors">
                 {l.label}
               </Link>
             ))}
           </div>
         </div>
 
-        <p className="mt-4 text-xs text-white/25 leading-relaxed">
+        <p className="mt-4 text-xs text-white/40 leading-relaxed">
           Conteúdo educativo criado por farmacêutico. Não substitui a orientação do farmacêutico ou do médico. As decisões clínicas e a dispensação de medicamentos controlados são atos do profissional habilitado.
         </p>
       </div>

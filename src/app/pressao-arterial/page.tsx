@@ -329,7 +329,7 @@ export default function PressaoArterialPage() {
                 <h3 className="text-sm font-bold text-forest-700 dark:text-white">Sabia que?</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                A hipertensão é conhecida como <strong className="text-orange-600">"assassina silenciosa"</strong>{" "}
+                A hipertensão é conhecida como <strong className="text-orange-600 dark:text-orange-400">"assassina silenciosa"</strong>{" "}
                 porque muitas vezes não dá sintomas. Por isso medir a pressão regularmente é tão
                 importante — mesmo quando você se sente bem!
               </p>
@@ -372,7 +372,7 @@ export default function PressaoArterialPage() {
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 O potássio ajuda a equilibrar os efeitos do sódio no corpo. Comer alimentos ricos
-                em potássio como <strong className="text-orange-600">banana, abacate, feijão e batata-doce</strong>{" "}
+                em potássio como <strong className="text-orange-600 dark:text-orange-400">banana, abacate, feijão e batata-doce</strong>{" "}
                 pode ajudar a controlar a pressão naturalmente!
               </p>
             </div>
