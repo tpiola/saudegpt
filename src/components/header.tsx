@@ -53,7 +53,7 @@ export function Header() {
         <div className="flex items-center gap-1.5 sm:gap-2">
           <ThemeToggle />
           <Botao href="/matriculas" tamanho="sm" className="hidden sm:inline-flex">
-            Matricular
+            Acessar
           </Botao>
           <button
             type="button"
