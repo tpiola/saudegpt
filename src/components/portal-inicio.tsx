@@ -518,7 +518,9 @@ function PortalConvidadoHero() {
                     >
                       <Icon name={t.icone as IconName} size={20} />
                     </span>
-                    <div style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--forest-500)" }}>
+                    <div                    style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--forest-500)" }}
+                    className="dark:text-forest-300"
+                  >
                       Trilha {t.numero}
                     </div>
                     <h3 style={{ marginTop: "2px", fontWeight: 700, lineHeight: 1.25 }}>{t.titulo}</h3>
@@ -538,7 +540,7 @@ function PortalConvidadoHero() {
             <div className="mt-10 text-center">
               <Link
                 href="/trilhas"
-                className="inline-flex items-center gap-1.5 transition-colors"
+                className="inline-flex items-center gap-1.5 transition-colors dark:text-forest-300"
                 style={{ fontSize: "14px", fontWeight: 600, color: "var(--forest-600)" }}
               >
                 Ver currículo completo <Icon name="arrow" size={16} />
@@ -646,7 +648,7 @@ function PortalConvidadoHero() {
               <div className="relative px-6 py-12 text-center sm:px-16 sm:py-20">
                 <div className="mx-auto max-w-2xl">
                   <div
-                    className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5"
+                    className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 dark:bg-forest-800 dark:text-forest-200"
                     style={{ background: "var(--forest-100)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--forest-700)" }}
                   >
                     <Icon name="sparkles" size={14} />

@@ -28,8 +28,8 @@ export function ModuloCompleto({ moduloTitulo, xpGanho, notaMedia, ativo, onFech
   return (
     <>
       <Confete ativo={true} origemX={0.5} origemY={0.3} />
-      <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 backdrop-blur-sm px-4">
-        <div className="celebrate-modal relative mx-auto max-w-md w-full overflow-hidden rounded-3xl border border-green-300/30 bg-gradient-to-br from-forest-800 via-forest-700 to-forest-800 p-8 text-center shadow-2xl shadow-green-500/20">
+      <div className="fixed inset-0 z-[90] flex items-center justify-center bg-black/60 dark:bg-black/80 backdrop-blur-sm px-4">
+        <div className="celebrate-modal relative mx-auto max-w-md w-full overflow-hidden rounded-3xl border border-green-300/30 dark:border-green-700/40 bg-gradient-to-br from-forest-800 via-forest-700 to-forest-800 p-8 text-center shadow-2xl shadow-green-500/20">
           {/* Orbs decorativos */}
           <div className="pointer-events-none absolute -left-20 -top-20 h-48 w-48 rounded-full orb bg-green-500/20" />
           <div className="pointer-events-none absolute -bottom-16 -right-16 h-32 w-32 rounded-full orb bg-green-500/15" />

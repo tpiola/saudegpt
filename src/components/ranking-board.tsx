@@ -53,14 +53,14 @@ export function RankingBoard() {
               <div className="flex items-center gap-3">
                 <span
                   className={`flex h-9 w-9 items-center justify-center rounded-xl text-sm font-bold ${
-                    i < 3 ? "bg-gradient-to-r from-green-500 to-green-600 text-white" : "bg-surface-2 text-muted"
+                    i < 3 ? "bg-gradient-to-r from-green-500 to-green-600 text-white" : "bg-surface-2 dark:bg-surface-3 text-muted"
                   }`}
                 >
                   {i + 1}
                 </span>
                 <span className="font-semibold">{e.apelido}</span>
               </div>
-              <span className="font-bold text-green-600">{e.xp} XP</span>
+              <span className="font-bold text-green-600 dark:text-green-400">{e.xp} XP</span>
             </Card>
           </li>
         ))}

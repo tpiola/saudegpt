@@ -1124,8 +1124,8 @@ export const trilhaVendas: Trilha = {
            duracaoMin: 6,
            nivel: "intermediario",
            videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
-           resumo:
-             "70% dos pacientes abandonam o tratamento nos primeiros 30 dias. O farmacêutico e a equipe têm um papel crucial na adesão — e isso começa com um simples contato de acompanhamento.",
+          resumo:
+            "Cerca de 7 em cada 10 pacientes interrompem o uso do medicamento antes do primeiro mês. A farmácia pode mudar esse cenário com um contato breve e atencioso após a compra.",
            resumoExecutivo: [
              "Adesão é o paciente tomar o medicamento conforme prescrito, no horário, na dose e pelo tempo certo.",
              "As principais causas de não adesão: esquecimento, efeitos colaterais, falta de compreensão e custo.",
@@ -1183,7 +1183,7 @@ export const trilhaVendas: Trilha = {
                  "30%",
                ],
                1,
-               "70% dos pacientes abandonam o tratamento nos primeiros 30 dias. O acompanhamento da farmacia pode reduzir drasticamente esse numero.",
+               "O abandono precoce atinge cerca de 70% dos pacientes no primeiro mes. O acompanhamento atento da farmacia reduz esse indice de forma significativa.",
              ),
              q(
                "Qual o principal fator de nao adesao ao tratamento?",
@@ -1216,8 +1216,8 @@ export const trilhaVendas: Trilha = {
            duracaoMin: 5,
            nivel: "intermediario",
            videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
-           resumo:
-             "A diferença entre um contato de cuidado e uma ligação de telemarketing é a INTENÇÃO. O tom, a abordagem e o timing transformam um simples telefonema em um gesto de cuidado que o paciente nunca esquece.",
+          resumo:
+            "O que separa um gesto genuíno de cuidado de uma abordagem comercial é a intenção por trás da ligação. O tom de voz, as palavras escolhidas e o momento certo fazem o paciente perceber que a farmácia realmente se importa.",
            resumoExecutivo: [
              "Sempre se identifique: 'Aqui é da Farmácia [nome], tudo bem?' — nunca 'É da central de relacionamento'.",
              "Explique o motivo genuíno: 'Estou ligando para saber como você está com o novo medicamento'.",
@@ -1447,7 +1447,7 @@ export const trilhaVendas: Trilha = {
                  "Nunca — o paciente que deve procurar a farmácia",
                ],
                1,
-               "3-5 dias é o timing ideal: o paciente já começou o tratamento mas ainda está na fase crítica de adaptação. Um apoio nesse momento faz toda a diferença na adesão.",
+               "Entre o terceiro e o quinto dia o paciente ja experimentou os primeiros efeitos e esta na janela decisiva para continuar ou desistir. O apoio da farmacia nesse momento e crucial.",
              ),
              q(
                "Qual a diferenca entre acompanhar um paciente cronico e um tratamento agudo?",
