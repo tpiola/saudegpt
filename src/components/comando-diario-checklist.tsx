@@ -57,7 +57,7 @@ export function ComandoDiarioChecklist() {
               onClick={() => {
                 if (confirm("Zerar o checklist de hoje?")) resetarDia();
               }}
-              className="rounded-xl border border-border-strong px-3 py-2 text-sm text-subtle hover:text-rose-500"
+              className="rounded-xl border border-border-strong px-3 py-2 text-sm text-subtle hover:text-orange-500"
             >
               Reiniciar dia
             </button>

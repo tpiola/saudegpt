@@ -122,12 +122,12 @@ export function ProvaModulo({
       />
 
       {/* ── Header da prova com timer ── */}
-      <Card className={`sticky top-16 z-40 ${tempoCritico && !enviado ? "border-rose-400" : ""}`}>
+      <Card className={`sticky top-16 z-40 ${tempoCritico && !enviado ? "border-orange-400" : ""}`}>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-bold">Prova: {tituloModulo}</h2>
             <p className="text-sm text-muted">
-              {selecionadas.length} questões · Nota mínima: <strong className="text-emerald-500">80%</strong> · Nível intermediário/avançado
+              {selecionadas.length} questões · Nota mínima: <strong className="text-green-500">80%</strong> · Nível intermediário/avançado
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -137,14 +137,14 @@ export function ProvaModulo({
                 <div className="h-2 w-16 overflow-hidden rounded-full bg-surface-2">
                   <div
                     className={`h-full rounded-full transition-all duration-1000 ${
-                      tempoCritico ? "bg-rose-500" : "bg-gradient-to-r from-green-500 to-green-600"
+                      tempoCritico ? "bg-orange-500" : "bg-gradient-to-r from-green-500 to-green-600"
                     }`}
                     style={{ width: `${porcentagemTempo}%` }}
                   />
                 </div>
                 <span
                   className={`font-mono text-sm font-bold ${
-                    tempoCritico ? "text-rose-500 animate-pulse" : "text-foreground"
+                    tempoCritico ? "text-orange-500 animate-pulse" : "text-foreground"
                   }`}
                 >
                   ⏱ {tempoFormatado}
@@ -211,7 +211,7 @@ export function ProvaModulo({
                       name={correta ? "check" : "close"}
                       size={16}
                       className={`ml-auto ${
-                        correta ? "text-emerald-500" : "text-rose-500"
+                        correta ? "text-green-500" : "text-orange-500"
                       }`}
                     />
                   )}
@@ -248,13 +248,13 @@ export function ProvaModulo({
           </Botao>
         </div>
       ) : (
-        <Card className={`${aprovado ? "border-emerald-300" : "border-amber-300"}`}>
+        <Card className={`${aprovado ? "border-green-300" : "border-orange-300"}`}>
           <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
             <span
               className={`flex h-16 w-16 flex-none items-center justify-center rounded-2xl shadow-lg ${
                 aprovado
                   ? "bg-gradient-to-r from-green-500 to-green-600"
-                  : "bg-gradient-to-br from-amber-400 to-amber-600"
+                  : "bg-gradient-to-br from-orange-400 to-orange-600"
               }`}
             >
               <Icon name={aprovado ? "award" : "target"} size={28} className="text-white" />
@@ -263,10 +263,10 @@ export function ProvaModulo({
               <div className="text-2xl font-extrabold">
                 {nota}% de acerto
                 {aprovado && (
-                  <span className="ml-2 text-emerald-500">✅ Aprovado!</span>
+                  <span className="ml-2 text-green-500">✅ Aprovado!</span>
                 )}
                 {!aprovado && enviado && (
-                  <span className="ml-2 text-amber-500">❌ Não atingiu 80%</span>
+                  <span className="ml-2 text-orange-500">❌ Não atingiu 80%</span>
                 )}
               </div>
               <p className="mt-1 text-sm text-muted">
@@ -275,7 +275,7 @@ export function ProvaModulo({
                   : `Você acertou ${acertos} de ${selecionadas.length}. Revise as aulas do módulo e tente novamente.`}
               </p>
               {!aprovado && (
-                <p className="mt-2 text-sm font-semibold text-amber-500">
+                <p className="mt-2 text-sm font-semibold text-orange-500">
                   Faltaram {Math.ceil(selecionadas.length * 0.8 - acertos)} acertos para atingir 80%
                 </p>
               )}

@@ -57,9 +57,9 @@ export const videosPiloto = {
   // "Boas práticas no Gerenciamento de Resíduos em Serviços de Saúde" — Hospital Moinhos de Vento
   primeirosAuxilios: "https://www.youtube.com/watch?v=Q2bHNFVEO0k",
 
-  // ─── VENDAS CONSULTIVAS ────────────────────────────────────
+  // ─── ATENDIMENTO CONSULTIVO ────────────────────────────────────
   // "5 DICAS PARA UM ATENDIMENTO TOP DENTRO DA FARMÁCIA"
-  vendasConsultivas: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
+  atendimentoConsultivo: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
 } as const;
 
 // ─── TIPAGEM ─────────────────────────────────────────────────

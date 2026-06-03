@@ -3,11 +3,11 @@ import { q } from "./_helpers";
 import { videosPiloto } from "./videos-piloto";
 import { imagensCategoria } from "./midia-catalogo";
 
-// Trilha 3 — excelência operacional e vendas consultivas com ética.
+// Trilha 3 — excelência operacional e atendimento consultivo com ética.
 export const trilhaOperacional: Trilha = {
   id: "operacional",
   numero: 3,
-  titulo: "Excelência Operacional e Vendas Consultivas",
+  titulo: "Excelência Operacional e Atendimento Consultivo",
   subtitulo: "Padrão de atendimento 5 estrelas",
   descricao:
     "Acolhimento, escuta ativa, cross-sell ético, organização de loja, planograma e o padrão de encantamento — sem slogans, com excelência real.",
@@ -532,7 +532,7 @@ export const trilhaOperacional: Trilha = {
           resumoExecutivo: [
             "Inverno: respiratórios e gripe; verão: fotoproteção e repelentes; campanhas de vacinação.",
             "Equipe alinhada distribui filas e mantém o padrão de atendimento.",
-            "Antecipar estoque sazonal evita ruptura e perda de vendas.",
+            "Antecipar estoque sazonal evita ruptura e perda de clientes.",
             "Comunicação entre turnos é essencial para alinhar prioridades do dia.",
           ],
           simulacao: {
@@ -568,7 +568,7 @@ export const trilhaOperacional: Trilha = {
               "Qual a principal consequência de não antecipar o estoque sazonal?",
               [
                 "Clientes compram mais caro",
-                "Ruptura de estoque e perda de vendas — cliente vai para o concorrente",
+                "Ruptura de estoque e perda de clientes — cliente vai para o concorrente",
                 "Sobra de produtos",
                 "Funcionários trabalham menos",
               ],

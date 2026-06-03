@@ -560,12 +560,12 @@ export function AdminPainel() {
                 { label: "25-50%", count: aprovados.filter((c) => {
                   const f = c.progresso.concluidas?.length ?? 0;
                   return f > totalCurso * 0.25 && f <= totalCurso * 0.5;
-                }).length, color: "bg-amber-500" },
+                }).length, color: "bg-orange-500" },
                 { label: "50-75%", count: aprovados.filter((c) => {
                   const f = c.progresso.concluidas?.length ?? 0;
                   return f > totalCurso * 0.5 && f <= totalCurso * 0.75;
                 }).length, color: "bg-blue-500" },
-                { label: "75-100%", count: aprovados.filter((c) => (c.progresso.concluidas?.length ?? 0) > totalCurso * 0.75).length, color: "bg-emerald-500" },
+                { label: "75-100%", count: aprovados.filter((c) => (c.progresso.concluidas?.length ?? 0) > totalCurso * 0.75).length, color: "bg-green-500" },
               ].map((b) => {
                 const max = Math.max(...[1, ...aprovados.length > 0 ? aprovados.map((c) => (c.progresso.concluidas?.length ?? 0)) : [0]]);
                 const pct = max > 0 ? Math.round((b.count / (aprovados.length || 1)) * 100) : 0;
@@ -614,11 +614,11 @@ export function AdminPainel() {
             <h2 className="text-sm font-bold text-white">Integrações</h2>
             <ul className="mt-3 space-y-2 text-xs text-slate-400">
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
                 Notion — Comando Diário
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
                 <a
                   href={NOTION_CADASTROS_LINKS.databaseUrl}
                   target="_blank"
@@ -629,11 +629,11 @@ export function AdminPainel() {
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
                 Vercel — Deploy contínuo
               </li>
               <li className="flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
                 Dados locais em <code className="text-green-300">data/cadastros.json</code>
               </li>
             </ul>

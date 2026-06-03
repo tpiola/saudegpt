@@ -52,6 +52,7 @@ export function Footer() {
               <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Receitas e Legislação</Link></li>
               <li><Link href="/trilhas" className="text-sm text-white/50 hover:text-white transition-colors">Atendimento Humanizado</Link></li>
               <li><Link href="/curiosidades" className="text-sm text-white/50 hover:text-white transition-colors">Curiosidades do Setor</Link></li>
+              <li><Link href="/pressao-arterial" className="text-sm text-white/50 hover:text-white transition-colors">Pressão Arterial</Link></li>
               <li><Link href="/comando-diario" className="text-sm text-white/50 hover:text-white transition-colors">Comando Diário</Link></li>
             </ul>
           </div>

@@ -44,7 +44,7 @@ export const atalhosComando: AtalhoComando[] = [
   {
     href: "/trilhas/operacional",
     titulo: "Trilha Operacional",
-    descricao: "Aprofundar acolhimento, planograma e vendas consultivas",
+    descricao: "Aprofundar acolhimento, planograma e atendimento consultivo",
   },
   {
     href: "/missoes",

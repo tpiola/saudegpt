@@ -461,7 +461,7 @@ export const trilhaVendas: Trilha = {
                 "Para o cliente se sentir especial",
                 "Para o cliente entender o valor agregado e sentir que a recomendacao e para o bem dele, nao para aumentar o ticket",
                 "Para o gerente aprovar",
-                "Para cumprir meta de vendas",
+                "Para cumprir meta de atendimento",
               ],
               1,
               "Up-sell sem justificativa soa como 'quero vender o mais caro'. Com beneficio concreto, soa como cuidado genuino.",

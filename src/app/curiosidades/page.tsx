@@ -3,122 +3,140 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Curiosidades · Setor Farmacêutico",
+  title: "Curiosidades · Saúde e Bem-Estar",
   description:
-    "Atualizações, curiosidades científicas e diretrizes clínicas do setor farmacêutico — medicamentos, perfumaria, saúde, beleza e bem-estar.",
+    "Curiosidades sobre saúde, alimentação, pressão arterial, emagrecimento saudável e bem-estar — tudo em linguagem fácil e direta para o dia a dia no balcão da farmácia.",
   openGraph: {
-    title: "Curiosidades · Setor Farmacêutico",
+    title: "Curiosidades · Saúde e Bem-Estar",
     description:
-      "Atualizações, curiosidades científicas e diretrizes clínicas — medicamentos, perfumaria, saúde, beleza e bem-estar.",
+      "Dicas e curiosidades sobre saúde, emagrecimento, pressão arterial e alimentação — em linguagem popular.",
   },
 };
 
 const curiosidades = [
   {
-    id: "inalatorios",
-    titulo: "Dispositivos Inalatórios e a Fisiopatologia Respiratória",
-    destaque: "A eficácia clínica está ligada à técnica de administração — não ao dispositivo.",
+    id: "emagrecimento-saudavel",
+    titulo: "Emagrecimento Saudável — Sem Milagres",
+    destaque: "Não existe remédio milagroso. O segredo é constância e equilíbrio.",
     cor: "from-green-500 to-green-600",
-    badges: ["Medicamentos", "Inaloterapia", "Asma e DPOC"],
+    badges: ["Saúde", "Alimentação", "Bem-Estar"],
     topicos: [
       {
-        titulo: "1.1 — A Falácia do Teste de Flutuação (Float Test)",
-        subtitulo: "Por que colocar o inalador na água pode matar",
-        texto: `Historicamente, pacientes eram instruídos a colocar o frasco de seus inaladores dosimetrados (MDI) em um recipiente com água para estimar o volume residual. A evidência atual condena categoricamente essa prática.
+        titulo: "🥗 Por que dietas radicais não funcionam?",
+        subtitulo: "O efeito sanfona é real e faz mal à saúde",
+        texto: `Toda dieta muito restritiva funciona no começo — você perde peso rápido, fica feliz... até voltar a comer normal. Aí o peso volta, muitas vezes maior que antes. Isso é o famoso "efeito sanfona".
 
-A transição dos propelentes CFC para os HFA (hidrofluoralcanos), impulsionada pelo Protocolo de Montreal, alterou drasticamente a densidade física, a formulação farmacêutica e a dinâmica termodinâmica dos frascos. Inaladores modernos apresentam padrões de flutuação erráticos: alguns flutuam mesmo cheios, outros afundam mesmo vazios.
+O problema é que dietas muito severas ensinam seu corpo a ter medo da falta de comida. Quando você volta a comer normalmente, seu metabolismo está mais lento e seu corpo guarda cada caloria como reserva.
 
-Além da imprecisão, a imersão em água introduz umidade no micro-orifício da válvula dosadora, causando cristalização e obstrução irreversível. Isso resulta em subdosagem ou falha completa durante uma crise de broncoespasmo.
+O segredo de verdade? Mudanças pequenas e permanentes. Trocar refrigerante por água. Comer mais salada no almoço. Caminhar 20 minutos por dia. Não precisa ser perfeito — precisa ser constante.
 
-A diretriz clínica absoluta: utilize dispositivos com contadores de dose integrados ou registre manualmente o número de acionamentos.`,
-        curiosidade: "O propelente HFA não apenas salvou a camada de ozônio, mas também permitiu que a nuvem de aerossol saísse do inalador de forma muito mais lenta e quente que o antigo CFC. Isso reduziu o 'efeito freon' — o susto do jato gelado que fazia o paciente parar de respirar no meio da dose.",
-        imagem: "/pharmacy-hero.jpg",
+O farmacêutico pode ajudar: muitas vezes quem busca emagrecimento rápido também busca remédios na farmácia. A melhor orientação é sempre acompanhamento com nutricionista e médico.`,
+        curiosidade: "Sabia que pular o café da manhã pode atrapalhar o emagrecimento? Ficar muitas horas sem comer faz o corpo entrar em 'modo de economia' e desacelerar o metabolismo.",
+        imagem: "/pharmacy-counter.jpg",
       },
       {
-        titulo: "1.2 — Imunossupressão Local: Corticosteroides e Higiene Oral",
-        subtitulo: "O sapinho que vem do inalador",
-        texto: `A deposição orofaríngea de corticosteroides inalatórios (fluticasona, budesonida, beclometasona) é inevitável, especialmente em MDIs sem espaçadores. Os corticosteroides inibem a transcrição de genes pró-inflamatórios e reduzem a atividade fagocitária dos macrófagos na mucosa oral.
+        titulo: "🍎 Comer de tudo um pouco é a melhor dieta",
+        subtitulo: "Equilíbrio, não restrição",
+        texto: `A nutricionista não vai te mandar parar de comer pão, macarrão ou doce. O que faz diferença é a quantidade e a frequência.
 
-Esta imunossupressão quebra a homeostase do microbioma oral, permitindo a proliferação do fungo Candida albicans — resultando em candidíase orofaríngea (sapinho) e disfonia (rouquidão severa) por miopatia reversível das cordas vocais.
+A regra de ouro é simples:
+• Metade do prato: verduras e legumes
+• Um quarto: proteínas (frango, peixe, ovo, feijão)
+• Um quarto: carboidratos (arroz integral, batata, macarrão)
 
-Profilaxia mandatória: enxaguar a boca com água abundante, gargarejar e cuspir imediatamente após a inalação. A deglutição da água é contraindicada — promove absorção sistêmica do corticoide, aumentando riscos de supressão do eixo HPA.`,
-        curiosidade: "O simples ato de enxaguar a boca após o uso reduz em até 70% a incidência de candidíase orofaríngea em pacientes que usam corticoide inalatório diariamente.",
+E não precisa passar fome! Comer de 3 em 3 horas mantém o metabolismo acelerado e evita aquela compulsão à noite.
+
+No balcão da farmácia, muita gente pergunta sobre shakes, suplementos e termogênicos. A orientação certa: suplemento só com acompanhamento profissional. Nada substitui comida de verdade.`,
+        curiosidade: "Comer devagar faz diferença! O cérebro leva cerca de 20 minutos para receber o sinal de saciedade. Quem come rápido acaba comendo mais do que precisa.",
         imagem: "/health-professional.jpg",
-      },
-      {
-        titulo: "1.3 — DPI vs MDI vs Nebulização",
-        subtitulo: "Cada dispositivo exige uma biomecânica respiratória específica",
-        texto: `A arquitetura de engenharia do dispositivo dita o perfil respiratório exigido do paciente:
-
-• MDI (Aerossol dosimetrado): Requer coordenação mão-respiração perfeita. A liberação do jato deve coincidir com o início de uma inspiração lenta e profunda (30L/min). O uso de espaçadores elimina a necessidade de coordenação e reduz a deposição orofaríngea em até 80%.
-
-• DPI (Inalador de pó seco): Exige fluxo inspiratório turbulento e força de sucção para desagregar as partículas do fármaco do carrier de lactose. Fluxos abaixo de 30L/min resultam em falha terapêutica — comum em idosos com DPOC avançada.
-
-• Nebulizadores: indicados para pacientes que não conseguem usar MDI ou DPI (crianças, idosos debilitados, crises agudas). A desvantagem é o tempo de administração (10-15 min) e a necessidade de manutenção rigorosa do equipamento.`,
-        curiosidade: "Sabia que o tamanho ideal das partículas para atingir os bronquíolos é entre 1 e 5 micrômetros? Partículas maiores que 5µm ficam na garganta, e menores que 0.5µm são expiradas sem se depositar — literalmente 'vão com o vento'.",
-        imagem: "/business-meeting.jpg",
       },
     ],
   },
   {
-    id: "anvisa-novidades",
-    titulo: "Atualizações Regulatórias ANVISA",
-    destaque: "As novas regras que todo profissional de farmácia precisa conhecer.",
+    id: "pressao-arterial",
+    titulo: "Pressão Arterial — O Que Você Precisa Saber",
+    destaque: "Pressão alta não dói, mas faz estrago. Saiba como orientar seus clientes.",
     cor: "from-orange-500 to-orange-600",
-    badges: ["ANVISA", "Legislação", "Segurança Sanitária"],
+    badges: ["Coração", "Pressão", "Cuidado"],
     topicos: [
       {
-        titulo: "Nova RDC de Antimicrobianos",
-        subtitulo: "Controle reforçado na dispensação",
-        texto: `A ANVISA publicou atualizações importantes para o controle de antimicrobianos no Brasil. As novas regras exigem:
+        titulo: "🩺 Hipertensão: a assassina silenciosa",
+        subtitulo: "Por que você pode ter pressão alta e nem saber",
+        texto: `A hipertensão é chamada de "assassina silenciosa" por um motivo simples: ela não dá sintomas. Você pode estar com a pressão nas alturas e se sentir perfeitamente bem.
 
-• Receita digital validada por CRM/CRF
-• Registro eletrônico obrigatório de cada dispensação
-• Notificação imediata de suspeitas de resistência microbiana
-• Validade máxima da receita: 5 dias corridos
-• Quantidade limitada ao tratamento padrão (7-14 dias)
+O problema é que, enquanto você não sente nada, a pressão alta vai danificando seus vasos sanguíneos, coração, rins e cérebro. Aí, quando os sintomas aparecem (dor de cabeça forte, visão embaçada, falta de ar), o estrago já está feito.
 
-O farmacêutico é o gatekeeper — responsável por verificar a adequação da prescrição antes da dispensação.`,
-        curiosidade: "O Brasil é um dos países que mais consome antimicrobianos no mundo, e a resistência bacteriana já é considerada uma das 10 maiores ameaças à saúde global pela OMS.",
+A Sociedade Brasileira de Cardiologia atualizou os limites em 2026:
+• ✅ Pressão normal: abaixo de 130/80 mmHg
+• ⚠️ Atenção: entre 130/80 e 139/89
+• 🔴 Hipertensão: 140/90 ou mais
+
+No balcão: sempre que alguém comprar remédio para pressão, pergunte se está fazendo acompanhamento médico regular.`,
+        curiosidade: "O estresse faz a pressão subir na hora, mas o efeito do sal é pior a longo prazo. Reduzir 1 colher de chá de sal por dia já diminui a pressão em média 5 mmHg!",
+        imagem: "/hero-dashboard.jpg",
+      },
+      {
+        titulo: "🧂 Os segredos do sódio escondido",
+        subtitulo: "Não é só o saleiro que tem sal",
+        texto: `Muita gente pensa que controlar o sal é só não usar o saleiro à mesa. Mas o sódio está escondido em quase tudo que é industrializado:
+
+• 🥫 Molhos prontos e temperos industrializados
+• 🍞 Pães e bisnaguinhas
+• 🧀 Queijos amarelos
+• 🥓 Presunto, salame, salsicha
+• 🥤 Refrigerantes (sim, têm sódio!)
+• 🥫 Sopas de pacote
+• 🍿 Salgadinhos e snacks
+
+Dica de ouro: ensine seus clientes a ler o rótulo. Um alimento é considerado ALTO em sódio quando tem mais de 400 mg de sódio a cada 100 g.
+
+E o potássio é o melhor amigo de quem tem pressão alta! Banana, abacate, feijão, batata-doce e espinafre são ricos em potássio e ajudam a equilibrar o sódio no corpo.`,
+        curiosidade: "O brasileiro consome em média 10g de sal por dia — o dobro do recomendado pela OMS, que é no máximo 5g (1 colher de chá).",
         imagem: "/pharmacy-counter.jpg",
       },
     ],
   },
   {
-    id: "perfumaria-saude",
-    titulo: "Perfumaria, Beleza e Bem-Estar",
-    destaque: "Cosmetologia clínica e o cuidado com a pele — muito além do perfume.",
+    id: "saude-coracao",
+    titulo: "Saúde do Coração — Dicas que Salvam Vidas",
+    destaque: "Pequenas mudanças no dia a dia protegem o coração por muitos anos.",
     cor: "from-green-400 to-green-500",
-    badges: ["Perfumaria", "Cosmetologia", "Bem-Estar"],
+    badges: ["Coração", "Prevenção", "Estilo de Vida"],
     topicos: [
       {
-        titulo: "Fotoproteção: Muito Além do FPS",
-        subtitulo: "Entendendo a proteção solar de verdade",
-        texto: `O FPS (Fator de Proteção Solar) mede apenas a proteção contra radiação UVB — responsável por queimaduras. Mas os danos à pele vão muito além:
+        titulo: "🏃 30 minutos por dia mudam tudo",
+        subtitulo: "O melhor remédio para o coração é o movimento",
+        texto: `Não precisa virar atleta olímpico. Trinta minutos de caminhada por dia, cinco vezes por semana, reduzem em até 40% o risco de infarto.
 
-• UVA: penetra profundamente, causa fotoenvelhecimento e câncer
-• Luz visível/azul: emitida por telas, contribui para hiperpigmentação
-• Infravermelho: gera radicais livres e acelera o envelhecimento
+O segredo é encontrar uma atividade que você goste:
+• 🚶‍♂️ Caminhar no parque
+• 🚴‍♂️ Andar de bicicleta
+• 🏊‍♂️ Nadar
+• 💃 Dançar
+• 🧘‍♂️ Yoga ou alongamento
 
-Um bom protetor solar deve oferecer proteção de amplo espectro (UVA + UVB + luz visível). O PPD (Persistent Pigment Darkening) mede a proteção UVA — ideal acima de 16.
+O importante é se mexer! O sedentarismo é um dos maiores fatores de risco para doenças do coração — tão grave quanto fumar.
 
-Curiosidade: protetores com cor oferecem proteção adicional contra luz visível e azul, sendo superiores aos incolores para prevenção de manchas.`,
-        curiosidade: "O filtro solar foi inventado em 1938 pelo químico suíço Franz Greiter, após ele sofrer uma queimadura grave escalando o Monte Piz Buin. O nome 'Piz Buin' virou marca de protetor solar!",
-        imagem: "/trilha-perfumaria.jpg",
+No balcão: quando um cliente comprar remédio para colesterol ou pressão, pergunte se ele faz atividade física. Uma simples conversa pode motivar uma mudança de vida.`,
+        curiosidade: "Ficar sentado por mais de 8 horas por dia aumenta o risco de doenças cardíacas em até 20%, mesmo para quem faz exercícios. Levante-se a cada hora!",
+        imagem: "/health-professional.jpg",
       },
       {
-        titulo: "A Ciência dos Ativos Cosméticos",
-        subtitulo: "O que realmente funciona na pele",
-        texto: `A cosmetologia clínica avançou muito nos últimos anos. Conheça os ativos com maior respaldo científico:
+        titulo: "🍔 Colesterol: os mitos e verdades",
+        subtitulo: "Nem todo colesterol é vilão",
+        texto: `Muita gente acha que colesterol é uma coisa só — e que é tudo ruim. Mas não é bem assim.
 
-• Vitamina C (L-ácido ascórbico): Antioxidante potente, estimula colágeno, clareia manchas. Concentração ideal: 10-20%, pH < 3.5.
-• Retinoides: Estimulam renovação celular e colágeno. Tretinoína é padrão ouro, mas retinaldeído é mais tolerável para peles sensíveis.
-• Ácido Hialurônico: Hidratação profunda. Molécula de baixo peso molecular penetra mais, mas também causa mais inflamação.
-• Niacinamida (Vitamina B3): Regula oleosidade, fortalece barreira, reduz poros. 2-5% é eficaz sem irritar.
+• ❤️ Colesterol bom (HDL): ajuda a limpar as artérias. Quanto mais alto, melhor.
+• 💔 Colesterol ruim (LDL): entope as artérias. Quanto mais baixo, melhor.
+• 🧈 Triglicérides: gordura no sangue, aumenta com excesso de açúcar e carboidratos.
 
-Atenção: a ordem de aplicação importa — do mais líquido ao mais denso. E protetor solar é SEMPRE o último passo.`,
-        curiosidade: "A pele é o maior órgão do corpo humano, pesando em média 4 kg em um adulto. Ela se renova completamente a cada 28 dias — o que significa que você literalmente 'troca de pele' uma vez por mês.",
-        imagem: "/trilha-encantamento.jpg",
+O ovo, por exemplo, foi injustiçado por anos. Hoje a ciência sabe que o ovo não aumenta o colesterol ruim — desde que consumido com moderação (até 1 por dia está ótimo).
+
+O que realmente faz mal: gordura trans (presente em bolachas recheadas, sorvetes, margarina) e excesso de açúcar.
+
+Dica importante: colesterol alto, na maioria das vezes, não dá sintomas. Por isso os exames de rotina são tão importantes.`,
+        curiosidade: "O ovo tem fama de vilão, mas é um dos alimentos mais completos: rico em proteínas, vitaminas e colesterol bom. Um ovo por dia não aumenta o risco cardíaco em pessoas saudáveis.",
+        imagem: "/business-meeting.jpg",
       },
     ],
   },
@@ -128,10 +146,9 @@ export default function CuriosidadesPage() {
   return (
     <div className="relative">
       {/* ════════════════════════════════════════════
-         HERO — CINEMATOGRÁFICO COM VÍDEO DE FUNDO
+         HERO
          ════════════════════════════════════════════ */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
-        {/* Background image with cinematic overlay */}
         <Image
           src="/hero-matricula.jpg"
           alt=""
@@ -141,14 +158,10 @@ export default function CuriosidadesPage() {
           sizes="100vw"
         />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
-
-        {/* Animated gradient overlay */}
         <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-green-500/20 animate-pulse-slow" />
 
-        {/* Content */}
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12 pt-20 pb-16">
           <div className="max-w-3xl">
-            {/* Badge */}
             <div className="badge-orange inline-flex mb-6">
               <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
               Conhecimento que transforma
@@ -157,21 +170,20 @@ export default function CuriosidadesPage() {
             <h1 className="text-[clamp(2.2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">
               <span className="text-white">Curiosidades</span>
               <br />
-              <span className="text-white/70 font-light">do Setor Farmacêutico</span>
+              <span className="text-white/70 font-light">que fazem diferença</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-white/50 font-light">
-              Atualizações clínicas, diretrizes baseadas em evidências e curiosidades científicas — 
-              de medicamentos a perfumaria, saúde, beleza e{" "}
-              <span className="text-white/80 font-medium">bem-estar</span>.
+              Dicas de saúde, alimentação, pressão arterial e bem-estar — tudo em{" "}
+              <span className="text-white/80 font-medium">linguagem simples</span>
+              {" "}para você usar no dia a dia do balcão.
             </p>
 
-            {/* Stats */}
             <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
               {[
-                { value: curiosidades.length.toString(), label: "blocos" },
-                { value: "3+", label: "temas" },
-                { value: "Baseada", label: "em evidências" },
+                { value: "3", label: "blocos" },
+                { value: "Saúde", label: "em foco" },
+                { value: "Fácil", label: "de entender" },
               ].map((s) => (
                 <div key={s.label} className="flex items-center gap-2">
                   <span className="text-xl sm:text-2xl font-bold text-orange-400 tabular-nums">
@@ -185,7 +197,6 @@ export default function CuriosidadesPage() {
               ))}
             </div>
 
-            {/* Navegação rápida */}
             <div className="mt-10 flex flex-wrap gap-3">
               {curiosidades.map((c) => (
                 <a
@@ -200,7 +211,6 @@ export default function CuriosidadesPage() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
           <span className="text-[8px] uppercase tracking-[0.25em] text-white/20">Explorar</span>
           <div className="w-px h-10 bg-gradient-to-b from-white/20 to-transparent animate-pulse" />
@@ -208,7 +218,7 @@ export default function CuriosidadesPage() {
       </section>
 
       {/* ════════════════════════════════════════════
-         CONTEÚDO CURIOSIDADES
+         CONTEÚDO
          ════════════════════════════════════════════ */}
       {curiosidades.map((bloco, idx) => (
         <section
@@ -217,7 +227,6 @@ export default function CuriosidadesPage() {
           className={`relative py-20 sm:py-28 ${idx % 2 === 0 ? "bg-surface" : "bg-surface-2"}`}
         >
           <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
-            {/* Cabeçalho do bloco */}
             <div className="max-w-3xl">
               <div className="flex flex-wrap gap-2 mb-4">
                 {bloco.badges.map((b) => (
@@ -233,11 +242,9 @@ export default function CuriosidadesPage() {
               <div className="divider-orange mt-5" />
             </div>
 
-            {/* Tópicos */}
             <div className="mt-12 space-y-16">
               {bloco.topicos.map((topico, tIdx) => (
                 <article key={tIdx} className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-start">
-                  {/* Texto — 3 colunas */}
                   <div className="lg:col-span-3">
                     <h3 className="text-xl font-bold text-forest-700 dark:text-white/90">
                       {topico.titulo}
@@ -250,7 +257,6 @@ export default function CuriosidadesPage() {
                       ))}
                     </div>
 
-                    {/* Card de curiosidade */}
                     <div className="mt-6 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-forest-800">
                       <div className="flex gap-3">
                         <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-100 text-[16px] dark:bg-orange-900/30">
@@ -268,7 +274,6 @@ export default function CuriosidadesPage() {
                     </div>
                   </div>
 
-                  {/* Imagem — 2 colunas */}
                   <div className="lg:col-span-2">
                     <div className="group relative overflow-hidden rounded-2xl shadow-lg">
                       <Image
@@ -289,23 +294,75 @@ export default function CuriosidadesPage() {
       ))}
 
       {/* ════════════════════════════════════════════
+         SEÇÃO O FARMACÊUTICO RECOMENDA
+         ════════════════════════════════════════════ */}
+      <section className="relative py-20 sm:py-28 bg-surface overflow-hidden">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
+          <div className="grid gap-8 lg:grid-cols-3">
+            <div className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 text-lg">
+                  🧑‍⚕️
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">O farmacêutico recomenda</h3>
+              </div>
+              <div className="mt-3 space-y-2.5 text-sm leading-relaxed text-muted">
+                <p>✅ <strong>Nunca automedique</strong> — remédio errado pode mascarar sintomas e piorar o problema</p>
+                <p>✅ <strong>Mude um hábito por vez</strong> — comece trocando refrigerante por água, depois inclua uma caminhada</p>
+                <p>✅ <strong>Leia os rótulos</strong> — o sódio, o açúcar e a gordura estão escondidos nos industrializados</p>
+                <p>✅ <strong>Consulte regularmente</strong> — check-ups anuais salvam vidas</p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 text-lg">
+                  💡
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Sabia que?</h3>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                Dormir bem é tão importante quanto comer bem para a saúde do coração. 
+                <strong className="text-orange-600"> 7 a 9 horas de sono</strong> por noite regulam 
+                hormônios, controlam a pressão e ajudam a manter o peso.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-500">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 text-lg">
+                  🌿
+                </span>
+                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Cuidado que transforma</h3>
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">
+                No balcão da farmácia, você é a primeira pessoa que o cliente encontra. 
+                Um atendente bem informado pode fazer a diferença entre um cliente que passa 
+                despercebido e um que <strong className="text-green-600">recebe o cuidado que merece</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
          CTA FINAL
          ════════════════════════════════════════════ */}
       <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-[-0.03em] text-white">
-            Acompanhe as novidades do setor
+            Conhecimento que salva vidas
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-white/50">
-            Novos conteúdos toda semana — de diretrizes ANVISA a cosmetologia clínica e bem-estar.
+            Novos conteúdos toda semana — saúde, bem-estar e dicas práticas para o dia a dia.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/" className="btn-rd-white text-base px-8 py-3">
               Voltar ao início
             </Link>
-            <Link href="/trilhas" className="btn-rd-outline text-base px-8 py-3">
-              Ver trilhas
+            <Link href="/pressao-arterial" className="btn-rd-outline text-base px-8 py-3">
+              Guia de Pressão Arterial
             </Link>
           </div>
         </div>

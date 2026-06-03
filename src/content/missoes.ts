@@ -192,7 +192,7 @@ export const indicadores: Indicador[] = [
     id: "faturamento",
     nome: "Faturamento",
     descricao: "Receita total no período.",
-    comoLer: "Volume de vendas; analise junto ao mix.",
+    comoLer: "Volume de atendimento; analise junto ao mix.",
     valorDemo: "R$ 184,2 mil",
     tendencia: "up",
   },
