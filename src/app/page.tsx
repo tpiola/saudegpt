@@ -1,6 +1,6 @@
 "use client";
 
-import { HeroVideoBackground } from "@/components/hero-video";
+import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
@@ -36,10 +36,93 @@ export default function HomePage() {
   return (
     <div className="relative min-h-screen bg-background text-foreground">
       {/* ══════════════════════════════════════════════
-          HERO — 100vh CINEMATOGRÁFICO PREMIUM
+          HERO — CINEMATOGRÁFICO 100vh
           ══════════════════════════════════════════════ */}
-      <section className="relative h-screen overflow-hidden bg-midnight-900">
-        <HeroVideoBackground />
+      <section className="relative flex h-screen items-center overflow-hidden bg-[#020617]">
+        <HeroVideo />
+
+        {/* Grid overlay */}
+        <div
+          className="pointer-events-none absolute inset-0 z-30 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+
+        {/* Brilho radial central */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 h-[80vmax] w-[80vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-emerald-400/8 via-transparent to-transparent" />
+
+        {/* ── CONTEÚDO PRINCIPAL ── */}
+        <div className="relative z-40 mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12">
+          <div className="max-w-3xl">
+            {/* Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-1.5 text-xs font-medium tracking-wide text-emerald-300 backdrop-blur-md shadow-[0_0_24px_rgba(16,185,129,0.12)]">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.7)]" />
+              Formação completa para Atendentes
+            </div>
+
+            {/* Headline principal */}
+            <h1 className="font-display text-[clamp(2.8rem,7vw,5.5rem)] font-extrabold leading-[1.0] tracking-[-0.04em] text-white">
+              Atendentes de{" "}
+              <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 bg-clip-text text-transparent">
+                Farmácia
+              </span>
+            </h1>
+
+            {/* Subtítulo */}
+            <p className="mt-5 max-w-xl text-lg leading-relaxed tracking-wide text-white/50 sm:text-xl">
+              A formação que transforma atendentes em profissionais de cuidado
+              — com técnica, acolhimento e excelência no balcão da farmácia.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                href="#matricular"
+                className="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-8 py-4 text-base font-semibold text-white shadow-[0_8px_40px_rgba(16,185,129,0.35)] transition-all duration-300 hover:bg-emerald-600 hover:scale-[1.03] hover:shadow-[0_12px_50px_rgba(16,185,129,0.5)] active:scale-[0.97]"
+              >
+                Quero me matricular
+              </a>
+              <a
+                href="#trilhas"
+                className="inline-flex items-center justify-center rounded-2xl border-2 border-white/20 bg-white/5 px-8 py-4 text-base font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10 hover:scale-[1.03] active:scale-[0.97]"
+              >
+                Ver trilhas
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-16 flex flex-wrap gap-x-10 gap-y-4">
+              {[
+                { value: "4", label: "TRILHAS" },
+                { value: "81+", label: "AULAS" },
+                { value: "∞", label: "DO ZERO AO AVANÇADO" },
+                { value: "100%", label: "ONLINE" },
+              ].map((stat) => (
+                <div key={stat.label} className="flex items-center gap-3">
+                  <span className="text-2xl font-bold text-emerald-400 tabular-nums">
+                    {stat.value}
+                  </span>
+                  <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/35">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 left-1/2 z-50 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex">
+          <span className="text-[9px] font-medium uppercase tracking-[0.2em] text-white/25">
+            Explore
+          </span>
+          <svg className="h-4 w-4 animate-bounce text-white/30" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
       </section>
 
       {/* ─── DIVIDER WAVE ─── */}
