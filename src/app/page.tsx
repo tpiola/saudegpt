@@ -1,6 +1,6 @@
 "use client";
 
-import { HeroVideo } from "@/components/hero-video";
+import { HeroVideoBackground } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
@@ -38,122 +38,8 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════
           HERO — 100vh CINEMATOGRÁFICO PREMIUM
           ══════════════════════════════════════════════ */}
-      <section className="hero-rd relative flex h-screen items-center overflow-hidden">
-        <HeroVideo />
-
-        {/* Grid pattern overlay */}
-        <div className="pattern-grid pointer-events-none absolute inset-0 z-[2] opacity-30" />
-
-        {/* Brilho radial central */}
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-[2] h-[80vmax] w-[80vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-radial from-green-400/10 via-transparent to-transparent" />
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <FadeUp>
-            {/* Badge com glow verde */}
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-green-400/25 bg-green-500/10 px-4 py-1.5 text-xs font-medium tracking-wide text-green-300 backdrop-blur-sm shadow-[0_0_20px_rgba(76,161,93,0.15)]">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_12px_rgba(76,161,93,0.8)] animate-pulse-soft" />
-              Formação completa para Atendentes
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={120}>
-            <h1 className={`${h1Cls} mt-6 max-w-4xl text-white text-glow-green`}>
-              Atendentes de{" "}
-              <span className="bg-gradient-to-r from-green-300 via-green-400 to-green-200 bg-clip-text text-transparent">
-                Farmácia
-              </span>
-            </h1>
-          </FadeUp>
-
-          <FadeUp delay={240}>
-            <p className="mt-5 max-w-2xl text-lg leading-relaxed tracking-wide text-white/60 sm:text-xl sm:tracking-wider">
-              A formação que transforma atendentes em profissionais de cuidado —
-              com técnica, acolhimento e excelência no balcão da farmácia.
-            </p>
-          </FadeUp>
-
-          {/* Stats GRANDES */}
-          <FadeUp delay={360}>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <div className="stat-hero">
-                <span className="stat-hero-icon">
-                  <span className="stat-hero-icon-bg bg-orange-500" />
-                  <span className="relative">4</span>
-                </span>
-                <div>
-                  <span className="stat-hero-number text-orange-400">4</span>
-                  <span className="block text-[11px] font-medium uppercase tracking-[0.12em] text-white/40">
-                    Trilhas
-                  </span>
-                </div>
-              </div>
-
-              <div className="stat-hero">
-                <span className="stat-hero-icon">
-                  <span className="stat-hero-icon-bg bg-orange-500" />
-                  <span className="relative">📚</span>
-                </span>
-                <div>
-                  <span className="stat-hero-number text-orange-400">{total}+</span>
-                  <span className="block text-[11px] font-medium uppercase tracking-[0.12em] text-white/40">
-                    Aulas
-                  </span>
-                </div>
-              </div>
-
-              <div className="stat-hero">
-                <span className="stat-hero-icon">
-                  <span className="stat-hero-icon-bg bg-green-500" />
-                  <span className="relative">∞</span>
-                </span>
-                <div>
-                  <span className="stat-hero-number text-green-400">∞</span>
-                  <span className="block text-[11px] font-medium uppercase tracking-[0.12em] text-white/40">
-                    Do zero ao avançado
-                  </span>
-                </div>
-              </div>
-
-              <div className="stat-hero">
-                <span className="stat-hero-icon">
-                  <span className="stat-hero-icon-bg bg-green-500" />
-                  <span className="relative">✓</span>
-                </span>
-                <div>
-                  <span className="stat-hero-number text-green-400">100%</span>
-                  <span className="block text-[11px] font-medium uppercase tracking-[0.12em] text-white/40">
-                    Online
-                  </span>
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-
-          {/* CTAs */}
-          <FadeUp delay={480}>
-            <div className="mt-12 flex flex-wrap gap-4">
-              <Botao
-                href="#matricular"
-                variante="primary"
-                tamanho="xl"
-                className="shadow-[0_8px_40px_rgba(214,110,15,0.4)] hover:shadow-[0_12px_50px_rgba(214,110,15,0.55)] hover:scale-[1.03] transition-all duration-300"
-              >
-                Quero me matricular
-              </Botao>
-              <Botao href="#trilhas" variante="outline-white" tamanho="xl">
-                Ver trilhas
-              </Botao>
-            </div>
-          </FadeUp>
-        </div>
-
-        {/* Scroll indicator elegante */}
-        <div className="scroll-indicator absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 sm:flex">
-          <span className="scroll-indicator-mouse" />
-          <span className="text-[10px] font-medium uppercase tracking-[0.15em] text-white/30">
-            Explore
-          </span>
-        </div>
+      <section className="relative h-screen overflow-hidden bg-midnight-900">
+        <HeroVideoBackground />
       </section>
 
       {/* ─── DIVIDER WAVE ─── */}

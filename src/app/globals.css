@@ -21,6 +21,31 @@
   --color-forest-800: #051714;
   --color-forest-900: #030e0c;
 
+  /* ── Nova Paleta Premium (Slate + Midnight + Emerald) ── */
+  --color-midnight-50: #f1f5f9;
+  --color-midnight-100: #e2e8f0;
+  --color-midnight-200: #cbd5e1;
+  --color-midnight-300: #94a3b8;
+  --color-midnight-400: #64748b;
+  --color-midnight-500: #475569;
+  --color-midnight-600: #334155;
+  --color-midnight-700: #1e293b;
+  --color-midnight-800: #0f172a;
+  --color-midnight-900: #020617;
+
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-100: #d1fae5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-300: #6ee7b7;
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065f46;
+  --color-emerald-900: #064e3b;
+
+  --color-slate-50: #f8fafc;
+
   --color-green-50: #f0f8f1;
   --color-green-100: #d8eeda;
   --color-green-200: #b2ddb5;
