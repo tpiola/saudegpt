@@ -80,10 +80,10 @@ export default function HomePage() {
             {/* CTAs */}
             <div className="mt-10 flex flex-wrap gap-4">
               <a
-                href="#matricular"
+                href="#ser-aluno"
                 className="inline-flex items-center justify-center rounded-2xl bg-emerald-500 px-8 py-4 text-base font-semibold text-white shadow-[0_8px_40px_rgba(16,185,129,0.35)] transition-all duration-300 hover:bg-emerald-600 hover:scale-[1.03] hover:shadow-[0_12px_50px_rgba(16,185,129,0.5)] active:scale-[0.97]"
               >
-                Quero me matricular
+                Ser Aluno
               </a>
               <a
                 href="#trilhas"
@@ -321,7 +321,7 @@ export default function HomePage() {
             </div>
           </FadeUp>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <FadeUp delay={100}>
               <Link href="/pressao-arterial" className="blog-card group relative overflow-hidden">
                 <div className="blog-card-content">
@@ -405,6 +405,68 @@ export default function HomePage() {
                   <div className="mt-5 flex items-center gap-3">
                     <span className="blog-card-arrow">→</span>
                     <span className="text-xs font-medium text-muted group-hover:text-forest-400 transition-colors duration-300 link-underline">
+                      Ler artigo
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </FadeUp>
+
+            {/* ─── Card 4: Diabetes ─── */}
+            <FadeUp delay={400}>
+              <Link href="/diabetes" className="blog-card group relative overflow-hidden">
+                <div className="blog-card-content">
+                  <Image
+                    src={foto("photo-1579154204601-01588f351e67")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-red-500/20 to-red-400/10 text-2xl ring-1 ring-red-400/15 group-hover:ring-red-400/30 transition-all duration-300">
+                    🩸
+                  </span>
+                  <h3 className="text-base font-semibold group-hover:text-red-500 transition-colors duration-300">
+                    Diabetes
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-muted leading-relaxed">
+                    Tipos, sintomas, medicamentos e orientações essenciais
+                    para atender quem tem diabetes no balcão.
+                  </p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="blog-card-arrow">→</span>
+                    <span className="text-xs font-medium text-muted group-hover:text-red-500 transition-colors duration-300 link-underline">
+                      Ler artigo
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </FadeUp>
+
+            {/* ─── Card 5: Hormônios ─── */}
+            <FadeUp delay={500}>
+              <Link href="/hormonios" className="blog-card group relative overflow-hidden">
+                <div className="blog-card-content">
+                  <Image
+                    src={foto("photo-1559757175-5700dde675bc")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-400/10 text-2xl ring-1 ring-purple-400/15 group-hover:ring-purple-400/30 transition-all duration-300">
+                    🧬
+                  </span>
+                  <h3 className="text-base font-semibold group-hover:text-purple-500 transition-colors duration-300">
+                    Hormônios
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-muted leading-relaxed">
+                    Tireoide, hormônios sexuais, insulina e cortisol —
+                    tudo que o atendente precisa saber.
+                  </p>
+                  <div className="mt-5 flex items-center gap-3">
+                    <span className="blog-card-arrow">→</span>
+                    <span className="text-xs font-medium text-muted group-hover:text-purple-500 transition-colors duration-300 link-underline">
                       Ler artigo
                     </span>
                   </div>
@@ -559,10 +621,47 @@ export default function HomePage() {
       <div className="divider-wave divider-wave-flip" />
 
       {/* ══════════════════════════════════════════════
-          SEÇÃO: MATRÍCULA
+          YOUTUBE: PERFIL 51%
+          ══════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background to-forest-50/10 py-16 sm:py-20">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange-500/3 blur-[120px]" />
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+          <FadeUp>
+            <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-orange-400/20 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-300 backdrop-blur-sm shadow-[0_0_15px_rgba(214,110,15,0.1)]">
+              🎬 Perfil 51%
+            </span>
+            <h2 className={h2Cls}>
+              O conceito <span className="bg-gradient-to-r from-orange-300 to-orange-500 bg-clip-text text-transparent">Perfil 51%</span> explicado
+            </h2>
+            <p className="mt-3 text-muted leading-relaxed">
+              Assista ao vídeo e entenda como o método Perfil 51% transforma
+              atendentes em profissionais de excelência.
+            </p>
+            <div className="mt-8">
+              <a
+                href="https://www.youtube.com/watch?v=SL74T15d82Y"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-2xl bg-red-600 px-8 py-4 text-base font-semibold text-white shadow-[0_8px_40px_rgba(220,38,38,0.35)] transition-all duration-300 hover:bg-red-500 hover:scale-[1.03] hover:shadow-[0_12px_50px_rgba(220,38,38,0.5)] active:scale-[0.97]"
+              >
+                <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zM9 16V8l8 4-8 4z" />
+                </svg>
+                Assistir no YouTube
+              </a>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ─── DIVIDER WAVE ─── */}
+      <div className="divider-wave" />
+
+      {/* ══════════════════════════════════════════════
+          SEÇÃO: MATRÍCULA / SER ALUNO
           ══════════════════════════════════════════════ */}
       <section
-        id="matricular"
+        id="ser-aluno"
         className="relative overflow-hidden bg-gradient-to-br from-forest-600 via-forest-500 to-forest-700 py-20 sm:py-28"
       >
         <div className="pattern-grid pointer-events-none absolute inset-0 opacity-[0.05]" />
@@ -633,7 +732,7 @@ export default function HomePage() {
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm sm:p-8 glass-premium">
                 <div className="mb-6 text-center">
                   <h3 className={`${h3Cls} text-white`}>
-                    Faça sua matrícula
+                    Torne-se Aluno
                   </h3>
                   <p className="mt-1 text-sm text-white/40">
                     Preencha os dados abaixo para começar
@@ -641,6 +740,9 @@ export default function HomePage() {
                 </div>
                 {/* Envolvemos o form para usar input-premium no MatriculaForm */}
                 <MatriculaForm />
+                <p className="mt-4 text-center text-xs text-white/40">
+                  *Sua solicitação será analisada e confirmada por e-mail em até 24h
+                </p>
               </div>
             </FadeUp>
           </div>
@@ -668,12 +770,12 @@ export default function HomePage() {
             </p>
             <div className="mt-10">
               <Botao
-                href="#matricular"
+                href="#ser-aluno"
                 variante="primary"
                 tamanho="xl"
                 className="shadow-[0_8px_40px_rgba(214,110,15,0.45)] hover:shadow-[0_12px_60px_rgba(214,110,15,0.65)] hover:scale-[1.04] transition-all duration-300"
               >
-                Quero me matricular
+                Ser Aluno
               </Botao>
             </div>
           </FadeUp>
@@ -715,10 +817,10 @@ export default function HomePage() {
               </p>
               <div className="mt-6 flex gap-3">
                 <a
-                  href="#matricular"
+                  href="#ser-aluno"
                   className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-forest-700 transition-all hover:bg-white/90 hover:scale-105"
                 >
-                  Matricule-se
+                  Ser Aluno
                 </a>
               </div>
             </div>

@@ -6,7 +6,7 @@ import { useProgresso } from "@/lib/progress";
 import { Botao, Card, Etiqueta } from "./ui";
 import { Icon } from "./icons";
 import { CelebracaoXp } from "./celebracao-xp";
-import { Confete } from "./confete";
+import { Confetti } from "./confetti";
 
 interface ProximaInfo {
   trilhaId: string;
@@ -72,7 +72,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
 
   return (
     <div className="space-y-6">
-      <Confete ativo={celebrar} origemX={0.5} origemY={0.35} />
+      <Confetti ativo={celebrar} duracao={3000} />
       <CelebracaoXp xp={xp} ativo={celebrar} />
       {/* Quiz */}
       {quiz.length > 0 && (

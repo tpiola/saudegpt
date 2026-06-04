@@ -67,7 +67,7 @@ export function MatriculaForm() {
         iconeFim="arrow"
         disabled={enviando}
       >
-        {enviando ? "Enviando..." : "Quero estudar"}
+        {enviando ? "Enviando..." : "Quero ser Aluno"}
       </Botao>
     </form>
   );

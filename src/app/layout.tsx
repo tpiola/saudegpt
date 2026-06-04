@@ -5,6 +5,7 @@ import { LmsShell } from "@/components/lms-shell";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
+import { LgpdBanner } from "@/components/lgpd-banner";
 import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
@@ -128,6 +129,7 @@ document.addEventListener('keydown', function(e) {
           <ProgressProvider>
             <ProgressSync />
             <PwaRegister />
+            <LgpdBanner />
             <LmsShell>
               <main id="conteudo-principal">{children}</main>
             </LmsShell>

@@ -1577,6 +1577,170 @@ body {
    RESPONSIVO — DIVIDERS
    ══════════════════════════════════════════════ */
 
+/* ── Troféu (Trophy) ── */
+.trofeu-container {
+  position: relative;
+  animation: trofeuFloat 3s ease-in-out infinite;
+}
+
+@keyframes trofeuFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.trofeu-svg {
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.4));
+  animation: trofeuGlow 2s ease-in-out infinite;
+}
+
+@keyframes trofeuGlow {
+  0%, 100% { filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.4)); }
+  50% { filter: drop-shadow(0 0 28px rgba(255, 215, 0, 0.8)); }
+}
+
+.trofeu-glow {
+  animation: trofeuPulse 2s ease-in-out infinite;
+}
+
+@keyframes trofeuPulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.15); }
+}
+
+.trofeu-copo {
+  animation: trofeuShine 3s ease-in-out infinite;
+}
+
+@keyframes trofeuShine {
+  0%, 100% { fill-opacity: 1; }
+  50% { fill-opacity: 0.85; }
+}
+
+/* ── Ranking Student Status ── */
+.ranking-status-card {
+  background: linear-gradient(135deg, rgba(76,161,93,0.06), rgba(214,110,15,0.04));
+  border: 1px solid rgba(76,161,93,0.15);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+}
+
+.ranking-status-level {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 1.125rem;
+  color: white;
+  background: linear-gradient(135deg, #d66e0f, #f8b773);
+  box-shadow: 0 0 24px rgba(214,110,15,0.25);
+  flex-shrink: 0;
+}
+
+.ranking-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  background: rgba(76,161,93,0.1);
+  color: #4ca15d;
+}
+
+.ranking-badge-gold {
+  background: rgba(255, 215, 0, 0.15);
+  color: #b8860b;
+}
+
+/* ── Tabela de Ranking com Badges ── */
+.ranking-table-row {
+  display: grid;
+  grid-template-columns: 36px 1fr 60px 80px 80px auto;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  transition: all 0.2s ease;
+}
+
+.ranking-table-row:hover {
+  background: rgba(76,161,93,0.04);
+}
+
+.ranking-table-row.gold {
+  background: rgba(255, 215, 0, 0.06);
+  border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.ranking-table-row.silver {
+  background: rgba(192, 192, 192, 0.06);
+  border: 1px solid rgba(192, 192, 192, 0.15);
+}
+
+.ranking-table-row.bronze {
+  background: rgba(205, 127, 50, 0.06);
+  border: 1px solid rgba(205, 127, 50, 0.15);
+}
+
+.ranking-pos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.ranking-pos.top1 {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: white;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+}
+
+.ranking-pos.top2 {
+  background: linear-gradient(135deg, #c0c0c0, #e8e8e8);
+  color: #555;
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.2);
+}
+
+.ranking-pos.top3 {
+  background: linear-gradient(135deg, #cd7f32, #daa06d);
+  color: white;
+  box-shadow: 0 0 10px rgba(205, 127, 50, 0.2);
+}
+
+.ranking-progress-small {
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.06);
+  overflow: hidden;
+  max-width: 80px;
+}
+
+.ranking-progress-small-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #4ca15d, #85c88b);
+  transition: width 0.6s ease;
+}
+
+.ranking-mobile-gamificado {
+  padding: 8px 10px;
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.ranking-mobile-gamificado:hover {
+  background: rgba(76,161,93,0.04);
+}
+
 @media (max-width: 640px) {
   .divider-wave { height: 30px; }
   .divider-arc  { height: 25px; }

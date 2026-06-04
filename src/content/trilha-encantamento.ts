@@ -8,8 +8,8 @@ export const trilhaVendas: Trilha = {
   numero: 4,
   titulo: "Cuidado Humanizado e Atendimento que Encanta",
   subtitulo: "Do acolhimento ao cuidado contínuo",
-  descricao:
-    "Como atender com excelência, acolher com empatia, comunicar com clareza e fazer o cliente se sentir cuidado — porque cliente bem atendido volta naturalmente.",
+      descricao:
+        "Como atender com excelência, acolher com empatia, comunicar com clareza e fazer o paciente se sentir cuidado — porque paciente bem atendido volta naturalmente. Perfil 51%: o cuidado consistente fideliza quem mais precisa de atenção.",
   nivelFaixa: "Básico ao avançado",
   icone: "trending",
   modulos: [
@@ -18,9 +18,9 @@ export const trilhaVendas: Trilha = {
        ════════════════════════════════════════════════ */
     {
       id: "oferecimento",
-      titulo: "Atendimento Humanizado e Cuidado com o Paciente",
+      titulo: "Atendimento Humanizado e Cuidado com o Paciente — com o Perfil 51%",
       descricao:
-        "Atender é cuidar. O cliente que se sente acolhido, ouvido e respeitado confia — e confiança é a base de todo cuidado continuado.",
+        "Atender é cuidar. O paciente que se sente acolhido, ouvido e respeitado confia — e confiança é a base de todo cuidado continuado. O Perfil 51% mostra que é o cuidado genuíno que transforma o paciente em fiel à farmácia.",
       imagemHeroUrl: imagensCategoria.oferecimento,
       aulas: [
         {
@@ -33,7 +33,7 @@ export const trilhaVendas: Trilha = {
             "Antes de qualquer oferta, o cliente precisa se sentir acolhido. Como criar um ambiente de confiança desde o primeiro contato.",
           resumoExecutivo: [
             "Antes de qualquer oferta: ouça. O cliente precisa se sentir acolhido primeiro.",
-            "O acolhimento genuíno é o que faz o cliente lembrar de você na próxima visita.",
+                "O acolhimento genuíno é o que faz o paciente lembrar de você na próxima visita. Esse é um dos pilares do Perfil 51%: o cuidado humanizado que gera vínculo duradouro.",
             "Nunca ofereça antes de concluir a orientação inicial — o cliente percebe o oportunismo.",
             "Sinal verde: cliente relaxou, fez contato visual, concordou com a orientação inicial.",
             "Sinal vermelho: cliente com pressa, irritado, ou claramente sem recursos — respeite.",
@@ -68,7 +68,7 @@ export const trilhaVendas: Trilha = {
             q(
               "Qual o melhor momento para sugerir um produto complementar?",
               [
-                "Assim que o cliente entra na loja",
+                "Assim que o paciente entra no balcão",
                 "Depois de acolher, ouvir e orientar, durante a conversa",
                 "Só na finalização do caixa",
                 "Antes mesmo do cliente falar o que quer",
@@ -565,9 +565,9 @@ export const trilhaVendas: Trilha = {
        ════════════════════════════════════════════════ */
     {
       id: "comunicacao",
-      titulo: "Comunicação que Acolhe e Cura",
+      titulo: "Comunicação que Acolhe e Cura — com o Perfil 51%",
       descricao:
-        "Cada palavra importa no cuidado. Do rapport inicial à linguagem de acolhimento — como a comunicação transforma um atendente em referência de cuidado.",
+        "Cada palavra importa no cuidado. Do rapport inicial à linguagem de acolhimento — como a comunicação transforma um atendente em referência de cuidado. O Perfil 51% ensina que a comunicação que cura e acolhe é o que faz o paciente voltar.",
       imagemHeroUrl: imagensCategoria.comunicacaoPessoas,
       aulas: [
         {
@@ -583,7 +583,7 @@ export const trilhaVendas: Trilha = {
             'Espelhar o tom do cliente: se ele fala baixo, baixe o tom. Se está apreensivo, seja calmo.',
             "Usar o nome do cliente uma ou duas vezes no atendimento cria intimidade sem ser invasivo.",
             "Evite 'Pois não?' ou 'Posso ajudar?' — soa robótico. Prefira 'Olá, seja bem-vindo! Como posso te ajudar hoje?'",
-            "Clientes que se sentem bem acolhidos confiam mais — e confiança é a base do cuidado.",
+            "Clientes que se sentem bem acolhidos confiam mais — e confiança é a base do cuidado. Perfil 51%: o acolhimento é o primeiro pilar para construir uma relação que dura.",
           ],
           simulacao: {
             cliente: "Entra na farmácia com expressão fechada, olhando as prateleiras sem rumo.",
@@ -850,7 +850,7 @@ export const trilhaVendas: Trilha = {
             "Paráfrase: repetir com suas palavras o que o cliente disse. 'Então, se eu entendi direito, você sente desconforto depois de comer.'",
             "Validação: reconhecer o sentimento do cliente. 'Com certeza, deve ser incômodo conviver com isso.'",
             'Resumo: recapitular no final. "Então fica assim: você vai levar o antialérgico para usar à noite e o soro fisiológico durante o dia.',
-            "Cliente que se sente ouvido confia mais. Confiança é a base de toda venda consultiva.",
+            "Cliente que se sente ouvido confia mais. Confiança é a base de todo cuidado farmacêutico consultivo. Perfil 51%: a escuta ativa é o alicerce do relacionamento que fideliza.",
             "Nunca interrompa o cliente para oferecer algo. Deixe ele terminar o raciocínio.",
           ],
           simulacao: {
@@ -1666,9 +1666,545 @@ export const trilhaVendas: Trilha = {
                "Revisar semanalmente os indicadores permite celebrar acertos, ajustar o que nao funcionou e manter a equipe engajada no cuidado.",
              ),
            ],
-           xp: 70,
-         },
-       ],
+          xp: 70,
+        },
+      ],
+   },
+    /* ═══ MÓDULO NOVO: PERFIL 51% ═══ */
+    {
+      id: "perfil-51",
+      titulo: "Perfil 51% — O Coração do Atendimento",
+      descricao:
+        "Descubra o poder das habilidades emocionais no balcão da farmácia. Baseado no conceito de Quociente de Hospitalidade (HQ) de Danny Meyer.",
+      aulas: [
+        {
+          id: "perfil-51-intro",
+          titulo: "Por que 51% faz toda diferença",
+          duracaoMin: 8,
+          nivel: "basico",
+          resumo:
+            "No balcão da farmácia, o cliente não compra apenas um remédio — ele busca cuidado, segurança e acolhimento. Descubra por que as habilidades emocionais pesam mais que as técnicas.",
+          resumoExecutivo: [
+            "O conceito Perfil 51% foi criado por Danny Meyer",
+            "49% é técnica, 51% é habilidade emocional",
+            "Na farmácia, clientes vulneráveis precisam de acolhimento",
+            "Os 6 pilares: Calor Otimista, Curiosidade Intelectual, Ética de Trabalho, Empatia, Autoconsciência, Integridade",
+            "Hospitalidade Quociente (HQ) é treinável",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sempre que perceber que o cliente precisa de uma orientação técnica que foge da sua alçada",
+          ],
+          errosComuns: [
+            "Achar que Simpatia é a mesma coisa que Empatia",
+            "Focar só no aspecto técnico da venda",
+            "Tratar todos os clientes da mesma forma",
+          ],
+          checklist: [
+            "Respire fundo antes de abordar o cliente",
+            "Sorria com os olhos (mesmo de máscara)",
+            "Ouça mais do que fala",
+            "Observe a linguagem corporal",
+          ],
+          quiz: [
+            q(
+              "O que significa Perfil 51%?",
+              [
+                "51% técnica, 49% emoção",
+                "49% técnica, 51% habilidade emocional",
+                "51% vendas, 49% conhecimento",
+                "50% cada",
+              ],
+              1,
+              "Perfil 51% significa que 49% é técnica e 51% é habilidade emocional — o coração do atendimento.",
+            ),
+            q(
+              "Quem criou o conceito Perfil 51%?",
+              ["Steve Jobs", "Danny Meyer", "Peter Drucker", "Philip Kotler"],
+              1,
+              "Danny Meyer, restaurateur americano, criou o conceito de Quociente de Hospitalidade (HQ).",
+            ),
+            q(
+              "Qual dos NÃO é um dos 6 pilares?",
+              [
+                "Calor Otimista",
+                "Curiosidade Intelectual",
+                "Inteligência Financeira",
+                "Empatia",
+              ],
+              2,
+              "Os 6 pilares são: Calor Otimista, Curiosidade Intelectual, Ética de Trabalho, Empatia, Autoconsciência e Integridade.",
+            ),
+          ],
+          xp: 50,
+        },
+        {
+          id: "perfil-51-calor",
+          titulo: "Calor Otimista — A primeira impressão que fica",
+          duracaoMin: 10,
+          nivel: "basico",
+          resumo:
+            "Gentileza genuína, consideração e a atitude de que o copo está sempre meio cheio. No balcão da farmácia, o cliente cansado e preocupado precisa sentir que você está feliz em ajudá-lo.",
+          resumoExecutivo: [
+            "Calor Otimista é irradiar positividade natural",
+            "Não é fingir felicidade, é escolher ser gentil",
+            "Clientes percebem quando o sorriso é genuíno",
+            "O tom de voz importa mais que as palavras",
+            "Um bom dia bem dado muda o humor do cliente",
+          ],
+          quandoChamarFarmaceutico: [
+            "Quando o cliente estiver visivelmente irritado e sua abordagem não estiver funcionando",
+          ],
+          errosComuns: [
+            "Sorrir sem os olhos (sorriso falso percebe-se de longe)",
+            "Usar sempre o mesmo tom robótico",
+            "Deixar o cansaço transparecer na voz",
+          ],
+          checklist: [
+            "Sorria antes de atender",
+            "Mantenha contato visual",
+            "Use um tom de voz acolhedor",
+            "Cumprimente pelo nome (se souber)",
+          ],
+          quiz: [
+            q(
+              "O que é Calor Otimista?",
+              [
+                "Ser extrovertido o tempo todo",
+                "Irradiar positividade genuína",
+                "Falar alto e animado",
+                "Ignorar problemas",
+              ],
+              1,
+              "Calor Otimista é irradiar positividade genuína — não é fingir felicidade, é escolher ser gentil.",
+            ),
+            q(
+              "Como demonstrar Calor Otimista no balcão?",
+              [
+                "Falando sobre seus problemas",
+                "Com sorriso genuíno e tom acolhedor",
+                "Apressando o atendimento",
+                "Sendo muito formal",
+              ],
+              1,
+              "Sorriso genuíno e tom de voz acolhedor são as principais formas de demonstrar Calor Otimista.",
+            ),
+          ],
+          xp: 60,
+        },
+        {
+          id: "perfil-51-curiosidade",
+          titulo: "Curiosidade Intelectual — A vontade de aprender sobre pessoas",
+          duracaoMin: 10,
+          nivel: "intermediario",
+          resumo:
+            "Não basta saber sobre medicamentos. É preciso ter curiosidade genuína sobre quem está do outro lado do balcão — suas dores, medos, rotina. Cada cliente é uma história.",
+          resumoExecutivo: [
+            "Curiosidade intelectual vai além do conhecimento técnico",
+            "Perguntar sobre a rotina do cliente cria vínculo",
+            "Cada cliente é único — descubra o que ele precisa",
+            "Perguntas abertas revelam necessidades ocultas",
+            "O melhor vendedor é o que mais pergunta",
+          ],
+          quandoChamarFarmaceutico: [
+            "Quando o cliente mencionar sintomas que exigem avaliação profissional",
+          ],
+          errosComuns: [
+            "Fazer perguntas só para vender mais",
+            "Interromper o cliente enquanto ele fala",
+            "Presumir o que o cliente precisa sem perguntar",
+          ],
+          checklist: [
+            "Pergunte como o cliente está se sentindo",
+            "Descubra se já usou o produto antes",
+            "Pergunte sobre a rotina dele",
+            "Mostre interesse genuíno",
+          ],
+          quiz: [
+            q(
+              "Curiosidade intelectual no balcão significa:",
+              [
+                "Saber tudo sobre medicamentos",
+                "Ter interesse genuíno pela história do cliente",
+                "Fazer muitas perguntas técnicas",
+                "Estudar bulas o dia todo",
+              ],
+              1,
+              "Curiosidade intelectual é ter interesse genuíno pela história do cliente — não apenas saber sobre medicamentos.",
+            ),
+            q(
+              "Qual pergunta demonstra curiosidade intelectual?",
+              [
+                "Vai levar mais alguma coisa?",
+                "Como você pretende usar esse produto no seu dia a dia?",
+                "Já conhece a marca?",
+                "É presente?",
+              ],
+              1,
+              "Perguntar sobre o dia a dia mostra interesse genuíno pela rotina e necessidade real do cliente.",
+            ),
+          ],
+          xp: 60,
+        },
+        {
+          id: "perfil-51-etica",
+          titulo: "Ética de Trabalho — Fazer o melhor em cada detalhe",
+          duracaoMin: 8,
+          nivel: "intermediario",
+          resumo:
+            "A tendência natural de fazer algo da melhor maneira possível e se importar profundamente com os detalhes. No balcão, isso significa organizar a gôndola, manter o ambiente limpo, embalar o produto com cuidado.",
+          resumoExecutivo: [
+            "Ética de trabalho é fazer cada tarefa com excelência",
+            "Pequenos detalhes criam uma percepção de cuidado",
+            "O balcão organizado transmite confiança",
+            "Cliente percebe quando você se importa",
+            "Excelência é um hábito, não um ato",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sempre que houver divergência entre o receituário e o medicamento solicitado",
+          ],
+          errosComuns: [
+            "Deixar o balcão desorganizado",
+            "Embalar o produto de qualquer jeito",
+            "Ignorar pequenos detalhes de limpeza",
+          ],
+          checklist: [
+            "Organize o balcão antes de cada turno",
+            "Embalar com cuidado e capricho",
+            "Verificar data de validade sempre",
+            "Anotar observações relevantes",
+          ],
+          quiz: [
+            q(
+              "O que significa Ética de Trabalho no balcão da farmácia?",
+              [
+                "Trabalhar mais horas que os outros",
+                "Fazer cada tarefa com excelência e cuidado nos detalhes",
+                "Seguir apenas o que o gerente manda",
+                "Ser o primeiro a chegar e o último a sair",
+              ],
+              1,
+              "Ética de Trabalho é fazer cada tarefa da melhor maneira possível e se importar profundamente com os detalhes.",
+            ),
+          ],
+          xp: 50,
+        },
+        {
+          id: "perfil-51-empatia",
+          titulo: "Empatia — Sentir o que o cliente sente",
+          duracaoMin: 12,
+          nivel: "intermediario",
+          resumo:
+            "A consciência e o cuidado com os sentimentos dos outros. Entender o rastro que você deixa em cada interação. Na farmácia, a empatia transforma um cliente ocasional em um paciente fiel.",
+          resumoExecutivo: [
+            "Empatia é entender o que o outro está sentindo",
+            "Não é concordar, é compreender",
+            "Clientes vulneráveis precisam de acolhimento extra",
+            "Validar o sentimento do cliente é poderoso",
+            "O rastro que você deixa define se ele volta",
+          ],
+          quandoChamarFarmaceutico: [
+            "Quando o cliente demonstrar medo ou insegurança sobre o tratamento",
+          ],
+          errosComuns: [
+            "Dizer 'eu sei como você se sente' (ninguém sabe realmente)",
+            "Minimizar a preocupação do cliente",
+            "Ser mecânico no atendimento",
+          ],
+          checklist: [
+            "Valide o sentimento do cliente",
+            "Use frases como 'Entendo sua preocupação'",
+            "Ofereça apoio além do produto",
+            "Lembre-se do cliente na próxima visita",
+          ],
+          quiz: [
+            q(
+              "Qual a diferença entre empatia e simpatia?",
+              [
+                "São a mesma coisa",
+                "Empatia é sentir COM, simpatia é sentir POR",
+                "Simpatia é mais forte",
+                "Empatia é técnica",
+              ],
+              1,
+              "Empatia é sentir com o outro (compreender), simpatia é sentir pelo outro (pena). São diferentes.",
+            ),
+          ],
+          xp: 70,
+        },
+        {
+          id: "perfil-51-autoconsciencia",
+          titulo: "Autoconsciência — O termômetro emocional do atendente",
+          duracaoMin: 10,
+          nivel: "avancado",
+          resumo:
+            "Entender o seu próprio 'relatório meteorológico emocional'. Saber gerenciar o próprio humor para não espalhar toxicidade no ambiente. Um atendente que se conhece atende melhor.",
+          resumoExecutivo: [
+            "Autoconsciência é saber como você está se sentindo",
+            "Seu humor afeta o cliente diretamente",
+            "Evite o 'efeito gambá' — espalhar mau humor",
+            "Reconhecer seus gatilhos emocionais é o primeiro passo",
+            "Pausas curtas ajudam a resetar o humor",
+          ],
+          quandoChamarFarmaceutico: [
+            "Quando perceber que está muito irritado para atender bem",
+          ],
+          errosComuns: [
+            "Descontar frustrações pessoais no cliente",
+            "Ignorar o próprio cansaço",
+            "Achar que o humor não interfere no atendimento",
+          ],
+          checklist: [
+            "Faça uma pausa de 2 minutos quando sentir irritação",
+            "Respire fundo 3 vezes antes de atender",
+            "Identifique o que está te afetando",
+            "Peça ajuda quando precisar",
+          ],
+          quiz: [
+            q(
+              "O que é o 'efeito gambá'?",
+              [
+                "Cliente que reclama de tudo",
+                "Espalhar mau humor no ambiente",
+                "Funcionário que some",
+                "Produto com cheiro ruim",
+              ],
+              1,
+              "Efeito gambá é espalhar mau humor no ambiente — o oposto do autoconsciência bem gerenciada.",
+            ),
+          ],
+          xp: 60,
+        },
+        {
+          id: "perfil-51-integridade",
+          titulo: "Integridade — A escolha invisível que todos veem",
+          duracaoMin: 10,
+          nivel: "avancado",
+          resumo:
+            "Ter o bom senso moral de fazer a coisa certa, mesmo quando não é do seu próprio interesse e quando ninguém está olhando. No balcão, é não empurrar um produto caro quando um mais barato resolve.",
+          resumoExecutivo: [
+            "Integridade é fazer o certo mesmo sem plateia",
+            "O cliente percebe quando você é honesto",
+            "Indicar o produto mais barato quando resolve igual gera confiança",
+            "Não empurrar o que o cliente não precisa",
+            "Confiança é o maior ativo do atendente",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sempre que houver dúvida ética sobre a dispensação",
+          ],
+          errosComuns: [
+            "Empurrar o produto mais caro sem necessidade",
+            "Esconder informações sobre efeitos colaterais",
+            "Fingir saber o que não sabe",
+          ],
+          checklist: [
+            "Pergunte-se: é o melhor para o cliente?",
+            "Seja transparente sobre preços e opções",
+            "Admita quando não souber e chame quem sabe",
+            "Registre tudo corretamente",
+          ],
+          quiz: [
+            q(
+              "Qual a melhor definição de integridade no balcão?",
+              [
+                "Vender o máximo possível",
+                "Fazer o certo mesmo quando ninguém vê",
+                "Seguir todas as regras à risca",
+                "Nunca errar",
+              ],
+              1,
+              "Integridade é fazer o certo mesmo quando ninguém está olhando — a base da confiança no relacionamento com o cliente.",
+            ),
+          ],
+          xp: 60,
+        },
+      ],
+    },
+    /* ═══════════════════════════════════════════════
+       MÓDULO 5 — AMBIENTE DE FARMÁCIA
+       ═══════════════════════════════════════════════ */
+    {
+      id: "ambiente-farmacia",
+      titulo: "Ambiente de Farmácia — Respeito, Comunicação e Saúde Pública",
+      descricao:
+        "Construa um ambiente de trabalho baseado em respeito, comunicação assertiva, valorização das pessoas e compromisso com a saúde da comunidade. Inclui legislação de receitas, SUS e ética profissional.",
+      aulas: [
+        {
+          id: "farmacia-respeito",
+          titulo: "Respeito no Ambiente de Farmácia",
+          duracaoMin: 10,
+          nivel: "basico",
+          resumo:
+            "O respeito é a base de tudo no ambiente farmacêutico. Desde o tratamento com colegas de equipe até a abordagem ao paciente, cada interação deve ser pautada por dignidade, educação e consideração mútua.",
+          resumoExecutivo: [
+            "Respeito começa com ouvir o outro sem interromper",
+            "Tratar colegas e pacientes com a mesma dignidade",
+            "Diferenças de opinião devem ser resolvidas com diálogo",
+            "O ambiente de trabalho reflete o respeito da equipe",
+            "Pacientes percebem quando a equipe se respeita",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sempre que houver conflito entre membros da equipe que afete o atendimento",
+          ],
+          errosComuns: [
+            "Falar mal de colegas perto de pacientes",
+            "Ignorar opiniões diferentes das suas",
+            "Tratar o paciente com menos respeito que o esperado",
+          ],
+          checklist: [
+            "Cumprimente cada membro da equipe ao chegar",
+            "Ouça sem interromper",
+            "Peça licença e agradeça",
+            "Mantenha um tom de voz calmo mesmo em situações de estresse",
+          ],
+          xp: 50,
+          quiz: [
+            q("Qual a base de um ambiente de farmácia saudável?", ["Competitividade", "Respeito mútuo", "Velocidade no atendimento", "Lucro máximo"], 1, "O respeito mútuo é a base para um ambiente de trabalho saudável e produtivo."),
+          ],
+        },
+        {
+          id: "farmacia-comunicacao",
+          titulo: "Comunicação Assertiva no Balcão",
+          duracaoMin: 12,
+          nivel: "intermediario",
+          resumo:
+            "Comunicação assertiva é a capacidade de expressar suas ideias de forma clara, direta e respeitosa, sem agressividade nem passividade. No balcão da farmácia, isso significa orientar o paciente com segurança e clareza.",
+          resumoExecutivo: [
+            "Comunicação assertiva é clara, direta e respeitosa",
+            "Use 'eu sinto' e 'eu preciso' em vez de acusações",
+            "Faça perguntas abertas para entender o paciente",
+            "Repita a informação para confirmar o entendimento",
+            "Paciência é a chave para uma comunicação eficaz",
+          ],
+          quandoChamarFarmaceutico: [
+            "Quando a orientação exigir conhecimento técnico além da sua alçada",
+          ],
+          errosComuns: [
+            "Usar jargão técnico que o paciente não entende",
+            "Falar muito rápido por estar com pressa",
+            "Ignorar perguntas do paciente",
+          ],
+          checklist: [
+            "Olhe nos olhos do paciente",
+            "Fale pausadamente",
+            "Confirme se o paciente entendeu",
+            "Pergunte se há mais dúvidas",
+          ],
+          xp: 60,
+          quiz: [
+            q("O que é comunicação assertiva?", ["Falar o que pensa sem filtro", "Expressar-se de forma clara, direta e respeitosa", "Falar baixo para não incomodar", "Usar termos técnicos"], 1, "Comunicação assertiva é a habilidade de se expressar com clareza e respeito."),
+          ],
+        },
+        {
+          id: "farmacia-valorizar",
+          titulo: "Valorizar Pessoas — O Coração da Farmácia",
+          duracaoMin: 8,
+          nivel: "basico",
+          resumo:
+            "Valorizar as pessoas é reconhecer o esforço de cada membro da equipe e celebrar pequenas vitórias. Um atendente que se sente valorizado atende melhor, cuida mais e permanece na equipe.",
+          resumoExecutivo: [
+            "Elogie publicamente, corrija em particular",
+            "Reconheça pequenos gestos de cuidado",
+            "Cada membro da equipe tem um papel essencial",
+            "Celebrar conquistas fortalece o vínculo da equipe",
+            "Um simples 'obrigado' transforma o ambiente",
+          ],
+          quandoChamarFarmaceutico: [
+            "Sempre que notar que um colega está desmotivado",
+          ],
+          errosComuns: [
+            "Só criticar, nunca elogiar",
+            "Achar que reconhecimento não é necessário",
+            "Comparar membros da equipe publicamente",
+          ],
+          checklist: ["Agradeça um colega por algo bem feito hoje", "Reconheça publicamente uma boa ação", "Celebre uma pequena conquista da equipe"],
+          xp: 50,
+          quiz: [
+            q("O que significa valorizar a equipe?", ["Cobrar resultados", "Reconhecer esforços e celebrar conquistas", "Ignorar erros", "Pagar mais"], 1, "Valorizar é reconhecer o esforço e celebrar as conquistas da equipe."),
+          ],
+        },
+        {
+          id: "farmacia-limitacoes",
+          titulo: "Entender Limitações e Saber Encaminhar",
+          duracaoMin: 10,
+          nivel: "intermediario",
+          resumo:
+            "Saber reconhecer os próprios limites é uma das habilidades mais importantes no balcão da farmácia. Ninguém sabe tudo. O importante é saber quando e como encaminhar o paciente para o profissional certo.",
+          resumoExecutivo: [
+            "Reconhecer limitações é sinal de profissionalismo",
+            "Nunca invente orientação que você não domina",
+            "Encaminhar ao farmacêutico é parte do cuidado",
+            "Saiba quando indicar busca por médico ou nutricionista",
+            "O paciente confia mais em quem admite não saber",
+          ],
+          quandoChamarFarmaceutico: ["Sempre que estiver em dúvida sobre qualquer medicamento"],
+          errosComuns: [
+            "Inventar uma resposta para não parecer despreparado",
+            "Ignorar sintomas que exigem avaliação médica",
+            "Achar que encaminhar é sinal de fraqueza",
+          ],
+          checklist: ["Se não souber, diga 'vou verificar com o farmacêutico'", "Anote a dúvida para aprender depois", "Nunca minimize a preocupação do paciente"],
+          xp: 60,
+          quiz: [
+            q("O que fazer quando um paciente pergunta algo que você não sabe?", ["Inventar uma resposta", "Dizer que não sabe e chamar o farmacêutico", "Mudar de assunto", "Ignorar a pergunta"], 1, "Admitir que não sabe e chamar o profissional certo é a atitude mais ética e segura."),
+          ],
+        },
+        {
+          id: "farmacia-ensinar",
+          titulo: "Saber Ensinar — Multiplicar o Conhecimento",
+          duracaoMin: 8,
+          nivel: "intermediario",
+          resumo:
+            "Ensinar é uma forma de cuidar. Quando você compartilha conhecimento com colegas mais novos, pacientes e a comunidade, está multiplicando o bem e acelerando a saúde de todos ao seu redor.",
+          resumoExecutivo: [
+            "Ensinar é a forma mais nobre de cuidar",
+            "Compartilhe conhecimento com colegas novos",
+            "Oriente o paciente de forma didática",
+            "Use exemplos do dia a dia para explicar",
+            "Multiplicar conhecimento acelera a saúde da comunidade",
+          ],
+          quandoChamarFarmaceutico: ["Para aprofundar orientações que exigem conhecimento especializado"],
+          errosComuns: [
+            "Achar que ensinar não é sua função",
+            "Usar linguagem muito técnica",
+            "Ter paciência zero com quem está aprendendo",
+          ],
+          checklist: ["Pergunte ao colega novo se ele entendeu", "Explique com exemplos práticos", "Tenha paciência — todo mundo já foi iniciante"],
+          xp: 50,
+          quiz: [
+            q("Por que ensinar colegas é importante?", ["Perde tempo", "Multiplica o conhecimento e acelera o cuidado", "Só o farmacêutico deve ensinar", "Não é função do atendente"], 1, "Ensinar multiplica o conhecimento e acelera a saúde de toda a comunidade."),
+          ],
+        },
+        {
+          id: "farmacia-legislacao",
+          titulo: "Legislação de Receitas e SUS na Farmácia",
+          duracaoMin: 15,
+          nivel: "avancado",
+          resumo:
+            "Conhecer a legislação que rege as receitas médicas e o Sistema Único de Saúde (SUS) é fundamental para o atendente de farmácia. Este módulo aborda as principais normas, portarias e leis.",
+          resumoExecutivo: [
+            "Receita simples: para medicamentos tarjados sem retenção",
+            "Receita de controle especial (B1): 2 vias, retenção da 1ª via",
+            "Notificação de Receita A (amarela): entorpecentes",
+            "Notificação de Receita B (azul): psicotrópicos",
+            "Portaria 344/98: regulamenta medicamentos controlados",
+            "RDC 471/2021: antimicrobianos",
+            "SUS: Farmácia Popular, programas de saúde pública",
+          ],
+          quandoChamarFarmaceutico: ["Sempre para validar qualquer receita de controle especial"],
+          errosComuns: [
+            "Deixar de conferir a data da receita",
+            "Ignorar a necessidade de retenção da receita",
+            "Aceitar receita digital sem verificar a assinatura eletrônica",
+          ],
+          checklist: ["Confira a data da receita (validade)", "Verifique se o CRM está legível", "Confira se a receita tem 1 ou 2 vias"],
+          xp: 80,
+          quiz: [
+            q("Qual a validade de receita de antimicrobiano?", ["30 dias", "10 dias", "90 dias", "5 dias"], 1, "Validade de 10 dias conforme RDC 471/2021."),
+            q("O que é a Portaria 344/98?", ["Lei sobre genéricos", "Regulamenta medicamentos controlados", "Cria o SUS", "Define preço de medicamentos"], 1, "Portaria 344/98 regulamenta os medicamentos controlados."),
+            q("Cor da Notificação para psicotrópicos?", ["Amarela", "Azul", "Branca", "Verde"], 1, "Notificação de Receita B (azul) para psicotrópicos."),
+          ],
+        },
+      ],
     },
   ],
 };

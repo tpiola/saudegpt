@@ -6,6 +6,7 @@ import { getModulo, trilhas } from "@/content/curriculo";
 import { Card, Etiqueta, NivelBadge, Botao } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { AulaStatusIcon } from "@/components/progresso-cliente";
+import { ModuloProgress } from "@/components/modulo-progress";
 
 export function generateStaticParams() {
   return trilhas.flatMap((t) => t.modulos.map((m) => ({ trilhaId: t.id, moduloId: m.id })));
@@ -248,6 +249,13 @@ export default async function ModuloPage({
               </Link>
             ))}
           </div>
+
+          {/* 🏆 Troféu — módulo completo */}
+          <ModuloProgress
+            trilhaId={trilha.id}
+            moduloId={modulo.id}
+            aulasIds={modulo.aulas.map((a) => a.id)}
+          />
 
           {/* 💊 Mensagem final — farmacêutico + posologia */}
           <div className="mt-10 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-forest-800">

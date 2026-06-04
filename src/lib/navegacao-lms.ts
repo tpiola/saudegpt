@@ -19,6 +19,8 @@ export const secoesNavLms: SecaoNavLms[] = [
       { href: "/", label: "Início", icone: "home" },
       { href: "/trilhas", label: "Trilhas e módulos", icone: "book" },
       { href: "/pressao-arterial", label: "Pressão Arterial", icone: "heart" },
+      { href: "/diabetes", label: "Diabetes", icone: "heart" },
+      { href: "/hormonios", label: "Hormônios", icone: "sparkles" },
     ],
   },
   {

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { RankingBoard } from "@/components/ranking-board";
 import { TituloSecao, Card } from "@/components/ui";
+import { GamificacaoRanking } from "@/components/gamificacao-ranking";
 
 export const metadata: Metadata = {
   title: "Ranking de estudos",
@@ -33,6 +34,9 @@ export default function RankingPage() {
           </div>
         </div>
       </div>
+
+      {/* 🎮 Status do Aluno + Gamificação */}
+      <GamificacaoRanking />
 
       <RankingBoard />
     </div>
