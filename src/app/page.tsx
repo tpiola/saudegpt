@@ -101,8 +101,8 @@ export default function HomePage() {
             {/* Stats */}
             <div className="mt-16 flex flex-wrap gap-x-10 gap-y-4">
               {[
-                { value: "4", label: "TRILHAS" },
-                { value: "81+", label: "AULAS" },
+                { value: "6", label: "TRILHAS" },
+                { value: "142+", label: "AULAS" },
                 { value: "∞", label: "DO ZERO AO AVANÇADO" },
                 { value: "100%", label: "ONLINE" },
               ].map((stat) => (

@@ -192,7 +192,7 @@ export function DashboardAluno() {
             <p className="mb-4 text-xs text-muted">
               XP estimado por dia de estudo
             </p>
-            <div className="h-52">
+            <div className="h-52" style={{ minWidth: 0 }}>
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={dadosSemana}>
                   <defs>
