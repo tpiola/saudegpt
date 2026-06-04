@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PortalInicio } from "@/components/portal-inicio";
+import { DashboardAluno } from "@/components/dashboard-aluno";
 import { JsonLdCourse } from "@/components/json-ld-course";
 
 export const metadata: Metadata = {
-  title: "Meu Painel — Formação para Atendentes de Farmácia",
+  title: "Dashboard — Formação para Atendentes de Farmácia",
   description:
-    "Ambiente de estudos da Formação para Atendentes de Farmácia — trilhas, simuladores e progresso.",
+    "Dashboard do aluno — progresso, badges, evolução semanal e estatísticas da Formação para Atendentes de Farmácia.",
 };
 
 export default function DashboardPage() {
   return (
     <>
       <JsonLdCourse />
-      <PortalInicio />
+      <DashboardAluno />
     </>
   );
 }
