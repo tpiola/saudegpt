@@ -3,12 +3,16 @@ import { trilhaPerfumaria } from "./trilha-perfumaria";
 import { trilhaMedicamentos } from "./trilha-medicamentos";
 import { trilhaOperacional } from "./trilha-operacional";
 import { trilhaVendas } from "./trilha-encantamento";
+import { trilhaFundamentos } from "./trilha-fundamentos";
+import { trilhaPratica } from "./trilha-pratica";
 
 export const trilhas: Trilha[] = [
   trilhaPerfumaria,
   trilhaMedicamentos,
   trilhaOperacional,
   trilhaVendas,
+  trilhaFundamentos,
+  trilhaPratica,
 ];
 
 export function getTrilha(id: string): Trilha | undefined {

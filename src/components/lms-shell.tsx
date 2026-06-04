@@ -10,6 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
+import { ChatBotIA } from "./chatbot-ia";
 
 /** Páginas que usam layout FULL WIDTH (sem sidebar) */
 const FULL_WIDTH_ROUTES = new Set(["/", "/sobre"]);
@@ -264,6 +265,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <div className="flex-1 bg-background">{children}</div>
 
         <WhatsAppButton />
+        <ChatBotIA />
 
         <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6">
           <p>{site.assinatura}</p>

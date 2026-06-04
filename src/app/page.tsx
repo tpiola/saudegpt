@@ -7,9 +7,11 @@ import { trilhas, totalAulas } from "@/content/curriculo";
 import { Botao, Card, BarraProgresso } from "@/components/ui";
 import type { Trilha } from "@/content/types";
 import { Icon } from "@/components/icons";
+import { PagamentoCta } from "@/components/pagamento-cta";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+import { PlanosModal } from "@/components/planos-modal";
 
 /* ─── Tipografia inline ─── */
 const h1Cls =
@@ -32,6 +34,9 @@ const foto = (id: string, w = 800) =>
 
 export default function HomePage() {
   const total = totalAulas();
+  const [planosAberto, setPlanosAberto] = useState(false);
+  const abrirPlanos = useCallback(() => setPlanosAberto(true), []);
+  const fecharPlanos = useCallback(() => setPlanosAberto(false), []);
 
   return (
     <div className="relative min-h-screen bg-background text-foreground">
@@ -127,6 +132,208 @@ export default function HomePage() {
 
       {/* ─── DIVIDER WAVE ─── */}
       <div className="divider-wave" />
+
+      {/* ══════════════════════════════════════════════
+          SEÇÃO: PLANOS DE PAGAMENTO
+          ══════════════════════════════════════════════ */}
+      <section
+        id="planos"
+        className="relative overflow-hidden bg-forest-600 py-20 sm:py-28"
+      >
+        <div className="pattern-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
+        <div className="pointer-events-none absolute -left-40 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-green-400/5 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-orange-500/5 blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="mb-3 inline-flex items-center gap-1.5 rounded-full border border-orange-400/20 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-300 backdrop-blur-sm shadow-[0_0_15px_rgba(214,110,15,0.1)]">
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-400" />
+                Investimento
+              </span>
+              <h2 className={`${h2Cls} text-white`}>
+                Invista no seu futuro profissional
+              </h2>
+              <p className="mt-3 text-white/50 leading-relaxed">
+                Acesso completo a todas as trilhas, quizzes, simulados e
+                certificado. Escolha o plano ideal para você.
+              </p>
+            </div>
+          </FadeUp>
+
+          {/* Planos — 3 cards */}
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {/* Mensal */}
+            <FadeUp delay={100}>
+              <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-green-400/30 hover:bg-white/[0.07] hover:shadow-[0_12px_48px_rgba(0,0,0,0.25)] sm:p-8">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
+                  }}
+                />
+                <div className="relative z-10 flex items-center gap-3">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/25 to-green-400/10 text-2xl ring-1 ring-green-400/20 group-hover:ring-orange-400/30 transition-all duration-300">
+                    📅
+                  </span>
+                  <h3 className={`${h3Cls} text-white`}>Mensal</h3>
+                </div>
+                <div className="relative z-10 mt-5 flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-white tabular-nums">
+                    R$ 29,90
+                  </span>
+                  <span className="text-sm text-white/40">/mês</span>
+                </div>
+                <ul className="relative z-10 mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                  {["Acesso completo a todas as trilhas", "Quizzes e simulações", "Certificado ao finalizar", "Sem fidelidade"].map((item) => (
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
+                      <svg className="h-4 w-4 shrink-0 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="relative z-10 mt-auto pt-6">
+                  <button
+                    type="button"
+                    onClick={abrirPlanos}
+                    className="w-full rounded-xl border-2 border-green-500/30 bg-green-500/10 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-green-500/20 hover:border-green-500/50 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    Assinar Mensal
+                  </button>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Trimestral — MAIS POPULAR */}
+            <FadeUp delay={200}>
+              <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-orange-400/30 bg-gradient-to-b from-orange-500/8 to-forest-500/5 p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_12px_48px_rgba(214,110,15,0.15)] sm:p-8 ring-1 ring-orange-400/20">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
+                  }}
+                />
+                <div className="relative z-10 mb-3">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-orange-400/40 bg-orange-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-orange-300 shadow-[0_0_20px_rgba(214,110,15,0.15)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
+                    MAIS POPULAR
+                  </span>
+                </div>
+                <div className="relative z-10 flex items-center gap-3">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/25 to-orange-400/10 text-2xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 transition-all duration-300">
+                    📆
+                  </span>
+                  <div>
+                    <h3 className={`${h3Cls} text-white`}>Trimestral</h3>
+                    <p className="text-xs text-green-400 font-medium">≈ R$ 19,90/mês</p>
+                  </div>
+                </div>
+                <div className="relative z-10 mt-5 flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-white tabular-nums">
+                    R$ 69,90
+                  </span>
+                  <span className="text-sm text-white/40">/trimestre</span>
+                </div>
+                <ul className="relative z-10 mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                  {["Acesso completo a todas as trilhas", "Quizzes e simulações", "Certificado ao finalizar", "Economia de ~33% no trimestre"].map((item) => (
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
+                      <svg className="h-4 w-4 shrink-0 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="relative z-10 mt-auto pt-6">
+                  <button
+                    type="button"
+                    onClick={abrirPlanos}
+                    className="w-full rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 py-3.5 text-sm font-bold text-white shadow-[0_4px_24px_rgba(214,110,15,0.3)] transition-all duration-300 hover:shadow-[0_8px_32px_rgba(214,110,15,0.45)] hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    Assinar Trimestral
+                  </button>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Anual — MAIS ECONÔMICO */}
+            <FadeUp delay={300}>
+              <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-all duration-500 hover:-translate-y-2 hover:border-green-400/30 hover:bg-white/[0.07] hover:shadow-[0_12px_48px_rgba(0,0,0,0.25)] sm:p-8">
+                <div className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage: "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+                    backgroundSize: "40px 40px",
+                  }}
+                />
+                <div className="relative z-10 mb-3">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-green-400/40 bg-green-500/15 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-green-300 shadow-[0_0_20px_rgba(76,161,93,0.15)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
+                    MAIS ECONÔMICO
+                  </span>
+                </div>
+                <div className="relative z-10 flex items-center gap-3">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/25 to-green-400/10 text-2xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 transition-all duration-300">
+                    🌟
+                  </span>
+                  <div>
+                    <h3 className={`${h3Cls} text-white`}>Anual</h3>
+                    <p className="text-xs text-green-400 font-medium">≈ R$ 16,66/mês</p>
+                  </div>
+                </div>
+                <div className="relative z-10 mt-5 flex items-baseline gap-1">
+                  <span className="text-4xl font-black text-white tabular-nums">
+                    R$ 199,90
+                  </span>
+                  <span className="text-sm text-white/40">/ano</span>
+                </div>
+                <ul className="relative z-10 mt-5 space-y-2.5 border-t border-white/10 pt-5">
+                  {["Acesso completo a todas as trilhas", "Quizzes e simulações", "Certificado ao finalizar", "Economia de ~44% no ano"].map((item) => (
+                    <li key={item} className="flex items-center gap-2.5 text-sm text-white/60">
+                      <svg className="h-4 w-4 shrink-0 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <div className="relative z-10 mt-auto pt-6">
+                  <button
+                    type="button"
+                    onClick={abrirPlanos}
+                    className="w-full rounded-xl border-2 border-green-500/30 bg-green-500/10 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-green-500/20 hover:border-green-500/50 hover:scale-[1.02] active:scale-[0.98]"
+                  >
+                    Assinar Anual
+                  </button>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+
+          {/* CTA final + badge segurança */}
+          <FadeUp delay={400}>
+            <div className="mt-12 text-center">
+              <button
+                type="button"
+                onClick={abrirPlanos}
+                className="inline-flex items-center justify-center rounded-2xl bg-orange-500 px-10 py-4 text-base font-semibold text-white shadow-[0_8px_40px_rgba(214,110,15,0.35)] transition-all duration-300 hover:bg-orange-600 hover:scale-[1.04] hover:shadow-[0_12px_60px_rgba(214,110,15,0.55)] active:scale-[0.97]"
+              >
+                Ver todos os planos
+              </button>
+              <p className="mt-4 flex items-center justify-center gap-2 text-xs text-white/30">
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+                Pagamento 100% seguro via Stripe
+              </p>
+            </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* ─── DIVIDER WAVE ─── */}
+      <div className="divider-wave divider-wave-flip" />
 
       {/* ══════════════════════════════════════════════
           SEÇÃO: POR QUE ESTA FORMAÇÃO?
@@ -1006,6 +1213,8 @@ export default function HomePage() {
           </p>
         </div>
       </footer>
+
+      <PlanosModal aberto={planosAberto} onFechar={fecharPlanos} />
     </div>
   );
 }
