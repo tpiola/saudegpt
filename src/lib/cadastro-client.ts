@@ -41,6 +41,7 @@ export function lerIdCadastro(): string | null {
 export async function registrarCadastro(dados: {
   nome: string;
   email: string;
+  whatsapp?: string;
   apelidoRanking?: string;
 }): Promise<{ ok: boolean; status?: CadastroRegistro["status"]; erro?: string }> {
   const res = await fetch("/api/cadastros/register", {

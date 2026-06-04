@@ -100,19 +100,19 @@ function StatCard({
   label,
   value,
   trend,
-  color = "emerald",
+  color = "green",
 }: {
   icon: React.ElementType;
   label: string;
   value: string;
   trend?: string;
-  color?: "emerald" | "blue" | "amber" | "rose";
+  color?: "green" | "blue" | "orange" | "red";
 }) {
   const colors = {
-    emerald: "from-emerald-500/10 to-emerald-500/5 border-emerald-200/50 text-emerald-600",
-    blue: "from-midnight-500/10 to-midnight-500/5 border-midnight-200/50 text-midnight-600",
-    amber: "from-amber-500/10 to-amber-500/5 border-amber-200/50 text-amber-600",
-    rose: "from-rose-500/10 to-rose-500/5 border-rose-200/50 text-rose-600",
+    green: "from-green-500/10 to-green-500/5 border-green-200/50 text-green-600",
+    blue: "from-blue-500/10 to-blue-500/5 border-blue-200/50 text-blue-600",
+    orange: "from-orange-500/10 to-orange-500/5 border-orange-200/50 text-orange-600",
+    red: "from-red-500/10 to-red-500/5 border-red-200/50 text-red-600",
   };
 
   return (
@@ -122,7 +122,7 @@ function StatCard({
           <p className="text-sm font-medium opacity-70">{label}</p>
           <p className="mt-1 text-3xl font-bold tracking-tight">{value}</p>
           {trend && (
-            <p className="mt-1 text-xs font-medium text-emerald-500">{trend}</p>
+            <p className="mt-1 text-xs font-medium text-green-500">{trend}</p>
           )}
         </div>
         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/50 backdrop-blur-sm shadow-sm">
@@ -137,10 +137,10 @@ function StatCard({
 function ChartTooltip({ active, payload, label }: any) {
   if (!active || !payload) return null;
   return (
-    <div className="rounded-xl border border-midnight-200 bg-white p-4 shadow-lg backdrop-blur-md">
-      <p className="text-sm font-semibold text-midnight-800">{label}</p>
+    <div className="rounded-xl border border-blue-200 bg-white p-4 shadow-lg backdrop-blur-md">
+      <p className="text-sm font-semibold text-blue-800">{label}</p>
       {payload.map((p: any, i: number) => (
-        <p key={i} className="text-sm text-midnight-500" style={{ color: p.color }}>
+        <p key={i} className="text-sm text-blue-500" style={{ color: p.color }}>
           {p.name}: <span className="font-semibold">{p.value}</span>
         </p>
       ))}
@@ -156,20 +156,20 @@ export default function AdminDashboardPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="sticky top-0 z-50 border-b border-midnight-200/50 bg-white/80 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-blue-200/50 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-midnight-900 text-white shadow-md">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-900 text-white shadow-md">
               <GraduationCap className="h-5 w-5" />
             </div>
             <div>
-              <h1 className="text-base font-bold text-midnight-900">Admin</h1>
-              <p className="text-xs text-midnight-400">Dashboard da Formação</p>
+              <h1 className="text-base font-bold text-blue-900">Admin</h1>
+              <p className="text-xs text-blue-400">Dashboard da Formação</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
-            <span className="text-sm text-midnight-400">Online</span>
+            <span className="flex h-2 w-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(76,161,93,0.6)]" />
+            <span className="text-sm text-blue-400">Online</span>
           </div>
         </div>
       </header>
@@ -182,7 +182,7 @@ export default function AdminDashboardPage() {
             label="Total de Alunos"
             value={String(metricas.totalAlunos)}
             trend="+12% este mês"
-            color="emerald"
+            color="green"
           />
           <StatCard
             icon={Activity}
@@ -196,14 +196,14 @@ export default function AdminDashboardPage() {
             label="Aulas Concluídas"
             value={String(metricas.aulasConcluidas)}
             trend={`${metricas.taxaConclusao}% de conclusão`}
-            color="amber"
+            color="orange"
           />
           <StatCard
             icon={Trophy}
             label="XP Total"
             value={`${(metricas.xpTotal / 1000).toFixed(1)}K`}
             trend="Gamificação ativa"
-            color="emerald"
+            color="green"
           />
         </div>
 
@@ -214,10 +214,10 @@ export default function AdminDashboardPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-emerald-500" />
+                  <TrendingUp className="h-5 w-5 text-green-500" />
                   Progresso Semanal
                 </CardTitle>
-                <span className="text-xs font-medium text-midnight-400">
+                <span className="text-xs font-medium text-blue-400">
                   Últimas 8 semanas
                 </span>
               </div>
@@ -262,10 +262,10 @@ export default function AdminDashboardPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <Trophy className="h-5 w-5 text-amber-500" />
+                  <Trophy className="h-5 w-5 text-orange-500" />
                   XP Acumulado
                 </CardTitle>
-                <span className="text-xs font-medium text-midnight-400">
+                <span className="text-xs font-medium text-blue-400">
                   Gamificação
                 </span>
               </div>
@@ -302,10 +302,10 @@ export default function AdminDashboardPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5 text-rose-500" />
+                  <AlertTriangle className="h-5 w-5 text-red-500" />
                   Taxa de Drop-off
                 </CardTitle>
-                <span className="text-xs font-medium text-midnight-400">
+                <span className="text-xs font-medium text-blue-400">
                   {metricas.taxaDropOff}% média
                 </span>
               </div>
@@ -345,10 +345,10 @@ export default function AdminDashboardPage() {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
-                  <BookOpen className="h-5 w-5 text-midnight-500" />
+                  <BookOpen className="h-5 w-5 text-blue-500" />
                   Distribuição por Trilha
                 </CardTitle>
-                <span className="text-xs font-medium text-midnight-400">
+                <span className="text-xs font-medium text-blue-400">
                   % de alunos
                 </span>
               </div>
@@ -384,9 +384,9 @@ export default function AdminDashboardPage() {
                           className="h-3 w-3 rounded-full"
                           style={{ backgroundColor: t.cor }}
                         />
-                        <span className="text-sm text-midnight-600">{t.nome}</span>
+                        <span className="text-sm text-blue-600">{t.nome}</span>
                       </div>
-                      <span className="text-sm font-semibold text-midnight-800">
+                      <span className="text-sm font-semibold text-blue-800">
                         {t.valor}%
                       </span>
                     </div>
@@ -402,7 +402,7 @@ export default function AdminDashboardPage() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-midnight-500" />
+                <Users className="h-5 w-5 text-blue-500" />
                 Alunos Cadastrados
               </CardTitle>
               <Button variant="outline" size="sm">
@@ -411,53 +411,53 @@ export default function AdminDashboardPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <div className="overflow-x-auto rounded-xl border border-midnight-200/50">
+            <div className="overflow-x-auto rounded-xl border border-blue-200/50">
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-midnight-200/50 bg-midnight-50/50">
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Nome</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Email</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Progresso</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Aulas</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">XP</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Nível</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Status</th>
-                    <th className="px-4 py-3 font-semibold text-midnight-600">Último acesso</th>
+                  <tr className="border-b border-blue-200/50 bg-blue-50/50">
+                    <th className="px-4 py-3 font-semibold text-blue-600">Nome</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Email</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Progresso</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Aulas</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">XP</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Nível</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Status</th>
+                    <th className="px-4 py-3 font-semibold text-blue-600">Último acesso</th>
                   </tr>
                 </thead>
                 <tbody>
                   {alunos.map((aluno) => (
                     <tr
                       key={aluno.id}
-                      className="border-b border-midnight-100/50 transition-colors hover:bg-midnight-50/50"
+                      className="border-b border-blue-100/50 transition-colors hover:bg-blue-50/50"
                     >
-                      <td className="px-4 py-3 font-medium text-midnight-800">
+                      <td className="px-4 py-3 font-medium text-blue-800">
                         {aluno.nome}
                       </td>
-                      <td className="px-4 py-3 text-midnight-400">{aluno.email}</td>
+                      <td className="px-4 py-3 text-blue-400">{aluno.email}</td>
                       <td className="px-4 py-3">
                         <div className="flex items-center gap-2">
-                          <div className="h-2 w-20 overflow-hidden rounded-full bg-midnight-100">
+                          <div className="h-2 w-20 overflow-hidden rounded-full bg-blue-100">
                             <div
-                              className="h-full rounded-full bg-emerald-500 transition-all"
+                              className="h-full rounded-full bg-green-500 transition-all"
                               style={{ width: `${aluno.progresso}%` }}
                             />
                           </div>
-                          <span className="text-xs text-midnight-400">
+                          <span className="text-xs text-blue-400">
                             {aluno.progresso}%
                           </span>
                         </div>
                       </td>
-                      <td className="px-4 py-3 text-midnight-600">
+                      <td className="px-4 py-3 text-blue-600">
                         {aluno.aulasCompletas}
                       </td>
                       <td className="px-4 py-3">
-                        <span className="font-semibold text-emerald-600">
+                        <span className="font-semibold text-green-600">
                           {aluno.xp.toLocaleString()}
                         </span>
                       </td>
                       <td className="px-4 py-3">
-                        <span className="inline-flex items-center rounded-full bg-midnight-100 px-2.5 py-0.5 text-xs font-semibold text-midnight-700">
+                        <span className="inline-flex items-center rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-semibold text-blue-700">
                           Lv. {aluno.nivel}
                         </span>
                       </td>
@@ -466,22 +466,22 @@ export default function AdminDashboardPage() {
                           className={cn(
                             "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold",
                             aluno.status === "ativo"
-                              ? "bg-emerald-100 text-emerald-700"
-                              : "bg-rose-100 text-rose-700"
+                              ? "bg-green-100 text-green-700"
+                              : "bg-red-100 text-red-700"
                           )}
                         >
                           <span
                             className={cn(
                               "h-1.5 w-1.5 rounded-full",
                               aluno.status === "ativo"
-                                ? "bg-emerald-500"
-                                : "bg-rose-500"
+                                ? "bg-green-500"
+                                : "bg-red-500"
                             )}
                           />
                           {aluno.status}
                         </span>
                       </td>
-                      <td className="px-4 py-3 text-xs text-midnight-400">
+                      <td className="px-4 py-3 text-xs text-blue-400">
                         {aluno.ultimoAcesso}
                       </td>
                     </tr>

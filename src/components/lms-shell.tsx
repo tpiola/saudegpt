@@ -13,7 +13,7 @@ import { WhatsAppButton } from "./whatsapp-button";
 import { ChatBotIA } from "./chatbot-ia";
 
 /** Páginas que usam layout FULL WIDTH (sem sidebar) */
-const FULL_WIDTH_ROUTES = new Set(["/", "/sobre"]);
+const FULL_WIDTH_ROUTES = new Set(["/sobre"]);
 
 function tituloPagina(pathname: string): string {
   if (pathname === "/") return "Matrícula";

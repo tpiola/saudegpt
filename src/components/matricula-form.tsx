@@ -4,13 +4,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { salvarPerfilAluno } from "@/lib/aluno";
 import { registrarCadastro, salvarStatusLocal } from "@/lib/cadastro-client";
-import { Botao, Card } from "./ui";
-import { Icon } from "./icons";
+import { Botao } from "./ui";
 
 export function MatriculaForm() {
   const router = useRouter();
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [erro, setErro] = useState("");
   const [enviando, setEnviando] = useState(false);
 
@@ -21,7 +21,7 @@ export function MatriculaForm() {
     const apelidoRanking = nome.split(" ")[0];
     const perfil = { nome, email, apelidoRanking };
     salvarPerfilAluno(perfil);
-    const reg = await registrarCadastro({ nome, email, apelidoRanking });
+    const reg = await registrarCadastro({ nome, email, whatsapp, apelidoRanking });
     if (!reg.ok) {
       setErro(reg.erro ?? "Não foi possível registrar. Tente novamente.");
       setEnviando(false);
@@ -58,6 +58,20 @@ export function MatriculaForm() {
           onChange={(e) => setEmail(e.target.value)}
           className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-orange-400 focus:ring-1 focus:ring-orange-400/20"
           placeholder="voce@email.com"
+        />
+      </div>
+      <div>
+        <label htmlFor="whatsapp-mat" className="text-sm font-medium text-foreground">
+          WhatsApp
+        </label>
+        <input
+          id="whatsapp-mat"
+          type="tel"
+          required
+          value={whatsapp}
+          onChange={(e) => setWhatsapp(e.target.value)}
+          className="mt-1.5 w-full rounded-xl border border-border bg-surface px-4 py-3 text-sm outline-none transition-colors focus:border-orange-400 focus:ring-1 focus:ring-orange-400/20"
+          placeholder="(11) 99999-8888"
         />
       </div>
       {erro && <p className="text-sm text-orange-600">{erro}</p>}

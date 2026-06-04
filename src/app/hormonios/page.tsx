@@ -160,7 +160,7 @@ export default function HormoniosPage() {
         </div>
 
         {/* Overlay gradiente */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-purple-500/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-orange-500/20" />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
 
         {/* Conteúdo */}
@@ -238,7 +238,7 @@ export default function HormoniosPage() {
               {/* Texto — 3 colunas */}
               <div className={`lg:col-span-3 ${idx % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 text-xl dark:bg-purple-900/30">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-xl dark:bg-orange-900/30">
                     {topico.emoji}
                   </span>
                   <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
@@ -278,9 +278,9 @@ export default function HormoniosPage() {
         <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Card: Atendimento */}
-            <div className="rounded-2xl border border-purple-100 bg-gradient-to-br from-purple-50 to-white p-6 dark:from-purple-900/10 dark:to-forest-500">
+            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-forest-500">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-100 text-purple-600 dark:bg-purple-900/30 text-lg">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 text-lg">
                   🧑‍⚕️
                 </span>
                 <h3 className="text-sm font-bold text-forest-700 dark:text-white">Atendimento no balcão</h3>
@@ -377,9 +377,9 @@ export default function HormoniosPage() {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-purple-300/50"
+                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-orange-300/50"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 text-2xl dark:from-purple-900/20 dark:to-purple-900/10">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 text-2xl dark:from-orange-900/20 dark:to-orange-900/10">
                   {card.emoji}
                 </span>
                 <h3 className="mt-4 text-sm font-bold text-forest-700 dark:text-white">{card.titulo}</h3>
