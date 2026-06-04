@@ -223,7 +223,7 @@ export default function AdminDashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="h-[280px]">
+              <div className="h-[280px]" style={{ minWidth: 0 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={progressoSemanal}>
                     <defs>
@@ -271,7 +271,7 @@ export default function AdminDashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="h-[280px]">
+              <div className="h-[280px]" style={{ minWidth: 0 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={progressoSemanal}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
@@ -311,7 +311,7 @@ export default function AdminDashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="h-[260px]">
+              <div className="h-[260px]" style={{ minWidth: 0 }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={progressoSemanal}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
@@ -354,7 +354,7 @@ export default function AdminDashboardPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="flex h-[260px] items-center gap-6">
+              <div className="flex h-[260px] items-center gap-6" style={{ minWidth: 0 }}>
                 <div className="h-full w-1/2">
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
