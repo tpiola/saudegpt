@@ -116,12 +116,30 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                 <div className="relative z-10 px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-16">
                   {/* Module header */}
                   <div className="flex items-start gap-4 sm:gap-6">
-                    {/* Module number */}
-                    <span className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-2xl font-bold text-white shadow-xl">
-                      {String(idx + 1).padStart(2, "0")}
-                    </span>
+                    {/* Module thumbnail + number */}
+                    <div className="relative flex-none">
+                      {modulo.imagemHeroUrl ? (
+                        <div
+                          className="absolute inset-0 rounded-2xl bg-cover bg-center opacity-40"
+                          style={{ backgroundImage: `url(${modulo.imagemHeroUrl})` }}
+                        />
+                      ) : null}
+                      <span className="relative z-10 flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-2xl font-bold text-white shadow-xl">
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
 
-                    <div className="flex-1 min-w-0">
+                    <div className="flex items-start gap-4 sm:gap-6 flex-1 min-w-0">
+                      {/* Mini thumbnail 120x80 */}
+                      {modulo.imagemHeroUrl && (
+                        <div className="hidden sm:block relative w-[120px] h-[80px] shrink-0 rounded-xl overflow-hidden shadow-lg ring-1 ring-white/20">
+                          <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${modulo.imagemHeroUrl})` }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                        </div>
+                      )}
                       <div className="flex flex-wrap items-center gap-3">
                         <Link
                           href={`/trilhas/${trilha.id}/${modulo.id}`}

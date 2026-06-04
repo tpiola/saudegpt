@@ -24,14 +24,14 @@ export async function generateMetadata({
 
 // Mapa de imagens de módulo baseado nas imagens disponíveis
 const moduloImagens = [
-  "/pharmacy-counter.jpg",
-  "/health-professional.jpg",
-  "/pharmacy-hero.jpg",
-  "/business-meeting.jpg",
-  "/digital-strategy.jpg",
-  "/sales-consulting.jpg",
-  "/customer-service.jpg",
-  "/hero-matricula.jpg",
+  "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1576091358783-a212ec293ff3?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1584308666744-19c4e5e9e0b1?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1576671081837-4900028a1b2f?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1280&q=85",
+  "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1280&q=85",
 ];
 
 function moduloImagem(moduloId: string, idx: number): string {
@@ -89,6 +89,15 @@ export default async function ModuloPage({
           HEADER — Breadcrumb + Ícone + Título
           ════════════════════════════════════════════ */}
       <section className="relative overflow-hidden bg-forest-500 py-12 sm:py-16">
+        {/* Hero image background */}
+        <Image
+          src={moduloImagem(modulo.id, modulo.aulas.length)}
+          alt=""
+          fill
+          className="hero-bg"
+          priority
+          sizes="100vw"
+        />
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
 
         {/* Glow decorativo */}

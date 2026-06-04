@@ -26,6 +26,10 @@ const iconeTrilha: Record<string, string> = {
   encantamento: "🤝",
 };
 
+/* ─── Helper para fotos Unsplash ─── */
+const foto = (id: string, w = 800) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=85`;
+
 export default function HomePage() {
   const total = totalAulas();
 
@@ -179,8 +183,15 @@ export default function HomePage() {
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <FadeUp delay={100}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap">
-                <span className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:shadow-[0_0_30px_rgba(76,161,93,0.15)] transition-all duration-300">
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap">
+                <Image
+                  src={foto("photo-1544717297-fa95b6eb9642")}
+                  alt=""
+                  fill
+                  className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <span className="relative z-10 mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:shadow-[0_0_30px_rgba(76,161,93,0.15)] transition-all duration-300">
                   🎓
                 </span>
                 <h3 className={h3Cls}>Conteúdo completo</h3>
@@ -192,8 +203,15 @@ export default function HomePage() {
             </FadeUp>
 
             <FadeUp delay={200}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap">
-                <span className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:shadow-[0_0_30px_rgba(214,110,15,0.15)] transition-all duration-300">
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap">
+                <Image
+                  src={foto("photo-1559839734-2b71ea197ec2")}
+                  alt=""
+                  fill
+                  className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <span className="relative z-10 mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:shadow-[0_0_30px_rgba(214,110,15,0.15)] transition-all duration-300">
                   🧑‍⚕️
                 </span>
                 <h3 className={h3Cls}>Criado por farmacêutico</h3>
@@ -205,8 +223,15 @@ export default function HomePage() {
             </FadeUp>
 
             <FadeUp delay={300}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap sm:col-span-2 lg:col-span-1">
-                <span className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-orange-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-orange-400/40 group-hover:shadow-[0_0_30px_rgba(76,161,93,0.15)] transition-all duration-300">
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap sm:col-span-2 lg:col-span-1">
+                <Image
+                  src={foto("photo-1573497019940-1c28c88b4f3e")}
+                  alt=""
+                  fill
+                  className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <span className="relative z-10 mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-orange-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-orange-400/40 group-hover:shadow-[0_0_30px_rgba(76,161,93,0.15)] transition-all duration-300">
                   🌟
                 </span>
                 <h3 className={h3Cls}>Atendimento que encanta</h3>
@@ -259,7 +284,24 @@ export default function HomePage() {
                     {String(t.numero).padStart(2, "0")}
                   </span>
 
-                  <div className="flex items-start gap-5">
+                  {/* Background image por trilha */}
+                  <Image
+                    src={foto(
+                      t.id === "perfumaria"
+                        ? "photo-1596462502278-27bfd403348e"
+                        : t.id === "medicamentos"
+                          ? "photo-1573883429746-084be9b5cfca"
+                          : t.id === "operacional"
+                            ? "photo-1544717297-fa95b6eb9642"
+                            : "photo-1559839734-2b71ea197ec2"
+                    )}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.07]"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+
+                  <div className="relative z-10 flex items-start gap-5">
                     <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-400/25 to-green-500/15 text-2xl ring-1 ring-white/10 group-hover:ring-orange-400/30 group-hover:scale-110 transition-all duration-300">
                       {iconeTrilha[t.id] ?? "📚"}
                     </span>
@@ -312,9 +354,16 @@ export default function HomePage() {
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             <FadeUp delay={100}>
-              <Link href="/pressao-arterial" className="blog-card group">
+              <Link href="/pressao-arterial" className="blog-card group relative overflow-hidden">
                 <div className="blog-card-content">
-                  <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/15 group-hover:ring-orange-400/30 transition-all duration-300">
+                  <Image
+                    src={foto("photo-1584982751601-97dcc096659c")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/15 group-hover:ring-orange-400/30 transition-all duration-300">
                     🩺
                   </span>
                   <h3 className="text-base font-semibold group-hover:text-orange-500 transition-colors duration-300">
@@ -335,9 +384,16 @@ export default function HomePage() {
             </FadeUp>
 
             <FadeUp delay={200}>
-              <Link href="/curiosidades" className="blog-card group">
+              <Link href="/curiosidades" className="blog-card group relative overflow-hidden">
                 <div className="blog-card-content">
-                  <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/15 group-hover:ring-green-400/30 transition-all duration-300">
+                  <Image
+                    src={foto("photo-1512621776951-a57141f2eefd")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/15 group-hover:ring-green-400/30 transition-all duration-300">
                     🥗
                   </span>
                   <h3 className="text-base font-semibold group-hover:text-green-500 transition-colors duration-300">
@@ -358,9 +414,16 @@ export default function HomePage() {
             </FadeUp>
 
             <FadeUp delay={300}>
-              <Link href="/curiosidades" className="blog-card group">
+              <Link href="/curiosidades" className="blog-card group relative overflow-hidden">
                 <div className="blog-card-content">
-                  <span className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-forest-400/20 to-forest-500/10 text-2xl ring-1 ring-forest-400/15 group-hover:ring-forest-400/30 transition-all duration-300">
+                  <Image
+                    src={foto("photo-1524995997946-a1c2e315a42f")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.08]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-forest-400/20 to-forest-500/10 text-2xl ring-1 ring-forest-400/15 group-hover:ring-forest-400/30 transition-all duration-300">
                     💡
                   </span>
                   <h3 className="text-base font-semibold group-hover:text-forest-400 transition-colors duration-300">
@@ -406,8 +469,15 @@ export default function HomePage() {
 
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
             <FadeUp delay={100}>
-              <div className="glass-premium group flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
-                <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:scale-110 transition-all duration-300">
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
+                <Image
+                  src={foto("photo-1567427017947-545c5f8d16ad")}
+                  alt=""
+                  fill
+                  className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.07]"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <span className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:scale-110 transition-all duration-300">
                   🎯
                 </span>
                 <h3 className={h3Cls}>Complete aulas</h3>
@@ -441,8 +511,15 @@ export default function HomePage() {
 
             <FadeUp delay={200}>
               <Link href="/ranking" className="block group h-full">
-                <div className="glass-premium flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
-                  <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
+                <div className="glass-premium relative overflow-hidden flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
+                  <Image
+                    src={foto("photo-1559136555-9303baea8ebd")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.07]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
                     🏆
                   </span>
                   <h3 className={h3Cls}>Suba no ranking</h3>
@@ -470,8 +547,15 @@ export default function HomePage() {
 
             <FadeUp delay={300}>
               <Link href="/missoes" className="block group h-full">
-                <div className="glass-premium flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
-                  <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
+                <div className="glass-premium relative overflow-hidden flex flex-col p-7 sm:p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full cursor-pointer">
+                  <Image
+                    src={foto("photo-1600269452121-4f2416e55c28")}
+                    alt=""
+                    fill
+                    className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.07]"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <span className="relative z-10 mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-green-400/10 text-3xl ring-1 ring-orange-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
                     🎖️
                   </span>
                   <h3 className={h3Cls}>Desbloqueie badges</h3>
@@ -530,27 +614,37 @@ export default function HomePage() {
                   conteúdo, atualizações constantes e certificado ao finalizar.
                 </p>
 
-                {/* Pilares com ícones maiores */}
+                {/* Pilares com ícones maiores e imagens de fundo */}
                 <div className="mt-8 space-y-5">
                   {[
                     {
                       icon: "📚",
                       title: "Aprendizado ativo",
                       desc: "Aulas com quiz, simulações e estudos de caso reais.",
+                      img: "photo-1524178232363-1fb2b075b655",
                     },
                     {
                       icon: "🔬",
                       title: "Base científica",
                       desc: "Conteúdo atualizado com as normas da ANVISA e portarias vigentes.",
+                      img: "photo-1576086213369-97bcbbb1b2b1",
                     },
                     {
                       icon: "💛",
                       title: "Atendimento encantador",
                       desc: "O diferencial que faz o cliente voltar sempre.",
+                      img: "photo-1551836022-d5d88e9218df",
                     },
                   ].map((pilar, i) => (
-                    <div key={i} className="group flex items-start gap-4">
-                      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-2xl ring-1 ring-white/10 group-hover:ring-orange-400/30 group-hover:bg-white/10 transition-all duration-300">
+                    <div key={i} className="group relative overflow-hidden flex items-start gap-4 rounded-xl p-3 transition-all duration-300 hover:bg-white/[0.03]">
+                      <Image
+                        src={foto(pilar.img)}
+                        alt=""
+                        fill
+                        className="pointer-events-none absolute inset-0 z-0 object-cover opacity-[0.06]"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <span className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/5 text-2xl ring-1 ring-white/10 group-hover:ring-orange-400/30 group-hover:bg-white/10 transition-all duration-300">
                         {pilar.icon}
                       </span>
                       <div>

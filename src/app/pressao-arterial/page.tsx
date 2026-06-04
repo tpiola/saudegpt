@@ -98,7 +98,7 @@ export default function PressaoArterialPage() {
             poster="/hero-dashboard.jpg"
           >
             <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-people-walking-in-a-park-at-sunset-4489-large.mp4"
+              src="https://assets.mixkit.co/videos/6562/6562-720.mp4"
               type="video/mp4"
             />
           </video>

@@ -35,6 +35,7 @@ const sabiaQueCards = [
     texto:
       "Dormir bem regula o sistema imunológico, melhora a memória e reduz o estresse. Na farmácia, perguntar sobre o sono do cliente pode revelar necessidades de suplementos ou fitoterápicos.",
     badge: "Saúde preventiva",
+    bgImg: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=400&q=60",
   },
   {
     emoji: "💧",
@@ -42,6 +43,7 @@ const sabiaQueCards = [
     texto:
       "Beber água suficiente melhora a absorção de medicamentos, a elasticidade da pele e o funcionamento dos rins. Lembre os clientes: 2 litros por dia é a meta mínima.",
     badge: "Bem-estar",
+    bgImg: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=400&q=60",
   },
   {
     emoji: "📐",
@@ -49,6 +51,7 @@ const sabiaQueCards = [
     texto:
       "A bioimpedância avalia composição corporal — gordura, massa magra e hidratação. É um serviço farmacêutico que agrega valor e fideliza clientes (Produto + Serviço).",
     badge: "Inovação",
+    bgImg: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=60",
   },
   {
     emoji: "🧘",
@@ -56,6 +59,7 @@ const sabiaQueCards = [
     texto:
       "Criar uma rotina noturna consistente — sem telas 1h antes, quarto escuro e fresco — melhora a qualidade do sono. Ofereça dicas + produtos como melatonina (com orientação).",
     badge: "Sleep hygiene",
+    bgImg: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=60",
   },
 ];
 
@@ -158,15 +162,20 @@ export default function TrilhasPage() {
             {sabiaQueCards.map((card) => (
               <div
                 key={card.titulo}
-                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-orange-300/50"
+                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-orange-300/50 overflow-hidden"
               >
+                {/* Background image sutil */}
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-10 scale-110 transition-transform duration-500 group-hover:scale-125"
+                  style={{ backgroundImage: `url(${card.bgImg})` }}
+                />
                 <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-green-400 to-orange-400" />
-                <span className="mt-2 block text-3xl">{card.emoji}</span>
-                <span className="mt-2 inline-block badge-green text-[10px]">{card.badge}</span>
-                <h3 className="mt-3 text-sm font-bold text-foreground font-display">
+                <span className="mt-2 block text-3xl relative z-10">{card.emoji}</span>
+                <span className="mt-2 inline-block badge-green text-[10px] relative z-10">{card.badge}</span>
+                <h3 className="mt-3 text-sm font-bold text-foreground font-display relative z-10">
                   {card.titulo}
                 </h3>
-                <p className="mt-2 text-xs leading-relaxed text-subtle">
+                <p className="mt-2 text-xs leading-relaxed text-subtle relative z-10">
                   {card.texto}
                 </p>
               </div>
@@ -174,8 +183,13 @@ export default function TrilhasPage() {
           </div>
 
           {/* 💊 Mensagem do farmacêutico */}
-          <div className="mt-8 rounded-2xl bg-gradient-to-r from-orange-50 to-green-50 border border-orange-200/50 p-5 dark:from-orange-900/10 dark:to-forest-800">
-            <div className="flex items-start gap-3">
+          <div className="mt-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-50 to-green-50 border border-orange-200/50 p-5 dark:from-orange-900/10 dark:to-forest-800">
+            {/* Background image sutil */}
+            <div
+              className="absolute right-0 top-0 bottom-0 w-1/3 bg-cover bg-center opacity-[0.08]"
+              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=60)" }}
+            />
+            <div className="flex items-start gap-3 relative z-10">
               <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg dark:bg-orange-900/30">
                 🧑‍⚕️
               </span>

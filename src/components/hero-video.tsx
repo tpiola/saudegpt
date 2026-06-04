@@ -8,8 +8,8 @@ interface HeroVideoProps {
   overlay?: "forest" | "dark";
 }
 
-/** IDs de vídeos de saúde/medical do Mixkit */
-const VIDEO_IDS = [6562, 17475, 29933, 38505] as const;
+/** IDs de vídeos de saúde/medical + mulheres correndo/bebendo água do Mixkit */
+const VIDEO_IDS = [6562, 17475, 29933, 38505, 32807, 52132, 4546] as const;
 const CROSSFADE_MS = 8000; // 8s entre trocas
 
 /** Seeds determinísticos para partículas (evita Math.random no SSR) */
