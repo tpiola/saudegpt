@@ -2,26 +2,25 @@
 
 import { useRef, useState, useEffect } from "react";
 
-/* ── Vídeos cinematográficos de farmácia e saúde (Mixkit) ── */
+/* ── Vídeos: estudos 📚 + comprimidos 💊 (alternados) ── */
 const VIDEO_POOL = [
-  { id: 5433, label: "Farmacêutica atendendo" },
-  { id: 5407, label: "Farmácia balcão" },
-  { id: 5697, label: "Cliente comprando" },
-  { id: 5769, label: "Pagamento farmácia" },
-  { id: 34235, label: "Farmácia interior" },
-  { id: 34273, label: "Saúde preventiva" },
-  { id: 33268, label: "Cuidados saúde" },
-  { id: 5763, label: "Atendimento balcão" },
-  { id: 5640, label: "Farmácia movimento" },
-  { id: 35887, label: "Profissional saúde" },
-  { id: 34269, label: "Atendimento humanizado" },
-  { id: 33245, label: "Remédios balcão" },
-  { id: 34233, label: "Farmácia completa" },
-  { id: 5767, label: "Cliente farmácia" },
-  { id: 5765, label: "Farmácia checkout" },
-  { id: 34625, label: "Medicamentos close" },
-  { id: 16533, label: "Equipe saúde" },
-  { id: 5603, label: "Farmácia rotina" },
+  // Estudo/educação — biblioteca, livros, campus, laptop
+  { id: 21589, label: "📚 Biblioteca estudos" },
+  { id: 5433,  label: "💊 Farmacêutica atendendo" },
+  { id: 21598, label: "📚 Torre de livros" },
+  { id: 34235, label: "💊 Farmácia interior" },
+  { id: 4519,  label: "🎓 Campus universitário" },
+  { id: 34625, label: "💊 Medicamentos close" },
+  { id: 50109, label: "📝 Caderno anotações" },
+  { id: 33268, label: "💊 Cuidados saúde" },
+  { id: 50111, label: "📚 Mesa livros" },
+  { id: 5603,  label: "💊 Farmácia rotina" },
+  { id: 4763,  label: "💻 Mãos laptop" },
+  { id: 33245, label: "💊 Remédios balcão" },
+  { id: 4616,  label: "🧮 Equações quadro" },
+  { id: 34273, label: "💊 Saúde preventiva" },
+  { id: 5955,  label: "🎯 Treinamento evento" },
+  { id: 35887, label: "💊 Profissional saúde" },
 ];
 
 const CROSSFADE_MS = 6000; // 6s entre trocas

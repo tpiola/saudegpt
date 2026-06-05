@@ -5,7 +5,7 @@ import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
 import { ScrollReveal, ContadorAnimado, Typewriter } from "@/components/animacoes";
 import { MatriculaForm } from "@/components/matricula-form";
-import { trilhas, totalAulas } from "@/content/curriculo";
+import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
 import { Icon, IconName } from "@/components/icons";
 import { SectionVideo, SECTION_VIDEOS } from "@/components/section-video";
 import type { Trilha } from "@/content/types";
@@ -259,6 +259,157 @@ export default function HomePage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ═══ GAME CENTER — GAMIFICAÇÃO ELEVADA ═══ */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-green-950 via-emerald-900 to-forest-950 py-16 sm:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(74,222,128,0.06),transparent_60%)]" />
+        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {[0,1,2,3,4].map(i=>(
+            <div key={i} className="absolute w-1.5 h-1.5 rounded-full bg-yellow-400/20 shimmer-particle"
+              style={{left:`${10+i*20}%`,top:`${20+i*15}%`,animationDelay:`${i*1.2}s`}} />
+          ))}
+        </div>
+        <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
+          <ScrollReveal direction="up">
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="inline-flex items-center gap-2 rounded-full border border-yellow-400/20 bg-yellow-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium text-yellow-300 backdrop-blur-sm mb-3 sm:mb-4 pulse-glow">
+                <Icon name="sparkles" size={10} />
+                Game Center
+              </div>
+              <h2 className={`${h2} text-white px-2`}>
+                Aprenda jogando —{" "}
+                <span className="bg-gradient-to-r from-yellow-300 via-amber-300 to-orange-200 bg-clip-text text-transparent gradient-shift">
+                  evolua mais rápido
+                </span>
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-white/50">Ganhe XP, suba de nível, colecione badges e dispute o ranking</p>
+            </div>
+          </ScrollReveal>
+
+          {/* Stats banner */}
+          <ScrollReveal direction="none" delay={100}>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+              {[
+                { icon:"zap" as IconName, value: 2840, suffix:"", label:"XP total", color:"text-yellow-400", bg:"from-yellow-500/10" },
+                { icon:"trending" as IconName, value: 7, suffix:" dias", label:"Streak atual", color:"text-orange-400", bg:"from-orange-500/10" },
+                { icon:"star" as IconName, value: 12, suffix:"", label:"Badges", color:"text-green-400", bg:"from-green-500/10" },
+                { icon:"award" as IconName, value: 5, suffix:"", label:"Ranking", color:"text-rose-400", bg:"from-rose-500/10" },
+              ].map((s,i)=>(
+                <div key={s.label} className={`rounded-2xl border border-white/10 bg-gradient-to-br ${s.bg} to-transparent p-4 sm:p-5 backdrop-blur-sm transition-all duration-300 hover:bg-white/5 hover:-translate-y-1`}>
+                  <span className={`flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-white/5 ring-1 ring-white/10 mb-2 sm:mb-3`}>
+                    <Icon name={s.icon} size={16} sm-size={20} className={s.color} />
+                  </span>
+                  <div className={`text-lg sm:text-2xl font-bold ${s.color} tabular-nums`}>
+                    {typeof s.value === 'number' ? <ContadorAnimado valor={s.value} sufixo={s.suffix} duracao={2000} /> : s.value}
+                  </div>
+                  <div className="text-[10px] sm:text-xs text-white/40 mt-0.5">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </ScrollReveal>
+
+          {/* Progresso + Level */}
+          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2 mb-8 sm:mb-10">
+            {/* Level card */}
+            <ScrollReveal direction="up" delay={150}>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-500/20 to-orange-400/10 ring-2 ring-yellow-400/30 text-2xl sm:text-3xl">🏆</span>
+                    <div>
+                      <div className="text-base sm:text-lg font-bold text-white">Nível 4</div>
+                      <div className="text-[10px] sm:text-xs text-white/50">Atendente Premium</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-lg sm:text-xl font-bold text-yellow-400 tabular-nums"><ContadorAnimado valor={2840} duracao={2000} /></div>
+                    <div className="text-[10px] sm:text-xs text-white/40">de 5.000 XP</div>
+                  </div>
+                </div>
+                <div className="h-2.5 sm:h-3 rounded-full bg-white/10 overflow-hidden p-[1px]">
+                  <div className="h-full rounded-full bg-gradient-to-r from-yellow-500 via-amber-400 to-orange-500 gradient-shift" style={{width:"56%"}} />
+                </div>
+                <div className="flex justify-between text-[10px] sm:text-xs text-white/30 mt-1.5">
+                  <span>Nível 3</span>
+                  <span>Nível 5</span>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            {/* Streak card */}
+            <ScrollReveal direction="up" delay={200}>
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl sm:text-4xl float-y">🔥</span>
+                    <div>
+                      <div className="text-base sm:text-lg font-bold text-white">Sequência de <span className="text-orange-400">7 dias</span></div>
+                      <div className="text-[10px] sm:text-xs text-white/50">Não quebre sua streak!</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-xs text-white/40">Meta: 30 dias</div>
+                    <div className="text-lg sm:text-xl font-bold text-orange-400">23%</div>
+                  </div>
+                </div>
+                <div className="flex gap-1.5 sm:gap-2">
+                  {['D','S','T','Q','Q','S','S'].map((d,i)=>(
+                    <div key={i} className={`flex-1 flex flex-col items-center gap-1 rounded-lg py-1.5 sm:py-2 text-[10px] sm:text-xs ${
+                      i < 5 ? 'bg-green-500/30 text-green-300' : 'bg-white/5 text-white/30'
+                    }`}>
+                      <span className="font-bold">{d}</span>
+                      <span className={`h-1.5 w-1.5 rounded-full ${i < 5 ? 'bg-green-400' : 'bg-white/10'}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Missões diárias */}
+          <ScrollReveal direction="none" delay={250}>
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm">
+              <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className="flex items-center gap-2">
+                  <Icon name="target" size={16} sm-size={20} className="text-green-400" />
+                  <span className="text-sm sm:text-base font-bold text-white">Missões diárias</span>
+                </div>
+                <Link href="/missoes" className="flex items-center gap-1 text-[10px] sm:text-xs text-green-400 hover:text-green-300 transition-colors">
+                  Ver todas <Icon name="arrow" size={10} />
+                </Link>
+              </div>
+              <div className="grid gap-3">
+                {[
+                  { icon:"book", title:"Assistir 1 aula", xp:"+50 XP", done:true, color:"text-green-400" },
+                  { icon:"zap", title:"Acertar quiz", xp:"+30 XP", done:true, color:"text-yellow-400" },
+                  { icon:"trending", title:"Streak de 3 dias", xp:"+100 XP", done:false, color:"text-orange-400" },
+                  { icon:"message", title:"Perguntar ao Tutor IA", xp:"+20 XP", done:false, color:"text-blue-400" },
+                ].map((q,i)=>(
+                  <div key={i} className="flex items-center gap-3 sm:gap-4 rounded-xl bg-white/5 p-3 sm:p-3.5 transition-all hover:bg-white/10">
+                    <span className={`flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg ${
+                      q.done ? 'bg-green-500/20' : 'bg-white/5'
+                    } ring-1 ring-white/10`}>
+                      <Icon name={q.icon as IconName} size={14} sm-size={18} className={q.done ? 'text-green-400' : 'text-white/40'} />
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs sm:text-sm font-semibold ${q.done ? 'text-green-300 line-through' : 'text-white'}`}>{q.title}</span>
+                        {q.done && <span className="text-green-400 text-xs">✓</span>}
+                      </div>
+                      <span className={`text-[10px] sm:text-xs ${q.done ? 'text-green-400/50' : 'text-yellow-400'}`}>{q.xp}</span>
+                    </div>
+                    {!q.done && (
+                      <Link href="/missoes" className="shrink-0 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-white transition-all hover:scale-105 active:scale-95">
+                        Fazer
+                      </Link>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
