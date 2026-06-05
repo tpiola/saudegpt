@@ -2,6 +2,7 @@
 
 import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
+import { ScrollReveal } from "@/components/animacoes";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { Botao, Card } from "@/components/ui";
@@ -384,6 +385,258 @@ export default function HomePage() {
 
       {/* ─── DIVIDER WAVE ─── */}
       <div className="divider-wave divider-wave-flip" />
+
+      {/* ══════════════════════════════════════════════
+          SEÇÃO: SIMULAÇÕES DE BALCÃO
+          ══════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-20 sm:py-28 bg-noise">
+        {/* Elementos decorativos */}
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-green-500/4 blur-[120px]" />
+        <div className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-orange-500/3 blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="badge-green mb-3">Simulações de Balcão</span>
+              <h2 className={h2Cls}>
+                Antes e depois do atendimento
+              </h2>
+              <p className="mt-3 text-muted leading-relaxed">
+                Veja na prática como uma abordagem consultiva transforma a
+                experiência do cliente na farmácia.
+              </p>
+            </div>
+          </FadeUp>
+
+          <div className="mt-14 grid gap-6 lg:grid-cols-2">
+            {/* Card: Abordagem consultiva ✅ */}
+            <FadeUp delay={100}>
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap border border-emerald-200/50">
+                {/* Badge */}
+                <div className="relative z-10 mb-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-500/15 px-3 py-1 text-xs font-medium text-emerald-300 backdrop-blur-sm shadow-[0_0_15px_rgba(52,211,153,0.1)]">
+                    Abordagem consultiva ✅
+                  </span>
+                </div>
+                <h3 className={`${h3Cls}`}>O que falar</h3>
+
+                {/* Diálogo realista */}
+                <div className="mt-4 space-y-3 text-sm leading-relaxed">
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍🦰</span>
+                    <div>
+                      <span className="text-xs font-semibold text-muted">Cliente</span>
+                      <p className="text-foreground/80">
+                        "Bom dia! Estou com uma dor de cabeça forte desde
+                        ontem. O que a senhora me recomenda?"
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍⚕️</span>
+                    <div>
+                      <span className="text-xs font-semibold text-emerald-400">Atendente</span>
+                      <p className="text-foreground/80">
+                        "Bom dia! Vou ajudar você. Antes de indicar, posso
+                        perguntar: você tem alguma alergia a medicamentos?
+                        Toma algum remédio contínuo?"
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍🦰</span>
+                    <div>
+                      <span className="text-xs font-semibold text-muted">Cliente</span>
+                      <p className="text-foreground/80">
+                        "Não, não tenho alergias. Só tomo anticoncepcional."
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍⚕️</span>
+                    <div>
+                      <span className="text-xs font-semibold text-emerald-400">Atendente</span>
+                      <p className="text-foreground/80">
+                        "Perfeito! O paracetamol 750mg é uma ótima opção —
+                        não interage com seu anticoncepcional. Vou separar
+                        para você. Lembre-se de tomar com água e não
+                        ultrapassar 3 comprimidos ao dia. Melhoras! 💚"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resultado */}
+                <div className="mt-5 flex items-center gap-2 rounded-lg bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300">
+                  <span>✅</span>
+                  <span>Cliente se sente acolhida e segura para voltar</span>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* Card: O que evitar ❌ */}
+            <FadeUp delay={200}>
+              <div className="glass-premium group relative overflow-hidden flex flex-col p-7 sm:p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full gradient-border-wrap border border-rose-200/50">
+                {/* Badge */}
+                <div className="relative z-10 mb-4">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-rose-400/30 bg-rose-500/15 px-3 py-1 text-xs font-medium text-rose-300 backdrop-blur-sm shadow-[0_0_15px_rgba(244,63,94,0.1)]">
+                    O que evitar ❌
+                  </span>
+                </div>
+                <h3 className={`${h3Cls}`}>O que evitar</h3>
+
+                {/* Diálogo realista */}
+                <div className="mt-4 space-y-3 text-sm leading-relaxed">
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍🦰</span>
+                    <div>
+                      <span className="text-xs font-semibold text-muted">Cliente</span>
+                      <p className="text-foreground/80">
+                        "Bom dia! Estou com uma dor de cabeça forte desde
+                        ontem. O que a senhora me recomenda?"
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">🧑‍💼</span>
+                    <div>
+                      <span className="text-xs font-semibold text-rose-400">Atendente</span>
+                      <p className="text-foreground/80">
+                        "Toma dipirona? É o mais forte que tem."
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">👩‍🦰</span>
+                    <div>
+                      <span className="text-xs font-semibold text-muted">Cliente</span>
+                      <p className="text-foreground/80">
+                        "Hum… não sei. Tomei uma vez e passei mal. Tem outra
+                        opção?"
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-3">
+                    <span className="mt-0.5 shrink-0">🧑‍💼</span>
+                    <div>
+                      <span className="text-xs font-semibold text-rose-400">Atendente</span>
+                      <p className="text-foreground/80">
+                        "Só tenho esse. Se quiser, leva. Ou passa no médico."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Resultado */}
+                <div className="mt-5 flex items-center gap-2 rounded-lg bg-rose-500/10 px-4 py-2 text-xs font-medium text-rose-300">
+                  <span>❌</span>
+                  <span>Cliente sai insatisfeita e não volta mais</span>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── DIVIDER WAVE ─── */}
+      <div className="divider-wave divider-wave-flip" />
+
+      {/* ══════════════════════════════════════════════
+          SEÇÃO: MANDALA DOS 5 PILARES
+          ══════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden bg-surface-2 py-20 sm:py-28">
+        {/* Pattern grid */}
+        <div className="pattern-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
+        <div className="pointer-events-none absolute -left-40 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-green-400/5 blur-[120px]" />
+        <div className="pointer-events-none absolute -right-40 bottom-0 h-[400px] w-[400px] rounded-full bg-orange-500/5 blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="badge-green mb-3">Mandala dos 5 Pilares</span>
+              <h2 className={h2Cls}>
+                Como encantar no balcão
+              </h2>
+              <p className="mt-3 text-muted leading-relaxed">
+                5 pilares que transformam atendentes em cuidadores
+              </p>
+            </div>
+          </FadeUp>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {[
+              {
+                icon: "🫂",
+                title: "Acolhimento",
+                desc: "Receber cada paciente com respeito, atenção e um sorriso genuíno — criando um ambiente seguro e confiável desde o primeiro contato.",
+                from: "from-green-500/20",
+                to: "to-green-400/10",
+                ring: "ring-green-400/20",
+                ringHover: "ring-green-400/40",
+                shadow: "rgba(76,161,93,0.15)",
+              },
+              {
+                icon: "🔬",
+                title: "Cuidado Técnico",
+                desc: "Conhecimento profundo de medicamentos, posologias, interações e legislação — a base técnica que sustenta um atendimento seguro e de qualidade.",
+                from: "from-cyan-500/20",
+                to: "to-cyan-400/10",
+                ring: "ring-cyan-400/20",
+                ringHover: "ring-cyan-400/40",
+                shadow: "rgba(6,182,212,0.15)",
+              },
+              {
+                icon: "💬",
+                title: "Comunicação Empática",
+                desc: "Saber ouvir, explicar com clareza e validar as preocupações do paciente — transformando cada interação em um momento de cuidado real.",
+                from: "from-violet-500/20",
+                to: "to-violet-400/10",
+                ring: "ring-violet-400/20",
+                ringHover: "ring-violet-400/40",
+                shadow: "rgba(139,92,246,0.15)",
+              },
+              {
+                icon: "✨",
+                title: "Encantamento",
+                desc: "Surpreender positivamente com pequenos gestos, atenção aos detalhes e um atendimento que vai além da expectativa — fidelizando pela experiência.",
+                from: "from-orange-500/20",
+                to: "to-orange-400/10",
+                ring: "ring-orange-400/20",
+                ringHover: "ring-orange-400/40",
+                shadow: "rgba(214,110,15,0.15)",
+              },
+              {
+                icon: "🤲",
+                title: "Apoio ao Tratamento",
+                desc: "Acompanhar, orientar e motivar o paciente na adesão ao tratamento — com dicas práticas, reforço positivo e cuidado contínuo.",
+                from: "from-rose-500/20",
+                to: "to-rose-400/10",
+                ring: "ring-rose-400/20",
+                ringHover: "ring-rose-400/40",
+                shadow: "rgba(244,63,94,0.15)",
+              },
+            ].map((pilar, i) => (
+              <ScrollReveal key={pilar.title} delay={i * 100} direction="up">
+                <div className="glass-premium group relative overflow-hidden flex flex-col items-center p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
+                  {/* Ícone grande */}
+                  <span
+                    className={`relative z-10 mb-5 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br ${pilar.from} ${pilar.to} text-4xl ring-1 ${pilar.ring} group-hover:${pilar.ringHover} group-hover:scale-110 transition-all duration-300 group-hover:shadow-[0_0_30px_${pilar.shadow}]`}
+                  >
+                    {pilar.icon}
+                  </span>
+                  <h3 className={h3Cls}>{pilar.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                    {pilar.desc}
+                  </p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── DIVIDER WAVE ─── */}
+      <div className="divider-wave" />
 
       {/* ══════════════════════════════════════════════
           SEÇÃO: O QUE VOCÊ VAI APRENDER (6 TRILHAS)
@@ -910,6 +1163,91 @@ export default function HomePage() {
                 <p className="mt-4 text-center text-xs text-white/40">
                   *Sua solicitação será analisada e confirmada por e-mail em até 24h
                 </p>
+              </div>
+            </FadeUp>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── DIVIDER WAVE ─── */}
+      <div className="divider-wave" />
+
+      {/* ══════════════════════════════════════════════
+          DICAS POR FAIXA ETÁRIA
+          ══════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-20 sm:py-28 bg-noise">
+        <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-green-500/4 blur-[120px]" />
+        <div className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-orange-500/3 blur-[100px]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <FadeUp>
+            <div className="mx-auto max-w-2xl text-center">
+              <span className="badge-green mb-3">Dicas por faixa etária</span>
+              <h2 className={h2Cls}>
+                Cada idade, um cuidado diferente
+              </h2>
+              <p className="mt-3 text-muted leading-relaxed">
+                A abordagem ideal muda conforme a faixa etária. Veja como
+                adaptar seu atendimento no balcão da farmácia.
+              </p>
+            </div>
+          </FadeUp>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            <FadeUp delay={100}>
+              <div className="glass-premium group relative overflow-hidden flex flex-col items-center p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
+                <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-4xl ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300">
+                  🧒
+                </div>
+                <h3 className={h3Cls}>Adolescentes</h3>
+                <p className="mt-3 text-sm text-muted leading-relaxed">
+                  Abordagem discreta e acolhedora para questões de pele,
+                  acne e saúde sexual. Rapidez no atendimento e linguagem
+                  simples fazem toda a diferença.
+                </p>
+                <div className="mt-5 flex flex-wrap justify-center gap-2">
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">🌱 Acne</span>
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">🤫 Discrição</span>
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">⚡ Rapidez</span>
+                </div>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={200}>
+              <div className="glass-premium group relative overflow-hidden flex flex-col items-center p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
+                <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-4xl ring-1 ring-orange-400/20 group-hover:ring-orange-400/40 group-hover:scale-110 transition-all duration-300">
+                  🧑‍💼
+                </div>
+                <h3 className={h3Cls}>Adultos</h3>
+                <p className="mt-3 text-sm text-muted leading-relaxed">
+                  Escuta ativa para identificar sintomas e orientar sobre
+                  automedicação responsável. Respeito à rotina corrida e
+                  sugestões práticas de cuidados diários.
+                </p>
+                <div className="mt-5 flex flex-wrap justify-center gap-2">
+                  <span className="rounded-full border border-orange-400/15 bg-orange-500/8 px-2.5 py-0.5 text-[11px] font-medium text-orange-600 dark:text-orange-400">👂 Escuta</span>
+                  <span className="rounded-full border border-orange-400/15 bg-orange-500/8 px-2.5 py-0.5 text-[11px] font-medium text-orange-600 dark:text-orange-400">💊 Automedicação</span>
+                  <span className="rounded-full border border-orange-400/15 bg-orange-500/8 px-2.5 py-0.5 text-[11px] font-medium text-orange-600 dark:text-orange-400">📅 Rotina</span>
+                </div>
+              </div>
+            </FadeUp>
+
+            <FadeUp delay={300}>
+              <div className="glass-premium group relative overflow-hidden flex flex-col items-center p-8 text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-glow-colored h-full">
+                <div className="relative z-10 mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-orange-400/10 text-4xl ring-1 ring-green-400/20 group-hover:ring-orange-400/40 group-hover:scale-110 transition-all duration-300">
+                  👴
+                </div>
+                <h3 className={h3Cls}>Idosos</h3>
+                <p className="mt-3 text-sm text-muted leading-relaxed">
+                  Paciência e clareza na comunicação para explicar
+                  polifarmácia e interações medicamentosas. Acompanhamento
+                  contínuo e reforço positivo no uso correto dos remédios.
+                </p>
+                <div className="mt-5 flex flex-wrap justify-center gap-2">
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">🧘 Paciência</span>
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">💊 Polifarmácia</span>
+                  <span className="rounded-full border border-green-400/15 bg-green-500/8 px-2.5 py-0.5 text-[11px] font-medium text-green-600 dark:text-green-400">📋 Acompanhamento</span>
+                </div>
               </div>
             </FadeUp>
           </div>
