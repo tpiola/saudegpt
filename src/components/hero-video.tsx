@@ -2,13 +2,33 @@
 
 import { useRef, useState, useEffect } from "react";
 
+/* ── Vídeos cinematográficos de farmácia e saúde (Mixkit) ── */
+const VIDEO_POOL = [
+  { id: 5433, label: "Farmacêutica atendendo" },
+  { id: 5407, label: "Farmácia balcão" },
+  { id: 5697, label: "Cliente comprando" },
+  { id: 5769, label: "Pagamento farmácia" },
+  { id: 34235, label: "Farmácia interior" },
+  { id: 34273, label: "Saúde preventiva" },
+  { id: 33268, label: "Cuidados saúde" },
+  { id: 5763, label: "Atendimento balcão" },
+  { id: 5640, label: "Farmácia movimento" },
+  { id: 35887, label: "Profissional saúde" },
+  { id: 34269, label: "Atendimento humanizado" },
+  { id: 33245, label: "Remédios balcão" },
+  { id: 34233, label: "Farmácia completa" },
+  { id: 5767, label: "Cliente farmácia" },
+  { id: 5765, label: "Farmácia checkout" },
+  { id: 34625, label: "Medicamentos close" },
+  { id: 16533, label: "Equipe saúde" },
+  { id: 5603, label: "Farmácia rotina" },
+];
+
+const CROSSFADE_MS = 6000; // 6s entre trocas
+
 interface HeroVideoProps {
   className?: string;
 }
-
-/** IDs de vídeos premium do Mixkit: educação, aprendizado e conhecimento */
-const VIDEO_IDS = [21589, 21598, 4519, 50109, 50111, 4763, 4616] as const;
-const CROSSFADE_MS = 7000; // 7s entre trocas
 
 export function HeroVideo({ className = "" }: HeroVideoProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,7 +45,7 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCurrentIndex((p) => (p + 1) % VIDEO_IDS.length);
+      setCurrentIndex((p) => (p + 1) % VIDEO_POOL.length);
     }, CROSSFADE_MS);
     return () => clearInterval(id);
   }, []);
@@ -46,15 +66,17 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
   }, []);
 
   const parallaxOffset = Math.min(scrollY * 0.3, 80);
-  const allFailed = VIDEO_IDS.every((id) => errored[id]);
+  const allFailed = VIDEO_POOL.every((v) => errored[v.id]);
 
-  // 15 shimmer particles determinísticas para profundidade cinematográfica
-  const PARTICLES = Array.from({ length: 15 }, (_, i) => ({
-    left: `${(i * 137 + 53) % 100}%`,
-    top: `${(i * 89 + 17) % 100}%`,
-    delay: `${(i * 0.7) % 5}s`,
+  // Deterministic shimmer particles
+  const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+    left: `${(i * 131 + 53) % 100}%`,
+    top: `${(i * 97 + 17) % 100}%`,
+    delay: `${(i * 0.6) % 5}s`,
     size: `${4 + (i % 3) * 3}px`,
   }));
+
+  const current = VIDEO_POOL[currentIndex];
 
   return (
     <div
@@ -66,28 +88,25 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
       }}
     >
       <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
         @keyframes hero-shimmer {
           0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
-          50% { opacity: 0.6; transform: translateY(-50px) scale(1); }
+          50% { opacity: 0.5; transform: translateY(-50px) scale(1); }
         }
         @keyframes hero-zoom {
           from { transform: scale(1); }
-          to { transform: scale(1.05); }
+          to { transform: scale(1.06); }
         }
         @media (prefers-reduced-motion: reduce) {
           .hero-shimmer-particle { animation: none !important; opacity: 0 !important; }
           .hero-zoom-video { animation: none !important; }
         }
       `}</style>
+
       {/* Shimmer particles */}
       {PARTICLES.map((p, i) => (
         <div
           key={i}
-          className="absolute rounded-full bg-white/60 hero-shimmer-particle"
+          className="absolute rounded-full bg-white/50 hero-shimmer-particle"
           style={{
             left: p.left,
             top: p.top,
@@ -98,7 +117,8 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           }}
         />
       ))}
-{/* ── Vídeos com parallax ── */}
+
+      {/* Vídeos com parallax */}
       <div
         className="absolute -top-[10%] left-0 h-[120%] w-full"
         style={{
@@ -106,14 +126,14 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           willChange: "transform",
         }}
       >
-        {VIDEO_IDS.map((id, idx) => (
+        {VIDEO_POOL.map(({ id }, idx) => (
           <video
             key={id}
             autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload={idx === currentIndex ? "auto" : "none"}
             onLoadedData={() => { if (!loaded) setLoaded(true); }}
             onError={() => setErrored((p) => ({ ...p, [id]: true }))}
             className={`absolute inset-0 h-full w-full object-cover hero-zoom-video transition-opacity duration-[1200ms] ease-in-out ${
@@ -123,19 +143,26 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
               animation: idx === currentIndex ? "hero-zoom 20s ease-out forwards" : "none",
             }}
           >
-            <source
-              src={`https://assets.mixkit.co/videos/${id}/${id}-720.mp4`}
-              type="video/mp4"
-            />
+            <source src={`https://assets.mixkit.co/videos/${id}/${id}-720.mp4`} type="video/mp4" />
           </video>
         ))}
       </div>
 
-      {/* ── Overlay escuro premium (reduzido para 45% — mais leve e moderno) ── */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#020617]/45 via-[#0f172a]/40 to-[#020617]/60" />
-      <div className="absolute inset-0 z-20 bg-gradient-to-r from-[#020617]/40 via-transparent to-[#020617]/40" />
+      {/* Gradiente overlay premium — degradê suave com cores quentes */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#020617]/50 via-[#0f172a]/40 to-[#020617]/70" />
+      <div className="absolute inset-0 z-20 bg-gradient-to-r from-[#020617]/40 via-transparent to-[#020617]/30" />
 
-      {/* ── Grid pattern ── */}
+      {/* Label do vídeo atual (sutil, canto inferior direito) */}
+      <div className="absolute bottom-6 right-6 z-30 hidden sm:block">
+        <div className="flex items-center gap-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 px-3 py-1.5">
+          <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-[10px] font-medium text-white/50 tracking-wide uppercase">
+            {current.label}
+          </span>
+        </div>
+      </div>
+
+      {/* Grid pattern */}
       <div
         className="pointer-events-none absolute inset-0 z-30 opacity-[0.03]"
         style={{
@@ -145,7 +172,7 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
         }}
       />
 
-      {/* ── Fallback ── */}
+      {/* Fallback */}
       {allFailed && (
         <div className="absolute inset-0 z-40 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617]" />
       )}

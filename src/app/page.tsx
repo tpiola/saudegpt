@@ -7,6 +7,7 @@ import { ScrollReveal, ContadorAnimado, Typewriter } from "@/components/animacoe
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { Icon, IconName } from "@/components/icons";
+import { SectionVideo, SECTION_VIDEOS } from "@/components/section-video";
 import type { Trilha } from "@/content/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -158,6 +159,7 @@ export default function HomePage() {
 
       {/* ═══ MISSÃO ═══ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-green-950 via-emerald-950 to-forest-950 py-16 sm:py-24">
+        <SectionVideo {...SECTION_VIDEOS.missao} />
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
           {CONFETTI.map((c,i)=>(
             <div key={i} className={`absolute ${c.c} ${c.s} rounded-sm opacity-20 sm:opacity-30`}
@@ -513,6 +515,7 @@ export default function HomePage() {
 
       {/* ═══ CTA FINAL ═══ */}
       <section id="ser-aluno" className="relative overflow-hidden bg-gradient-to-br from-green-900 via-emerald-800 to-forest-900 py-16 sm:py-24">
+        <SectionVideo {...SECTION_VIDEOS.cta} />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50vmax] w-[50vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/5 blur-[150px]" />
         <div className="pointer-events-none absolute right-[10%] top-[20%] h-[40vmax] w-[40vmax] rounded-full bg-yellow-400/5 blur-[120px] blob-morph" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
