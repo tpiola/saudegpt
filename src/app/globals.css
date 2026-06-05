@@ -1746,31 +1746,3 @@ body {
   .divider-arc  { height: 25px; }
   .divider-angle { height: 25px; }
 }
-
-/* ══════════════════════════════════════════════════════════
-   HERO VIDEO — KEYFRAMES CINEMATOGRÁFICOS
-   ══════════════════════════════════════════════════════════ */
-
-/* Shimmer particles — brilho sutil ascendente */
-@keyframes hero-shimmer {
-  0%, 100% { opacity: 0; transform: translateY(0) scale(0); }
-  50% { opacity: 0.6; transform: translateY(-50px) scale(1); }
-}
-
-/* Zoom cinematográfico — Ken Burns effect suave */
-@keyframes hero-zoom {
-  from { transform: scale(1); }
-  to { transform: scale(1.05); }
-}
-
-/* Orbs flutuantes decorativos */
-@keyframes float-orb {
-  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
-  50% { transform: translateY(-30px) scale(1.1); opacity: 0.6; }
-}
-
-/* Pulse glow — brilho central pulsante */
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(214,110,15,0.2); }
-  50% { box-shadow: 0 0 40px rgba(214,110,15,0.4); }
-}
