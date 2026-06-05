@@ -3,53 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-/* ── Pré‑respostas modo DEV ── */
-type RespostaChave =
-  | "aulas"
-  | "medicamentos"
-  | "perfumaria"
-  | "atendimento"
-  | "legislacao"
-  | "certificado"
-  | "default";
-
-const RESPOSTAS_DEV: Record<RespostaChave, string> = {
-  aulas:
-    "📚 **Estrutura do curso**\n\nO curso é dividido em módulos com videoaulas, materiais complementares e quizzes. Você pode acessar pelo menu lateral → **Aulas**. Cada módulo tem uma prova ao final para fixar o conteúdo.\n\nDica: use a seção *Trilhas* para um plano de estudos personalizado!",
-  medicamentos:
-    "💊 **Medicamentos & Farmacologia Básica**\n\nAbordamos classificação de medicamentos (referência, genérico, similar), formas farmacêuticas, vias de administração e interações medicamentosas.\n\n🚩 *Importante:* O atendente não substitui o farmacêutico — você orienta o cliente sobre uso correto e encaminha dúvidas clínicas ao responsável técnico.",
-  perfumaria:
-    "🧴 **Perfumaria & Cosméticos**\n\nVocê aprenderá sobre:\n• Principais categorias (perfumes, cremes, protetores solares, maquiagem)\n• Leitura de rótulos e ingredientes\n• Como orientar o cliente sobre o produto ideal\n• Cuidados com armazenamento e validade",
-  atendimento:
-    "🛒 **Atendimento ao Cliente**\n\nBoas práticas:\n• Acolhimento com cordialidade\n• Escuta ativa para entender a necessidade\n• Orientação clara sem termos técnicos\n• Encaminhamento ao farmacêutico quando necessário\n• Pós‑venda e fidelização\n\n📌 Lembre‑se: um bom atendimento transforma a experiência na farmácia!",
-  legislacao:
-    "⚖️ **Legislação ANVISA & Farmácia**\n\nTópicos essenciais:\n• RDC 44/2009 (dispensação de medicamentos)\n• Regras para venda de antibióticos (receita de controle especial)\n• Medicamentos isentos de prescrição (MIP)\n• Obrigações do atendente e responsabilidade técnica\n• Documentação e arquivamento de receitas",
-  certificado:
-    "🎓 **Certificado**\n\nPara obter seu certificado:\n1. Complete todos os módulos\n2. Atinga média mínima nas provas (≥ 7,0)\n3. Acesse a seção *Certificado* no menu\n\nO certificado é emitido digitalmente com validação por QR code. Você pode baixar ou compartilhar direto da plataforma.",
-  default:
-    "Olá! 😊 Sou o tutor virtual do **Curso de Formação para Atendentes de Farmácia**.\n\nPosso tirar dúvidas sobre:\n\n📚 **Aulas** — estrutura do curso, módulos, trilhas\n💊 **Medicamentos** — farmacologia, classes, genéricos\n🧴 **Perfumaria** — cosméticos, dermocosméticos\n🛒 **Atendimento** — boas práticas, abordagem ao cliente\n⚖️ **Legislação** — ANVISA, RDCs, receituário\n🎓 **Certificado** — requisitos e emissão\n\nDigite sua dúvida ou escolha um tópico acima! 👇",
-};
-
-function detectarChave(texto: string): RespostaChave {
-  const t = texto.toLowerCase();
-  if (/(aula|modulo|trilha|conteudo|matéria|módulo)/i.test(t)) return "aulas";
-  if (/(medicamento|remedio|farmaco|droga|genérico|similar|bula|comprimido)/i.test(t))
-    return "medicamentos";
-  if (/(perfume|cosmético|creme|protetor|maquiagem|dermocosmético)/i.test(t))
-    return "perfumaria";
-  if (/(atendimento|cliente|orientação|como atender|abordagem|pós-venda)/i.test(t))
-    return "atendimento";
-  if (/(lei|legislação|anvisa|rdc|receita|regulamento|controle especial)/i.test(t))
-    return "legislacao";
-  if (/(certificado|conclusão|emitir|diploma|comprovante)/i.test(t))
-    return "certificado";
-  return "default";
-}
-
-/* ── System Prompt ── */
-const SYSTEM_PROMPT =
-  "Você é um tutor virtual do curso Formação para Atendentes de Farmácia. Responda dúvidas sobre: medicamentos, perfumaria, atendimento, legislação ANVISA, farmacologia básica. Seja didático e use linguagem simples.";
-
 /* ── Tipos ── */
 interface Mensagem {
   role: "user" | "assistant";
@@ -76,12 +29,21 @@ function ChatBubbleIcon({ className }: { className?: string }) {
   );
 }
 
+/* ── Sugestões rápidas ── */
+const SUGESTOES = [
+  "O que diz a RDC 471 sobre antibióticos?",
+  "Como atender um cliente com diabetes?",
+  "Diferença entre MIP e controlados",
+  "O que é Pharmaceutical Care?",
+];
+
 /* ── Componente Principal ── */
 export function ChatBotIA() {
   const [aberto, setAberto] = useState(false);
   const [mensagens, setMensagens] = useState<Mensagem[]>([]);
   const [input, setInput] = useState("");
   const [digitando, setDigitando] = useState(false);
+  const [mostrarSugestoes, setMostrarSugestoes] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
   const listaRef = useRef<HTMLDivElement>(null);
 
@@ -93,6 +55,7 @@ export function ChatBotIA() {
         const parsed: Mensagem[] = JSON.parse(salvo);
         if (Array.isArray(parsed) && parsed.length > 0) {
           setMensagens(parsed);
+          setMostrarSugestoes(false);
         }
       }
     } catch {
@@ -125,17 +88,12 @@ export function ChatBotIA() {
 
   const LIMPAR_CONVERSA = useCallback(() => {
     setMensagens([]);
+    setMostrarSugestoes(true);
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
-  const ADICIONAR_MENSAGEM_BEM_VINDO = useCallback(() => {
-    setMensagens([
-      { role: "assistant", content: RESPOSTAS_DEV["default"] },
-    ]);
-  }, []);
-
-  const ENVIAR = useCallback(async () => {
-    const texto = input.trim();
+  const ENVIAR = useCallback(async (textoOverride?: string) => {
+    const texto = (textoOverride || input).trim();
     if (!texto || digitando) return;
 
     const userMsg: Mensagem = { role: "user", content: texto };
@@ -143,58 +101,32 @@ export function ChatBotIA() {
     setMensagens(atualizadas);
     setInput("");
     setDigitando(true);
+    setMostrarSugestoes(false);
 
     try {
-      const apiKey =
-        typeof window !== "undefined"
-          ? (window as any).__NEXT_PUBLIC_OPENAI_API_KEY
-          : process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: atualizadas.map((m) => ({ role: m.role, content: m.content })),
+        }),
+      });
 
-      if (apiKey) {
-        /* ── Modo OpenAI ── */
-        const body = {
-          model: "gpt-4o-mini",
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            ...atualizadas.map((m) => ({ role: m.role, content: m.content })),
-          ],
-        };
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${apiKey}`,
-          },
-          body: JSON.stringify(body),
-        });
-
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const data = await res.json();
-        const reply = data.choices?.[0]?.message?.content;
-        if (reply) {
-          setMensagens((prev) => [
-            ...prev,
-            { role: "assistant", content: reply },
-          ]);
-        }
-      } else {
-        /* ── Modo DEV ── */
-        await new Promise((r) => setTimeout(r, 600 + Math.random() * 800));
-        const chave = detectarChave(texto);
-        setMensagens((prev) => [
-          ...prev,
-          { role: "assistant", content: RESPOSTAS_DEV[chave] },
-        ]);
+      const data = await res.json();
+      const reply = data.choices?.[0]?.message?.content;
+      if (reply) {
+        setMensagens((prev) => [...prev, { role: "assistant", content: reply }]);
       }
     } catch (err) {
+      console.error("ChatBot error:", err);
       setMensagens((prev) => [
         ...prev,
         {
           role: "assistant",
           content:
-            "❌ Desculpe, ocorreu um erro ao buscar a resposta. Tente novamente.",
+            "❌ Não consegui consultar minha base agora. Pode tentar de novo? 😊",
         },
       ]);
     } finally {
@@ -215,13 +147,12 @@ export function ChatBotIA() {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="origin-bottom-left"
             >
-              {/* Painel do chat */}
               <div
                 className={`
                   flex flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-2xl
                   dark:border-border-dark
-                  ${/* Mobile: full screen */ "fixed inset-0 z-50 m-0 rounded-none sm:static sm:inset-auto sm:z-auto sm:rounded-2xl"}
-                  sm:h-[560px] sm:w-[380px]
+                  ${"fixed inset-0 z-50 m-0 rounded-none sm:static sm:inset-auto sm:z-auto sm:rounded-2xl"}
+                  sm:h-[600px] sm:w-[400px]
                 `}
               >
                 {/* Overlay de fechar no mobile */}
@@ -237,8 +168,8 @@ export function ChatBotIA() {
                       <ChatBubbleIcon className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-sm font-bold">Tutor IA</p>
-                      <p className="text-[10px] opacity-80">Formação para Atendentes</p>
+                      <p className="text-sm font-bold">Tutor IA — Anvisa & Saúde</p>
+                      <p className="text-[10px] opacity-80">Referências científicas · Respostas completas</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-1">
@@ -249,13 +180,7 @@ export function ChatBotIA() {
                       aria-label="Limpar conversa"
                       title="Limpar conversa"
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                        className="h-4 w-4"
-                      >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
                         <path d="M3 6h18" />
                         <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" />
                         <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
@@ -267,13 +192,7 @@ export function ChatBotIA() {
                       className="flex h-7 w-7 items-center justify-center rounded-full text-white/80 transition hover:bg-white/20 hover:text-white"
                       aria-label="Fechar chat"
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={1.5}
-                        className="h-4 w-4"
-                      >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
                         <path d="M18 6 6 18" />
                         <path d="M6 6 18 18" />
                       </svg>
@@ -286,13 +205,30 @@ export function ChatBotIA() {
                   ref={listaRef}
                   className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scroll-smooth"
                 >
-                  {mensagens.length === 0 && (
-                    <div className="flex flex-col items-center justify-center h-full text-center text-muted dark:text-muted-dark">
-                      <ChatBubbleIcon className="h-10 w-10 mb-3 opacity-30" />
-                      <p className="text-sm font-medium">Nenhuma conversa</p>
-                      <p className="text-xs mt-1">
-                        Comece perguntando algo sobre o curso!
+                  {/* Estado vazio + sugestões */}
+                  {mostrarSugestoes && mensagens.length === 0 && (
+                    <div className="flex flex-col items-center justify-center h-full text-center">
+                      <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-400/10 ring-1 ring-green-400/20">
+                        <ChatBubbleIcon className="h-7 w-7 text-green-500" />
+                      </div>
+                      <p className="text-sm font-semibold text-foreground">
+                        Tutor IA — Saúde & ANVISA
                       </p>
+                      <p className="text-xs text-muted mt-1 max-w-[260px]">
+                        Tire qualquer dúvida com referências da ANVISA, OMS, Ministério da Saúde e mais.
+                      </p>
+                      <div className="mt-5 flex flex-wrap justify-center gap-2">
+                        {SUGESTOES.map((s) => (
+                          <button
+                            key={s}
+                            type="button"
+                            onClick={() => ENVIAR(s)}
+                            className="rounded-full border border-border bg-muted/20 px-3.5 py-1.5 text-xs font-medium text-muted transition-all hover:border-green-400/30 hover:bg-green-500/5 hover:text-green-600 dark:hover:text-green-400 active:scale-95"
+                          >
+                            {s}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   )}
 
@@ -302,22 +238,16 @@ export function ChatBotIA() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.2, delay: idx * 0.03 }}
-                      className={`flex ${
-                        msg.role === "user"
-                          ? "justify-end"
-                          : "justify-start"
-                      }`}
+                      className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                     >
                       <div
-                        className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+                        className={`max-w-[88%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                           msg.role === "user"
                             ? "bg-forest-500 text-white rounded-br-md"
                             : "bg-surface-2 text-foreground dark:bg-surface-dark dark:text-foreground-dark rounded-bl-md border border-border"
                         }`}
                       >
-                        <span className="whitespace-pre-wrap">
-                          {msg.content}
-                        </span>
+                        <span className="whitespace-pre-wrap">{msg.content}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -331,15 +261,10 @@ export function ChatBotIA() {
                       <div className="max-w-[85%] rounded-2xl rounded-bl-md bg-surface-2 px-4 py-3 border border-border dark:bg-surface-dark">
                         <span className="flex items-center gap-1">
                           <span className="h-2 w-2 animate-bounce rounded-full bg-forest-500" />
-                          <span
-                            className="h-2 w-2 animate-bounce rounded-full bg-forest-500"
-                            style={{ animationDelay: "0.1s" }}
-                          />
-                          <span
-                            className="h-2 w-2 animate-bounce rounded-full bg-forest-500"
-                            style={{ animationDelay: "0.2s" }}
-                          />
+                          <span className="h-2 w-2 animate-bounce rounded-full bg-forest-500" style={{ animationDelay: "0.1s" }} />
+                          <span className="h-2 w-2 animate-bounce rounded-full bg-forest-500" style={{ animationDelay: "0.2s" }} />
                         </span>
+                        <span className="ml-2 text-[10px] text-muted">Consultando ANVISA + referências...</span>
                       </div>
                     </motion.div>
                   )}
@@ -359,7 +284,7 @@ export function ChatBotIA() {
                       type="text"
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
-                      placeholder="Digite sua dúvida..."
+                      placeholder="Pergunte sobre ANVISA, medicamentos, saúde..."
                       disabled={digitando}
                       className="flex-1 rounded-xl border border-border bg-background px-4 py-2.5 text-sm outline-none transition focus:border-forest-500 focus:ring-2 focus:ring-forest-500/20 dark:bg-background-dark dark:text-foreground-dark dark:placeholder:text-muted-dark"
                     />
@@ -369,18 +294,15 @@ export function ChatBotIA() {
                       className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-forest-500 text-white transition hover:bg-forest-600 disabled:opacity-40 disabled:cursor-not-allowed"
                       aria-label="Enviar mensagem"
                     >
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        className="h-4 w-4"
-                      >
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
                         <path d="M22 2 11 13" />
                         <path d="M22 2 15 22 11 13 2 9l20-7Z" />
                       </svg>
                     </button>
                   </form>
+                  <p className="mt-1.5 text-[10px] text-muted/60 text-center">
+                    O Tutor IA consulta ANVISA, OMS, Ministério da Saúde e literatura científica
+                  </p>
                 </div>
               </div>
             </motion.div>
@@ -397,13 +319,7 @@ export function ChatBotIA() {
           whileTap={{ scale: 0.95 }}
         >
           {aberto ? (
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={1.5}
-              className="h-6 w-6 sm:h-7 sm:w-7"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-6 w-6 sm:h-7 sm:w-7">
               <path d="M18 6 6 18" />
               <path d="M6 6 18 18" />
             </svg>
