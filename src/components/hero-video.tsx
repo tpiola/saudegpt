@@ -6,8 +6,8 @@ interface HeroVideoProps {
   className?: string;
 }
 
-/** IDs de vídeos premium do Mixkit: saúde + mulheres correndo/bebendo água */
-const VIDEO_IDS = [6562, 17475, 29933, 38505, 32807, 52132, 4546] as const;
+/** IDs de vídeos premium do Mixkit: apenas farmácia, saúde e atendimento */
+const VIDEO_IDS = [5433, 5407, 5769, 5763, 6562, 17475, 29933] as const;
 const CROSSFADE_MS = 7000; // 7s entre trocas
 
 export function HeroVideo({ className = "" }: HeroVideoProps) {
