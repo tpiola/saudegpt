@@ -158,7 +158,7 @@ export default function RootLayout({
             <PwaRegister />
             <LgpdBanner />
             <LmsShell>
-              <main id="conteudo-principal">{children}</main>
+              <main id="conteudo-principal" className="overflow-x-hidden">{children}</main>
             </LmsShell>
           </ProgressProvider>
         </ThemeProvider>
