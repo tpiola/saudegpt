@@ -88,29 +88,13 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
-        <script dangerouslySetInnerHTML={{ __html: `
-document.addEventListener('contextmenu', function(e) {
-  if (!e.target.closest('input, textarea, [contenteditable]')) {
-    e.preventDefault();
-  }
-});
-document.addEventListener('copy', function(e) {
-  if (!e.target.closest('input, textarea, [contenteditable]')) {
-    e.preventDefault();
-  }
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'PrintScreen' || (e.ctrlKey && e.key === 'p') || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.shiftKey && e.key === 'J') || (e.ctrlKey && e.key === 'u')) {
-    e.preventDefault();
-  }
-});
-`}} />
+
         {/* Favicon / Icones do Site */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         {/* SEO: Google Site Verification (substitua pelo código real do Search Console) */}
-        <meta name="google-site-verification" content="SEU_CODIGO_REAL_AQUI" />
+        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ''} />
         {/* Geo Tags */}
         <meta name="geo.region" content="BR" />
         <meta name="geo.placename" content="Brasil" />
@@ -151,14 +135,6 @@ document.addEventListener('keydown', function(e) {
               },
               educationalCredentialAwarded: "Certificado de Conclusão — Formação para Atendentes de Farmácia",
               numberOfCredits: 142,
-              totalHistoricalEnrollment: 5000,
-              aggregatedRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.8",
-                bestRating: "5",
-                ratingCount: "1247",
-                reviewCount: "980",
-              },
               hasCourseInstance: {
                 "@type": "CourseInstance",
                 courseMode: "Online",

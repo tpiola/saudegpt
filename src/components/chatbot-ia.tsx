@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 /* ── Tipos ── */
 interface Mensagem {
+  id: string;
   role: "user" | "assistant";
   content: string;
 }
@@ -63,10 +64,11 @@ export function ChatBotIA() {
     }
   }, []);
 
-  /* Salvar no localStorage */
+  /* Salvar no localStorage (limite de 50 mensagens) */
   useEffect(() => {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(mensagens));
+      const limitadas = mensagens.slice(-50);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(limitadas));
     } catch {
       /* ignorar */
     }
@@ -96,7 +98,7 @@ export function ChatBotIA() {
     const texto = (textoOverride || input).trim();
     if (!texto || digitando) return;
 
-    const userMsg: Mensagem = { role: "user", content: texto };
+    const userMsg: Mensagem = { id: crypto.randomUUID(), role: "user", content: texto };
     const atualizadas = [...mensagens, userMsg];
     setMensagens(atualizadas);
     setInput("");
@@ -117,13 +119,14 @@ export function ChatBotIA() {
       const data = await res.json();
       const reply = data.choices?.[0]?.message?.content;
       if (reply) {
-        setMensagens((prev) => [...prev, { role: "assistant", content: reply }]);
+        setMensagens((prev) => [...prev, { id: crypto.randomUUID(), role: "assistant", content: reply }]);
       }
     } catch (err) {
       console.error("ChatBot error:", err);
       setMensagens((prev) => [
         ...prev,
         {
+          id: crypto.randomUUID(),
           role: "assistant",
           content:
             "❌ Não consegui consultar minha base agora. Pode tentar de novo? 😊",

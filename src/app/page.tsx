@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
-import { ScrollReveal, ScrollRevealStagger, ContadorAnimado, Typewriter, Parallax } from "@/components/animacoes";
+import { ScrollReveal, ContadorAnimado, Typewriter } from "@/components/animacoes";
 import { MatriculaForm } from "@/components/matricula-form";
-import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
+import { trilhas, totalAulas } from "@/content/curriculo";
 import { Icon, IconName } from "@/components/icons";
 import type { Trilha } from "@/content/types";
 import Image from "next/image";
@@ -27,6 +27,7 @@ const IMG = {
 
 const TRILHA_EMOJI: Record<string, string> = {
   perfumaria: "🧴", medicamentos: "💊", operacional: "📋", encantamento: "🤝",
+  fundamentos: "📖", pratica: "✍️", vendas: "🤝",
 };
 
 /* ─── Keyframes ─── */
@@ -65,7 +66,7 @@ export default function HomePage() {
   useEffect(()=>{ setMounted(true); },[]);
 
   return (
-    <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden">
+    <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden grain-overlay">
       <style>{A}</style>
 
       {/* Ambient blobs */}
@@ -304,7 +305,7 @@ export default function HomePage() {
           <FadeUp>
             <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/60 bg-gradient-to-br from-surface to-muted/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2">
               <div className="relative h-44 sm:h-52 lg:h-64 overflow-hidden bg-forest-900">
-                <Image src={IMG.balcao} alt="" fill className="object-cover opacity-60 group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-700 sm:duration-1000" sizes="(max-width:640px) 100vw, (max-width:1024px) 75vw, 100vw" />
+                <Image src={IMG.balcao} alt="Equipe de farmácia atendendo cliente no balcão com acolhimento" fill className="object-cover opacity-60 group-hover:scale-105 sm:group-hover:scale-110 transition-transform duration-700 sm:duration-1000" sizes="(max-width:640px) 100vw, (max-width:1024px) 75vw, 100vw" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 sm:bottom-5 left-3 sm:left-6 flex items-center gap-1.5 sm:gap-2">
                   <span className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 shadow-lg">
@@ -487,7 +488,7 @@ export default function HomePage() {
                       <Link key={item.title} href={item.href}
                         className="group/item flex items-center gap-2 sm:gap-3 rounded-xl border border-border/40 bg-muted/10 p-2.5 sm:p-3 transition-all duration-300 hover:bg-gradient-to-r hover:from-green-500/10 hover:to-transparent hover:border-green-400/30 active:scale-[0.99]">
                         <div className="relative h-12 w-12 sm:h-16 sm:w-16 shrink-0 overflow-hidden rounded-lg sm:rounded-xl">
-                          <Image src={item.img} alt="" fill className="object-cover group-hover/item:scale-105 sm:group-hover/item:scale-110 transition-transform duration-500 sm:duration-700" sizes="64px" />
+                          <Image src={item.img} alt={`Ilustração sobre ${item.title}`} fill className="object-cover group-hover/item:scale-105 sm:group-hover/item:scale-110 transition-transform duration-500 sm:duration-700" sizes="64px" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 sm:gap-2">

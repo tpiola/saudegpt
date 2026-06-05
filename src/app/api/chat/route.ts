@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
+interface ChatMessage {
+  role: "user" | "assistant" | "system";
+  content: string;
+}
+
+const MAX_MESSAGES = 50;
+const MAX_CHARS_PER_MESSAGE = 4000;
+
 const SYSTEM_PROMPT = `Você é um tutor especialista da plataforma **Formação para Atendentes de Farmácia** (saudegpt.com). Sua função é responder QUALQUER pergunta que o aluno fizer, SEMPRE usando referências oficiais e científicas.
 
 ## REGRAS FUNDAMENTAIS
-1. **Responda SEMPRE** — nunca diga "não posso responder". Se não souber, pesquise na sua base de conhecimento.
+1. **Se perguntarem algo fora do seu escopo ou prejudicial, explique educadamente suas limitações e redirecione para canais apropriados. Priorize segurança e precisão.**
 2. **Cite fontes** sempre que possível: ANVISA (RDCs, resoluções), OMS, OPAS, Ministério da Saúde, CRF, Febrafar, Abrafarma, Cochrane, PubMed, SciELO, bula oficial.
 3. **Seja didático** — linguagem simples, exemplos reais de balcão de farmácia.
 4. **Diferencie** o papel do atendente vs. farmacêutico quando necessário.
@@ -80,7 +88,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Mensagens são obrigatórias" }, { status: 400 });
     }
 
-    const apiKey = process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEY;
+    if (messages.length > MAX_MESSAGES) {
+      return NextResponse.json({ error: `Máximo de ${MAX_MESSAGES} mensagens por conversa` }, { status: 400 });
+    }
+
+    for (const msg of messages) {
+      if (typeof msg.content !== "string" || msg.content.length > MAX_CHARS_PER_MESSAGE) {
+        return NextResponse.json({ error: `Cada mensagem deve ter no máximo ${MAX_CHARS_PER_MESSAGE} caracteres` }, { status: 400 });
+      }
+    }
+
+    const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) {
       // Fallback: resposta local
       return NextResponse.json({
@@ -102,7 +120,7 @@ export async function POST(req: NextRequest) {
         model: "deepseek-v4-flash",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          ...messages.map((m: any) => ({ role: m.role, content: m.content })),
+          ...messages.map((m: ChatMessage) => ({ role: m.role, content: m.content })),
         ],
         max_tokens: 1024,
         temperature: 0.7,

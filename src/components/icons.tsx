@@ -201,8 +201,10 @@ export type IconName = keyof typeof paths;
 export function Icon({
   name,
   size = 20,
+  "sm-size": smSize,
+  className,
   ...props
-}: { name: IconName; size?: number } & SVGProps<SVGSVGElement>) {
+}: { name: IconName; size?: number; "sm-size"?: number; className?: string } & SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={size}
@@ -214,6 +216,7 @@ export function Icon({
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      className={`${smSize ? `sm:w-[${smSize}px] sm:h-[${smSize}px]` : ""} ${className || ""}`}
       {...props}
     >
       {paths[name]}
