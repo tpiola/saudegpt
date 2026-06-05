@@ -78,12 +78,16 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           from { transform: scale(1); }
           to { transform: scale(1.05); }
         }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-shimmer-particle { animation: none !important; opacity: 0 !important; }
+          .hero-zoom-video { animation: none !important; }
+        }
       `}</style>
       {/* Shimmer particles */}
       {PARTICLES.map((p, i) => (
         <div
           key={i}
-          className="absolute rounded-full bg-white/60"
+          className="absolute rounded-full bg-white/60 hero-shimmer-particle"
           style={{
             left: p.left,
             top: p.top,
@@ -112,7 +116,7 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
             preload="auto"
             onLoadedData={() => { if (!loaded) setLoaded(true); }}
             onError={() => setErrored((p) => ({ ...p, [id]: true }))}
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${
+            className={`absolute inset-0 h-full w-full object-cover hero-zoom-video transition-opacity duration-[1200ms] ease-in-out ${
               idx === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
             } ${loaded ? "" : "opacity-0"}`}
             style={{
@@ -127,8 +131,8 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
         ))}
       </div>
 
-      {/* ── Overlay escuro premium ── */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#020617]/85 via-[#0f172a]/60 to-[#020617]/90" />
+      {/* ── Overlay escuro premium (reduzido para 45% — mais leve e moderno) ── */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#020617]/45 via-[#0f172a]/40 to-[#020617]/60" />
       <div className="absolute inset-0 z-20 bg-gradient-to-r from-[#020617]/40 via-transparent to-[#020617]/40" />
 
       {/* ── Grid pattern ── */}

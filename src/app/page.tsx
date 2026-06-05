@@ -2,7 +2,7 @@
 
 import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
-import { ScrollReveal } from "@/components/animacoes";
+import { ScrollReveal, ContadorAnimado, Typewriter } from "@/components/animacoes";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { Botao, Card } from "@/components/ui";
@@ -72,10 +72,13 @@ export default function HomePage() {
               </span>
             </h1>
 
-            {/* Subtítulo */}
+            {/* Subtítulo com Typewriter sutil */}
             <p className="mt-5 max-w-xl text-lg leading-relaxed tracking-wide text-white/50 sm:text-xl">
-              A formação que transforma atendentes em profissionais de cuidado
-              — com técnica, acolhimento e excelência no balcão da farmácia.
+              <Typewriter
+                texto="A formação que transforma atendentes em profissionais de cuidado — com técnica, acolhimento e excelência no balcão da farmácia."
+                velocidade={25}
+                delay={600}
+              />
             </p>
 
             {/* CTAs */}
@@ -94,17 +97,25 @@ export default function HomePage() {
               </a>
             </div>
 
-            {/* Stats */}
+            {/* Stats com ContadorAnimado */}
             <div className="mt-16 flex flex-wrap gap-x-10 gap-y-4">
               {[
-                { value: "6", label: "TRILHAS" },
-                { value: `${total}+`, label: "AULAS" },
-                { value: "∞", label: "DO ZERO AO AVANÇADO" },
-                { value: "100%", label: "GRATUITO" },
+                { value: 6, tipo: "numero", label: "TRILHAS" },
+                { value: total, tipo: "numero", label: "AULAS" },
+                { value: "∞", tipo: "texto", label: "DO ZERO AO AVANÇADO" },
+                { value: "100%", tipo: "texto", label: "GRATUITO" },
               ].map((stat) => (
                 <div key={stat.label} className="flex items-center gap-3">
                   <span className="text-2xl font-bold text-green-400 tabular-nums">
-                    {stat.value}
+                    {stat.tipo === "numero" ? (
+                      <ContadorAnimado
+                        valor={stat.value as number}
+                        sufixo={stat.label === "AULAS" ? "+" : ""}
+                        duracao={2000}
+                      />
+                    ) : (
+                      stat.value
+                    )}
                   </span>
                   <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/35">
                     {stat.label}
@@ -134,7 +145,7 @@ export default function HomePage() {
           ══════════════════════════════════════════════ */}
       <section
         id="cadastro-gratuito"
-        className="relative overflow-hidden bg-forest-600 py-20 sm:py-28"
+        className="relative overflow-hidden bg-forest-600 py-24"
       >
         <div className="pattern-grid pointer-events-none absolute inset-0 opacity-[0.06]" />
         <div className="pointer-events-none absolute -left-40 top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-green-400/5 blur-[120px]" />
@@ -224,7 +235,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════
           SEÇÃO: COMO ESTUDAR (3 PASSOS)
           ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-20 sm:py-28 bg-noise">
+      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-24 bg-noise">
         <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-green-500/4 blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-orange-500/3 blur-[100px]" />
 
@@ -300,7 +311,7 @@ export default function HomePage() {
       {/* ══════════════════════════════════════════════
           SEÇÃO: POR QUE ESTA FORMAÇÃO?
           ══════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-20 sm:py-28 bg-noise">
+      <section className="relative overflow-hidden border-t border-border/40 bg-gradient-to-b from-background via-forest-50/20 to-background py-24 bg-noise">
         {/* Elementos decorativos */}
         <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-green-500/4 blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-orange-500/3 blur-[100px]" />

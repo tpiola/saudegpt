@@ -1,10 +1,41 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
+
+// ─── Hook: prefers-reduced-motion ───────────────────────────────────────────
+
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return reduced;
+}
+
+// ─── Helpers de movimento ───────────────────────────────────────────────────
+
+const CUBIC_BEZIER = "cubic-bezier(0.16, 1, 0.3, 1)";
+
+const transformMap: Record<string, string> = {
+  up: "translateY(40px)",
+  down: "translateY(-40px)",
+  left: "translateX(-40px)",
+  right: "translateX(40px)",
+  scale: "scale(0.9)",
+  none: "none",
+};
+
+// ─── ScrollReveal ───────────────────────────────────────────────────────────
 
 /**
  * Reveal animado ao scroll com IntersectionObserver.
- * Usa fade-up + scale por padrão.
+ * Respeita prefers-reduced-motion: desativa animações se o usuário preferir.
  */
 export function ScrollReveal({
   children,
@@ -25,10 +56,16 @@ export function ScrollReveal({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [visivel, setVisivel] = useState(false);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (reduced) {
+      setVisivel(true);
+      return;
+    }
 
     const obs = new IntersectionObserver(
       ([entry]) => {
@@ -44,26 +81,20 @@ export function ScrollReveal({
 
     obs.observe(el);
     return () => obs.disconnect();
-  }, [threshold, once]);
-
-  const transformMap: Record<string, string> = {
-    up: "translateY(40px)",
-    down: "translateY(-40px)",
-    left: "translateX(-40px)",
-    right: "translateX(40px)",
-    scale: "scale(0.9)",
-    none: "none",
-  };
+  }, [threshold, once, reduced]);
 
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        opacity: visivel ? 1 : 0,
-        transform: visivel ? "none" : transformMap[direction],
-        transition: `opacity ${duration}ms cubic-bezier(0.16, 1, 0.3, 1), transform ${duration}ms cubic-bezier(0.16, 1, 0.3, 1)`,
-        transitionDelay: `${delay}ms`,
+        opacity: reduced || visivel ? 1 : 0,
+        transform: reduced || visivel ? "none" : transformMap[direction],
+        transition:
+          reduced
+            ? "none"
+            : `opacity ${duration}ms ${CUBIC_BEZIER}, transform ${duration}ms ${CUBIC_BEZIER}`,
+        transitionDelay: reduced ? "0ms" : `${delay}ms`,
       }}
     >
       {children}
@@ -71,8 +102,67 @@ export function ScrollReveal({
   );
 }
 
+// ─── ScrollRevealStagger ────────────────────────────────────────────────────
+
+/**
+ * Stagger reveals: aplica ScrollReveal com delays progressivos em cada filho.
+ *
+ * @example
+ * <ScrollRevealStagger baseDelay={100} staggerDelay={150} direction="up">
+ *   <div>Item 1</div>
+ *   <div>Item 2</div>
+ *   <div>Item 3</div>
+ * </ScrollRevealStagger>
+ */
+export function ScrollRevealStagger({
+  children,
+  className = "",
+  baseDelay = 0,
+  staggerDelay = 100,
+  direction = "up",
+  duration = 600,
+  threshold = 0.1,
+  once = true,
+  wrapperClassName = "",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  baseDelay?: number;
+  staggerDelay?: number;
+  direction?: "up" | "down" | "left" | "right" | "scale" | "none";
+  duration?: number;
+  threshold?: number;
+  once?: boolean;
+  wrapperClassName?: string;
+}) {
+  const items = Array.isArray(children) ? children : [children];
+
+  return (
+    <div className={className}>
+      {items.map((child, i) =>
+        child != null ? (
+          <ScrollReveal
+            key={i}
+            delay={baseDelay + i * staggerDelay}
+            direction={direction}
+            duration={duration}
+            threshold={threshold}
+            once={once}
+            className={wrapperClassName}
+          >
+            {child}
+          </ScrollReveal>
+        ) : null,
+      )}
+    </div>
+  );
+}
+
+// ─── ContadorAnimado ────────────────────────────────────────────────────────
+
 /**
  * Contador animado — do número inicial ao final ao entrar na viewport.
+ * Respeita prefers-reduced-motion: mostra o valor final imediatamente.
  */
 export function ContadorAnimado({
   valor,
@@ -89,10 +179,17 @@ export function ContadorAnimado({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [visivel, setVisivel] = useState(false);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    if (reduced) {
+      setVisivel(true);
+      return;
+    }
+
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -104,36 +201,44 @@ export function ContadorAnimado({
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, []);
+  }, [reduced]);
 
   useEffect(() => {
     if (!visivel) return;
     const el = ref.current;
     if (!el) return;
 
-    let start = 0;
+    if (reduced) {
+      el.textContent = `${prefixo}${valor.toFixed(digits)}${sufixo}`;
+      return;
+    }
+
+    let current = 0;
     const increment = valor / (duracao / 16);
     const timer = setInterval(() => {
-      start += increment;
-      if (start >= valor) {
-        start = valor;
+      current += increment;
+      if (current >= valor) {
+        current = valor;
         clearInterval(timer);
       }
-      el.textContent = `${prefixo}${start.toFixed(digits)}${sufixo}`;
+      el.textContent = `${prefixo}${current.toFixed(digits)}${sufixo}`;
     }, 16);
 
     return () => clearInterval(timer);
-  }, [visivel, valor, prefixo, sufixo, duracao, digits]);
+  }, [visivel, valor, prefixo, sufixo, duracao, digits, reduced]);
 
   return (
     <span ref={ref}>
-      {prefixo}0{sufixo}
+      {reduced ? `${prefixo}${valor.toFixed(digits)}${sufixo}` : `${prefixo}0${sufixo}`}
     </span>
   );
 }
 
+// ─── Parallax ───────────────────────────────────────────────────────────────
+
 /**
  * Parallax sutil no scroll — ideal para hero images.
+ * Respeita prefers-reduced-motion: desativa o parallax.
  */
 export function Parallax({
   children,
@@ -146,37 +251,49 @@ export function Parallax({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [offset, setOffset] = useState(0);
+  const reduced = usePrefersReducedMotion();
 
-  useEffect(() => {
+  const handleScroll = useCallback(() => {
+    if (reduced) return;
     const el = ref.current;
     if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const scrolled = window.innerHeight - rect.top;
+    if (scrolled > -rect.height && scrolled < window.innerHeight + rect.height) {
+      setOffset(scrolled * speed);
+    }
+  }, [speed, reduced]);
 
-    const onScroll = () => {
-      const rect = el.getBoundingClientRect();
-      const scrolled = window.innerHeight - rect.top;
-      if (scrolled > -rect.height && scrolled < window.innerHeight + rect.height) {
-        setOffset(scrolled * speed);
-      }
-    };
+  useEffect(() => {
+    if (reduced) {
+      setOffset(0);
+      return;
+    }
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [speed]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll, reduced]);
 
   return (
     <div
       ref={ref}
       className={className}
-      style={{ transform: `translateY(${offset}px)` }}
+      style={{
+        transform: reduced ? "none" : `translateY(${offset}px)`,
+        willChange: reduced ? "auto" : "transform",
+      }}
     >
       {children}
     </div>
   );
 }
 
+// ─── Typewriter ─────────────────────────────────────────────────────────────
+
 /**
  * Texto que aparece letra por letra (typewriter).
+ * Respeita prefers-reduced-motion: mostra o texto completo imediatamente.
  */
 export function Typewriter({
   texto,
@@ -191,14 +308,20 @@ export function Typewriter({
 }) {
   const [mostrado, setMostrado] = useState("");
   const [iniciou, setIniciou] = useState(false);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reduced) {
+      setIniciou(true);
+      setMostrado(texto);
+      return;
+    }
     const t = setTimeout(() => setIniciou(true), delay);
     return () => clearTimeout(t);
-  }, [delay]);
+  }, [delay, texto, reduced]);
 
   useEffect(() => {
-    if (!iniciou) return;
+    if (!iniciou || reduced) return;
     if (mostrado.length >= texto.length) return;
 
     const timer = setTimeout(() => {
@@ -206,12 +329,12 @@ export function Typewriter({
     }, velocidade);
 
     return () => clearTimeout(timer);
-  }, [iniciou, mostrado, texto, velocidade]);
+  }, [iniciou, mostrado, texto, velocidade, reduced]);
 
   return (
     <span className={className}>
       {mostrado}
-      {mostrado.length < texto.length && (
+      {!reduced && mostrado.length < texto.length && (
         <span className="inline-block w-[2px] h-[1em] bg-current animate-pulse ml-0.5 align-middle" />
       )}
     </span>
