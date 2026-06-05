@@ -3,7 +3,7 @@
 export const site = {
   nome: "Formação para Atendentes de Farmácia",
   nomeCurto: "Atendentes de Farmácia",
-  assinatura: "Criado pelo Farmacêutico Thiago B. G. Piola, CRF/SP 58.519",
+  assinatura: "Conteúdo educativo com referências em ANVISA, OMS, Ministério da Saúde e literatura científica.",
   descricao:
     "A formação mais completa do Brasil para atendentes de drogaria e perfumaria — do iniciante ao avançado, com foco em saúde integral, atendimento humanizado e segurança sanitária.",
   patrocinio: [

@@ -664,6 +664,53 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* ═══ FONTES & SEGURANÇA ═══ */}
+      <section className="relative overflow-hidden bg-surface/50 border-y border-border/40 py-12 sm:py-16">
+        <div className="mx-auto max-w-5xl px-5 sm:px-6">
+          <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
+            <ScrollReveal direction="up" delay={0}>
+              <div className="rounded-2xl border border-green-400/20 bg-gradient-to-br from-green-50/50 to-transparent dark:from-green-950/20 p-5 sm:p-6">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500/10 text-green-600 dark:text-green-400">
+                    <Icon name="shield" size={16} />
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-green-700 dark:text-green-300">Informação segura</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  Todo conteúdo é baseado em fontes oficiais: ANVISA, OMS, Ministério da Saúde, PubMed, SciELO e Cochrane Library. Nenhuma informação é inventada ou fabricada.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={80}>
+              <div className="rounded-2xl border border-amber-400/20 bg-gradient-to-br from-amber-50/50 to-transparent dark:from-amber-950/20 p-5 sm:p-6">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/10 text-amber-600 dark:text-amber-400">
+                    <Icon name="heart" size={16} />
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">Saúde não é jogo</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  ⚠️ Para diagnósticos, consulte um <strong>médico</strong>. Para orientação sobre medicamentos, consulte o <strong>farmacêutico</strong>. Nosso papel é educar, não substituir profissionais.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal direction="up" delay={160}>
+              <div className="rounded-2xl border border-blue-400/20 bg-gradient-to-br from-blue-50/50 to-transparent dark:from-blue-950/20 p-5 sm:p-6">
+                <div className="flex items-center gap-2.5 mb-3">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400">
+                    <Icon name="book" size={16} />
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-300">Referências globais</span>
+                </div>
+                <p className="text-xs sm:text-sm text-muted leading-relaxed">
+                  Citamos OMS (Genebra), FDA (EUA), EMA (Europa), ANVISA (Brasil), Ministério da Saúde, Cochrane (Reino Unido) e artigos revisados por pares do PubMed/SciELO.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ CTA FINAL ═══ */}
       <section id="ser-aluno" className="relative overflow-hidden bg-gradient-to-br from-green-900 via-emerald-800 to-forest-900 py-16 sm:py-24">
         <SectionVideo {...SECTION_VIDEOS.cta} />
@@ -732,14 +779,14 @@ export default function HomePage() {
             </div>
             <div className="flex flex-wrap justify-center gap-x-4 sm:gap-x-6 gap-y-1 text-[11px] sm:text-xs text-white/40">
               <Link href="/trilhas" className="hover:text-green-400 transition-colors">Trilhas</Link>
-              <Link href="/ranking" className="hover:text-green-400 transition-colors">Ranking</Link>
-              <Link href="/curiosidades" className="hover:text-green-400 transition-colors">Artigos</Link>
+              <Link href="/sobre" className="hover:text-green-400 transition-colors">Sobre</Link>
+              <Link href="/termos" className="hover:text-green-400 transition-colors">Termos</Link>
               <Link href="#ser-aluno" className="hover:text-green-400 transition-colors">Matrícula</Link>
             </div>
           </div>
-          <div className="mt-5 sm:mt-6 border-t border-green-800/20 pt-4 sm:pt-5 text-center text-[10px] sm:text-xs text-white/30 space-y-1">
-            <p>Formação para Atendentes Premium de Farmácia</p>
-            <p>Farmacêutico Thiago B. G. Piola, CRF/SP 58.519</p>
+          <div className="mt-5 sm:mt-6 border-t border-green-800/20 pt-4 sm:pt-5 text-center space-y-1">
+            <p className="text-[10px] sm:text-xs text-white/30">Conteúdo educativo com referências em ANVISA, OMS, Ministério da Saúde e literatura científica.</p>
+            <p className="text-[10px] sm:text-xs text-white/20">⚠️ Este conteúdo não substitui consulta médica ou orientação farmacêutica.</p>
           </div>
         </div>
       </footer>
