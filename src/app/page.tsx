@@ -224,7 +224,7 @@ export default function HomePage() {
               </div>
               <div className="p-5 sm:p-6">
                 <div className="grid grid-cols-3 gap-3">
-                  <Link href="/quiz" className="flex flex-col items-center gap-2 rounded-xl bg-muted/30 p-4 transition-all hover:bg-muted/50 hover:-translate-y-0.5">
+                  <Link href="/missoes" className="flex flex-col items-center gap-2 rounded-xl bg-muted/30 p-4 transition-all hover:bg-muted/50 hover:-translate-y-0.5">
                     <span className="text-2xl">🎯</span>
                     <span className="text-[11px] font-medium text-center text-foreground/80">Quizzes</span>
                     <span className="text-[10px] text-muted">+10 XP</span>
