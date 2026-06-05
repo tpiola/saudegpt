@@ -126,6 +126,74 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9.5Z" />
     </>
   ),
+  smile: (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M8 12c0 2 1.8 4 4 4s4-2 4-4" />
+      <path d="M9 9h.01" />
+      <path d="M15 9h.01" />
+    </>
+  ),
+  zap: (
+    <>
+      <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" />
+    </>
+  ),
+  gift: (
+    <>
+      <rect x="4" y="10" width="16" height="12" rx="2" />
+      <path d="M4 10V8a2 2 0 0 1 2-2h1a4 4 0 0 1 4 4" />
+      <path d="M20 10V8a2 2 0 0 0-2-2h-1a4 4 0 0 0-4 4" />
+      <path d="M12 6v16" />
+    </>
+  ),
+  globe: (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <path d="M2 12h20" />
+      <path d="M12 2a14 14 0 0 0 0 20 14 14 0 0 0 0-20Z" />
+    </>
+  ),
+  message: (
+    <>
+      <path d="M21 12a9 9 0 1 1-16-6l-2 5 5-2a9 9 0 0 1 13-3Z" />
+    </>
+  ),
+  repeat: (
+    <>
+      <path d="m17 2 4 4-4 4" />
+      <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+      <path d="m7 22-4-4 4-4" />
+      <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+    </>
+  ),
+  eye: (
+    <>
+      <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6Z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
+  music: (
+    <>
+      <path d="M9 18V5l12-2v13" />
+      <circle cx="6" cy="18" r="3" />
+      <circle cx="18" cy="16" r="3" />
+    </>
+  ),
+  compass: (
+    <>
+      <circle cx="12" cy="12" r="8" />
+      <path d="m14.5 12-5-2.5L12 12l2.5 5 2.5-5-5-2.5 5 2.5Z" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="7" r="4" />
+      <path d="M3 17c0-2 2.5-5 6-5s6 3 6 5" />
+      <path d="M17 8c2 0 4 1.5 4 3.5" />
+      <path d="M21 17c0-1.5-1-3-2.5-3.5" />
+    </>
+  ),
 };
 
 export type IconName = keyof typeof paths;
