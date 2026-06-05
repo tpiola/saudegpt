@@ -97,19 +97,9 @@ export default function RootLayout({
         <meta name="geo.position" content="-14.2350;-51.9253" />
         <meta name="ICBM" content="-14.2350, -51.9253" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* Preload de fontes críticas para melhorar LCP */}
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        />
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
-        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         {/* Canonical URL */}
-        <link rel="canonical" href={baseUrl} />
         {/* Robots */}
         <meta name="robots" content="index, follow" />
         <meta name="language" content="pt-BR" />
@@ -127,7 +117,7 @@ export default function RootLayout({
                 "@type": "Organization",
                 name: "Formação para Atendentes de Farmácia",
                 url: baseUrl,
-                sameAs: baseUrl,
+                sameAs: "https://www.instagram.com/saudegpt/",
               },
               educationalCredentialAwarded: "Certificado de Conclusão — Formação para Atendentes de Farmácia",
               numberOfCredits: 142,
@@ -155,7 +145,7 @@ export default function RootLayout({
         />
         {/* EOF JSON-LD */}
       </head>
-      <body className="flex min-h-full flex-col" style={{ fontFamily: 'var(--font-body), system-ui, sans-serif' }}>
+      <body className="flex min-h-full flex-col">
         <a
           href="#conteudo-principal"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-forest-500 focus:px-4 focus:py-2 focus:text-white"

@@ -14,7 +14,7 @@
   --color-forest-100: #cde8de;
   --color-forest-200: #9dd1be;
   --color-forest-300: #66b59a;
-  --color-forest-400: #4ca15d;
+  --color-forest-400: #3d9e4f;
   --color-forest-500: #0d3a32;
   --color-forest-600: #0a2f2a;
   --color-forest-700: #082521;
@@ -231,7 +231,7 @@ body {
   content: '';
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 40;
   pointer-events: none;
   opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
