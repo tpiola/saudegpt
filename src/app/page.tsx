@@ -28,22 +28,7 @@ const TRILHA_EMOJI: Record<string, string> = {
   fundamentos: "📖", pratica: "✍️", vendas: "🤝",
 };
 
-/* ─── Keyframes ─── */
-const A = `@keyframes float-y{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 20px rgba(74,222,128,0.15)}50%{box-shadow:0 0 50px rgba(74,222,128,0.4)}}
-@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-@keyframes blob-morph{0%,100%{border-radius:60% 40% 30% 70%/60% 30% 70% 40%}25%{border-radius:30% 60% 70% 40%/50% 60% 30% 60%}50%{border-radius:50% 60% 30% 40%/40% 50% 60% 50%}75%{border-radius:70% 30% 50% 50%/30% 70% 40% 60%}}
-@keyframes blob-drift{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(30px,-30px) rotate(120deg)}66%{transform:translate(-20px,20px) rotate(240deg)}}
-@keyframes shimmer-glow{0%{opacity:0;transform:scale(0) rotate(0deg)}50%{opacity:0.6;transform:scale(1) rotate(180deg)}100%{opacity:0;transform:scale(0) rotate(360deg)}}
-@keyframes confetti-fall{0%{transform:translateY(-10vh) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
-@keyframes letter-pop{0%{opacity:0;transform:translateY(30px) scale(0.8)}60%{transform:translateY(-5px) scale(1.05)}100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes ripple{0%{box-shadow:0 0 0 0 rgba(74,222,128,0.4)}100%{box-shadow:0 0 0 20px rgba(74,222,128,0)}}
-@keyframes tilt-in{0%{opacity:0;transform:perspective(800px) rotateX(10deg) translateY(40px)}100%{opacity:1;transform:perspective(800px) rotateX(0) translateY(0)}}
-.float-y{animation:float-y 6s ease-in-out infinite}.pulse-glow{animation:pulse-glow 3s ease-in-out infinite}
-.gradient-shift{background-size:200% 200%;animation:gradient-shift 4s ease infinite}.blob-morph{animation:blob-morph 12s ease-in-out infinite,blob-drift 20s ease-in-out infinite}
-.letter-pop{animation:letter-pop 0.6s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0}.ripple{animation:ripple 2s ease-out infinite}
-.tilt-in{animation:tilt-in 0.8s cubic-bezier(0.16,1,0.3,1) forwards;opacity:0}
-@media(prefers-reduced-motion:reduce){.float-y,.pulse-glow,.gradient-shift,.blob-morph,.letter-pop,.ripple,.tilt-in,.confetti-piece,.shimmer-particle{animation:none!important;opacity:1!important;transform:none!important}}`;
+// Keyframes moved to globals.css — reduced HTML ~3KB
 
 const CONFETTI = [
   { c:"bg-green-400", d:"0s", l:"10%", s:"w-1.5 h-1.5" },{ c:"bg-yellow-400", d:"0.8s", l:"30%", s:"w-2 h-2" },
@@ -63,7 +48,6 @@ export default function HomePage() {
 
   return (
     <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden grain-overlay">
-      <style>{A}</style>
 
       {/* Ambient blobs */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
