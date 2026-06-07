@@ -187,7 +187,7 @@ export default function HomePage() {
             </p>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={300}>
-            <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-3 px-4 sm:px-0">
+            <div className="mt-8 sm:mt-10 grid gap-4 sm:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 px-4 sm:px-0">
               {[
                 { icon:"heart" as IconName, title:"Empatia que cura", desc:"Entender a dor do outro é o primeiro passo.", color:"text-rose-400" },
                 { icon:"compass" as IconName, title:"Técnica que orienta", desc:"Conhecimento sólido para recomendar com segurança.", color:"text-green-400" },
@@ -290,7 +290,7 @@ export default function HomePage() {
 
           {/* Stats banner */}
           <ScrollReveal direction="none" delay={100}>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-8 sm:mb-10">
               {[
                 { icon:"zap" as IconName, value: 2840, suffix:"", label:"XP total", color:"text-yellow-400", bg:"from-yellow-500/10" },
                 { icon:"trending" as IconName, value: 7, suffix:" dias", label:"Streak atual", color:"text-orange-400", bg:"from-orange-500/10" },
@@ -311,7 +311,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* Progresso + Level */}
-          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2 mb-8 sm:mb-10">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2 mb-8 sm:mb-10">
             {/* Level card */}
             <ScrollReveal direction="up" delay={150}>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm">
@@ -482,7 +482,7 @@ export default function HomePage() {
                 <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-muted leading-relaxed line-clamp-2 sm:line-clamp-none">
                   Uma senhora chega com dor de cabeça. Veja como uma escuta atenta transforma o cuidado.
                 </p>
-                <div className="mt-3 sm:mt-5 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
+                <div className="mt-3 sm:mt-5 grid gap-3 sm:gap-4 grid-cols-1 md:grid-cols-2">
                   <div className="rounded-xl border border-emerald-200/50 bg-gradient-to-br from-emerald-50/80 to-green-50/50 dark:from-emerald-950/20 dark:to-green-950/10 p-3 sm:p-4">
                     <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 text-[10px] sm:text-xs font-semibold mb-1.5 sm:mb-2">
                       <Icon name="check" size={10} sm-size={12} /> Abordagem consultiva
@@ -559,7 +559,7 @@ export default function HomePage() {
           </FadeUp>
 
           {/* CARD 3 — Grid Gamificação + Conteúdos */}
-          <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {/* Gamificação */}
             <FadeUp delay={150}>
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/60 bg-gradient-to-br from-surface to-muted/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2 h-full">
@@ -667,7 +667,7 @@ export default function HomePage() {
       {/* ═══ FONTES & SEGURANÇA ═══ */}
       <section className="relative overflow-hidden bg-surface/50 border-y border-border/40 py-12 sm:py-16">
         <div className="mx-auto max-w-5xl px-5 sm:px-6">
-          <div className="grid gap-6 sm:gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
             <ScrollReveal direction="up" delay={0}>
               <div className="rounded-2xl border border-green-400/20 bg-gradient-to-br from-green-50/50 to-transparent dark:from-green-950/20 p-5 sm:p-6">
                 <div className="flex items-center gap-2.5 mb-3">
@@ -717,7 +717,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50vmax] w-[50vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/5 blur-[150px]" />
         <div className="pointer-events-none absolute right-[10%] top-[20%] h-[40vmax] w-[40vmax] rounded-full bg-yellow-400/5 blur-[120px] blob-morph" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="grid items-center gap-8 sm:gap-12 lg:grid-cols-2">
+          <div className="grid items-center gap-8 sm:gap-12 md:grid-cols-2">
             <ScrollReveal direction="up" sm-direction="left">
               <div>
                 <div className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-yellow-400/20 bg-yellow-500/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium text-yellow-300 backdrop-blur-sm ripple">
