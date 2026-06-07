@@ -1,9 +1,6 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import { HeroVideo } from "@/components/hero-video";
 import { FadeUp } from "@/components/fade-up";
-import { ScrollReveal, ContadorAnimado, Typewriter } from "@/components/animacoes";
+import { ScrollReveal, ContadorAnimado } from "@/components/animacoes";
 import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
 import { Icon, IconName } from "@/components/icons";
@@ -63,21 +60,17 @@ const JORNADA = [
 
 export default function HomePage() {
   const total = totalAulas();
-  const [mounted, setMounted] = useState(false);
-  useEffect(()=>{ setMounted(true); },[]);
 
   return (
     <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden grain-overlay">
       <style>{A}</style>
 
       {/* Ambient blobs */}
-      {mounted && (
-        <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 h-[50vmax] w-[50vmax] bg-gradient-to-br from-green-400/8 to-emerald-600/5 rounded-full blur-[100px] blob-morph" />
-          <div className="absolute top-[30%] -right-40 h-[40vmax] w-[40vmax] bg-gradient-to-br from-yellow-400/6 to-amber-500/4 rounded-full blur-[100px] blob-morph" style={{animationDelay:'-5s'}} />
-          <div className="absolute -bottom-40 left-[40%] h-[35vmax] w-[35vmax] bg-gradient-to-br from-green-300/5 to-emerald-500/5 rounded-full blur-[100px] blob-morph" style={{animationDelay:'-10s'}} />
-        </div>
-      )}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[50vmax] w-[50vmax] bg-gradient-to-br from-green-400/8 to-emerald-600/5 rounded-full blur-[100px] blob-morph" />
+        <div className="absolute top-[30%] -right-40 h-[40vmax] w-[40vmax] bg-gradient-to-br from-yellow-400/6 to-amber-500/4 rounded-full blur-[100px] blob-morph" style={{animationDelay:'-5s'}} />
+        <div className="absolute -bottom-40 left-[40%] h-[35vmax] w-[35vmax] bg-gradient-to-br from-green-300/5 to-emerald-500/5 rounded-full blur-[100px] blob-morph" style={{animationDelay:'-10s'}} />
+      </div>
 
       {/* ═══ HERO — mobile-first cinematic ═══ */}
       <section className="relative flex min-h-[90dvh] min-h-[100svh] items-center overflow-hidden bg-[#020617]">
@@ -113,9 +106,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-4 sm:mt-5 max-w-xl mx-auto sm:mx-0 text-sm sm:text-base lg:text-lg leading-relaxed text-white/50 tilt-in text-center sm:text-left" style={{animationDelay:'2.8s'}}>
-              {mounted ? (
-                <Typewriter texto="A primeira mão que um cliente estende quando busca cuidado." velocidade={25} delay={3200} />
-              ) : "A primeira mão que um cliente estende quando busca cuidado."}
+              "A primeira mão que um cliente estende quando busca cuidado."
             </p>
 
             {/* CTAs - full width on mobile */}
@@ -565,7 +556,7 @@ export default function HomePage() {
               <div className="group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-border/60 bg-gradient-to-br from-surface to-muted/10 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2 h-full">
                 <div className="relative h-36 sm:h-40 lg:h-44 overflow-hidden bg-gradient-to-br from-green-600 via-emerald-500 to-forest-700">
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  {mounted && [0,1,2].map(j=>(
+                  {[0,1,2].map(j=>(
                     <div key={j} className="absolute w-2 h-2 rounded-full bg-yellow-300/30 shimmer-particle"
                       style={{left:`${20+j*25}%`,top:`${15+j*20}%`,animationDelay:`${j*1.5}s`}} />
                   ))}
