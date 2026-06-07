@@ -92,7 +92,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
          SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out lg:static lg:z-auto lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -225,7 +225,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
       {menuAberto && (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
           aria-label="Fechar menu"
           onClick={() => setMenuAberto(false)}
         />
@@ -239,7 +239,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-border-strong text-muted lg:hidden"
+              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-border-strong text-muted md:hidden"
               onClick={() => setMenuAberto(true)}
               aria-label="Abrir menu"
             >
