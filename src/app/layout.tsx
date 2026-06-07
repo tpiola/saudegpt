@@ -81,7 +81,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${dmSans.variable} ${inter.variable} h-full`}
+      className={`${dmSans.variable} ${inter.variable} h-full overflow-x-hidden`}
       suppressHydrationWarning
     >
       <head>
