@@ -205,16 +205,16 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             </Botao>
           )}
 
-          <div className="relative flex flex-wrap gap-x-3 gap-y-1 text-[10px] text-subtle dark:text-muted">
+          <div className="relative flex flex-wrap gap-x-3 gap-y-1 sm:gap-y-2 text-[10px] sm:text-xs text-subtle dark:text-muted">
             <div className="mb-1.5 flex w-full items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/[0.6] to-transparent" />
             </div>
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-orange-500 transition-colors">
+              <Link key={l.href} href={l.href} className="hover:text-orange-500 transition-colors min-h-[44px] inline-flex items-center">
                 {l.label}
               </Link>
             ))}
-            <Link href="/sobre" className="hover:text-orange-500 transition-colors">
+            <Link href="/sobre" className="hover:text-orange-500 transition-colors min-h-[44px] inline-flex items-center">
               Sobre o curso
             </Link>
           </div>

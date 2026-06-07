@@ -376,7 +376,7 @@ export default function HomePage() {
                   <Icon name="target" size={16} sm-size={20} className="text-green-400" />
                   <span className="text-sm sm:text-base font-bold text-white">Missões diárias</span>
                 </div>
-                <Link href="/missoes" className="flex items-center gap-1 text-[10px] sm:text-xs text-green-400 hover:text-green-300 transition-colors">
+                <Link href="/missoes" className="flex items-center gap-1 text-[10px] sm:text-xs text-green-400 hover:text-green-300 transition-colors min-h-[44px] inline-flex items-center">
                   Ver todas <Icon name="arrow" size={10} />
                 </Link>
               </div>
@@ -401,7 +401,7 @@ export default function HomePage() {
                       <span className={`text-[10px] sm:text-xs ${q.done ? 'text-green-400/50' : 'text-yellow-400'}`}>{q.xp}</span>
                     </div>
                     {!q.done && (
-                      <Link href="/missoes" className="shrink-0 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold text-white transition-all hover:scale-105 active:scale-95">
+                      <Link href="/missoes" className="shrink-0 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-3 sm:px-4 py-2.5 sm:py-3 text-[10px] sm:text-xs font-semibold text-white transition-all hover:scale-105 active:scale-95 min-h-[44px] inline-flex items-center">
                         Fazer
                       </Link>
                     )}
@@ -591,17 +591,17 @@ export default function HomePage() {
                 </div>
                 <div className="p-4 sm:p-6 lg:p-7">
                   <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                    <Link href="/missoes" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-green-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-green-500/10 active:scale-95 border border-green-400/10">
+                    <Link href="/missoes" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-green-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-green-500/10 active:scale-95 border border-green-400/10 min-h-[88px] sm:min-h-[100px]">
                       <Icon name="sparkles" size={18} sm-size={22} className="text-green-500" />
                       <span className="text-[10px] sm:text-xs font-semibold text-foreground/80">Quizzes</span>
                       <span className="text-[9px] sm:text-[10px] text-green-500 flex items-center gap-1 font-medium"><Icon name="trending" size={8} sm-size={10} />+10 XP</span>
                     </Link>
-                    <Link href="/missoes" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-orange-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-orange-500/10 active:scale-95 border border-orange-400/10">
+                    <Link href="/missoes" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-orange-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-orange-500/10 active:scale-95 border border-orange-400/10 min-h-[88px] sm:min-h-[100px]">
                       <Icon name="star" size={18} sm-size={22} className="text-orange-500" />
                       <span className="text-[10px] sm:text-xs font-semibold text-foreground/80">Badges</span>
                       <span className="text-[9px] sm:text-[10px] text-muted">8</span>
                     </Link>
-                    <Link href="/ranking" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-yellow-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-yellow-500/10 active:scale-95 border border-yellow-400/10">
+                    <Link href="/ranking" className="flex flex-col items-center gap-1.5 sm:gap-2 rounded-xl bg-gradient-to-b from-yellow-500/5 to-transparent p-3 sm:p-4 transition-all duration-300 hover:bg-yellow-500/10 active:scale-95 border border-yellow-400/10 min-h-[88px] sm:min-h-[100px]">
                       <Icon name="trending" size={18} sm-size={22} className="text-yellow-500" />
                       <span className="text-[10px] sm:text-xs font-semibold text-foreground/80">Ranking</span>
                       <span className="text-[9px] sm:text-[10px] text-muted">Top 3</span>

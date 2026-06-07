@@ -26,7 +26,7 @@ export function LgpdBanner() {
         <p className="flex-1 text-xs leading-relaxed text-muted sm:text-sm">
           Utilizamos cookies e tecnologias semelhantes para melhorar sua experiência.
           Ao continuar, você concorda com nossa{" "}
-          <Link href="/privacidade" className="underline underline-offset-2 hover:text-foreground transition-colors">
+          <Link href="/privacidade" className="underline underline-offset-2 hover:text-foreground transition-colors min-h-[44px] inline-flex items-center">
             Política de Privacidade
           </Link>
           .
@@ -34,13 +34,13 @@ export function LgpdBanner() {
         <div className="flex shrink-0 gap-3">
           <Link
             href="/privacidade"
-            className="rounded-xl border border-border bg-background px-4 py-2 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+            className="rounded-xl border border-border bg-background px-4 py-3 text-xs font-medium text-foreground transition-colors hover:bg-accent min-h-[44px] inline-flex items-center"
           >
             Saiba mais
           </Link>
           <button
             onClick={aceitar}
-            className="rounded-xl bg-emerald-600 px-5 py-2 text-xs font-semibold text-white transition-colors hover:bg-emerald-500"
+            className="rounded-xl bg-emerald-600 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-emerald-500 min-h-[44px] inline-flex items-center"
           >
             Aceitar
           </button>
