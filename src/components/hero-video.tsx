@@ -125,7 +125,10 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           willChange: "transform",
         }}
       >
-        {VIDEO_POOL.map(({ id }, idx) => (
+        {VIDEO_POOL.map(({ id }, idx) => {
+          const isVisible = idx === currentIndex || idx === (currentIndex + 1) % VIDEO_POOL.length || idx === (currentIndex - 1 + VIDEO_POOL.length) % VIDEO_POOL.length;
+          if (!isVisible) return null;
+          return (
           <video
             key={id}
             autoPlay
@@ -144,7 +147,8 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           >
             <source src={`https://assets.mixkit.co/videos/${id}/${id}-720.mp4`} type="video/mp4" />
           </video>
-        ))}
+          );
+        })}
       </div>
 
       {/* Gradiente overlay premium — degradê suave com cores quentes */}
