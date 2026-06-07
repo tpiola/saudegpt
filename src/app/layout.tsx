@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
-import { LmsShell } from "@/components/lms-shell";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
@@ -160,9 +159,7 @@ export default function RootLayout({
             <ProgressSync />
             <PwaRegister />
             <LgpdBanner />
-            <LmsShell>
-              <main id="conteudo-principal" className="overflow-x-hidden">{children}</main>
-            </LmsShell>
+            {children}
           </ProgressProvider>
         </ThemeProvider>
       </body>
