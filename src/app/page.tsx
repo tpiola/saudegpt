@@ -5,6 +5,7 @@ import { MatriculaForm } from "@/components/matricula-form";
 import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
 import { Icon, IconName } from "@/components/icons";
 import { SectionVideo, SECTION_VIDEOS } from "@/components/section-video";
+import { StreakFreezeDisplay } from "@/components/streak-freeze";
 import type { Trilha } from "@/content/types";
 import Image from "next/image";
 import Link from "next/link";
@@ -341,6 +342,11 @@ export default function HomePage() {
                 </div>
               </div>
             </ScrollReveal>
+          </div>
+
+          {/* Streak Freeze */}
+          <div className="md:col-span-2">
+            <StreakFreezeDisplay />
           </div>
 
           {/* Missões diárias */}

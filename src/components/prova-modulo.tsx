@@ -221,11 +221,23 @@ export function ProvaModulo({
           </div>
 
           {enviado && (
-            <div className="mt-3 rounded-lg bg-surface-2 px-4 py-3">
-              <p className="text-sm text-muted">
-                <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
-                {q.explicacao}
-              </p>
+            <div className="mt-3 space-y-2">
+              <div className="rounded-xl border border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5 px-4 py-3">
+                <div className="flex items-start gap-2">
+                  <span className="mt-0.5 shrink-0">💡</span>
+                  <div>
+                    <p className="text-sm font-medium text-foreground mb-1">O que diz a ciência:</p>
+                    <p className="text-sm text-muted leading-relaxed">
+                      {q.explicacao}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-2 flex items-center gap-2 text-[10px] text-green-600 dark:text-green-400 font-medium">
+                  <span>📖 Fonte: ANVISA · OMS · MS</span>
+                  <span className="text-green-400/40">|</span>
+                  <span>Sempre consulte o farmacêutico</span>
+                </div>
+              </div>
             </div>
           )}
         </Card>
