@@ -7,3 +7,8 @@ out
 infrastructure/scripts/*.pyc
 __pycache__
 *.tsbuildinfo
+
+# Media source files (not tracked in git)
+public/videos/src-*
+public/videos/*-480p.mp4
+public/videos/*-720p.mp4
