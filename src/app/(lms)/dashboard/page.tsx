@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { DashboardAluno } from "@/components/dashboard-aluno";
 import { JsonLdCourse } from "@/components/json-ld-course";
+import { DashboardAlunoLazy } from "@/components/dashboard-aluno-lazy";
 
 export const metadata: Metadata = {
   title: "Dashboard — Formação para Atendentes de Farmácia",
@@ -12,7 +12,7 @@ export default function DashboardPage() {
   return (
     <>
       <JsonLdCourse />
-      <DashboardAluno />
+      <DashboardAlunoLazy />
     </>
   );
 }

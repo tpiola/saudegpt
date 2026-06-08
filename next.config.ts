@@ -28,7 +28,7 @@ const securityHeaders = [
   },
 ];
 
-const nextConfig: NextConfig = {
+let nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com", pathname: "/**" },
@@ -55,5 +55,14 @@ const nextConfig: NextConfig = {
     ];
   },
 };
+
+// ── Bundle Analyzer (ANALYZE=true npm run analyze) ──
+if (process.env.ANALYZE === "true") {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const withBundleAnalyzer = require("@next/bundle-analyzer")({
+    enabled: true,
+  });
+  nextConfig = withBundleAnalyzer(nextConfig);
+}
 
 export default nextConfig;

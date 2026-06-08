@@ -10,7 +10,12 @@ import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
-import { ChatBotIA } from "./chatbot-ia";
+import dynamic from "next/dynamic";
+
+const ChatBotIA = dynamic(() => import("./chatbot-ia").then((m) => ({ default: m.ChatBotIA })), {
+  ssr: false,
+  loading: () => null,
+});
 
 /** Páginas que usam layout FULL WIDTH (sem sidebar) */
 const FULL_WIDTH_ROUTES = new Set(["/sobre", "/"]);
