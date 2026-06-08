@@ -1,0 +1,47 @@
+{
+  "date": "2026-06-07",
+  "commit": "49413e6",
+  "platform": {
+    "next": "16.2.7",
+    "react": "19.2.7",
+    "node": "20.19.2",
+    "deploy": "Vercel (thiagoso/saudegpt-com)"
+  },
+  "performance": {
+    "ssg_pages": 250,
+    "html_size_kb": 233,
+    "http_status": 200,
+    "build_errors": 0,
+    "console_errors": 0,
+    "ttfb_ms": 9.3,
+    "dom_content_loaded_ms": 217,
+    "full_load_ms": 327
+  },
+  "mobile": {
+    "overflow_x_fixed": true,
+    "viewport_fit": "cover",
+    "safe_area": true,
+    "touch_targets_44px": true,
+    "video_count_dom": 2,
+    "particles": 12
+  },
+  "resources": {
+    "videos_hosted_on": "assets.mixkit.co (external CDN)",
+    "images_hosted_on": "images.unsplash.com (external CDN)",
+    "images_format": "AVIF + WebP",
+    "font_hosting": "next/font (self-hosted)",
+    "analytics": "none (just added @vercel/speed-insights + @vercel/analytics)"
+  },
+  "gaps": {
+    "no_hls_streaming": true,
+    "no_custom_video_cdn": true,
+    "no_lighthouse_ci": true,
+    "no_rag_for_tutor": true,
+    "no_spaced_repetition": true,
+    "no_pwa_offline": true,
+    "no_test_coverage": true,
+    "no_bundle_analyzer": true,
+    "no_mobile_e2e_tests": true,
+    "no_daily_cron": true
+  }
+}

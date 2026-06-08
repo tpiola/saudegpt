@@ -6,6 +6,8 @@ import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
 import { LgpdBanner } from "@/components/lgpd-banner";
 import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
 
@@ -160,6 +162,8 @@ export default function RootLayout({
             <PwaRegister />
             <LgpdBanner />
             {children}
+            <SpeedInsights />
+            <Analytics />
           </ProgressProvider>
         </ThemeProvider>
       </body>
