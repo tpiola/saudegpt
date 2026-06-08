@@ -1,116 +1,193 @@
 import { NextRequest, NextResponse } from "next/server";
 
 interface ChatMessage {
-  role: "user" | "assistant" | "system";
-  content: string;
+    role: "user" | "assistant" | "system";
+    content: string;
 }
 
-const MAX_MESSAGES = 50;
-const MAX_CHARS_PER_MESSAGE = 4000;
+// ── Limites de segurança ──────────────────────────────────────────────────────
+const MAX_MESSAGES        = 30;
+const MAX_CHARS_PER_MSG   = 3000;
+const MAX_TOKENS_RESPONSE = 1200;
+const TEMPERATURE         = 0.65;
 
-const SYSTEM_PROMPT = `Você é um assistente educacional da plataforma **Formação para Atendentes de Farmácia** (saudegpt.com). Sua função é APENAS educar e informar, com base em fontes oficiais e científicas.
+// ── Rate-limit simples em memória (por IP — resets em cold start) ─────────────
+const rateLimitMap = new Map<string, { count: number; ts: number }>();
+const RATE_WINDOW_MS  = 60_000; // 1 min
+const RATE_MAX_CALLS  = 20;     // 20 req/min por IP
 
-## REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR)
-1. **NUNCA** dê diagnósticos, prescrições ou recomendações médicas.
-2. **NUNCA** substitua a orientação de um médico ou farmacêutico.
-3. **SEMPRE** inclua ao final de respostas sobre saúde: "Consulte um médico para diagnósticos e um farmacêutico para orientação sobre medicamentos."
-4. **SEMPRE** inclua ao final de respostas sobre medicamentos: "Este conteúdo é educativo. Consulte o farmacêutico responsável antes de usar qualquer medicamento."
-5. **SEMPRE** cite fontes oficiais verificáveis: ANVISA (RDCs, Portaria 344/98), OMS, OPAS, Ministério da Saúde, PubMed, SciELO, Cochrane, bulas oficiais registradas na ANVISA.
-6. **Se não souber** a resposta com segurança, diga: "Não tenho informação suficiente para responder com segurança. Consulte um profissional de saúde qualificado."
-7. **NUNCA** invente fontes, dados ou citações.
-8. **Diferencie** claramente o papel do atendente de farmácia (orientação básica) vs. farmacêutico (responsabilidade técnica).
+function checkRateLimit(ip: string): boolean {
+    const now = Date.now();
+    const entry = rateLimitMap.get(ip);
+    if (!entry || now - entry.ts > RATE_WINDOW_MS) {
+          rateLimitMap.set(ip, { count: 1, ts: now });
+          return true;
+    }
+    if (entry.count >= RATE_MAX_CALLS) return false;
+    entry.count++;
+    return true;
+}
 
-## TÓPICOS QUE VOCÊ PODE ABORDAR
-- Medicamentos (classes, indicações, contraindicações — SEMPRE com disclaimer)
-- Legislação sanitária brasileira (ANVISA, RDCs, portarias)
-- Atendimento consultivo e humanizado
-- Perfumaria e cosméticos
-- Saúde pública e epidemiologia básica
-- Primeiros socorros em farmácia
-- Suplementos, fitoterápicos (com disclaimer)
+// ── Sistema de prompt (Hermes Tutor) ──────────────────────────────────────────
+const SYSTEM_PROMPT = `Você é o HERMES — tutor de IA da plataforma **SaúdeGPT · Formação para Atendentes de Farmácia** (saudegpt.com).
 
-## REFERÊNCIAS OFICIAIS
+## IDENTIDADE
+- Especialista em farmácia, dispensação, legislação sanitária brasileira e saúde pública.
+- Tom: acolhedor, didático, direto. Use markdown leve (negrito, listas curtas).
+- Língua: português brasileiro formal, sem gírias.
+
+## REGRAS ABSOLUTAS — NUNCA VIOLAR
+1. NUNCA diagnostique doenças nem prescreva medicamentos.
+2. NUNCA substitua orientação de médico ou farmacêutico responsável.
+3. SEMPRE referencie fontes oficiais: ANVISA (RDCs, Portaria 344/98), OMS, MS, PubMed, SciELO, Cochrane, bulário ANVISA.
+4. NUNCA invente dados, doses, posologias ou referências bibliográficas.
+5. Se incerto, diga: "Não tenho informação suficiente. Consulte um profissional de saúde."
+6. Diferencie papel do atendente (orientação básica) do farmacêutico (responsabilidade técnica).
+7. Respostas máximas: 400 palavras. Seja objetivo.
+
+## TÓPICOS PERMITIDOS
+Medicamentos (classes, indicações, contraindicações), legislação sanitária, atendimento consultivo humanizado, cosméticos e perfumaria, saúde pública, primeiros socorros em farmácia, suplementos e fitoterápicos (com disclaimer), gamificação e trilhas da plataforma.
+
+## REFERÊNCIAS PRINCIPAIS
 - ANVISA: RDC 44/2009, RDC 471/2021, RDC 585/2021, Portaria 344/98
-- OMS: Lista Modelo de Medicamentos Essenciais, Classificação ATC
-- Ministério da Saúde: PCDT, RENAME, Farmácia Popular
-- PubMed / SciELO / Cochrane Library
-- Bulário Eletrônico ANVISA
+- OMS: Lista de Medicamentos Essenciais, Classificação ATC
+- MS: PCDT, RENAME, Farmácia Popular
+- PubMed / SciELO / Cochrane
 
-## TOM DE VOZ
-- Caloroso e acolhedor
-- Didático, linguagem simples
-- SEMPRE termine com um disclaimer de segurança apropriado
-- Use emojis com moderação
+## FORMATO DE RESPOSTA
+Termine respostas sobre medicamentos com:
+> ⚠️ *Conteúdo educativo. Consulte o farmacêutico responsável antes de dispensar qualquer medicamento.*`;
 
-EXEMPLO DE RESPOSTA IDEAL:
-"📌 **Sobre antibióticos e receita de controle especial**
-Segundo a **RDC 471/2021 da ANVISA**, antibióticos como amoxicilina exigem receita de controle especial em 2 vias. O atendente deve verificar prazo de validade (10 dias) e reter a 1ª via.
-⚠️ *Importante: Este conteúdo é educativo. Consulte o farmacêutico responsável antes de dispensar qualquer medicamento. Consulte um médico para diagnósticos.*
-Fonte: ANVISA — RDC 471/2021 + Portaria 344/98"`;
-
+// ── Handler principal ─────────────────────────────────────────────────────────
 export async function POST(req: NextRequest) {
-  try {
-    const { messages } = await req.json();
-
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
-      return NextResponse.json({ error: "Mensagens são obrigatórias" }, { status: 400 });
+    // Rate limit
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
+    if (!checkRateLimit(ip)) {
+          return NextResponse.json(
+            { error: "Muitas requisições. Aguarde 1 minuto." },
+            { status: 429 }
+                );
     }
 
+  // Parse body
+  let messages: ChatMessage[];
+    try {
+          const body = await req.json();
+          messages = body?.messages;
+    } catch {
+          return NextResponse.json({ error: "JSON inválido." }, { status: 400 });
+    }
+
+  // Validações
+  if (!Array.isArray(messages) || messages.length === 0) {
+        return NextResponse.json({ error: "Campo 'messages' obrigatório." }, { status: 400 });
+  }
     if (messages.length > MAX_MESSAGES) {
-      return NextResponse.json({ error: `Máximo de ${MAX_MESSAGES} mensagens por conversa` }, { status: 400 });
+          return NextResponse.json(
+            { error: `Máximo ${MAX_MESSAGES} mensagens por conversa.` },
+            { status: 400 }
+                );
     }
-
     for (const msg of messages) {
-      if (typeof msg.content !== "string" || msg.content.length > MAX_CHARS_PER_MESSAGE) {
-        return NextResponse.json({ error: `Cada mensagem deve ter no máximo ${MAX_CHARS_PER_MESSAGE} caracteres` }, { status: 400 });
-      }
+          if (!msg?.content || typeof msg.content !== "string") {
+                  return NextResponse.json({ error: "Mensagem inválida." }, { status: 400 });
+          }
+          if (msg.content.length > MAX_CHARS_PER_MSG) {
+                  return NextResponse.json(
+                    { error: `Mensagem excede ${MAX_CHARS_PER_MSG} caracteres.` },
+                    { status: 400 }
+                          );
+          }
     }
 
-    const apiKey = process.env.DEEPSEEK_API_KEY;
+  // API key
+  const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) {
-      // Fallback: resposta local
-      return NextResponse.json({
-        choices: [{
-          message: {
-            content: "Olá! 😊 Estou em modo de configuração. Em breve poderei responder com referências completas da ANVISA, OMS e ministério da Saúde. Por enquanto, pergunte sobre medicamentos, atendimento ou legislação que te ajudo com o que sei! 👇"
-          }
-        }]
-      });
+          return NextResponse.json({
+                  choices: [{
+                            message: {
+                                        content:
+                                                      "⚙️ O tutor de IA está em configuração. Em breve você poderá tirar dúvidas sobre medicamentos, legislação ANVISA e atendimento. Até lá, explore as trilhas de aprendizagem! 📚",
+                            },
+                  }],
+          });
     }
 
-    const res = await fetch("https://api.deepseek.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: "deepseek-v4-flash",
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...messages.map((m: ChatMessage) => ({ role: m.role, content: m.content })),
-        ],
-        max_tokens: 1024,
-        temperature: 0.7,
-      }),
-    });
+  // Sanitizar mensagens (apenas user/assistant)
+  const safeMessages = messages
+      .filter((m) => m.role === "user" || m.role === "assistant")
+      .map((m) => ({
+              role: m.role,
+              content: m.content.slice(0, MAX_CHARS_PER_MSG),
+      }));
 
-    if (!res.ok) {
-      const errText = await res.text();
-      console.error("DeepSeek API error:", res.status, errText);
-      return NextResponse.json({
-        choices: [{
-          message: {
-            content: "❌ Ops! Não consegui consultar minha base de conhecimento agora. Pode tentar de novo? Seu conhecimento local está intacto! 😊"
-          }
-        }]
+  // Chamada DeepSeek (stream desabilitado para compatibilidade Next.js App Router)
+  try {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 25_000); // 25s timeout
+
+      const res = await fetch("https://api.deepseek.com/v1/chat/completions", {
+              method: "POST",
+              signal: controller.signal,
+              headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${apiKey}`,
+              },
+              body: JSON.stringify({
+                        model: "deepseek-chat",
+                        messages: [
+                          { role: "system", content: SYSTEM_PROMPT },
+                                    ...safeMessages,
+                                  ],
+                        max_tokens: MAX_TOKENS_RESPONSE,
+                        temperature: TEMPERATURE,
+                        stream: false,
+                        frequency_penalty: 0.1,
+                        presence_penalty: 0.05,
+              }),
       });
-    }
 
-    const data = await res.json();
-    return NextResponse.json(data);
-  } catch (err) {
-    console.error("Chat API error:", err);
-    return NextResponse.json({ error: "Erro interno" }, { status: 500 });
+      clearTimeout(timeout);
+
+      if (!res.ok) {
+              const err = await res.text().catch(() => "");
+              console.error(`[chat] DeepSeek ${res.status}:`, err.slice(0, 200));
+
+          if (res.status === 402) {
+                    return NextResponse.json({
+                                choices: [{
+                                              message: {
+                                                              content:
+                                                                                "⚙️ Créditos da IA esgotados temporariamente. Explore as trilhas enquanto isso!",
+                                              },
+                                }],
+                    });
+          }
+
+          if (res.status === 429) {
+                    return NextResponse.json(
+                      { error: "Serviço temporariamente sobrecarregado. Tente em instantes." },
+                      { status: 503 }
+                              );
+          }
+
+          return NextResponse.json(
+            { error: "Erro ao processar resposta da IA. Tente novamente." },
+            { status: 502 }
+                  );
+      }
+
+      const data = await res.json();
+        return NextResponse.json(data);
+
+  } catch (err: unknown) {
+        if (err instanceof Error && err.name === "AbortError") {
+                return NextResponse.json(
+                  { error: "A IA demorou demais para responder. Tente uma pergunta mais curta." },
+                  { status: 504 }
+                        );
+        }
+        console.error("[chat] Erro interno:", err);
+        return NextResponse.json({ error: "Erro interno." }, { status: 500 });
   }
 }
