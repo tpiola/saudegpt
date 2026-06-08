@@ -200,7 +200,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  /* Mobile tap highlight */ 
+  overflow-x: hidden !important;
   -webkit-tap-highlight-color: transparent;
 }
 

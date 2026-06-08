@@ -47,7 +47,7 @@ export default function HomePage() {
   const total = totalAulas();
 
   return (
-    <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden grain-overlay">
+    <div className="relative min-h-dvh bg-background text-foreground overflow-x-hidden grain-overlay pb-[env(safe-area-inset-bottom,0px)]">
 
       {/* Ambient blobs */}
       <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
@@ -376,7 +376,7 @@ export default function HomePage() {
                       <span className={`text-[10px] sm:text-xs ${q.done ? 'text-green-400/50' : 'text-yellow-400'}`}>{q.xp}</span>
                     </div>
                     {!q.done && (
-                      <Link href="/missoes" className="shrink-0 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-3 sm:px-4 py-2.5 sm:py-3 text-[10px] sm:text-xs font-semibold text-white transition-all hover:scale-105 active:scale-95 min-h-[44px] inline-flex items-center">
+                      <Link href="/missoes" className="shrink-0 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 px-3 sm:px-4 py-3 sm:py-3 text-[10px] sm:text-xs font-semibold text-white transition-all hover:scale-105 active:scale-95 min-h-[44px] inline-flex items-center">
                         Fazer
                       </Link>
                     )}

@@ -117,7 +117,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </Link>
           <button
             type="button"
-            className="lg:hidden"
+            className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
             onClick={() => setMenuAberto(false)}
             aria-label="Fechar menu"
           >
@@ -147,7 +147,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                     <Link
                       href={item.href}
                       onClick={() => setMenuAberto(false)}
-                      className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
+                    className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
                           ? "bg-gradient-to-r from-forest-500/[0.08] to-transparent text-foreground shadow-sm"
                           : "text-muted hover:bg-surface-2/50 hover:text-foreground"
@@ -239,7 +239,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border border-border-strong text-muted md:hidden"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-border-strong text-muted md:hidden"
               onClick={() => setMenuAberto(true)}
               aria-label="Abrir menu"
             >
@@ -267,7 +267,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <WhatsAppButton />
         <ChatBotIA />
 
-        <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6">
+        <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
           <p>{site.assinatura}</p>
           <p className="mt-1">
             Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
