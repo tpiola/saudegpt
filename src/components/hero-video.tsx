@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 
-const VIDEOS = [
+const IMAGES = [
   { id: 21589, label: "📚 Biblioteca estudos" },
   { id: 5433,  label: "💊 Farmacêutica atendendo" },
   { id: 21598, label: "📚 Torre de livros" },
@@ -21,7 +21,7 @@ const PARTICLES = Array.from({ length: 8 }, (_, i) => ({
   top: `${(i * 73 + 17) % 100}%`,
   delay: `${(i * 0.6) % 5}s`,
   size: `${4 + (i % 2) * 4}px`,
-  mobile: i < 4, // só primeiras 4 aparecem em mobile
+  mobile: i < 4,
 }));
 
 interface HeroVideoProps {
@@ -30,45 +30,23 @@ interface HeroVideoProps {
 
 export function HeroVideo({ className = "" }: HeroVideoProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [loaded, setLoaded] = useState(false);
-  const [errored, setErrored] = useState<Record<number, boolean>>({});
-  const [scrollY, setScrollY] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => setMounted(true));
-    setIsMobile(window.matchMedia("(max-width: 768px)").matches);
     return () => cancelAnimationFrame(raf);
   }, []);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setCurrentIndex((p) => (p + 1) % VIDEOS.length);
+      setCurrentIndex((p) => (p + 1) % IMAGES.length);
     }, CROSSFADE_MS);
     return () => clearInterval(id);
   }, []);
 
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const parallaxOffset = Math.min(scrollY * 0.3, 80);
-  const allFailed = VIDEOS.every((v) => errored[v.id]);
-  const current = VIDEOS[currentIndex];
-  const next = VIDEOS[(currentIndex + 1) % VIDEOS.length];
+  const current = IMAGES[currentIndex];
+  const next = IMAGES[(currentIndex + 1) % IMAGES.length];
 
   return (
     <div
@@ -79,7 +57,7 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
         transition: "opacity 1s ease-in-out",
       }}
     >
-      {/* Shimmer particles — só 4 em mobile pra menos DOM */}
+      {/* Shimmer particles */}
       {PARTICLES.map((p, i) => (
         <div
           key={i}
@@ -95,47 +73,19 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
         />
       ))}
 
-      {/* Poster AVIF — carrega INSTANTANEAMENTE (4-13KB) */}
-      <img
-        src={`/videos/${current.id}-poster.avif`}
-        alt=""
-        aria-hidden
-        className="absolute inset-0 h-full w-full object-cover z-0"
-        style={{ filter: "brightness(0.6)" }}
-      />
-
-      {/* Vídeos — só no desktop, 1 por vez com poster nativo */}
-      {!isMobile && (
-        <div
-          className="absolute -top-[10%] left-0 h-[120%] w-full"
-          style={{
-            transform: `translateY(${-parallaxOffset}px)`,
-            willChange: "transform",
-          }}
-        >
-          {[current, next].map((v) => (
-            <video
-              key={v.id}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload={v.id === current.id ? "auto" : "none"}
-              poster={`/videos/${v.id}-poster.avif`}
-              onLoadedData={() => { if (!loaded) setLoaded(true); }}
-              onError={() => setErrored((p) => ({ ...p, [v.id]: true }))}
-              className={`absolute inset-0 h-full w-full object-cover hero-zoom-video transition-opacity duration-[1200ms] ease-in-out ${
-                v.id === current.id ? "opacity-100 z-10" : "opacity-0 z-0"
-              } ${loaded ? "" : "opacity-0"}`}
-              style={{
-                animation: v.id === current.id ? "hero-zoom 20s ease-out forwards" : "none",
-              }}
-            >
-              <source src={`https://assets.mixkit.co/videos/${v.id}/${v.id}-720.mp4`} type="video/mp4" />
-            </video>
-          ))}
-        </div>
-      )}
+      {/* Poster AVIF com crossfade entre imagens — sem vídeo */}
+      {[current, next].map((img) => (
+        <img
+          key={img.id}
+          src={`/videos/${img.id}-poster.avif`}
+          alt=""
+          aria-hidden
+          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out ${
+            img.id === current.id ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+          style={{ filter: "brightness(0.6)" }}
+        />
+      ))}
 
       {/* Gradient overlays */}
       <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#020617]/50 via-[#0f172a]/40 to-[#020617]/70" />
@@ -160,10 +110,6 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
           backgroundSize: "60px 60px",
         }}
       />
-
-      {allFailed && (
-        <div className="absolute inset-0 z-40 bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#020617]" />
-      )}
     </div>
   );
 }
