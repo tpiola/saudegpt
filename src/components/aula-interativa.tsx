@@ -6,6 +6,7 @@ import { useProgresso } from "@/lib/progress";
 import { Botao, Card, Etiqueta } from "./ui";
 import { Icon } from "./icons";
 import { CelebracaoXp } from "./celebracao-xp";
+import { CelebracaoModal } from "./celebracao-modal";
 import { Confetti } from "./confetti";
 
 interface ProximaInfo {
@@ -32,11 +33,15 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
     carregado,
     adicionarTempoEstudo,
     registrarTentativaQuiz,
+    nivel,
+    xpProximoNivel,
   } = useProgresso();
 
   const [respostas, setRespostas] = useState<Record<number, number>>({});
   const [enviado, setEnviado] = useState(false);
   const [celebrar, setCelebrar] = useState(false);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const nivelAnterior = useRef<number | null>(null);
 
   useEffect(() => {
     registrarVisita(trilhaId, aulaId);
@@ -63,17 +68,42 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
   }
 
   function concluir() {
+    const nivelAntes = nivel;
     concluirAula(trilhaId, aulaId, xp, quiz.length ? nota : undefined);
     setCelebrar(true);
     window.setTimeout(() => setCelebrar(false), 3000);
+    // Abre o modal de celebração com confete + frases
+    setMostrarModal(true);
   }
 
   const favorita = carregado && ehFavorita(trilhaId, aulaId);
+
+  // Detecta mudança de nível (level-up)
+  useEffect(() => {
+    if (nivelAnterior.current != null && nivel > nivelAnterior.current) {
+      setMostrarModal(true);
+    }
+    if (nivelAnterior.current == null) {
+      nivelAnterior.current = nivel;
+    }
+  }, [nivel]);
+
+  useEffect(() => {
+    if (mostrarModal) {
+      nivelAnterior.current = nivel;
+    }
+  }, [mostrarModal, nivel]);
 
   return (
     <div className="space-y-6">
       <Confetti ativo={celebrar} duracao={3000} />
       <CelebracaoXp xp={xp} ativo={celebrar} />
+      <CelebracaoModal
+        aberto={mostrarModal}
+        onClose={() => setMostrarModal(false)}
+        xpGanho={xp}
+        duracaoConfete={4000}
+      />
       {/* Quiz */}
       {quiz.length > 0 && (
         <Card id="quiz" className="scroll-mt-24">

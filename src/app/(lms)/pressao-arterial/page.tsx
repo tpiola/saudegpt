@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import PressaoArterialDiagram from "@/components/diagrams/PressaoArterialDiagram";
+import AnimacaoCoracao from "@/components/animacao-coracao";
 
 export const metadata: Metadata = {
   title: "Pressão Arterial · Guia Fácil",
@@ -110,45 +112,54 @@ export default function PressaoArterialPage() {
 
         {/* Conteúdo */}
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12 pt-20 pb-16">
-          <div className="max-w-3xl">
-            {/* Badge */}
-            <div className="badge-orange inline-flex mb-6">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
-              Saúde do coração
+          <div className="flex flex-col lg:flex-row lg:items-center gap-8">
+            {/* Texto — esquerda */}
+            <div className="max-w-3xl flex-1">
+              {/* Badge */}
+              <div className="badge-orange inline-flex mb-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
+                Saúde do coração
+              </div>
+
+              <h1 className="text-[clamp(2.2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">
+                <span className="text-white">Pressão Arterial</span>
+                <br />
+                <span className="text-white/70 font-light">Guia Fácil para Atendentes</span>
+              </h1>
+
+              <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-white/50 font-light">
+                Tudo que você precisa saber para entender, orientar e cuidar de quem chega ao balcão com{" "}
+                <span className="text-white/80 font-medium">dúvidas sobre pressão alta ou baixa</span>.
+              </p>
+
+              {/* Stats */}
+              <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+                {[
+                  { value: "5", label: "tópicos" },
+                  { value: "130/80", label: "novo limite SBC" },
+                  { value: "Fácil", label: "de entender" },
+                ].map((s) => (
+                  <div key={s.label} className="flex items-center gap-2">
+                    <span className="text-xl sm:text-2xl font-bold text-orange-400 tabular-nums">
+                      {s.value}
+                    </span>
+                    <span className="text-[11px] uppercase tracking-[0.12em] text-white/40 font-medium">
+                      {s.label}
+                    </span>
+                    <span className="hidden sm:block w-px h-4 bg-white/10 last:hidden" />
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <h1 className="text-[clamp(2.2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.05]">
-              <span className="text-white">Pressão Arterial</span>
-              <br />
-              <span className="text-white/70 font-light">Guia Fácil para Atendentes</span>
-            </h1>
-
-            <p className="mt-5 max-w-xl text-base sm:text-lg leading-relaxed text-white/50 font-light">
-              Tudo que você precisa saber para entender, orientar e cuidar de quem chega ao balcão com{" "}
-              <span className="text-white/80 font-medium">dúvidas sobre pressão alta ou baixa</span>.
-            </p>
-
-            {/* Stats */}
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
-              {[
-                { value: "5", label: "tópicos" },
-                { value: "130/80", label: "novo limite SBC" },
-                { value: "Fácil", label: "de entender" },
-              ].map((s) => (
-                <div key={s.label} className="flex items-center gap-2">
-                  <span className="text-xl sm:text-2xl font-bold text-orange-400 tabular-nums">
-                    {s.value}
-                  </span>
-                  <span className="text-[11px] uppercase tracking-[0.12em] text-white/40 font-medium">
-                    {s.label}
-                  </span>
-                  <span className="hidden sm:block w-px h-4 bg-white/10 last:hidden" />
-                </div>
-              ))}
+            {/* Coração animado — direita */}
+            <div className="shrink-0">
+              <AnimacaoCoracao tamanho={130} cor="#f49b44" ativo />
             </div>
+          </div>
 
-            {/* Navegação rápida */}
-            <div className="mt-10 flex flex-wrap gap-3">
+          {/* Navegação rápida */}
+          <div className="mt-10 flex flex-wrap gap-3">
               {topicos.map((t) => (
                 <a
                   key={t.id}
@@ -159,7 +170,6 @@ export default function PressaoArterialPage() {
                 </a>
               ))}
             </div>
-          </div>
         </div>
 
         {/* Scroll indicator */}
@@ -213,16 +223,20 @@ export default function PressaoArterialPage() {
 
               {/* Imagem — 2 colunas */}
               <div className={`lg:col-span-2 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
-                <div className="group relative overflow-hidden rounded-2xl shadow-lg">
-                  <Image
-                    src={topico.imagem}
-                    alt=""
-                    width={600}
-                    height={450}
-                    className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
+                {topico.id === "sistolica-diastolica" ? (
+                  <PressaoArterialDiagram />
+                ) : (
+                  <div className="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src={topico.imagem}
+                      alt=""
+                      width={600}
+                      height={450}
+                      className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                )}
               </div>
             </div>
           </div>

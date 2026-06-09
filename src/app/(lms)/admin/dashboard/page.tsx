@@ -116,7 +116,7 @@ function StatCard({
   };
 
   return (
-    <div className={cn("rounded-2xl border bg-gradient-to-br p-6", colors[color])}>
+    <div className={cn("rounded-2xl border bg-gradient-to-br p-6 hover-lift", colors[color])}>
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm font-medium opacity-70">{label}</p>
@@ -210,7 +210,7 @@ export default function AdminDashboardPage() {
         {/* ═══ GRÁFICOS ═══ */}
         <div className="mt-8 grid gap-6 lg:grid-cols-2">
           {/* Progresso Semanal */}
-          <Card>
+          <Card className="card-hover-premium">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -258,7 +258,7 @@ export default function AdminDashboardPage() {
           </Card>
 
           {/* XP Acumulado */}
-          <Card>
+          <Card className="card-hover-premium">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -298,7 +298,7 @@ export default function AdminDashboardPage() {
           </Card>
 
           {/* Drop-off Rate */}
-          <Card>
+          <Card className="card-hover-premium">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -341,7 +341,7 @@ export default function AdminDashboardPage() {
           </Card>
 
           {/* Distribuição por Trilha */}
-          <Card>
+          <Card className="card-hover-premium">
             <CardHeader>
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -398,7 +398,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* ═══ TABELA DE ALUNOS ═══ */}
-        <Card className="mt-8">
+        <Card className="card-hover-premium mt-8">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="flex items-center gap-2">

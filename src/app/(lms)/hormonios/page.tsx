@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import HormoniosDiagram from "@/components/diagrams/HormoniosDiagram";
 
 export const metadata: Metadata = {
   title: "Hormônios · Guia Fácil",
@@ -255,16 +256,20 @@ export default function HormoniosPage() {
 
               {/* Imagem — 2 colunas */}
               <div className={`lg:col-span-2 ${idx % 2 === 1 ? "lg:order-1" : ""}`}>
-                <div className="group relative overflow-hidden rounded-2xl shadow-lg">
-                  <Image
-                    src={topico.imagem}
-                    alt=""
-                    width={600}
-                    height={450}
-                    className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
+                {topico.id === "o-que-sao" ? (
+                  <HormoniosDiagram />
+                ) : (
+                  <div className="group relative overflow-hidden rounded-2xl shadow-lg">
+                    <Image
+                      src={topico.imagem}
+                      alt=""
+                      width={600}
+                      height={450}
+                      className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  </div>
+                )}
               </div>
             </div>
           </div>

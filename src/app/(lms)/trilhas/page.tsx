@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { trilhas, totalAulas } from "@/content/curriculo";
-import { Botao, Card, Etiqueta, DividerGlow } from "@/components/ui";
+import { Botao, DividerGlow } from "@/components/ui";
 import { Icon, type IconName } from "@/components/icons";
 import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 
@@ -158,11 +158,11 @@ export default function TrilhasPage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {sabiaQueCards.map((card) => (
               <div
                 key={card.titulo}
-                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-orange-300/50 overflow-hidden"
+                className="card-stripe group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-500 overflow-hidden"
               >
                 {/* Background image sutil */}
                 <div
@@ -171,7 +171,7 @@ export default function TrilhasPage() {
                 />
                 <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-green-400 to-orange-400" />
                 <span className="mt-2 block text-3xl relative z-10">{card.emoji}</span>
-                <span className="mt-2 inline-block badge-green text-[10px] relative z-10">{card.badge}</span>
+                <span className="mt-2 inline-block badge-premium text-[10px] relative z-10">{card.badge}</span>
                 <h3 className="mt-3 text-sm font-bold text-foreground font-display relative z-10">
                   {card.titulo}
                 </h3>
@@ -228,7 +228,7 @@ export default function TrilhasPage() {
 
           <DividerGlow className="my-10" />
 
-          <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {trilhas.map((t, idx) => {
               const totalAulasTrilha = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
               const cor = coresTrilha[idx % coresTrilha.length];
@@ -237,113 +237,66 @@ export default function TrilhasPage() {
               return (
                 <div
                   key={t.id}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-500 hover:-translate-y-1 hover:shadow-xl hover:border-orange-300/40"
+                  className="card-vercel group relative overflow-hidden rounded-2xl border border-border bg-surface transition-all duration-500 hover:shadow-xl hover:shadow-green-500/10 hover:-translate-y-2"
                 >
-                  {/* Grid de imagem + conteúdo */}
-                  <div className="flex flex-col md:flex-row">
-                    {/* Imagem lateral */}
-                    <div className="relative h-48 w-full shrink-0 overflow-hidden md:h-auto md:w-72 lg:w-80">
-                      <Image
-                        src={img}
-                        alt=""
-                        fill
-                        className="object-cover transition-all duration-700 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 320px"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 via-transparent to-transparent md:bg-gradient-to-r md:from-forest-500/40 md:via-transparent md:to-transparent" />
+                  {/* Imagem top */}
+                  <div className="relative h-40 w-full overflow-hidden">
+                    <Image
+                      src={img}
+                      alt=""
+                      fill
+                      className="object-cover transition-all duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 via-transparent to-transparent" />
+                    {/* Badge de nível - pill com gradiente */}
+                    <div className="absolute top-3 left-3">
+                      <span className={`inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-[10px] font-semibold tracking-wider ${
+                        cor.badge === "green"
+                          ? "badge-premium"
+                          : "bg-gradient-to-r from-orange-500/20 to-orange-400/10 text-orange-600 dark:text-orange-400 border border-orange-400/20"
+                      }`}>
+                        Trilha {t.numero}
+                      </span>
+                    </div>
+                    <div className="absolute top-3 right-3">
+                      <span className="badge-premium text-[10px]">{t.nivelFaixa}</span>
+                    </div>
+                  </div>
+
+                  {/* Conteúdo */}
+                  <div className="p-6">
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors font-display">
+                      {t.titulo}
+                    </h3>
+
+                    <p className="mt-2 text-xs leading-relaxed text-muted line-clamp-2">
+                      {t.descricao}
+                    </p>
+
+                    {/* Stats */}
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-[10px] font-medium text-subtle ring-1 ring-border-strong/30">
+                        <Icon name="book" size={12} />
+                        {t.modulos.length} {t.modulos.length === 1 ? "módulo" : "módulos"}
+                      </span>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-2.5 py-1 text-[10px] font-medium text-subtle ring-1 ring-border-strong/30">
+                        <Icon name="play" size={12} />
+                        {totalAulasTrilha} {totalAulasTrilha === 1 ? "aula" : "aulas"}
+                      </span>
                     </div>
 
-                    {/* Conteúdo */}
-                    <div className="flex flex-1 flex-col p-6 sm:p-8">
-                      {/* Badges */}
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className={`inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wider ${
-                          cor.badge === "green"
-                            ? "bg-green-50 text-green-700 dark:bg-green-900/40 dark:text-green-200"
-                            : "bg-orange-50 text-orange-700 dark:bg-orange-900/40 dark:text-orange-200"
-                        }`}>
-                          Trilha {t.numero}
-                        </span>
-                        <Etiqueta tom="neutral">{t.subtitulo}</Etiqueta>
-                        <Etiqueta tom="neutral">{t.nivelFaixa}</Etiqueta>
-                      </div>
-
-                      <h3 className="mt-3 text-xl font-bold tracking-tight text-foreground group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors font-display">
-                        {t.titulo}
-                      </h3>
-
-                      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
-                        {t.descricao}
-                      </p>
-
-                      {/* Stats */}
-                      <div className="mt-4 flex flex-wrap gap-3">
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
-                          <Icon name="book" size={14} />
-                          {t.modulos.length} {t.modulos.length === 1 ? "módulo" : "módulos"}
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-surface-2 px-3 py-1 text-xs font-medium text-subtle ring-1 ring-border-strong/30">
-                          <Icon name="play" size={14} />
-                          {totalAulasTrilha} {totalAulasTrilha === 1 ? "aula" : "aulas"}
-                        </span>
-                      </div>
-
-                      {/* Para quem é esta trilha — 4Ps natural */}
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {t.id === "perfumaria" && (
-                          <>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                              🧴 Produto: categorias e marcas
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                              🏪 Praça: organização da loja
-                            </span>
-                          </>
-                        )}
-                        {t.id === "medicamentos" && (
-                          <>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                              💊 Produto: classes e segurança
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                              💰 Preço: estratégias de desconto legal
-                            </span>
-                          </>
-                        )}
-                        {t.id === "operacional" && (
-                          <>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                              📋 Promoção: ações no PDV
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                              🏪 Praça: fluxo e exposição
-                            </span>
-                          </>
-                        )}
-                        {t.id === "encantamento" && (
-                          <>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-0.5 text-[10px] font-medium text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                              🤝 Promoção: relacionamento e fidelização
-                            </span>
-                            <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-                              💰 Preço: valor percebido no cuidado
-                            </span>
-                          </>
-                        )}
-                      </div>
-
-                      {/* Ação */}
-                      <div className="mt-5 flex items-center justify-between gap-4">
-                        <ProgressoTrilhaBadge trilhaId={t.id} />
-                        <Botao
-                          href={`/trilhas/${t.id}`}
-                          variante="primary"
-                          tamanho="md"
-                          iconeFim="arrow"
-                        >
-                          Acessar trilha
-                        </Botao>
-                      </div>
+                    {/* Ação */}
+                    <div className="mt-5 flex items-center justify-between gap-4">
+                      <ProgressoTrilhaBadge trilhaId={t.id} />
+                      <Botao
+                        href={`/trilhas/${t.id}`}
+                        variante="primary"
+                        tamanho="sm"
+                        iconeFim="arrow"
+                      >
+                        Acessar
+                      </Botao>
                     </div>
                   </div>
                 </div>
@@ -352,7 +305,7 @@ export default function TrilhasPage() {
           </div>
 
           {/* 💡 Card de sabia que? — Bioimpedância e hidratação */}
-          <div className="mt-10 rounded-2xl border border-green-200/50 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-800">
+          <div className="mt-10 rounded-2xl border border-green-200/50 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-800 glow-border">
             <div className="flex items-start gap-4">
               <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-xl dark:bg-green-900/30">
                 💡

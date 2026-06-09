@@ -9,6 +9,7 @@ import { StreakFreezeDisplay } from "@/components/streak-freeze";
 import type { Trilha } from "@/content/types";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimarEntradaPremium } from "@/components/animar-entrada-premium";
 
 /* ─── Typography (responsive clamp) ─── */
 const h1 = "font-display text-[clamp(2rem,7vw,4.5rem)] font-extrabold leading-[1.0] tracking-[-0.04em]";
@@ -58,11 +59,13 @@ export default function HomePage() {
       </div>
 
       {/* ═══ HERO — mobile-first cinematic ═══ */}
-      <section className="relative flex min-h-[90dvh] min-h-[100svh] items-center overflow-hidden bg-[#020617]">
+      <section className="relative flex min-h-[100dvh] min-h-[100svh] items-center overflow-hidden bg-[#020617]">
         <HeroVideo />
         <div className="pointer-events-none absolute inset-0 z-20 transition-all duration-700"
           style={{ background: 'radial-gradient(800px at 50% 50%, rgba(74,222,128,0.08), transparent 60%)' }}
         />
+        {/* Grid pattern sutil */}
+        <div className="pointer-events-none absolute inset-0 z-[3] pattern-grid opacity-[0.04]" />
 
         <div className="relative z-40 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12">
           <div className="max-w-3xl mx-auto sm:mx-0">
@@ -134,6 +137,7 @@ export default function HomePage() {
       </section>
 
       {/* ═══ MISSÃO ═══ */}
+      <AnimarEntradaPremium direction="fade-up" delay={100}>
       <section className="relative overflow-hidden bg-gradient-to-br from-green-950 via-emerald-950 to-forest-950 py-16 sm:py-24">
         <SectionVideo {...SECTION_VIDEOS.missao} />
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -170,9 +174,9 @@ export default function HomePage() {
                 { icon:"globe" as IconName, title:"Saúde que alcança", desc:"Cada pessoa bem atendida leva saúde para a família.", color:"text-yellow-400" },
               ].map((item,i)=>(
                 <div key={item.title}
-                  className="group rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:-translate-y-1 sm:hover:-translate-y-2 hover:border-green-400/30 hover:shadow-xl hover:shadow-green-500/10">
-                  <span className={`mb-3 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-400/10 ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300`}>
-                    <Icon name={item.icon} size={20} sm-size={24} className={item.color} />
+                  className="card-stripe group rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-7 backdrop-blur-sm transition-all duration-500 hover:bg-white/10 hover:-translate-y-2 hover:border-green-400/30 hover:shadow-xl hover:shadow-green-500/10">
+                  <span className={`mb-3 flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-400/10 ring-1 ring-green-400/20 group-hover:ring-green-400/40 group-hover:scale-110 transition-all duration-300`}>
+                    <Icon name={item.icon} size={24} sm-size={28} className={item.color} />
                   </span>
                   <h4 className="text-sm sm:text-base font-semibold text-white">{item.title}</h4>
                   <p className="mt-1 text-xs sm:text-sm text-white/50 leading-relaxed">{item.desc}</p>
@@ -182,8 +186,10 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+      </AnimarEntradaPremium>
 
       {/* ═══ JORNADA ═══ */}
+      <AnimarEntradaPremium direction="fade-up" delay={100}>
       <section className="relative overflow-hidden bg-surface py-16 sm:py-24">
         <div className="pointer-events-none absolute left-0 top-0 h-80 w-80 rounded-full bg-green-500/5 blur-[120px]" />
         <div className="pointer-events-none absolute right-0 bottom-0 h-80 w-80 rounded-full bg-yellow-500/5 blur-[120px]" />
@@ -237,8 +243,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </AnimarEntradaPremium>
 
       {/* ═══ GAME CENTER — GAMIFICAÇÃO ELEVADA ═══ */}
+      <AnimarEntradaPremium direction="fade-up" delay={100}>
       <section className="relative overflow-hidden bg-gradient-to-br from-green-950 via-emerald-900 to-forest-950 py-16 sm:py-20">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(74,222,128,0.06),transparent_60%)]" />
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -393,6 +401,7 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+      </AnimarEntradaPremium>
 
       {/* ═══ FEED — CONTEÚDO ═══ */}
       <div id="feed" className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -414,8 +423,8 @@ export default function HomePage() {
 
         {/* Trilhas carousel */}
         <ScrollReveal direction="none" delay={100}>
-          <div className="mb-10 sm:mb-14">
-            <div className="flex gap-3 sm:gap-5 overflow-x-auto pb-3 sm:pb-4 snap-x snap-mandatory scrollbar-none -mx-4 sm:mx-0 px-4 sm:px-0">
+          <div className="mb-12 sm:mb-16">
+            <div className="flex gap-5 sm:gap-6 overflow-x-auto pb-4 sm:pb-5 snap-x snap-mandatory scrollbar-none -mx-4 sm:mx-0 px-4 sm:px-0">
               {trilhas.slice(0,6).map((t,i)=>(
                 <Link key={t.id} href={`/trilhas/${t.id}`}
                   className="group snap-start shrink-0 flex flex-col items-center gap-2 sm:gap-3 rounded-2xl border border-border/60 bg-gradient-to-b from-surface to-muted/10 p-4 sm:p-6 transition-all duration-500 hover:-translate-y-2 sm:hover:-translate-y-3 hover:border-green-400/40 hover:shadow-xl hover:shadow-green-500/10 w-[110px] sm:w-[140px] tilt-in"
@@ -692,11 +701,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══ CTA FINAL ═══ */}
-      <section id="ser-aluno" className="relative overflow-hidden bg-gradient-to-br from-green-900 via-emerald-800 to-forest-900 py-16 sm:py-24">
+      {/* ═══ CTA FINAL — Bolder gradient + strong shadow ═══ */}
+      <section id="ser-aluno" className="relative overflow-hidden bg-gradient-to-br from-green-900 via-emerald-800 to-forest-900 py-20 sm:py-28">
         <SectionVideo {...SECTION_VIDEOS.cta} />
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50vmax] w-[50vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/5 blur-[150px]" />
-        <div className="pointer-events-none absolute right-[10%] top-[20%] h-[40vmax] w-[40vmax] rounded-full bg-yellow-400/5 blur-[120px] blob-morph" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[60vmax] w-[60vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400/8 blur-[150px]" />
+        <div className="pointer-events-none absolute right-[10%] top-[20%] h-[45vmax] w-[45vmax] rounded-full bg-yellow-400/8 blur-[120px] blob-morph" />
         <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
           <div className="grid items-center gap-8 sm:gap-12 md:grid-cols-2">
             <ScrollReveal direction="up" sm-direction="left">

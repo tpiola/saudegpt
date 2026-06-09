@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useEffect, useState, useRef } from "react";
 import {
   AreaChart,
   Area,
@@ -15,6 +15,8 @@ import { listarAulas, trilhas } from "@/content/curriculo";
 import { chaveAula, useProgresso } from "@/lib/progress";
 import { usePerfilAluno } from "@/lib/aluno";
 import { Card, BarraProgresso, Skeleton } from "./ui";
+import { CelebracaoModal } from "./celebracao-modal";
+import { XpFloat } from "./xp-float";
 import Link from "next/link";
 
 /* ───────── helpers ───────── */
@@ -71,6 +73,31 @@ export function DashboardAluno() {
   const prog = useProgresso();
   const { perfil } = usePerfilAluno();
   const todas = listarAulas();
+
+  const [mostrarCelebracao, setMostrarCelebracao] = useState(false);
+  const [xpFloatAtivo, setXpFloatAtivo] = useState(false);
+  const xpAnterior = useRef(0);
+  const nivelAnterior = useRef(prog.nivel);
+  const xpGanhoRef = useRef(0);
+
+  // Detecta mudança de XP e nível no dashboard
+  useEffect(() => {
+    if (!prog.carregado) return;
+    // Quando XP aumenta (veio de outra página)
+    if (xpAnterior.current > 0 && prog.xp > xpAnterior.current) {
+      const diff = prog.xp - xpAnterior.current;
+      xpGanhoRef.current = diff;
+      setXpFloatAtivo(true);
+      window.setTimeout(() => setXpFloatAtivo(false), 1500);
+    }
+    xpAnterior.current = prog.xp;
+
+    // Detecta level up
+    if (nivelAnterior.current > 0 && prog.nivel > nivelAnterior.current) {
+      setMostrarCelebracao(true);
+    }
+    nivelAnterior.current = prog.nivel;
+  }, [prog.xp, prog.nivel, prog.carregado]);
 
   if (!prog.carregado) {
     return (
@@ -138,8 +165,16 @@ export function DashboardAluno() {
 
   return (
     <div className="mx-auto max-w-6xl px-3 sm:px-4 lg:px-6 py-4 sm:py-8 lg:py-12">
+      {/* Gamificação: Modal de celebração e XP float */}
+      <CelebracaoModal
+        aberto={mostrarCelebracao}
+        onClose={() => setMostrarCelebracao(false)}
+        xpGanho={xpGanhoRef.current}
+        duracaoConfete={4000}
+      />
+
       {/* ─── 1. XP TOTAL + NÍVEL ─── */}
-      <Card className="mb-4 sm:mb-6 overflow-hidden bg-gradient-to-br from-forest-700 via-green-700 to-forest-800 p-4 sm:p-6 lg:p-8 text-white">
+      <Card className="mb-4 sm:mb-6 overflow-hidden bg-gradient-to-br from-forest-700 via-green-700 to-forest-800 p-4 sm:p-6 lg:p-8 text-white card-glow-anim">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="mb-1 flex items-center gap-2">
@@ -157,11 +192,14 @@ export function DashboardAluno() {
                 : "Que tal estudar um pouco hoje?"}
             </p>
           </div>
-          <div className="shrink-0 text-right">
+          <div className="shrink-0 text-right relative">
             <div className="text-4xl font-extrabold tracking-tight">
               {prog.xp}
             </div>
             <div className="text-xs text-white/60">XP total</div>
+            {xpFloatAtivo && (
+              <XpFloat valor={xpGanhoRef.current} cor="#85c88b" alinhamento="right" />
+            )}
           </div>
         </div>
         <div className="mt-4 max-w-md">
@@ -185,7 +223,7 @@ export function DashboardAluno() {
         {/* coluna esquerda */}
         <div className="flex flex-col gap-6">
           {/* ─── 2. GRÁFICO EVOLUÇÃO SEMANAL ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📈 Evolução Semanal
             </h3>
@@ -238,7 +276,7 @@ export function DashboardAluno() {
           </Card>
 
           {/* ─── 3. STREAK ─── */}
-          <Card className="relative overflow-hidden p-5">
+          <Card className="relative overflow-hidden p-5 hover-glow">
             <div className="flex items-start gap-4">
               <motion.div
                 className="shrink-0 text-5xl"
@@ -283,7 +321,7 @@ export function DashboardAluno() {
           </Card>
 
           {/* ─── 4. AULAS CONCLUÍDAS / PROGRESSO POR TRILHA ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📚 Aulas Concluídas
             </h3>
@@ -312,7 +350,7 @@ export function DashboardAluno() {
         {/* coluna direita */}
         <div className="flex flex-col gap-6">
           {/* ─── 5. TEMPO DE ESTUDO ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <div className="flex items-center gap-4">
               <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-forest-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20">
                 ⏱️
@@ -340,7 +378,7 @@ export function DashboardAluno() {
           </Card>
 
           {/* ─── 6. BADGES ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               🏅 Badges Desbloqueados
             </h3>
@@ -379,7 +417,7 @@ export function DashboardAluno() {
           </Card>
 
           {/* ─── 7. PRÓXIMAS AULAS RECOMENDADAS ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📖 Próximas Aulas
             </h3>
@@ -422,7 +460,7 @@ export function DashboardAluno() {
           </Card>
 
           {/* ─── 8. ESTATÍSTICAS ─── */}
-          <Card className="p-5">
+          <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📊 Estatísticas
             </h3>

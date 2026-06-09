@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { useProgresso } from "@/lib/progress";
 import { BarraProgresso } from "./ui";
+import { XpFloat } from "./xp-float";
 
 interface AlunoMock {
   nome: string;
@@ -31,6 +33,19 @@ function formatarXp(xp: number): string {
 
 export function GamificacaoRanking() {
   const { xp, nivel, carregado } = useProgresso();
+  const [xpFloatAtivo, setXpFloatAtivo] = useState(false);
+  const xpAnterior = useRef(0);
+  const xpGanhoRef = useRef(0);
+
+  useEffect(() => {
+    if (!carregado) return;
+    if (xpAnterior.current > 0 && xp > xpAnterior.current) {
+      xpGanhoRef.current = xp - xpAnterior.current;
+      setXpFloatAtivo(true);
+      setTimeout(() => setXpFloatAtivo(false), 1500);
+    }
+    xpAnterior.current = xp;
+  }, [xp, carregado]);
 
   if (!carregado) return null;
 
@@ -53,7 +68,7 @@ export function GamificacaoRanking() {
   return (
     <div className="space-y-6 mb-8">
       {/* 🎯 Status do Aluno */}
-      <div className="ranking-status-card">
+      <div className="ranking-status-card relative">
         <div className="flex items-center gap-4">
           <div className="ranking-status-level">{nivel}</div>
           <div className="flex-1 min-w-0">
@@ -67,6 +82,9 @@ export function GamificacaoRanking() {
             <p className="mt-1 text-xs text-subtle">
               Faltam {xpParaProximo - xpNoNivel} XP para o nível {nivel + 1}
             </p>
+            {xpFloatAtivo && (
+              <XpFloat valor={xpGanhoRef.current} alinhamento="right" />
+            )}
           </div>
         </div>
       </div>
