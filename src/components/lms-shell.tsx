@@ -12,6 +12,8 @@ import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
 import dynamic from "next/dynamic";
 
+import { MobileBottomNav } from "./mobile-bottom-nav";
+
 const ChatBotIA = dynamic(() => import("./chatbot-ia").then((m) => ({ default: m.ChatBotIA })), {
   ssr: false,
   loading: () => null,
@@ -267,8 +269,9 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <div className="flex-1 bg-background">{children}</div>
+        <div className="flex-1 bg-background has-bottom-nav">{children}</div>
 
+        <MobileBottomNav />
         <WhatsAppButton />
         <ChatBotIA />
 
