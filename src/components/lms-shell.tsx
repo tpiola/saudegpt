@@ -12,8 +12,6 @@ import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
 import dynamic from "next/dynamic";
 
-import { MobileBottomNav } from "./mobile-bottom-nav";
-
 const ChatBotIA = dynamic(() => import("./chatbot-ia").then((m) => ({ default: m.ChatBotIA })), {
   ssr: false,
   loading: () => null,
@@ -99,7 +97,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
          SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[min(100%,280px)] flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:w-[260px] lg:w-72 ${
+        className={`fixed inset-y-0 left-0 z-50 flex max-w-[280px] w-full flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:w-[260px] lg:w-72 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -154,7 +152,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                     <Link
                       href={item.href}
                       onClick={() => setMenuAberto(false)}
-                    className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-200 ${
+                      className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
                           ? "bg-gradient-to-r from-forest-500/[0.08] to-transparent text-foreground shadow-sm"
                           : "text-muted hover:bg-surface-2/50 hover:text-foreground"
@@ -241,7 +239,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
       {/* ════════════════════════════════════════════
          CONTEÚDO PRINCIPAL
          ════════════════════════════════════════════ */}
-      <div className="flex min-w-0 flex-1 flex-col">
+      <div className="flex min-w-0 flex-1 flex-col md:pl-[260px] lg:pl-72">
         <header className="sticky top-0 z-30 flex h-12 sm:h-14 items-center justify-between gap-2 sm:gap-3 border-b border-border bg-surface/95 px-3 sm:px-6 backdrop-blur-md">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
@@ -269,9 +267,8 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <div className="flex-1 bg-background has-bottom-nav">{children}</div>
+        <div className="flex-1 bg-background">{children}</div>
 
-        <MobileBottomNav />
         <WhatsAppButton />
         <ChatBotIA />
 

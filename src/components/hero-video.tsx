@@ -15,12 +15,13 @@ const VIDEOS = [
 
 const CROSSFADE_MS = 6000;
 
-/* 8 partículas shimmer */
+/* Partículas shimmer — menos em mobile (4) */
 const PARTICLES = Array.from({ length: 8 }, (_, i) => ({
   left: `${(i * 211 + 53) % 100}%`,
   top: `${(i * 73 + 17) % 100}%`,
   delay: `${(i * 0.6) % 5}s`,
   size: `${4 + (i % 2) * 4}px`,
+  mobile: i < 4, // só primeiras 4 aparecem em mobile
 }));
 
 interface HeroVideoProps {
@@ -78,11 +79,11 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
         transition: "opacity 1s ease-in-out",
       }}
     >
-      {/* Shimmer particles */}
+      {/* Shimmer particles — só 4 em mobile pra menos DOM */}
       {PARTICLES.map((p, i) => (
         <div
           key={i}
-          className="absolute rounded-full bg-white/50 hero-shimmer-particle"
+          className={`absolute rounded-full bg-white/50 hero-shimmer-particle ${p.mobile ? '' : 'hidden sm:block'}`}
           style={{
             left: p.left,
             top: p.top,
