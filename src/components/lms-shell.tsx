@@ -97,7 +97,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
          SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex max-w-[280px] w-full flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:w-[260px] lg:w-72 ${
+        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:w-[260px] lg:w-72 ${
           menuAberto ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -239,7 +239,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
       {/* ════════════════════════════════════════════
          CONTEÚDO PRINCIPAL
          ════════════════════════════════════════════ */}
-      <div className="flex min-w-0 flex-1 flex-col md:pl-[260px] lg:pl-72">
+      <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-30 flex h-12 sm:h-14 items-center justify-between gap-2 sm:gap-3 border-b border-border bg-surface/95 px-3 sm:px-6 backdrop-blur-md">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
