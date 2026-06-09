@@ -245,7 +245,7 @@ export function DashboardAluno() {
                 animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.8 }}
               >
-                {prog.estudouHoje ? <span className="streak-fire">🔥</span> : "⏰"}
+                {prog.estudouHoje ? "🔥" : "⏰"}
               </motion.div>
               <div className="flex-1">
                 <h3 className="text-sm font-bold">Sequência de Estudos</h3>
