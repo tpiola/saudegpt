@@ -97,9 +97,10 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
          SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:w-[260px] lg:w-72 ${
-          menuAberto ? "translate-x-0" : "-translate-x-full"
-        }`}
+      className={`fixed inset-y-0 left-0 z-50 flex flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 ${
+        menuAberto ? "translate-x-0" : "-translate-x-full"
+      }`}
+      style={{ width: 288 }}
       >
         {/* Barra decorativa — forest green + orange */}
         <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-forest-500 via-orange-400 to-forest-500 opacity-80" />
