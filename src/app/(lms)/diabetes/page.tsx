@@ -116,22 +116,8 @@ export default function DiabetesPage() {
          HERO — COM VÍDEO DE FUNDO
          ════════════════════════════════════════════ */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
-        {/* Vídeo de fundo */}
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover opacity-40"
-            poster="/hero-dashboard.jpg"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/6562/6562-720.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
+        {/* Fundo gradiente */}
+        <div className="absolute inset-0 bg-gradient-to-br from-forest-700 to-forest-900" />
 
         {/* Overlay gradiente */}
         <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-red-500/20" />
