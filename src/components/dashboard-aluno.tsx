@@ -137,9 +137,9 @@ export function DashboardAluno() {
   }));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+    <div className="mx-auto max-w-6xl px-3 sm:px-4 lg:px-6 py-4 sm:py-8 lg:py-12">
       {/* ─── 1. XP TOTAL + NÍVEL ─── */}
-      <Card className="mb-6 overflow-hidden bg-gradient-to-br from-forest-700 via-green-700 to-forest-800 p-6 text-white sm:p-8">
+      <Card className="mb-4 sm:mb-6 overflow-hidden bg-gradient-to-br from-forest-700 via-green-700 to-forest-800 p-4 sm:p-6 lg:p-8 text-white">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="mb-1 flex items-center gap-2">
@@ -181,7 +181,7 @@ export function DashboardAluno() {
       </Card>
 
       {/* ─── GRID PRINCIPAL 2-COL ─── */}
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
         {/* coluna esquerda */}
         <div className="flex flex-col gap-6">
           {/* ─── 2. GRÁFICO EVOLUÇÃO SEMANAL ─── */}
@@ -245,7 +245,7 @@ export function DashboardAluno() {
                 animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.8 }}
               >
-                {prog.estudouHoje ? "🔥" : "⏰"}
+                {prog.estudouHoje ? <span className="streak-fire">🔥</span> : "⏰"}
               </motion.div>
               <div className="flex-1">
                 <h3 className="text-sm font-bold">Sequência de Estudos</h3>
@@ -347,7 +347,7 @@ export function DashboardAluno() {
             <p className="mb-4 text-xs text-muted">
               {badgesAtivos.filter((b) => b.ativo).length} de {badgesAtivos.length} conquistados
             </p>
-            <div className="grid grid-cols-3 gap-2 sm:gap-3">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
               {badgesAtivos.map((b) => (
                 <div
                   key={b.label}
@@ -429,7 +429,7 @@ export function DashboardAluno() {
             <p className="mb-4 text-xs text-muted">
               Seu desempenho geral na plataforma
             </p>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            <div className="grid-stats mt-4">
               <div className="rounded-xl bg-surface-2 p-3 text-center">
                 <div className="text-xl font-extrabold text-green-600">
                   {mediaNotas != null ? `${mediaNotas}%` : "—"}
