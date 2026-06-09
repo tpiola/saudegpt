@@ -92,25 +92,8 @@ let nextConfig: NextConfig = {
             { source: "/cadastro",   destination: "/", permanent: true },
                 ];
     },
-
-    // ── Webpack personalizado ─────────────────────────────────────────────────
-    webpack(config, { isServer }) {
-          // Otimiza SVGs como componentes React
-      config.module.rules.push({
-              test: /\.svg$/,
-              use: ["@svgr/webpack"],
-      });
-
-      if (!isServer) {
-              // Tree-shaking mais agressivo no cliente
-            config.optimization.usedExports = true;
-      }
-
-      return config;
-    },
 };
-
-// ── Bundle Analyzer (ANALYZE=true npm run analyze) ────────────────────────────
+// // ── Bundle Analyzer (ANALYZE=true npm run analyze) ────────────────────────────
 if (process.env.ANALYZE === "true") {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
   const withBundleAnalyzer = require("@next/bundle-analyzer")({ enabled: true });
