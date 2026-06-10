@@ -2,59 +2,55 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
-import { navPrincipal } from "@/lib/site";
+import { useEffect, useState } from "react";
+import { navPrincipal, site } from "@/lib/site";
 import { Icon } from "./icons";
-import { ThemeToggle } from "./theme-toggle";
 import { LogoAcademico } from "./logo-academico";
+import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
+
+const navLanding = [
+  { href: "#trilhas", label: "Trilhas" },
+  { href: "#conteudo", label: "Conteúdo" },
+  { href: "#seguranca", label: "Segurança" },
+  { href: "#matricula", label: "Matrícula" },
+];
 
 export function Header() {
   const pathname = usePathname();
   const [aberto, setAberto] = useState(false);
+  const isLanding = pathname === "/";
+  const itens = isLanding ? navLanding : navPrincipal.slice(0, 5);
+  const ctaHref = isLanding ? "#matricula" : "/#matricula";
 
   useEffect(() => {
     setAberto(false);
   }, [pathname]);
 
-  const isLanding = pathname === "/";
-
   function ativo(href: string) {
-    return pathname === href || pathname.startsWith(`${href}/`);
+    return !href.startsWith("#") && (pathname === href || pathname.startsWith(`${href}/`));
   }
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
-        isLanding
-          ? "border-b border-white/5 bg-forest-500/80 backdrop-blur-xl"
-          : "border-b border-border glass"
-      }`}
-    >
-      <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1 sm:flex-initial" onClick={() => setAberto(false)}>
-          <span className="flex h-8 w-8 sm:h-9 sm:w-9 shrink-0 items-center justify-center rounded-full bg-forest-500 shadow-md">
-            <LogoAcademico size={isLanding ? 32 : 32} />
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-500/88 text-white backdrop-blur-xl">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
+        <Link href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setAberto(false)}>
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15">
+            <LogoAcademico size={30} />
           </span>
-          <span className="hidden flex-col leading-tight sm:flex min-w-0">
-            <span className={`truncate text-sm font-bold tracking-tight ${isLanding ? "text-white/90" : ""}`}>Atendentes</span>
-            <span className={`text-[11px] ${isLanding ? "text-white/40" : "text-subtle"}`}>Formação em Farmácia</span>
+          <span className="min-w-0 leading-tight">
+            <span className="block truncate text-sm font-extrabold tracking-tight sm:text-base">{site.nomeCurto}</span>
+            <span className="hidden text-[11px] font-medium text-white/55 sm:block">Farmácia, atendimento e segurança</span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
-          {navPrincipal.slice(0, 4).map((item) => (
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">
+          {itens.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-                ativo(item.href)
-                  ? isLanding
-                    ? "text-white bg-white/10"
-                    : "text-orange-600 bg-orange-50 dark:bg-orange-900/20"
-                  : isLanding
-                    ? "text-white/60 hover:text-white/90 hover:bg-white/5"
-                    : "text-muted hover:text-foreground"
+              className={`rounded-full px-3 py-2 text-sm font-semibold transition-colors ${
+                ativo(item.href) ? "bg-white/12 text-white" : "text-white/66 hover:bg-white/8 hover:text-white"
               }`}
             >
               {item.label}
@@ -62,56 +58,39 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        <div className="flex items-center gap-2">
           <ThemeToggle />
-          <Botao href="/" tamanho="sm" variante="primary" className={`hidden sm:inline-flex ${isLanding ? "bg-white text-forest-700 hover:bg-white/90 shadow-md" : ""}`}>
-            Acessar
+          <Botao href={ctaHref} tamanho="sm" className="hidden bg-white text-forest-700 hover:bg-white/90 sm:inline-flex">
+            Começar grátis
           </Botao>
           <button
             type="button"
-            className={`inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full border ${
-              isLanding ? "border-white/20 text-white/60" : "border-border-strong text-muted"
-            } lg:hidden`}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/75 lg:hidden"
             onClick={() => setAberto((v) => !v)}
             aria-label="Abrir menu"
             aria-expanded={aberto}
           >
-            <Icon name={aberto ? "close" : "menu"} size={18} />
+            <Icon name={aberto ? "close" : "menu"} size={20} />
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
-          aberto ? "max-h-96 border-t border-white/10" : "max-h-0"
-        }`}
-      >
-        <div className={isLanding ? "bg-forest-600" : "bg-surface"}>
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-3 py-3 sm:px-4">
-            {navPrincipal.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setAberto(false)}
-                className={`rounded-full px-3 py-2.5 text-sm font-medium ${
-                  ativo(item.href)
-                    ? isLanding
-                      ? "text-white bg-white/10"
-                      : "text-orange-600 bg-orange-50 dark:bg-orange-900/20"
-                    : isLanding
-                      ? "text-white/60"
-                      : "text-muted"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Botao href="/" className={`mt-2 ${isLanding ? "bg-white text-forest-700 hover:bg-white/90" : ""}`} onClick={() => setAberto(false)}>
-              Fazer matrícula
-            </Botao>
-          </nav>
-        </div>
+      <div className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-96" : "max-h-0"}`}>
+        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-3" aria-label="Menu mobile">
+          {itens.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setAberto(false)}
+              className="rounded-xl px-3 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Botao href={ctaHref} className="mt-2 bg-white text-forest-700 hover:bg-white/90" onClick={() => setAberto(false)}>
+            Fazer matrícula
+          </Botao>
+        </nav>
       </div>
     </header>
   );
