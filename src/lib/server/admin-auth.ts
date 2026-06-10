@@ -1,6 +1,6 @@
 // ── Credenciais padrão (use `ADMIN_USER` / `ADMIN_PASSWORD` no ambiente para sobrescrever) ──
-const DEFAULT_USER = "coord";
-const DEFAULT_PASS = "Farma@2026!";
+const DEFAULT_USER = "admin";
+const DEFAULT_PASS = "102030";
 
 export function credenciaisAdminValidas(usuario: string, senha: string): boolean {
   const userEsperado = process.env.ADMIN_USER?.trim() || DEFAULT_USER;

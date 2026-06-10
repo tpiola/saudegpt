@@ -9,7 +9,7 @@ import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 export const metadata: Metadata = {
   title: "Trilhas da Formação",
   description:
-    "Explore as quatro trilhas da formação completa para atendentes de farmácia — da perfumaria aos medicamentos, excelência operacional e atendimento humanizado.",
+    "Explore as trilhas da formação completa para atendentes de farmácia — da perfumaria aos medicamentos, serviços farmacêuticos, excelência operacional e atendimento humanizado.",
 };
 
 // Imagens de trilha disponíveis em /public/
