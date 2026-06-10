@@ -41,36 +41,34 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Treinamento Atendente de Farmácia",
-    template: `%s · Treinamento Atendente`,
+    default: "SaúdeGPT | Formação para Atendentes de Farmácia",
+    template: `%s · SaúdeGPT`,
   },
-  description: "Curso profissional de Treinamento para Atendentes de Farmácia — com técnica, acolhimento, medicamentos, cuidado humanizado, legislação ANVISA e atendimento que encanta.",
+  description:
+    "SaúdeGPT é uma plataforma EAD gratuita para atendentes de farmácia aprenderem atendimento, medicamentos, legislação sanitária e cuidado humanizado.",
   keywords: [
-    "treinamento atendente farmácia",
+    "saudegpt",
     "curso atendente farmácia",
+    "treinamento atendente farmácia",
     "curso balconista farmácia",
-    "curso dispensação medicamentos",
-    "curso legislação farmácia ANVISA",
-    "curso farmácia melhor que SENAC",
-    "curso farmácia melhor que CEBRAC",
-    "treinamento balcão farmácia",
-    "curso receituário controlado portaria 344",
-    "curso RDC 471 antimicrobianos",
+    "dispensação de medicamentos",
+    "legislação farmácia ANVISA",
+    "atendimento humanizado farmácia",
   ],
-  authors: [{ name: "Formação para Atendentes de Farmácia" }],
+  authors: [{ name: site.nome }],
   openGraph: {
-    title: "Treinamento Atendente de Farmácia",
-    description: "O treinamento mais completo para atendentes de farmácia do Brasil. Supera CEBRAC e SENAC.",
+    title: "SaúdeGPT | Formação para Atendentes de Farmácia",
+    description: site.descricao,
     locale: "pt_BR",
     type: "website",
     images: [
-      { url: "/opengraph-image", width: 1200, height: 630, alt: "Treinamento Atendente" },
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "SaúdeGPT" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Treinamento Atendente de Farmácia",
-    description: "O treinamento mais completo para atendentes de farmácia do Brasil.",
+    title: "SaúdeGPT | Formação para Atendentes de Farmácia",
+    description: site.descricao,
   },
   manifest: "/manifest.webmanifest",
 };
@@ -88,58 +86,38 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
-
-        {/* Favicon / Icones do Site */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        {/* SEO: Google Site Verification (substitua pelo código real do Search Console) */}
-        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ''} />
-        {/* Geo Tags */}
+        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ""} />
         <meta name="geo.region" content="BR" />
         <meta name="geo.placename" content="Brasil" />
-        <meta name="geo.position" content="-14.2350;-51.9253" />
-        <meta name="ICBM" content="-14.2350, -51.9253" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        {/* Canonical URL */}
-        {/* Robots */}
         <meta name="robots" content="index, follow" />
         <meta name="language" content="pt-BR" />
-        {/* JSON-LD Course Schema — Structured Data para SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Course",
-              name: "Formação para Atendentes de Farmácia",
-              description:
-                "A formação mais completa do Brasil para atendentes de drogaria e perfumaria — do iniciante ao avançado, com foco em saúde integral, atendimento humanizado e segurança sanitária. São 6 trilhas de aprendizagem com mais de 142 aulas, exercícios, missões e certificado.",
+              name: "SaúdeGPT — Formação para Atendentes de Farmácia",
+              description: site.descricao,
               provider: {
                 "@type": "Organization",
-                name: "Formação para Atendentes de Farmácia",
+                name: site.nome,
                 url: baseUrl,
-                sameAs: "https://www.instagram.com/saudegpt/",
+                sameAs: site.social.map((item) => item.url),
               },
-              educationalCredentialAwarded: "Certificado de Conclusão — Formação para Atendentes de Farmácia",
-              numberOfCredits: 142,
+              educationalCredentialAwarded: "Certificado de Conclusão — SaúdeGPT",
               hasCourseInstance: {
                 "@type": "CourseInstance",
                 courseMode: "Online",
-                courseWorkload: "PT40H",
                 inLanguage: "pt-BR",
-                location: {
-                  "@type": "VirtualLocation",
-                  url: baseUrl,
-                },
-                startDate: "2025-01-01",
-                endDate: "2026-12-31",
+                location: { "@type": "VirtualLocation", url: baseUrl },
               },
               offers: {
                 "@type": "Offer",
-                category: "Paid",
+                category: "Free",
                 price: "0",
                 priceCurrency: "BRL",
                 availability: "https://schema.org/InStock",
@@ -147,7 +125,6 @@ export default function RootLayout({
             }),
           }}
         />
-        {/* EOF JSON-LD */}
       </head>
       <body className="flex min-h-full flex-col">
         <a
