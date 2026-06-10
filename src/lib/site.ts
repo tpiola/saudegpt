@@ -1,14 +1,21 @@
 // Constantes institucionais do produto.
 
 export const site = {
-  nome: "Formação para Atendentes de Farmácia",
-  nomeCurto: "Atendentes de Farmácia",
-  assinatura: "Conteúdo educativo com referências em ANVISA, OMS, Ministério da Saúde e literatura científica.",
+  nome: "SaúdeGPT",
+  nomeCurto: "SaúdeGPT",
+  assinatura: "Educação em farmácia com conteúdo revisado, trilhas práticas e foco em atendimento seguro.",
   descricao:
-    "A formação mais completa do Brasil para atendentes de drogaria e perfumaria — do iniciante ao avançado, com foco em saúde integral, atendimento humanizado e segurança sanitária.",
+    "Plataforma EAD gratuita para atendentes de farmácia evoluírem com trilhas curtas, simulações, materiais de apoio e certificado.",
   patrocinio: [
     { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
     { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },
+  ],
+  social: [
+    { nome: "Facebook", url: "https://www.facebook.com/saudegpt" },
+    { nome: "Instagram", url: "https://www.instagram.com/saudegpt/" },
+    { nome: "X", url: "https://x.com/saudegpt" },
+    { nome: "LinkedIn", url: "https://www.linkedin.com/company/saudegpt" },
+    { nome: "Reddit", url: "https://www.reddit.com/r/saudegpt" },
   ],
 };
 
@@ -23,7 +30,6 @@ export const navPrincipal = [
   { href: "/missoes", label: "Missões" },
   { href: "/jogos", label: "Jogos" },
   { href: "/biblioteca", label: "Biblioteca regulatória" },
-  { href: "/indicadores", label: "Power BI" },
   { href: "/ranking", label: "Ranking" },
 ];
 
