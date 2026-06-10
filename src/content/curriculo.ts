@@ -5,6 +5,7 @@ import { trilhaOperacional } from "./trilha-operacional";
 import { trilhaVendas } from "./trilha-encantamento";
 import { trilhaFundamentos } from "./trilha-fundamentos";
 import { trilhaPratica } from "./trilha-pratica";
+import { trilhaServicosCuidado } from "./trilha-servicos-cuidado";
 
 export const trilhas: Trilha[] = [
   trilhaPerfumaria,
@@ -13,6 +14,7 @@ export const trilhas: Trilha[] = [
   trilhaVendas,
   trilhaFundamentos,
   trilhaPratica,
+  trilhaServicosCuidado,
 ];
 
 export function getTrilha(id: string): Trilha | undefined {
