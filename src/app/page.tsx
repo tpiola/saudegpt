@@ -83,7 +83,7 @@ export default function HomePage() {
               </dl>
             </div>
 
-            <div className="rounded-[2rem] border border-white/12 bg-white/[0.07] p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-6">
+            <div id="matricula" className="scroll-mt-24 rounded-[2rem] border border-white/12 bg-white/[0.07] p-5 shadow-2xl shadow-black/30 backdrop-blur-xl sm:p-6">
               <div className="rounded-3xl bg-white p-5 text-foreground shadow-xl dark:bg-surface sm:p-6">
                 <div className="mb-5 flex items-start justify-between gap-4">
                   <div>
@@ -171,26 +171,23 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section id="matricula" className="bg-forest-500 py-14 text-white sm:py-20">
+        <section className="bg-forest-500 py-14 text-white sm:py-20">
           <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-green-200">Comece hoje</p>
-              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Acesso gratuito, conteúdo organizado e pronto para automação.</h2>
-              <ul className="mt-6 grid gap-3 text-sm text-white/72">
-                {[
-                  "Cadastro com nome, e-mail e WhatsApp.",
-                  "Payload limpo para API, Supabase e n8n.",
-                  "Rotas internas e conteúdo do LMS preservados.",
-                ].map((item) => (
-                  <li key={item} className="flex gap-3">
-                    <Icon name="check" size={18} className="mt-0.5 shrink-0 text-green-200" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-green-200">Pronto para automação</p>
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">Cadastro simples, conteúdo preservado e jornada clara.</h2>
             </div>
-            <div className="rounded-3xl bg-white p-5 text-foreground shadow-2xl dark:bg-surface sm:p-6">
-              <MatriculaForm />
+            <div className="grid gap-3 text-sm text-white/72 sm:grid-cols-3">
+              {[
+                "Nome, e-mail e WhatsApp.",
+                "Payload limpo para API, Supabase e n8n.",
+                "Rotas internas e conteúdo do LMS preservados.",
+              ].map((item) => (
+                <div key={item} className="rounded-2xl border border-white/10 bg-white/7 p-4">
+                  <Icon name="check" size={18} className="text-green-200" />
+                  <p className="mt-3">{item}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
