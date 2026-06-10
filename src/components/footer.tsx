@@ -1,41 +1,37 @@
 import Link from "next/link";
 import { linksLegais, navPrincipal, site } from "@/lib/site";
-import { Icon } from "./icons";
 import { LogoAcademico } from "./logo-academico";
 
 export function Footer() {
   return (
     <footer className="border-t border-forest-600/20 bg-forest-500 text-white">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
-          {/* Brand + Descrição */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2.5">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-forest-500 text-white shadow-md">
-                <LogoAcademico size={22} />
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <div className="grid gap-8 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15">
+                <LogoAcademico size={26} />
               </span>
-              <span className="text-sm font-bold text-white/90">{site.nomeCurto}</span>
+              <div>
+                <p className="text-sm font-extrabold tracking-tight">{site.nomeCurto}</p>
+                <p className="text-xs text-white/55">EAD gratuito para atendentes de farmácia</p>
+              </div>
             </div>
-            <p className="mt-4 max-w-sm text-sm text-white/60 leading-relaxed">
-              {site.descricao}
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#matricular"
-                className="inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-forest-700 transition-all hover:bg-white/90"
-              >
-                Matricule-se
-              </a>
-            </div>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/64">{site.descricao}</p>
+            <Link
+              href="/#matricula"
+              className="mt-5 inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
+            >
+              Começar grátis
+            </Link>
           </div>
 
-          {/* Navegação */}
           <div>
-            <h5 className="text-sm font-semibold" style={{ color: "#fffec7" }}>Navegação</h5>
-            <ul className="mt-4 space-y-2.5">
-              {navPrincipal.slice(0, 5).map((item) => (
+            <h5 className="text-sm font-bold text-[#fffec7]">Produto</h5>
+            <ul className="mt-4 grid gap-2.5">
+              {navPrincipal.slice(0, 6).map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                  <Link href={item.href} className="text-sm text-white/68 transition-colors hover:text-white">
                     {item.label}
                   </Link>
                 </li>
@@ -43,33 +39,18 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Aprendizado */}
           <div>
-            <h5 className="text-sm font-semibold" style={{ color: "#fffec7" }}>Aprendizado</h5>
-            <ul className="mt-4 space-y-2.5">
-              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Perfumaria e Cosméticos</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Capacitação em Medicamentos</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Receitas e Legislação</Link></li>
-              <li><Link href="/trilhas" className="text-sm text-white/70 hover:text-white transition-colors">Atendimento Humanizado</Link></li>
-              <li><Link href="/curiosidades" className="text-sm text-white/70 hover:text-white transition-colors">Curiosidades do Setor</Link></li>
-              <li><Link href="/pressao-arterial" className="text-sm text-white/70 hover:text-white transition-colors">Pressão Arterial</Link></li>
-              <li><Link href="/comando-diario" className="text-sm text-white/70 hover:text-white transition-colors">Comando Diário</Link></li>
-            </ul>
-          </div>
-
-          {/* Patrocínio */}
-          <div>
-            <h5 className="text-sm font-semibold" style={{ color: "#fffec7" }}>Patrocínio</h5>
-            <ul className="mt-4 space-y-2.5">
-              {site.patrocinio.map((p) => (
-                <li key={p.url}>
+            <h5 className="text-sm font-bold text-[#fffec7]">Canais</h5>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {site.social.map((item) => (
+                <li key={item.nome}>
                   <a
-                    href={p.url}
+                    href={item.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="inline-flex min-h-10 items-center rounded-full border border-white/12 px-3 text-xs font-semibold text-white/70 transition hover:border-white/25 hover:text-white"
                   >
-                    {p.nome}
+                    {item.nome}
                   </a>
                 </li>
               ))}
@@ -77,22 +58,19 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Footer bottom */}
-        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/60">
-            {site.assinatura}
-          </p>
-          <div className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-white/50">
+        <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-xs leading-relaxed text-white/52">{site.assinatura}</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/52">
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-white/80 transition-colors">
+              <Link key={l.href} href={l.href} className="transition-colors hover:text-white/85">
                 {l.label}
               </Link>
             ))}
           </div>
         </div>
 
-        <p className="mt-4 text-xs text-white/40 leading-relaxed">
-          Conteúdo educativo criado por farmacêutico. Não substitui a orientação do farmacêutico ou do médico. As decisões clínicas e a dispensação de medicamentos controlados são atos do profissional habilitado.
+        <p className="mt-4 text-xs leading-relaxed text-white/38">
+          Conteúdo educativo. Não substitui consulta médica nem orientação do farmacêutico responsável.
         </p>
       </div>
     </footer>
