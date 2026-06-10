@@ -12,75 +12,21 @@ export function LogoAcademico({ size = 32, className = "" }: LogoAcademicoProps)
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
-      aria-label="Logo acadêmico farmácia"
+      role="img"
+      aria-label="SaudeGPT"
     >
-      {/* Background circle */}
-      <circle cx="16" cy="16" r="15.5" fill="url(#logo-grad)" stroke="#d66e0f" strokeWidth="0.5" />
-
-      {/* Graduation cap */}
-      <path
-        d="M16 6l-10 5.5 10 5.5 10-5.5L16 6z"
-        fill="white"
-        opacity="0.95"
-      />
-      <path
-        d="M16 6l-10 5.5 10 5.5 10-5.5L16 6z"
-        fill="none"
-        stroke="white"
-        strokeWidth="0.3"
-        opacity="0.5"
-      />
-
-      {/* Tassel */}
-      <path
-        d="M16 11.5l0 5"
-        stroke="white"
-        strokeWidth="1.2"
-        strokeLinecap="round"
-        opacity="0.8"
-      />
-      <circle cx="16" cy="17" r="0.8" fill="#d66e0f" />
-
-      {/* Cross/cruz */}
-      <rect x="12.5" y="8" width="7" height="1.8" rx="0.5" fill="#d66e0f" opacity="0.9" />
-      <rect x="14.7" y="6.2" width="2.6" height="5.4" rx="0.5" fill="#d66e0f" opacity="0.9" />
-
-      {/* Book pages */}
-      <rect x="9" y="18" width="14" height="2" rx="0.5" fill="white" opacity="0.25" />
-      <rect x="10" y="20.5" width="12" height="1.5" rx="0.4" fill="white" opacity="0.18" />
-      <rect x="11" y="22.8" width="10" height="1.2" rx="0.3" fill="white" opacity="0.12" />
-
-      {/* Gradient definition */}
+      <rect x="1" y="1" width="30" height="30" rx="9" fill="url(#sg-grad)" />
+      <path d="M16 8.5l8 3.6-8 3.6-8-3.6 8-3.6z" fill="#ffffff" />
+      <path d="M16 15.7v5.2" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M22 13.1v3.4c0 2.5-2.7 3.9-6 3.9" stroke="#ffffff" strokeWidth="1.4" strokeLinecap="round" opacity="0.55" />
+      <circle cx="22.4" cy="20.6" r="1.9" fill="#f08a1d" />
+      <circle cx="22.4" cy="20.6" r="3.4" fill="#f08a1d" opacity="0.18" />
       <defs>
-        <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#0d3a32" />
-          <stop offset="100%" stopColor="#155a4a" />
+        <linearGradient id="sg-grad" x1="2" y1="2" x2="30" y2="30">
+          <stop offset="0%" stopColor="#0f4339" />
+          <stop offset="100%" stopColor="#1c7a5f" />
         </linearGradient>
       </defs>
-    </svg>
-  );
-}
-
-export function IconeFavicon() {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="16" cy="16" r="16" fill="#0d3a32" />
-      <path
-        d="M16 5l-10 5.5 10 5.5 10-5.5L16 5z"
-        fill="white"
-        opacity="0.95"
-      />
-      <rect x="12.5" y="7" width="7" height="1.8" rx="0.5" fill="#d66e0f" opacity="0.9" />
-      <rect x="14.7" y="5.2" width="2.6" height="5.4" rx="0.5" fill="#d66e0f" opacity="0.9" />
-      <rect x="9" y="17" width="14" height="2" rx="0.5" fill="white" opacity="0.25" />
-      <rect x="10" y="19.5" width="12" height="1.5" rx="0.4" fill="white" opacity="0.18" />
-      <rect x="11" y="21.8" width="10" height="1.2" rx="0.3" fill="white" opacity="0.12" />
     </svg>
   );
 }
