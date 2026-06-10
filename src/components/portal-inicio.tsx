@@ -494,7 +494,7 @@ function PortalConvidadoHero() {
                 <span className="text-bg-gradient-to-r from-green-500 to-green-600">aprender</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)" }}>
-                {totalAulasContagem} microlições em 4 trilhas — do iniciante ao profissional de referência
+                {totalAulasContagem} microlições em {trilhas.length} trilhas — do iniciante ao profissional de referência
               </p>
             </ScrollReveal>
           </div>
@@ -669,7 +669,7 @@ function PortalConvidadoHero() {
                     className="mx-auto mt-4"
                     style={{ maxWidth: "500px", fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.6 }}
                   >
-                    {totalAulasContagem} microlições. 4 trilhas. Simulador de atendimento real.
+                    {totalAulasContagem} microlições. {trilhas.length} trilhas. Simulador de atendimento real.
                     Acesso completo.
                   </p>
                   <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
