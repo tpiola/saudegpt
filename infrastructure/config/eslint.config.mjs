@@ -5,21 +5,22 @@ import nextTs from "eslint-config-next/typescript";
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
-  // Override default ignores of eslint-config-next.
   globalIgnores([
     ".next/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "e2e/**",
+    "playwright-report/**",
+    "test-results/**",
   ]),
 ]);
 
-// Relax noisy rules - modify the first nextVitals config (Config 0, "next")
-// which has all the react/next plugins
 for (const cfg of eslintConfig) {
   if (cfg.name === "next") {
     cfg.rules = {
       ...cfg.rules,
+      "react/display-name": "off",
       "react/no-unescaped-entities": "warn",
       "react-hooks/rules-of-hooks": "warn",
     };
