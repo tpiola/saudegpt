@@ -4,9 +4,9 @@ test.describe("Smoke — plataforma", () => {
   test("portal EAD carrega com catálogo de trilhas", async ({ page }) => {
     await page.goto("/");
     await expect(
-      page.getByRole("heading", { name: /ambiente de estudos|olá/i }).first(),
+      page.getByRole("heading", { name: /saúdegpt para atendentes/i }).first(),
     ).toBeVisible();
-    await expect(page.getByRole("link", { name: /estudar|trilhas/i }).first()).toBeVisible();
+    await expect(page.getByRole("link", { name: /começar grátis|trilhas/i }).first()).toBeVisible();
   });
 
   test("lista de trilhas abre", async ({ page }) => {
@@ -20,14 +20,16 @@ test.describe("Smoke — plataforma", () => {
       page.locator("#conteudo-principal").getByRole("heading", { level: 1 }),
     ).toBeVisible();
 
-    const opcoes = page.locator("#quiz button[type='button']");
-    const count = await opcoes.count();
-    if (count > 0) {
-      await opcoes.first().click();
-      const corrigir = page.getByRole("button", { name: /corrigir quiz/i });
-      if (await corrigir.isVisible()) {
-        await corrigir.click();
-      }
+    const perguntas = page.locator("#quiz fieldset");
+    const totalPerguntas = await perguntas.count();
+    for (let i = 0; i < totalPerguntas; i += 1) {
+      await perguntas.nth(i).locator("button[type='button']").first().click();
+    }
+
+    const corrigir = page.getByRole("button", { name: /corrigir quiz/i });
+    if (await corrigir.isVisible()) {
+      await expect(corrigir).toBeEnabled();
+      await corrigir.click();
     }
 
     const concluir = page.getByRole("button", { name: /marcar como concluída/i });
