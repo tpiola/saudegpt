@@ -7,7 +7,6 @@ import { navPrincipal, site } from "@/lib/site";
 import { Icon } from "./icons";
 import { LogoAcademico } from "./logo-academico";
 import { ThemeToggle } from "./theme-toggle";
-import { Botao } from "./ui";
 
 const navLanding = [
   { href: "#trilhas", label: "Trilhas" },
@@ -59,10 +58,13 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-          <Botao href={ctaHref} tamanho="sm" className="hidden bg-white text-forest-700 hover:bg-white/90 sm:inline-flex">
+          <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700" />
+          <Link
+            href={ctaHref}
+            className="hidden min-h-10 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90 sm:inline-flex"
+          >
             Começar grátis
-          </Botao>
+          </Link>
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/75 lg:hidden"
@@ -87,9 +89,13 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Botao href={ctaHref} className="mt-2 bg-white text-forest-700 hover:bg-white/90" onClick={() => setAberto(false)}>
+          <Link
+            href={ctaHref}
+            onClick={() => setAberto(false)}
+            className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 hover:bg-white/90"
+          >
             Fazer matrícula
-          </Botao>
+          </Link>
         </nav>
       </div>
     </header>
