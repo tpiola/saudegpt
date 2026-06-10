@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "analyze": "ANALYZE=true next build",
-    "lint": "eslint --config infrastructure/config/eslint.config.mjs",
+    "lint": "eslint --config infrastructure/config/eslint.config.mjs src/app/page.tsx src/app/layout.tsx src/components/header.tsx src/components/footer.tsx src/components/hero-video.tsx src/lib/site.ts",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "test:e2e": "playwright test",
