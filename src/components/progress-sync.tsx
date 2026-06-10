@@ -24,9 +24,13 @@ export function ProgressSync() {
       tempoEstudoSegundos: prog.tempoEstudoSegundos,
       diasEstudo: prog.diasEstudo,
       missoesPontos: prog.missoesPontos,
+      favoritas: prog.favoritas,
+      ultima: prog.ultima,
     });
 
-    const chave = JSON.stringify(snapshot);
+    // Compara sem o carimbo de hora para não reenviar snapshots idênticos.
+    const semCarimbo = { ...snapshot, ultimaSincronizacao: undefined };
+    const chave = JSON.stringify(semCarimbo);
     if (chave === ultimo.current) return;
     ultimo.current = chave;
 

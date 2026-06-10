@@ -53,4 +53,29 @@ test.describe("Smoke — plataforma", () => {
     expect(robots.ok()).toBeTruthy();
     expect(await robots.text()).toMatch(/sitemap/i);
   });
+
+  test("trilha de serviços farmacêuticos abre com módulos", async ({ page }) => {
+    await page.goto("/trilhas/servicos-cuidado");
+    await expect(page.getByText(/4 Ps da Saúde/i).first()).toBeVisible();
+    await expect(page.getByText(/serviços farmacêuticos/i).first()).toBeVisible();
+  });
+
+  test("diretor entra com admin/102030 e vê o painel", async ({ page }) => {
+    await page.goto("/admin");
+    await page.locator("#admin-user").fill("admin");
+    await page.locator("#admin-pass").fill("102030");
+    await page.getByRole("button", { name: /entrar no painel/i }).click();
+    await expect(page.getByRole("heading", { name: /painel do diretor/i })).toBeVisible({
+      timeout: 15_000,
+    });
+    await expect(page.getByText(/onde a plataforma pode melhorar/i)).toBeVisible();
+  });
+
+  test("senha errada não entra no painel", async ({ page }) => {
+    await page.goto("/admin");
+    await page.locator("#admin-user").fill("admin");
+    await page.locator("#admin-pass").fill("senha-errada");
+    await page.getByRole("button", { name: /entrar no painel/i }).click();
+    await expect(page.getByText(/credenciais inválidas/i)).toBeVisible();
+  });
 });

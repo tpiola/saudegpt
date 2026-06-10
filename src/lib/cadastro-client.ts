@@ -83,6 +83,8 @@ export function montarSnapshotProgresso(estado: {
   tempoEstudoSegundos?: number;
   diasEstudo: string[];
   missoesPontos: number;
+  favoritas?: string[];
+  ultima?: { trilhaId: string; aulaId: string };
 }): ProgressoSnapshot {
   return {
     concluidas: estado.concluidas,
@@ -92,6 +94,8 @@ export function montarSnapshotProgresso(estado: {
     tempoEstudoSegundos: estado.tempoEstudoSegundos ?? 0,
     diasEstudo: estado.diasEstudo ?? [],
     missoesPontos: estado.missoesPontos,
+    favoritas: estado.favoritas ?? [],
+    ultima: estado.ultima,
     ultimaSincronizacao: new Date().toISOString(),
   };
 }

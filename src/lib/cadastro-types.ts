@@ -7,6 +7,10 @@ export interface ProgressoSnapshot {
   tempoEstudoSegundos: number;
   diasEstudo: string[];
   missoesPontos: number;
+  /** Aulas marcadas como favoritas (indicador de interesse do aluno). */
+  favoritas?: string[];
+  /** Última aula visitada (onde o aluno parou). */
+  ultima?: { trilhaId: string; aulaId: string };
   ultimaSincronizacao?: string;
 }
 
