@@ -3,9 +3,9 @@
 export const site = {
   nome: "SaúdeGPT",
   nomeCurto: "SaúdeGPT",
-  assinatura: "Educação em farmácia com conteúdo revisado, trilhas práticas e foco em atendimento seguro.",
+  assinatura: "Educação em farmácia com conteúdo revisado, trilhas práticas e foco em atendimento seguro e humanizado.",
   descricao:
-    "Plataforma EAD para atendentes de farmácia evoluírem com trilhas curtas, simulações, materiais de apoio e certificado.",
+    "Formação completa para atendentes de farmácia: aprenda atendimento humanizado, medicamentos, legislação ANVISA, dispensação segura e cuidado ao paciente. Plataforma EAD com trilhas curtas, simulações, quizzes e certificado. Desenvolvido pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
   patrocinio: [
     { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
     { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },

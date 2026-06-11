@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: `%s · SaúdeGPT`,
   },
   description:
-    "SaúdeGPT é uma plataforma EAD gratuita para atendentes de farmácia aprenderem atendimento, medicamentos, legislação sanitária e cuidado humanizado.",
+    "SaúdeGPT é a plataforma EAD que forma atendentes de farmácia preparados para acolher, orientar e cuidar com técnica, segurança e humanidade. Trilhas curtas, simulações reais, quizzes interativos e certificado. Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
   keywords: [
     "saudegpt",
     "curso atendente farmácia",
@@ -54,6 +54,13 @@ export const metadata: Metadata = {
     "dispensação de medicamentos",
     "legislação farmácia ANVISA",
     "atendimento humanizado farmácia",
+    "curso online farmácia gratuito",
+    "formação atendente farmácia",
+    "farmácia atendimento ao cliente",
+    "medicamentos e saúde",
+    "curso farmacêutico EAD",
+    "anvisa medicamentos",
+    "saúde pública farmácia",
   ],
   authors: [{ name: site.nome }],
   openGraph: {
