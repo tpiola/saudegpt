@@ -59,11 +59,17 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700" />
+          <a
+            href="mailto:contato@thiagopiola.com.br"
+            className="hidden min-h-10 items-center justify-center rounded-full border border-white/20 px-4 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white md:inline-flex"
+          >
+            Contato
+          </a>
           <Link
             href={ctaHref}
             className="hidden min-h-10 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90 sm:inline-flex"
           >
-            Começar grátis
+            Entrar
           </Link>
           <button
             type="button"

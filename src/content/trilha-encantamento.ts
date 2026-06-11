@@ -1675,7 +1675,7 @@ export const trilhaVendas: Trilha = {
       id: "perfil-51",
       titulo: "Perfil 51% — O Coração do Atendimento",
       descricao:
-        "Descubra o poder das habilidades emocionais no balcão da farmácia. Baseado no conceito de Quociente de Hospitalidade (HQ) de Danny Meyer.",
+        "Descubra o poder das habilidades emocionais no balcão da farmácia. Baseado no Perfil 51% de Danny Meyer — onde ele fala hospitalidade, nós falamos Encantar.",
       imagemHeroUrl: imagensCategoria.comunicacaoPessoas,
       aulas: [
         {
@@ -1683,15 +1683,26 @@ export const trilhaVendas: Trilha = {
           titulo: "Por que 51% faz toda diferença",
           duracaoMin: 8,
           nivel: "basico",
+          videoUrl: "https://www.youtube.com/embed/SL74T15d82Y",
+          imagemHeroUrl: imagensCategoria.atendimentoHumano,
           resumo:
-            "No balcão da farmácia, o cliente não compra apenas um remédio — ele busca cuidado, segurança e acolhimento. Descubra por que as habilidades emocionais pesam mais que as técnicas.",
+            "Assista Danny Meyer apresentar o conceito que mudou o serviço no mundo — e veja como ele se traduz no balcão da farmácia: o cliente não compra apenas um remédio, ele busca cuidado, segurança e acolhimento.",
           resumoExecutivo: [
-            "O conceito Perfil 51% foi criado por Danny Meyer",
-            "49% é técnica, 51% é habilidade emocional",
-            "Na farmácia, clientes vulneráveis precisam de acolhimento",
-            "Os 6 pilares: Calor Otimista, Curiosidade Intelectual, Ética de Trabalho, Empatia, Autoconsciência, Integridade",
-            "Hospitalidade Quociente (HQ) é treinável",
+            "O conceito Perfil 51% foi criado por Danny Meyer: ao contratar e treinar, 49% do profissional é técnica e 51% é habilidade emocional.",
+            "Onde Meyer fala em hospitalidade, na farmácia falamos em ENCANTAR: fazer a pessoa sentir que alguém está genuinamente do lado dela.",
+            "Em saúde isso vale dobrado: quem entra numa farmácia muitas vezes está fragilizado — com dor, medo ou pressa. Encantar é transformar esse momento difícil em cuidado.",
+            "Os 6 pilares do 51%: Calor Otimista, Curiosidade Intelectual, Ética de Trabalho, Empatia, Autoconsciência e Integridade — todos treináveis, todos visíveis no balcão.",
+            "Na prática: receba o cliente se apresentando com um sorriso, chame-o pelo nome e mostre que ali tem gente que cuida de gente.",
+            "Serviço entrega o medicamento certo; Encantar entrega a sensação de ser cuidado. O atendente de excelência entrega os dois.",
           ],
+          simulacao: {
+            cliente:
+              "Cliente entra apressada, visivelmente preocupada, segurando uma receita pediátrica.",
+            falaBoa:
+              '"Olá, seja muito bem-vinda! Eu sou o Lucas. Vi que você chegou com receita — pode deixar comigo. Qual é o seu nome? ... Maria, fica tranquila: vamos resolver juntos e o farmacêutico confere tudo para a segurança do seu pequeno."',
+            falaEvitar:
+              '"Próximo! Receita? Deixa aí que eu vejo." (técnica até pode estar certa — mas zero Encantamento; a mãe sai mais ansiosa do que entrou)',
+          },
           quandoChamarFarmaceutico: [
             "Sempre que perceber que o cliente precisa de uma orientação técnica que foge da sua alçada",
           ],

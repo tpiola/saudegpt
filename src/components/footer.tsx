@@ -14,16 +14,24 @@ export function Footer() {
               </span>
               <div>
                 <p className="text-sm font-extrabold tracking-tight">{site.nomeCurto}</p>
-                <p className="text-xs text-white/55">EAD gratuito para atendentes de farmácia</p>
+                <p className="text-xs text-white/55">Formação de excelência para atendentes de farmácia</p>
               </div>
             </div>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/64">{site.descricao}</p>
-            <Link
-              href="/#matricula"
-              className="mt-5 inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
-            >
-              Começar grátis
-            </Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/#matricula"
+                className="inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
+              >
+                Entrar
+              </Link>
+              <a
+                href="mailto:contato@thiagopiola.com.br"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/50 hover:text-white"
+              >
+                Contato
+              </a>
+            </div>
           </div>
 
           <div>

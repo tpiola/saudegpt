@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: `%s · SaúdeGPT`,
   },
   description:
-    "SaúdeGPT é uma plataforma EAD gratuita para atendentes de farmácia aprenderem atendimento, medicamentos, legislação sanitária e cuidado humanizado.",
+    "SaúdeGPT é uma plataforma EAD para atendentes de farmácia aprenderem atendimento, medicamentos, legislação sanitária e cuidado humanizado — gente que cuida de gente.",
   keywords: [
     "saudegpt",
     "curso atendente farmácia",

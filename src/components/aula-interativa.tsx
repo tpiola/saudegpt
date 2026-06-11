@@ -8,6 +8,7 @@ import { Icon } from "./icons";
 import { CelebracaoXp } from "./celebracao-xp";
 import { CelebracaoModal } from "./celebracao-modal";
 import { Confetti } from "./confetti";
+import { somSucesso, somQuaseLa } from "@/lib/som";
 
 interface ProximaInfo {
   trilhaId: string;
@@ -65,10 +66,13 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
   function enviar() {
     registrarTentativaQuiz(trilhaId, aulaId);
     setEnviado(true);
+    if (nota >= 60) somSucesso();
+    else somQuaseLa();
   }
 
   function concluir() {
     const nivelAntes = nivel;
+    somSucesso();
     concluirAula(trilhaId, aulaId, xp, quiz.length ? nota : undefined);
     setCelebrar(true);
     window.setTimeout(() => setCelebrar(false), 3000);

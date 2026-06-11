@@ -31,7 +31,7 @@ export default function HomePage() {
               <div className="flex flex-col justify-center max-w-3xl mx-auto lg:mx-0">
                 <div className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-sm mb-6">
                   <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-                  Plataforma 100% gratuita
+                  Acesso mediante aprovação
                 </div>
                 <h1 className="text-[clamp(2.2rem,7vw,5rem)] font-extrabold leading-[0.95] tracking-tighter mb-6">
                   <span className="block text-white">Domine o</span>
@@ -40,7 +40,7 @@ export default function HomePage() {
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl mb-8">Trilhas EAD curtas, simulacoes reais e IA no balcao.</p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                  <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Comecar agora, gratis <Icon name="arrow" size={18} /></Link>
+                  <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Entrar agora <Icon name="arrow" size={18} /></Link>
                   <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-7 text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
                 </div>
                 <dl className="grid max-w-lg grid-cols-3 gap-3">
@@ -112,7 +112,7 @@ export default function HomePage() {
             <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">Seu proximo paciente merece o seu melhor.</h2>
             <p className="text-lg text-white/65 max-w-2xl mx-auto mb-10">Junte-se a milhares transformando seu atendimento.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Comecar gratis <Icon name="arrow" size={18} /></Link>
+              <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Entrar <Icon name="arrow" size={18} /></Link>
               <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-8 text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link>
             </div>
           </div>

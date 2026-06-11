@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Botao, Card, TituloSecao } from "@/components/ui";
+import { Botao, Card } from "@/components/ui";
 import { Icon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -31,12 +31,27 @@ const checklistReceita = [
 export default function BulasReceitasPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <TituloSecao
-        sobre="Hub de leitura segura"
-        icone="book"
-        titulo="Bulas e receitas"
-        descricao="Roteiro prático para orientar o cliente e operar o balcão com segurança sanitária."
-      />
+      <div className="relative mb-6 overflow-hidden rounded-3xl">
+        <div
+          className="h-44 w-full bg-cover bg-center sm:h-56"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1280&q=85)",
+          }}
+          role="img"
+          aria-label="Receita médica sendo analisada no balcão"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+        <div className="absolute bottom-4 left-5 right-5">
+          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-orange-300">
+            Hub de leitura segura
+          </p>
+          <h1 className="text-2xl font-extrabold text-white sm:text-3xl">Bulas e receitas</h1>
+        </div>
+      </div>
+      <p className="text-sm leading-relaxed text-muted">
+        Roteiro prático para orientar o cliente e operar o balcão com segurança sanitária.
+      </p>
 
       {/* ── Link oficial ANVISA ── */}
       <Card className="mt-6 border-orange-200 bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/10 dark:to-forest-500">
