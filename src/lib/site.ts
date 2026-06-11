@@ -5,7 +5,7 @@ export const site = {
   nomeCurto: "SaúdeGPT",
   assinatura: "Educação em farmácia com conteúdo revisado, trilhas práticas e foco em atendimento seguro.",
   descricao:
-    "Plataforma EAD gratuita para atendentes de farmácia evoluírem com trilhas curtas, simulações, materiais de apoio e certificado.",
+    "Plataforma EAD para atendentes de farmácia evoluírem com trilhas curtas, simulações, materiais de apoio e certificado.",
   patrocinio: [
     { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
     { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },

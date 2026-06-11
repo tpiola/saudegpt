@@ -14,15 +14,15 @@ export function Footer() {
               </span>
               <div>
                 <p className="text-sm font-extrabold tracking-tight">{site.nomeCurto}</p>
-                <p className="text-xs text-white/55">EAD gratuito para atendentes de farmácia</p>
+                <p className="text-xs text-white/55">Formação para atendentes de farmácia</p>
               </div>
             </div>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/64">{site.descricao}</p>
             <Link
-              href="/#matricula"
+              href="/trilhas"
               className="mt-5 inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
             >
-              Começar grátis
+              Explorar trilhas
             </Link>
           </div>
 
