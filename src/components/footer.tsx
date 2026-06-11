@@ -72,6 +72,9 @@ export function Footer() {
         <p className="mt-4 text-xs leading-relaxed text-white/38">
           Conteúdo educativo. Não substitui consulta médica nem orientação do farmacêutico responsável.
         </p>
+        <p className="mt-3 text-[11px] leading-relaxed text-white/30 border-t border-white/5 pt-3 text-center sm:text-left">
+          Conteúdo criado e revisado pelo farmacêutico <strong className="text-white/50">Thiago Biasoli Garcia Piola</strong> — CRF/SP 58.519
+        </p>
       </div>
     </footer>
   );

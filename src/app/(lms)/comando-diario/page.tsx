@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { comandoDiarioMeta } from "@/content/comando-diario";
 import { ComandoDiarioChecklist } from "@/components/comando-diario-checklist";
 import { Card, Etiqueta } from "@/components/ui";
@@ -13,14 +14,32 @@ export const metadata: Metadata = {
 export default function ComandoDiarioPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-      <Etiqueta tom="green">
-        <Icon name="clock" size={14} /> Operação e formação
-      </Etiqueta>
-      <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
-        {comandoDiarioMeta.titulo}
-      </h1>
-      <p className="mt-2 text-lg text-muted">{comandoDiarioMeta.subtitulo}</p>
-      <p className="mt-3 text-muted">{comandoDiarioMeta.descricao}</p>
+      {/* Hero */}
+      <div className="relative mb-10 overflow-hidden rounded-2xl">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1586015555752-63bb5224dce2?auto=format&fit=crop&w=1200&q=85"
+            alt="Balcão de farmácia com atendente organizando o expediente"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-midnight-900/85 via-midnight-900/60 to-transparent" />
+        </div>
+        <div className="relative px-6 py-14 sm:px-10 sm:py-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur-sm">
+            <Icon name="clock" size={12} /> Operação e formação
+          </span>
+          <h1 className="mt-4 max-w-xl text-2xl font-black text-white sm:text-3xl">
+            {comandoDiarioMeta.titulo}
+          </h1>
+          <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/70">
+            {comandoDiarioMeta.subtitulo}
+          </p>
+        </div>
+      </div>
+
+      <p className="mb-6 text-muted">{comandoDiarioMeta.descricao}</p>
 
       <Card className="mt-8 border-l-4 border-l-green-500">
         <div className="flex items-start gap-3">

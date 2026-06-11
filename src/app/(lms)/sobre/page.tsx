@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { Mandala } from "@/components/mandala";
@@ -13,12 +14,30 @@ export const metadata: Metadata = {
 export default function SobrePage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
-      <TituloSecao
-        sobre="Institucional"
-        icone="graduation"
-        titulo="Formação para Atendentes de Farmácia"
-        descricao={site.descricao}
-      />
+      {/* Hero */}
+      <div className="relative mb-10 overflow-hidden rounded-2xl">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1631217868265-e5b80bb7c3a1?auto=format&fit=crop&w=1200&q=85"
+            alt="Equipe de farmácia unida atendendo pacientes"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-midnight-900/85 via-midnight-900/60 to-transparent" />
+        </div>
+        <div className="relative px-6 py-14 sm:px-10 sm:py-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur-sm">
+            Institucional
+          </span>
+          <h1 className="mt-4 max-w-xl text-2xl font-black text-white sm:text-3xl">
+            Formação para Atendentes de Farmácia
+          </h1>
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/70">
+            {site.descricao}
+          </p>
+        </div>
+      </div>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         <Card className="p-4 text-center">

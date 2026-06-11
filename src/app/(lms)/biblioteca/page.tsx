@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { bibliotecaRegulatoria, ultimaAtualizacaoBiblioteca } from "@/content/biblioteca";
 import { Card, Etiqueta, TituloSecao } from "@/components/ui";
 import { Icon } from "@/components/icons";
@@ -15,12 +16,30 @@ export default function BibliotecaPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
-      <TituloSecao
-        sobre="Hub ao vivo"
-        icone="book"
-        titulo="Biblioteca regulatória"
-        descricao="Substitui o raciocínio antigo de 'terminal de consulta' estático. As normas mudam — o curso acompanha."
-      />
+      {/* Hero */}
+      <div className="relative mb-10 overflow-hidden rounded-2xl">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1200&q=85"
+            alt="Estante de farmácia com medicamentos e livros de referência"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-midnight-900/85 via-midnight-900/60 to-transparent" />
+        </div>
+        <div className="relative px-6 py-14 sm:px-10 sm:py-20">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur-sm">
+            <Icon name="book" size={12} /> Hub ao vivo
+          </span>
+          <h1 className="mt-4 max-w-xl text-2xl font-black text-white sm:text-3xl">
+            Biblioteca regulatória
+          </h1>
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/70">
+            Substitui o raciocínio antigo de &apos;terminal de consulta&apos; estático. As normas mudam — o curso acompanha.
+          </p>
+        </div>
+      </div>
 
       <Card className="mt-6 border-l-4 border-l-green-500 bg-surface-2/80">
         <p className="text-sm font-semibold text-green-700 dark:text-green-200">
