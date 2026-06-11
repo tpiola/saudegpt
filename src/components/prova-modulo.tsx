@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect, useCallback } from "react";
+import { useMemo, useState, useEffect } from "react";
 import type { QuizQuestao } from "@/content/types";
 import { Botao, Card } from "./ui";
 import { Icon } from "./icons";

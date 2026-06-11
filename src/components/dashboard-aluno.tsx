@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   AreaChart,
   Area,

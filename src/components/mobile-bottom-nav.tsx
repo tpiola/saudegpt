@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useProgresso } from "@/lib/progress";
 
 const NAV_ITEMS = [
   { href: "/dashboard",  icon: "🏠", label: "Início" },
@@ -15,7 +14,6 @@ const NAV_ITEMS = [
 /** Bottom navigation bar for mobile screens (<768px) */
 export function MobileBottomNav() {
   const pathname = usePathname();
-  const { xp, nivel, streak } = useProgresso();
 
   function isActive(href: string) {
     if (href === "/dashboard") return pathname === "/dashboard";

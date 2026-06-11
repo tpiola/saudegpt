@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getModulo, trilhas } from "@/content/curriculo";
 import { Card, Etiqueta, NivelBadge, Botao } from "@/components/ui";
-import { Icon } from "@/components/icons";
+import { Icon, type IconName } from "@/components/icons";
 import { AulaStatusIcon } from "@/components/progresso-cliente";
 import { ModuloProgress } from "@/components/modulo-progress";
 
@@ -129,7 +129,7 @@ export default async function ModuloPage({
           {/* Ícone grande + info */}
           <div className="flex items-start gap-5">
             <span className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${grad} text-white shadow-lg`}>
-              <Icon name={trilha.icone as any} size={30} />
+              <Icon name={trilha.icone as IconName} size={30} />
             </span>
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2 mb-2">

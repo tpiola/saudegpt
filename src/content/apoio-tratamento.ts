@@ -1,4 +1,3 @@
-import type { Trilha } from "./types";
 import { q } from "./_helpers";
 
 // Módulo 3 da Trilha 4 — Apoio ao Tratamento e Cuidado Contínuo

@@ -34,7 +34,7 @@ function tituloPagina(pathname: string): string {
 }
 
 /* ── ScrollReveal inline ── */
-function ScrollReveal({
+export function ScrollReveal({
   children,
   delay = 0,
   className = "",

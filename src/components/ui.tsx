@@ -162,7 +162,7 @@ export function Skeleton({ className = "" }: { className?: string }) {
 }
 
 export function DividerGlow({ className = "" }: { className?: string }) {
-  return <div className="h-px bg-[linear-gradient(to_right,transparent,var(--border-strong),transparent)] my-8" />
+  return <div className={`h-px bg-[linear-gradient(to_right,transparent,var(--border-strong),transparent)] my-8 ${className}`} />
 }
 
 export function StatCard({ icone, valor, rotulo, className = "" }: {

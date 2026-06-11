@@ -22,7 +22,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const inicial: Tema = document.documentElement.classList.contains("dark") ? "dark" : "light";
     // Sincroniza o estado React com o tema já aplicado pelo script anti-flash.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTema(inicial);
   }, []);
 

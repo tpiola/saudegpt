@@ -72,8 +72,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     try {
       const bruto = localStorage.getItem(CHAVE);
       // Hidratação do progresso a partir do armazenamento local (apenas no cliente).
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (bruto) setEstado({ ...PADRAO, ...JSON.parse(bruto) });
+        if (bruto) setEstado({ ...PADRAO, ...JSON.parse(bruto) });
     } catch {
       // ignora
     }

@@ -33,7 +33,6 @@ export function usePerfilAluno() {
   const [carregado, setCarregado] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setPerfil(lerPerfilAluno());
     setCarregado(true);
   }, []);

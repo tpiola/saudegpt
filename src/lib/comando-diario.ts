@@ -47,7 +47,6 @@ export function useComandoDiario() {
   const [carregado, setCarregado] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setEstado(ler());
     setCarregado(true);
   }, []);
