@@ -78,7 +78,7 @@ Os dois são importantes! Um coração saudável precisa dos dois números dentr
 🔴 Hipertensão: acima de 140/90
 
 Antes o limite era 140/90. Agora é 130/80. Isso significa que mais pessoas precisam de cuidado e acompanhamento — e o farmacêutico tem um papel fundamental nisso!`,
-    imagem: "/hero-matricula.jpg",
+    imagem: "/hero-saude.jpg",
   },
 ];
 

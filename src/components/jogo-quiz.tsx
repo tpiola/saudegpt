@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { QuestaoJogo } from "@/content/jogos";
+import { Confetti } from "./confetti";
 import { Botao, Card } from "./ui";
 import { Icon } from "./icons";
 
@@ -10,23 +11,30 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
   const [pontos, setPontos] = useState(0);
   const [escolha, setEscolha] = useState<number | null>(null);
   const [fim, setFim] = useState(false);
+  const [celebrar, setCelebrar] = useState(false);
 
   const q = questoes[idx];
 
   function responder(i: number) {
     if (escolha != null) return;
     setEscolha(i);
-    if (i === q.correta) setPontos((p) => p + 10);
+    if (i === q.correta) {
+      setPontos((p) => p + 10);
+      setCelebrar(true);
+    }
   }
 
   function proxima() {
+    setEscolha(null);
+    setCelebrar(false);
     if (idx + 1 >= questoes.length) {
       setFim(true);
       return;
     }
     setIdx((i) => i + 1);
-    setEscolha(null);
   }
+
+  const acertou = escolha != null && escolha === q.correta;
 
   if (fim) {
     return (
@@ -42,6 +50,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
             setPontos(0);
             setEscolha(null);
             setFim(false);
+            setCelebrar(false);
           }}
         >
           Jogar novamente
@@ -52,6 +61,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
 
   return (
     <Card>
+      <Confetti ativo={celebrar} duracao={3000} />
       <div className="text-sm text-subtle">
         Questão {idx + 1} de {questoes.length}
       </div>
@@ -61,7 +71,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
           let estilo = "border-border hover:border-green-300";
           if (escolha != null) {
             if (i === q.correta) estilo = "border-green-400 bg-green-50 dark:bg-green-900/20";
-            else if (i === escolha) estilo = "border-orange-400 bg-orange-50 dark:bg-orange-900/20";
+            else if (i === escolha) estilo = "border-red-400 bg-red-50 dark:bg-red-900/20";
           }
           return (
             <button
@@ -78,7 +88,18 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
       </div>
       {escolha != null && (
         <>
-          <p className="mt-3 text-sm text-muted">
+          {acertou ? (
+            <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-green-700 dark:text-green-400">
+              <span className="text-lg">🎉✅</span>
+              <span>Resposta correta!</span>
+            </p>
+          ) : (
+            <p className="mt-4 flex items-center gap-2 text-sm font-semibold text-red-700 dark:text-red-400">
+              <span className="text-lg">✖️</span>
+              <span>Resposta incorreta</span>
+            </p>
+          )}
+          <p className="mt-2 text-sm text-muted">
             <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
             {q.explicacao}
           </p>

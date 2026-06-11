@@ -73,7 +73,7 @@ export default function TrilhasPage() {
           ════════════════════════════════════════════ */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
         <Image
-          src="/hero-matricula.jpg"
+          src="/hero-saude.jpg"
           alt=""
           fill
           className="hero-bg"
