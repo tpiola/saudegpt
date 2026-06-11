@@ -71,8 +71,8 @@ export function OsceSimulador() {
             className={`w-full rounded-xl border px-4 py-3 text-left text-sm ${
               mostrar && i === escolha
                 ? op.pontos === max
-                  ? "border-green-400 bg-green-50"
-                  : "border-orange-300 bg-orange-50"
+                  ? "border-green-400 bg-green-50 text-green-900 dark:border-green-600 dark:bg-green-900/30 dark:text-green-100"
+                  : "border-orange-300 bg-orange-50 text-orange-900 dark:border-orange-600 dark:bg-orange-900/30 dark:text-orange-100"
                 : "border-border"
             }`}
           >

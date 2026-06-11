@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { imagensCategoria } from "./midia-catalogo";
 
 // Trilha Prática Supervisionada — estágio virtual, simulação de balcão e certificação.
 export const trilhaPratica: Trilha = {
@@ -18,6 +19,7 @@ export const trilhaPratica: Trilha = {
       titulo: "Estágio Virtual",
       descricao:
         "Rotina completa de balcão em ambiente simulado: triagem, dispensação segura, receituário, perfumaria e medicamentos.",
+      imagemHeroUrl: imagensCategoria.atendimento,
       aulas: [
         // ── Aula 1: Rotina de Balcão ──
         {
@@ -507,6 +509,7 @@ export const trilhaPratica: Trilha = {
       titulo: "Simulação de Balcão",
       descricao:
         "Situações reais do dia a dia no balcão: atendimento completo, cliente difícil, emergência, prescrição irregular e cross-sell ético.",
+      imagemHeroUrl: imagensCategoria.atendimentoHumano,
       aulas: [
         // ── Aula 7: Atendimento Completo ──
         {
@@ -923,6 +926,7 @@ export const trilhaPratica: Trilha = {
       titulo: "Projetos e Certificação",
       descricao:
         "Portfólio de projetos, estudo de caso integrado, revisão geral, simulado final e certificação da trilha.",
+      imagemHeroUrl: imagensCategoria.equipe,
       aulas: [
         // ── Aula 12: Portfólio de Projetos ──
         {

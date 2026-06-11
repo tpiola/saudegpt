@@ -29,6 +29,9 @@ const trilhaHeroImgs: Record<string, string> = {
   medicamentos: "/trilha-medicamentos.jpg",
   operacional: "/trilha-operacional.jpg",
   encantamento: "/trilha-encantamento.jpg",
+  fundamentos: "/health-professional.jpg",
+  pratica: "/pharmacy-counter.jpg",
+  "servicos-cuidado": "/customer-service.jpg",
 };
 
 // Cores para cada trilha
@@ -37,6 +40,9 @@ const coresBadge: Record<string, { bg: string; border: string; text: string }> =
   medicamentos: { bg: "from-orange-100 to-orange-50", border: "border-orange-300/50", text: "text-orange-700 dark:text-orange-300" },
   operacional: { bg: "from-forest-100 to-green-50", border: "border-forest-300/50", text: "text-forest-700 dark:text-forest-300" },
   encantamento: { bg: "from-orange-100 to-orange-50", border: "border-orange-300/50", text: "text-orange-700 dark:text-orange-300" },
+  fundamentos: { bg: "from-green-100 to-green-50", border: "border-green-300/50", text: "text-green-700 dark:text-green-300" },
+  pratica: { bg: "from-forest-100 to-green-50", border: "border-forest-300/50", text: "text-forest-700 dark:text-forest-300" },
+  "servicos-cuidado": { bg: "from-green-100 to-orange-50", border: "border-green-300/50", text: "text-green-700 dark:text-green-300" },
 };
 
 // Mensagens de farmacêutico contextuais
@@ -45,6 +51,9 @@ const farmaMensagens: Record<string, string> = {
   medicamentos: "Solicite o segundo visto do farmacêutico(a) para qualquer prescrição de medicamentos — a segurança do paciente vem sempre em primeiro lugar.",
   operacional: "Anote corretamente todas as informações na etiqueta de posologia — o farmacêutico(a) é o responsável técnico pela verificação final.",
   encantamento: "O atendimento encantador inclui saber quando chamar o(a) farmacêutico(a) para orientações especializadas ao cliente.",
+  fundamentos: "Conceitos de saúde orientam, mas não substituem avaliação profissional — na dúvida clínica, o(a) farmacêutico(a) é sempre o próximo passo.",
+  pratica: "Nas simulações e no balcão real, a regra é a mesma: receita, sintoma persistente ou dúvida técnica = escalonar ao farmacêutico(a).",
+  "servicos-cuidado": "Aferição, testes, vacinas e injetáveis são executados pelo(a) farmacêutico(a) — o atendente acolhe, agenda e prepara o cliente.",
 };
 
 // 💡 Sabia que? cards por trilha — saúde preventiva + 4Ps
@@ -95,6 +104,42 @@ const sabiaQuePorTrilha: Record<string, { emoji: string; titulo: string; texto: 
       emoji: "💧",
       titulo: "Hidratação e comunicação",
       texto: "A desidratação causa mau hálito, boca seca e cansaço — tudo que atrapalha um atendimento encantador. Beber água regularmente melhora a dicção, o hálito e a energia para acolher cada cliente com um sorriso.",
+    },
+  ],
+  fundamentos: [
+    {
+      emoji: "🧬",
+      titulo: "O corpo é o manual do balcão",
+      texto: "Entender o básico de anatomia e fisiologia transforma o atendimento: quem sabe COMO o medicamento age no corpo orienta com mais segurança e responde dúvidas com confiança — sem nunca substituir o farmacêutico.",
+    },
+    {
+      emoji: "🧼",
+      titulo: "Biossegurança protege todo mundo",
+      texto: "Lavar as mãos do jeito certo é a medida mais barata e eficaz contra infecções — na farmácia e na vida. Equipamentos de proteção e descarte correto de perfurocortantes completam o trio da segurança.",
+    },
+  ],
+  pratica: [
+    {
+      emoji: "🎭",
+      titulo: "Simular é treinar de verdade",
+      texto: "O cérebro aprende fazendo: simulações de balcão criam memória prática para o atendimento real. Errar na simulação é grátis — errar com o cliente custa confiança. Por isso, repita os cenários sem medo!",
+    },
+    {
+      emoji: "🏅",
+      titulo: "Certificação que abre portas",
+      texto: "Atendentes com formação estruturada se destacam em qualquer rede. Cada módulo concluído é um degrau na sua carreira — e o certificado comprova o que você sabe fazer na prática.",
+    },
+  ],
+  "servicos-cuidado": [
+    {
+      emoji: "🩺",
+      titulo: "A farmácia como hub de saúde",
+      texto: "Aferição de pressão, glicemia, vacinas e testes rápidos transformam a farmácia no ponto de cuidado mais acessível do bairro. Quem acompanha a saúde todo mês cria vínculo — e previne de verdade.",
+    },
+    {
+      emoji: "🧭",
+      titulo: "Os 4 Ps da Saúde",
+      texto: "Prevenção, Parâmetros, Problemas e Promoção: o roteiro mental que organiza qualquer conversa de saúde no balcão. Aprenda o método uma vez e use em todos os temas — do sono à glicemia.",
     },
   ],
 };

@@ -1,5 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
+import { imagensCategoria } from "./midia-catalogo";
 
 // ─────────────────────────────────────────────────────────────
 // TRILHA 5 — Fundamentos da Farmácia (32 aulas)
@@ -20,6 +21,7 @@ export const trilhaFundamentos: Trilha = {
       titulo: "História da Profissão Farmacêutica",
       descricao:
         "Das boticas coloniais ao sistema de saúde moderno: evolução, regulamentação e responsabilidades do profissional farmacêutico.",
+      imagemHeroUrl: imagensCategoria.medicamentos,
       aulas: [
         {
           id: "historia-farmacia",
@@ -574,6 +576,7 @@ export const trilhaFundamentos: Trilha = {
       titulo: "Anatomia e Fisiologia Humana",
       descricao:
         "Visão geral do corpo humano: principais sistemas, seus órgãos e funções — o conhecimento básico que todo atendente de farmácia precisa dominar.",
+      imagemHeroUrl: imagensCategoria.principioAtivo,
       aulas: [
         {
           id: "introducao-corpo",
@@ -1186,6 +1189,7 @@ export const trilhaFundamentos: Trilha = {
       titulo: "Microbiologia e Saúde Pública",
       descricao:
         "Microrganismos, sistema imunológico, principais doenças infecciosas e conceitos de saúde pública essenciais para o atendente.",
+      imagemHeroUrl: imagensCategoria.glp1,
       aulas: [
         {
           id: "micro-organismos",
@@ -1771,6 +1775,7 @@ export const trilhaFundamentos: Trilha = {
       titulo: "Comunicação em Saúde",
       descricao:
         "Técnicas de comunicação aplicadas ao balcão da farmácia: escuta ativa, linguagem adequada, manejo de objeções e trabalho em equipe multidisciplinar.",
+      imagemHeroUrl: imagensCategoria.comunicacao,
       aulas: [
         {
           id: "comunicacao-saude",
@@ -2343,6 +2348,7 @@ export const trilhaFundamentos: Trilha = {
       titulo: "Biossegurança e Prevenção de Acidentes",
       descricao:
         "Normas de biossegurança na farmácia: higienização, descarte, controle de infecções, primeiros socorros e prevenção de acidentes.",
+      imagemHeroUrl: imagensCategoria.seguranca,
       aulas: [
         {
           id: "biosseguranca",

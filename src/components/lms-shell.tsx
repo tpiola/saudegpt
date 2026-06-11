@@ -10,6 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
 import { WhatsAppButton } from "./whatsapp-button";
+import { MobileBottomNav } from "./mobile-bottom-nav";
 import dynamic from "next/dynamic";
 
 const ChatBotIA = dynamic(() => import("./chatbot-ia").then((m) => ({ default: m.ChatBotIA })), {
@@ -273,13 +274,15 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <WhatsAppButton />
         <ChatBotIA />
 
-        <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
+        <footer className="has-bottom-nav border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
           <p>{site.assinatura}</p>
           <p className="mt-1">
             Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
           </p>
         </footer>
       </div>
+
+      <MobileBottomNav />
     </div>
   );
 }
