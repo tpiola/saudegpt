@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { Botao, Card } from "@/components/ui";
 import { Icon } from "@/components/icons";
@@ -32,15 +33,15 @@ export default function BulasReceitasPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
       <div className="relative mb-6 overflow-hidden rounded-3xl">
-        <div
-          className="h-44 w-full bg-cover bg-center sm:h-56"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1280&q=85)",
-          }}
-          role="img"
-          aria-label="Receita médica sendo analisada no balcão"
-        />
+        <div className="relative h-44 w-full sm:h-56">
+          <Image
+            src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1280&q=85"
+            alt="Receita médica sendo analisada no balcão"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         <div className="absolute bottom-4 left-5 right-5">
           <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-orange-300">

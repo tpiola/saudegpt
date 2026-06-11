@@ -126,10 +126,9 @@ export async function POST(req: NextRequest) {
       }));
 
   // Chamada DeepSeek (stream desabilitado para compatibilidade Next.js App Router)
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 25_000); // 25s timeout
   try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 25_000); // 25s timeout
-
       const res = await fetch("https://api.deepseek.com/v1/chat/completions", {
               method: "POST",
               signal: controller.signal,
@@ -150,8 +149,6 @@ export async function POST(req: NextRequest) {
                         presence_penalty: 0.05,
               }),
       });
-
-      clearTimeout(timeout);
 
       if (!res.ok) {
               const err = await res.text().catch(() => "");
@@ -193,5 +190,7 @@ export async function POST(req: NextRequest) {
         }
         console.error("[chat] Erro interno:", err);
         return NextResponse.json({ error: "Erro interno." }, { status: 500 });
+  } finally {
+        clearTimeout(timeout);
   }
 }

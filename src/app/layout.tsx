@@ -116,13 +116,6 @@ export default function RootLayout({
                 inLanguage: "pt-BR",
                 location: { "@type": "VirtualLocation", url: baseUrl },
               },
-              offers: {
-                "@type": "Offer",
-                category: "Free",
-                price: "0",
-                priceCurrency: "BRL",
-                availability: "https://schema.org/InStock",
-              },
             }),
           }}
         />

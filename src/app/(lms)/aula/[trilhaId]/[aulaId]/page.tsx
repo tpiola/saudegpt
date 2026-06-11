@@ -79,6 +79,9 @@ function Dica4Ps({ semente }: { semente: string }) {
           Dica 4 Ps · {d.p}
         </p>
         <p className="mt-0.5 text-sm leading-relaxed text-muted">{d.texto}</p>
+        <p className="mt-1.5 text-[10px] text-muted/70">
+          Fontes: ANVISA · OMS · Ministério da Saúde · conteúdo revisado por farmacêutico (CRF/SP 58.519)
+        </p>
       </div>
     </div>
   );

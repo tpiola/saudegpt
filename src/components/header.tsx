@@ -61,7 +61,7 @@ export function Header() {
           <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700" />
           <a
             href="mailto:contato@thiagopiola.com.br"
-            className="hidden min-h-10 items-center justify-center rounded-full border border-white/20 px-4 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white md:inline-flex"
+            className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/20 px-3 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
           >
             Contato
           </a>

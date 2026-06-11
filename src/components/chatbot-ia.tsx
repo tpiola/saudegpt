@@ -172,7 +172,7 @@ export function ChatBotIA() {
                       <ChatBubbleIcon className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-sm font-bold">Tutor IA — Anvisa & Saúde</p>
+                      <p className="text-sm font-bold">Robô da Saúde</p>
                       <p className="text-[10px] opacity-80">Referências científicas · Respostas completas</p>
                     </div>
                   </div>
@@ -305,7 +305,7 @@ export function ChatBotIA() {
                     </button>
                   </form>
                   <p className="mt-1.5 text-[10px] text-muted/60 text-center">
-                    O Tutor IA consulta ANVISA, OMS, Ministério da Saúde e literatura científica
+                    O Robô da Saúde consulta ANVISA, OMS, Ministério da Saúde e literatura científica
                   </p>
                 </div>
               </div>

@@ -20,7 +20,7 @@ export async function notificarNovoCadastro(dados: {
   const key = process.env.RESEND_API_KEY;
   if (!key) return;
   try {
-    await fetch("https://api.resend.com/emails", {
+    const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${key}`,
@@ -39,6 +39,10 @@ export async function notificarNovoCadastro(dados: {
         `,
       }),
     });
+    if (!res.ok) {
+      const corpo = await res.text().catch(() => "");
+      console.error("[cadastro] Resend retornou erro:", res.status, corpo);
+    }
   } catch (err) {
     console.error("[cadastro] falha ao notificar por e-mail:", err);
   }

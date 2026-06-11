@@ -40,7 +40,7 @@ export default function HomePage() {
                 </h1>
                 <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl mb-8">Trilhas EAD curtas, simulacoes reais e IA no balcao.</p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                  <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Entrar agora <Icon name="arrow" size={18} /></Link>
+                  <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Solicitar acesso <Icon name="arrow" size={18} /></Link>
                   <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-7 text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
                 </div>
                 <dl className="grid max-w-lg grid-cols-3 gap-3">
@@ -52,9 +52,9 @@ export default function HomePage() {
               <div id="matricula" className="scroll-mt-20 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
                 <div className="rounded-3xl border border-white/10 bg-white/[0.06] p-1.5 shadow-2xl backdrop-blur-xl">
                   <div className="rounded-[1.4rem] bg-white p-6 text-foreground shadow-xl dark:bg-surface">
-                    <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Acesso imediato</p>
-                    <h2 className="text-2xl font-extrabold tracking-tight mb-1.5">Entrar no SaudeGPT</h2>
-                    <p className="text-sm leading-relaxed text-muted mb-4">Preencha 3 campos e acesse agora.</p>
+                    <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Acesso mediante aprovação</p>
+                    <h2 className="text-2xl font-extrabold tracking-tight mb-1.5">Solicitar acesso ao SaúdeGPT</h2>
+                    <p className="text-sm leading-relaxed text-muted mb-4">Preencha 3 campos e aguarde a aprovação da coordenação.</p>
                     <MatriculaForm />
                   </div>
                 </div>

@@ -14,7 +14,7 @@ const Ctx = createContext<TemaContexto | null>(null);
 const CHAVE = "fap-tema";
 
 // Script aplicado antes da hidratação para evitar "flash" de tema errado.
-export const scriptAntiFlash = `(function(){try{var t=localStorage.getItem('${CHAVE}');var d=t? t==='dark' : true; if(d){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+export const scriptAntiFlash = `(function(){try{var t=localStorage.getItem('${CHAVE}');var d=t? t==='dark' : true; if(d){document.documentElement.classList.add('dark');}}catch(e){document.documentElement.classList.add('dark');}})();`;
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [tema, setTema] = useState<Tema>("light");
