@@ -8,12 +8,32 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
 import { ParticleBg, TypewriterPalavras } from "@/components/efeitos";
 
-/* ── 4Ps da Formação em Farmácia ── */
-const quatroPs: Array<{ icon: IconName; title: string; text: string }> = [
-  { icon: "shield", title: "🧪 Perícia", text: "Domine medicamentos, legislação ANVISA, portarias e boas práticas. Base técnica para atender com segurança." },
-  { icon: "zap", title: "💊 Prática", text: "Receituário, dispensação, OTC/MIP, balcão seguro e simulações reais do dia a dia da farmácia." },
-  { icon: "heart", title: "🤝 Pessoas", text: "Atendimento humanizado, escuta ativa, acolhimento e comunicação que fideliza o paciente." },
-  { icon: "trending", title: "📈 Performance", text: "Vendas com ética, métricas de resultado, plano de carreira e evolução profissional contínua." },
+/* ── 4Ps da Saúde (Farmas Notáveis 2025) ── */
+const quatroPs: Array<{ icon: IconName; title: string; text: string; items: string[] }> = [
+  {
+    icon: "heart",
+    title: "🤝 Primeira Atenção",
+    text: "A farmácia como porta de entrada da saúde. Acolhimento rápido, avaliação clínica, dispensação orientada e acompanhamento contínuo.",
+    items: ["Acolhimento rápido", "Avaliação clínica", "Dispensação orientada", "Acompanhamento contínuo"],
+  },
+  {
+    icon: "zap",
+    title: "🌱 Promoção",
+    text: "Construção de saúde com foco na qualidade de vida. Alimentação, atividade física e apoio emocional como pilares do bem-estar.",
+    items: ["Alimentação saudável", "Atividade física", "Apoio emocional", "Qualidade de vida"],
+  },
+  {
+    icon: "shield",
+    title: "🛡️ Proteção",
+    text: "Segurança no uso de medicamentos. Monitoramento, farmacovigilância e protocolos que previnem interações e reações adversas.",
+    items: ["Monitoramento de medicamentos", "Interações e reações", "Farmacovigilância", "Protocolos de segurança"],
+  },
+  {
+    icon: "trending",
+    title: "🔬 Prevenção",
+    text: "Antecipe riscos com avaliação de histórico, IA preditiva e intervenções precoces. Eduque o paciente a cuidar de si.",
+    items: ["Avaliação de riscos", "Intervenções precoces", "Educação do paciente", "Tecnologia preditiva"],
+  },
 ];
 
 export default function HomePage() {
@@ -103,15 +123,26 @@ export default function HomePage() {
         <section id="seguranca" className="bg-surface-2 py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-2">Os 4Ps da Farmácia</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Domine cada pilar.</h2>
+              <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-2">Os 4Ps da Saúde</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Domine cada pilar do cuidado.</h2>
+              <p className="mt-4 max-w-2xl mx-auto text-sm leading-relaxed text-muted">
+                Baseado no framework <strong>Farmas Notáveis 2025</strong>: a farmácia como ponto de cuidado integral — da <strong>Primeira Atenção</strong> à <strong>Prevenção</strong>, passando pela <strong>Promoção</strong> da saúde e <strong>Proteção</strong> do paciente.
+              </p>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {quatroPs.map((item) => (
                 <article key={item.title} className="group rounded-3xl border border-border bg-background p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-400/40">
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-teal-500/10 flex items-center justify-center mb-6"><Icon name={item.icon} size={26} className="text-emerald-600" /></div>
                   <h3 className="text-xl font-extrabold tracking-tight mb-3">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-muted">{item.text}</p>
+                  <p className="text-sm leading-relaxed text-muted mb-4">{item.text}</p>
+                  <ul className="space-y-1.5">
+                    {item.items.map((sub) => (
+                      <li key={sub} className="flex items-start gap-2 text-xs text-subtle">
+                        <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
+                        {sub}
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               ))}
             </div>
