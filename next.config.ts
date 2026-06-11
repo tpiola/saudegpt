@@ -18,7 +18,7 @@ const securityHeaders = [
                 "img-src 'self' https: data: blob:",
                 "media-src 'self' https: data: blob:",
                 "connect-src 'self' https: wss:",
-                "frame-src 'none'",
+                "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://vercel.live",
                 "object-src 'none'",
                 "base-uri 'self'",
                 "form-action 'self'",

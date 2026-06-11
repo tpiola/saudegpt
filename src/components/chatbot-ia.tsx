@@ -141,7 +141,7 @@ export function ChatBotIA() {
   return (
     <>
       {/* Botão flutuante — canto INFERIOR ESQUERDO */}
-      <div className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-[60] flex flex-col items-end gap-2 sm:gap-3">
+      <div className="fixed bottom-4 right-[4.75rem] sm:bottom-6 sm:right-24 z-[60] flex flex-col items-end gap-2 sm:gap-3">
         <AnimatePresence>
           {aberto && (
             <motion.div
