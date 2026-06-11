@@ -2491,6 +2491,32 @@ GAMIFICAÇÃO — ANIMAÇÕES E CROSS-MODULE
 @keyframes mission-complete { 0%{transform:scale(1)} 20%{transform:scale(1.08)} 40%{transform:scale(.96)} 60%{transform:scale(1.04)} 80%{transform:scale(.98)} 100%{transform:scale(1)} }
 .mission-complete-anim { animation: mission-complete .6s ease forwards; }
 
+/* ══════════════════════════════════════════════════════════
+   GAMIFICATION ANIMATIONS
+   ══════════════════════════════════════════════════════════ */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float-up {
+  0% { opacity: 0; transform: translateY(10px) scale(0.9); }
+  20% { opacity: 1; transform: translateY(-5px) scale(1.05); }
+  80% { opacity: 1; transform: translateY(-20px) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0.9); }
+}
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 5px rgba(76,161,93,.3); }
+  50% { box-shadow: 0 0 20px rgba(76,161,93,.6), 0 0 40px rgba(76,161,93,.2); }
+}
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient { animation: gradient 4s ease infinite; background-size: 200% 200%; }
+.gamification-pulse { animation: pulse-glow 2s ease-in-out infinite; }
+
 /* Level-up overlay */
 @keyframes level-up-burst { 0%{opacity:0;transform:translate(-50%,-50%) scale(.5)} 40%{opacity:1;transform:translate(-50%,-50%) scale(1.1)} 70%{transform:translate(-50%,-50%) scale(.95)} 100%{opacity:1;transform:translate(-50%,-50%) scale(1)} }
 .level-up-overlay { position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center; }
@@ -2526,6 +2552,23 @@ TABLET ESPECÍFICO (768px–1023px)
   .text-tablet-base { font-size: .9375rem; }
   .trilha-carousel-tablet { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; overflow: visible; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   SMOOTH SCROLLING & SCROLL ANIMATIONS
+   ══════════════════════════════════════════════════════════ */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; }
+}
+
+/* Custom scrollbar — webkit */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+.dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); }
+.dark ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.25); }
 
 /* Safe area helpers */
 .safe-area-bottom { padding-bottom: max(env(safe-area-inset-bottom,16px),16px); }

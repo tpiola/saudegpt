@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
  * ─── Comportamento ───
  * - DEV (process.env.NODE_ENV === "development"): apenas loga no console
  *   e salva em arquivo JSON temporário. Retorna { ok: true }.
- * - PROD: enviar e-mail para contato@thiagopiola.com.br via SMTP/Resend.
+ * - PROD: enviar e-mail para sentinelasaudeambiental@gmail.com via SMTP/Resend.
  *   (implementar conforme provedor escolhido)
  */
 
@@ -100,7 +100,7 @@ export async function POST(request: Request) {
   //     },
   //     body: JSON.stringify({
   //       from: "Cadastro App Farmácia <onboarding@seudominio.com>",
-  //       to: "contato@thiagopiola.com.br",
+  //       to: "sentinelasaudeambiental@gmail.com",
   //       subject: `Novo cadastro gratuito: ${dados.nome}`,
   //       html: `
   //         <h2>Novo cadastro gratuito</h2>
