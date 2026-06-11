@@ -74,7 +74,7 @@ export default function TrilhasPage() {
       <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
         <Image
           src="/hero-saude.jpg"
-          alt=""
+          alt="Equipe de farmácia atendendo com cuidado e dedicação"
           fill
           className="hero-bg"
           priority
@@ -243,7 +243,7 @@ export default function TrilhasPage() {
                   <div className="relative h-40 w-full overflow-hidden">
                     <Image
                       src={img}
-                      alt=""
+                      alt={`Imagem da trilha ${t.titulo}`}
                       fill
                       className="object-cover transition-all duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

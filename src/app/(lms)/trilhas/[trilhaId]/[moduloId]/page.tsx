@@ -93,7 +93,7 @@ export default async function ModuloPage({
         {/* Hero image background */}
         <Image
           src={moduloImagem(modulo.id, modulo.aulas.length)}
-          alt=""
+          alt={`Imagem de fundo do módulo ${modulo.titulo}`}
           fill
           className="hero-bg"
           priority

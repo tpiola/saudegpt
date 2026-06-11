@@ -248,7 +248,7 @@ export default function HormoniosPage() {
                   <div className="group relative overflow-hidden rounded-2xl shadow-lg">
                     <Image
                       src={topico.imagem}
-                      alt=""
+                      alt={`Ilustração sobre hormônios: ${topico.titulo}`}
                       width={600}
                       height={450}
                       className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"

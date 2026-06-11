@@ -89,7 +89,7 @@ export default function SobrePage() {
       <p className="mt-10 text-center text-sm text-subtle">{site.assinatura}</p>
       <div className="mt-6 flex justify-center">
         <Botao href="/" iconeFim="arrow">
-          Matricular-se
+          Explorar trilhas
         </Botao>
       </div>
       <p className="mt-4 text-center text-sm">

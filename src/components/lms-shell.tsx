@@ -263,7 +263,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             <ThemeToggle />
             {!perfil && (
               <Botao href="/" tamanho="sm" className="hidden sm:inline-flex">
-                Matricular
+                Explorar trilhas
               </Botao>
             )}
           </div>

@@ -162,7 +162,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
       <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-forest-500">
         <Image
           src={heroImg}
-          alt=""
+          alt={`Imagem de fundo da trilha ${trilha.titulo}`}
           fill
           className="hero-bg"
           priority

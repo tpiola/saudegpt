@@ -93,7 +93,7 @@ export function Header() {
             onClick={() => setAberto(false)}
             className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 hover:bg-white/90"
           >
-            Fazer matrícula
+            Explorar trilhas
           </Link>
         </nav>
       </div>

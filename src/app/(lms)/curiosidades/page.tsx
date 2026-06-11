@@ -151,7 +151,7 @@ export default function CuriosidadesPage() {
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
         <Image
           src="/hero-saude.jpg"
-          alt=""
+          alt="Profissional de saúde atendendo paciente no balcão da farmácia"
           fill
           className="hero-bg"
           priority
@@ -278,7 +278,7 @@ export default function CuriosidadesPage() {
                     <div className="group relative overflow-hidden rounded-2xl shadow-lg">
                       <Image
                         src={topico.imagem}
-                        alt=""
+                        alt={`Ilustração: ${topico.titulo}`}
                         width={600}
                         height={450}
                         className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
