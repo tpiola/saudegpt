@@ -1,7 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { randomUUID } from "crypto";
 import { PROGRESSO_VAZIO } from "@/lib/cadastro-types";
 import { obterPorEmail, upsertCadastro } from "@/lib/server/cadastros-store";
+import { notificarNovoCadastro } from "@/lib/server/notificar-cadastro";
 
 export async function POST(request: Request) {
   const { nome, email, whatsapp, apelidoRanking } = await request.json();
@@ -35,6 +36,9 @@ export async function POST(request: Request) {
   };
 
   const salvo = await upsertCadastro(registro);
+
+  // Avisa o coordenador para aprovar o acesso (após a resposta, sem bloquear).
+  after(() => notificarNovoCadastro({ nome: registro.nome, email: registro.email, whatsapp: registro.whatsapp }));
 
   return NextResponse.json({ ok: true, id: salvo.id, status: salvo.status });
 }

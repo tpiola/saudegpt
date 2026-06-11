@@ -11,7 +11,8 @@ import { ThemeToggle } from "./theme-toggle";
 const navLanding = [
   { href: "#trilhas", label: "Trilhas" },
   { href: "#conteudo", label: "Conteúdo" },
-  { href: "#seguranca", label: "4Ps do Cuidado" },
+  { href: "#seguranca", label: "Segurança" },
+  { href: "#matricula", label: "Matrícula" },
 ];
 
 export function Header() {
@@ -19,7 +20,7 @@ export function Header() {
   const [aberto, setAberto] = useState(false);
   const isLanding = pathname === "/";
   const itens = isLanding ? navLanding : navPrincipal.slice(0, 5);
-  const ctaHref = isLanding ? "/trilhas" : "/trilhas";
+  const ctaHref = isLanding ? "#matricula" : "/#matricula";
 
   useEffect(() => {
     setAberto(false);
@@ -58,11 +59,17 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700" />
+          <a
+            href="mailto:contato@thiagopiola.com.br"
+            className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/20 px-3 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
+          >
+            Contato
+          </a>
           <Link
-              href={ctaHref}
-              className="inline-flex min-h-9 items-center rounded-full bg-white px-4 text-xs font-extrabold text-forest-700 transition hover:bg-white/90"
-            >
-              Explorar trilhas
+            href={ctaHref}
+            className="hidden min-h-10 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90 sm:inline-flex"
+          >
+            Entrar
           </Link>
           <button
             type="button"
@@ -93,7 +100,7 @@ export function Header() {
             onClick={() => setAberto(false)}
             className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 hover:bg-white/90"
           >
-            Explorar trilhas
+            Fazer matrícula
           </Link>
         </nav>
       </div>

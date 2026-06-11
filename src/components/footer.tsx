@@ -14,16 +14,24 @@ export function Footer() {
               </span>
               <div>
                 <p className="text-sm font-extrabold tracking-tight">{site.nomeCurto}</p>
-                <p className="text-xs text-white/55">Formação para atendentes de farmácia</p>
+                <p className="text-xs text-white/55">Formação de excelência para atendentes de farmácia</p>
               </div>
             </div>
             <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/64">{site.descricao}</p>
-            <Link
-              href="/trilhas"
-              className="mt-5 inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
-            >
-              Explorar trilhas
-            </Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/#matricula"
+                className="inline-flex min-h-11 items-center rounded-full bg-white px-5 py-2.5 text-sm font-bold text-forest-700 transition hover:bg-white/90"
+              >
+                Entrar
+              </Link>
+              <a
+                href="mailto:contato@thiagopiola.com.br"
+                className="inline-flex min-h-11 items-center rounded-full border border-white/25 px-5 py-2.5 text-sm font-semibold text-white/85 transition hover:border-white/50 hover:text-white"
+              >
+                Contato
+              </a>
+            </div>
           </div>
 
           <div>
@@ -71,9 +79,6 @@ export function Footer() {
 
         <p className="mt-4 text-xs leading-relaxed text-white/38">
           Conteúdo educativo. Não substitui consulta médica nem orientação do farmacêutico responsável.
-        </p>
-        <p className="mt-3 text-[11px] leading-relaxed text-white/30 border-t border-white/5 pt-3 text-center sm:text-left">
-          Conteúdo criado e revisado pelo farmacêutico <strong className="text-white/50">Thiago Biasoli Garcia Piola</strong> — CRF/SP 58.519
         </p>
       </div>
     </footer>

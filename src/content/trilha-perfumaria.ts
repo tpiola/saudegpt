@@ -37,6 +37,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Barba e cuidados masculinos",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.barba,
           videoUrl: videosEducativos.barba,
           resumo:
             "Como orientar o cliente que faz a barba, evitando irritação, foliculite e pelos encravados.",
@@ -153,6 +154,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene oral",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.higieneOral,
           videoUrl: videosEducativos.higieneOral,
           resumo:
             "Escovas, cremes dentais, fio, enxaguantes e quando indicar cada item conforme a necessidade.",
@@ -260,6 +262,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Sabonetes",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.sabonetes,
           videoUrl: videosEducativos.higieneMaos,
           resumo: "Barra, líquido, glicerinado, antibacteriano e esfoliante: para quem é cada um.",
           resumoExecutivo: [
@@ -352,6 +355,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Acessórios para banho",
           duracaoMin: 4,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.acessoriosBanho,
           videoUrl: videosEducativos.higieneMaos,
           resumo: "Esponjas, buchas, escovas corporais e higienização correta dos acessórios.",
           resumoExecutivo: [
@@ -442,6 +446,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene pessoal",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.absorvente,
           videoUrl: videosEducativos.higieneMaos,
           resumo:
             "Cuidados gerais, absorventes, lenços, antissépticos de uso doméstico e bem-estar.",
@@ -530,6 +535,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Desodorantes e antitranspirantes",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.desodorantes,
           videoUrl: videosEducativos.higieneMaos,
           resumo: "Diferença entre desodorante e antitranspirante, formatos e pele sensível.",
           resumoExecutivo: [
@@ -630,6 +636,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Pele e fotoproteção",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.protetorSolar,
           videoUrl: videosEducativos.fotoprotecao,
           resumo: "Tipos de pele, limpeza, hidratação e o papel central do protetor solar.",
           resumoExecutivo: [
@@ -742,6 +749,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Maquiagem",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.cosmeticos,
           videoUrl: videosEducativos.skincareBasico,
           resumo: "Base, corretivo, pó, tons de pele e produtos para pele sensível/acneica.",
           resumoExecutivo: [
@@ -824,6 +832,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Unhas",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.unhas,
           videoUrl: videosEducativos.skincareBasico,
           resumo: "Esmaltes, bases fortalecedoras, removedores e cuidados com cutícula.",
           resumoExecutivo: [
@@ -914,6 +923,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Dermocosméticos",
           duracaoMin: 8,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.dermocosmetico,
           videoUrl: videosEducativos.skincareAtivos,
           resumo:
             "Ativos como ácido hialurônico, vitamina C, niacinamida e retinóides — leitura técnica e indicação responsável.",
@@ -1089,6 +1099,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Coloração",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.coloracao,
           videoUrl: videosEducativos.cabelos,
           resumo: "Tons, oxidantes, teste de mecha/toque e cuidados com alergia.",
           resumoExecutivo: [
@@ -1241,6 +1252,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Linha infantil",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.acessoriosInfantis,
           videoUrl: videosEducativos.cuidadosBebe,
           resumo: "Produtos suaves, sem álcool, hipoalergênicos e adequados à idade.",
           resumoExecutivo: [
@@ -1300,6 +1312,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Acessórios infantis",
           duracaoMin: 4,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.mamadeira,
           videoUrl: videosEducativos.cuidadosBebe,
           resumo: "Mamadeiras, chupetas, bicos, termômetros e higienizadores.",
           resumoExecutivo: [
@@ -1359,6 +1372,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Higiene infantil",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.formula,
           videoUrl: videosEducativos.higieneBebe,
           resumo: "Fraldas, lenços umedecidos, pomadas para assadura e banho do bebê.",
           resumoExecutivo: [

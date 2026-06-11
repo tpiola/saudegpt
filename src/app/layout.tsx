@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: `%s · SaúdeGPT`,
   },
   description:
-    "SaúdeGPT é a plataforma EAD que forma atendentes de farmácia preparados para acolher, orientar e cuidar com técnica, segurança e humanidade. Trilhas curtas, simulações reais, quizzes interativos e certificado. Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
+    "SaúdeGPT é a plataforma EAD que forma atendentes de farmácia preparados para acolher, orientar e cuidar com técnica, segurança e humanidade — gente que cuida de gente. Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
   keywords: [
     "saudegpt",
     "curso atendente farmácia",
@@ -123,13 +123,6 @@ export default function RootLayout({
                 courseMode: "Online",
                 inLanguage: "pt-BR",
                 location: { "@type": "VirtualLocation", url: baseUrl },
-              },
-              offers: {
-                "@type": "Offer",
-                category: "Free",
-                price: "0",
-                priceCurrency: "BRL",
-                availability: "https://schema.org/InStock",
               },
             }),
           }}

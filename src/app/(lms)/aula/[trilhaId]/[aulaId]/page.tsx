@@ -59,6 +59,34 @@ function Bloco({
   );
 }
 
+
+// 💡 Dica rotativa dos 4 Ps da Saúde — reforço do método em toda aula.
+const DICAS_4PS = [
+  { p: "Prevenção", emoji: "🛡️", texto: "Antes de indicar qualquer coisa, pergunte-se: o que essa pessoa pode fazer HOJE para evitar o problema amanhã?" },
+  { p: "Parâmetros", emoji: "📏", texto: "Números orientam, não diagnosticam. Conheça os valores de referência do tema desta aula — e encaminhe quando estiverem fora." },
+  { p: "Problemas", emoji: "🚨", texto: "Todo tema de saúde tem sinais de alerta. Saber reconhecê-los é o que separa orientar de arriscar — na dúvida, escalone ao farmacêutico." },
+  { p: "Promoção", emoji: "🌱", texto: "O atendimento não termina na entrega: feche promovendo saúde — um hábito, um acompanhamento, um retorno agendado." },
+];
+
+function Dica4Ps({ semente }: { semente: string }) {
+  const idx = [...semente].reduce((n, c) => n + c.charCodeAt(0), 0) % DICAS_4PS.length;
+  const d = DICAS_4PS[idx];
+  return (
+    <div className="mt-6 flex items-start gap-3 rounded-2xl border border-green-500/25 bg-green-500/[0.06] p-4">
+      <span className="text-xl" aria-hidden>{d.emoji}</span>
+      <div>
+        <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-green-600 dark:text-green-400">
+          Dica 4 Ps · {d.p}
+        </p>
+        <p className="mt-0.5 text-sm leading-relaxed text-muted">{d.texto}</p>
+        <p className="mt-1.5 text-[10px] text-muted/70">
+          Fontes: ANVISA · OMS · Ministério da Saúde · conteúdo revisado por farmacêutico (CRF/SP 58.519)
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default async function AulaPage({
   params,
 }: {
@@ -114,6 +142,8 @@ export default async function AulaPage({
           />
         </div>
       </AnimarEntrada>
+
+      <Dica4Ps semente={aula.id} />
 
       <div className="mt-8">
         <ProdutoShowcase produtos={produtos} marcas={marcas} />

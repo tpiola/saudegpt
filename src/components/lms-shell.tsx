@@ -275,10 +275,16 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <ChatBotIA />
 
         <footer className="has-bottom-nav border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
-          <p>{site.assinatura}</p>
+          <p className="font-semibold">{site.assinatura}</p>
           <p className="mt-1">
             Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
           </p>
+          <a
+            href="mailto:contato@thiagopiola.com.br"
+            className="mt-1 inline-flex min-h-[44px] items-center gap-1 px-3 text-[11px] font-semibold text-green-600 hover:text-green-500 dark:text-green-400"
+          >
+            <Icon name="message" size={11} /> Contato
+          </a>
         </footer>
       </div>
 

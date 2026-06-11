@@ -26,6 +26,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Remédio x Medicamento: conceitos essenciais",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.medicamentos,
           videoUrl: videosPiloto.medicamentosConceitos,
           resumo:
             "A diferença entre remédio, medicamento, droga e fármaco, e por que isso importa no balcão.",
@@ -117,6 +118,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Princípio ativo, excipientes e ação terapêutica",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.principioAtivo,
           resumo: "O que faz efeito, o que dá forma ao produto e como a ação terapêutica acontece.",
           resumoExecutivo: [
             "Princípio ativo: substância que produz o efeito. Excipiente: dá forma, estabilidade e sabor, sem efeito terapêutico principal.",
@@ -202,6 +204,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Formas farmacêuticas",
           duracaoMin: 7,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.formasFarmaceuticas,
           resumo:
             "Comprimidos, cápsulas, xaropes, suspensões, pomadas, supositórios, injetáveis e mais.",
           resumoExecutivo: [
@@ -295,6 +298,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Vias de administração",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.viasAdmin,
           resumo: "Oral, tópica, inalatória, retal, parenteral: características e cuidados.",
           resumoExecutivo: [
             "A via define rapidez e cuidados de uso (ex.: jejum, agitar, refrigerar).",
@@ -388,6 +392,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Bula e leitura segura (metodologia visual)",
           duracaoMin: 8,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.bula,
           videoUrl: videosPiloto.bula,
           resumo:
             "Transformar a bula em um roteiro: o que trata, como age, como usar, por quanto tempo, o que evitar e sinais de alerta.",
@@ -478,6 +483,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Tarjas e classes de risco",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.tarjas,
           resumo: "Sem tarja (MIP), tarja vermelha e tarja preta: o que cada uma exige no balcão.",
           resumoExecutivo: [
             "Sem tarja: venda livre (MIP/OTC), com orientação responsável.",
@@ -576,6 +582,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "MIP e autocuidado orientado",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.mip,
           resumo:
             "Medicamentos isentos de prescrição: o que pode ser orientado e os limites de segurança.",
           resumoExecutivo: [
@@ -669,6 +676,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Genéricos, similares e referência",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.genericos,
           resumo:
             "Diferenças, bioequivalência, intercambialidade e como explicar ao cliente com segurança.",
           resumoExecutivo: [
@@ -777,6 +785,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Analgésicos, antitérmicos e antissépticos",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.analgesicos,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo: "Dor e febre leves, antissépticos de uso comum e limites do autocuidado.",
           resumoExecutivo: [
@@ -865,6 +874,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Anti-inflamatórios e miorrelaxantes",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.antiinflamatorios,
           resumo: "AINEs, cuidados gástricos e relaxantes musculares — geralmente sob prescrição.",
           resumoExecutivo: [
             "AINEs podem irritar o estômago e interagir com outros medicamentos; muitos exigem receita.",
@@ -948,6 +958,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antigripais, descongestionantes, antialérgicos e tosse",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.gripe,
           resumo:
             "Sintomáticos respiratórios, antitussígenos x expectorantes e cuidados em grupos sensíveis.",
           resumoExecutivo: [
@@ -1037,6 +1048,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Gastrointestinais: antiácidos, laxativos, antidiarreicos e afins",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.gastro,
           resumo:
             "Antiácidos, hepatoprotetores, reguladores intestinais, laxativos/purgativos, antidiarreicos e antiflatulentos.",
           resumoExecutivo: [
@@ -1110,6 +1122,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antimicóticos, vitaminas, orexígenos, pediculicidas e escabicidas",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.suplementos,
           resumo:
             "Antifúngicos tópicos, suplementação, estimulantes de apetite e tratamento de piolho/sarna.",
           resumoExecutivo: [
@@ -1188,6 +1201,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antissépticos tópicos e desinfecção de pequenos ferimentos",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.primeirosSocorros,
           resumo:
             "Quando orientar antisséptico tópico, diferença para desinfetante de ambiente e limites do autocuidado.",
           resumoExecutivo: [
@@ -1270,6 +1284,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Pediculicidas e escabicidas — protocolo de balcão",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.fungos,
           resumo:
             "Aplicação, repetição de dose, tratamento de contactantes e higiene do ambiente — foco pedagógico separado.",
           resumoExecutivo: [
@@ -1346,6 +1361,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Antibióticos e o uso racional",
           duracaoMin: 7,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.antibioticos,
           resumo:
             "Antibióticos só com receita, retenção e atenção à resistência bacteriana. Regra de referência atual: RDC 471/2021.",
           resumoExecutivo: [
@@ -1436,6 +1452,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Receitas simples e controladas",
           duracaoMin: 7,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.receitas,
           videoUrl: videosPiloto.receituarios,
           resumo:
             "Receita comum, controle especial e a base legal: Portaria SVS/MS 344/1998 atualizada por RDCs posteriores.",
@@ -1526,6 +1543,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Leitura de receitas — casos visuais no balcão",
           duracaoMin: 8,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.receituarios,
           resumo:
             "Prática guiada: conferir prescrição, validade, retenção e encaminhamento com exemplos do dia a dia.",
           resumoExecutivo: [
@@ -1609,6 +1627,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "GLP-1 atualizado: retenção de receita (IN 360/2025)",
           duracaoMin: 7,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.glp1,
           resumo:
             "Agonistas de GLP-1 passaram a exigir retenção de receita; ensine a operação de forma responsável e sem glamour de emagrecimento.",
           resumoExecutivo: [
@@ -1694,6 +1713,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Farmácia Popular atualizado (2025)",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.farmaciaPopular,
           resumo:
             "O programa mudou: hoje oferece cobertura ampliada e novos itens. Conecte balcão, orientação e impacto público.",
           resumoExecutivo: [
@@ -1784,6 +1804,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Primeiros socorros no balcão",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.primeirosSocorros,
           videoUrl: "https://www.youtube.com/watch?v=Q2bHNFVEO0k",
           resumo: "Condutas básicas, limites do atendente e quando acionar emergência (192).",
           resumoExecutivo: [
@@ -1858,6 +1879,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Injetáveis e aplicação segura",
           duracaoMin: 7,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.injetaveis,
           resumo:
             "Tipos de injetáveis, cadeia de frio, descarte e aplicação como ato do farmacêutico/enfermagem.",
           resumoExecutivo: [
@@ -1935,6 +1957,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Adesão ao tratamento",
           duracaoMin: 7,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.adesao,
           resumo:
             "Como apoiar o cliente a seguir o tratamento: rotina, lembretes, esquecimento de dose e efeitos iniciais.",
           resumoExecutivo: [
@@ -2018,6 +2041,7 @@ export const trilhaMedicamentos: Trilha = {
           titulo: "Encaminhamento ao farmacêutico e sazonalidade",
           duracaoMin: 5,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.encaminhamento,
           resumo:
             "Quando e como encaminhar, e como antecipar picos sazonais (gripe, alergia, calor).",
           resumoExecutivo: [

@@ -14,18 +14,19 @@ const STORAGE_KEY = "appfarmacia_chat";
 
 /* ── Botão bolha SVG ── */
 function ChatBubbleIcon({ className }: { className?: string }) {
+  // Robô humanoide da farmácia — cabeça com antena e cruz da saúde no peito.
   return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      className={className}
-    >
-      <path d="M21 12a9 9 0 1 1-16-6l-2 5 5-2a9 9 0 0 1 13-3Z" />
-      <path d="M8 10h.01" />
-      <path d="M12 10h.01" />
-      <path d="M16 10h.01" />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <line x1="12" y1="2" x2="12" y2="4" />
+      <circle cx="12" cy="2" r="0.6" fill="currentColor" />
+      <rect x="6.5" y="4" width="11" height="8" rx="3" />
+      <circle cx="10" cy="8" r="0.9" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="8" r="0.9" fill="currentColor" stroke="none" />
+      <path d="M10.2 10.2c.5.5 1.2.8 1.8.8s1.3-.3 1.8-.8" />
+      <rect x="8" y="13.5" width="8" height="7" rx="2.4" />
+      <path d="M12 15.2v3.4M10.3 16.9h3.4" />
+      <path d="M6.5 15.5H5a1 1 0 0 0-1 1v1.8" />
+      <path d="M17.5 15.5H19a1 1 0 0 1 1 1v1.8" />
     </svg>
   );
 }
@@ -140,7 +141,7 @@ export function ChatBotIA() {
   return (
     <>
       {/* Botão flutuante — canto INFERIOR ESQUERDO */}
-      <div className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[60] flex flex-col items-start gap-2 sm:gap-3">
+      <div className="fixed bottom-4 right-[4.75rem] sm:bottom-6 sm:right-24 z-[60] flex flex-col items-end gap-2 sm:gap-3">
         <AnimatePresence>
           {aberto && (
             <motion.div
@@ -148,7 +149,7 @@ export function ChatBotIA() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="origin-bottom-left"
+              className="origin-bottom-right"
             >
               <div
                 className={`
@@ -171,7 +172,7 @@ export function ChatBotIA() {
                       <ChatBubbleIcon className="h-4 w-4" />
                     </span>
                     <div>
-                      <p className="text-sm font-bold">Tutor IA — Anvisa & Saúde</p>
+                      <p className="text-sm font-bold">Robô da Saúde</p>
                       <p className="text-[10px] opacity-80">Referências científicas · Respostas completas</p>
                     </div>
                   </div>
@@ -215,7 +216,7 @@ export function ChatBotIA() {
                         <ChatBubbleIcon className="h-7 w-7 text-green-500" />
                       </div>
                       <p className="text-sm font-semibold text-foreground">
-                        Tutor IA — Saúde & ANVISA
+                        Robô da Saúde — seu tutor 24h
                       </p>
                       <p className="text-xs text-muted mt-1 max-w-[260px]">
                         Tire qualquer dúvida com referências da ANVISA, OMS, Ministério da Saúde e mais.
@@ -304,7 +305,7 @@ export function ChatBotIA() {
                     </button>
                   </form>
                   <p className="mt-1.5 text-[10px] text-muted/60 text-center">
-                    O Tutor IA consulta ANVISA, OMS, Ministério da Saúde e literatura científica
+                    O Robô da Saúde consulta ANVISA, OMS, Ministério da Saúde e literatura científica
                   </p>
                 </div>
               </div>
@@ -317,7 +318,7 @@ export function ChatBotIA() {
           type="button"
           onClick={() => setAberto((v) => !v)}
           className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-forest-500 text-white shadow-xl shadow-forest-500/30 transition-all hover:bg-forest-400 hover:scale-105 active:scale-95"
-          aria-label="Abrir chat com tutor IA"
+          aria-label="Abrir chat com o Robô da Saúde"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
