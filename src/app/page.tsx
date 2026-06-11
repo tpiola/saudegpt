@@ -62,9 +62,61 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section id="trilhas" className="bg-surface py-16 sm:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-10"><div><p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Aprendizagem guiada</p><h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">O essencial para atender com seguranca.</h2></div><Link href="/trilhas" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-bold hover:border-emerald-400 transition-colors">Ver todas <Icon name="arrow" size={15} /></Link></div><div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{trilhasDestaque.map((trilha, i) => { const aulas = trilha.modulos.reduce((s, m) => s + m.aulas.length, 0); return (<Link key={trilha.id} href={"/trilhas/" + trilha.id} className="group flex flex-col rounded-3xl border border-border bg-background p-6 transition-all hover:-translate-y-1.5 hover:shadow-xl hover:border-emerald-400/50"><div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 mb-5"><Icon name="book" size={22} /></div><h3 className="text-lg font-extrabold tracking-tight mb-2">{trilha.titulo}</h3><p className="text-sm leading-relaxed text-muted flex-1 line-clamp-3">{trilha.descricao}</p><div className="mt-5 flex items-center justify-between"><span className="text-xs font-bold text-subtle">{trilha.modulos.length} mod</span><Icon name="arrow" size={14} className="text-muted" /></div></Link>);})}</div></div></section>
-        <section id="seguranca" className="bg-surface-2 py-16 sm:py-24"><div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"><div className="text-center mb-12"><p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-2">Por que funciona</p><h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Feito para quem trabalha.</h2></div><div className="grid gap-6 md:grid-cols-3">{pilares.map((item) => (<article key={item.title} className="group rounded-3xl border border-border bg-background p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-400/40"><div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-teal-500/10 flex items-center justify-center mb-6"><Icon name={item.icon} size={26} className="text-emerald-600" /></div><h3 className="text-xl font-extrabold tracking-tight mb-3">{item.title}</h3><p className="text-sm leading-relaxed text-muted">{item.text}</p></article>))}</div></div></section>
-        <section className="relative overflow-hidden bg-forest-500 py-16 sm:py-24 text-white"><div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" /><div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center"><h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">Seu proximo paciente merece o seu melhor.</h2><p className="text-lg text-white/65 max-w-2xl mx-auto mb-10">Junte-se a milhares transformando seu atendimento.</p><div className="flex flex-col sm:flex-row gap-3 justify-center"><Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Comecar gratis <Icon name="arrow" size={18} /></Link><Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-8 text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link></div></div></section>
+        <section id="trilhas" className="bg-surface py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-10">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Aprendizagem guiada</p>
+                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">O essencial para atender com seguranca.</h2>
+              </div>
+              <Link href="/trilhas" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-bold hover:border-emerald-400 transition-colors">Ver todas <Icon name="arrow" size={15} /></Link>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {trilhasDestaque.map((trilha) => {
+                const aulas = trilha.modulos.reduce((s, m) => s + m.aulas.length, 0);
+                return (
+                  <Link key={trilha.id} href={"/trilhas/" + trilha.id} className="group flex flex-col rounded-3xl border border-border bg-background p-6 transition-all hover:-translate-y-1.5 hover:shadow-xl hover:border-emerald-400/50">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 mb-5"><Icon name="book" size={22} /></div>
+                    <h3 className="text-lg font-extrabold tracking-tight mb-2">{trilha.titulo}</h3>
+                    <p className="text-sm leading-relaxed text-muted flex-1 line-clamp-3">{trilha.descricao}</p>
+                    <div className="mt-5 flex items-center justify-between">
+                      <span className="text-xs font-bold text-subtle">{trilha.modulos.length} modulos · {aulas} aulas</span>
+                      <Icon name="arrow" size={14} className="text-muted" />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+        <section id="seguranca" className="bg-surface-2 py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-2">Por que funciona</p>
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Feito para quem trabalha.</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {pilares.map((item) => (
+                <article key={item.title} className="group rounded-3xl border border-border bg-background p-8 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-400/40">
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-emerald-500/15 to-teal-500/10 flex items-center justify-center mb-6"><Icon name={item.icon} size={26} className="text-emerald-600" /></div>
+                  <h3 className="text-xl font-extrabold tracking-tight mb-3">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-muted">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="relative overflow-hidden bg-forest-500 py-16 sm:py-24 text-white">
+          <div className="absolute inset-0 pattern-grid opacity-30 pointer-events-none" />
+          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">Seu proximo paciente merece o seu melhor.</h2>
+            <p className="text-lg text-white/65 max-w-2xl mx-auto mb-10">Junte-se a milhares transformando seu atendimento.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Comecar gratis <Icon name="arrow" size={18} /></Link>
+              <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-8 text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
       <WhatsAppButton />
