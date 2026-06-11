@@ -3,7 +3,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { trilhas, totalAulas } from "@/content/curriculo";
 import { Botao, DividerGlow } from "@/components/ui";
-import { Icon, type IconName } from "@/components/icons";
+import { Icon } from "@/components/icons";
 import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 
 export const metadata: Metadata = {

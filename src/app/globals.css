@@ -200,7 +200,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden !important;
+  /* clip corta o overflow horizontal SEM criar contêiner de rolagem —
+     hidden aqui + overscroll-behavior no body travava a roda do mouse. */
+  overflow-x: clip;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -215,10 +217,9 @@ body {
   min-height: 100dvh;
   touch-action: manipulation;
   -ms-touch-action: manipulation;
-  overscroll-behavior: none;
   -webkit-overflow-scrolling: touch;
   transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -2263,7 +2264,7 @@ Atualizado: gamificação + tablet + mobile bottomnav
 ══════════════════════════════════════════════════════════ */
 
 /* ── Overflow global fix ── */
-html, body { overflow-x: hidden; max-width: 100vw; }
+html, body { overflow-x: clip; max-width: 100vw; }
 img, video, svg, iframe { max-width: 100%; }
 
 /* ── Containers fluidos ── */

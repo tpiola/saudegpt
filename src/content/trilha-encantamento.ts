@@ -1676,6 +1676,7 @@ export const trilhaVendas: Trilha = {
       titulo: "Perfil 51% — O Coração do Atendimento",
       descricao:
         "Descubra o poder das habilidades emocionais no balcão da farmácia. Baseado no conceito de Quociente de Hospitalidade (HQ) de Danny Meyer.",
+      imagemHeroUrl: imagensCategoria.comunicacaoPessoas,
       aulas: [
         {
           id: "perfil-51-intro",
@@ -2027,6 +2028,7 @@ export const trilhaVendas: Trilha = {
       titulo: "Ambiente de Farmácia — Respeito, Comunicação e Saúde Pública",
       descricao:
         "Construa um ambiente de trabalho baseado em respeito, comunicação assertiva, valorização das pessoas e compromisso com a saúde da comunidade. Inclui legislação de receitas, SUS e ética profissional.",
+      imagemHeroUrl: imagensCategoria.operacionalLoja,
       aulas: [
         {
           id: "farmacia-respeito",

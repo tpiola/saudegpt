@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { listarAulas, trilhas } from "@/content/curriculo";
+import { trilhas } from "@/content/curriculo";
 import { getSiteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
