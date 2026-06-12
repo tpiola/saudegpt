@@ -36,9 +36,9 @@ export default function HomePage() {
                 <h1 className="text-[clamp(2.2rem,7vw,5rem)] font-extrabold leading-[0.95] tracking-tighter mb-6">
                   <span className="block text-white">Domine o</span>
                   <span className="block text-gradient-premium">atendimento</span>
-                  <span className="block text-white/90">na farmacia.</span>
+                  <span className="block text-white/90">na farmácia.</span>
                 </h1>
-                <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl mb-8">Trilhas EAD curtas, simulacoes reais e IA no balcao.</p>
+                <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl mb-8">Trilhas EAD curtas, simulações reais e IA no balcão.</p>
                 <div className="flex flex-col sm:flex-row gap-3 mb-10">
                   <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Solicitar acesso <Icon name="arrow" size={18} /></Link>
                   <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-7 text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
