@@ -22,7 +22,7 @@ const topicos = [
     titulo: "O que é pressão arterial?",
     texto:
       "Pressão arterial é a força que o sangue faz nas paredes das artérias quando o coração bombeia. Pense numa mangueira de jardim: quando você aperta a saída, a água sai com mais força. É mais ou menos isso que acontece dentro do seu corpo.",
-    imagem: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/hero_pills.png",
   },
   {
     id: "por-que-sobe",
@@ -38,7 +38,7 @@ const topicos = [
       "🧬 Genética (histórico na família)",
       "🚬 Tabagismo e excesso de álcool",
     ],
-    imagem: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_medicamentos.png",
   },
   {
     id: "por-que-desce",
@@ -53,7 +53,7 @@ const topicos = [
       "🩸 Anemia (falta de ferro no sangue)",
       "🍽️ Ficar muito tempo sem comer",
     ],
-    imagem: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/hero_pills.png",
   },
   {
     id: "sistolica-diastolica",
@@ -65,7 +65,7 @@ const topicos = [
 • O segundo (menor) é a pressão DIASTÓLICA — é a força quando o coração DESCANSA entre uma batida e outra.
 
 Os dois são importantes! Um coração saudável precisa dos dois números dentro do limite.`,
-    imagem: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/sleep_quality.png",
   },
   {
     id: "limite-sbc",
@@ -78,7 +78,7 @@ Os dois são importantes! Um coração saudável precisa dos dois números dentr
 🔴 Hipertensão: acima de 140/90
 
 Antes o limite era 140/90. Agora é 130/80. Isso significa que mais pessoas precisam de cuidado e acompanhamento — e o farmacêutico tem um papel fundamental nisso!`,
-    imagem: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/sleep_hygiene.png",
   },
 ];
 

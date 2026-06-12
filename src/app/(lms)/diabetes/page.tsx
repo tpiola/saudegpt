@@ -28,7 +28,7 @@ Existem três tipos principais:
 • Diabetes Tipo 2 — o corpo produz insulina, mas as células não respondem bem a ela (resistência insulínica). É o tipo mais comum, geralmente associado a sobrepeso, sedentarismo e alimentação inadequada.
 
 • Pré-diabetes — a glicose no sangue está mais alta que o normal, mas ainda não é diabetes. É um alerta! Com mudanças no estilo de vida, é possível reverter.`,
-    imagem: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/hero_pills.png",
   },
   {
     id: "sinais-alerta",
@@ -47,7 +47,7 @@ Os sinais clássicos são:
 • Cansaço extremo
 
 No Tipo 1 os sintomas aparecem de repente. No Tipo 2, vêm aos poucos — por isso muita gente demora a perceber.`,
-    imagem: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_medicamentos.png",
   },
   {
     id: "medicamentos-insulinas",
@@ -68,7 +68,7 @@ Insulinas (essenciais no Tipo 1 e em alguns casos de Tipo 2):
 • Insulinas pré-misturadas
 
 Importante: insulinas devem ser armazenadas na geladeira (não no congelador!) e não podem ser agitadas com força.`,
-    imagem: "https://images.unsplash.com/photo-1573883429746-084be9b5cfca?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_medicamentos.png",
   },
   {
     id: "cuidados-balao",
@@ -83,7 +83,7 @@ Importante: insulinas devem ser armazenadas na geladeira (não no congelador!) e
 • Pergunte sobre a alimentação — muitos clientes têm dúvidas sobre o que podem comer
 • Lembre da hidratação: beber água ajuda a controlar a glicose
 • Fique atento a sinais de hipoglicemia (tontura, suor frio, tremor, confusão) — isso é uma emergência!`,
-    imagem: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/consult_pharmacist.png",
   },
   {
     id: "dieta-estilo-vida",
@@ -105,7 +105,7 @@ Alimentos para evitar:
 • Alimentos ultraprocessados
 
 Exercícios físicos regulares (30 minutos por dia) melhoram a sensibilidade à insulina e ajudam a controlar a glicose. A caminhada é uma excelente opção!`,
-    imagem: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_perfumaria.png",
   },
 ];
 

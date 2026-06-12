@@ -31,7 +31,7 @@ As principais glândulas do sistema endócrino são:
 • Ovários e testículos — hormônios sexuais
 
 Quando algum hormônio está em excesso ou em falta, o corpo dá sinais. Reconhecer esses sinais é parte importante do trabalho no balcão da farmácia.`,
-    imagem: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_medicamentos.png",
   },
   {
     id: "tireoide",
@@ -58,7 +58,7 @@ Hipertireoidismo (T3 e T4 altos):
 • Tratamento: medicamentos antitireoidianos ou iodo radioativo
 
 No balcão: pergunte se o cliente faz exames regulares de TSH. Muitos descobrem alterações na tireoide por acaso!`,
-    imagem: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/hero_pills.png",
   },
   {
     id: "hormonios-sexuais",
@@ -84,7 +84,7 @@ Testosterona — principal hormônio masculino:
 • Baixa testosterona causa cansaço, falta de libido e perda de massa muscular
 
 O farmacêutico pode orientar sobre reposição hormonal, sempre lembrando que é necessário acompanhamento médico.`,
-    imagem: "https://images.unsplash.com/photo-1573883429746-084be9b5cfca?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/trilha_medicamentos.png",
   },
   {
     id: "insulina-glucagon",
@@ -103,7 +103,7 @@ Glucagon — o hormônio que libera reserva:
 • Funciona como o "puxadinho de emergência" de energia
 
 No diabetes Tipo 1, o pâncreas não produz insulina. No Tipo 2, o corpo produz, mas as células não respondem bem (resistência insulínica). Entender essa diferença é essencial para orientar o cliente no balcão.`,
-    imagem: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/hero_pills.png",
   },
   {
     id: "cortisol-estresse",
@@ -132,7 +132,7 @@ Dicas para reduzir o cortisol naturalmente:
 • Reservar momentos de lazer e descanso
 
 No balcão: clientes que buscam remédios para ansiedade ou insônia podem estar sofrendo os efeitos do cortisol alto. Uma conversa atenciosa pode ajudar.`,
-    imagem: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=600&q=85",
+    imagem: "/imagens/sleep_quality.png",
   },
 ];
 

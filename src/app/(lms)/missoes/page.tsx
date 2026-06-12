@@ -17,7 +17,7 @@ export default function MissoesPage() {
       <div className="relative mb-10 overflow-hidden rounded-2xl">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1576671081837-49200257d2fa?auto=format&fit=crop&w=1200&q=85"
+            src="/imagens/trilha_encantamento.png"
             alt="Cliente sendo atendido no balcão da farmácia"
             fill
             className="object-cover"

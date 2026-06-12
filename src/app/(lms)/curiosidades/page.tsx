@@ -32,7 +32,7 @@ O segredo de verdade? Mudanças pequenas e permanentes. Trocar refrigerante por 
 
 O farmacêutico pode ajudar: muitas vezes quem busca emagrecimento rápido também busca remédios na farmácia. A melhor orientação é sempre acompanhamento com nutricionista e médico.`,
         curiosidade: "Sabia que pular o café da manhã pode atrapalhar o emagrecimento? Ficar muitas horas sem comer faz o corpo entrar em 'modo de economia' e desacelerar o metabolismo.",
-        imagem: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/trilha_perfumaria.png",
       },
       {
         titulo: "🍎 Comer de tudo um pouco é a melhor dieta",
@@ -48,7 +48,7 @@ E não precisa passar fome! Comer de 3 em 3 horas mantém o metabolismo acelerad
 
 No balcão da farmácia, muita gente pergunta sobre shakes, suplementos e termogênicos. A orientação certa: suplemento só com acompanhamento profissional. Nada substitui comida de verdade.`,
         curiosidade: "Comer devagar faz diferença! O cérebro leva cerca de 20 minutos para receber o sinal de saciedade. Quem come rápido acaba comendo mais do que precisa.",
-        imagem: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/hydration_water.png",
       },
     ],
   },
@@ -73,7 +73,7 @@ A Sociedade Brasileira de Cardiologia atualizou os limites em 2026:
 
 No balcão: sempre que alguém comprar remédio para pressão, pergunte se está fazendo acompanhamento médico regular.`,
         curiosidade: "O estresse faz a pressão subir na hora, mas o efeito do sal é pior a longo prazo. Reduzir 1 colher de chá de sal por dia já diminui a pressão em média 5 mmHg!",
-        imagem: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/hero_pills.png",
       },
       {
         titulo: "🧂 Os segredos do sódio escondido",
@@ -92,7 +92,7 @@ Dica de ouro: ensine seus clientes a ler o rótulo. Um alimento é considerado A
 
 E o potássio é o melhor amigo de quem tem pressão alta! Banana, abacate, feijão, batata-doce e espinafre são ricos em potássio e ajudam a equilibrar o sódio no corpo.`,
         curiosidade: "O brasileiro consome em média 10g de sal por dia — o dobro do recomendado pela OMS, que é no máximo 5g (1 colher de chá).",
-        imagem: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/trilha_medicamentos.png",
       },
     ],
   },
@@ -119,7 +119,7 @@ O importante é se mexer! O sedentarismo é um dos maiores fatores de risco para
 
 No balcão: quando um cliente comprar remédio para colesterol ou pressão, pergunte se ele faz atividade física. Uma simples conversa pode motivar uma mudança de vida.`,
         curiosidade: "Ficar sentado por mais de 8 horas por dia aumenta o risco de doenças cardíacas em até 20%, mesmo para quem faz exercícios. Levante-se a cada hora!",
-        imagem: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/sleep_hygiene.png",
       },
       {
         titulo: "🍔 Colesterol: os mitos e verdades",
@@ -136,7 +136,7 @@ O que realmente faz mal: gordura trans (presente em bolachas recheadas, sorvetes
 
 Dica importante: colesterol alto, na maioria das vezes, não dá sintomas. Por isso os exames de rotina são tão importantes.`,
         curiosidade: "O ovo tem fama de vilão, mas é um dos alimentos mais completos: rico em proteínas, vitaminas e colesterol bom. Um ovo por dia não aumenta o risco cardíaco em pessoas saudáveis.",
-        imagem: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&w=600&q=85",
+        imagem: "/imagens/consult_pharmacist.png",
       },
     ],
   },
@@ -150,7 +150,7 @@ export default function CuriosidadesPage() {
          ════════════════════════════════════════════ */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
         <Image
-          src="/hero-saude.jpg"
+          src="/imagens/hero_pills.png"
           alt="Profissional de saúde atendendo paciente no balcão da farmácia"
           fill
           className="hero-bg"

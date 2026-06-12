@@ -144,7 +144,7 @@ export function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ scale }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/hero-dashboard.jpg')" }}
+          style={{ backgroundImage: "url('/imagens/hero_pills.png')" }}
         />
         {/* Overlay gradiente multi-camada */}
         <div className="absolute inset-0 bg-gradient-to-b from-forest-900/90 via-forest-800/80 to-forest-900/95" />

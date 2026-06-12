@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 
 // Imagens de trilha disponíveis em /public/
 const trilhaImagens = [
-  "/trilha-perfumaria.jpg",
-  "/trilha-medicamentos.jpg",
-  "/trilha-operacional.jpg",
-  "/trilha-encantamento.jpg",
+  "/imagens/trilha_perfumaria.png",
+  "/imagens/trilha_medicamentos.png",
+  "/imagens/trilha_operacional.png",
+  "/imagens/trilha_encantamento.png",
 ];
 
 const coresTrilha = [
@@ -35,7 +35,7 @@ const sabiaQueCards = [
     texto:
       "Dormir bem regula o sistema imunológico, melhora a memória e reduz o estresse. Na farmácia, perguntar sobre o sono do cliente pode revelar necessidades de suplementos ou fitoterápicos.",
     badge: "Saúde preventiva",
-    bgImg: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=400&q=60",
+    bgImg: "/imagens/sleep_quality.png",
   },
   {
     emoji: "💧",
@@ -43,7 +43,7 @@ const sabiaQueCards = [
     texto:
       "Beber água suficiente melhora a absorção de medicamentos, a elasticidade da pele e o funcionamento dos rins. Lembre os clientes: 2 litros por dia é a meta mínima.",
     badge: "Bem-estar",
-    bgImg: "https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=400&q=60",
+    bgImg: "/imagens/hydration_water.png",
   },
   {
     emoji: "📐",
@@ -51,7 +51,7 @@ const sabiaQueCards = [
     texto:
       "A bioimpedância avalia composição corporal — gordura, massa magra e hidratação. É um serviço farmacêutico que agrega valor e fideliza clientes (Produto + Serviço).",
     badge: "Inovação",
-    bgImg: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=400&q=60",
+    bgImg: "/imagens/hero_pills.png",
   },
   {
     emoji: "🧘",
@@ -59,7 +59,7 @@ const sabiaQueCards = [
     texto:
       "Criar uma rotina noturna consistente — sem telas 1h antes, quarto escuro e fresco — melhora a qualidade do sono. Ofereça dicas + produtos como melatonina (com orientação).",
     badge: "Sleep hygiene",
-    bgImg: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=60",
+    bgImg: "/imagens/sleep_hygiene.png",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function TrilhasPage() {
           ════════════════════════════════════════════ */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
         <Image
-          src="/hero-saude.jpg"
+          src="/imagens/hero_pills.png"
           alt="Equipe de farmácia atendendo com cuidado e dedicação"
           fill
           className="hero-bg"
@@ -187,7 +187,7 @@ export default function TrilhasPage() {
             {/* Background image sutil */}
             <div
               className="absolute right-0 top-0 bottom-0 w-1/3 bg-cover bg-center opacity-[0.08]"
-              style={{ backgroundImage: "url(https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=60)" }}
+              style={{ backgroundImage: "url(/imagens/trilha_medicamentos.png)" }}
             />
             <div className="flex items-start gap-3 relative z-10">
               <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg dark:bg-orange-900/30">

@@ -20,7 +20,7 @@ export default function BibliotecaPage() {
       <div className="relative mb-10 overflow-hidden rounded-2xl">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1585435557343-3b092031a831?auto=format&fit=crop&w=1200&q=85"
+            src="/imagens/hero_brain_model.png"
             alt="Estante de farmácia com medicamentos e livros de referência"
             fill
             className="object-cover"

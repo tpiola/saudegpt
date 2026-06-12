@@ -25,14 +25,14 @@ export async function generateMetadata({
 
 // Mapa de imagens de módulo baseado nas imagens disponíveis
 const moduloImagens = [
-  "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1576091358783-a212ec293ff3?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1550572017-edd951b55104?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1584308666744-19c4e5e9e0b1?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1576671081837-4900028a1b2f?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1280&q=85",
-  "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=1280&q=85",
+  "/imagens/hero_pills.png",
+  "/imagens/trilha_medicamentos.png",
+  "/imagens/hero_brain_model.png",
+  "/imagens/hero_pills.png",
+  "/imagens/trilha_operacional.png",
+  "/imagens/bioimpedance_scale.png",
+  "/imagens/consult_pharmacist.png",
+  "/imagens/sleep_quality.png",
 ];
 
 function moduloImagem(moduloId: string, idx: number): string {
