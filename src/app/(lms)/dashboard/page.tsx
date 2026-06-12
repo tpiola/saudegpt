@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JsonLdCourse } from "@/components/json-ld-course";
 import { DashboardAlunoLazy } from "@/components/dashboard-aluno-lazy";
+import { ErrorBoundary } from "@/components/error-boundary";
 
 export const metadata: Metadata = {
   title: "Dashboard — Formação para Atendentes de Farmácia",
@@ -12,7 +13,9 @@ export default function DashboardPage() {
   return (
     <>
       <JsonLdCourse />
-      <DashboardAlunoLazy />
+      <ErrorBoundary mensagem="Não foi possível carregar seu painel.">
+        <DashboardAlunoLazy />
+      </ErrorBoundary>
     </>
   );
 }
