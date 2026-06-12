@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const DashboardAlunoLazy = dynamic(
-  () => import("@/components/dashboard-aluno") as unknown as Promise<{ default: React.ComponentType<unknown> }>,
+  () => import("@/components/dashboard-aluno").then((mod) => ({ default: mod.DashboardAluno })),
   {
     ssr: false,
     loading: () => (
