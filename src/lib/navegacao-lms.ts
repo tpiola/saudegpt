@@ -42,6 +42,12 @@ export const secoesNavLms: SecaoNavLms[] = [
     ],
   },
   {
+    titulo: "Comunidade",
+    itens: [
+      { href: "/forum", label: "Fórum", icone: "message" },
+    ],
+  },
+  {
     titulo: "Desempenho",
     itens: [
       { href: "/trilhas/encantamento", label: "Cuidado Humanizado", icone: "heart" },

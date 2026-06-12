@@ -28,6 +28,9 @@ import {
   Search,
   Target,
   TrendingUp,
+  Trophy,
+  Medal,
+  FileSpreadsheet,
   Users,
   X,
 } from "lucide-react";
@@ -532,7 +535,23 @@ export function AdminCrm() {
     const emRisco = metricas.filter(
       (m) => (m.diasSemEstudar ?? 0) >= 7 || m.quizzesAbaixo60 >= 2,
     ).length;
-    return { ativos7, tempoTotal, xpTotal, notaGeral, emRisco };
+
+    // Score da Equipe — métricas agregadas
+    const totalAlunos = metricas.length || 1;
+    const streakMedio = Math.round(
+      metricas.reduce((a, m) => a + m.streak, 0) / totalAlunos,
+    );
+    const mediaEngajamento = metricas.length
+      ? Math.round(
+          metricas.reduce((a, m) => a + (m.diasAtivos / 84) * 100, 0) / metricas.length,
+        )
+      : 0;
+    const concluidos50 = metricas.filter((m) => m.pct >= 50).length;
+    const taxaConclusao = Math.round((concluidos50 / totalAlunos) * 100);
+    const xpMedio = Math.round(xpTotal / totalAlunos);
+    const totalAulasFeitas = metricas.reduce((a, m) => a + m.concluidas, 0);
+
+    return { ativos7, tempoTotal, xpTotal, notaGeral, emRisco, streakMedio, mediaEngajamento, taxaConclusao, xpMedio, totalAulasFeitas, totalAlunos };
   }, [metricas]);
 
   const atividade14d = useMemo(() => {
@@ -567,6 +586,124 @@ export function AdminCrm() {
   const insights = useMemo(() => insightsPlataforma(metricas), [metricas]);
   const pendentes = metricas.filter((m) => m.cad.status === "pendente");
 
+  // Top 5 rankings
+  const topXp = useMemo(
+    () => [...metricas].sort((a, b) => (b.cad.progresso?.xp ?? 0) - (a.cad.progresso?.xp ?? 0)).slice(0, 5),
+    [metricas],
+  );
+  const topNotas = useMemo(
+    () =>
+      [...metricas]
+        .filter((m) => m.notaMedia != null)
+        .sort((a, b) => (b.notaMedia ?? 0) - (a.notaMedia ?? 0))
+        .slice(0, 5),
+    [metricas],
+  );
+
+  // Insight da Semana — análise textual automática
+  const insightSemana = useMemo(() => {
+    if (metricas.length === 0) return "Nenhum dado disponível para gerar o Insight da Semana.";
+    const partes: string[] = [];
+    const total = metricas.length;
+
+    // Conclusões recentes (últimas aulas no progresso de cada aluno)
+    const totalConclusoes = kpis.totalAulasFeitas;
+    if (totalConclusoes > 0) {
+      partes.push(`Nesta semana, ${totalConclusoes} aulas foram concluídas no total.`);
+    }
+
+    // Desempenho geral
+    if (kpis.notaGeral != null) {
+      if (kpis.notaGeral >= 85) {
+        partes.push(`A nota média geral é de ${kpis.notaGeral}% — excelente desempenho da turma!`);
+      } else if (kpis.notaGeral >= 70) {
+        partes.push(`A nota média geral é de ${kpis.notaGeral}% — bom desempenho, com margem para melhoria.`);
+      } else {
+        partes.push(`A nota média geral é de ${kpis.notaGeral}% — vale reforçar os conteúdos com dificuldade.`);
+      }
+    }
+
+    // Trilhas com mais atividade
+    const trilhaAtiva = [...porTrilha].sort((a, b) => b.conclusoes - a.conclusoes);
+    if (trilhaAtiva.length > 0 && trilhaAtiva[0].conclusoes > 0) {
+      partes.push(`A trilha mais estudada foi "${trilhaAtiva[0].nome}", com ${trilhaAtiva[0].conclusoes} aulas concluídas.`);
+    }
+
+    // Engajamento
+    if (kpis.streakMedio > 0) {
+      partes.push(`O streak médio da equipe é de ${kpis.streakMedio} dias — ${kpis.streakMedio >= 3 ? "ótima constância!" : "incentive os alunos a estudarem diariamente."}`);
+    }
+
+    // Taxa de conclusão
+    if (kpis.taxaConclusao > 0) {
+      partes.push(`${kpis.taxaConclusao}% dos alunos já concluíram mais da metade do curso.`);
+    }
+
+    // Alunos em risco
+    if (kpis.emRisco > 0) {
+      partes.push(`${kpis.emRisco} aluno(s) estão em risco de desengajamento — considere um acompanhamento personalizado.`);
+    }
+
+    if (partes.length === 0) {
+      return "Os alunos estão começando sua jornada. Acompanhe o progresso nos próximos dias.";
+    }
+
+    return partes.join(" ");
+  }, [metricas, kpis, porTrilha]);
+
+  // Export CSV
+  function exportarCSV() {
+    const linhas: string[] = [];
+    // Cabeçalho
+    const cabecalho = [
+      "Nome",
+      "Email",
+      "Status",
+      "Aulas Concluídas",
+      "Progresso (%)",
+      "XP Total",
+      "Nível",
+      "Nota Média",
+      "Streak (dias)",
+      "Dias Ativos",
+      "Tempo de Estudo (min)",
+      "Tentativas de Quiz",
+      "Trilha Favorita",
+      "Último Acesso",
+    ];
+    linhas.push(cabecalho.map((c) => `"${c}"`).join(","));
+
+    for (const m of metricas) {
+      const linha = [
+        m.cad.nome,
+        m.cad.email,
+        m.cad.status,
+        m.concluidas,
+        m.pct,
+        m.cad.progresso?.xp ?? 0,
+        m.nivel,
+        m.notaMedia != null ? m.notaMedia : "",
+        m.streak,
+        m.diasAtivos,
+        Math.round(m.tempoSegundos / 60),
+        m.tentativas,
+        m.trilhaFavoritaTitulo ?? "",
+        m.ultimoAcesso ?? "",
+      ];
+      linhas.push(linha.map((v) => `"${String(v).replace(/"/g, '""')}"`).join(","));
+    }
+
+    const blob = new Blob([linhas.join("\n")], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `relatorio-alunos-saudegpt-${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   if (!pronto) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
@@ -586,6 +723,14 @@ export function AdminCrm() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => exportarCSV()}
+            className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-sm font-medium text-foreground transition hover:border-green-500/50"
+            title="Exportar dados dos alunos em CSV"
+          >
+            <FileSpreadsheet size={15} className="text-green-600" />
+            Exportar CSV
+          </button>
           <button
             onClick={() => void carregar()}
             className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-sm font-medium text-foreground transition hover:border-green-500/50"
@@ -616,6 +761,37 @@ export function AdminCrm() {
         <Kpi icon={Clock} label="Tempo total de estudo" valor={formatarTempoEstudo(kpis.tempoTotal)} cor="orange" />
         <Kpi icon={Award} label="Taxa de acerto geral" valor={kpis.notaGeral != null ? `${kpis.notaGeral}%` : "—"} />
         <Kpi icon={AlertTriangle} label="Alunos em risco" valor={String(kpis.emRisco)} detalhe="inativos 7d+ ou notas baixas" cor="red" />
+      </div>
+
+      {/* Score da Equipe */}
+      <div className="mt-6 rounded-2xl border border-border bg-gradient-to-br from-green-50 to-emerald-50 bg-surface p-5 dark:from-green-950/20 dark:to-emerald-950/10">
+        <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
+          <Trophy size={16} className="text-amber-500" />
+          Score da Equipe
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+          <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
+            <div className="text-2xl font-extrabold text-green-600">{kpis.mediaEngajamento}%</div>
+            <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">Engajamento Médio</div>
+          </div>
+          <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
+            <div className="text-2xl font-extrabold text-blue-600">{kpis.notaGeral != null ? `${kpis.notaGeral}%` : "—"}</div>
+            <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">Nota Média</div>
+          </div>
+          <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
+            <div className="text-2xl font-extrabold text-amber-500">{kpis.xpTotal}</div>
+            <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">XP Total</div>
+            <div className="text-[10px] text-muted">média {kpis.xpMedio}/aluno</div>
+          </div>
+          <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
+            <div className="text-2xl font-extrabold text-orange-500">{kpis.streakMedio}</div>
+            <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">Streak Médio (dias)</div>
+          </div>
+          <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
+            <div className="text-2xl font-extrabold text-purple-600">{kpis.taxaConclusao}%</div>
+            <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">Taxa de Conclusão (&gt;50%)</div>
+          </div>
+        </div>
       </div>
 
       {/* Gráficos */}
@@ -705,6 +881,97 @@ export function AdminCrm() {
             </table>
           </div>
         )}
+      </div>
+
+      {/* Insight da Semana */}
+      <div className="mt-6 rounded-2xl border border-border bg-gradient-to-br from-amber-50 to-orange-50 bg-surface p-5 dark:from-amber-950/15 dark:to-orange-950/10">
+        <h2 className="mb-1 flex items-center gap-2 text-sm font-bold text-foreground">
+          <Lightbulb size={16} className="text-amber-500" />
+          Insight da Semana
+        </h2>
+        <p className="text-sm leading-relaxed text-foreground">
+          {insightSemana}
+        </p>
+      </div>
+
+      {/* Top 5 Rankings */}
+      <div className="mt-6 grid gap-6 lg:grid-cols-2">
+        <div className="rounded-2xl border border-border bg-surface p-5">
+          <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Medal size={16} className="text-amber-500" />
+            Top 5 — Maior XP
+          </h2>
+          {topXp.length === 0 ? (
+            <p className="text-sm text-muted">Nenhum dado disponível.</p>
+          ) : (
+            <div className="space-y-2">
+              {topXp.map((m, i) => (
+                <div
+                  key={m.cad.id}
+                  className="flex items-center gap-3 rounded-xl border border-border bg-surface-2 p-3"
+                >
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
+                    i === 0
+                      ? "bg-amber-100 text-amber-600 dark:bg-amber-900/30"
+                      : i === 1
+                        ? "bg-slate-100 text-slate-500 dark:bg-slate-800/40"
+                        : i === 2
+                          ? "bg-orange-100 text-orange-600 dark:bg-orange-900/30"
+                          : "bg-surface-3 text-muted"
+                  }`}>
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-foreground">{m.cad.nome}</p>
+                    <p className="text-[11px] text-muted">Nível {m.nivel}</p>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="text-sm font-extrabold text-amber-500">{m.cad.progresso?.xp ?? 0}</p>
+                    <p className="text-[10px] text-muted">XP</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <div className="rounded-2xl border border-border bg-surface p-5">
+          <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
+            <Award size={16} className="text-blue-500" />
+            Top 5 — Melhor Nota Média
+          </h2>
+          {topNotas.length === 0 ? (
+            <p className="text-sm text-muted">Nenhum dado disponível.</p>
+          ) : (
+            <div className="space-y-2">
+              {topNotas.map((m, i) => (
+                <div
+                  key={m.cad.id}
+                  className="flex items-center gap-3 rounded-xl border border-border bg-surface-2 p-3"
+                >
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold ${
+                    i === 0
+                      ? "bg-amber-100 text-amber-600 dark:bg-amber-900/30"
+                      : i === 1
+                        ? "bg-slate-100 text-slate-500 dark:bg-slate-800/40"
+                        : i === 2
+                          ? "bg-orange-100 text-orange-600 dark:bg-orange-900/30"
+                          : "bg-surface-3 text-muted"
+                  }`}>
+                    {i + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-foreground">{m.cad.nome}</p>
+                    <p className="text-[11px] text-muted">{m.concluidas} aulas concluídas</p>
+                  </div>
+                  <div className="shrink-0 text-right">
+                    <p className="text-sm font-extrabold text-blue-500">{m.notaMedia}%</p>
+                    <p className="text-[10px] text-muted">média</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Tabela CRM de alunos */}

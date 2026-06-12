@@ -3,8 +3,9 @@ import { OsceSimulador } from "@/components/osce-simulador";
 import { TituloSecao } from "@/components/ui";
 
 export const metadata: Metadata = {
-  title: "OSCE digital",
-  description: "Simulação estruturada de atendimento no balcão com rubrica de avaliação.",
+  title: "OSCE digital — Simulação de balcão",
+  description:
+    "Simulação estruturada de atendimento no balcão com 3 estações, timer de 2 min por estação e rubrica de avaliação por critérios.",
 };
 
 export default function OscePage() {
@@ -14,7 +15,7 @@ export default function OscePage() {
         sobre="Prova prática"
         icone="user"
         titulo="OSCE digital (simulação)"
-        descricao="Escolha a melhor conduta em cenários de balcão. Versão simplificada com rubrica por critérios."
+        descricao="Três estações com cenários reais de balcão. Você tem 2 minutos por estação para escolher a melhor conduta. Ao final, veja seu desempenho detalhado por critério de triagem, segurança, ética e encaminhamento."
       />
       <div className="mt-10">
         <OsceSimulador />

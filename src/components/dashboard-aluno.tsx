@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import {
   AreaChart,
   Area,
@@ -10,7 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { listarAulas, trilhas } from "@/content/curriculo";
 import { chaveAula, useProgresso } from "@/lib/progress";
 import { usePerfilAluno } from "@/lib/aluno";
@@ -18,6 +18,7 @@ import { Card, BarraProgresso, Skeleton } from "./ui";
 import { CelebracaoModal } from "./celebracao-modal";
 import { XpFloat } from "./xp-float";
 import Link from "next/link";
+import { Lightbulb, ChevronLeft, ChevronRight, RotateCw } from "lucide-react";
 
 /* ───────── helpers ───────── */
 
@@ -39,6 +40,30 @@ function diasDaSemana(): { nome: string; iso: string }[] {
     return { nome, iso: d.toISOString().slice(0, 10) };
   });
 }
+
+function saudacaoPorHorario(primeiroNome?: string): string {
+  const hora = new Date().getHours();
+  let saudacao: string;
+  if (hora >= 5 && hora < 12) saudacao = "Bom dia";
+  else if (hora >= 12 && hora < 18) saudacao = "Boa tarde";
+  else saudacao = "Boa noite";
+  return `${saudacao}${primeiroNome ? `, ${primeiroNome}` : ", Atendente"} 👋`;
+}
+
+/* ───────── dicas "Você Sabia?" ───────── */
+
+const DICAS_SAUDE = [
+  "O nome 'farmácia' vem do grego 'pharmakon', que significa remédio ou veneno — mostrando que a dosagem correta é essencial.",
+  "A pele é o maior órgão do corpo humano. Por isso, produtos tópicos precisam de atenção redobrada na aplicação.",
+  "Anti-inflamatórios não esteroidais (AINEs) como ibuprofeno atuam inibindo enzimas COX, reduzindo dor e inflamação.",
+  "Atendentes de farmácia são a primeira linha de orientação — um sorriso e uma escuta ativa podem transformar a experiência do paciente.",
+  "A Organização Mundial da Saúde (OMS) define saúde como 'um estado de completo bem-estar físico, mental e social'.",
+  "Antibióticos não tratam infecções virais como gripes e resfriados. Seu uso incorreto contribui para a resistência bacteriana.",
+  "A Lei 13.021/2014 reconhece a farmácia como um estabelecimento de saúde — não apenas um comércio.",
+  "Cerca de 30% das consultas médicas resultam em prescrições com erros ou dúvidas de interpretação — sua orientação faz diferença.",
+  "O termo 'genérico' significa que o medicamento tem a mesma substância ativa, dose e efeito que o referência, porém custa até 60% menos.",
+  "A automedicação é responsável por cerca de 20 mil internações anuais no Brasil — orientar o paciente é um ato de cuidado.",
+];
 
 /* ───────── badges predefinidos ───────── */
 
@@ -79,6 +104,26 @@ export function DashboardAluno() {
   const xpAnterior = useRef(0);
   const nivelAnterior = useRef(prog.nivel);
   const xpGanhoRef = useRef(0);
+
+  // Estado para dica rotativa
+  const [indiceDica, setIndiceDica] = useState(0);
+  const [direcaoDica, setDirecaoDica] = useState<1 | -1>(1);
+
+  const avancarDica = useCallback(() => {
+    setDirecaoDica(1);
+    setIndiceDica((prev) => (prev + 1) % DICAS_SAUDE.length);
+  }, []);
+
+  const recuarDica = useCallback(() => {
+    setDirecaoDica(-1);
+    setIndiceDica((prev) => (prev - 1 + DICAS_SAUDE.length) % DICAS_SAUDE.length);
+  }, []);
+
+  // Rotação automática da dica a cada 15 segundos
+  useEffect(() => {
+    const timer = setInterval(avancarDica, 15000);
+    return () => clearInterval(timer);
+  }, [avancarDica]);
 
   // Detecta mudança de XP e nível no dashboard
   useEffect(() => {
@@ -149,6 +194,22 @@ export function DashboardAluno() {
     }),
   }));
 
+  // Últimas aulas concluídas (para Revisão Rápida)
+  const aulasConcluidas = prog.concluidas;
+  const ultimasConcluidas = aulasConcluidas
+    .map((chave) => {
+      const [trilhaId, aulaId] = chave.split("/");
+      const aulaInfo = todas.find(
+        (a) => a.trilha.id === trilhaId && a.aula.id === aulaId,
+      );
+      if (!aulaInfo) return null;
+      const nota = prog.notas[chave] ?? null;
+      return { ...aulaInfo, chave, nota };
+    })
+    .filter(Boolean)
+    .slice(-5)
+    .reverse();
+
   // Próximas aulas recomendadas (primeiras não concluídas, até 6)
   const recomendadas = todas
     .filter((i) => !prog.estaConcluida(i.trilha.id, i.aula.id))
@@ -173,7 +234,7 @@ export function DashboardAluno() {
         duracaoConfete={4000}
       />
 
-      {/* ─── 1. XP TOTAL + NÍVEL ─── */}
+      {/* ─── 1. XP TOTAL + NÍVEL (saudação melhorada) ─── */}
       <Card className="mb-4 sm:mb-6 overflow-hidden bg-gradient-to-br from-forest-700 via-green-700 to-forest-800 p-4 sm:p-6 lg:p-8 text-white card-glow-anim">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -184,7 +245,7 @@ export function DashboardAluno() {
               <span className="text-xs text-white/60">{prog.xp} XP total</span>
             </div>
             <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Olá{primeiroNome ? `, ${primeiroNome}` : ", Atendente"} 👋
+              {saudacaoPorHorario(primeiroNome)}
             </h1>
             <p className="mt-1 text-sm text-white/70">
               {prog.estudouHoje
@@ -215,6 +276,73 @@ export function DashboardAluno() {
           <p className="mt-1 text-xs text-white/50">
             Faltam {prog.xpProximoNivel} XP para subir de nível
           </p>
+        </div>
+      </Card>
+
+      {/* ─── VOCÊ SABIA? — Dicas educativas rotativas ─── */}
+      <Card className="mb-4 sm:mb-6 overflow-hidden border border-blue-200/60 bg-gradient-to-br from-blue-50 to-sky-50 dark:from-blue-950/30 dark:to-sky-950/20 dark:border-blue-800/40">
+        <div className="flex items-start gap-3 p-4 sm:p-5">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-lg dark:bg-blue-900/40">
+            <Lightbulb size={20} className="text-blue-600 dark:text-blue-400" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <div className="mb-1 flex items-center justify-between">
+              <h3 className="text-sm font-bold text-blue-800 dark:text-blue-300">
+                💡 Você Sabia?
+              </h3>
+              <span className="text-[11px] text-blue-400 dark:text-blue-500">
+                {indiceDica + 1}/{DICAS_SAUDE.length}
+              </span>
+            </div>
+            <div className="relative min-h-[3.5rem]">
+              <AnimatePresence mode="wait" custom={direcaoDica}>
+                <motion.p
+                  key={indiceDica}
+                  custom={direcaoDica}
+                  initial={{ opacity: 0, x: direcaoDica * 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: direcaoDica * -30 }}
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                  className="text-sm leading-relaxed text-blue-700 dark:text-blue-200"
+                >
+                  {DICAS_SAUDE[indiceDica]}
+                </motion.p>
+              </AnimatePresence>
+            </div>
+            <div className="mt-2 flex items-center gap-1">
+              <button
+                onClick={recuarDica}
+                className="flex h-7 w-7 items-center justify-center rounded-full text-blue-500 transition hover:bg-blue-200/60 hover:text-blue-700 dark:hover:bg-blue-800/40"
+                aria-label="Dica anterior"
+              >
+                <ChevronLeft size={14} />
+              </button>
+              <div className="flex gap-1">
+                {DICAS_SAUDE.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      setDirecaoDica(i > indiceDica ? 1 : -1);
+                      setIndiceDica(i);
+                    }}
+                    className={`h-2 rounded-full transition-all ${
+                      i === indiceDica
+                        ? "w-5 bg-blue-500"
+                        : "w-2 bg-blue-300/50 dark:bg-blue-600/30"
+                    }`}
+                    aria-label={`Ir para dica ${i + 1}`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={avancarDica}
+                className="flex h-7 w-7 items-center justify-center rounded-full text-blue-500 transition hover:bg-blue-200/60 hover:text-blue-700 dark:hover:bg-blue-800/40"
+                aria-label="Próxima dica"
+              >
+                <ChevronRight size={14} />
+              </button>
+            </div>
+          </div>
         </div>
       </Card>
 
@@ -416,7 +544,68 @@ export function DashboardAluno() {
             </div>
           </Card>
 
-          {/* ─── 7. PRÓXIMAS AULAS RECOMENDADAS ─── */}
+          {/* ─── 7. REVISÃO RÁPIDA — Últimas aulas concluídas ─── */}
+          <Card className="p-5 hover-glow">
+            <h3 className="mb-1 flex items-center gap-2 text-sm font-bold tracking-tight">
+              <RotateCw size={15} className="text-purple-500" />
+              Revisão Rápida
+            </h3>
+            <p className="mb-4 text-xs text-muted">
+              {ultimasConcluidas.length > 0
+                ? "Suas últimas aulas concluídas — clique para revisar"
+                : "Conclua uma aula para vê-la aqui"}
+            </p>
+            <div className="flex flex-col gap-2">
+              {ultimasConcluidas.length === 0 ? (
+                <div className="rounded-xl bg-purple-50 p-4 text-center text-sm font-semibold text-purple-600 dark:bg-purple-900/20 dark:text-purple-300">
+                  🎯 Nenhuma aula concluída ainda
+                </div>
+              ) : (
+                ultimasConcluidas.map((item) => {
+                  if (!item) return null;
+                  return (
+                    <Link
+                      key={item.chave}
+                      href={`/aula/${item.trilha.id}/${item.aula.id}`}
+                      className="group flex items-center gap-3 rounded-xl border border-border bg-surface p-3 transition-all hover:border-purple-300 hover:shadow-sm"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-purple-50 text-xs text-purple-600 dark:bg-purple-900/30">
+                        {item.trilha.numero}
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <div className="truncate text-sm font-semibold group-hover:text-purple-600 transition-colors">
+                          {item.aula.titulo}
+                        </div>
+                        <div className="flex items-center gap-2 text-[11px] text-subtle">
+                          <span className="truncate">
+                            {item.trilha.titulo} · {item.modulo.titulo}
+                          </span>
+                          {item.nota != null && (
+                            <span
+                              className={`shrink-0 font-bold ${
+                                item.nota >= 80
+                                  ? "text-green-500"
+                                  : item.nota >= 60
+                                    ? "text-orange-500"
+                                    : "text-red-500"
+                              }`}
+                            >
+                              {item.nota}%
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <span className="shrink-0 rounded-md border border-purple-200 bg-purple-50 px-2 py-0.5 text-[10px] font-semibold text-purple-600 transition-colors group-hover:bg-purple-100 dark:border-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
+                        Revisar →
+                      </span>
+                    </Link>
+                  );
+                })
+              )}
+            </div>
+          </Card>
+
+          {/* ─── 8. PRÓXIMAS AULAS RECOMENDADAS ─── */}
           <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📖 Próximas Aulas
@@ -459,7 +648,7 @@ export function DashboardAluno() {
             </div>
           </Card>
 
-          {/* ─── 8. ESTATÍSTICAS ─── */}
+          {/* ─── 9. ESTATÍSTICAS ─── */}
           <Card className="p-5 hover-glow">
             <h3 className="mb-1 text-sm font-bold tracking-tight">
               📊 Estatísticas
