@@ -1,6 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
-import { imagensCategoria } from "./midia-catalogo";
+import { imagensCategoria, midiaPadraoPorAulaId } from "./midia-catalogo";
 
 // Trilha 4 — Vendas, Persuasão e Atendimento Consultivo no Balcão.
 export const trilhaVendas: Trilha = {
@@ -28,6 +28,7 @@ export const trilhaVendas: Trilha = {
           titulo: "O momento certo de acolher",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Antes de qualquer oferta, o cliente precisa se sentir acolhido. Como criar um ambiente de confiança desde o primeiro contato.",
@@ -117,6 +118,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Encantar com ética e informação",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Como usar gatilhos de urgência, prova social, reciprocidade e autoridade para informar e encantar com transparência — exemplos reais de como fortalecer a confiança no balcão.",
@@ -218,6 +220,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Como sugerir com cuidado",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "A arte de sugerir com cuidado: vocabulário, tom, timing e a diferença entre sugestão consultiva e abordagem invasiva.",
@@ -296,6 +299,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Lidar com objeções com empatia",
           duracaoMin: 8,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Não é resistência — é dúvida. Técnicas para ouvir a objeção, validar o sentimento e reposicionar o valor com empatia, sem pressionar.",
@@ -385,6 +389,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Complementar com cuidado",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Como complementar o cuidado do cliente com sugestões que realmente agregam ao bem-estar dele — sem pressão, com propósito genuíno.",
@@ -474,6 +479,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Concluir com confiança",
           duracaoMin: 6,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Como conduzir o cliente até a decisão de cuidado sem pressão. Fechamento assumido, alternativo, resumo e silêncio.",
@@ -575,6 +581,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Acolhimento na abertura: a primeira impressão que cuida",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Os primeiros 5 segundos definem o tom do atendimento. Como criar conexão instantânea com o cliente e mostrar que ele está em boas mãos.",
@@ -665,6 +672,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Tom de voz, postura e presença no balcão",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "O corpo fala antes da boca. Postura aberta, tom confiante e presença que transmite segurança e credibilidade.",
@@ -754,6 +762,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Perguntas poderosas que revelam a necessidade",
           duracaoMin: 7,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "A qualidade da venda é determinada pela qualidade das perguntas. Como fazer perguntas abertas, investigativas e direcionadoras.",
@@ -843,6 +852,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Escuta ativa: o segredo do atendente nota 10",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Não é só ouvir. É demonstrar que você ouviu. Paráfrase, validação e resumo como ferramentas de venda.",
@@ -932,6 +942,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Linguagem positiva: o que dizer e o que evitar",
           duracaoMin: 5,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Palavras que vendem e palavras que afastam. Como transformar objeções em conversas e criar uma experiência positiva de compra.",
@@ -1021,6 +1032,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Como falar de preço mantendo a confiança",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Preço é uma conversa sobre valor. Técnicas para apresentar preço com confiança e transformar objeção em diálogo produtivo, mantendo a relação de cuidado.",
@@ -1123,6 +1135,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Adesão ao tratamento: o que é e por que importa",
            duracaoMin: 6,
            nivel: "intermediario",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo:
             "Cerca de 7 em cada 10 pacientes interrompem o uso do medicamento antes do primeiro mês. A farmácia pode mudar esse cenário com um contato breve e atencioso após a compra.",
@@ -1215,6 +1228,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Como contatar o paciente sem parecer telemarketing",
            duracaoMin: 5,
            nivel: "intermediario",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "O que separa um gesto genuíno de cuidado de uma abordagem comercial é a intenção por trás da ligação. O tom de voz, as palavras escolhidas e o momento certo fazem o paciente perceber que a farmácia realmente se importa.",
@@ -1307,6 +1321,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Mensagens de apoio: WhatsApp e SMS que encantam",
            duracaoMin: 5,
            nivel: "basico",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
            resumo:
              "Nem todo paciente quer ou quer falar ao telefone. Uma mensagem de WhatsApp ou SMS bem escrita pode ser um gesto de cuidado ainda mais bem recebido.",
@@ -1398,6 +1413,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Calendário de cuidado: quando e como acompanhar",
            duracaoMin: 5,
            nivel: "intermediario",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
            resumo:
              "Acompanhamento não é um evento único. É um processo. Um calendário simples de papel ou planilha já basta para transformar o atendimento em cuidado contínuo.",
@@ -1490,6 +1506,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Envolvendo a família no cuidado",
            duracaoMin: 5,
            nivel: "intermediario",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
            resumo:
              "Pacientes idosos, crianças e pessoas com condições crônicas geralmente têm um cuidador. Envolver essa pessoa no acompanhamento dobra a chance de adesão ao tratamento.",
@@ -1582,6 +1599,7 @@ export const trilhaVendas: Trilha = {
            titulo: "Indicadores de cuidado: como saber se está funcionando",
            duracaoMin: 6,
            nivel: "avancado",
+           imagemHeroUrl: imagensCategoria.atendimento,
            videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
            resumo:
              "Não precisa de dashboard caro. Um caderno ou planilha simples já permite acompanhar o impacto do seu cuidado na vida dos pacientes.",
@@ -1754,6 +1772,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Calor Otimista — A primeira impressão que fica",
           duracaoMin: 10,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Gentileza genuína, consideração e a atitude de que o copo está sempre meio cheio. No balcão da farmácia, o cliente cansado e preocupado precisa sentir que você está feliz em ajudá-lo.",
           resumoExecutivo: [
@@ -1808,6 +1827,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Curiosidade Intelectual — A vontade de aprender sobre pessoas",
           duracaoMin: 10,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Não basta saber sobre medicamentos. É preciso ter curiosidade genuína sobre quem está do outro lado do balcão — suas dores, medos, rotina. Cada cliente é uma história.",
           resumoExecutivo: [
@@ -1862,6 +1882,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Ética de Trabalho — Fazer o melhor em cada detalhe",
           duracaoMin: 8,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "A tendência natural de fazer algo da melhor maneira possível e se importar profundamente com os detalhes. No balcão, isso significa organizar a gôndola, manter o ambiente limpo, embalar o produto com cuidado.",
           resumoExecutivo: [
@@ -1905,6 +1926,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Empatia — Sentir o que o cliente sente",
           duracaoMin: 12,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "A consciência e o cuidado com os sentimentos dos outros. Entender o rastro que você deixa em cada interação. Na farmácia, a empatia transforma um cliente ocasional em um paciente fiel.",
           resumoExecutivo: [
@@ -1948,6 +1970,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Autoconsciência — O termômetro emocional do atendente",
           duracaoMin: 10,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Entender o seu próprio 'relatório meteorológico emocional'. Saber gerenciar o próprio humor para não espalhar toxicidade no ambiente. Um atendente que se conhece atende melhor.",
           resumoExecutivo: [
@@ -1991,6 +2014,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Integridade — A escolha invisível que todos veem",
           duracaoMin: 10,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Ter o bom senso moral de fazer a coisa certa, mesmo quando não é do seu próprio interesse e quando ninguém está olhando. No balcão, é não empurrar um produto caro quando um mais barato resolve.",
           resumoExecutivo: [
@@ -2046,6 +2070,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Respeito no Ambiente de Farmácia",
           duracaoMin: 10,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "O respeito é a base de tudo no ambiente farmacêutico. Desde o tratamento com colegas de equipe até a abordagem ao paciente, cada interação deve ser pautada por dignidade, educação e consideração mútua.",
           resumoExecutivo: [
@@ -2079,6 +2104,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Comunicação Assertiva no Balcão",
           duracaoMin: 12,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Comunicação assertiva é a capacidade de expressar suas ideias de forma clara, direta e respeitosa, sem agressividade nem passividade. No balcão da farmácia, isso significa orientar o paciente com segurança e clareza.",
           resumoExecutivo: [
@@ -2112,6 +2138,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Valorizar Pessoas — O Coração da Farmácia",
           duracaoMin: 8,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Valorizar as pessoas é reconhecer o esforço de cada membro da equipe e celebrar pequenas vitórias. Um atendente que se sente valorizado atende melhor, cuida mais e permanece na equipe.",
           resumoExecutivo: [
@@ -2140,6 +2167,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Entender Limitações e Saber Encaminhar",
           duracaoMin: 10,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Saber reconhecer os próprios limites é uma das habilidades mais importantes no balcão da farmácia. Ninguém sabe tudo. O importante é saber quando e como encaminhar o paciente para o profissional certo.",
           resumoExecutivo: [
@@ -2166,6 +2194,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Saber Ensinar — Multiplicar o Conhecimento",
           duracaoMin: 8,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Ensinar é uma forma de cuidar. Quando você compartilha conhecimento com colegas mais novos, pacientes e a comunidade, está multiplicando o bem e acelerando a saúde de todos ao seu redor.",
           resumoExecutivo: [
@@ -2192,6 +2221,7 @@ export const trilhaVendas: Trilha = {
           titulo: "Legislação de Receitas e SUS na Farmácia",
           duracaoMin: 15,
           nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.atendimento,
           resumo:
             "Conhecer a legislação que rege as receitas médicas e o Sistema Único de Saúde (SUS) é fundamental para o atendente de farmácia. Este módulo aborda as principais normas, portarias e leis.",
           resumoExecutivo: [
