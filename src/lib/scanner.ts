@@ -10,22 +10,57 @@ export interface ProductInfo {
 
 export async function analyzeProductImage(image: File): Promise<ProductInfo> {
   const base64 = await fileToBase64(image);
-  const response = await fetch("https://api.openai.com/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY || ""}`,
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-mini",
-      messages: [{ role: "user", content: [{ type: "text", text: `Analise este produto. Retorne JSON: {"nome","categoria","para_que_servir","modo_de_usar","efeitos_colaterais","contra_indicacoes","interacoes"}. PT-BR.` }, { type: "image_url", image_url: { url: base64, detail: "high" } }] }],
-      max_tokens: 1000, temperature: 0.3,
-    }),
-  });
-  const data = await response.json();
-  const content = data.choices?.[0]?.message?.content || "";
-  try { return JSON.parse(content.replace(/```json\s*/g,"").replace(/```\s*/g,"").trim()); }
-  catch { return getFallbackProductInfo(); }
+  const apiKey = process.env.NEXT_PUBLIC_DEEPSEEK_API_KEY || process.env.DEEPSEEK_API_KEY || "";
+
+  if (!apiKey) return getFallbackProductInfo();
+
+  try {
+    const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({
+        model: "deepseek-chat",
+        messages: [{
+          role: "user",
+          content: [
+            {
+              type: "text",
+              text: `Analise este produto de saúde, medicamento, cosmético ou item de perfumaria/higiene.
+
+Retorne APENAS um JSON válido com esta estrutura (sem markdown, sem texto extra):
+{
+  "nome": "Nome do produto",
+  "categoria": "medicamento | cosmetico | perfumaria | higiene | saude | suplemento",
+  "para_que_servir": "Descrição completa de para que serve, indicações",
+  "modo_de_usar": "Modo de usar, dosagem, frequência",
+  "efeitos_colaterais": "Possíveis efeitos colaterais",
+  "contra_indicacoes": "Quem não pode usar",
+  "interacoes": "Interações medicamentosas"
+}
+
+Responda em português brasileiro. Se não identificar, informe com base na aparência.`
+            },
+            { type: "image_url", image_url: { url: base64, detail: "high" } }
+          ]
+        }],
+        max_tokens: 1000,
+        temperature: 0.3,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("DeepSeek error:", response.status);
+      return getFallbackProductInfo();
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content || "";
+    const cleaned = content.replace(/```json\s*/g, "").replace(/```\s*/g, "").trim();
+    return JSON.parse(cleaned);
+  } catch (err) {
+    console.error("analyzeProductImage error:", err);
+    return getFallbackProductInfo();
+  }
 }
 
 function fileToBase64(file: File): Promise<string> {
