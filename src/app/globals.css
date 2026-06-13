@@ -2572,6 +2572,67 @@ html { scroll-behavior: smooth; }
 
 /* Safe area helpers */
 .safe-area-bottom { padding-bottom: max(env(safe-area-inset-bottom,16px),16px); }
+
+/* ══════════════════════════════════════════════════════════
+   PREMIUM BACKGROUNDS & GLASSMORPHISM
+   ══════════════════════════════════════════════════════════ */
+.glass {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.glass-dark {
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.dark .glass {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.06);
+}
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.dark .bg-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Prose readability */
+.prose {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+.prose h2 { font-size: 1.5rem; font-weight: 800; margin-top: 1.5em; margin-bottom: 0.5em; }
+.prose h3 { font-size: 1.25rem; font-weight: 700; margin-top: 1.25em; margin-bottom: 0.4em; }
+.prose p { margin-bottom: 1em; }
+.prose ul, .prose ol { padding-left: 1.5em; margin-bottom: 1em; }
+.prose li { margin-bottom: 0.3em; }
 .safe-area-top    { padding-top:    max(env(safe-area-inset-top,0px),0px); }
 
 /* Dark mode overrides for gamification */
