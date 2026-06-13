@@ -1030,6 +1030,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Cabelos",
           duracaoMin: 6,
           nivel: "basico",
+          imagemHeroUrl: imagensCategoria.cabelosTratamento,
           videoUrl: videosEducativos.cabelos,
           resumo: "Tipos de fio, couro cabeludo, shampoo/condicionador e tratamentos.",
           resumoExecutivo: [
@@ -1178,6 +1179,7 @@ export const trilhaPerfumaria: Trilha = {
           titulo: "Perfumes e fragrâncias",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: imagensCategoria.perfumesModulo,
           videoUrl: videosEducativos.perfumes,
           resumo: "Eau de parfum x toilette, famílias olfativas, ocasião e fixação.",
           resumoExecutivo: [

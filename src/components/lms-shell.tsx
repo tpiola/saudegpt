@@ -10,6 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
 import { MobileBottomNav } from "./mobile-bottom-nav";
+import { TermoConsentimento } from "./termo-consentimento";
 import dynamic from "next/dynamic";
 
 /** Páginas que usam layout FULL WIDTH (sem sidebar) */
@@ -74,6 +75,9 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
   const [menuAberto, setMenuAberto] = useState(false);
   const { perfil } = usePerfilAluno();
 
+  /* ── TERMO DE CONSENTIMENTO (LGPD + Disclaimer + Assinatura Digital) ── */
+  const [mostrarTermo, setMostrarTermo] = useState(true);
+
   /* ── FULL WIDTH: landing page sem sidebar ── */
   if (FULL_WIDTH_ROUTES.has(pathname)) {
     return <>{children}</>;
@@ -88,6 +92,8 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
+      {/* ── TERMO DE CONSENTIMENTO (LGPD + Disclaimer) ── */}
+      <TermoConsentimento />
       {/* ════════════════════════════════════════════
          SIDEBAR — RD SAÚDE STYLE
          ════════════════════════════════════════════ */}
