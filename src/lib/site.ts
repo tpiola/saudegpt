@@ -6,16 +6,22 @@ export const site = {
   assinatura: "Criado pelo Farmacêutico Thiago Biasoli Garcia Piola — CRF/SP 58.519",
   descricao:
     "Formação completa para atendentes de farmácia: aprenda atendimento humanizado, medicamentos, legislação ANVISA, dispensação segura e cuidado ao paciente. Plataforma EAD com trilhas curtas, simulações, quizzes e certificado. Desenvolvido pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
-  patrocinio: [
-    { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
-    { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },
+  patrocinadores: [
+    {
+      nome: "Rei das Vendas",
+      url: "https://www.reidasvendas.com.br",
+      descricao: "Ecossistema de tecnologia, presença digital e crescimento empresarial.",
+    },
+    {
+      nome: "Thiago Piola",
+      url: "https://www.thiagopiola.com.br",
+      descricao: "Apoio estratégico em tecnologia, produto digital e estruturação de plataformas.",
+    },
   ],
+  // Mantido apenas para o sameAs do JSON-LD (Organization). Não exibido no rodapé.
   social: [
-    { nome: "Facebook", url: "https://www.facebook.com/saudegpt" },
-    { nome: "Instagram", url: "https://www.instagram.com/saudegpt/" },
-    { nome: "X", url: "https://x.com/saudegpt" },
-    { nome: "LinkedIn", url: "https://www.linkedin.com/company/saudegpt" },
-    { nome: "Reddit", url: "https://www.reddit.com/r/saudegpt" },
+    { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },
+    { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
   ],
 };
 

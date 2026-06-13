@@ -48,17 +48,27 @@ export function Footer() {
           </div>
 
           <div>
-            <h5 className="text-sm font-bold text-[#fffec7]">Canais</h5>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {site.social.map((item) => (
-                <li key={item.nome}>
+            <h5 className="text-sm font-bold text-[#fffec7]">Patrocinadores</h5>
+            <p className="mt-3 text-xs leading-relaxed text-white/55">
+              A SaúdeGPT conta com o apoio de iniciativas comprometidas com tecnologia, educação e
+              evolução profissional em saúde.
+            </p>
+            <ul className="mt-4 grid gap-3">
+              {site.patrocinadores.map((p) => (
+                <li key={p.nome}>
                   <a
-                    href={item.url}
+                    href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-10 items-center rounded-full border border-white/12 px-3 text-xs font-semibold text-white/70 transition hover:border-white/25 hover:text-white"
+                    className="group block rounded-2xl border border-white/12 bg-white/[0.04] p-4 transition hover:border-white/25 hover:bg-white/[0.07]"
                   >
-                    {item.nome}
+                    <p className="text-sm font-bold text-white/90 transition-colors group-hover:text-white">
+                      {p.nome}
+                    </p>
+                    <p className="mt-1 text-xs leading-relaxed text-white/55">{p.descricao}</p>
+                    <p className="mt-2 text-xs font-semibold text-[#fffec7]/90">
+                      {p.url.replace("https://", "")}
+                    </p>
                   </a>
                 </li>
               ))}
@@ -67,7 +77,20 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs leading-relaxed text-white/52">{site.assinatura}</p>
+          <div>
+            <p className="text-xs font-semibold text-white/70">
+              Plataforma Construída por:{" "}
+              <a
+                href="https://www.reidasvendas.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#fffec7] underline-offset-2 hover:underline"
+              >
+                reidasvendas.com.br
+              </a>
+            </p>
+            <p className="mt-1 text-xs leading-relaxed text-white/52">{site.assinatura}</p>
+          </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/52">
             {linksLegais.map((l) => (
               <Link key={l.href} href={l.href} className="transition-colors hover:text-white/85">
