@@ -57,40 +57,40 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700" />
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700 !h-10 !w-10 sm:!h-10 sm:!w-10" />
           <a
             href="mailto:contato@thiagopiola.com.br"
-            className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/20 px-3 text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
+            className="inline-flex min-h-[40px] items-center justify-center rounded-full border border-white/20 px-3 text-xs sm:text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
           >
             Contato
           </a>
           <Link
             href={ctaHref}
-            className="hidden min-h-10 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90 sm:inline-flex"
+            className="inline-flex min-h-[40px] items-center justify-center rounded-full bg-white px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90"
           >
             Entrar
           </Link>
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/75 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/75 lg:hidden"
             onClick={() => setAberto((v) => !v)}
             aria-label="Abrir menu"
             aria-expanded={aberto}
           >
-            <Icon name={aberto ? "close" : "menu"} size={20} />
+            <Icon name={aberto ? "close" : "menu"} size={22} />
           </button>
         </div>
       </div>
 
-      <div className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-96" : "max-h-0"}`}>
-        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-3" aria-label="Menu mobile">
+      <div className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-[30rem]" : "max-h-0"}`}>
+        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-4" aria-label="Menu mobile">
           {itens.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setAberto(false)}
-              className="rounded-xl px-3 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white"
+              className="flex min-h-[48px] items-center rounded-xl px-4 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white transition-colors"
             >
               {item.label}
             </Link>
@@ -98,7 +98,7 @@ export function Header() {
           <Link
             href={ctaHref}
             onClick={() => setAberto(false)}
-            className="mt-2 inline-flex min-h-11 items-center justify-center rounded-full bg-white px-4 text-sm font-extrabold text-forest-700 hover:bg-white/90"
+            className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-white px-5 text-sm font-extrabold text-forest-700 hover:bg-white/90 transition-colors"
           >
             Fazer matrícula
           </Link>

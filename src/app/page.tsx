@@ -59,51 +59,54 @@ export default function HomePage() {
     <div className="min-h-dvh overflow-x-hidden bg-background text-foreground">
       <Header />
       <main id="conteudo-principal">
-        <section className="relative isolate overflow-hidden bg-[#020e0c] text-white min-h-[100svh]">
+        <section className="relative isolate overflow-hidden bg-[#020e0c] text-white min-h-[100dvh] lg:min-h-[100svh]">
           <HeroVideo />
           <div className="absolute inset-0 z-[1] bg-gradient-to-br from-[#020e0c]/95 via-[#020e0c]/60 to-[#0d3a32]/80" />
-          <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-emerald-500/8 blur-[80px] z-[1] pointer-events-none" />
-          <div className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full bg-orange-500/6 blur-[60px] z-[1] pointer-events-none" />
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-            <div className="grid min-h-[calc(100svh-3.5rem)] lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+          {/* Blobs decorativos — esconder em mobile pra não causar overflow */}
+          <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-emerald-500/8 blur-[80px] z-[1] pointer-events-none max-lg:hidden" />
+          <div className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full bg-orange-500/6 blur-[60px] z-[1] pointer-events-none max-lg:hidden" />
+          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 max-lg:py-12">
+            <div className="grid min-h-[calc(100dvh-3.5rem)] lg:min-h-[calc(100svh-3.5rem)] lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-center">
               <div className="flex flex-col justify-center max-w-3xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-sm mb-6">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+                <div className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-sm mb-5 lg:mb-6">
+                  <span className="h-1.5 w-1.5 lg:h-2 lg:w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
                   Health Learning OS
                 </div>
-                <h1 className="text-[clamp(2rem,6vw,4.4rem)] font-extrabold leading-[1.02] tracking-tighter mb-6">
+                <h1 className="text-[clamp(2rem,7.5vw,4.4rem)] font-extrabold leading-[1.02] tracking-tighter mb-5 lg:mb-6">
                   <span className="block text-white">Formação para</span>
                   <span className="block text-gradient-premium">Atendentes</span>
                   <span className="block text-white/90">de Farmácia</span>
                 </h1>
-                <p className="text-base sm:text-lg leading-relaxed text-white/65 max-w-xl mb-8">
+                <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-white/65 max-w-xl mb-6 lg:mb-8">
                   Trilhas curtas e práticas para você cuidar da saúde de cada cliente com segurança e confiança.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                  <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-7 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Entrar <Icon name="arrow" size={18} /></Link>
-                  <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-7 text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
+                <div className="flex flex-col sm:flex-row gap-3 mb-8 lg:mb-10">
+                  <Link href="#matricula" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-6 sm:px-7 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Entrar <Icon name="arrow" size={16} /></Link>
+                  <Link href="/trilhas" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-6 sm:px-7 text-sm sm:text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
                 </div>
-                <dl className="grid max-w-lg grid-cols-3 gap-3">
-                  {[[String(trilhas.length), "trilhas"], [String(total) + "+", "aulas"], [String(xpTotal) + " XP", "XP"]].map(([v, l]) => (
-                    <div key={l} className="rounded-2xl border border-white/8 bg-white/5 p-4 text-center backdrop-blur-sm"><dt className="text-2xl font-extrabold text-emerald-300">{v}</dt><dd className="mt-1 text-[10px] font-semibold uppercase tracking-widest text-white/40">{l}</dd></div>
+                <dl className="grid max-w-lg grid-cols-3 gap-2 lg:gap-3">
+                  {[[String(trilhas.length), "TRILHAS"], [String(total) + "+", "AULAS"], [String(xpTotal) + " XP", "XP"]].map(([v, l]) => (
+                    <div key={l} className="rounded-2xl border border-white/8 bg-white/5 px-2 py-3 lg:p-4 text-center backdrop-blur-sm"><dt className="text-xl sm:text-2xl font-extrabold text-emerald-300">{v}</dt><dd className="mt-0.5 lg:mt-1 text-[9px] lg:text-[10px] font-semibold uppercase tracking-widest text-white/40">{l}</dd></div>
                   ))}
                 </dl>
               </div>
               <div id="matricula" className="scroll-mt-20 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
                 {/* Card de acesso com fundo verde + foto de farmacêutico entregando medicamento */}
-                <div className="relative overflow-hidden rounded-3xl border border-white/10 p-1.5 shadow-2xl">
-                  <Image
-                    src="/hero/farmacia-atendimento.jpg"
-                    alt="Farmacêutico entregando um medicamento ao paciente no balcão"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 420px"
-                    className="object-cover"
-                  />
+                <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl border border-white/10 shadow-2xl">
+                  <div className="absolute inset-0">
+                    <Image
+                      src="/hero/farmacia-atendimento.jpg"
+                      alt="Farmacêutico entregando um medicamento ao paciente no balcão"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 420px"
+                      className="object-cover"
+                    />
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-br from-emerald-700/92 via-emerald-800/88 to-[#06281f]/94" />
-                  <div className="relative rounded-[1.4rem] bg-white/95 p-6 text-foreground shadow-xl backdrop-blur-sm dark:bg-surface/95">
-                    <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Comece agora</p>
-                    <h2 className="text-2xl font-extrabold tracking-tight mb-1.5">Entrar no SaúdeGPT</h2>
-                    <p className="text-sm leading-relaxed text-muted mb-4">Preencha 3 campos e comece a evoluir no balcão.</p>
+                  <div className="relative rounded-[1.2rem] lg:rounded-[1.4rem] bg-white/95 px-5 py-6 sm:p-6 text-foreground shadow-xl backdrop-blur-sm dark:bg-surface/95 mx-1.5 my-1.5 lg:mx-0 lg:my-0">
+                    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1.5 sm:mb-2">Comece agora</p>
+                    <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1.5">Entrar no SaúdeGPT</h2>
+                    <p className="text-xs sm:text-sm leading-relaxed text-muted mb-4">Preencha 3 campos e comece a evoluir no balcão.</p>
                     <MatriculaForm />
                   </div>
                 </div>
@@ -185,15 +188,15 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0a3b2e] via-[#0d3a32] to-[#06281f] py-16 sm:py-24 text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#0a3b2e] via-[#0d3a32] to-[#06281f] py-16 lg:py-24 text-white">
           <div className="absolute inset-0 pattern-grid opacity-20 pointer-events-none" />
           <div className="absolute top-0 right-1/4 h-72 w-72 rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
           <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">Seu próximo paciente merece o seu melhor.</h2>
-            <p className="text-lg text-white/65 max-w-2xl mx-auto mb-10">Junte-se a milhares transformando seu atendimento e cuidando da saúde de cada cliente.</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 lg:mb-6">Seu próximo paciente merece o seu melhor.</h2>
+            <p className="text-sm sm:text-base lg:text-lg text-white/65 max-w-2xl mx-auto mb-8 lg:mb-10">Junte-se a milhares transformando seu atendimento e cuidando da saúde de cada cliente.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="#matricula" className="inline-flex min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-8 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Entrar <Icon name="arrow" size={18} /></Link>
-              <Link href="/trilhas" className="inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-8 text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link>
+              <Link href="#matricula" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-6 sm:px-8 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Entrar <Icon name="arrow" size={16} /></Link>
+              <Link href="/trilhas" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-6 sm:px-8 text-sm sm:text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link>
             </div>
           </div>
         </section>

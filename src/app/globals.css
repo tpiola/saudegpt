@@ -2668,6 +2668,43 @@ html { scroll-behavior: smooth; }
   animation: message-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ═══════════════════════════════════════════════════════════
+   MOBILE-FIRST — Touch targets, overflow safe, responsivo
+   ═══════════════════════════════════════════════════════════ */
+
+/* Touch targets mínimos de 44px (Apple HIG + WCAG 2.2) */
+@media (pointer: coarse) and (max-width: 640px) {
+  a, button, [role="button"],
+  input, select, textarea {
+    min-height: 44px;
+  }
+  /* Exceções: badges, pills, labels inline */
+  .badge-premium,
+  .badge-green,
+  .badge-orange,
+  [class*="badge"],
+  nav a:not([class*="min-h"]) {
+    min-height: unset;
+  }
+}
+
+/* Container-safe para mobile — padding extra nas laterais com safe-area */
+@media (max-width: 640px) {
+  .max-w-7xl,
+  .max-w-4xl,
+  .max-w-2xl {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+  }
+}
+
+/* Foco visível acessível */
+*:focus-visible {
+  outline: 2px solid var(--orange-500);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
 /* ═══════════════════════════════════════════════════════════════
    SCROLL-DRIVEN ANIMATIONS 2026 — CSS puro, sem JS
    Técnicas: Jack Roberts / 2026 spec
