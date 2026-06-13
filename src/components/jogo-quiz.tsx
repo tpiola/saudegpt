@@ -6,6 +6,7 @@ import type { QuestaoJogo } from "@/content/jogos";
 import { Confetti } from "./confetti";
 import { Botao, Card, BarraProgresso } from "./ui";
 import { Icon } from "./icons";
+import { somSucesso, somQuaseLa } from "@/lib/som";
 
 const OPCOES_LABEL = ["A", "B", "C", "D", "E"];
 
@@ -42,6 +43,8 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
   const [escolha, setEscolha] = useState<number | null>(null);
   const [fim, setFim] = useState(false);
   const [celebrar, setCelebrar] = useState(false);
+  // Guarda as questões erradas para a tela final ("o que revisar").
+  const [revisar, setRevisar] = useState<QuestaoJogo[]>([]);
 
   const q = questoes[idx];
 
@@ -51,6 +54,10 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
     if (i === q.correta) {
       setPontos((p) => p + 10);
       setCelebrar(true);
+      somSucesso();
+    } else {
+      setRevisar((r) => (r.some((x) => x.id === q.id) ? r : [...r, q]));
+      somQuaseLa();
     }
   }
 
@@ -94,10 +101,32 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
             <p className="mt-1 text-sm text-muted">
               {pct >= 70
                 ? "Mandou bem! Continue praticando."
-                : "Que tal revisar e tentar de novo?"}
+                : "Errou? Perfeito. Agora você sabe exatamente o que revisar."}
             </p>
           </div>
         </div>
+
+        {revisar.length > 0 && (
+          <div className="mt-6 rounded-2xl border border-orange-300/40 bg-orange-50/60 p-4 dark:border-orange-700/40 dark:bg-orange-900/15">
+            <p className="flex items-center gap-2 text-sm font-bold text-orange-700 dark:text-orange-300">
+              <Icon name="target" size={15} /> O que revisar ({revisar.length})
+            </p>
+            <ul className="mt-3 space-y-3">
+              {revisar.map((item) => (
+                <li key={item.id} className="text-sm">
+                  <p className="font-semibold text-foreground">{item.pergunta}</p>
+                  <p className="mt-0.5 text-muted leading-relaxed">
+                    <span className="font-medium text-green-600 dark:text-green-400">
+                      Resposta: {item.opcoes[item.correta]}.
+                    </span>{" "}
+                    {item.explicacao}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <Botao
           className="mt-6 min-h-12 min-w-12"
           onClick={() => {
@@ -106,11 +135,12 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
             setEscolha(null);
             setFim(false);
             setCelebrar(false);
+            setRevisar([]);
           }}
           icone="repeat"
           tamanho="lg"
         >
-          Jogar novamente
+          Treinar de novo
         </Botao>
       </Card>
     );
@@ -150,7 +180,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
               if (i === q.correta)
                 estilo = "border-green-400 bg-green-50/60 dark:bg-green-900/20 ring-1 ring-green-400/30";
               else if (i === escolha)
-                estilo = "border-red-400 bg-red-50/60 dark:bg-red-900/20 ring-1 ring-red-400/30";
+                estilo = "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
             } else if (i === escolha) {
               estilo = "border-green-400 bg-green-50/60 dark:bg-green-900/25";
             }
@@ -169,7 +199,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
                     escolha != null && i === q.correta
                       ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
                       : escolha != null && i === escolha && i !== q.correta
-                        ? "border-transparent bg-gradient-to-r from-red-400 to-red-500 text-white shadow-sm"
+                        ? "border-transparent bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-sm"
                         : "border-border-strong text-subtle"
                   }`}
                 >
@@ -192,7 +222,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
                     <Icon
                       name={i === q.correta ? "check" : "close"}
                       size={20}
-                      className={i === q.correta ? "text-green-500" : "text-red-500"}
+                      className={i === q.correta ? "text-green-500" : "text-orange-500"}
                     />
                   </motion.span>
                 )}
@@ -211,14 +241,24 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
               transition={{ duration: 0.2 }}
               className="mt-4 space-y-4"
             >
-              <div className="rounded-xl border border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5 px-4 py-4">
+              <div
+                className={`rounded-xl border px-4 py-4 ${
+                  acertou
+                    ? "border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5"
+                    : "border-orange-400/25 bg-gradient-to-br from-orange-500/10 to-amber-400/5"
+                }`}
+              >
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-base dark:bg-green-900/40">
+                  <span
+                    className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base ${
+                      acertou ? "bg-green-100 dark:bg-green-900/40" : "bg-orange-100 dark:bg-orange-900/40"
+                    }`}
+                  >
                     {acertou ? "✅" : "💡"}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-foreground">
-                      {acertou ? "Resposta correta!" : "Resposta incorreta"}
+                      {acertou ? "Resposta correta!" : "Quase lá! Veja o porquê:"}
                     </p>
                     <p className="mt-1 text-sm text-muted leading-relaxed">
                       {q.explicacao}
