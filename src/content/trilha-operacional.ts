@@ -1,7 +1,7 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
 import { videosPiloto } from "./videos-piloto";
-import { imagensCategoria } from "./midia-catalogo";
+import { imagensCategoria, midiaPadraoPorAulaId } from "./midia-catalogo";
 
 // Trilha 3 — excelência operacional e atendimento consultivo com ética.
 export const trilhaOperacional: Trilha = {
@@ -26,6 +26,7 @@ export const trilhaOperacional: Trilha = {
           duracaoMin: 5,
           nivel: "basico",
           videoUrl: videosPiloto.operacionalAbertura,
+          imagemHeroUrl: midiaPadraoPorAulaId("acolhimento").imagemHeroUrl,
           resumo: "Como receber o cliente com empatia, atenção e postura profissional.",
           resumoExecutivo: [
             "Contato visual, cumprimento e disponibilidade genuína criam confiança em segundos.",
@@ -108,6 +109,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Escuta ativa e triagem da necessidade",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: midiaPadraoPorAulaId("escuta-ativa").imagemHeroUrl,
           resumo: "Perguntar, repetir o problema com clareza e entender a real necessidade.",
           resumoExecutivo: [
             "Escutar mais do que falar; perguntas abertas revelam a necessidade real.",
@@ -191,6 +193,7 @@ export const trilhaOperacional: Trilha = {
           titulo: "Roteiro de encantamento ético",
           duracaoMin: 6,
           nivel: "intermediario",
+          imagemHeroUrl: midiaPadraoPorAulaId("encantamento").imagemHeroUrl,
           resumo:
             "Acolher, ouvir, orientar com segurança, sugerir valor real, checar entendimento e encaminhar.",
           resumoExecutivo: [
@@ -275,6 +278,7 @@ export const trilhaOperacional: Trilha = {
           duracaoMin: 6,
           nivel: "avancado",
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
+          imagemHeroUrl: midiaPadraoPorAulaId("cross-sell").imagemHeroUrl,
           resumo: "Sugerir itens complementares que fazem sentido — nunca empurrar.",
           resumoExecutivo: [
             "Cross-sell ético parte da necessidade: protetor solar + pós-sol, antibiótico + orientação de adesão.",
@@ -362,6 +366,7 @@ export const trilhaOperacional: Trilha = {
           duracaoMin: 5,
           nivel: "basico",
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
+          imagemHeroUrl: midiaPadraoPorAulaId("rotina-organizacao").imagemHeroUrl,
           resumo: "Disciplina operacional: abertura, reposição, validade e limpeza.",
           resumoExecutivo: [
             "Rotina previsível reduz erros: conferência de validade (PVPS), reposição e limpeza.",
@@ -445,6 +450,7 @@ export const trilhaOperacional: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
+          imagemHeroUrl: midiaPadraoPorAulaId("planograma").imagemHeroUrl,
           resumo: "Como organizar categorias e gôndolas para facilitar a jornada do cliente.",
           resumoExecutivo: [
             "Organização por categoria (medicamentos, beleza, higiene, mamãe e bebê, dermocosméticos) facilita o autosserviço assistido.",
@@ -528,6 +534,7 @@ export const trilhaOperacional: Trilha = {
           duracaoMin: 5,
           nivel: "intermediario",
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
+          imagemHeroUrl: midiaPadraoPorAulaId("sazonalidade-equipe").imagemHeroUrl,
           resumo: "Antecipar demandas do calendário e atuar em equipe nos picos.",
           resumoExecutivo: [
             "Inverno: respiratórios e gripe; verão: fotoproteção e repelentes; campanhas de vacinação.",

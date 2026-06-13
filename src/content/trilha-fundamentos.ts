@@ -28,6 +28,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "História da Farmácia no Brasil e no Mundo",
           duracaoMin: 8,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Das boticas artesanais do século XVII às farmácias modernas do século XXI — conheça a trajetória da profissão farmacêutica no Brasil e no mundo.",
           resumoExecutivo: [
@@ -121,6 +122,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "O Profissional Farmacêutico e Suas Atribuições",
           duracaoMin: 8,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Entenda as responsabilidades legais e clínicas do farmacêutico, as áreas de atuação e como o atendente de farmácia se insere na equipe de saúde.",
           resumoExecutivo: [
@@ -215,6 +217,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Ética Farmacêutica e Sigilo Profissional",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Princípios éticos que regem a profissão farmacêutica, a importância do sigilo profissional e a postura adequada no atendimento ao público.",
           resumoExecutivo: [
@@ -305,6 +308,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Atuação do Atendente de Farmácia",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "O papel do atendente no ecossistema da farmácia: atribuições, limites legais, postura profissional e responsabilidades diárias.",
           resumoExecutivo: [
@@ -380,6 +384,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Regulação em Saúde: Anvisa, CRF e Vigilância Sanitária",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Entenda o papel dos órgãos reguladores: Anvisa, CRF, Vigilância Sanitária e como suas normas impactam o dia a dia da farmácia.",
           resumoExecutivo: [
@@ -474,6 +479,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Tipos de Farmácia e Seus Segmentos",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conheça os diferentes tipos de estabelecimentos farmacêuticos: farmácias comerciais, de manipulação, drogarias, redes e seus respectivos públicos.",
           resumoExecutivo: [
@@ -583,6 +589,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Introdução ao Corpo Humano: Células, Tecidos e Homeostase",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conceitos fundamentais de anatomia e fisiologia: organização do corpo, tipos de tecidos e o princípio da homeostase.",
           resumoExecutivo: [
@@ -681,6 +688,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Digestório: Como o Corpo Processa os Alimentos",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Órgãos do sistema digestório, processo de digestão e absorção, e os principais sintomas que levam clientes à farmácia.",
           resumoExecutivo: [
@@ -798,6 +806,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Cardiovascular: Coração e Circulação",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Anatomia e fisiologia do sistema cardiovascular: coração, vasos sanguíneos, circulação e os medicamentos mais comuns no balcão.",
           resumoExecutivo: [
@@ -899,6 +908,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Respiratório: Respiração e Principais Afecções",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Como funciona a respiração, os órgãos do sistema respiratório e as condições mais comuns que levam clientes à farmácia: gripes, resfriados, alergias e asma.",
           resumoExecutivo: [
@@ -995,6 +1005,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Nervoso: Dor, Emoções e Medicamentos",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Anatomia do sistema nervoso, tipos de dor, neurotransmissores e as classes de medicamentos que atuam no sistema nervoso.",
           resumoExecutivo: [
@@ -1096,6 +1107,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Endócrino: Hormônios e o Balcão da Farmácia",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Glândulas endócrinas, hormônios e as condições mais relevantes para o balcão: diabetes, tireoide e medicamentos hormonais.",
           resumoExecutivo: [
@@ -1196,6 +1208,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Microrganismos: Bactérias, Vírus, Fungos e Parasitas",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conheça os principais grupos de microrganismos, suas características e como eles afetam a saúde humana.",
           resumoExecutivo: [
@@ -1291,6 +1304,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Sistema Imunológico: Como o Corpo se Defende",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Funcionamento do sistema imunológico, tipos de imunidade, vacinação e como o atendente pode orientar sobre prevenção.",
           resumoExecutivo: [
@@ -1381,6 +1395,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Doenças Infecciosas Comuns no Balcão",
           duracaoMin: 15,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Principais doenças infecciosas que chegam ao balcão da farmácia: sintomas, transmissão, prevenção e orientações seguras.",
           resumoExecutivo: [
@@ -1487,6 +1502,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Saúde Pública: SUS, Programas e o Papel da Farmácia",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Estrutura do Sistema Único de Saúde (SUS), programas de saúde pública e como a farmácia se insere na rede de atenção à saúde.",
           resumoExecutivo: [
@@ -1582,6 +1598,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Noções de Epidemiologia: Doenças na População",
           duracaoMin: 12,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conceitos básicos de epidemiologia: incidência, prevalência, surto, epidemia, pandemia e o papel da farmácia na vigilância em saúde.",
           resumoExecutivo: [
@@ -1676,6 +1693,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Saúde Preventiva: Estilo de Vida e Prevenção",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "O papel da farmácia na promoção da saúde preventiva: alimentação, atividade física, vacinação e rastreamento de doenças crônicas.",
           resumoExecutivo: [
@@ -1782,6 +1800,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Comunicação em Saúde: Fundamentos",
           duracaoMin: 8,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Princípios da comunicação em saúde: linguagem clara, empatia, respeito à diversidade e adaptação da mensagem ao perfil do cliente.",
           resumoExecutivo: [
@@ -1872,6 +1891,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Escuta Ativa e Empatia no Atendimento",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Técnicas de escuta ativa: como ouvir verdadeiramente o cliente, demonstrar empatia e identificar necessidades não ditas.",
           resumoExecutivo: [
@@ -1947,6 +1967,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Linguagem do Cliente: Como Adaptar a Comunicação",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Adapte sua comunicação ao perfil do cliente: faixa etária, nível de letramento, condição emocional e contexto cultural.",
           resumoExecutivo: [
@@ -2047,6 +2068,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Objeções e Conflitos no Atendimento",
           duracaoMin: 12,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Como lidar com objeções, reclamações e conflitos no balcão da farmácia: técnicas de comunicação não violenta e resolução de problemas.",
           resumoExecutivo: [
@@ -2143,6 +2165,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Situações Difíceis: Luto, Crise e Urgência",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Como o atendente deve agir em situações emocionalmente delicadas: cliente em luto, crise de ansiedade, emergências de saúde e violência no balcão.",
           resumoExecutivo: [
@@ -2245,6 +2268,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Trabalho em Equipe Multidisciplinar",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Como o atendente de farmácia se insere na equipe de saúde: médicos, enfermeiros, nutricionistas e farmacêuticos — e por que a colaboração é essencial.",
           resumoExecutivo: [
@@ -2355,6 +2379,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Introdução à Biossegurança na Farmácia",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conceitos fundamentais de biossegurança aplicados ao ambiente farmacêutico: riscos, normas e condutas seguras.",
           resumoExecutivo: [
@@ -2455,6 +2480,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Higienização das Mãos: A Medida Mais Simples e Eficaz",
           duracaoMin: 8,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Técnica correta de higienização das mãos — a medida mais eficaz para prevenir infecções no ambiente da farmácia.",
           resumoExecutivo: [
@@ -2544,6 +2570,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Descarte de Resíduos na Farmácia",
           duracaoMin: 10,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Classificação e descarte correto dos resíduos de serviços de saúde (RSS) gerados na farmácia: comum, infectante, perfurocortante e químico.",
           resumoExecutivo: [
@@ -2645,6 +2672,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Limpeza e Desinfecção do Ambiente",
           duracaoMin: 8,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Protocolos de limpeza concorrente e terminal, desinfecção de superfícies e cuidados com a higiene do ambiente da farmácia.",
           resumoExecutivo: [
@@ -2735,6 +2763,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Contaminação Cruzada: Prevenção na Farmácia",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "O que é contaminação cruzada, como ocorre no ambiente da farmácia e as medidas para preveni-la no balcão e no estoque.",
           resumoExecutivo: [
@@ -2835,6 +2864,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Noções de Primeiros Socorros na Farmácia",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Conceitos básicos de primeiros socorros: avaliação inicial, desmaio, convulsão, ferimentos, queimaduras e o papel do atendente.",
           resumoExecutivo: [
@@ -2927,6 +2957,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Emergências na Farmácia: Protocolos e Condutas",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Protocolos específicos para emergências na farmácia: parada cardiorrespiratória, reação alérgica grave, intoxicação e hemorragia.",
           resumoExecutivo: [
@@ -3028,6 +3059,7 @@ export const trilhaFundamentos: Trilha = {
           titulo: "Prevenção de Acidentes no Ambiente de Trabalho",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: imagensCategoria.fundamentos,
           resumo:
             "Medidas para prevenir acidentes de trabalho na farmácia: organização do ambiente, postura correta, uso de EPIs e cultura de segurança.",
           resumoExecutivo: [

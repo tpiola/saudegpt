@@ -1,7 +1,7 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
 import { videosPiloto } from "./videos-piloto";
-import { imagensCategoria } from "./midia-catalogo";
+import { imagensCategoria, midiaPadraoPorAulaId } from "./midia-catalogo";
 
 // Trilha 2 — preserva o manual técnico integralmente, com camada crítica de
 // atualização regulatória (RDC 471/2021, GLP-1 IN 360/2025, Farmácia Popular 2025).
@@ -27,6 +27,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.medicamentos,
+            produtos: midiaPadraoPorAulaId("conceitos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("conceitos").marcas ?? [],
           videoUrl: videosPiloto.medicamentosConceitos,
           resumo:
             "A diferença entre remédio, medicamento, droga e fármaco, e por que isso importa no balcão.",
@@ -119,6 +121,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.principioAtivo,
+            produtos: midiaPadraoPorAulaId("principio-ativo").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("principio-ativo").marcas ?? [],
           resumo: "O que faz efeito, o que dá forma ao produto e como a ação terapêutica acontece.",
           resumoExecutivo: [
             "Princípio ativo: substância que produz o efeito. Excipiente: dá forma, estabilidade e sabor, sem efeito terapêutico principal.",
@@ -205,6 +209,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.formasFarmaceuticas,
+            produtos: midiaPadraoPorAulaId("formas-farmaceuticas").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("formas-farmaceuticas").marcas ?? [],
           resumo:
             "Comprimidos, cápsulas, xaropes, suspensões, pomadas, supositórios, injetáveis e mais.",
           resumoExecutivo: [
@@ -299,6 +305,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 5,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.viasAdmin,
+            produtos: midiaPadraoPorAulaId("vias-administracao").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("vias-administracao").marcas ?? [],
           resumo: "Oral, tópica, inalatória, retal, parenteral: características e cuidados.",
           resumoExecutivo: [
             "A via define rapidez e cuidados de uso (ex.: jejum, agitar, refrigerar).",
@@ -393,6 +401,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 8,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.bula,
+            produtos: midiaPadraoPorAulaId("bula").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("bula").marcas ?? [],
           videoUrl: videosPiloto.bula,
           resumo:
             "Transformar a bula em um roteiro: o que trata, como age, como usar, por quanto tempo, o que evitar e sinais de alerta.",
@@ -484,6 +494,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.tarjas,
+            produtos: midiaPadraoPorAulaId("tarjas").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("tarjas").marcas ?? [],
           resumo: "Sem tarja (MIP), tarja vermelha e tarja preta: o que cada uma exige no balcão.",
           resumoExecutivo: [
             "Sem tarja: venda livre (MIP/OTC), com orientação responsável.",
@@ -583,6 +595,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.mip,
+            produtos: midiaPadraoPorAulaId("mip-otc").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("mip-otc").marcas ?? [],
           resumo:
             "Medicamentos isentos de prescrição: o que pode ser orientado e os limites de segurança.",
           resumoExecutivo: [
@@ -677,6 +691,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.genericos,
+            produtos: midiaPadraoPorAulaId("genericos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("genericos").marcas ?? [],
           resumo:
             "Diferenças, bioequivalência, intercambialidade e como explicar ao cliente com segurança.",
           resumoExecutivo: [
@@ -786,6 +802,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.analgesicos,
+            produtos: midiaPadraoPorAulaId("analgesicos-antitermicos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("analgesicos-antitermicos").marcas ?? [],
           videoUrl: "https://www.youtube.com/watch?v=G77tZACxZPQ",
           resumo: "Dor e febre leves, antissépticos de uso comum e limites do autocuidado.",
           resumoExecutivo: [
@@ -875,6 +893,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.antiinflamatorios,
+            produtos: midiaPadraoPorAulaId("anti-inflamatorios-miorrelaxantes").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("anti-inflamatorios-miorrelaxantes").marcas ?? [],
           resumo: "AINEs, cuidados gástricos e relaxantes musculares — geralmente sob prescrição.",
           resumoExecutivo: [
             "AINEs podem irritar o estômago e interagir com outros medicamentos; muitos exigem receita.",
@@ -959,6 +979,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.gripe,
+            produtos: midiaPadraoPorAulaId("gripe-alergia-tosse").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("gripe-alergia-tosse").marcas ?? [],
           resumo:
             "Sintomáticos respiratórios, antitussígenos x expectorantes e cuidados em grupos sensíveis.",
           resumoExecutivo: [
@@ -1049,6 +1071,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.gastro,
+            produtos: midiaPadraoPorAulaId("gastrointestinais").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("gastrointestinais").marcas ?? [],
           resumo:
             "Antiácidos, hepatoprotetores, reguladores intestinais, laxativos/purgativos, antidiarreicos e antiflatulentos.",
           resumoExecutivo: [
@@ -1123,6 +1147,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.suplementos,
+            produtos: midiaPadraoPorAulaId("antimicoticos-vitaminas").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("antimicoticos-vitaminas").marcas ?? [],
           resumo:
             "Antifúngicos tópicos, suplementação, estimulantes de apetite e tratamento de piolho/sarna.",
           resumoExecutivo: [
@@ -1202,6 +1228,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.primeirosSocorros,
+            produtos: midiaPadraoPorAulaId("antissepticos-topicos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("antissepticos-topicos").marcas ?? [],
           resumo:
             "Quando orientar antisséptico tópico, diferença para desinfetante de ambiente e limites do autocuidado.",
           resumoExecutivo: [
@@ -1285,6 +1313,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.fungos,
+            produtos: midiaPadraoPorAulaId("pediculicidas-escabicidas-foco").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("pediculicidas-escabicidas-foco").marcas ?? [],
           resumo:
             "Aplicação, repetição de dose, tratamento de contactantes e higiene do ambiente — foco pedagógico separado.",
           resumoExecutivo: [
@@ -1362,6 +1392,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.antibioticos,
+            produtos: midiaPadraoPorAulaId("antibioticos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("antibioticos").marcas ?? [],
           resumo:
             "Antibióticos só com receita, retenção e atenção à resistência bacteriana. Regra de referência atual: RDC 471/2021.",
           resumoExecutivo: [
@@ -1453,6 +1485,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.receitas,
+            produtos: midiaPadraoPorAulaId("receituarios").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("receituarios").marcas ?? [],
           videoUrl: videosPiloto.receituarios,
           resumo:
             "Receita comum, controle especial e a base legal: Portaria SVS/MS 344/1998 atualizada por RDCs posteriores.",
@@ -1544,6 +1578,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 8,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.receituarios,
+            produtos: midiaPadraoPorAulaId("leitura-receitas-casos").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("leitura-receitas-casos").marcas ?? [],
           resumo:
             "Prática guiada: conferir prescrição, validade, retenção e encaminhamento com exemplos do dia a dia.",
           resumoExecutivo: [
@@ -1628,6 +1664,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.glp1,
+            produtos: midiaPadraoPorAulaId("glp1").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("glp1").marcas ?? [],
           resumo:
             "Agonistas de GLP-1 passaram a exigir retenção de receita; ensine a operação de forma responsável e sem glamour de emagrecimento.",
           resumoExecutivo: [
@@ -1714,6 +1752,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.farmaciaPopular,
+            produtos: midiaPadraoPorAulaId("farmacia-popular").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("farmacia-popular").marcas ?? [],
           resumo:
             "O programa mudou: hoje oferece cobertura ampliada e novos itens. Conecte balcão, orientação e impacto público.",
           resumoExecutivo: [
@@ -1805,6 +1845,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 6,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.primeirosSocorros,
+            produtos: midiaPadraoPorAulaId("primeiros-socorros").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("primeiros-socorros").marcas ?? [],
           videoUrl: "https://www.youtube.com/watch?v=Q2bHNFVEO0k",
           resumo: "Condutas básicas, limites do atendente e quando acionar emergência (192).",
           resumoExecutivo: [
@@ -1880,6 +1922,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.injetaveis,
+            produtos: midiaPadraoPorAulaId("injetaveis").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("injetaveis").marcas ?? [],
           resumo:
             "Tipos de injetáveis, cadeia de frio, descarte e aplicação como ato do farmacêutico/enfermagem.",
           resumoExecutivo: [
@@ -1958,6 +2002,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 7,
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.adesao,
+            produtos: midiaPadraoPorAulaId("adesao").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("adesao").marcas ?? [],
           resumo:
             "Como apoiar o cliente a seguir o tratamento: rotina, lembretes, esquecimento de dose e efeitos iniciais.",
           resumoExecutivo: [
@@ -2042,6 +2088,8 @@ export const trilhaMedicamentos: Trilha = {
           duracaoMin: 5,
           nivel: "intermediario",
           imagemHeroUrl: imagensCategoria.encaminhamento,
+            produtos: midiaPadraoPorAulaId("encaminhamento").produtos ?? [],
+            marcas: midiaPadraoPorAulaId("encaminhamento").marcas ?? [],
           resumo:
             "Quando e como encaminhar, e como antecipar picos sazonais (gripe, alergia, calor).",
           resumoExecutivo: [

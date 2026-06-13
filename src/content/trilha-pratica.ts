@@ -1,6 +1,6 @@
 import type { Trilha } from "./types";
 import { q } from "./_helpers";
-import { imagensCategoria } from "./midia-catalogo";
+import { imagensCategoria, midiaPadraoPorAulaId } from "./midia-catalogo";
 
 // Trilha Prática Supervisionada — estágio virtual, simulação de balcão e certificação.
 export const trilhaPratica: Trilha = {
@@ -27,6 +27,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Rotina de Balcão",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: midiaPadraoPorAulaId("rotina-balcao").imagemHeroUrl,
           resumo:
             "Organização do posto de trabalho, acolhimento inicial e fluxo de atendimento no balcão da farmácia.",
           resumoExecutivo: [
@@ -95,7 +96,8 @@ export const trilhaPratica: Trilha = {
               2,
               "A pergunta aberta acolhe e convida o cliente a expressar sua real necessidade.",
             ),
-          ],
+          q("O que NÃO fazer nos primeiros segundos de atendimento?",["Cumprimentar","Sorrir","Ignorar o cliente","Fazer contato visual"],2,"Ignorar o cliente passa desinteresse e quebra a confianca."),
+          q("Qual a postura ideal ao acolher o cliente?",["Bracos cruzados","Postura aberta e contato visual","Maos nos bolsos","Sentado digitando"],1,"Postura aberta transmite seguranca e disponibilidade.")],
           xp: 60,
         },
 
@@ -105,6 +107,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Triagem de Cliente",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("triagem-cliente").imagemHeroUrl,
           resumo:
             "Técnicas de escuta ativa para identificar sintomas, histórico e necessidades reais do cliente antes de recomendar.",
           resumoExecutivo: [
@@ -175,7 +178,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Pergunta aberta convida o cliente a detalhar o quadro, permitindo uma triagem mais precisa.",
             ),
-          ],
+          q("Qual pergunta ajuda a avaliar urgencia na triagem?",["Qual seu nome?","Ha quanto tempo tem o sintoma?","Qual plano de saude?","Qual idade?"],1,"Saber ha quanto tempo persiste avalia a urgencia do caso."),
+          q("Alem dos sintomas, o que mais deve ser perguntado?",["Endereco completo","Historico de alergias e medicacoes em uso","Nome do medico","Telefone comercial"],1,"Historico de alergias evita reacoes e medicacoes em uso evita interacoes.")],
           xp: 70,
         },
 
@@ -185,6 +189,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Dispensação Segura",
           duracaoMin: 15,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("dispensacao-segura").imagemHeroUrl,
           resumo:
             "Protocolo de checagem dos 7 Certos na dispensação: paciente, medicamento, dose, horário, via, forma e registro.",
           resumoExecutivo: [
@@ -251,7 +256,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Idosos podem ter dificuldade com informações escritas pequenas; a orientação verbal clara é fundamental para adesão e segurança.",
             ),
-          ],
+          q("Qual informacao e essencial ao orientar idoso sobre remedio?",["Preco","Posologia clara e interacoes com alimentos","Marca","Cor da embalagem"],1,"Idosos precisam de orientacao clara sobre como e quando tomar."),
+          q("O que fazer se o cliente tem duvida sobre a dose?",["Ignorar","Encaminhar ao farmaceutico","Aumentar a dose","Diminuir a dose"],1,"O farmaceutico e o profissional qualificado para esclarecer duvidas de dose.")],
           xp: 80,
         },
 
@@ -261,6 +267,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Receituário na Prática",
           duracaoMin: 15,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("receituario-pratica").imagemHeroUrl,
           resumo:
             "Leitura e interpretação de receitas simples e controladas: identificação de itens, validade, carimbo do médico e itens obrigatórios.",
           resumoExecutivo: [
@@ -326,7 +333,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Sem carimbo não é possível validar o CRM do prescritor — a dispensação é proibida.",
             ),
-          ],
+          q("Documento necessario para tarja preta:",["CPF do cliente","Receita de controle especial com retencao","Cartao do convenio","Nome do remedio"],1,"Tarja preta exige receita especifica e retencao obrigatoria."),
+          q("Sinais de falsificacao em receitas incluem:",["Letra bonita","Papel timbrado diferente do padrao","Data recente","Nome comum"],1,"Diferencas no papel ou timbre podem indicar falsificacao.")],
           xp: 80,
         },
 
@@ -336,6 +344,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Perfumaria na Prática",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("perfumaria-pratica").imagemHeroUrl,
           resumo:
             "Recomendação consultiva de perfumes, hidratantes e cosméticos: famílias olfativas, tipos de pele e argumentação técnica.",
           resumoExecutivo: [
@@ -411,7 +420,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Loções e géis oil-free têm toque seco e são absorvidos rapidamente, ideais para quem não gosta de sensação pegajosa.",
             ),
-          ],
+          q("Melhor forma de recomendar hidratante:",["Vender o mais caro","Perguntar tipo de pele e preferencia","Indicar qualquer um","Falar que sao todos iguais"],1,"Recomendacao consultiva considera o tipo de pele e preferencia."),
+          q("Familia olfativa mais adequada para uso diurno no trabalho:",["Amadeirada intensa","Citrica leve ou floral suave","Ocidental forte","Couro"],1,"Citricas e florais suaves sao discretas e adequadas para o trabalho.")],
           xp: 65,
         },
 
@@ -421,6 +431,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Medicamentos na Prática",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("medicamentos-pratica").imagemHeroUrl,
           resumo:
             "Orientações práticas sobre as principais classes de medicamentos de balcão: anti-inflamatórios, analgésicos, antigripais e antiácidos.",
           resumoExecutivo: [
@@ -497,7 +508,8 @@ export const trilhaPratica: Trilha = {
               1,
               "A combinação de AINEs com AAS eleva significativamente o risco de hemorragia digestiva, especialmente em idosos.",
             ),
-          ],
+          q("Diferenca entre analgesico e anti-inflamatorio:",["Preco","Analgesico: dor sem inflamacao. Anti-inflamatorio: dor com inflamacao","Marca","Sabor"],1,"Cada um tem indicacao especifica conforme o tipo de dor."),
+          q("Cliente com ulcera gastrica quer analgesico. Qual o mais seguro?",["Ibuprofeno","Paracetamol","Cetoprofeno","Aspirina"],1,"Paracetamol nao irrita a mucosa gastrica, sendo seguro para ulcera.")],
           xp: 85,
         },
       ],
@@ -517,6 +529,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Atendimento Completo",
           duracaoMin: 20,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("atendimento-completo").imagemHeroUrl,
           resumo:
             "Simulação de atendimento completo do início ao fim: acolhimento, triagem, recomendação, dispensação e fechamento com fidelização.",
           resumoExecutivo: [
@@ -589,7 +602,8 @@ export const trilhaPratica: Trilha = {
               1,
               "A dose de antitérmicos infantis é calculada com base no peso, não na idade. Sem o peso, não se pode recomendar a dose segura.",
             ),
-          ],
+          q("No ciclo de atendimento, o que vem depois de Orientar?",["Fidelizar o cliente","Vender mais","Fechar o caixa","Ir para o proximo"],0,"O ciclo termina com fidelizacao: convidar o cliente a retornar."),
+          q("Qual a importancia do peso da crianca na recomendacao?",["Calcular a dose correta","Nao importa","Saber a idade","Escolher a marca"],0,"Dose de antitérmicos infantis e calculada com base no peso.")],
           xp: 100,
         },
 
@@ -599,6 +613,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Cliente Difícil",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("cliente-dificil").imagemHeroUrl,
           resumo:
             "Técnicas de comunicação não violenta para lidar com cliente irritado, impaciente ou agressivo no balcão da farmácia.",
           resumoExecutivo: [
@@ -671,7 +686,8 @@ export const trilhaPratica: Trilha = {
               1,
               "'Se acalma' invalida o sentimento do cliente e geralmente tem efeito contrário, aumentando a irritação.",
             ),
-          ],
+          q("Primeira atitude com cliente irritado:",["Falar mais alto","Ouvir sem interromper e validar a queixa","Ignorar","Chamar seguranca"],1,"Ouvir e acolher a queixa reduz a tensao e mostra que voce se importa."),
+          q("Por que dizer se acalma e contraproducente?",["Ele vai se acalmar","Soa como ordem ou desrespeito","E frase longa","So o gerente pode"],1,"Se acalma invalida o sentimento do cliente e geralmente aumenta a irritacao.")],
           xp: 90,
         },
 
@@ -681,6 +697,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Emergência no Balcão",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("emergencia-balcao").imagemHeroUrl,
           resumo:
             "Identificação de sinais de emergência no balcão: reação alérgica, desmaio, convulsão e engasgo — quando e como agir.",
           resumoExecutivo: [
@@ -752,7 +769,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Posição de recuperação (de lado) mantém vias aéreas livres e previne aspiração em caso de vômito, enquanto o socorro é chamado.",
             ),
-          ],
+          q("Primeiro passo em qualquer emergencia:",["Tentar resolver","Avaliar cena e acionar SAMU 192","Dar agua","Esperar"],1,"Avaliar seguranca e acionar socorro sao as primeiras acoes."),
+          q("Nao fazer em caso de anafilaxia:",["Chamar SAMU","Manter deitado","Repetir medicamento suspeito","Monitorar"],2,"Nunca repetir o medicamento que causou a reacao alergica.")],
           xp: 95,
         },
 
@@ -762,6 +780,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Prescrição Irregular",
           duracaoMin: 15,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("prescricao-irregular").imagemHeroUrl,
           resumo:
             "Identificação de irregularidades em receitas: rasuras, prazo vencido, ausência de carimbo, itens controlados sem notificação e falsificações suspeitas.",
           resumoExecutivo: [
@@ -833,7 +852,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Diferenças no padrão do papel, timbre, fonte ou carimbo podem indicar falsificação e devem ser investigadas pelo farmacêutico.",
             ),
-          ],
+          q("Receita sem carimbo do medico:",["Pode dispensar","Nao pode, carimbo obrigatorio","Pode se cliente conhece","Depende"],1,"Carimbo com CRM e obrigatorio para validar prescricao."),
+          q("Suspeita de falsificacao de receita:",["Dispensar","Manter e avisar farmaceutico","Devolver","Rasgar"],1,"Suspeita exige registro e comunicacao ao farmaceutico.")],
           xp: 90,
         },
 
@@ -843,6 +863,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Cross-Sell Ético",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("cross-sell-etico").imagemHeroUrl,
           resumo:
             "Técnicas de recomendação complementar com foco na necessidade real do cliente, sem empurrar produtos desnecessários.",
           resumoExecutivo: [
@@ -914,7 +935,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Pós-sol e hidratante facial complementam o cuidado com a pele exposta ao sol — cross-sell ético e relevante.",
             ),
-          ],
+          q("Pergunta que abre espaco para cross-sell:",["Quer levar mais?","Para melhorar seu tratamento, posso sugerir algo?","So isso?","Vai levar?"],1,"Pergunta consultiva abre espaco para sugestao."),
+          q("Cross-sell etico NAO inclui:",["Complemento util","Empurrar produto caro sem necessidade","Melhorar o tratamento","Explicar o beneficio"],1,"Empurrar produto desnecessario e antiético.")],
           xp: 70,
         },
       ],
@@ -934,6 +956,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Portfólio de Projetos",
           duracaoMin: 12,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("portfolio-projetos").imagemHeroUrl,
           resumo:
             "Como documentar projetos práticos realizados durante a trilha para compor o portfólio profissional do atendente de farmácia.",
           resumoExecutivo: [
@@ -1002,7 +1025,8 @@ export const trilhaPratica: Trilha = {
               1,
               "Portfólios com evidências concretas mostram na prática suas competências, destacando você de outros candidatos.",
             ),
-          ],
+          q("Quantos projetos no portfolio inicial?",["1","3 a 5","10","20"],1,"3 a 5 casos bem documentados sao suficientes."),
+          q("O portfolio deve mostrar alem dos resultados:",["Nome da farmacia","O aprendizado obtido","Horas trabalhadas","Salario"],1,"Aprendizado mostra evolucao.")],
           xp: 65,
         },
 
@@ -1012,6 +1036,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Estudo de Caso",
           duracaoMin: 20,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("estudo-caso").imagemHeroUrl,
           resumo:
             "Análise aprofundada de um caso real de farmácia: cliente polimedicado com dúvidas, interação medicamentosa e abordagem multidisciplinar.",
           resumoExecutivo: [
@@ -1083,7 +1108,8 @@ export const trilhaPratica: Trilha = {
               1,
               "O primeiro passo é mapear todo o arsenal terapêutico do cliente para avaliar interações, duplicidades e adesão.",
             ),
-          ],
+          q("Estrutura ideal para estudo de caso:",["Problema e preco","Contexto, analise, intervencao e resultado","So solucao","Nome e valor"],1,"Estrutura completa permite analise profunda."),
+          q("Principal objetivo do estudo de caso:",["Nada","Extrair licoes aprendidas","Arquivar","Mostrar ao gerente"],1,"Licoes aprendidas sao o objetivo principal.")],
           xp: 100,
         },
 
@@ -1093,6 +1119,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Revisão Geral",
           duracaoMin: 15,
           nivel: "intermediario",
+            imagemHeroUrl: midiaPadraoPorAulaId("revisao-geral").imagemHeroUrl,
           resumo:
             "Revisão integrada dos principais conceitos das duas trilhas anteriores: atendimento consultivo, legislação básica, dispensação e cross-sell ético.",
           resumoExecutivo: [
@@ -1157,7 +1184,8 @@ export const trilhaPratica: Trilha = {
               1,
               "CAR = Contexto, Ação, Resultado — metodologia para estruturar exemplos e cases no portfólio profissional.",
             ),
-          ],
+          q("Pilar mais importante do atendimento:",["Preco","Acolhimento e escuta ativa","Velocidade","Quantidade"],1,"Acolhimento e escuta sao a base do atendimento consultivo."),
+          q("Se cliente nao entendeu a orientacao:",["Repetir igual","Simplificar e verificar","Ignorar","Falar mais alto"],1,"Simplificar garante uso correto do medicamento.")],
           xp: 70,
         },
 
@@ -1167,6 +1195,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Simulado Final",
           duracaoMin: 20,
           nivel: "avancado",
+            imagemHeroUrl: midiaPadraoPorAulaId("simulado-final").imagemHeroUrl,
           resumo:
             "Simulado completo com 10 questões integradoras cobrando todos os módulos da trilha — atendimento, legislação, emergência e ética profissional.",
           resumoExecutivo: [
@@ -1266,6 +1295,7 @@ export const trilhaPratica: Trilha = {
           titulo: "Certificação",
           duracaoMin: 10,
           nivel: "basico",
+            imagemHeroUrl: midiaPadraoPorAulaId("certificacao").imagemHeroUrl,
           resumo:
             "Etapa final da trilha: instruções para obter o certificado de conclusão, revisão dos critérios e próximos passos na carreira.",
           resumoExecutivo: [
@@ -1329,7 +1359,8 @@ export const trilhaPratica: Trilha = {
               1,
               "A certificação da trilha é uma conquista importante, mas cursos técnicos complementares abrem portas para cargos de maior responsabilidade.",
             ),
-          ],
+          q("Beneficio da certificacao:",["Aumento automatico","Comprovar competencias em processos seletivos","Nao precisa estudar","Substituir farmaceutico"],1,"Certificacao comprova competencias e e diferencial."),
+          q("Certificacao representa para o cliente:",["Nada","Que o atendente tem preparo","Que o produto e mais caro","Que a farmacia e grande"],1,"Certificacao transmite confianca ao cliente.")],
           xp: 50,
         },
       ],

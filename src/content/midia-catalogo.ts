@@ -162,6 +162,34 @@ export const marcasHigiene: MarcaMidia[] = [
   { nome: "Vichy", logoUrl: logoWiki("8/8e/Vichy_logo.svg/320px-Vichy_logo.svg.png") },
 ];
 
+
+export const marcasFarmaceuticas: MarcaMidia[] = [
+  { nome: "EMS", logoUrl: logoWiki("7/72/EMS_logo.svg/320px-EMS_logo.svg.png") },
+  { nome: "Medley", logoUrl: logoWiki("5/5c/Medley_logo.svg/320px-Medley_logo.svg.png") },
+  { nome: "Neo Química", logoUrl: logoWiki("1/16/Neo_Qu%C3%ADmica_logo.svg/320px-Neo_Qu%C3%ADmica_logo.svg.png") },
+  { nome: "Eurofarma", logoUrl: logoWiki("1/1d/Eurofarma_logo.svg/320px-Eurofarma_logo.svg.png") },
+  { nome: "Aché", logoUrl: logoWiki("c/c6/Ach%C3%A9_logo.svg/320px-Ach%C3%A9_logo.svg.png") },
+];
+
+export const produtosMIP: ProdutoMidia[] = [
+  { nome: "Paracetamol 500mg", imagemUrl: imagensCategoria.mip, alt: "Paracetamol comprimidos", categoria: "MIP" },
+  { nome: "Dipirona sódica", imagemUrl: imagensCategoria.mip, alt: "Dipirona gotas", categoria: "MIP" },
+  { nome: "Ibuprofeno 600mg", imagemUrl: imagensCategoria.analgesicos, alt: "Ibuprofeno comprimidos", categoria: "MIP" },
+  { nome: "Loratadina 10mg", imagemUrl: imagensCategoria.gripe, alt: "Loratadina antialérgico", categoria: "MIP" },
+];
+
+export const produtosGenericos: ProdutoMidia[] = [
+  { nome: "Genérico Paracetamol", imagemUrl: imagensCategoria.genericos, alt: "Paracetamol genérico", categoria: "Genérico" },
+  { nome: "Genérico Amoxicilina", imagemUrl: imagensCategoria.genericos, alt: "Amoxicilina genérica", categoria: "Genérico" },
+  { nome: "Genérico Omeprazol", imagemUrl: imagensCategoria.genericos, alt: "Omeprazol genérico", categoria: "Genérico" },
+];
+
+export const produtosAntibioticos: ProdutoMidia[] = [
+  { nome: "Amoxicilina 500mg", imagemUrl: imagensCategoria.antibioticos, alt: "Amoxicilina cápsulas", categoria: "Antibiótico" },
+  { nome: "Azitromicina 500mg", imagemUrl: imagensCategoria.antibioticos, alt: "Azitromicina comprimidos", categoria: "Antibiótico" },
+  { nome: "Cefalexina 500mg", imagemUrl: imagensCategoria.antibioticos, alt: "Cefalexina cápsulas", categoria: "Antibiótico" },
+];
+
 export const marcasNutricao: MarcaMidia[] = [
   { nome: "Nestlé Nutrition", logoUrl: logoWiki("4/4e/Nestl%C3%A9_logo.svg/320px-Nestl%C3%A9_logo.svg.png") },
   { nome: "Danone", logoUrl: logoWiki("1/1e/Danone_logo.svg/320px-Danone_logo.svg.png") },
@@ -371,6 +399,11 @@ export function midiaPadraoPorAulaId(aulaId: string): {
     planograma: { imagemHeroUrl: imagensCategoria.organizacao },
     "rotina-organizacao": { imagemHeroUrl: imagensCategoria.organizacao },
     "sazonalidade-equipe": { imagemHeroUrl: imagensCategoria.equipe },
+
+    // FARMACÊUTICAS
+    "mip-marcas": { marcas: marcasFarmaceuticas, produtos: produtosMIP },
+    "genericos-marcas": { marcas: marcasFarmaceuticas.filter(m => ["EMS", "Medley", "Eurofarma"].includes(m.nome)), produtos: produtosGenericos },
+    "antibioticos-marcas": { marcas: marcasFarmaceuticas.filter(m => ["EMS", "Eurofarma", "Aché"].includes(m.nome)), produtos: produtosAntibioticos },
   };
   return mapa[aulaId] ?? {};
 }
