@@ -210,8 +210,9 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
+  font-weight: 450;
+  font-size: 16.5px;
+  line-height: 1.75;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-height: 100dvh;
@@ -223,6 +224,12 @@ body {
   width: 100%;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ═══ Text readability — corpo legível premium ═══ */
+.text-readable {
+  font-weight: 450;
+  letter-spacing: 0.01em;
 }
 
 /* ═══ Mobile-safe areas (notch, home indicator) ═══ */
@@ -2638,3 +2645,25 @@ html { scroll-behavior: smooth; }
 /* Dark mode overrides for gamification */
 .dark .xp-toast { box-shadow: 0 8px 32px rgba(76,161,93,.25), 0 0 0 1px rgba(76,161,93,.2); }
 .dark .mobile-bottom-nav { background: rgba(4,22,19,.97); border-top-color: var(--border); }
+
+/* ═══ Prose-sm — textos longos com legibilidade extra ═══ */
+.prose-sm {
+  line-height: 1.8;
+  font-weight: 450;
+}
+
+/* ═══ Chat message-in premium animation ═══ */
+@keyframes message-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-message-in {
+  animation: message-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
