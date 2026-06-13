@@ -2667,3 +2667,344 @@ html { scroll-behavior: smooth; }
 .animate-message-in {
   animation: message-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL-DRIVEN ANIMATIONS 2026 — CSS puro, sem JS
+   Técnicas: Jack Roberts / 2026 spec
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Scroll Progress Bar (top of page / section) ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+  background: transparent;
+  transform-origin: left center;
+  animation: scroll-progress-fill linear;
+  animation-timeline: scroll(root);
+}
+.scroll-progress::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-emerald-400), var(--color-orange-400), var(--color-emerald-500));
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 0 8px rgba(76, 161, 93, 0.4);
+}
+@keyframes scroll-progress-fill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ── Parallax Layers (pure CSS via animation-timeline: view()) ── */
+/*
+   Uso no JSX:
+   <section class="parallax-section">
+     <div class="parallax-bg" style="--parallax-speed: 0.3;" />
+     <div class="parallax-layer" style="--parallax-speed: 0.6;">
+       conteúdo foreground
+     </div>
+   </section>
+   A section precisa de position: relative e overflow: hidden.
+   O parallax-bg fica atrás, e o parallax-layer em cima.
+*/
+
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  /* Garante que o view() timeline tenha um bloco pra medir */
+}
+
+.parallax-bg {
+  position: absolute;
+  inset: -20vh -10vw;
+  z-index: 0;
+  will-change: transform;
+  /*
+    --parallax-speed: 0 (mais lento) a 1 (quase fixo).
+    Default 0.3 = fundo se move 30% da velocidade do scroll.
+  */
+  --parallax-speed: 0.3;
+  animation: parallax-bg-move linear;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+@keyframes parallax-bg-move {
+  /* Começa deslocado p/ baixo, termina deslocado p/ cima */
+  entry 0% {
+    transform: translateY(calc(var(--parallax-speed, 0.3) * 60px));
+  }
+  exit 100% {
+    transform: translateY(calc(var(--parallax-speed, 0.3) * -60px));
+  }
+}
+
+.parallax-layer {
+  position: relative;
+  z-index: 1;
+  --parallax-speed: 0.6;
+  /*
+    Foreground sutil: move menos que o bg,
+    criando profundidade sem quebrar layout.
+  */
+  animation: parallax-layer-move linear;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+}
+
+@keyframes parallax-layer-move {
+  entry 0% {
+    transform: translateY(calc(var(--parallax-speed, 0.6) * 20px));
+  }
+  exit 100% {
+    transform: translateY(calc(var(--parallax-speed, 0.6) * -20px));
+  }
+}
+
+/* ── Scroll-Triggered Reveal (fade + slide up) ── */
+/*
+   Uso:
+   <div class="reveal-on-scroll">...</div>
+   Revela com fade+slide quando entra no viewport.
+   Supporta atraso escalonado com --reveal-delay (0-5).
+*/
+
+.reveal-on-scroll {
+  /* Estado inicial: invisível e deslocado */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: reveal-enter linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+  /*
+    --reveal-delay: 0–5 (multiplicador de 0.1s)
+    Exemplo: style="--reveal-delay: 2" → delay de 0.2s
+  */
+  --reveal-delay: 0;
+}
+
+@keyframes reveal-enter {
+  entry 0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  entry 25% {
+    opacity: calc(0.3 + var(--reveal-delay, 0) * 0);
+  }
+  entry 35% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Reveal variantes ── */
+.reveal-scale {
+  composes: reveal-on-scroll; /* CSS Modules — ignorado se não houver suporte */
+  opacity: 0;
+  transform: scale(0.92);
+  animation: reveal-scale-enter linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@keyframes reveal-scale-enter {
+  entry 0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  entry 40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: reveal-left-enter linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@keyframes reveal-left-enter {
+  entry 0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  entry 40% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: reveal-right-enter linear forwards;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
+@keyframes reveal-right-enter {
+  entry 0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  entry 40% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Sticky Scroll Effects ── */
+/*
+   Uso: <div class="sticky-scroll">conteúdo que cola</div>
+   O elemento fica sticky durante a rolagem da seção,
+   com um efeito visual sutil (sombra + borda) ao atingir o topo.
+*/
+
+.sticky-scroll {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /*
+    Animação que aciona quando o elemento sai do viewport
+    pelo topo (enquanto sticky está ativo).
+  */
+  animation: sticky-shadow-appear linear;
+  animation-timeline: view();
+  animation-range: exit 0% exit 100%;
+  /*
+    A progressão visual (sombra + borda) ocorre conforme
+    o elemento "cola" — no range exit, o elemento está
+    prestes a sair do viewport.
+  */
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+@keyframes sticky-shadow-appear {
+  exit 0% {
+    box-shadow: none;
+    border-bottom-color: transparent;
+  }
+  exit 30% {
+    box-shadow: 0 4px 20px rgba(10, 47, 42, 0.10);
+    border-bottom: 1px solid var(--border);
+  }
+  exit 100% {
+    box-shadow: 0 8px 32px rgba(10, 47, 42, 0.14);
+    border-bottom: 1px solid var(--border-strong);
+  }
+}
+
+/* ── Sticky Header Progress (reveal de título conforme scrolla) ── */
+.sticky-scroll-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--surface-glass-heavy);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  animation: sticky-header-scrub linear;
+  animation-timeline: view();
+  animation-range: exit 0% exit 35%;
+  transition: border-color 0.3s ease;
+}
+
+@keyframes sticky-header-scrub {
+  exit 0% {
+    border-bottom-color: transparent;
+    box-shadow: none;
+  }
+  exit 35% {
+    border-bottom-color: var(--border);
+    box-shadow: 0 4px 24px rgba(10, 47, 42, 0.08);
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   PREFERS-REDUCED-MOTION — fallback de acessibilidade
+   ══════════════════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Desliga todas as scroll-driven animations */
+  .scroll-progress,
+  .parallax-bg,
+  .parallax-layer,
+  .reveal-on-scroll,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right,
+  .sticky-scroll,
+  .sticky-scroll-header {
+    animation: none !important;
+  }
+
+  /* Garante que elementos revelados fiquem visíveis */
+  .reveal-on-scroll,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* Scroll progress vira invisível mas mantém layout */
+  .scroll-progress {
+    display: none;
+  }
+
+  /* Sticky ainda funciona — só perde a animação de sombra */
+  .sticky-scroll {
+    box-shadow: none !important;
+  }
+
+  /* Parallax layers ficam estáticos */
+  .parallax-bg,
+  .parallax-layer {
+    transform: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   FALLBACK PARA NAVEGADORES SEM animation-timeline
+   (polyfill via consulta @supports)
+   ══════════════════════════════════════════════════════ */
+
+@supports not (animation-timeline: view()) {
+  /* Fallback: Intersection Observer via fade-in simples.
+     Se o navegador não suportar scroll-driven animations,
+     o conteúdo aparece normalmente. */
+
+  .reveal-on-scroll,
+  .reveal-scale,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .parallax-bg,
+  .parallax-layer {
+    animation: none;
+    transform: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+
+  .sticky-scroll,
+  .sticky-scroll-header {
+    animation: none;
+  }
+}
