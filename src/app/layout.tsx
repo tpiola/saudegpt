@@ -5,12 +5,12 @@ import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
 import { LgpdBanner } from "@/components/lgpd-banner";
-import { ScannerFloatingButton } from "@/components/scanner-floating-button";
 import { ThemeProvider, scriptAntiFlash } from "@/lib/theme";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { site } from "@/lib/site";
 import { getSiteUrl } from "@/lib/site-url";
+import ChatWrapper from "@/components/chat-wrapper";
 
 const inter = Inter({
   variable: "--font-body",
@@ -141,12 +141,14 @@ export default function RootLayout({
             <ProgressSync />
             <PwaRegister />
             <LgpdBanner />
-            <ScannerFloatingButton />
             {children}
             <SpeedInsights />
             <Analytics />
           </ProgressProvider>
         </ThemeProvider>
+
+        {/* Assistente IA + Scanner — aparece em TODAS as páginas */}
+        <ChatWrapper />
       </body>
     </html>
   );

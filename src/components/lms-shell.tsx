@@ -10,23 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 import { Botao } from "./ui";
 import { usePerfilAluno } from "@/lib/aluno";
 import { MobileBottomNav } from "./mobile-bottom-nav";
-import { ScannerProduto } from "./scanner-produto";
 import dynamic from "next/dynamic";
-
-const ChatBotIA = dynamic(() => import("./chatbot-ia").then((m) => ({ default: m.ChatBotIA })), {
-  ssr: false,
-  loading: () => null,
-});
-
-/** Componente composto: ChatBotIA + ScannerProduto dentro do chat */
-function ChatCompleto() {
-  return (
-    <>
-      <ChatBotIA />
-      <ScannerProduto />
-    </>
-  );
-}
 
 /** Páginas que usam layout FULL WIDTH (sem sidebar) */
 const FULL_WIDTH_ROUTES = new Set(["/sobre", "/"]);
@@ -280,8 +264,6 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         </header>
 
         <div className="flex-1 bg-background">{children}</div>
-
-        <ChatCompleto />
 
         <footer className="has-bottom-nav border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
           <p className="font-semibold">{site.assinatura}</p>

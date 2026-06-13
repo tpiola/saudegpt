@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ScannerFloatingButton } from "@/components/scanner-floating-button";
+import { ScannerProduto } from "@/components/scanner-produto";
 
 export const metadata: Metadata = {
   title: "Scanner de Produtos",
-  description: "Tire uma foto de qualquer medicamento, cosmético ou produto de saúde e receba informações completas.",
+  description: "Tire uma foto de qualquer medicamento, cosmético ou produto de saúde e receba informações completas com IA.",
 };
 
 export default function ScannerPage() {
@@ -15,14 +15,14 @@ export default function ScannerPage() {
       <main className="py-16 sm:py-24 px-4">
         <div className="mx-auto max-w-7xl text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-emerald-400 to-emerald-200 bg-clip-text text-transparent">
-            Scanner de Produtos
+            📸 Scanner de Produtos
           </h1>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
             Identifique medicamentos, cosméticos, perfumes e produtos de saúde com IA.
-            Tire uma foto e obtenha informações completas instantaneamente.
+            Tire uma foto ou digite o código de barras e obtenha informações completas.
           </p>
         </div>
-        <ScannerFloatingButton />
+        <ScannerProduto />
       </main>
       <Footer />
     </div>
