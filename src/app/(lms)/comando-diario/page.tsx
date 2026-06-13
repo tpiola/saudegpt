@@ -18,7 +18,7 @@ export default function ComandoDiarioPage() {
       <div className="relative mb-10 overflow-hidden rounded-2xl">
         <div className="absolute inset-0">
           <Image
-            src="/imagens/hero_brain_model.png"
+            src="/imagens/hero_brain_model.webp"
             alt="Balcão de farmácia com atendente organizando o expediente"
             fill
             className="object-cover"

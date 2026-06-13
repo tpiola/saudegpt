@@ -18,7 +18,7 @@ export default function SobrePage() {
       <div className="relative mb-10 overflow-hidden rounded-2xl">
         <div className="absolute inset-0">
           <Image
-            src="/imagens/hero_surgeons.png"
+            src="/imagens/hero_surgeons.webp"
             alt="Equipe de farmácia unida atendendo pacientes"
             fill
             className="object-cover"

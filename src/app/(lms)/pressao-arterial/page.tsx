@@ -22,7 +22,7 @@ const topicos = [
     titulo: "O que é pressão arterial?",
     texto:
       "Pressão arterial é a força que o sangue faz nas paredes das artérias quando o coração bombeia. Pense numa mangueira de jardim: quando você aperta a saída, a água sai com mais força. É mais ou menos isso que acontece dentro do seu corpo.",
-    imagem: "/imagens/hero_pills.png",
+    imagem: "/imagens/hero_pills.webp",
   },
   {
     id: "por-que-sobe",
@@ -38,7 +38,7 @@ const topicos = [
       "🧬 Genética (histórico na família)",
       "🚬 Tabagismo e excesso de álcool",
     ],
-    imagem: "/imagens/trilha_medicamentos.png",
+    imagem: "/imagens/trilha_medicamentos.webp",
   },
   {
     id: "por-que-desce",
@@ -53,7 +53,7 @@ const topicos = [
       "🩸 Anemia (falta de ferro no sangue)",
       "🍽️ Ficar muito tempo sem comer",
     ],
-    imagem: "/imagens/hero_pills.png",
+    imagem: "/imagens/hero_pills.webp",
   },
   {
     id: "sistolica-diastolica",
@@ -65,7 +65,7 @@ const topicos = [
 • O segundo (menor) é a pressão DIASTÓLICA — é a força quando o coração DESCANSA entre uma batida e outra.
 
 Os dois são importantes! Um coração saudável precisa dos dois números dentro do limite.`,
-    imagem: "/imagens/sleep_quality.png",
+    imagem: "/imagens/sleep_quality.webp",
   },
   {
     id: "limite-sbc",
@@ -78,7 +78,7 @@ Os dois são importantes! Um coração saudável precisa dos dois números dentr
 🔴 Hipertensão: acima de 140/90
 
 Antes o limite era 140/90. Agora é 130/80. Isso significa que mais pessoas precisam de cuidado e acompanhamento — e o farmacêutico tem um papel fundamental nisso!`,
-    imagem: "/imagens/sleep_hygiene.png",
+    imagem: "/imagens/sleep_hygiene.webp",
   },
 ];
 

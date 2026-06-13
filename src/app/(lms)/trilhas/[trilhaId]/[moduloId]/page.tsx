@@ -25,14 +25,14 @@ export async function generateMetadata({
 
 // Mapa de imagens de módulo baseado nas imagens disponíveis
 const moduloImagens = [
-  "/imagens/hero_pills.png",
-  "/imagens/trilha_medicamentos.png",
-  "/imagens/hero_brain_model.png",
-  "/imagens/hero_pills.png",
-  "/imagens/trilha_operacional.png",
-  "/imagens/bioimpedance_scale.png",
-  "/imagens/consult_pharmacist.png",
-  "/imagens/sleep_quality.png",
+  "/imagens/hero_pills.webp",
+  "/imagens/trilha_medicamentos.webp",
+  "/imagens/hero_brain_model.webp",
+  "/imagens/hero_pills.webp",
+  "/imagens/trilha_operacional.webp",
+  "/imagens/bioimpedance_scale.webp",
+  "/imagens/consult_pharmacist.webp",
+  "/imagens/sleep_quality.webp",
 ];
 
 function moduloImagem(moduloId: string, idx: number): string {

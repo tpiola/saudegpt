@@ -12,7 +12,7 @@ export function LogoAcademico({ size = 32, className = "" }: LogoAcademicoProps)
       style={{ width: size, height: size }}
     >
       <Image
-        src="/imagens/logo_estudante.png"
+        src="/imagens/logo_estudante.webp"
         alt="SaúdeGPT"
         fill
         className="object-cover"

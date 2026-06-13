@@ -98,7 +98,7 @@ export default function RootLayout({
         <link rel="icon" href="/icon-ai.svg" type="image/svg+xml" />
         <link rel="shortcut icon" href="/icon-ai.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
         <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ""} />
         <meta name="geo.region" content="BR" />
         <meta name="geo.placename" content="Brasil" />
@@ -130,6 +130,8 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-full flex-col">
+        {/* Scroll Progress Bar — CSS-driven */}
+        <div className="scroll-progress" aria-hidden="true" />
         <a
           href="#conteudo-principal"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-forest-500 focus:px-4 focus:py-2 focus:text-white"

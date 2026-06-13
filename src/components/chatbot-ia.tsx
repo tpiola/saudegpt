@@ -17,7 +17,7 @@ function ChatBubbleIcon({ className }: { className?: string }) {
   return (
     <div className={`relative ${className}`}>
       <img
-        src="/imagens/suporte_robo.png"
+        src="/imagens/suporte_robo.webp"
         alt="Suporte"
         className="h-full w-full object-contain drop-shadow-lg"
       />

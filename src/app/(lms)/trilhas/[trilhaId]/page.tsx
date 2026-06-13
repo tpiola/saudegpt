@@ -25,13 +25,13 @@ export async function generateMetadata({
 
 // Imagens para cada trilha
 const trilhaHeroImgs: Record<string, string> = {
-  perfumaria: "/imagens/trilha_perfumaria.png",
-  medicamentos: "/imagens/trilha_medicamentos.png",
-  operacional: "/imagens/trilha_operacional.png",
-  encantamento: "/imagens/trilha_encantamento.png",
-  fundamentos: "/imagens/hero_brain_model.png",
-  pratica: "/imagens/trilha_medicamentos.png",
-  "servicos-cuidado": "/imagens/consult_pharmacist.png",
+  perfumaria: "/imagens/trilha_perfumaria.webp",
+  medicamentos: "/imagens/trilha_medicamentos.webp",
+  operacional: "/imagens/trilha_operacional.webp",
+  encantamento: "/imagens/trilha_encantamento.webp",
+  fundamentos: "/imagens/hero_brain_model.webp",
+  pratica: "/imagens/trilha_medicamentos.webp",
+  "servicos-cuidado": "/imagens/consult_pharmacist.webp",
 };
 
 // Cores para cada trilha
@@ -149,7 +149,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
   const trilha = getTrilha(trilhaId);
   if (!trilha) notFound();
 
-  const heroImg = trilhaHeroImgs[trilha.id] || "/imagens/trilha_medicamentos.png";
+  const heroImg = trilhaHeroImgs[trilha.id] || "/imagens/trilha_medicamentos.webp";
   const cores = coresBadge[trilha.id] || coresBadge.perfumaria;
   const farmaMsg = farmaMensagens[trilha.id] || "Sempre consulte o(a) farmacêutico(a) para orientação personalizada.";
   const sabiaQue = sabiaQuePorTrilha[trilha.id] || [];

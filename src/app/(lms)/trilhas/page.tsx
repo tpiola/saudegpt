@@ -14,10 +14,10 @@ export const metadata: Metadata = {
 
 // Imagens de trilha disponíveis em /public/
 const trilhaImagens = [
-  "/imagens/trilha_perfumaria.png",
-  "/imagens/trilha_medicamentos.png",
-  "/imagens/trilha_operacional.png",
-  "/imagens/trilha_encantamento.png",
+  "/imagens/trilha_perfumaria.webp",
+  "/imagens/trilha_medicamentos.webp",
+  "/imagens/trilha_operacional.webp",
+  "/imagens/trilha_encantamento.webp",
 ];
 
 const coresTrilha = [
@@ -35,7 +35,7 @@ const sabiaQueCards = [
     texto:
       "Dormir bem regula o sistema imunológico, melhora a memória e reduz o estresse. Na farmácia, perguntar sobre o sono do cliente pode revelar necessidades de suplementos ou fitoterápicos.",
     badge: "Saúde preventiva",
-    bgImg: "/imagens/sleep_quality.png",
+    bgImg: "/imagens/sleep_quality.webp",
   },
   {
     emoji: "💧",
@@ -43,7 +43,7 @@ const sabiaQueCards = [
     texto:
       "Beber água suficiente melhora a absorção de medicamentos, a elasticidade da pele e o funcionamento dos rins. Lembre os clientes: 2 litros por dia é a meta mínima.",
     badge: "Bem-estar",
-    bgImg: "/imagens/hydration_water.png",
+    bgImg: "/imagens/hydration_water.webp",
   },
   {
     emoji: "📐",
@@ -51,7 +51,7 @@ const sabiaQueCards = [
     texto:
       "A bioimpedância avalia composição corporal — gordura, massa magra e hidratação. É um serviço farmacêutico que agrega valor e fideliza clientes (Produto + Serviço).",
     badge: "Inovação",
-    bgImg: "/imagens/hero_pills.png",
+    bgImg: "/imagens/hero_pills.webp",
   },
   {
     emoji: "🧘",
@@ -59,7 +59,7 @@ const sabiaQueCards = [
     texto:
       "Criar uma rotina noturna consistente — sem telas 1h antes, quarto escuro e fresco — melhora a qualidade do sono. Ofereça dicas + produtos como melatonina (com orientação).",
     badge: "Sleep hygiene",
-    bgImg: "/imagens/sleep_hygiene.png",
+    bgImg: "/imagens/sleep_hygiene.webp",
   },
 ];
 
@@ -73,7 +73,7 @@ export default function TrilhasPage() {
           ════════════════════════════════════════════ */}
       <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
         <Image
-          src="/imagens/hero_pills.png"
+          src="/imagens/hero_pills.webp"
           alt="Equipe de farmácia atendendo com cuidado e dedicação"
           fill
           className="hero-bg"

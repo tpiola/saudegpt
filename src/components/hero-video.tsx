@@ -8,7 +8,7 @@ export function HeroVideo({ className = "" }: HeroVideoProps) {
   return (
     <div className={`absolute inset-0 z-0 overflow-hidden ${className}`} aria-hidden="true">
       <Image
-        src="imagens/hero_surgeons.png"
+        src="imagens/hero_surgeons.webp"
         alt=""
         fill
         priority

@@ -33,7 +33,7 @@ function VideoBanner() {
       {/* Fundo com imagem + gradiente animado */}
       <div className="absolute inset-0 bg-forest-500">
         <Image
-          src="/imagens/hero_pills.png"
+          src="/imagens/hero_pills.webp"
           alt=""
           fill
           className="object-cover opacity-30"
@@ -145,7 +145,7 @@ function PortalConvidadoHero() {
         }}
       >
         <Image
-          src="/imagens/hero_pills.png"
+          src="/imagens/hero_pills.webp"
           alt=""
           fill
           className="hero-bg scale-105"

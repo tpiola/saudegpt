@@ -31,7 +31,7 @@ As principais glândulas do sistema endócrino são:
 • Ovários e testículos — hormônios sexuais
 
 Quando algum hormônio está em excesso ou em falta, o corpo dá sinais. Reconhecer esses sinais é parte importante do trabalho no balcão da farmácia.`,
-    imagem: "/imagens/trilha_medicamentos.png",
+    imagem: "/imagens/trilha_medicamentos.webp",
   },
   {
     id: "tireoide",
@@ -58,7 +58,7 @@ Hipertireoidismo (T3 e T4 altos):
 • Tratamento: medicamentos antitireoidianos ou iodo radioativo
 
 No balcão: pergunte se o cliente faz exames regulares de TSH. Muitos descobrem alterações na tireoide por acaso!`,
-    imagem: "/imagens/hero_pills.png",
+    imagem: "/imagens/hero_pills.webp",
   },
   {
     id: "hormonios-sexuais",
@@ -84,7 +84,7 @@ Testosterona — principal hormônio masculino:
 • Baixa testosterona causa cansaço, falta de libido e perda de massa muscular
 
 O farmacêutico pode orientar sobre reposição hormonal, sempre lembrando que é necessário acompanhamento médico.`,
-    imagem: "/imagens/trilha_medicamentos.png",
+    imagem: "/imagens/trilha_medicamentos.webp",
   },
   {
     id: "insulina-glucagon",
@@ -103,7 +103,7 @@ Glucagon — o hormônio que libera reserva:
 • Funciona como o "puxadinho de emergência" de energia
 
 No diabetes Tipo 1, o pâncreas não produz insulina. No Tipo 2, o corpo produz, mas as células não respondem bem (resistência insulínica). Entender essa diferença é essencial para orientar o cliente no balcão.`,
-    imagem: "/imagens/hero_pills.png",
+    imagem: "/imagens/hero_pills.webp",
   },
   {
     id: "cortisol-estresse",
@@ -132,7 +132,7 @@ Dicas para reduzir o cortisol naturalmente:
 • Reservar momentos de lazer e descanso
 
 No balcão: clientes que buscam remédios para ansiedade ou insônia podem estar sofrendo os efeitos do cortisol alto. Uma conversa atenciosa pode ajudar.`,
-    imagem: "/imagens/sleep_quality.png",
+    imagem: "/imagens/sleep_quality.webp",
   },
 ];
 
