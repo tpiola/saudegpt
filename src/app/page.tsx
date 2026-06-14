@@ -2,8 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { CookieConsent } from "@/components/CookieConsent";
-import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import { GuiaGPT } from "@/components/GuiaGPT";
+import { ChatBotIA } from "@/components/chatbot-ia";
 import { HeroSection } from "@/components/hero-section";
 import { SecaoBeneficios } from "@/components/secao-beneficios";
 import { SecaoComoFunciona } from "@/components/secao-como-funciona";
@@ -246,8 +245,7 @@ export default function HomePage() {
       </main>
       <SiteFooter />
       <CookieConsent />
-      <WhatsAppFloat />
-      <GuiaGPT />
+      <ChatBotIA />
     </>
   );
 }
