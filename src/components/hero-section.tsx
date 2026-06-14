@@ -1,10 +1,54 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useScroll, useTransform } from "framer-motion";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Icon } from "./icons";
+
+/* ── Typewriter com espaçamento garantido ── */
+function TypewriterSubtitulo({
+  frases,
+  className = "",
+}: {
+  frases: string[];
+  className?: string;
+}) {
+  const [idx, setIdx] = useState(0);
+  const [sub, setSub] = useState(0);
+  const [deletando, setDeletando] = useState(false);
+
+  useEffect(() => {
+    const fraseAtual = frases[idx];
+    const terminou = !deletando && sub === fraseAtual.length;
+    const zerou = deletando && sub === 0;
+
+    if (zerou) {
+      setDeletando(false);
+      setIdx((i) => (i + 1) % frases.length);
+      return;
+    }
+
+    const timer = setTimeout(
+      () => {
+        if (terminou) {
+          setTimeout(() => setDeletando(true), 2500);
+          return;
+        }
+        setSub((s) => (deletando ? s - 1 : s + 1));
+      },
+      terminou ? 0 : deletando ? 30 : 60
+    );
+    return () => clearTimeout(timer);
+  }, [sub, idx, deletando, frases]);
+
+  return (
+    <span className={className}>
+      {frases[idx].substring(0, sub)}
+      <span className="animate-pulse">|</span>
+    </span>
+  );
+}
 
 export function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,7 +91,13 @@ export function HeroSection() {
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-base text-white/60 sm:text-lg">
-            Estude online, no seu ritmo. Trilhas, quizzes, simulados e certificado.
+            <TypewriterSubtitulo
+              frases={[
+                "Do zero ao certificado, no seu ritmo.",
+                "Trilhas, quizzes, simulados e prática.",
+                "Conteúdo que faz diferença no dia a dia.",
+              ]}
+            />
           </p>
 
           {/* CTAs */}
