@@ -164,12 +164,12 @@ function TrilhasSection() {
 
 function ComoFuncionaSection() {
   const passos = [
-    { icone: "📝", titulo: "Escolha sua trilha", desc: "Selecione entre 7 trilhas baseadas em ANVISA, OMS e Ministério da Saúde." },
-    { icone: "🎬", titulo: "Assista às aulas", desc: "Vídeos curtos de 3 a 8 minutos com exemplos reais de balcão." },
-    { icone: "🧠", titulo: "Pratique com quizzes", desc: "Questões interativas com feedback imediato para fixar o conteúdo." },
-    { icone: "🏆", titulo: "Ganhe XP e badges", desc: "Cada aula concluída rende experiência. Suba de nível e desbloqueie conquistas." },
-    { icone: "📊", titulo: "Acompanhe seu progresso", desc: "Dashboard completo com gráficos, streak, pontos fortes e áreas de melhoria." },
-    { icone: "🎯", titulo: "Transforme seu atendimento", desc: "Aplique no dia a dia o que aprendeu e seja referência na sua farmácia." },
+    { icone: "clipboard", titulo: "Escolha sua trilha", desc: "Selecione entre 7 trilhas baseadas em ANVISA, OMS e Ministério da Saúde." },
+    { icone: "video", titulo: "Assista às aulas", desc: "Vídeos curtos de 3 a 8 minutos com exemplos reais de balcão." },
+    { icone: "brain", titulo: "Pratique com quizzes", desc: "Questões interativas com feedback imediato para fixar o conteúdo." },
+    { icone: "trophy", titulo: "Ganhe XP e badges", desc: "Cada aula concluída rende experiência. Suba de nível e desbloqueie conquistas." },
+    { icone: "chart", titulo: "Acompanhe seu progresso", desc: "Dashboard completo com gráficos, streak, pontos fortes e áreas de melhoria." },
+    { icone: "target", titulo: "Transforme seu atendimento", desc: "Aplique no dia a dia o que aprendeu e seja referência na sua farmácia." },
   ];
 
   return (
@@ -190,7 +190,26 @@ function ComoFuncionaSection() {
               <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-bold text-white">
                 {i + 1}
               </div>
-              <span className="text-3xl mb-3 block">{passo.icone}</span>
+              <div className="mb-3">
+                {passo.icone === "clipboard" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M9 3h6m-7 3h8a2 2 0 012 2v11a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg>
+                )}
+                {passo.icone === "video" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14m-6 4h4a2 2 0 002-2V8a2 2 0 00-2-2H9a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                )}
+                {passo.icone === "brain" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M9 3a3 3 0 00-3 3v1a3 3 0 003 3h6a3 3 0 003-3V6a3 3 0 00-3-3H9zM6 12a3 3 0 013-3m6 3a3 3 0 013 3v1a3 3 0 01-3 3H9a3 3 0 01-3-3v-1"/></svg>
+                )}
+                {passo.icone === "trophy" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M8 21h8M12 17v4M7 4h10v3a5 5 0 01-10 0V4zM5 7h2m10 0h2"/></svg>
+                )}
+                {passo.icone === "chart" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M4 20V10m6 10V4m6 16v-6"/></svg>
+                )}
+                {passo.icone === "target" && (
+                  <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" strokeWidth="1.5"/><circle cx="12" cy="12" r="4" strokeWidth="1.5"/></svg>
+                )}
+              </div>
               <h3 className="font-bold text-sm sm:text-base mb-2">{passo.titulo}</h3>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{passo.desc}</p>
             </div>

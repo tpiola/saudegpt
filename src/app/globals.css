@@ -227,6 +227,12 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ═══ Text readability — corpo legível premium ═══ */
 .text-readable {
   font-weight: 450;
