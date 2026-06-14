@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d3a32"/>
+      <stop offset="100%" stop-color="#082521"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C9A84C"/>
+      <stop offset="50%" stop-color="#0057FF"/>
+      <stop offset="100%" stop-color="#C9A84C"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a332d"/>
+      <stop offset="100%" stop-color="#0d3a32"/>
+    </linearGradient>
+    <clipPath id="circle">
+      <circle cx="200" cy="180" r="110"/>
+    </clipPath>
+  </defs>
+
+  <!-- Fundo -->
+  <rect width="400" height="400" rx="200" fill="url(#bg)"/>
+
+  <!-- Anel dourado/azul -->
+  <circle cx="200" cy="180" r="118" fill="none" stroke="url(#ring)" stroke-width="3" opacity="0.6"/>
+
+  <!-- Círculo do avatar -->
+  <circle cx="200" cy="180" r="110" fill="#051714"/>
+
+  <!-- Grupo da figura -->
+  <g clip-path="url(#circle)">
+    <!-- Jaleco branco -->
+    <path d="M140 240 Q150 200 160 190 L160 280 L240 280 L240 190 Q250 200 260 240 L255 300 L145 300 Z" fill="#e8ece9"/>
+    <path d="M160 190 L200 210 L240 190" fill="none" stroke="#cfdbd6" stroke-width="1.5"/>
+    <line x1="200" y1="210" x2="200" y2="280" stroke="#cfdbd6" stroke-width="1"/>
+
+    <!-- Gravata -->
+    <path d="M190 200 L200 225 L210 200 Z" fill="#0057FF"/>
+
+    <!-- Cabeça -->
+    <ellipse cx="200" cy="150" rx="38" ry="42" fill="#d4a574"/>
+
+    <!-- Cabelo -->
+    <path d="M165 145 Q165 105 200 100 Q235 105 235 145 Q235 130 225 122 Q200 115 175 122 Q165 130 165 145 Z" fill="#2c1810"/>
+
+    <!-- Olhos -->
+    <ellipse cx="187" cy="148" rx="4" ry="3" fill="#2c1810"/>
+    <ellipse cx="213" cy="148" rx="4" ry="3" fill="#2c1810"/>
+    <ellipse cx="187" cy="147" rx="2" ry="2" fill="white" opacity="0.3"/>
+    <ellipse cx="213" cy="147" rx="2" ry="2" fill="white" opacity="0.3"/>
+
+    <!-- Sobrancelhas -->
+    <path d="M182 139 Q187 136 192 139" fill="none" stroke="#2c1810" stroke-width="1.5"/>
+    <path d="M208 139 Q213 136 218 139" fill="none" stroke="#2c1810" stroke-width="1.5"/>
+
+    <!-- Nariz -->
+    <path d="M200 150 L197 158 Q200 160 203 158 Z" fill="#c49464"/>
+
+    <!-- Sorriso -->
+    <path d="M189 162 Q200 172 211 162" fill="none" stroke="#8b5e3c" stroke-width="1.5" stroke-linecap="round"/>
+
+    <!-- Óculos -->
+    <circle cx="187" cy="148" r="10" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <circle cx="213" cy="148" r="10" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="197" y1="148" x2="203" y2="148" stroke="#C9A84C" stroke-width="1.5"/>
+    <line x1="177" y1="145" x2="160" y2="140" stroke="#C9A84C" stroke-width="0.8"/>
+    <line x1="223" y1="145" x2="240" y2="140" stroke="#C9A84C" stroke-width="0.8"/>
+  </g>
+
+  <!-- Nome -->
+  <text x="200" y="330" text-anchor="middle" fill="white" font-family="DM Sans, system-ui, sans-serif" font-size="16" font-weight="700">Prof. Thiago Piola</text>
+  <text x="200" y="352" text-anchor="middle" fill="#94a3b8" font-family="Inter, system-ui, sans-serif" font-size="10" font-weight="500">CRF-SP 58.519 · Farmacêutico</text>
+</svg>

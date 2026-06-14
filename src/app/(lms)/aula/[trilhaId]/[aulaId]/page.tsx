@@ -11,6 +11,19 @@ import { imagemAula } from "@/lib/aula-imagens";
 import { ProdutoShowcase } from "@/components/produto-showcase";
 import { AnimarEntrada } from "@/components/animar-entrada";
 import { midiaPadraoPorAulaId } from "@/content/midia-catalogo";
+import ProfessorBanner from "@/components/ProfessorBanner";
+import VoiceOverPlayer from "@/components/VoiceOverPlayer";
+
+/* ─── Mapa de narração por trilha ─── */
+const NARRACAO_MAP: Record<string, string> = {
+  fundamentos: "/audio/narracao-fundamentos-boasvindas.mp3",
+  medicamentos: "/audio/narracao-medicamentos-intro.mp3",
+  vendas: "/audio/narracao-encantamento-atendimento.mp3",
+  perfumaria: "/audio/narracao-perfumaria-cosmeticos.mp3",
+  operacional: "/audio/narracao-operacional-rotina.mp3",
+  pratica: "/audio/narracao-fundamentos-boasvindas.mp3",
+  "servicos-cuidado": "/audio/narracao-encantamento-atendimento.mp3",
+};
 
 export function generateStaticParams() {
   return listarAulas().map((i) => ({
@@ -129,6 +142,11 @@ export default async function AulaPage({
 
       <h1 className="mt-3 text-3xl font-extrabold tracking-tight">{aula.titulo}</h1>
       <p className="mt-2 text-base sm:text-lg text-muted">{aula.resumo}</p>
+
+      {/* 🧑‍🏫 Banner do Professor Avatar + Nome */}
+      <div className="mt-6">
+        <ProfessorBanner tituloAula={aula.titulo} />
+      </div>
 
       <AnimarEntrada>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
@@ -252,6 +270,14 @@ export default async function AulaPage({
                 }
               : null
           }
+        />
+      </div>
+
+      {/* 🎙️ Narração do professor */}
+      <div className="mt-6">
+        <VoiceOverPlayer
+          src={NARRACAO_MAP[trilha.id] ?? NARRACAO_MAP.fundamentos}
+          title={`Narração: ${aula.titulo}`}
         />
       </div>
 
