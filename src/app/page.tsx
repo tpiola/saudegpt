@@ -1,208 +1,311 @@
 import Link from "next/link";
-import Image from "next/image";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { HeroVideo } from "@/components/hero-video";
-import { Icon, type IconName } from "@/components/icons";
-import { MatriculaForm } from "@/components/matricula-form";
-import { WhatsAppButton } from "@/components/whatsapp-button";
-import { trilhas, totalAulas, xpTotalDisponivel } from "@/content/curriculo";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { CookieConsent } from "@/components/CookieConsent";
+import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { GuiaGPT } from "@/components/GuiaGPT";
+import { trilhas } from "@/content/curriculo";
 
-// Pilares com imagem temática de fundo (assets locais otimizados).
-const pilares: Array<{ icon: IconName; title: string; text: string; img: string }> = [
-  {
-    icon: "shield",
-    title: "Conteúdo Verificado",
-    text: "Baseado em ANVISA, Ministério da Saúde e OMS — revisado por farmacêutico.",
-    img: "/hero/saude-cuidado.jpg",
-  },
-  {
-    icon: "zap",
-    title: "Aulas Rápidas",
-    text: "Trilhas de 3 a 8 minutos. Estude no intervalo e evolua todos os dias.",
-    img: "/hero/saude-bem-estar.jpg",
-  },
-  {
-    icon: "award",
-    title: "Evolução Visível",
-    text: "XP, níveis, missões e ranking mostram a sua evolução real, trilha após trilha.",
-    img: "/hero/vidas-saudaveis.jpg",
-  },
-];
-
-// Imagem temática por trilha (capa do card na seção "essencial").
-const capaTrilha: Record<string, string> = {
-  perfumaria: "/trilha-perfumaria.jpg",
-  medicamentos: "/trilha-medicamentos.jpg",
-  operacional: "/trilha-operacional.jpg",
-  encantamento: "/trilha-encantamento.jpg",
-  fundamentos: "/health-professional.jpg",
-  pratica: "/pharmacy-counter.jpg",
-  "servicos-cuidado": "/hero/farmacia-atendimento.jpg",
-};
-
-const iconeTrilha: Record<string, IconName> = {
-  perfumaria: "spa",
-  medicamentos: "pill",
-  operacional: "star",
-  encantamento: "heart",
-  fundamentos: "book",
-  pratica: "target",
-  "servicos-cuidado": "shield",
-};
-
-export default function HomePage() {
-  const total = totalAulas();
-  const trilhasDestaque = trilhas.slice(0, 4);
-  const xpTotal = xpTotalDisponivel();
+function HeroSection() {
   return (
-    <div className="min-h-dvh overflow-x-hidden bg-background text-foreground">
-      <Header />
-      <main id="conteudo-principal">
-        <section className="relative isolate overflow-hidden bg-[#020e0c] text-white min-h-[100dvh] lg:min-h-[100svh]">
-          <HeroVideo />
-          <div className="absolute inset-0 z-[1] bg-gradient-to-br from-[#020e0c]/95 via-[#020e0c]/60 to-[#0d3a32]/80" />
-          {/* Blobs decorativos — esconder em mobile pra não causar overflow */}
-          <div className="absolute top-1/4 right-0 w-80 h-80 rounded-full bg-emerald-500/8 blur-[80px] z-[1] pointer-events-none max-lg:hidden" />
-          <div className="absolute bottom-1/4 left-0 w-64 h-64 rounded-full bg-orange-500/6 blur-[60px] z-[1] pointer-events-none max-lg:hidden" />
-          <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 max-lg:py-12">
-            <div className="grid min-h-[calc(100dvh-3.5rem)] lg:min-h-[calc(100svh-3.5rem)] lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-center">
-              <div className="flex flex-col justify-center max-w-3xl mx-auto lg:mx-0">
-                <div className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/8 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-sm mb-5 lg:mb-6">
-                  <span className="h-1.5 w-1.5 lg:h-2 lg:w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
-                  Health Learning OS
+    <section className="relative isolate overflow-hidden min-h-[90dvh] flex items-center">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#020e0c] via-[#051f1a] to-[#0a352c]" />
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,rgba(52,211,153,0.3),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(251,146,60,0.15),transparent_50%)]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
+          <div className="flex flex-col">
+            <div className="inline-flex items-center gap-2 self-start rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-sm mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
+              Health Learning OS
+            </div>
+
+            <h1 className="text-[clamp(2rem,7vw,4rem)] font-extrabold leading-[1.05] tracking-tighter text-white mb-4">
+              Formação que{" "}
+              <span className="bg-gradient-to-r from-emerald-300 via-green-400 to-emerald-300 bg-clip-text text-transparent">
+                transforma
+              </span>{" "}
+              atendentes em{" "}
+              <span className="bg-gradient-to-r from-orange-300 to-orange-400 bg-clip-text text-transparent">
+                profissionais da saúde
+              </span>
+            </h1>
+
+            <p className="text-sm sm:text-base text-white/60 max-w-lg mb-6 leading-relaxed">
+              Trilhas curtas, práticas e baseadas em ANVISA, OMS e Ministério da Saúde.
+              Estude no seu ritmo, ganhe XP, desbloqueie conquistas e transforme cada atendimento.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-3 mb-8">
+              <Link
+                href="/trilhas"
+                className="inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 sm:px-8 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(52,211,153,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(52,211,153,0.4)] active:scale-95"
+              >
+                Começar agora
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </Link>
+              <Link
+                href="/sobre"
+                className="inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 sm:px-7 text-sm sm:text-base font-bold text-white/80 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5"
+              >
+                Saiba mais
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3 max-w-xs">
+              {[
+                [String(trilhas.length), "Trilhas"],
+                [String(trilhas.reduce((acc, t) => acc + t.modulos.length, 0)), "Módulos"],
+                ["2.450", "XP Total"],
+              ].map(([valor, label]) => (
+                <div key={label} className="rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-center backdrop-blur-sm">
+                  <div className="text-lg sm:text-xl font-extrabold text-emerald-300">{valor}</div>
+                  <div className="text-[10px] font-semibold uppercase tracking-widest text-white/40">{label}</div>
                 </div>
-                <h1 className="text-[clamp(2rem,7.5vw,4.4rem)] font-extrabold leading-[1.02] tracking-tighter mb-5 lg:mb-6">
-                  <span className="block text-white">Formação para</span>
-                  <span className="block text-gradient-premium">Atendentes</span>
-                  <span className="block text-white/90">de Farmácia</span>
-                </h1>
-                <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-white/65 max-w-xl mb-6 lg:mb-8">
-                  Trilhas curtas e práticas para você cuidar da saúde de cada cliente com segurança e confiança.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3 mb-8 lg:mb-10">
-                  <Link href="#matricula" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-6 sm:px-7 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.35)] transition-all hover:bg-orange-400 hover:-translate-y-0.5 active:scale-95">Entrar <Icon name="arrow" size={16} /></Link>
-                  <Link href="/trilhas" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/15 bg-white/6 px-6 sm:px-7 text-sm sm:text-base font-bold text-white/90 backdrop-blur-sm transition-all hover:bg-white/10 hover:-translate-y-0.5">Ver trilhas</Link>
-                </div>
-                <dl className="grid max-w-lg grid-cols-3 gap-2 lg:gap-3">
-                  {[[String(trilhas.length), "TRILHAS"], [String(total) + "+", "AULAS"], [String(xpTotal) + " XP", "XP"]].map(([v, l]) => (
-                    <div key={l} className="rounded-2xl border border-white/8 bg-white/5 px-2 py-3 lg:p-4 text-center backdrop-blur-sm"><dt className="text-xl sm:text-2xl font-extrabold text-emerald-300">{v}</dt><dd className="mt-0.5 lg:mt-1 text-[9px] lg:text-[10px] font-semibold uppercase tracking-widest text-white/40">{l}</dd></div>
-                  ))}
-                </dl>
-              </div>
-              <div id="matricula" className="scroll-mt-20 w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
-                {/* Card de acesso com fundo verde + foto de farmacêutico entregando medicamento */}
-                <div className="relative overflow-hidden rounded-2xl lg:rounded-3xl border border-white/10 shadow-2xl">
-                  <div className="absolute inset-0">
-                    <Image
-                      src="/hero/farmacia-atendimento.jpg"
-                      alt="Farmacêutico entregando um medicamento ao paciente no balcão"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 420px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-emerald-700/92 via-emerald-800/88 to-[#06281f]/94" />
-                  <div className="relative rounded-[1.2rem] lg:rounded-[1.4rem] bg-white/95 px-5 py-6 sm:p-6 text-foreground shadow-xl backdrop-blur-sm dark:bg-surface/95 mx-1.5 my-1.5 lg:mx-0 lg:my-0">
-                    <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-emerald-600 mb-1.5 sm:mb-2">Comece agora</p>
-                    <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight mb-1.5">Entrar no SaúdeGPT</h2>
-                    <p className="text-xs sm:text-sm leading-relaxed text-muted mb-4">Preencha 3 campos e comece a evoluir no balcão.</p>
-                    <MatriculaForm />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section id="trilhas" className="bg-surface py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-10">
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-emerald-600 mb-2">Aprendizagem guiada</p>
-                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">O essencial para atender com segurança.</h2>
-              </div>
-              <Link href="/trilhas" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border px-5 text-sm font-bold hover:border-emerald-400 transition-colors">Ver todas <Icon name="arrow" size={15} /></Link>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {trilhasDestaque.map((trilha) => {
-                const aulas = trilha.modulos.reduce((s, m) => s + m.aulas.length, 0);
-                const capa = capaTrilha[trilha.id] ?? "/hero/saude-cuidado.jpg";
-                const ic = iconeTrilha[trilha.id] ?? "book";
-                return (
-                  <Link key={trilha.id} href={"/trilhas/" + trilha.id} className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-background transition-all hover:-translate-y-1.5 hover:shadow-xl hover:border-emerald-400/50">
-                    <div className="relative h-32 w-full overflow-hidden">
-                      <Image
-                        src={capa}
-                        alt={trilha.titulo}
-                        fill
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#020e0c]/85 via-[#020e0c]/30 to-transparent" />
-                      <div className="absolute left-4 top-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md">
-                        <Icon name={ic} size={20} />
-                      </div>
-                    </div>
-                    <div className="flex flex-1 flex-col p-5">
-                      <h3 className="text-lg font-extrabold tracking-tight mb-2">{trilha.titulo}</h3>
-                      <p className="text-sm leading-relaxed text-muted flex-1 line-clamp-3">{trilha.descricao}</p>
-                      <div className="mt-5 flex items-center justify-between">
-                        <span className="text-xs font-bold text-subtle">{trilha.modulos.length} módulos · {aulas} aulas</span>
-                        <Icon name="arrow" size={14} className="text-muted transition-transform group-hover:translate-x-1" />
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-        <section id="seguranca" className="bg-gradient-to-b from-slate-50 to-emerald-50/40 py-16 sm:py-24 dark:from-slate-950 dark:to-emerald-950/20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <p className="text-xs font-bold uppercase tracking-widest text-orange-600 mb-2">Por que funciona</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Feito para quem trabalha.</h2>
-            </div>
-            <div className="grid gap-6 md:grid-cols-3">
-              {pilares.map((item) => (
-                <article key={item.title} className="group overflow-hidden rounded-3xl border border-border bg-surface transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-400/40">
-                  <div className="relative h-36 w-full overflow-hidden">
-                    <Image
-                      src={item.img}
-                      alt=""
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#020e0c]/80 via-[#020e0c]/25 to-transparent" />
-                    <div className="absolute left-5 bottom-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 text-white ring-1 ring-white/25 backdrop-blur-md">
-                      <Icon name={item.icon} size={24} />
-                    </div>
-                  </div>
-                  <div className="p-7">
-                    <h3 className="text-xl font-extrabold tracking-tight mb-3">{item.title}</h3>
-                    <p className="text-sm leading-relaxed text-muted">{item.text}</p>
-                  </div>
-                </article>
               ))}
             </div>
           </div>
-        </section>
-        <section className="relative overflow-hidden bg-gradient-to-br from-[#0a3b2e] via-[#0d3a32] to-[#06281f] py-16 lg:py-24 text-white">
-          <div className="absolute inset-0 pattern-grid opacity-20 pointer-events-none" />
-          <div className="absolute top-0 right-1/4 h-72 w-72 rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
-          <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight mb-5 lg:mb-6">Seu próximo paciente merece o seu melhor.</h2>
-            <p className="text-sm sm:text-base lg:text-lg text-white/65 max-w-2xl mx-auto mb-8 lg:mb-10">Junte-se a milhares transformando seu atendimento e cuidando da saúde de cada cliente.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="#matricula" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2.5 rounded-2xl bg-orange-500 px-6 sm:px-8 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(249,115,22,0.4)] transition-all hover:bg-orange-400 hover:-translate-y-0.5">Entrar <Icon name="arrow" size={16} /></Link>
-              <Link href="/trilhas" className="inline-flex min-h-12 sm:min-h-14 items-center justify-center gap-2 rounded-2xl border border-white/20 bg-white/8 px-6 sm:px-8 text-sm sm:text-base font-bold text-white backdrop-blur transition-all hover:bg-white/14 hover:-translate-y-0.5">Explorar trilhas</Link>
+
+          <div className="hidden lg:block relative">
+            <div className="relative rounded-2xl lg:rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-green-600/10" />
+              <div className="relative p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="h-2 w-2 rounded-full bg-red-400" />
+                  <div className="h-2 w-2 rounded-full bg-yellow-400" />
+                  <div className="h-2 w-2 rounded-full bg-green-400" />
+                  <span className="ml-2 text-[11px] text-white/40 font-mono">simulador — atendimento</span>
+                </div>
+                <div className="space-y-3">
+                  <div className="rounded-xl bg-white/10 p-3">
+                    <p className="text-xs text-white/60 mb-1">Cliente:</p>
+                    <p className="text-sm text-white/90">&quot;Estou com dor de cabeça faz 3 dias. Qual remédio o senhor recomenda?&quot;</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="rounded-lg bg-emerald-500/20 border border-emerald-500/30 px-3 py-2 text-xs text-emerald-300">
+                      Perguntar há quanto tempo
+                    </span>
+                    <span className="rounded-lg bg-white/10 border border-white/10 px-3 py-2 text-xs text-white/60">
+                      Recomendar
+                    </span>
+                  </div>
+                  <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-3">
+                    <p className="text-xs text-emerald-300/80 mb-1">✅ Boa prática:</p>
+                    <p className="text-xs text-white/80 leading-relaxed">
+                      &quot;Não posso recomendar medicamentos, mas posso verificar se você já consultou um médico.
+                      Para dor de cabeça persistente, é importante buscar avaliação profissional.&quot;
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrilhasSection() {
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-3">
+            Sua jornada de aprendizagem
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+            {trilhas.length} trilhas completas, cada uma com módulos práticos e quizzes para fixar o conteúdo.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {trilhas.map((trilha) => (
+            <Link
+              key={trilha.id}
+              href={`/trilhas/${trilha.id}`}
+              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-card to-card/50 p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/30"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">{trilha.icone || "📚"}</span>
+                <div>
+                  <h3 className="font-bold text-sm sm:text-base group-hover:text-emerald-400 transition-colors">
+                    {trilha.titulo}
+                  </h3>
+                  <p className="text-xs text-muted-foreground">
+                    {trilha.modulos?.length || 0} módulos
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                {trilha.descricao}
+              </p>
+              <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                Explorar trilha
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mt-8">
+          <Link
+            href="/trilhas"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 px-6 text-sm font-bold text-foreground hover:bg-accent/50 transition-colors"
+          >
+            Ver todas as trilhas
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComoFuncionaSection() {
+  const passos = [
+    { icone: "📝", titulo: "Escolha sua trilha", desc: "Selecione entre 7 trilhas baseadas em ANVISA, OMS e Ministério da Saúde." },
+    { icone: "🎬", titulo: "Assista às aulas", desc: "Vídeos curtos de 3 a 8 minutos com exemplos reais de balcão." },
+    { icone: "🧠", titulo: "Pratique com quizzes", desc: "Questões interativas com feedback imediato para fixar o conteúdo." },
+    { icone: "🏆", titulo: "Ganhe XP e badges", desc: "Cada aula concluída rende experiência. Suba de nível e desbloqueie conquistas." },
+    { icone: "📊", titulo: "Acompanhe seu progresso", desc: "Dashboard completo com gráficos, streak, pontos fortes e áreas de melhoria." },
+    { icone: "🎯", titulo: "Transforme seu atendimento", desc: "Aplique no dia a dia o que aprendeu e seja referência na sua farmácia." },
+  ];
+
+  return (
+    <section className="py-20 sm:py-28 bg-accent/30">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-3">
+            Como funciona
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+            Uma jornada simples e estruturada para você evoluir todos os dias.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {passos.map((passo, i) => (
+            <div key={i} className="relative rounded-2xl border border-white/10 bg-card p-5 sm:p-6">
+              <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-bold text-white">
+                {i + 1}
+              </div>
+              <span className="text-3xl mb-3 block">{passo.icone}</span>
+              <h3 className="font-bold text-sm sm:text-base mb-2">{passo.titulo}</h3>
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{passo.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GamificacaoSection() {
+  return (
+    <section className="py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight mb-4">
+              Aprendizagem que{" "}
+              <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+                engaja
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6">
+              Cada aula concluída rende XP. Suba de nível, acumule streaks, desbloqueie badges
+              e veja sua evolução em gráficos claros no seu dashboard personalizado.
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { icone: "⚡", label: "XP por aula" },
+                { icone: "📈", label: "Níveis" },
+                { icone: "🔥", label: "Streak diário" },
+                { icone: "🏅", label: "Badges" },
+                { icone: "🎯", label: "Missões" },
+                { icone: "📊", label: "Dashboard" },
+              ].map((item) => (
+                <div key={item.label} className="flex items-center gap-2 rounded-xl border border-white/10 bg-card px-3 py-2.5">
+                  <span>{item.icone}</span>
+                  <span className="text-xs font-medium">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="rounded-2xl lg:rounded-3xl border border-white/10 bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 shadow-xl">
+              <div className="flex items-center gap-3 mb-4">
+                <span className="text-4xl">🏆</span>
+                <div>
+                  <h3 className="font-bold">Dashboard do Aluno</h3>
+                  <p className="text-xs text-muted-foreground">Acompanhe sua evolução em tempo real</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between rounded-xl bg-emerald-500/10 px-3 py-2">
+                  <span className="text-xs text-muted-foreground">Nível Atual</span>
+                  <span className="text-sm font-bold">5</span>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-accent/50 px-3 py-2">
+                  <span className="text-xs text-muted-foreground">XP Total</span>
+                  <span className="text-sm font-bold">1.250 XP</span>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-orange-500/10 px-3 py-2">
+                  <span className="text-xs text-muted-foreground">Streak</span>
+                  <span className="text-sm font-bold">🔥 7 dias</span>
+                </div>
+                <div className="flex items-center justify-between rounded-xl bg-purple-500/10 px-3 py-2">
+                  <span className="text-xs text-muted-foreground">Badges</span>
+                  <span className="text-sm font-bold">8 / 12</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CtaSection() {
+  return (
+    <section className="py-20 sm:py-28 bg-gradient-to-br from-[#020e0c] via-[#051f1a] to-[#0a352c]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-4">
+          Pronto para transformar seu atendimento?
+        </h2>
+        <p className="text-sm sm:text-base text-white/60 max-w-lg mx-auto mb-8">
+          Junte-se a centenas de atendentes que já estão evoluindo com a plataforma.
+          Grátis. No seu ritmo. Com conteúdo que faz diferença.
+        </p>
+        <Link
+          href="/trilhas"
+          className="inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-8 sm:px-10 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(52,211,153,0.3)] transition-all hover:-translate-y-0.5 active:scale-95"
+        >
+          Começar agora
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <SiteHeader />
+      <main id="conteudo-principal">
+        <HeroSection />
+        <TrilhasSection />
+        <ComoFuncionaSection />
+        <GamificacaoSection />
+        <CtaSection />
       </main>
-      <Footer />
-      <WhatsAppButton />
-    </div>
+      <SiteFooter />
+      <CookieConsent />
+      <WhatsAppFloat />
+      <GuiaGPT />
+    </>
   );
 }
