@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { PillCap } from "./pill-cap";
 
 const links = [
   { href: "/", label: "Home" },
@@ -21,11 +22,11 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white text-sm font-extrabold shadow-lg">
-            H
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg">
+            <PillCap size={20} className="text-white" />
           </div>
           <span className="text-sm font-bold tracking-tight max-sm:hidden">
-            Health Learning OS
+            Saúde GPT
           </span>
         </Link>
 

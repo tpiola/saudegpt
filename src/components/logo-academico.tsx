@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { PillCap } from "./pill-cap";
 
 interface LogoAcademicoProps {
   size?: number;
@@ -8,17 +8,10 @@ interface LogoAcademicoProps {
 export function LogoAcademico({ size = 32, className = "" }: LogoAcademicoProps) {
   return (
     <div
-      className={`relative overflow-hidden rounded-full ${className}`}
+      className={`flex items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-lg ${className}`}
       style={{ width: size, height: size }}
     >
-      <Image
-        src="/imagens/logo_estudante.webp"
-        alt="SaúdeGPT"
-        fill
-        className="object-cover"
-        sizes={`${size}px`}
-        priority
-      />
+      <PillCap size={Math.round(size * 0.7)} className="text-white" />
     </div>
   );
 }
