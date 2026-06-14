@@ -8,9 +8,8 @@ import { trilhas } from "@/content/curriculo";
 
 function HeroSection() {
   return (
-    <section className="relative isolate overflow-hidden min-h-[90dvh] flex items-center">
+    <section className="relative isolate overflow-hidden min-h-[90dvh] flex items-center gradient-mesh particle-dot">
       <div className="absolute inset-0 bg-gradient-to-br from-[#020e0c] via-[#051f1a] to-[#0a352c]" />
-      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(ellipse_at_top_right,rgba(52,211,153,0.3),transparent_50%),radial-gradient(ellipse_at_bottom_left,rgba(251,146,60,0.15),transparent_50%)]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 w-full">
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 lg:gap-12 items-center">
@@ -39,7 +38,7 @@ function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 mb-8">
               <Link
                 href="/trilhas"
-                className="inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 sm:px-8 text-sm sm:text-base font-extrabold text-white shadow-[0_8px_32px_rgba(52,211,153,0.3)] transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgba(52,211,153,0.4)] active:scale-95"
+                className="btn-glow inline-flex h-12 sm:h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 via-green-400 to-blue-500 px-6 sm:px-8 text-sm sm:text-base font-extrabold text-white transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 Começar agora
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
@@ -124,8 +123,9 @@ function TrilhasSection() {
             <Link
               key={trilha.id}
               href={`/trilhas/${trilha.id}`}
-              className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-card to-card/50 p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/30"
+              className="group relative overflow-hidden rounded-2xl border border-white/10 glass-card p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/30"
             >
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
               <div className="flex items-center gap-3 mb-3">
                 <span className="text-2xl">{trilha.icone || "📚"}</span>
                 <div>
@@ -137,9 +137,12 @@ function TrilhasSection() {
                   </p>
                 </div>
               </div>
-              <p className="text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+              <p className="relative text-xs text-muted-foreground line-clamp-2 leading-relaxed">
                 {trilha.descricao}
               </p>
+              <div className="mt-3 h-1 w-full bg-white/10 rounded-full overflow-hidden">
+                <div className="h-full w-1/3 bg-emerald-400 animate-pulse" />
+              </div>
               <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                 Explorar trilha
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -186,14 +189,16 @@ function ComoFuncionaSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {passos.map((passo, i) => (
-            <div key={i} className="relative rounded-2xl border border-white/10 bg-card p-5 sm:p-6">
+            <div key={i} className="relative rounded-2xl border border-white/10 glass-card p-5 sm:p-6">
               <div className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-bold text-white">
                 {i + 1}
               </div>
               <div className="mb-3">
+                <div className="animate-float">
                 {passo.icone === "clipboard" && (
                   <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M9 3h6m-7 3h8a2 2 0 012 2v11a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2z"/></svg>
                 )}
+                </div>
                 {passo.icone === "video" && (
                   <svg className="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeWidth="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14m-6 4h4a2 2 0 002-2V8a2 2 0 00-2-2H9a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                 )}
@@ -253,7 +258,7 @@ function GamificacaoSection() {
             </div>
           </div>
           <div className="relative">
-            <div className="rounded-2xl lg:rounded-3xl border border-white/10 bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 shadow-xl">
+            <div className="rounded-2xl lg:rounded-3xl border border-white/10 glass-card p-6 sm:p-8 shadow-xl">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-4xl">🏆</span>
                 <div>
@@ -328,3 +333,6 @@ export default function HomePage() {
     </>
   );
 }
+                <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                  <div className="h-full w-2/3 bg-gradient-to-r from-emerald-400 to-blue-400 animate-pulse" />
+                </div>
