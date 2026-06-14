@@ -161,7 +161,7 @@ function GamificacaoSection() {
                   {[
                     { label: "Nível Atual", valor: "5", cor: "bg-emerald-500/10 text-emerald-300" },
                     { label: "XP Total", valor: "1.250 XP", cor: "bg-white/5 text-white" },
-                    { label: "Streak", valor: "🔥 7 dias", cor: "bg-orange-500/10 text-orange-300" },
+                    { label: "Streak", valor: "7 dias", cor: "bg-orange-500/10 text-orange-300" },
                     { label: "Badges", valor: "8 / 12", cor: "bg-purple-500/10 text-purple-300" },
                   ].map((item) => (
                     <div key={item.label} className={`flex items-center justify-between rounded-xl ${item.cor} px-3 py-2.5 transition hover:scale-[1.02]`}>
