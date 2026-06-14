@@ -4,6 +4,7 @@ import { useEffect, useCallback, useState, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useProgresso, totalAulasCurso } from "@/lib/progress";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/icons";
 
 /* ───────────────────────────────────────────
    Tipos
@@ -83,7 +84,7 @@ export const BADGES: BadgeDef[] = [
     id: "aprendiz-farmacia",
     nome: "Aprendiz de Farmácia",
     descricao: "Conclua sua primeira aula",
-    icone: "🩺",
+    icone: "pill",
     categoria: "estudo",
     nivel: "bronze",
     condicao: (p) => p.concluidas >= 1,
@@ -92,7 +93,7 @@ export const BADGES: BadgeDef[] = [
     id: "estagiario-dedicado",
     nome: "Estagiário Dedicado",
     descricao: "Conclua 10 aulas",
-    icone: "📚",
+    icone: "book",
     categoria: "estudo",
     nivel: "prata",
     condicao: (p) => p.concluidas >= 10,
@@ -101,7 +102,7 @@ export const BADGES: BadgeDef[] = [
     id: "farmaceutico-senior",
     nome: "Farmacêutico Sênior",
     descricao: "Conclua 30 aulas",
-    icone: "🎓",
+    icone: "graduation",
     categoria: "estudo",
     nivel: "ouro",
     condicao: (p) => p.concluidas >= 30,
@@ -110,7 +111,7 @@ export const BADGES: BadgeDef[] = [
     id: "mestre-farmaceutico",
     nome: "Mestre Farmacêutico",
     descricao: "Conclua 100% das aulas do curso",
-    icone: "👑",
+    icone: "award",
     categoria: "estudo",
     nivel: "lendario",
     condicao: (p) => p.totalAulas > 0 && p.concluidas >= p.totalAulas,
@@ -121,7 +122,7 @@ export const BADGES: BadgeDef[] = [
     id: "primeiro-fogo",
     nome: "Primeiro Fogo",
     descricao: "Estude por 3 dias consecutivos",
-    icone: "🔥",
+    icone: "flame",
     categoria: "streak",
     nivel: "bronze",
     condicao: (p) => p.streak >= 3,
@@ -130,7 +131,7 @@ export const BADGES: BadgeDef[] = [
     id: "raio-de-fogo",
     nome: "Raio de Fogo",
     descricao: "Estude por 7 dias consecutivos",
-    icone: "⚡",
+    icone: "zap",
     categoria: "streak",
     nivel: "prata",
     condicao: (p) => p.streak >= 7,
@@ -141,7 +142,7 @@ export const BADGES: BadgeDef[] = [
     id: "faz-tudo",
     nome: "Faz-Tudo",
     descricao: "Acumule 50 pontos em missões",
-    icone: "🏆",
+    icone: "award",
     categoria: "missoes",
     nivel: "bronze",
     condicao: (p) => p.missoesPontos >= 50,
@@ -150,7 +151,7 @@ export const BADGES: BadgeDef[] = [
     id: "mestre-missoes",
     nome: "Mestre das Missões",
     descricao: "Acumule 200 pontos em missões",
-    icone: "💎",
+    icone: "star",
     categoria: "missoes",
     nivel: "ouro",
     condicao: (p) => p.missoesPontos >= 200,
@@ -161,7 +162,7 @@ export const BADGES: BadgeDef[] = [
     id: "teste-de-fogo",
     nome: "Teste de Fogo",
     descricao: "Responda seu primeiro quiz",
-    icone: "📝",
+    icone: "clipboard",
     categoria: "quiz",
     nivel: "bronze",
     condicao: (p) => p.tentativasQuiz >= 1,
@@ -170,7 +171,7 @@ export const BADGES: BadgeDef[] = [
     id: "genio-quizzes",
     nome: "Gênio dos Quizzes",
     descricao: "Responda 20 quizzes",
-    icone: "🧠",
+    icone: "sparkles",
     categoria: "quiz",
     nivel: "ouro",
     condicao: (p) => p.tentativasQuiz >= 20,
@@ -181,7 +182,7 @@ export const BADGES: BadgeDef[] = [
     id: "foco-total",
     nome: "Foco Total",
     descricao: "Acumule 2 horas de estudo",
-    icone: "⏳",
+    icone: "clock",
     categoria: "tempo",
     nivel: "prata",
     condicao: (p) => p.tempoEstudoMinutos >= 120,
@@ -190,7 +191,7 @@ export const BADGES: BadgeDef[] = [
     id: "guardiao-tempo",
     nome: "Guardião do Tempo",
     descricao: "Acumule 10 horas de estudo",
-    icone: "🕯️",
+    icone: "moon",
     categoria: "tempo",
     nivel: "lendario",
     condicao: (p) => p.tempoEstudoMinutos >= 600,
@@ -317,7 +318,9 @@ function BadgeCard({
       </span>
 
       {/* Ícone */}
-      <span className="mt-1 text-4xl leading-none">{badge.icone}</span>
+      <span className="mt-1 text-4xl leading-none flex items-center justify-center">
+        <Icon name={badge.icone} size={36} />
+      </span>
 
       {/* Nome */}
       <strong
@@ -414,7 +417,7 @@ export function CelebracaoBadge({ badge, onClose, duracao = 4000 }: CelebracaoBa
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              🎉 Novo Badge Desbloqueado!
+              <Icon name="sparkles" size={14} /> Novo Badge Desbloqueado!
             </motion.p>
 
             {/* Nível tag */}
@@ -434,12 +437,12 @@ export function CelebracaoBadge({ badge, onClose, duracao = 4000 }: CelebracaoBa
 
             {/* Ícone grande */}
             <motion.span
-              className="text-7xl leading-none"
+              className="text-7xl leading-none flex items-center justify-center"
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
               transition={{ type: "spring", stiffness: 200, damping: 14, delay: 0.2 }}
             >
-              {badge.icone}
+              <Icon name={badge.icone} size={56} />
             </motion.span>
 
             {/* Nome */}
@@ -531,8 +534,8 @@ export function BadgeSistema({
         {/* Cabeçalho com resumo */}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 className="text-lg font-bold text-midnight-900 dark:text-white">
-              🏅 Conquistas
+            <h2 className="text-lg font-bold text-midnight-900 dark:text-white flex items-center gap-2">
+              <Icon name="award" size={20} /> Conquistas
             </h2>
             <p className="text-sm text-midnight-400">
               {desbloqueados.length} de {badges.length} badges desbloqueados
@@ -540,14 +543,14 @@ export function BadgeSistema({
             </p>
           </div>
           <div className="flex items-center gap-3 text-xs text-midnight-400">
-            <span>
-              📖 {progresso.concluidas}/{totalAulas} aulas
+            <span className="inline-flex items-center gap-1">
+              <Icon name="book" size={12} /> {progresso.concluidas}/{totalAulas} aulas
             </span>
-            <span>
-              🔥 streak de {progresso.streak}
+            <span className="inline-flex items-center gap-1">
+              <Icon name="flame" size={12} /> streak de {progresso.streak}
             </span>
-            <span>
-              ⏱️ {progresso.tempoEstudoMinutos} min
+            <span className="inline-flex items-center gap-1">
+              <Icon name="clock" size={12} /> {progresso.tempoEstudoMinutos} min
             </span>
           </div>
         </div>
@@ -582,8 +585,8 @@ export function BadgeSistema({
         {/* Seção de badges bloqueados (se não houver filtro) */}
         {!categoria && bloqueados.length > 0 && (
           <details className="group">
-            <summary className="cursor-pointer text-sm font-medium text-midnight-400 hover:text-midnight-600 dark:hover:text-midnight-300">
-              🔒 Badges bloqueados ({bloqueados.length})
+            <summary className="cursor-pointer text-sm font-medium text-midnight-400 hover:text-midnight-600 dark:hover:text-midnight-300 flex items-center gap-1">
+              <Icon name="lock" size={14} /> Badges bloqueados ({bloqueados.length})
             </summary>
             <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
               {bloqueados.map((badge) => (

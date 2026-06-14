@@ -19,6 +19,7 @@ import { CelebracaoModal } from "./celebracao-modal";
 import { XpFloat } from "./xp-float";
 import Link from "next/link";
 import { Lightbulb, ChevronLeft, ChevronRight, RotateCw } from "lucide-react";
+import { Icon, type IconName } from "@/components/icons";
 
 /* ───────── helpers ───────── */
 
@@ -47,7 +48,7 @@ function saudacaoPorHorario(primeiroNome?: string): string {
   if (hora >= 5 && hora < 12) saudacao = "Bom dia";
   else if (hora >= 12 && hora < 18) saudacao = "Boa tarde";
   else saudacao = "Boa noite";
-  return `${saudacao}${primeiroNome ? `, ${primeiroNome}` : ", Atendente"} 👋`;
+  return `${saudacao}${primeiroNome ? `, ${primeiroNome}` : ", Atendente"}`;
 }
 
 /* ───────── dicas "Você Sabia?" ───────── */
@@ -77,19 +78,19 @@ interface CheckCtx {
   notas: number[];
 }
 
-const BADGES: { icone: string; label: string; check: (ctx: CheckCtx) => boolean }[] = [
-  { icone: "🎓", label: "Primeira aula", check: (c) => c.concluidas >= 1 },
-  { icone: "⭐", label: "Nível 2", check: (c) => c.xp >= 250 },
-  { icone: "🌟", label: "Nível 3", check: (c) => c.xp >= 500 },
-  { icone: "💎", label: "Nível 5", check: (c) => c.xp >= 1000 },
-  { icone: "🏅", label: "Nível 10", check: (c) => c.xp >= 2250 },
-  { icone: "🔥", label: "Streak 7d", check: (c) => c.streak >= 7 },
-  { icone: "📚", label: "10 aulas", check: (c) => c.concluidas >= 10 },
-  { icone: "🎯", label: "Missões 30pts", check: (c) => c.missoesPontos >= 30 },
-  { icone: "🏆", label: "Todas as trilhas", check: (c) => c.todasTrilhas },
-  { icone: "⏱️", label: "1h estudo", check: (c) => c.tempoEstudo >= 3600 },
-  { icone: "🕐", label: "5h estudo", check: (c) => c.tempoEstudo >= 18000 },
-  { icone: "💯", label: "Nota 100%", check: (c) => c.notas.some((v) => v >= 100) },
+const BADGES: { icone: IconName; label: string; check: (ctx: CheckCtx) => boolean }[] = [
+  { icone: "graduation", label: "Primeira aula", check: (c) => c.concluidas >= 1 },
+  { icone: "star", label: "Nível 2", check: (c) => c.xp >= 250 },
+  { icone: "sparkles", label: "Nível 3", check: (c) => c.xp >= 500 },
+  { icone: "star", label: "Nível 5", check: (c) => c.xp >= 1000 },
+  { icone: "award", label: "Nível 10", check: (c) => c.xp >= 2250 },
+  { icone: "flame", label: "Streak 7d", check: (c) => c.streak >= 7 },
+  { icone: "book", label: "10 aulas", check: (c) => c.concluidas >= 10 },
+  { icone: "target", label: "Missões 30pts", check: (c) => c.missoesPontos >= 30 },
+  { icone: "award", label: "Todas as trilhas", check: (c) => c.todasTrilhas },
+  { icone: "clock", label: "1h estudo", check: (c) => c.tempoEstudo >= 3600 },
+  { icone: "clock", label: "5h estudo", check: (c) => c.tempoEstudo >= 18000 },
+  { icone: "star", label: "Nota 100%", check: (c) => c.notas.some((v) => v >= 100) },
 ];
 
 /* ───────── componente principal ───────── */
@@ -244,12 +245,13 @@ export function DashboardAluno() {
               </span>
               <span className="text-xs text-white/60">{prog.xp} XP total</span>
             </div>
-            <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+            <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight sm:text-3xl">
               {saudacaoPorHorario(primeiroNome)}
+              <Icon name="user" size={28} />
             </h1>
             <p className="mt-1 text-sm text-white/70">
               {prog.estudouHoje
-                ? "Você já estudou hoje. Continue assim! 🔥"
+                ? <>Você já estudou hoje. Continue assim! <Icon name="flame" size={14} className="inline" /></>
                 : "Que tal estudar um pouco hoje?"}
             </p>
           </div>
@@ -288,7 +290,8 @@ export function DashboardAluno() {
           <div className="min-w-0 flex-1">
             <div className="mb-1 flex items-center justify-between">
               <h3 className="text-sm font-bold text-blue-800 dark:text-blue-300">
-                💡 Você Sabia?
+                <Icon name="sparkles" size={16} className="inline mr-1" />
+                Você Sabia?
               </h3>
               <span className="text-[11px] text-blue-400 dark:text-blue-500">
                 {indiceDica + 1}/{DICAS_SAUDE.length}
@@ -352,8 +355,9 @@ export function DashboardAluno() {
         <div className="flex flex-col gap-6">
           {/* ─── 2. GRÁFICO EVOLUÇÃO SEMANAL ─── */}
           <Card className="p-5 hover-glow">
-            <h3 className="mb-1 text-sm font-bold tracking-tight">
-              📈 Evolução Semanal
+            <h3 className="mb-1 flex items-center gap-1.5 text-sm font-bold tracking-tight">
+              <Icon name="chart" size={16} />
+              Evolução Semanal
             </h3>
             <p className="mb-4 text-xs text-muted">
               XP estimado por dia de estudo
@@ -407,11 +411,13 @@ export function DashboardAluno() {
           <Card className="relative overflow-hidden p-5 hover-glow">
             <div className="flex items-start gap-4">
               <motion.div
-                className="shrink-0 text-5xl"
+                className="shrink-0"
                 animate={{ scale: [1, 1.15, 1], rotate: [0, -5, 5, 0] }}
                 transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.8 }}
               >
-                {prog.estudouHoje ? "🔥" : "⏰"}
+                {prog.estudouHoje
+                  ? <Icon name="flame" size={44} />
+                  : <Icon name="clock" size={44} />}
               </motion.div>
               <div className="flex-1">
                 <h3 className="text-sm font-bold">Sequência de Estudos</h3>
@@ -439,19 +445,20 @@ export function DashboardAluno() {
             {/* brasa decorativa */}
             {prog.streak >= 3 && (
               <motion.div
-                className="pointer-events-none absolute -bottom-4 -right-4 text-7xl opacity-10"
+                className="pointer-events-none absolute -bottom-4 -right-4 opacity-10"
                 animate={{ opacity: [0.08, 0.18, 0.08], scale: [1, 1.05, 1] }}
                 transition={{ duration: 2.5, repeat: Infinity }}
               >
-                🔥
+                <Icon name="flame" size={64} />
               </motion.div>
             )}
           </Card>
 
           {/* ─── 4. AULAS CONCLUÍDAS / PROGRESSO POR TRILHA ─── */}
           <Card className="p-5 hover-glow">
-            <h3 className="mb-1 text-sm font-bold tracking-tight">
-              📚 Aulas Concluídas
+            <h3 className="mb-1 flex items-center gap-1.5 text-sm font-bold tracking-tight">
+              <Icon name="book" size={16} />
+              Aulas Concluídas
             </h3>
             <p className="mb-4 text-xs text-muted">
               {concluidasCount} de {totalCurso} aulas ·{" "}
@@ -480,8 +487,8 @@ export function DashboardAluno() {
           {/* ─── 5. TEMPO DE ESTUDO ─── */}
           <Card className="p-5 hover-glow">
             <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-forest-500/20 to-green-400/10 text-3xl ring-1 ring-green-400/20">
-                ⏱️
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-forest-500/20 to-green-400/10 ring-1 ring-green-400/20">
+                <Icon name="clock" size={28} />
               </span>
               <div>
                 <h3 className="text-sm font-bold">Tempo Total de Estudo</h3>
@@ -507,8 +514,9 @@ export function DashboardAluno() {
 
           {/* ─── 6. BADGES ─── */}
           <Card className="p-5 hover-glow">
-            <h3 className="mb-1 text-sm font-bold tracking-tight">
-              🏅 Badges Desbloqueados
+            <h3 className="mb-1 flex items-center gap-1.5 text-sm font-bold tracking-tight">
+              <Icon name="award" size={16} />
+              Badges Desbloqueados
             </h3>
             <p className="mb-4 text-xs text-muted">
               {badgesAtivos.filter((b) => b.ativo).length} de {badgesAtivos.length} conquistados
@@ -524,11 +532,11 @@ export function DashboardAluno() {
                   }`}
                 >
                   <motion.span
-                    className={`text-xl sm:text-2xl ${b.ativo ? "" : "grayscale"}`}
+                    className={`flex items-center justify-center ${b.ativo ? "" : "opacity-40 grayscale"}`}
                     animate={b.ativo ? { scale: [1, 1.08, 1] } : {}}
                     transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
                   >
-                    {b.icone}
+                    <Icon name={b.icone} size={24} />
                   </motion.span>
                   <span
                     className={`text-[10px] font-semibold leading-tight ${
@@ -558,7 +566,8 @@ export function DashboardAluno() {
             <div className="flex flex-col gap-2">
               {ultimasConcluidas.length === 0 ? (
                 <div className="rounded-xl bg-purple-50 p-4 text-center text-sm font-semibold text-purple-600 dark:bg-purple-900/20 dark:text-purple-300">
-                  🎯 Nenhuma aula concluída ainda
+                  <Icon name="target" size={16} className="inline mr-1" />
+                  Nenhuma aula concluída ainda
                 </div>
               ) : (
                 ultimasConcluidas.map((item) => {
@@ -607,18 +616,20 @@ export function DashboardAluno() {
 
           {/* ─── 8. PRÓXIMAS AULAS RECOMENDADAS ─── */}
           <Card className="p-5 hover-glow">
-            <h3 className="mb-1 text-sm font-bold tracking-tight">
-              📖 Próximas Aulas
+            <h3 className="mb-1 flex items-center gap-1.5 text-sm font-bold tracking-tight">
+              <Icon name="book" size={16} />
+              Próximas Aulas
             </h3>
             <p className="mb-4 text-xs text-muted">
               {recomendadas.length > 0
                 ? "Continue de onde parou"
-                : "Todas as aulas concluídas! 🎉"}
+                : <>Todas as aulas concluídas! <Icon name="sparkles" size={14} className="inline" /></>}
             </p>
             <div className="flex flex-col gap-2">
               {recomendadas.length === 0 ? (
                 <div className="rounded-xl bg-green-50 p-4 text-center text-sm font-semibold text-green-700 dark:bg-green-900/20 dark:text-green-300">
-                  🎉 Você concluiu todas as aulas do curso!
+                  <Icon name="sparkles" size={16} className="inline mr-1" />
+                  Você concluiu todas as aulas do curso!
                 </div>
               ) : (
                 recomendadas.map((item) => (
@@ -650,8 +661,9 @@ export function DashboardAluno() {
 
           {/* ─── 9. ESTATÍSTICAS ─── */}
           <Card className="p-5 hover-glow">
-            <h3 className="mb-1 text-sm font-bold tracking-tight">
-              📊 Estatísticas
+            <h3 className="mb-1 flex items-center gap-1.5 text-sm font-bold tracking-tight">
+              <Icon name="chart" size={16} />
+              Estatísticas
             </h3>
             <p className="mb-4 text-xs text-muted">
               Seu desempenho geral na plataforma

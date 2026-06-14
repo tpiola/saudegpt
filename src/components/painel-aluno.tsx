@@ -108,15 +108,15 @@ export function PainelAluno() {
 
   // Marcos de XP
   const xpPctNivel = Math.round(((prog.xp % 250) / 250) * 100);
-  const marcosBadges: { icone: string; label: string; ativo: boolean }[] = [
-    { icone: "🎓", label: "Primeira aula", ativo: concluidasCount >= 1 },
-    { icone: "⭐", label: "Nível 2", ativo: prog.xp >= 250 },
-    { icone: "🌟", label: "Nível 3", ativo: prog.xp >= 500 },
-    { icone: "💎", label: "Nível 5", ativo: prog.xp >= 1000 },
-    { icone: "🏅", label: "Nível 10", ativo: prog.xp >= 2250 },
-    { icone: "🔥", label: "Streak 7 dias", ativo: prog.streak >= 7 },
-    { icone: "📚", label: "10 aulas", ativo: concluidasCount >= 10 },
-    { icone: "🎯", label: "Missões 30pts", ativo: prog.missoesPontos >= 30 },
+  const marcosBadges: { icone: IconName; label: string; ativo: boolean }[] = [
+    { icone: "graduation", label: "Primeira aula", ativo: concluidasCount >= 1 },
+    { icone: "star", label: "Nível 2", ativo: prog.xp >= 250 },
+    { icone: "star", label: "Nível 3", ativo: prog.xp >= 500 },
+    { icone: "star", label: "Nível 5", ativo: prog.xp >= 1000 },
+    { icone: "award", label: "Nível 10", ativo: prog.xp >= 2250 },
+    { icone: "flame", label: "Streak 7 dias", ativo: prog.streak >= 7 },
+    { icone: "book", label: "10 aulas", ativo: concluidasCount >= 10 },
+    { icone: "target", label: "Missões 30pts", ativo: prog.missoesPontos >= 30 },
   ];
 
   return (
@@ -153,7 +153,7 @@ export function PainelAluno() {
                 <p className="mt-1 max-w-xl text-white/60 leading-relaxed">
                   Continue sua jornada de saúde, atendimento e performance.
                   {prog.estudouHoje
-                    ? " Você já estudou hoje. 🔥"
+                    ? <> Você já estudou hoje. <Icon name="flame" size={14} className="inline" /></>
                     : " Marque uma aula para manter a sequência."}
                 </p>
                 {/* Level XP bar */}
@@ -222,7 +222,7 @@ export function PainelAluno() {
           <Card className="p-6 border-l-4 border-l-orange-400 transition-all group-hover:shadow-md">
             <div className="flex items-start gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/20">
-                🏆
+                <Icon name="award" size={24} className="text-orange-500" />
               </span>
               <div className="flex-1 min-w-0">
                 <h3 className="text-base font-bold group-hover:text-orange-500 transition-colors">
@@ -360,7 +360,9 @@ export function PainelAluno() {
                 : "bg-surface-2 border border-border opacity-50 dark:bg-surface-3"
             }`}
           >
-            <span className={`text-2xl ${m.ativo ? "" : "grayscale"}`}>{m.icone}</span>
+            <span className={`text-2xl flex items-center justify-center ${m.ativo ? "" : "grayscale"}`}>
+              <Icon name={m.icone} size={22} />
+            </span>
             <span className={`text-[11px] font-semibold leading-tight ${m.ativo ? "text-green-700 dark:text-green-300" : "text-subtle"}`}>
               {m.label}
             </span>
@@ -393,7 +395,7 @@ export function PainelAluno() {
           <Card className="p-6 border-l-4 border-l-green-400 transition-all group-hover:shadow-md">
             <div className="flex items-start gap-4">
               <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/20">
-                🎯
+                <Icon name="target" size={24} className="text-green-500" />
               </span>
               <div className="flex-1 min-w-0">
                 <h3 className="text-base font-bold group-hover:text-green-500 transition-colors">
@@ -424,7 +426,7 @@ export function PainelAluno() {
         <Card className="p-6 border-l-4 border-l-orange-400">
           <div className="flex items-start gap-4">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500/20 to-orange-400/10 text-2xl ring-1 ring-orange-400/20">
-              {prog.estudouHoje ? "🔥" : "⏰"}
+              {prog.estudouHoje ? <Icon name="flame" size={24} className="text-orange-500" /> : <Icon name="clock" size={24} className="text-orange-500" />}
             </span>
             <div className="flex-1 min-w-0">
               <h3 className="text-base font-bold">

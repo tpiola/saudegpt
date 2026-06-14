@@ -27,10 +27,10 @@ const coresTrilha = [
   { barra: "bg-gradient-to-r from-orange-400 to-orange-500", badge: "orange" },
 ];
 
-// 💡 Cards de sabia que? sobre saúde preventiva + 4Ps
+// Cards de sabia que? sobre saúde preventiva + 4Ps
 const sabiaQueCards = [
   {
-    emoji: "💤",
+    icone: "moon" as const,
     titulo: "Qualidade do sono e saúde",
     texto:
       "Dormir bem regula o sistema imunológico, melhora a memória e reduz o estresse. Na farmácia, perguntar sobre o sono do cliente pode revelar necessidades de suplementos ou fitoterápicos.",
@@ -38,7 +38,7 @@ const sabiaQueCards = [
     bgImg: "/imagens/sleep_quality.webp",
   },
   {
-    emoji: "💧",
+    icone: "droplet" as const,
     titulo: "A importância da hidratação",
     texto:
       "Beber água suficiente melhora a absorção de medicamentos, a elasticidade da pele e o funcionamento dos rins. Lembre os clientes: 2 litros por dia é a meta mínima.",
@@ -46,7 +46,7 @@ const sabiaQueCards = [
     bgImg: "/imagens/hydration_water.webp",
   },
   {
-    emoji: "📐",
+    icone: "ruler" as const,
     titulo: "Bioimpedância na farmácia",
     texto:
       "A bioimpedância avalia composição corporal — gordura, massa magra e hidratação. É um serviço farmacêutico que agrega valor e fideliza clientes (Produto + Serviço).",
@@ -54,7 +54,7 @@ const sabiaQueCards = [
     bgImg: "/imagens/hero_pills.webp",
   },
   {
-    emoji: "🧘",
+    icone: "heart" as const,
     titulo: "Higienização do sono",
     texto:
       "Criar uma rotina noturna consistente — sem telas 1h antes, quarto escuro e fresco — melhora a qualidade do sono. Ofereça dicas + produtos como melatonina (com orientação).",
@@ -148,7 +148,8 @@ export default function TrilhasPage() {
         <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
           <div className="text-center fade-in-up">
             <span className="badge-green inline-flex">
-              💡 Sabia que?
+              <Icon name="sparkles" size={12} />
+              Sabia que?
             </span>
             <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
               Saúde e bem-estar no dia a dia
@@ -170,7 +171,7 @@ export default function TrilhasPage() {
                   style={{ backgroundImage: `url(${card.bgImg})` }}
                 />
                 <div className="absolute inset-x-0 top-0 h-1 rounded-t-2xl bg-gradient-to-r from-green-400 to-orange-400" />
-                <span className="mt-2 block text-3xl relative z-10">{card.emoji}</span>
+                <span className="mt-2 block text-3xl relative z-10"><Icon name={card.icone} size={28} /></span>
                 <span className="mt-2 inline-block badge-premium text-[10px] relative z-10">{card.badge}</span>
                 <h3 className="mt-3 text-sm font-bold text-foreground font-display relative z-10">
                   {card.titulo}
@@ -304,11 +305,11 @@ export default function TrilhasPage() {
             })}
           </div>
 
-          {/* 💡 Card de sabia que? — Bioimpedância e hidratação */}
+          {/* Card de sabia que? — Bioimpedância e hidratação */}
           <div className="mt-10 rounded-2xl border border-green-200/50 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-800 glow-border">
             <div className="flex items-start gap-4">
               <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-xl dark:bg-green-900/30">
-                💡
+                <Icon name="sparkles" size={20} />
               </span>
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-green-600 dark:text-green-400">
@@ -322,17 +323,17 @@ export default function TrilhasPage() {
                   cuidar da saúde preventivamente. Beba água, durma bem e meça sua composição regularmente!
                 </p>
                 <div className="mt-3 flex flex-wrap gap-3">
-                  <span className="text-xs font-medium text-green-600 dark:text-green-400">
-                    ✅ Qualidade do sono
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
+                    <Icon name="check" size={12} /> Qualidade do sono
                   </span>
-                  <span className="text-xs font-medium text-orange-600 dark:text-orange-400">
-                    💧 Hidratação
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400">
+                    <Icon name="droplet" size={12} /> Hidratação
                   </span>
-                  <span className="text-xs font-medium text-green-600 dark:text-green-400">
-                    📊 Bioimpedância
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
+                    <Icon name="chart" size={12} /> Bioimpedância
                   </span>
-                  <span className="text-xs font-medium text-orange-600 dark:text-orange-400">
-                    🧘 Higienização do sono
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400">
+                    <Icon name="heart" size={12} /> Higienização do sono
                   </span>
                 </div>
               </div>

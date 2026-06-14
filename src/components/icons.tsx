@@ -208,6 +208,70 @@ const paths: Record<string, React.ReactNode> = {
       <path d="M21 8A9 9 0 1 0 6 18l2.5 2" />
     </>
   ),
+  camera: (
+    <>
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z" />
+      <circle cx="12" cy="13" r="4" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="8" />
+      <path d="m21 21-4.3-4.3" />
+    </>
+  ),
+  "x-circle": (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="m15 9-6 6" />
+      <path d="m9 9 6 6" />
+    </>
+  ),
+  clipboard: (
+    <>
+      <rect x="8" y="2" width="8" height="4" rx="1" />
+      <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+    </>
+  ),
+  ban: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <path d="m4.9 4.9 14.2 14.2" />
+    </>
+  ),
+  "volume-2": (
+    <>
+      <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+    </>
+  ),
+  "message-circle": (
+    <>
+      <path d="M21 12a9 9 0 1 1-8.5-9" />
+      <path d="M21 3v6h-6" />
+    </>
+  ),
+  droplet: (
+    <path d="M12 3c-3 4-7 7.5-7 11a7 7 0 0 0 14 0c0-3.5-4-7-7-11Z" />
+  ),
+  ruler: (
+    <>
+      <path d="M3 20h18" />
+      <path d="M5 20V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12" />
+      <path d="M8 12h4" />
+      <path d="M14 12h2" />
+      <path d="M8 16h6" />
+    </>
+  ),
+  hash: (
+    <>
+      <path d="M4 9h16" />
+      <path d="M4 15h16" />
+      <path d="M10 3 8 21" />
+      <path d="M16 3l-2 18" />
+    </>
+  ),
 };
 
 export type IconName = keyof typeof paths;

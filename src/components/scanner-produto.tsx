@@ -100,22 +100,22 @@ async function lookupBarcode(ean: string): Promise<ExtendedProductInfo> {
 interface FieldDef {
   key: keyof ExtendedProductInfo;
   label: string;
-  emoji: string;
+  iconName: string;
 }
 
 const FIELDS: FieldDef[] = [
-  { key: "para_que_servir", label: "Para que serve", emoji: "💊" },
-  { key: "modo_de_usar", label: "Modo de usar", emoji: "📋" },
-  { key: "efeitos_colaterais", label: "Efeitos colaterais", emoji: "⚠️" },
-  { key: "contra_indicacoes", label: "Contraindicações", emoji: "🚫" },
-  { key: "interacoes", label: "Interações medicamentosas", emoji: "🔄" },
-  { key: "interacoes_alimentos", label: "Interações com alimentos", emoji: "🍽️" },
-  { key: "idade_minima", label: "Idade mínima", emoji: "👶" },
-  { key: "sintomas_alergia", label: "Sintomas de alergia", emoji: "🤧" },
-  { key: "ps_prevencao", label: "4Ps — Prevenção", emoji: "🛡️" },
-  { key: "ps_parametros", label: "4Ps — Parâmetros", emoji: "📊" },
-  { key: "ps_problemas", label: "4Ps — Problemas", emoji: "🔍" },
-  { key: "ps_promocao", label: "4Ps — Promoção", emoji: "📣" },
+  { key: "para_que_servir", label: "Para que serve", iconName: "pill" },
+  { key: "modo_de_usar", label: "Modo de usar", iconName: "clipboard" },
+  { key: "efeitos_colaterais", label: "Efeitos colaterais", iconName: "alert" },
+  { key: "contra_indicacoes", label: "Contraindicações", iconName: "ban" },
+  { key: "interacoes", label: "Interações medicamentosas", iconName: "refresh" },
+  { key: "interacoes_alimentos", label: "Interações com alimentos", iconName: "message" },
+  { key: "idade_minima", label: "Idade mínima", iconName: "user" },
+  { key: "sintomas_alergia", label: "Sintomas de alergia", iconName: "alert" },
+  { key: "ps_prevencao", label: "4Ps — Prevenção", iconName: "shield" },
+  { key: "ps_parametros", label: "4Ps — Parâmetros", iconName: "chart" },
+  { key: "ps_problemas", label: "4Ps — Problemas", iconName: "search" },
+  { key: "ps_promocao", label: "4Ps — Promoção", iconName: "sparkles" },
 ];
 
 /* ─── Helpers ─────────────────────────────────────────── */
@@ -195,7 +195,7 @@ export function ScannerProduto() {
     const msg = [
       `*${result.nome}*`,
       ...FIELDS.map(
-        (f) => `${f.emoji} *${f.label}:* ${result[f.key]}`
+        (f) => `*${f.label}:* ${result[f.key]}`
       ),
       "",
       "_Análise gerada por IA. Consulte sempre um profissional de saúde._",
@@ -243,7 +243,7 @@ export function ScannerProduto() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          📸 Scanner de Produto
+          <Icon name="camera" size={20} /> Scanner de Produto
         </motion.h2>
         <p className="text-sm text-muted mb-5 leading-relaxed">
           Identifique medicamentos, cosméticos ou produtos de saúde por foto ou
@@ -260,7 +260,7 @@ export function ScannerProduto() {
                 : "text-muted hover:text-white/80"
             }`}
           >
-            📸 Foto
+            <Icon name="camera" size={14} /> Foto
           </button>
           <button
             onClick={() => { setMode("barcode"); setError(null); setResult(null); }}
@@ -270,7 +270,7 @@ export function ScannerProduto() {
                 : "text-muted hover:text-white/80"
             }`}
           >
-            🔢 Código de Barras
+            <Icon name="hash" size={14} /> Código de Barras
           </button>
         </div>
 
@@ -307,7 +307,7 @@ export function ScannerProduto() {
                   disabled={loading}
                   className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-500 px-6 py-2 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
                 >
-                  {loading ? "Analisando..." : "🔍 Analisar"}
+                  {loading ? "Analisando..." : <><Icon name="search" size={14} /> Analisar</>}
                 </button>
               </motion.div>
             )}
@@ -351,7 +351,7 @@ export function ScannerProduto() {
               disabled={loading || barcode.replace(/\D/g, "").length < 8}
               className="rounded-full bg-emerald-500 px-8 py-2.5 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
             >
-              {loading ? "Consultando..." : "🔍 Consultar"}
+              {loading ? "Consultando..." : <><Icon name="search" size={14} /> Consultar</>}
             </button>
           </div>
         )}
@@ -410,7 +410,7 @@ export function ScannerProduto() {
                     className="shrink-0 rounded-full bg-white/10 p-2 text-sm text-white/70 hover:bg-white/20 hover:text-white transition-all"
                     title="Ouvir informações principais"
                   >
-                    🔊
+                    <Icon name="volume-2" size={16} />
                   </button>
                 </div>
               </motion.div>
@@ -419,7 +419,7 @@ export function ScannerProduto() {
               {FIELDS.map((field, i) => (
                 <InfoCard
                   key={field.key}
-                  emoji={field.emoji}
+                  iconName={field.iconName}
                   title={field.label}
                   text={result[field.key]}
                   index={i}
@@ -437,7 +437,7 @@ export function ScannerProduto() {
                   onClick={handleSendToChat}
                   className="flex-1 rounded-xl bg-emerald-500/15 border border-emerald-400/25 px-5 py-3 text-sm font-bold text-emerald-300 hover:bg-emerald-500/25 transition-all"
                 >
-                  💬 Perguntar ao Assistente
+                  <Icon name="message-circle" size={14} /> Perguntar ao Assistente
                 </button>
               </motion.div>
 
@@ -457,12 +457,12 @@ export function ScannerProduto() {
 /* ─── InfoCard ──────────────────────────────────────────── */
 
 function InfoCard({
-  emoji,
+  iconName,
   title,
   text,
   index = 0,
 }: {
-  emoji: string;
+  iconName: string;
   title: string;
   text: string;
   index?: number;
@@ -495,7 +495,7 @@ function InfoCard({
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
           <h4 className="text-sm font-bold text-emerald-300 mb-1.5 flex items-center gap-1.5">
-            <span>{emoji}</span>
+            <Icon name={iconName} size={16} />
             <span>{title}</span>
           </h4>
           <p className="text-sm leading-relaxed text-muted">{text}</p>
@@ -509,7 +509,7 @@ function InfoCard({
           }`}
           title={playing ? "Parar" : "Ouvir"}
         >
-          {playing ? "⏹" : "🔊"}
+          {playing ? <Icon name="close" size={14} /> : <Icon name="volume-2" size={14} />}
         </button>
       </div>
     </motion.div>

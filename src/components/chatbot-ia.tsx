@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { speak } from "./scanner-produto";
+import { Icon } from "@/components/icons";
 
 interface Mensagem {
   id: string;
@@ -52,12 +53,12 @@ function ParticleBg() {
   );
 }
 
-const SUGESTOES = [
-  "📸 Analisar foto de medicamento",
-  "🔍 Buscar bula de medicamento",
-  "O que diz a RDC 471 sobre antibióticos?",
-  "Como atender um cliente com diabetes?",
-  "Diferença entre MIP e controlados",
+const SUGESTOES: { icon?: string; label: string }[] = [
+  { icon: "camera", label: "Analisar foto de medicamento" },
+  { icon: "search", label: "Buscar bula de medicamento" },
+  { label: "O que diz a RDC 471 sobre antibióticos?" },
+  { label: "Como atender um cliente com diabetes?" },
+  { label: "Diferença entre MIP e controlados" },
 ];
 
 export function ChatBotIA() {
@@ -110,12 +111,12 @@ export function ChatBotIA() {
   const enviar = useCallback(async (texto: string) => {
     if (!texto.trim() || digitando) return;
 
-    if (texto.includes("📸 Analisar foto")) {
+    if (texto.includes("Analisar foto")) {
       setModoScanner(true);
       setTimeout(() => scannerFileRef.current?.click(), 300);
       return;
     }
-    if (texto.includes("🔍 Buscar bula")) {
+    if (texto.includes("Buscar bula")) {
       setModoScanner(true);
       return;
     }
@@ -157,7 +158,7 @@ export function ChatBotIA() {
       console.error("[chat] Erro:", err);
       setMensagens((p) => [
         ...p,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "⚠️ Não consegui conectar ao assistente agora. Tente novamente em instantes." },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: "Não consegui conectar ao assistente agora. Tente novamente em instantes." },
       ]);
     } finally {
       setDigitando(false);
@@ -169,7 +170,7 @@ export function ChatBotIA() {
     if (!file) return;
 
     const url = URL.createObjectURL(file);
-    const msg: Mensagem = { id: Date.now().toString(), role: "user", content: "📸 Analisar produto", image: url };
+    const msg: Mensagem = { id: Date.now().toString(), role: "user", content: "Analisar produto", image: url };
     setMensagens((p) => [...p, msg]);
     setMostrarSugestoes(false);
     setDigitando(true);
@@ -180,13 +181,13 @@ export function ChatBotIA() {
       const result = await analyzeProductImage(file);
 
       const resposta = [
-        `**🔍 Análise do Produto: ${result.nome}**\n`,
-        `💊 **Para que serve:**\n${result.para_que_servir}\n`,
-        `📋 **Modo de usar:**\n${result.modo_de_usar}\n`,
-        `⚠️ **Efeitos colaterais:**\n${result.efeitos_colaterais}\n`,
-        `🚫 **Contraindicações:**\n${result.contra_indicacoes}\n`,
-        `🔄 **Interações:**\n${result.interacoes}\n`,
-        `---\n📢 *Quer ouvir? Clique no ícone de áudio abaixo.*`,
+        `**Análise do Produto: ${result.nome}**\n`,
+        `**Para que serve:**\n${result.para_que_servir}\n`,
+        `**Modo de usar:**\n${result.modo_de_usar}\n`,
+        `**Efeitos colaterais:**\n${result.efeitos_colaterais}\n`,
+        `**Contraindicações:**\n${result.contra_indicacoes}\n`,
+        `**Interações:**\n${result.interacoes}\n`,
+        `---\n*Quer ouvir? Clique no ícone de áudio abaixo.*`,
       ].join("\n");
 
       const assistente: Mensagem = { id: (Date.now() + 1).toString(), role: "assistant", content: resposta };
@@ -194,7 +195,7 @@ export function ChatBotIA() {
     } catch {
       setMensagens((p) => [
         ...p,
-        { id: (Date.now() + 1).toString(), role: "assistant", content: "❌ Erro ao analisar a imagem. Tente novamente com uma foto mais nítida." },
+        { id: (Date.now() + 1).toString(), role: "assistant", content: "Erro ao analisar a imagem. Tente novamente com uma foto mais nítida." },
       ]);
     } finally {
       setDigitando(false);
@@ -310,7 +311,7 @@ export function ChatBotIA() {
                     </div>
                   </div>
                   <div className="text-center max-w-[240px]">
-                    <p className="text-sm font-semibold text-white/90">👋 Olá! Como posso ajudar?</p>
+                    <p className="text-sm font-semibold text-white/90 flex items-center gap-1.5"><Icon name="smile" size={16} /> Olá! Como posso ajudar?</p>
                     <p className="text-xs text-white/40 mt-2 leading-relaxed">
                       Pergunte sobre medicamentos, legislação ANVISA, ou escaneie produtos para análise completa.
                     </p>
@@ -381,13 +382,14 @@ export function ChatBotIA() {
                 <div className="flex flex-wrap gap-1.5">
                   {SUGESTOES.map((s) => (
                     <motion.button
-                      key={s}
+                      key={s.label}
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
-                      onClick={() => enviar(s)}
+                      onClick={() => enviar(s.label)}
                       className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 text-[11px] text-white/50 hover:text-emerald-300 hover:border-emerald-400/25 hover:bg-emerald-500/8 transition-all backdrop-blur-sm"
                     >
-                      {s}
+                      {s.icon && <Icon name={s.icon as any} size={12} className="inline mr-1" />}
+                      {s.label}
                     </motion.button>
                   ))}
                 </div>
@@ -406,7 +408,7 @@ export function ChatBotIA() {
                   <div className="px-4 sm:px-5 pb-3 space-y-2">
                     <div className="h-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
                     <p className="text-[10px] text-emerald-400/50 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5">
-                      📸 Scanner de Produto
+                      <Icon name="camera" size={12} /> Scanner de Produto
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       <motion.button
@@ -415,7 +417,7 @@ export function ChatBotIA() {
                         onClick={() => { scannerFileRef.current?.click(); setModoScanner(false); }}
                         className="rounded-xl border border-dashed border-emerald-400/25 bg-emerald-500/8 p-4 text-center hover:bg-emerald-500/15 hover:border-emerald-400/40 transition-all"
                       >
-                        <span className="text-2xl block mb-1">📷</span>
+                        <span className="block mb-1"><Icon name="camera" size={28} className="mx-auto" /></span>
                         <span className="text-xs font-semibold text-emerald-300/90">Tirar Foto</span>
                         <span className="text-[10px] text-white/30 block mt-0.5">ou enviar imagem</span>
                       </motion.button>
@@ -425,7 +427,7 @@ export function ChatBotIA() {
                         onClick={() => { setModoScanner(false); setInput(""); setTimeout(() => inputRef.current?.focus(), 100); }}
                         className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center hover:bg-white/[0.05] hover:border-emerald-400/15 transition-all"
                       >
-                        <span className="text-2xl block mb-1">🔢</span>
+                        <span className="block mb-1"><Icon name="hash" size={28} className="mx-auto" /></span>
                         <span className="text-xs font-semibold text-white/70">Código de Barras</span>
                         <span className="text-[10px] text-white/30 block mt-0.5">digitar EAN-13</span>
                       </motion.button>
@@ -509,7 +511,7 @@ export function ChatBotIA() {
             className="mb-2 mr-2 sm:mr-0 sm:mb-1"
           >
             <div className="relative rounded-xl bg-gradient-to-br from-emerald-500/15 to-emerald-600/8 border border-emerald-400/15 backdrop-blur-md px-3 py-2 text-[11px] text-white/70 shadow-lg">
-              <span>💬 {mensagens.length} mensagens</span>
+              <span className="flex items-center gap-1"><Icon name="message-circle" size={12} /> {mensagens.length} mensagens</span>
               <div className="absolute -bottom-1 right-5 h-2 w-2 rotate-45 bg-emerald-500/15 border-r border-b border-emerald-400/15" />
             </div>
           </motion.div>
