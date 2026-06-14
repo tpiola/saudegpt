@@ -10,7 +10,6 @@ export function SecaoCTAFinal() {
 
   return (
     <section className="relative overflow-hidden bg-forest-900 py-20 sm:py-28" ref={ref}>
-      {/* Background decoration */}
       <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl" />
       <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
 
@@ -20,20 +19,17 @@ export function SecaoCTAFinal() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
-            🚀 Comece agora
-          </span>
-          <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Pronto para{" "}
             <span className="bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-clip-text text-transparent">
               transformar
             </span>{" "}
             seu atendimento?
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/50">
-            Transforme seu atendimento e evolua na carreira com conteúdo criado por farmacêutico especialista.
+          <p className="mx-auto mt-3 max-w-lg text-sm text-white/50">
+            Conteúdo criado por farmacêutico especialista. Gratuito e no seu ritmo.
           </p>
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/"
               className="inline-flex h-12 sm:h-14 items-center gap-2 rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-orange-500/25 transition-all hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]"

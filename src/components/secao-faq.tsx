@@ -6,24 +6,24 @@ import { Icon } from "./icons";
 
 const faqs = [
   {
-    q: "Preciso ter formação em farmácia para acessar?",
-    r: "Não! A plataforma é feita para atendentes de todos os níveis, desde iniciantes até profissionais experientes que querem se atualizar.",
+    q: "Preciso ter formação em farmácia?",
+    r: "Não! A plataforma é para todos os níveis, do iniciante ao experiente.",
   },
   {
     q: "Quanto tempo tenho acesso?",
-    r: "Acesso vitalício ao conteúdo. Você pode estudar no seu ritmo, revisar quantas vezes quiser.",
+    r: "Acesso vitalício. Estude e revise quando quiser.",
   },
   {
-    q: "Tem certificado ao finalizar?",
-    r: "Sim! Ao concluir as trilhas propostas, você recebe um certificado de formação profissional.",
+    q: "Tem certificado?",
+    r: "Sim! Ao concluir as trilhas, você recebe certificado profissional.",
   },
   {
     q: "Funciona no celular?",
-    r: "Sim! A plataforma é 100% responsiva e otimizada para smartphones, tablets e desktop.",
+    r: "Sim! 100% responsivo para smartphones, tablets e desktop.",
   },
   {
-    q: "Tem suporte para dúvidas?",
-    r: "Sim! Você pode entrar em contato pelo WhatsApp diretamente pela plataforma.",
+    q: "Tem suporte?",
+    r: "Sim! Fale conosco pelo WhatsApp diretamente na plataforma.",
   },
 ];
 
@@ -41,18 +41,15 @@ export function SecaoFAQ() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full bg-orange-50 px-3 py-1 text-xs font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
-            Dúvidas frequentes
-          </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Perguntas{" "}
             <span className="bg-gradient-to-r from-orange-500 to-emerald-500 bg-clip-text text-transparent">
-              respondidas
+              frequentes
             </span>
           </h2>
         </motion.div>
 
-        <div className="mt-12 space-y-3">
+        <div className="mt-10 space-y-3">
           {faqs.map((faq, idx) => (
             <motion.div
               key={idx}
@@ -62,17 +59,11 @@ export function SecaoFAQ() {
             >
               <button
                 onClick={() => setAberto(aberto === idx ? null : idx)}
-                className="flex w-full items-center justify-between gap-4 rounded-2xl border border-border bg-surface px-5 py-4 text-left transition-all hover:border-forest-200 hover:bg-surface-2/50"
+                className="flex w-full items-center justify-between gap-4 rounded-2xl border border-border bg-surface px-5 py-4 text-left transition-all hover:border-forest-200"
                 aria-expanded={aberto === idx}
               >
-                <span className="text-sm font-semibold text-foreground sm:text-base">{faq.q}</span>
-                <motion.div
-                  animate={{ rotate: aberto === idx ? 180 : 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="shrink-0"
-                >
-                  <Icon name="smile" size={18} className="text-muted" />
-                </motion.div>
+                <span className="text-sm font-semibold text-foreground">{faq.q}</span>
+                <Icon name="smile" size={18} className="shrink-0 text-muted transition-transform" />
               </button>
               <AnimatePresence>
                 {aberto === idx && (
@@ -83,7 +74,7 @@ export function SecaoFAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 py-4 text-sm leading-relaxed text-muted">{faq.r}</p>
+                    <p className="px-5 py-3 text-sm text-muted">{faq.r}</p>
                   </motion.div>
                 )}
               </AnimatePresence>

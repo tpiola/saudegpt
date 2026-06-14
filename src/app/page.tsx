@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { CookieConsent } from "@/components/CookieConsent";
 import { ChatBotIA } from "@/components/chatbot-ia";
 import { HeroSection } from "@/components/hero-section";
 import { SecaoBeneficios } from "@/components/secao-beneficios";
@@ -28,18 +27,14 @@ function TrilhasSection() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeUp>
           <div className="text-center mb-12 sm:mb-16">
-            <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-              Currículo completo
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Sua jornada de{" "}
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              Sua{" "}
               <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-                aprendizagem
+                jornada de aprendizado
               </span>
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground">
-              {trilhas.length} trilhas completas com {trilhas.reduce((a, t) => a + t.modulos.length, 0)} módulos,
-              quizzes interativos e prática de balcão.
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
+              {trilhas.length} trilhas, {trilhas.reduce((a, t) => a + t.modulos.length, 0)} módulos, quizzes e prática de balcão.
             </p>
           </div>
         </FadeUp>
@@ -88,7 +83,7 @@ function TrilhasSection() {
             href="/trilhas"
             className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-white/10 px-6 text-sm font-bold text-foreground hover:bg-accent/50 transition-colors"
           >
-            Ver todas as trilhas
+            Ver todas
             <Icon name="arrow" size={14} />
           </Link>
         </div>
@@ -113,23 +108,18 @@ function GamificacaoSection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <FadeUp>
-              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-900/30 px-3 py-1 text-xs font-medium text-emerald-300">
-                Gamificação
-              </span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Aprendizagem que{" "}
                 <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
                   engaja
                 </span>
               </h2>
-              <p className="mt-4 text-sm sm:text-base text-white/60 leading-relaxed max-w-lg">
-                Cada aula concluída rende XP. Suba de nível, acumule streaks, 
-                desbloqueie badges e veja sua evolução em gráficos claros no 
-                seu dashboard personalizado.
+              <p className="mt-3 text-sm text-white/60 max-w-lg">
+                Cada aula rende XP. Suba de nível, acumule streaks, desbloqueie badges e acompanhe sua evolução.
               </p>
             </FadeUp>
 
-            <div className="mt-8 grid grid-cols-2 gap-3">
+            <div className="mt-6 grid grid-cols-2 gap-3">
               {itens.map((item) => (
                 <FadeUp key={item.label} delay={80}>
                   <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm px-3 py-2.5 transition hover:bg-white/10 hover:-translate-y-0.5">
@@ -152,7 +142,7 @@ function GamificacaoSection() {
                   </div>
                   <div>
                     <h3 className="font-bold text-white">Dashboard do Aluno</h3>
-                    <p className="text-xs text-white/50">Acompanhe sua evolução em tempo real</p>
+                    <p className="text-xs text-white/50">Evolução em tempo real</p>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -168,7 +158,6 @@ function GamificacaoSection() {
                     </div>
                   ))}
                 </div>
-                {/* Progress bar */}
                 <div className="mt-6">
                   <div className="flex justify-between text-xs text-white/40 mb-2">
                     <span>Próximo nível: 2.000 XP</span>
@@ -195,18 +184,17 @@ function CtaSection() {
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
         <FadeUp>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Pronto para transformar{" "}
+            Pronto para{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
-              seu atendimento
+              transformar seu atendimento
             </span>
             ?
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-white/60">
-            Transforme seu atendimento e sua carreira. 
-            Gratuito. No seu ritmo. Com conteúdo que faz diferença no dia a dia.
+          <p className="mx-auto mt-3 max-w-lg text-sm text-white/60">
+            Gratuito. No seu ritmo. Conteúdo que faz diferença no dia a dia.
           </p>
         </FadeUp>
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/trilhas"
             className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40 hover:scale-[1.02] active:scale-[0.98]"
@@ -242,7 +230,6 @@ export default function HomePage() {
         <CtaSection />
       </main>
       <SiteFooter />
-      <CookieConsent />
       <ChatBotIA />
     </>
   );
