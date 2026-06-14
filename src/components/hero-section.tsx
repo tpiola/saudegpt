@@ -178,10 +178,10 @@ export function HeroSection() {
 
           {/* Título principal */}
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Transforme-se no{" "}
+            Transforme-se no&nbsp;
             <span className="bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient">
               melhor
-            </span>{" "}
+            </span>
             <br className="hidden sm:block" />
             <Typewriter
               words={palavras}

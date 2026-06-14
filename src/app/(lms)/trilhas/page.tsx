@@ -355,7 +355,7 @@ export default function TrilhasPage() {
           Pronto para transformar seu atendimento?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-white/50">
-            Junte-se a centenas de atendentes que já estão se capacitando com a formação mais completa do Brasil.
+            Transforme seu atendimento e sua carreira com a formação mais completa para atendentes de farmácia.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/" className="btn-rd-white text-base px-10 py-3">

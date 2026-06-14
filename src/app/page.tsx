@@ -6,7 +6,6 @@ import { ChatBotIA } from "@/components/chatbot-ia";
 import { HeroSection } from "@/components/hero-section";
 import { SecaoBeneficios } from "@/components/secao-beneficios";
 import { SecaoComoFunciona } from "@/components/secao-como-funciona";
-import { SecaoDepoimentos } from "@/components/secao-depoimentos";
 import { SecaoFAQ } from "@/components/secao-faq";
 import { trilhas } from "@/content/curriculo";
 import { Icon } from "@/components/icons";
@@ -203,8 +202,8 @@ function CtaSection() {
             ?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-white/60">
-            Junte-se a centenas de atendentes que já estão evoluindo com a plataforma. 
-            Grátis. No seu ritmo. Com conteúdo que faz diferença no dia a dia.
+            Transforme seu atendimento e sua carreira. 
+            Gratuito. No seu ritmo. Com conteúdo que faz diferença no dia a dia.
           </p>
         </FadeUp>
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -239,7 +238,6 @@ export default function HomePage() {
         <TrilhasSection />
         <SecaoComoFunciona />
         <GamificacaoSection />
-        <SecaoDepoimentos />
         <SecaoFAQ />
         <CtaSection />
       </main>

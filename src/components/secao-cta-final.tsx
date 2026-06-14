@@ -31,8 +31,7 @@ export function SecaoCTAFinal() {
             seu atendimento?
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-white/50">
-            Junte-se a dezenas de atendentes que já estão elevando o nível do atendimento
-            nas farmácias do Brasil.
+            Transforme seu atendimento e evolua na carreira com conteúdo criado por farmacêutico especialista.
           </p>
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
