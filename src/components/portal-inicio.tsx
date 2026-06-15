@@ -34,7 +34,7 @@ function VideoBanner() {
       <div className="absolute inset-0 bg-forest-500">
         <Image
           src="/imagens/hero_pills.webp"
-          alt=""
+          alt="Fundos de medicamentos e prateleiras de farmácia"
           fill
           className="object-cover opacity-30"
           priority
@@ -146,7 +146,7 @@ function PortalConvidadoHero() {
       >
         <Image
           src="/imagens/hero_pills.webp"
-          alt=""
+          alt="Fundos de medicamentos e prateleiras de farmácia"
           fill
           className="hero-bg scale-105"
           priority
@@ -367,7 +367,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Um treinamento que{" "}
-                <span className="text-bg-gradient-to-r from-green-500 to-green-600">ensina a cuidar</span>
+                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">ensina a cuidar</span>
               </h2>
               <p className="mt-6" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo —
@@ -450,7 +450,7 @@ function PortalConvidadoHero() {
                   }}
                 >
                   O profissional que o paciente{" "}
-                  <span className="text-bg-gradient-to-r from-green-500 to-green-600">confia e volta</span>
+                  <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">confia e volta</span>
                 </h2>
                 <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
                   <p style={{ fontSize: "1.05rem" }}>
@@ -491,7 +491,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 O que você vai{" "}
-                <span className="text-bg-gradient-to-r from-green-500 to-green-600">aprender</span>
+                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">aprender</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)" }}>
                 {totalAulasContagem} microlições em {trilhas.length} trilhas — do iniciante ao profissional de referência
@@ -571,7 +571,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Como atender bem{" "}
-                <span className="text-bg-gradient-to-r from-green-500 to-green-600">cada fase da vida</span>
+                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">cada fase da vida</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Adolescente, adulto ou idoso — cada um chega ao balcão com uma história,
@@ -663,7 +663,7 @@ function PortalConvidadoHero() {
                     }}
                   >
                     Transforme seu atendimento{" "}
-                    <span className="text-bg-gradient-to-r from-green-500 to-green-600">em cuidado</span>
+                    <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">em cuidado</span>
                   </h2>
                   <p
                     className="mx-auto mt-4"
