@@ -1406,4 +1406,244 @@ export const modulosBemEstarExtra: Modulo[] = [
       },
     ],
   },
+  // ════════════════════════════════════════════════
+  // SAÚDE MENTAL NO BALCÃO — Acolhimento e Orientação
+  // ════════════════════════════════════════════════
+  {
+    id: "saude-mental-balcao",
+    titulo: "Saúde Mental no Balcão — Acolhimento e Primeiras Orientações",
+    descricao:
+      "Ansiedade, insônia e depressão são queixas cada vez mais comuns nas farmácias. Saiba acolher, orientar e encaminhar com segurança e sensibilidade.",
+    aulas: [
+      {
+        id: "ansiedade-balcao",
+        titulo: "Cliente com crise de ansiedade no balcão",
+        duracaoMin: 7,
+        nivel: "intermediario",
+        videoUrl: videosEducativos.higieneSono,
+        resumo:
+          "Como identificar sinais de ansiedade, acolher sem agravar e orientar sobre opções de MIPs (fitoterápicos, vitaminas) com encaminhamento ao farmacêutico.",
+        resumoExecutivo: [
+          "Sinais de ansiedade: inquietação, fala acelerada, sudorese, queixas de 'nó na garganta' ou aperto no peito.",
+          "Nunca minimizar ('é só nervosismo') — valide o sentimento e ofereça um lugar calmo para conversar.",
+          "MIPs fitoterápicos (passiflora, valeriana, melatonina) aliviam sintomas leves, mas não tratam transtorno de ansiedade.",
+          "Sinais de alerta para encaminhamento urgente: ideação suicida, pânico recorrente, taquicardia em repouso.",
+        ],
+        comparativo: {
+          titulo: "Sintoma x Conduta",
+          itens: [
+            { nome: "Preocupação excessiva", quando: "Acolher, sugerir fitoterápico leve e recomendar avaliação médica." },
+            { nome: "Crise de pânico (taquicardia, falta de ar)", quando: "Manter a calma, levar a local reservado, chamar farmacêutico imediatamente." },
+            { nome: "Insônia associada à ansiedade", quando: "Orientar higiene do sono, melatonina (MIP) e encaminhamento se persistir." },
+            { nome: "Fala em morte ou desesperança", quando: "Nunca deixar o cliente sozinho — acionar farmacêutico e serviço de apoio (CVV 188)." },
+          ],
+        },
+        simulacao: {
+          cliente: "Cliente de 32 anos, visivelmente tensa, aperta as mãos enquanto fala: 'Doutor, eu não durmo direito há semanas, sinto o coração disparar do nada. Será que é coração?'",
+          falaBoa: "Entendo como isso deve estar te preocupando. O que você descreve — coração acelerado, insônia — pode estar relacionado à ansiedade, mas jamais vou descartar sem avaliação. Deixa eu te levar para um cantinho mais calmo e chamar nosso farmacêutico para conversar com calma? Ele pode avaliar melhor e, se necessário, sugerir exames ou um fitoterápico leve para ajudar enquanto você busca acompanhamento médico.",
+          falaEvitar: "Isso é ansiedade, toma esse chá que passa. Próximo!",
+        },
+        checklist: [
+          "Nunca minimizar a queixa do cliente.",
+          "Oferecer ambiente calmo e reservado.",
+          "Identificar sinais de alerta (ideação suicida, pânico).",
+          "Encaminhar ao farmacêutico para avaliação completa.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Qualquer menção a suicídio, morte ou desesperança — urgência.",
+          "Sintomas físicos intensos (taquicardia, falta de ar, tremores).",
+          "Cliente já em uso de medicamentos controlados (interação com MIPs).",
+        ],
+        errosComuns: [
+          "Dizer 'é só na sua cabeça' ou 'você precisa se acalmar'.",
+          "Indicar medicamento controlado sem prescrição.",
+          "Ignorar sinais de alerta de crise psiquiátrica.",
+        ],
+        quiz: [
+          q(
+            "Cliente relata insônia, taquicardia e aperto no peito. Qual a primeira ação?",
+            [
+              "Dar um calmante e mandar para casa.",
+              "Acolher, levar a local reservado e chamar o farmacêutico.",
+              "Dizer que é normal e ignorar.",
+              "Receitar um ansiolítico.",
+            ],
+            1,
+            "Sintomas de ansiedade/pânico exigem acolhimento, ambiente seguro e avaliação farmacêutica.",
+          ),
+          q(
+            "Qual destes NÃO é um MIP indicado para ansiedade leve?",
+            [
+              "Passiflora (maracujá).",
+              "Valeriana.",
+              "Diazepam.",
+              "Melatonina (para insônia associada).",
+            ],
+            2,
+            "Diazepam é um benzodiazepínico, medicamento controlado que exige receita — não é MIP.",
+          ),
+          q(
+            "Cliente menciona 'não vejo mais sentido em nada'. Qual a conduta?",
+            [
+              "Ignorar, pois é só drama.",
+              "Levar a sério, não deixar o cliente sozinho e acionar o farmacêutico imediatamente.",
+              "Oferecer um chá calmante.",
+              "Pedir para voltar outro dia.",
+            ],
+            1,
+            "Fala de desesperança ou morte pode indicar ideação suicida — é urgência. Acione o farmacêutico e o CVV (188).",
+          ),
+          q(
+            "Qual a postura correta ao atender alguém com sinais de ansiedade?",
+            [
+              "Falar alto para a pessoa 'acordar'.",
+              "Manter tom de voz calmo, falar devagar e oferecer um local reservado.",
+              "Ignorar e atender o próximo cliente.",
+              "Dar um copo d'água e despachar.",
+            ],
+            1,
+            "Tom calmo e ambiente acolhedor reduzem a ativação do sistema nervoso e ajudam a pessoa a se sentir segura.",
+          ),
+        ],
+        xp: 65,
+      },
+      {
+        id: "insonia-fitoterapia",
+        titulo: "Insônia: fitoterápicos e higiene do sono no balcão",
+        duracaoMin: 6,
+        nivel: "intermediario",
+        videoUrl: videosEducativos.higieneSono,
+        resumo: "Orientação sobre MIPs para insônia leve, higiene do sono e quando encaminhar ao médico.",
+        resumoExecutivo: [
+          "Higiene do sono: horário regular, evitar telas 1h antes, quarto escuro e silencioso.",
+          "Melatonina: doses baixas (0,3–3 mg) para ajudar a iniciar o sono; não é sedativo.",
+          "Fitoterápicos: valeriana, passiflora e camomila têm evidência leve a moderada.",
+          "Insônia crônica (>3 semanas) ou com outros sintomas exige avaliação médica.",
+        ],
+        comparativo: {
+          titulo: "Produto x Indicação",
+          itens: [
+            { nome: "Melatonina", quando: "Dificuldade para iniciar o sono; ideal para curto prazo." },
+            { nome: "Valeriana", quando: "Insônia leve associada a tensão; efeito em 2-4 semanas." },
+            { nome: "Passiflora", quando: "Ansiedade leve com insônia; efeito suave." },
+            { nome: "Anti-histamínicos (difenhidramina)", quando: "MIPs para insônia eventual; causa sonolência no dia seguinte." },
+          ],
+        },
+        simulacao: {
+          cliente: "Senhora de 45 anos: 'Faz um mês que não durmo bem, fico rolando na cama pensando em tudo. Já tentei chá, mas não adianta.'",
+          falaBoa: "Um mês já é um tempo significativo — é bom levar a sério. Vamos começar com medidas simples: que tal a gente montar uma rotina de sono? Escuro total, sem celular uma hora antes, e um horário fixo para deitar. Podemos associar melatonina ou valeriana por algumas semanas. Mas como já passa de três semanas, sugiro também conversar com o farmacêutico — às vezes a insônia tem uma causa que precisa de avaliação mais aprofundada. Quer ver as opções que temos?",
+          falaEvitar: "Toma esse aqui que é forte e você apaga na hora.",
+        },
+        checklist: [
+          "Perguntar há quanto tempo dura a insônia.",
+          "Orientar higiene do Sono antes de qualquer suplemento.",
+          "Não recomendar uso prolongado sem avaliação.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Insônia > 3 semanas.",
+          "Cliente em uso de antidepressivos, ansiolíticos ou outros medicamentos.",
+          "Sintomas associados: alteração de humor, perda de apetite, cansaço extremo.",
+        ],
+        errosComuns: [
+          "Indicar melatonina em altas doses como 'sonífero'.",
+          "Ignorar o histórico de medicamentos do cliente.",
+        ],
+        quiz: [
+          q(
+            "Qual a primeira orientação para insônia leve no balcão?",
+            [
+              "Vender o sonífero mais forte.",
+              "Orientar higiene do sono e, se necessário, MIP suave (melatonina/valeriana).",
+              "Dizer que é normal com a idade.",
+              "Encaminhar direto ao psiquiatra.",
+            ],
+            1,
+            "Higiene do sono + MIP leve é a abordagem inicial segura; encaminhe se não resolver.",
+          ),
+          q(
+            "Qual a dose inicial segura de melatonina para insônia?",
+            [
+              "10 mg.",
+              "0,3 a 3 mg.",
+              "20 mg.",
+              "Não existe dose segura.",
+            ],
+            1,
+            "Doses baixas de melatonina (0,3-3 mg) são suficientes para a maioria; doses altas podem causar sonolência diurna.",
+          ),
+        ],
+        xp: 55,
+      },
+      {
+        id: "depressao-acolhimento",
+        titulo: "Depressão: acolhimento e mitos no balcão",
+        duracaoMin: 8,
+        nivel: "avancado",
+        resumo: "Como identificar sinais de depressão, combater o estigma e orientar a busca por ajuda profissional.",
+        resumoExecutivo: [
+          "Depressão NÃO é 'falta de Deus', 'frescura' ou 'falta de atividade física' — é uma doença que exige tratamento.",
+          "Sinais comuns: humor deprimido, perda de prazer (anedonia), alteração de apetite/sono, cansaço, baixa autoestima.",
+          "Nunca sugerir parar medicação antidepressiva sem orientação médica — a retirada abrupta pode causar crise.",
+          "CVV (Centro de Valorização da Vida): 188 — ligação gratuita, 24h. Tenha esse número sempre à mão.",
+        ],
+        simulacao: {
+          cliente: "Cliente de 50 anos, compra o mesmo ansiolítico todo mês, mas hoje parece mais abatido: 'Doutor, esse remédio já não está fazendo mais efeito. Acho que não tem mais jeito pra mim.'",
+          falaBoa: "Primeiro, obrigado por confiar em mim pra falar isso. É muito importante. O que você está sentindo pode ser que seu tratamento precise de ajuste — e isso é normal, não significa que não tem jeito. Eu não posso alterar sua receita, mas posso chamar nosso farmacêutico agora para conversar com você. Ele pode avaliar seu caso e, se necessário, orientar uma consulta com seu médico para reavaliar a medicação. E se precisar de alguém para conversar 24 horas, o CVV atende pelo 188 — é gratuito e sigiloso. Você não está sozinho.",
+          falaEvitar: "Você precisa é de uma atividade física e pensamento positivo. Esse remédio é bom, continua tomando.",
+        },
+        checklist: [
+          "Validar o sofrimento — nunca minimizar.",
+          "Explicar que depressão é doença que tem tratamento.",
+          "Ter o número do CVV (188) decorado.",
+          "Encaminhar ao farmacêutico para avaliação e possível ajuste de tratamento.",
+        ],
+        quandoChamarFarmaceutico: [
+          "Qualquer menção a desesperança, suicídio ou 'não ter mais jeito' — URGÊNCIA.",
+          "Dúvida sobre interação de antidepressivos com outros medicamentos.",
+          "Suspeita de efeito colateral grave de medicamento psiquiátrico.",
+        ],
+        errosComuns: [
+          "Dizer 'é só fase', 'você precisa se esforçar mais' ou 'são coisas da idade'.",
+          "Indicar fitoterápicos como substitutos de antidepressivos prescritos.",
+          "Ignorar sinais de ideação suicida.",
+        ],
+        quiz: [
+          q(
+            "Cliente diz que o antidepressivo 'não está fazendo mais efeito'. Qual a conduta?",
+            [
+              "Falar para ele mesmo aumentar a dose.",
+              "Acolher, chamar o farmacêutico e orientar consulta médica para reavaliação.",
+              "Trocar para um fitoterápico.",
+              "Dizer que é normal e continuar.",
+            ],
+            1,
+            "Nunca oriente alteração de dose. O farmacêutico avalia e orienta retorno ao médico.",
+          ),
+          q(
+            "Qual número de emergência para apoio emocional 24h?",
+            [
+              "190 (Polícia).",
+              "192 (SAMU).",
+              "188 (CVV).",
+              "100 (Direitos Humanos).",
+            ],
+            2,
+            "CVV — Centro de Valorização da Vida, telefone 188. Atendimento gratuito 24h para apoio emocional e prevenção ao suicídio.",
+          ),
+          q(
+            "Qual afirmação sobre depressão é INCORRETA?",
+            [
+              "É uma doença que tem tratamento.",
+              "É falta de atividade física.",
+              "Afeta o humor, apetite e sono.",
+              "Pode atingir qualquer pessoa.",
+            ],
+            1,
+            "Depressão é uma doença multifatorial (biológica, psicológica e social) — não é 'falta de algo'.",
+          ),
+        ],
+        xp: 70,
+      },
+    ],
+  },
 ];

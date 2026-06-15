@@ -69,9 +69,9 @@ export default function TrilhasPage() {
   return (
     <div className="relative">
       {/* ════════════════════════════════════════════
-          HERO — Forest Green + Grid Pattern
+          HERO — Forest + Emerald Gradient
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700">
         <Image
           src="/imagens/hero_pills.webp"
           alt="Equipe de farmácia atendendo com cuidado e dedicação"
@@ -151,7 +151,7 @@ export default function TrilhasPage() {
               <Icon name="sparkles" size={12} />
               Sabia que?
             </span>
-            <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-forest-600 dark:text-white">
               Saúde e bem-estar no dia a dia
             </h2>
             <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
@@ -219,7 +219,7 @@ export default function TrilhasPage() {
               <Icon name="book" size={12} />
               Currículo completo
             </span>
-            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-600 dark:text-white">
               Escolha sua trilha
             </h2>
             <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
@@ -249,7 +249,7 @@ export default function TrilhasPage() {
                       className="object-cover transition-all duration-700 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/60 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-600/60 via-transparent to-transparent" />
                     {/* Badge de nível - pill com gradiente */}
                     <div className="absolute top-3 left-3">
                       <span className={`inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-[10px] font-semibold tracking-wider ${
@@ -345,7 +345,7 @@ export default function TrilhasPage() {
       {/* ════════════════════════════════════════════
           CTA FINAL
           ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <span className="badge-orange inline-flex">

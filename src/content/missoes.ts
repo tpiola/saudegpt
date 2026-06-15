@@ -19,8 +19,8 @@ export interface Missao {
 export const missoes: Missao[] = [
   {
     id: "rinite",
-    titulo: "Cliente com rinite",
-    contexto: "Sazonalidade e antialérgicos",
+    titulo: "Cliente com rinite alérgica — a estação das flores chegou",
+    contexto: "É época de primavera e a farmácia está cheia de clientes com espirros e coriza. Você percebe um rapaz jovem, olhos avermelhados, que entra tossindo e se dirige direto ao balcão de antialérgicos. Ele parece impaciente e já chega pedindo 'a coisa mais forte que tiver'.",
     cliente:
       "“Estou com o nariz entupido e espirrando muito faz dias, queria algo forte para resolver de vez.”",
     nivel: "intermediario",
@@ -46,8 +46,8 @@ export const missoes: Missao[] = [
   },
   {
     id: "mae-primeira-viagem",
-    titulo: "Mãe de primeira viagem",
-    contexto: "Universo infantil e acolhimento",
+    titulo: "Mãe de primeira viagem — o choro que não para",
+    contexto: "Uma jovem mãe entra na farmácia com o bebê no colo, que não para de chorar. Ela parece exausta, com olheiras, e caminha hesitante pelo corredor de higiene infantil. Você nota que ela está prestes a desistir e ir embora quando seus olhos encontram os seus.",
     cliente: "“Meu bebê está com a pele assada e eu não sei o que comprar, estou perdida.”",
     nivel: "basico",
     trilhaRelacionada: "perfumaria",
@@ -73,8 +73,8 @@ export const missoes: Missao[] = [
   },
   {
     id: "barba-sensivel",
-    titulo: "Homem com pele sensível para barbear",
-    contexto: "Cuidados masculinos",
+    titulo: "Homem com pele sensível — a barba que arde",
+    contexto: "Um homem de aproximadamente 35 anos chega ao balcão, claramente incomodado. Ele passa a mão no queixo repetidamente, como se tentasse aliviar uma coceira. Quando você pergunta se pode ajudar, ele suspira antes de falar.",
     cliente: "“Toda vez que faço a barba fico com a pele ardendo e vermelha.”",
     nivel: "basico",
     trilhaRelacionada: "perfumaria",

@@ -4,12 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Icon, type IconName } from "@/components/icons";
 
+/* ─── 5 itens principais na bottom nav (máximo para mobile confortável) ─── */
 const NAV_ITEMS = [
-  { href: "/dashboard",  icon: "home" as IconName, label: "Início" },
-  { href: "/trilhas",    icon: "book" as IconName, label: "Trilhas" },
-  { href: "/missoes",    icon: "target" as IconName, label: "Missões" },
-  { href: "/ranking",   icon: "award" as IconName, label: "Ranking" },
+  { href: "/dashboard", icon: "home" as IconName, label: "Início" },
+  { href: "/trilhas",   icon: "book" as IconName, label: "Trilhas" },
+  { href: "/missoes",   icon: "target" as IconName, label: "Missões" },
   { href: "/jogos",     icon: "zap" as IconName, label: "Jogos" },
+  { href: "/ranking",   icon: "award" as IconName, label: "Ranking" },
 ];
 
 /** Bottom navigation bar for mobile screens (<768px) */
@@ -35,9 +36,9 @@ export function MobileBottomNav() {
           aria-current={isActive(item.href) ? "page" : undefined}
         >
           <span className="flex items-center justify-center" aria-hidden="true">
-            <Icon name={item.icon} size={18} />
+            <Icon name={item.icon} size={20} />
           </span>
-          <span>{item.label}</span>
+          <span className="text-[10px] font-medium">{item.label}</span>
           {item.href === "/missoes" && (
             <span className="gamification-dot" aria-hidden="true" />
           )}

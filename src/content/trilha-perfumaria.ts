@@ -38,6 +38,7 @@ export const trilhaPerfumaria: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.barba,
+          imagemProduto: "/imagens/produtos/nivea-hidratante.webp",
           videoUrl: videosEducativos.barba,
           resumo:
             "Como orientar o cliente que faz a barba, evitando irritação, foliculite e pelos encravados.",
@@ -155,6 +156,7 @@ export const trilhaPerfumaria: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.higieneOral,
+          imagemProduto: "/imagens/produtos/colgate-creme-dental.webp",
           videoUrl: videosEducativos.higieneOral,
           resumo:
             "Escovas, cremes dentais, fio, enxaguantes e quando indicar cada item conforme a necessidade.",
@@ -263,6 +265,7 @@ export const trilhaPerfumaria: Trilha = {
           duracaoMin: 5,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.sabonetes,
+          imagemProduto: "/imagens/produtos/nivea-creme.webp",
           videoUrl: videosEducativos.higieneMaos,
           resumo: "Barra, líquido, glicerinado, antibacteriano e esfoliante: para quem é cada um.",
           resumoExecutivo: [
@@ -356,6 +359,7 @@ export const trilhaPerfumaria: Trilha = {
           duracaoMin: 4,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.acessoriosBanho,
+          imagemProduto: "/imagens/produtos/johnsons-baby-shampoo.webp",
           videoUrl: videosEducativos.higieneMaos,
           resumo: "Esponjas, buchas, escovas corporais e higienização correta dos acessórios.",
           resumoExecutivo: [
@@ -447,6 +451,7 @@ export const trilhaPerfumaria: Trilha = {
           duracaoMin: 5,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.absorvente,
+          imagemProduto: "/imagens/produtos/natura-ekos.webp",
           videoUrl: videosEducativos.higieneMaos,
           resumo:
             "Cuidados gerais, absorventes, lenços, antissépticos de uso doméstico e bem-estar.",
@@ -1431,6 +1436,151 @@ export const trilhaPerfumaria: Trilha = {
               ],
               1,
               "O peso da criança define o tamanho da fralda, e a absorção deve ser adequada ao período de uso (dia/noite).",
+            ),
+          ],
+          xp: 40,
+        },
+      ],
+    },
+    // ════════════════════════════════════════════════
+    // NOVOS MÓDULOS — Storytelling, Vendas, Objeções
+    // ════════════════════════════════════════════════
+    {
+      id: "vendas-perfumaria",
+      titulo: "Técnicas de Vendas e Atendimento em Perfumaria",
+      descricao: "Storytelling, objeções e fechamento — venda consultiva sem pressão.",
+      aulas: [
+        {
+          id: "storytelling-perfumes",
+          titulo: "Storytelling: a arte de vender experiências",
+          duracaoMin: 7,
+          nivel: "intermediario",
+          videoUrl: videosEducativos.perfumes,
+          resumo: "Como usar histórias e sensações para conectar o cliente à fragrância certa — sem mentir ou inventar benefícios.",
+          resumoExecutivo: [
+            "Storytelling não é fantasia — é traduzir a experiência olfativa em palavras que o cliente reconhece.",
+            "Pergunte sobre o momento de uso (trabalho, lazer, noite) antes de sugerir qualquer nota.",
+            "Famílias olfativas: floral, amadeirado, cítrico, oriental — cada uma evoca uma sensação diferente.",
+            "Ajude o cliente a construir a própria narrativa: 'Essa fragrância me lembra…'.",
+          ],
+          comparativo: {
+            titulo: "Família Olfativa x Sensação",
+            itens: [
+              { nome: "Cítrico", quando: "Frescor, energia, dias quentes e trabalho." },
+              { nome: "Floral", quando: "Romantismo, leveza, encontros e ocasiões especiais." },
+              { nome: "Amadeirado", quando: "Sofisticação, noite, inverno e presença marcante." },
+              { nome: "Oriental", quando: "Mistério, calor, sensualidade e festas." },
+            ],
+          },
+          simulacao: {
+            cliente: "Cliente de 28 anos, estilo casual, quer um perfume novo 'que não seja comum'. Diz que já usou todos os 'blockbusters' da moda.",
+            falaBoa: "Entendo — você quer algo que tenha personalidade, não é? Me conta: você vai usar mais durante o dia ou à noite? Gosta de fragrâncias mais frescas ou marcantes? Deixa eu te mostrar uma família olfativa que talvez você ainda não conheça: os amadeirados modernos. Eles têm profundidade sem pesar. Esse aqui, por exemplo, abre com bergamota e evolui para cedro e almíscar — é marcante sem gritar. Quer sentir?",
+            falaEvitar: "Esse é o mais caro, então é o melhor. Compra que você vai gostar.",
+          },
+          checklist: [
+            "Perguntar sobre ocasião de uso e preferência olfativa.",
+            "Explicar a evolução da fragrância (saída, corpo, fundo).",
+            "Sugerir testar na pele — cada química reage diferente.",
+          ],
+          quandoChamarFarmaceutico: [
+            "Cliente com alergia ou dermatite de contato a fragrâncias.",
+            "Suspeita de reação alérgica a perfume.",
+          ],
+          errosComuns: [
+            "Empurrar a fragrância mais cara sem entender o gosto do cliente.",
+            "Usar termos técnicos sem traduzir a sensação.",
+          ],
+          quiz: [
+            q(
+              "Qual a melhor abordagem ao vender um perfume?",
+              [
+                'Falar que "é o mais vendido" e encerrar.',
+                "Perguntar sobre ocasião, estilo e preferência olfativa.",
+                "Oferecer sempre o mais caro.",
+                "Ignorar as perguntas do cliente.",
+              ],
+              1,
+              "Venda consultiva: entender o momento de uso e a personalidade do cliente antes de sugerir.",
+            ),
+          ],
+          xp: 50,
+        },
+        {
+          id: "objecoes-balcao",
+          titulo: "Lidando com objeções no balcão de perfumaria",
+          duracaoMin: 6,
+          nivel: "avancado",
+          videoUrl: videosEducativos.perfumes,
+          resumo: "Técnicas para responder objeções comuns sem pressionar o cliente: preço, durabilidade, alergia.",
+          resumoExecutivo: [
+            '"É caro" → mostre o custo-benefício em meses de uso, não o valor à vista.',
+            '"Não fixa na minha pele" → oriente aplicar em pontos de pulsação e hidratar antes.',
+            '"Já usei e não gostei" → pergunte o que especificamente não agradou e sugira uma família diferente.',
+            "Nunca menospreze a objeção do cliente — valide antes de redirecionar.",
+          ],
+          simulacao: {
+            cliente: 'Cliente experimenta um perfume de R$ 320, gosta, mas recua: "Nossa, mas é muito caro para um perfume."',
+            falaBoa: "Entendo, é um investimento mesmo. Mas pensa comigo: 320 reais por 100 ml dá cerca de 3 reais por semana se você usar diariamente por 6 meses. E a fixação dele é de 8 a 10 horas — você não precisa reaplicar durante o dia. Quer sentir mais uma vez antes de decidir?",
+            falaEvitar: "Ah, mas esse é o melhor, vale cada centavo. Pode levar.",
+          },
+          checklist: [
+            "Validar a objeção antes de responder.",
+            "Mostrar valor, não preço.",
+            "Oferecer alternativa na mesma família com valor menor se necessário.",
+          ],
+          quandoChamarFarmaceutico: [],
+          errosComuns: [
+            "Ignorar a objeção e insistir na venda.",
+            "Falar mal de outras marcas para justificar o preço.",
+          ],
+          quiz: [
+            q(
+              'Cliente diz "é caro". Qual a melhor resposta?',
+              [
+                '"É o preço, infelizmente."',
+                '"Entendo, mas pensando no custo por uso, são 3 reais por semana — você sente a diferença."',
+                '"Tem mais barato ali na outra prateleira."',
+                '"É caro porque é bom."',
+              ],
+              1,
+              "Converter o preço em custo-benefício ajuda o cliente a enxergar valor sem se sentir pressionado.",
+            ),
+          ],
+          xp: 50,
+        },
+        {
+          id: "cross-sell-perfumaria",
+          titulo: "Cross-sell ético em perfumaria e higiene",
+          duracaoMin: 5,
+          nivel: "intermediario",
+          resumo: "Como sugerir produtos complementares sem ser invasivo — necessidade real, não empurrão.",
+          resumoExecutivo: [
+            "Cross-sell ético: só sugira o que agrega valor real ao cliente.",
+            "Perfume + hidratante corporal da mesma linha potencializa a fixação.",
+            "Kit presente: perfume + necessaire + loção — ideal para ocasiões.",
+            "Abordagem: 'Muitos clientes que levam esse perfume também gostam dessa loção — quer sentir?'",
+          ],
+          checklist: [
+            "Sugerir apenas 1-2 complementos por venda.",
+            "Sempre pedir permissão antes de mostrar ('Quer ver?').",
+            "Não insistir se o cliente recusar.",
+          ],
+          quandoChamarFarmaceutico: [],
+          errosComuns: [
+            "Sugerir muitos itens e sobrecarregar o cliente.",
+            "Ignorar o orçamento do cliente.",
+          ],
+          quiz: [
+            q(
+              "Qual a melhor abordagem de cross-sell?",
+              [
+                "Oferecer tudo que a loja tem.",
+                "Sugerir 1-2 complementos que agregam valor e pedir permissão.",
+                "Não oferecer nada além do pedido.",
+                "Empurrar o mais caro primeiro.",
+              ],
+              1,
+              "Cross-sell ético respeita a necessidade e o orçamento do cliente.",
             ),
           ],
           xp: 40,

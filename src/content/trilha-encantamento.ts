@@ -29,6 +29,7 @@ export const trilhaVendas: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.atendimento,
+          imagemProduto: "/imagens/produtos/protetor-solar-fps30.webp",
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "Antes de qualquer oferta, o cliente precisa se sentir acolhido. Como criar um ambiente de confiança desde o primeiro contato.",
@@ -221,6 +222,7 @@ export const trilhaVendas: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.atendimento,
+          imagemProduto: "/imagens/produtos/eurofarma-cimegripe.webp",
           videoUrl: "https://www.youtube.com/watch?v=3PmVJQUCm4E",
           resumo:
             "A arte de sugerir com cuidado: vocabulário, tom, timing e a diferença entre sugestão consultiva e abordagem invasiva.",

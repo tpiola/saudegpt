@@ -43,6 +43,8 @@ export interface Aula {
   videoUrl?: string;
   /** Imagem principal da aula (produto ou categoria). */
   imagemHeroUrl?: string;
+  /** Caminho para imagem de produto real/marca (referência visual educativa). */
+  imagemProduto?: string;
   /** Galeria de produtos para reconhecimento no balcão. */
   produtos?: ProdutoMidia[];
   /** Logos de marcas comuns na categoria (referência visual). */

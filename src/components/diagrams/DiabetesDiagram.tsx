@@ -13,7 +13,7 @@ export default function DiabetesDiagram() {
         {/* Definições */}
         <defs>
           <linearGradient id="glucoseDot" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--orange-400, #f49b44)" />
+            <stop offset="0%" stopColor="var(--orange-400, #f59e0b)" />
             <stop offset="100%" stopColor="var(--orange-500, #d66e0f)" />
           </linearGradient>
           <linearGradient id="cellGrad" x1="0" y1="0" x2="1" y2="1">
@@ -21,7 +21,7 @@ export default function DiabetesDiagram() {
             <stop offset="100%" stopColor="var(--forest-400, #4ca15d)" stopOpacity="0.08" />
           </linearGradient>
           <linearGradient id="cellGradClosed" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--orange-400, #f49b44)" stopOpacity="0.08" />
+            <stop offset="0%" stopColor="var(--orange-400, #f59e0b)" stopOpacity="0.08" />
             <stop offset="100%" stopColor="var(--orange-500, #d66e0f)" stopOpacity="0.05" />
           </linearGradient>
           <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto">
@@ -132,9 +132,9 @@ export default function DiabetesDiagram() {
           </text>
 
           {/* Célula */}
-          <ellipse cx="80" cy="95" rx="70" ry="55" fill="url(#cellGradClosed)" stroke="var(--orange-400, #f49b44)" strokeWidth="2" />
+          <ellipse cx="80" cy="95" rx="70" ry="55" fill="url(#cellGradClosed)" stroke="var(--orange-400, #f59e0b)" strokeWidth="2" />
           {/* Núcleo */}
-          <ellipse cx="80" cy="95" rx="22" ry="18" fill="var(--orange-400, #f49b44)" opacity="0.15" />
+          <ellipse cx="80" cy="95" rx="22" ry="18" fill="var(--orange-400, #f59e0b)" opacity="0.15" />
           <text x="80" y="99" fontSize="7" fill="var(--muted, #4a4a4a)" textAnchor="middle" fontFamily="var(--font-body, Inter, sans-serif)">
             Núcleo
           </text>

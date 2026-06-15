@@ -86,7 +86,7 @@ function registroParaPropriedades(reg: CadastroRegistro) {
     Email: { email: reg.email },
     Apelido: { rich_text: richText(reg.apelidoRanking ?? "") },
     Status: { select: { name: reg.status } },
-    "Criado em": { date: { start: reg.criadoEm.slice(0, 10) } },
+    "Criado em": { date: { start: (reg.criadoEm || reg.dataCadastro || new Date().toISOString()).slice(0, 10) } },
     "Aprovado em": reg.aprovadoEm
       ? { date: { start: reg.aprovadoEm.slice(0, 10) } }
       : { date: null },

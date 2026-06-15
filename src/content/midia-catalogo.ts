@@ -1,5 +1,120 @@
 import type { MarcaMidia, ProdutoMidia } from "./types";
 
+// ================================================================
+// PRODUTOS REAIS — imagens educativas para reconhecimento no balcão
+// ================================================================
+// Caminhos relativos a /public/imagens/produtos/
+const produtosReais: Record<string, string> = {
+  // Dermocosméticos
+  "la-roche-posay-effaclar": "/imagens/produtos/la-roche-posay-effaclar.webp",
+  "la-roche-posay-anthelios": "/imagens/produtos/la-roche-posay-anthelios.webp",
+  "vichy-mineral-89": "/imagens/produtos/vichy-mineral-89.webp",
+  "vichy-liftactiv": "/imagens/produtos/vichy-liftactiv.webp",
+  "vichy-dercos": "/imagens/produtos/vichy-dercos.webp",
+
+  // Medicamentos — EMS
+  "ems-paracetamol": "/imagens/produtos/ems-paracetamol.webp",
+  "ems-ibuprofeno": "/imagens/produtos/ems-ibuprofeno.webp",
+  "ems-amoxicilina": "/imagens/produtos/ems-amoxicilina.webp",
+  "ems-omeprazol": "/imagens/produtos/ems-omeprazol.webp",
+
+  // Medicamentos — Medley
+  "medley-dipirona": "/imagens/produtos/medley-dipirona.webp",
+  "medley-losartana": "/imagens/produtos/medley-losartana.webp",
+  "medley-atorvastatina": "/imagens/produtos/medley-atorvastatina.webp",
+
+  // Medicamentos — Neo Química
+  "neo-quimica-dorflex": "/imagens/produtos/neo-quimica-dorflex.webp",
+  "neo-quimica-novalgina": "/imagens/produtos/neo-quimica-novalgina.webp",
+  "neo-quimica-torsilax": "/imagens/produtos/neo-quimica-torsilax.webp",
+
+  // Medicamentos — Eurofarma
+  "eurofarma-cimegripe": "/imagens/produtos/eurofarma-cimegripe.webp",
+  "eurofarma-buscopan": "/imagens/produtos/eurofarma-buscopan.webp",
+
+  // Medicamentos — Aché
+  "ache-resprin": "/imagens/produtos/ache-resprin.webp",
+  "ache-marevan": "/imagens/produtos/ache-marevan.webp",
+
+  // Genéricos
+  "generico-paracetamol": "/imagens/produtos/generico-paracetamol.webp",
+  "generico-ibuprofeno": "/imagens/produtos/generico-ibuprofeno.webp",
+  "generico-amoxicilina": "/imagens/produtos/generico-amoxicilina.webp",
+
+  // Higiene e Perfumaria
+  "nivea-creme": "/imagens/produtos/nivea-creme.webp",
+  "nivea-protetor-solar": "/imagens/produtos/nivea-protetor-solar.webp",
+  "nivea-hidratante": "/imagens/produtos/nivea-hidratante.webp",
+  "colgate-creme-dental": "/imagens/produtos/colgate-creme-dental.webp",
+  "oral-b-escova": "/imagens/produtos/oral-b-escova.webp",
+
+  // Infantil
+  "johnsons-baby-shampoo": "/imagens/produtos/johnsons-baby-shampoo.webp",
+  "johnsons-baby-powder": "/imagens/produtos/johnsons-baby-powder.webp",
+  "pampers-fralda": "/imagens/produtos/pampers-fralda.webp",
+  "huggies-fralda": "/imagens/produtos/huggies-fralda.webp",
+
+  // Suplementos
+  "nestle-suplemento": "/imagens/produtos/nestle-suplemento.webp",
+  "danone-activia": "/imagens/produtos/danone-activia.webp",
+
+  // Protetores solares
+  "protetor-solar-fps30": "/imagens/produtos/protetor-solar-fps30.webp",
+  "protetor-solar-fps60": "/imagens/produtos/protetor-solar-fps60.webp",
+
+  // Perfumaria/Cosméticos
+  "avon-fragrancia": "/imagens/produtos/avon-fragrancia.webp",
+  "natura-ekos": "/imagens/produtos/natura-ekos.webp",
+  "natura-chronos": "/imagens/produtos/natura-chronos.webp",
+};
+
+/** Retorna o caminho da imagem de produto real para reconhecimento visual. */
+export function imagemProduto(chave: string): string | undefined {
+  return produtosReais[chave];
+}
+
+/** Produto real com metadados completos */
+export function produtoReal(
+  chave: string,
+  nome: string,
+  categoria?: string,
+): ProdutoMidia {
+  return {
+    nome,
+    imagemUrl: produtosReais[chave] ?? "/imagens/produto_mip.webp",
+    alt: nome,
+    categoria,
+  };
+}
+
+// ================================================================
+// Produtos com imagem de produto real
+// ================================================================
+export const produtosReaisLista: ProdutoMidia[] = [
+  produtoReal("la-roche-posay-effaclar", "Effaclar - La Roche-Posay", "Dermocosmético"),
+  produtoReal("la-roche-posay-anthelios", "Anthelios - La Roche-Posay", "Fotoproteção"),
+  produtoReal("vichy-mineral-89", "Mineral 89 - Vichy", "Dermocosmético"),
+  produtoReal("vichy-liftactiv", "LiftActiv - Vichy", "Dermocosmético"),
+  produtoReal("ems-paracetamol", "Paracetamol 500mg - EMS", "MIP"),
+  produtoReal("ems-ibuprofeno", "Ibuprofeno 600mg - EMS", "MIP"),
+  produtoReal("ems-amoxicilina", "Amoxicilina 500mg - EMS", "Antibiótico"),
+  produtoReal("medley-dipirona", "Dipirona 500mg/mL - Medley", "MIP"),
+  produtoReal("medley-losartana", "Losartana 50mg - Medley", "Prescrição"),
+  produtoReal("neo-quimica-dorflex", "Dorflex - Neo Química", "MIP"),
+  produtoReal("neo-quimica-novalgina", "Novalgina - Neo Química", "MIP"),
+  produtoReal("eurofarma-cimegripe", "Cimegripe - Eurofarma", "MIP"),
+  produtoReal("eurofarma-buscopan", "Buscopan - Eurofarma", "MIP"),
+  produtoReal("ache-resprin", "Resprin - Aché", "MIP"),
+  produtoReal("nivea-creme", "Creme Azul - Nivea", "Perfumaria"),
+  produtoReal("nivea-protetor-solar", "Protetor Solar - Nivea", "Fotoproteção"),
+  produtoReal("johnsons-baby-shampoo", "Shampoo - Johnson's Baby", "Infantil"),
+  produtoReal("pampers-fralda", "Fralda - Pampers", "Infantil"),
+  produtoReal("colgate-creme-dental", "Creme Dental - Colgate", "Higiene Oral"),
+  produtoReal("nestle-suplemento", "Suplemento - Nestlé", "Nutrição"),
+  produtoReal("avon-fragrancia", "Fragrância - Avon", "Perfumaria"),
+  produtoReal("natura-ekos", "Ekos - Natura", "Perfumaria"),
+];
+
 /** Imagens públicas de alta qualidade (Unsplash — licença livre para uso). */
 const _localImg: Record<string, string> = {
   "photo-1556228578-8c89e0a6d41f": "/imagens/trilha_perfumaria.webp",

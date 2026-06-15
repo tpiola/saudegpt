@@ -29,6 +29,7 @@ export const trilhaServicosCuidado: Trilha = {
           duracaoMin: 6,
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.atendimento,
+          imagemProduto: "/imagens/produtos/ems-omeprazol.webp",
           resumo:
             "Prevenção, Parâmetros, Problemas e Promoção: quatro perguntas que transformam um atendimento comum em uma orientação profissional.",
           resumoExecutivo: [

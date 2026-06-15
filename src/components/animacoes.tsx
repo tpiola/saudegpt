@@ -88,9 +88,13 @@ const animationVariants = { fadeUp, fadeIn, slideLeft, slideRight };
 export function SectionAnimation({ children, className, variant }: {
   children: React.ReactNode; className?: string; variant: keyof typeof animationVariants;
 }) {
-  return <motion.div className={className} variants={animationVariants[variant]} initial="initial" animate="animate" exit="exit">{children}</motion.div>;
+  const reduced = usePrefersReducedMotion();
+  const varKey = reduced ? "fadeIn" : variant;
+  return <motion.div className={className} variants={animationVariants[varKey]} initial="initial" animate="animate" exit="exit">{children}</motion.div>;
 }
 
 export function CardHover({ children, className }: { children: React.ReactNode; className?: string }) {
+  const reduced = usePrefersReducedMotion();
+  if (reduced) return <div className={`${className || ""} transition-colors`}>{children}</div>;
   return <motion.div className={className} whileHover={{ scale: 1.03, boxShadow: "0 20px 30px rgba(0,0,0,0.15)" }} transition={{ type: "spring", stiffness: 300 }}>{children}</motion.div>;
 }

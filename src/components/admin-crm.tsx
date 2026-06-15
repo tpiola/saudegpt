@@ -516,7 +516,7 @@ export function AdminCrm() {
         return base.sort((a, b) => (b.notaMedia ?? -1) - (a.notaMedia ?? -1));
       default:
         return base.sort(
-          (a, b) => new Date(b.cad.criadoEm).getTime() - new Date(a.cad.criadoEm).getTime(),
+          (a, b) => new Date(b.cad.criadoEm || b.cad.dataCadastro || 0).getTime() - new Date(a.cad.criadoEm || a.cad.dataCadastro || 0).getTime(),
         );
     }
   }, [metricas, busca, ordenar]);

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navPrincipal, site } from "@/lib/site";
 import { Icon } from "./icons";
-import { LogoAcademico } from "./logo-academico";
+import { LogoSaudeGPT } from "./logo-saudegpt";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLanding = [
@@ -34,13 +34,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-500/88 text-white backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setAberto(false)}>
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 ring-1 ring-white/15">
-            <LogoAcademico size={30} />
-          </span>
-          <span className="min-w-0 leading-tight">
-            <span className="block truncate text-sm font-extrabold tracking-tight sm:text-base">{site.nomeCurto}</span>
-            <span className="hidden text-[11px] font-medium text-white/55 sm:block">Farmácia, atendimento e segurança</span>
-          </span>
+          <LogoSaudeGPT variant="light" size="sm" showIcon={true} />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">

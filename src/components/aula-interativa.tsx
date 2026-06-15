@@ -112,8 +112,8 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       {quiz.length > 0 && (
         <Card id="quiz" className="scroll-mt-24">
           <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-900/40">
-              <Icon name="target" size={18} />
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-900/40" aria-hidden="true">
+              <Icon name="target" size={18} aria-hidden="true" />
             </span>
             <h2 className="text-lg font-bold">Quiz rápido</h2>
           </div>
@@ -144,7 +144,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                         type="button"
                         disabled={enviado}
                         onClick={() => setRespostas((r) => ({ ...r, [i]: j }))}
-                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 text-left text-sm transition-all ${estilo}`}
+                        className={`flex items-center gap-3 rounded-xl border px-4 py-3 min-h-[44px] text-left text-sm transition-all ${estilo}`}
                       >
                         <span
                           className={`flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[11px] font-bold ${

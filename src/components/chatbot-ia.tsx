@@ -4,6 +4,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { speak } from "./scanner-produto";
 import { Icon } from "@/components/icons";
 
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return reduced;
+}
+
 interface Mensagem {
   id: string;
   role: "user" | "assistant";
@@ -62,6 +74,7 @@ const SUGESTOES: { icon?: string; label: string }[] = [
 ];
 
 export function ChatBotIA() {
+  const reduced = usePrefersReducedMotion();
   const [aberto, setAberto] = useState(false);
   const [mensagens, setMensagens] = useState<Mensagem[]>([]);
   const [input, setInput] = useState("");
@@ -137,11 +150,12 @@ export function ChatBotIA() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          messages: [...mensagens.slice(-10), userMsg].map((m) => ({
+          mensagem: texto,
+          historico: mensagens.slice(-10).map((m) => ({
             role: m.role,
             content: m.content,
           })),
-          matricula,
+          aluno: matricula || "anonimo",
         }),
       });
 
@@ -149,7 +163,7 @@ export function ChatBotIA() {
 
       const data = await response.json();
       const resposta =
-        data.choices?.[0]?.message?.content ||
+        data.resposta ||
         "Desculpe, não consegui processar sua pergunta. Tente reformular.";
 
       const assistente: Mensagem = { id: (Date.now() + 1).toString(), role: "assistant", content: resposta };
@@ -280,6 +294,7 @@ export function ChatBotIA() {
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setAberto(false)}
                     className="rounded-full bg-white/[0.04] p-2 text-white/40 hover:text-white hover:bg-white/10 transition-all border border-white/[0.04]"
+                    aria-label="Fechar chat"
                   >
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
                       <line x1="18" y1="6" x2="6" y2="18" />
@@ -496,23 +511,6 @@ export function ChatBotIA() {
                   </svg>
                 </motion.button>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* ─── INDICADOR DE MENSAGENS ─── */}
-      <AnimatePresence>
-        {!aberto && mensagens.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 10 }}
-            className="mb-2 mr-2 sm:mr-0 sm:mb-1"
-          >
-            <div className="relative rounded-xl bg-gradient-to-br from-emerald-500/15 to-emerald-600/8 border border-emerald-400/15 backdrop-blur-md px-3 py-2 text-[11px] text-white/70 shadow-lg">
-              <span className="flex items-center gap-1"><Icon name="message-circle" size={12} /> {mensagens.length} mensagens</span>
-              <div className="absolute -bottom-1 right-5 h-2 w-2 rotate-45 bg-emerald-500/15 border-r border-b border-emerald-400/15" />
             </div>
           </motion.div>
         )}

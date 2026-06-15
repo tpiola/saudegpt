@@ -159,7 +159,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
       {/* ════════════════════════════════════════════
           HERO MINIMALISTA — Imagem + Badge + Título
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700">
         <Image
           src={heroImg}
           alt={`Imagem de fundo da trilha ${trilha.titulo}`}
@@ -264,7 +264,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
           <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
             <div className="text-center fade-in-up">
               <span className="badge-green inline-flex">💡 Sabia que?</span>
-              <h2 className="mt-3 text-lg font-bold text-forest-700 dark:text-white">Saúde e cuidado no seu dia a dia</h2>
+              <h2 className="mt-3 text-lg font-bold text-forest-600 dark:text-white">Saúde e cuidado no seu dia a dia</h2>
             </div>
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -286,7 +286,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
       {/* ════════════════════════════════════════════
           CTA — Acessar conteúdo
           ════════════════════════════════════════════ */}
-      <section className="relative py-16 sm:py-20 bg-forest-500 overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-white">

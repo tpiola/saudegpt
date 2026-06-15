@@ -88,31 +88,36 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
     return pathname === href || pathname.startsWith(`${href}/`);
   }
 
+  /* Fechar menu ao navegar (mobile) */
+  function navegar() {
+    setMenuAberto(false);
+  }
+
   const titulo = tituloPagina(pathname);
 
   return (
     <div className="flex min-h-screen flex-col md:flex-row">
-      {/* ── TERMO DE CONSENTIMENTO (LGPD + Disclaimer) ── */}
+      {/* ── TERMO DE CONSENTIMENTO ── */}
       <TermoConsentimento />
+
       {/* ════════════════════════════════════════════
-         SIDEBAR — RD SAÚDE STYLE
+         SIDEBAR
          ════════════════════════════════════════════ */}
       <aside
-      className={`fixed inset-y-0 left-0 z-50 flex flex-col border-r border-border bg-surface transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 ${
-        menuAberto ? "translate-x-0" : "-translate-x-full"
-      }`}
-      style={{ width: 288 }}
+        className={`fixed inset-y-0 left-0 z-50 flex w-[280px] flex-col border-r border-border bg-surface shadow-xl transition-transform duration-300 ease-in-out md:static md:z-auto md:translate-x-0 md:shadow-none ${
+          menuAberto ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
-        {/* Barra decorativa — forest green + orange */}
-        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-forest-500 via-orange-400 to-forest-500 opacity-80" />
+        {/* Barra decorativa */}
+        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-forest-600 via-orange-400 to-forest-600 opacity-80" />
 
-        {/* Header: logo */}
-        <div className="relative flex h-16 items-center gap-3 border-b border-border px-4">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-forest-500/[0.04] to-transparent pointer-events-none" />
+        {/* Header sidebar: logo */}
+        <div className="relative flex h-14 items-center gap-3 border-b border-border px-4 sm:h-16">
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-forest-600/[0.04] to-transparent pointer-events-none" />
           <Link
             href="/dashboard"
             className="flex min-w-0 flex-1 items-center gap-2.5"
-            onClick={() => setMenuAberto(false)}
+            onClick={navegar}
           >
             <span className="flex h-9 w-9 flex-none items-center justify-center rounded-full bg-orange-500 text-white shadow-md">
               <Icon name="graduation" size={20} />
@@ -124,7 +129,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </Link>
           <button
             type="button"
-            className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-xl text-muted hover:bg-surface-2/50 transition-colors"
             onClick={() => setMenuAberto(false)}
             aria-label="Fechar menu"
           >
@@ -132,8 +137,8 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
 
-        {/* Navegação */}
-        <nav className="flex-1 overflow-y-auto px-3 py-5">
+        {/* Navegação — scrollável */}
+        <nav className="flex-1 overflow-y-auto overscroll-contain px-3 py-5">
           {secoesNavLms.map((secao, idx) => (
             <div key={secao.titulo} className={idx > 0 ? "mt-5 pt-5 relative" : ""}>
               {idx > 0 && (
@@ -153,10 +158,10 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      onClick={() => setMenuAberto(false)}
-                      className={`group relative flex items-center gap-2.5 rounded-xl px-3 py-3 text-sm font-medium transition-all duration-200 ${
+                      onClick={navegar}
+                      className={`group relative flex min-h-[44px] items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
-                          ? "bg-gradient-to-r from-forest-500/[0.08] to-transparent text-foreground shadow-sm"
+                          ? "bg-gradient-to-r from-forest-600/[0.08] to-transparent text-foreground shadow-sm"
                           : "text-muted hover:bg-surface-2/50 hover:text-foreground"
                       }`}
                     >
@@ -169,12 +174,12 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                         size={18}
                         className={`shrink-0 transition-colors duration-200 ${
                           ativo(item.href)
-                            ? "text-forest-600 dark:text-forest-400"
+                            ? "text-forest-500 dark:text-forest-400"
                             : "group-hover:text-foreground"
                         }`}
                       />
 
-                      {item.label}
+                      <span className="truncate">{item.label}</span>
 
                       {item.href === "/missoes" && (
                         <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm">
@@ -190,9 +195,9 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           ))}
         </nav>
 
-        {/* Footer */}
+        {/* Footer sidebar */}
         <div className="relative border-t border-border px-4 pb-4 pt-3">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-forest-500/[0.03] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-forest-600/[0.03] to-transparent pointer-events-none" />
 
           {perfil ? (
             <div className="relative mb-3 rounded-xl bg-surface-2/80 px-3 py-2.5 backdrop-blur-sm border border-border">
@@ -212,27 +217,27 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
             </Botao>
           )}
 
-          <div className="relative flex flex-wrap gap-x-3 gap-y-1 sm:gap-y-2 text-[10px] sm:text-xs text-subtle dark:text-muted">
+          <div className="relative flex flex-wrap gap-x-3 gap-y-1.5 text-[10px] sm:text-xs text-subtle dark:text-muted">
             <div className="mb-1.5 flex w-full items-center gap-2">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent via-border/[0.6] to-transparent" />
             </div>
             {linksLegais.map((l) => (
-              <Link key={l.href} href={l.href} className="hover:text-orange-500 transition-colors min-h-[44px] inline-flex items-center">
+              <Link key={l.href} href={l.href} className="hover:text-orange-500 transition-colors flex items-center py-1" onClick={navegar}>
                 {l.label}
               </Link>
             ))}
-            <Link href="/sobre" className="hover:text-orange-500 transition-colors min-h-[44px] inline-flex items-center">
+            <Link href="/sobre" className="hover:text-orange-500 transition-colors flex items-center py-1" onClick={navegar}>
               Sobre o curso
             </Link>
           </div>
         </div>
       </aside>
 
-      {/* Overlay mobile */}
+      {/* Overlay mobile com transição suave */}
       {menuAberto && (
         <button
           type="button"
-          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden"
           aria-label="Fechar menu"
           onClick={() => setMenuAberto(false)}
         />
@@ -242,18 +247,19 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
          CONTEÚDO PRINCIPAL
          ════════════════════════════════════════════ */}
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-30 flex h-12 sm:h-14 items-center justify-between gap-2 sm:gap-3 border-b border-border bg-surface/95 px-3 sm:px-6 backdrop-blur-md">
+        {/* Header sticky */}
+        <header className="sticky top-0 z-30 flex h-12 items-center justify-between gap-2 border-b border-border bg-surface/95 px-3 backdrop-blur-md sm:h-14 sm:gap-3 sm:px-6">
           <div className="flex min-w-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
-              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-border-strong text-muted md:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border-strong text-muted transition-colors hover:bg-surface-2/50 active:scale-95 md:hidden"
               onClick={() => setMenuAberto(true)}
               aria-label="Abrir menu"
             >
               <Icon name="menu" size={18} />
             </button>
             <span
-              className="truncate text-sm font-bold sm:text-base sm:font-bold md:text-lg"
+              className="truncate text-sm font-bold sm:text-base md:text-lg"
               aria-current="page"
             >
               {titulo}
@@ -269,9 +275,11 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </div>
         </header>
 
-        <div className="flex-1 bg-background">{children}</div>
+        {/* Conteúdo */}
+        <div className="flex-1 bg-background overflow-x-clip">{children}</div>
 
-        <footer className="has-bottom-nav border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 pb-[env(safe-area-inset-bottom,16px)]">
+        {/* Footer */}
+        <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 has-bottom-nav pb-[calc(4rem+env(safe-area-inset-bottom,0px))] sm:pb-4">
           <p className="font-semibold">{site.assinatura}</p>
           <p className="mt-1">
             Plataforma criada por{" "}
@@ -279,7 +287,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
               href="https://www.reidasvendas.com.br"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-600 hover:text-green-500 dark:text-green-400 underline underline-offset-2"
+              className="text-emerald-600 hover:text-emerald-500 dark:text-emerald-400 underline underline-offset-2"
             >
               Rei das Vendas
             </a>
@@ -289,9 +297,9 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </p>
           <a
             href="mailto:contato@thiagopiola.com.br"
-            className="mt-1 inline-flex min-h-[44px] items-center gap-1 px-3 text-[11px] font-semibold text-green-600 hover:text-green-500 dark:text-green-400"
+            className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-3 text-[11px] font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-400 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
           >
-            <Icon name="message" size={11} /> Contato
+            <Icon name="message" size={12} /> Contato
           </a>
         </footer>
       </div>

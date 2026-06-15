@@ -7,6 +7,8 @@ import { lerRanking, registrarNoRanking, type EntradaRanking } from "@/lib/ranki
 import { Botao, Card, Etiqueta, BarraProgresso } from "./ui";
 import { Icon } from "./icons";
 
+type PeriodoRanking = "total" | "semanal" | "mensal";
+
 function listaRankingInicial(): EntradaRanking[] {
   if (typeof window === "undefined") return [];
   return lerRanking();
@@ -15,11 +17,24 @@ function listaRankingInicial(): EntradaRanking[] {
 const CROWN = ["👑", "🥈", "🥉"];
 const MEDAL = ["🥇", "🥈", "🥉"];
 
+function filtrarPorPeriodo(lista: EntradaRanking[], periodo: PeriodoRanking): EntradaRanking[] {
+  if (periodo === "total") return lista;
+  const agora = new Date();
+  const limite = new Date(agora);
+  if (periodo === "semanal") {
+    limite.setDate(agora.getDate() - 7);
+  } else {
+    limite.setMonth(agora.getMonth() - 1);
+  }
+  return lista.filter((e) => new Date(e.data) >= limite);
+}
+
 export function RankingBoard() {
   const { xp, nivel, xpProximoNivel, carregado } = useProgresso();
   const { perfil } = usePerfilAluno();
   const [lista, setLista] = useState<EntradaRanking[]>(listaRankingInicial);
   const [optIn, setOptIn] = useState(false);
+  const [periodo, setPeriodo] = useState<PeriodoRanking>("total");
 
   const estaParticipando = lista.some(
     (e) => e.apelido === (perfil?.apelidoRanking ?? perfil?.nome?.split(" ")[0] ?? "Aluno"),
@@ -34,8 +49,9 @@ export function RankingBoard() {
 
   if (!carregado) return null;
 
-  const top3 = lista.slice(0, 3);
-  const resto = lista.slice(3);
+  const listaFiltrada = filtrarPorPeriodo(lista, periodo);
+  const top3 = listaFiltrada.slice(0, 3);
+  const resto = listaFiltrada.slice(3);
 
   return (
     <div className="space-y-8">
@@ -82,6 +98,27 @@ export function RankingBoard() {
             />
           </div>
         </Card>
+      )}
+
+      {/* ── Tabs de período do ranking ── */}
+      {estaParticipando && (
+        <div className="flex items-center gap-1 rounded-xl bg-surface-2 p-1" role="tablist" aria-label="Período do ranking">
+          {([["total", "Total"], ["semanal", "Semanal"], ["mensal", "Mensal"]] as [PeriodoRanking, string][]).map(([key, label]) => (
+            <button
+              key={key}
+              role="tab"
+              aria-selected={periodo === key}
+              onClick={() => setPeriodo(key)}
+              className={`flex-1 rounded-lg px-3 py-2 text-xs font-bold transition-all ${
+                periodo === key
+                  ? "bg-white text-forest-700 shadow-sm dark:bg-forest-700 dark:text-white"
+                  : "text-subtle hover:text-foreground"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       )}
 
       {/* ── Podium ── */}

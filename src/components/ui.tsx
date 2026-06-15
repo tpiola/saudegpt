@@ -100,11 +100,11 @@ export function NivelBadge({ nivel }: { nivel: string }) {
   return <Etiqueta tom={r.tom}>{r.texto}</Etiqueta>;
 }
 
-export function BarraProgresso({ pct, className = "", height = 6 }: { pct: number; className?: string; height?: number }) {
+export function BarraProgresso({ pct, className = '', height = 6 }: { pct: number; className?: string; height?: number }) {
   return (
     <div className={`w-full overflow-hidden rounded-full bg-surface-2 ${className}`} role="progressbar"
       aria-valuenow={pct} aria-valuemin={0} aria-valuemax={100}>
-      <div className="h-full bg-gradient-to-r from-green-400 to-green-500 transition-[width] duration-700 ease-out rounded-full"
+      <div className="h-full bg-gradient-to-r from-emerald-400 to-emerald-500 transition-[width] duration-700 ease-out rounded-full"
         style={{ width: `${Math.min(pct, 100)}%`, height }} />
     </div>
   );
@@ -125,8 +125,8 @@ export function AnelProgresso({ pct, tamanho = 92, legenda, stroke = 6 }: {
           className="transition-[stroke-dashoffset] duration-700" />
         <defs>
           <linearGradient id="grad-anel" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3d844b" />
-            <stop offset="100%" stopColor="#4ca15d" />
+            <stop offset="0%" stopColor="#059669" />
+            <stop offset="100%" stopColor="#10b981" />
           </linearGradient>
         </defs>
       </svg>

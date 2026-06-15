@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { Icon } from "@/components/icons";
 import ProfessorAvatar from "@/components/ProfessorAvatar";
 
 /* ─── Tipos ─── */
@@ -51,7 +52,7 @@ export default function ProfessorBanner({
       ref={ref}
       className={cn(
         "relative isolate overflow-hidden rounded-2xl",
-        "bg-gradient-to-br from-[#0057FF] via-[#0057FF]/80 to-[#C9A84C]",
+        "bg-gradient-to-br from-forest-600 via-emerald-700 to-forest-700",
         "px-5 py-8 sm:px-8 sm:py-12",
         "transition-all duration-700 ease-out",
         visivel
@@ -117,10 +118,10 @@ export default function ProfessorBanner({
               Online agora
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
-              🎓 10+ anos
+              <Icon name="award" size={11} /> 10+ anos
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
-              📚 Farmácia Clínica
+              <Icon name="book" size={11} /> Farmácia Clínica
             </span>
           </div>
         </div>

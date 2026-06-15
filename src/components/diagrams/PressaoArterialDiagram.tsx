@@ -13,13 +13,13 @@ export default function PressaoArterialDiagram() {
         {/* Definições */}
         <defs>
           <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--orange-400, #f49b44)" />
+            <stop offset="0%" stopColor="var(--orange-400, #f59e0b)" />
             <stop offset="100%" stopColor="var(--orange-500, #d66e0f)" />
           </linearGradient>
           <linearGradient id="arteryGrad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="var(--orange-400, #f49b44)" stopOpacity="0.6" />
-            <stop offset="50%" stopColor="var(--orange-400, #f49b44)" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="var(--orange-400, #f49b44)" stopOpacity="0.6" />
+            <stop offset="0%" stopColor="var(--orange-400, #f59e0b)" stopOpacity="0.6" />
+            <stop offset="50%" stopColor="var(--orange-400, #f59e0b)" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="var(--orange-400, #f59e0b)" stopOpacity="0.6" />
           </linearGradient>
           <linearGradient id="bloodFlow" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="var(--orange-500, #d66e0f)" stopOpacity="0.8" />
@@ -191,7 +191,7 @@ export default function PressaoArterialDiagram() {
 
         {/* ── RÓTULOS: Pressão máxima / mínima ── */}
         <g transform="translate(40, 260)">
-          <circle cx="4" cy="4" r="4" fill="var(--orange-400, #f49b44)" />
+          <circle cx="4" cy="4" r="4" fill="var(--orange-400, #f59e0b)" />
           <text
             x="14" y="8"
             fontSize="9"

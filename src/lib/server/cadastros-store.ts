@@ -8,6 +8,13 @@ import {
   obterPorEmailNotion,
   upsertCadastroNotion,
 } from "./notion-cadastros";
+import {
+  cadastrosUsamSupabase,
+  listarCadastrosSupabase,
+  upsertCadastroSupabase,
+  excluirCadastroSupabase,
+  obterPorEmailSupabase,
+} from "./supabase-cadastros";
 
 const ARQUIVO = path.join(process.cwd(), "data", "cadastros.json");
 
@@ -49,6 +56,16 @@ async function salvarLocal(lista: CadastroRegistro[]) {
 }
 
 export async function listarCadastros(): Promise<CadastroRegistro[]> {
+  // 1. Supabase (prioridade máxima)
+  if (cadastrosUsamSupabase()) {
+    try {
+      return await listarCadastrosSupabase();
+    } catch (err) {
+      console.error("[cadastros] Supabase indisponível, tentando Next backup:", err);
+    }
+  }
+
+  // 2. Notion (backup)
   if (cadastrosUsamNotion()) {
     try {
       return await listarCadastrosNotion();
@@ -56,10 +73,25 @@ export async function listarCadastros(): Promise<CadastroRegistro[]> {
       console.error("[cadastros] Notion indisponível, usando cache local:", err);
     }
   }
+
+  // 3. Local file / memória (último recurso)
   return listarLocal();
 }
 
 export async function salvarCadastros(lista: CadastroRegistro[]): Promise<void> {
+  if (cadastrosUsamSupabase()) {
+    for (const reg of lista) {
+      try {
+        await upsertCadastroSupabase(reg);
+        continue;
+      } catch (err) {
+        console.error("[cadastros] Supabase upsert falhou:", err);
+      }
+    }
+    // Se Supabase funcionou para todos, retorna
+    return;
+  }
+
   if (cadastrosUsamNotion()) {
     for (const reg of lista) {
       await upsertCadastroNotion(reg);
@@ -70,6 +102,19 @@ export async function salvarCadastros(lista: CadastroRegistro[]): Promise<void> 
 }
 
 export async function obterPorEmail(email: string): Promise<CadastroRegistro | undefined> {
+  const norm = email.trim().toLowerCase();
+
+  // 1. Supabase
+  if (cadastrosUsamSupabase()) {
+    try {
+      const s = await obterPorEmailSupabase(norm);
+      if (s) return s;
+    } catch (err) {
+      console.error("[cadastros] obterPorEmail Supabase:", err);
+    }
+  }
+
+  // 2. Notion
   if (cadastrosUsamNotion()) {
     try {
       const n = await obterPorEmailNotion(email);
@@ -78,11 +123,22 @@ export async function obterPorEmail(email: string): Promise<CadastroRegistro | u
       console.error("[cadastros] obterPorEmail Notion:", err);
     }
   }
-  const norm = email.trim().toLowerCase();
+
+  // 3. Local
   return (await listarLocal()).find((c) => c.email.toLowerCase() === norm);
 }
 
 export async function upsertCadastro(registro: CadastroRegistro): Promise<CadastroRegistro> {
+  // 1. Supabase
+  if (cadastrosUsamSupabase()) {
+    try {
+      return await upsertCadastroSupabase(registro);
+    } catch (err) {
+      console.error("[cadastros] upsert Supabase:", err);
+    }
+  }
+
+  // 2. Notion
   if (cadastrosUsamNotion()) {
     try {
       return await upsertCadastroNotion(registro);
@@ -91,6 +147,7 @@ export async function upsertCadastro(registro: CadastroRegistro): Promise<Cadast
     }
   }
 
+  // 3. Local
   const lista = await listarLocal();
   const idx = lista.findIndex((c) => c.email.toLowerCase() === registro.email.toLowerCase());
   if (idx >= 0) lista[idx] = { ...lista[idx], ...registro, id: lista[idx].id };
@@ -100,6 +157,17 @@ export async function upsertCadastro(registro: CadastroRegistro): Promise<Cadast
 }
 
 export async function excluirCadastroPorId(id: string): Promise<boolean> {
+  // 1. Supabase
+  if (cadastrosUsamSupabase()) {
+    try {
+      const ok = await excluirCadastroSupabase(id);
+      if (ok) return true;
+    } catch (err) {
+      console.error("[cadastros] excluir Supabase:", err);
+    }
+  }
+
+  // 2. Notion
   if (cadastrosUsamNotion()) {
     try {
       const ok = await excluirCadastroNotionPorIdPlataforma(id);
@@ -109,6 +177,7 @@ export async function excluirCadastroPorId(id: string): Promise<boolean> {
     }
   }
 
+  // 3. Local
   const lista = await listarLocal();
   const filtrada = lista.filter((c) => c.id !== id);
   if (filtrada.length === lista.length) return false;

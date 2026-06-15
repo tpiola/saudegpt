@@ -29,6 +29,7 @@ export const trilhaFundamentos: Trilha = {
           duracaoMin: 8,
           nivel: "basico",
             imagemHeroUrl: imagensCategoria.fundamentos,
+          imagemProduto: "/imagens/produtos/ems-paracetamol.webp",
           resumo:
             "Das boticas artesanais do século XVII às farmácias modernas do século XXI — conheça a trajetória da profissão farmacêutica no Brasil e no mundo.",
           resumoExecutivo: [
@@ -123,6 +124,7 @@ export const trilhaFundamentos: Trilha = {
           duracaoMin: 8,
           nivel: "basico",
             imagemHeroUrl: imagensCategoria.fundamentos,
+          imagemProduto: "/imagens/produtos/marca-medley.webp",
           resumo:
             "Entenda as responsabilidades legais e clínicas do farmacêutico, as áreas de atuação e como o atendente de farmácia se insere na equipe de saúde.",
           resumoExecutivo: [
@@ -199,6 +201,17 @@ export const trilhaFundamentos: Trilha = {
               "Antibióticos são medicamentos tarjados e exigem receita médica, dispensados sob supervisão farmacêutica.",
             ),
             q(
+              "O atendente de farmácia pode dispensar um antibiótico sem receita se o farmacêutico não estiver?",
+              [
+                "Sim, se o cliente já conhece o medicamento.",
+                "Não, antibióticos exigem receita e presença/ autorização do farmacêutico.",
+                "Sim, desde que anote o nome do cliente.",
+                "Sim, se for um antibiótico tópico.",
+              ],
+              1,
+              "Antibióticos são medicamentos tarjados e exigem receita médica, dispensados sob supervisão farmacêutica.",
+            ),
+            q(
               "Qual destas é uma atribuição EXCLUSIVA do farmacêutico?",
               [
                 "Organizar a prateleira de xampus.",
@@ -209,6 +222,28 @@ export const trilhaFundamentos: Trilha = {
               1,
               "A atenção farmacêutica e a dispensação de medicamentos sob prescrição são atribuições privativas do farmacêutico.",
             ),
+            q(
+              "Cliente pergunta: 'Você pode me dar uma sugestão de remédio para minha pressão?' O que responder?",
+              [
+                "Recomendar o losartana que é o mais vendido.",
+                "Explicar que medicação para pressão exige prescrição e chamar o farmacêutico.",
+                "Perguntar a pressão e indicar um remédio natural.",
+                "Falar que qualquer farmácia vende sem receita.",
+              ],
+              1,
+              "Medicamentos para hipertensão são controlados e exigem receita e acompanhamento farmacêutico.",
+            ),
+            q(
+              "Qual documento o farmacêutico precisa ter visível na farmácia?",
+              [
+                "O diploma na parede.",
+                "A inscrição no CRF afixada em local visível.",
+                "O contrato de trabalho.",
+                "O certificado de conclusão do curso.",
+              ],
+              1,
+              "A inscrição no CRF deve estar afixada em local visível ao público, conforme legislação.",
+            ),
           ],
           xp: 50,
         },
@@ -218,6 +253,7 @@ export const trilhaFundamentos: Trilha = {
           duracaoMin: 10,
           nivel: "intermediario",
             imagemHeroUrl: imagensCategoria.fundamentos,
+          imagemProduto: "/imagens/produtos/neo-quimica-novalgina.webp",
           resumo:
             "Princípios éticos que regem a profissão farmacêutica, a importância do sigilo profissional e a postura adequada no atendimento ao público.",
           resumoExecutivo: [
@@ -309,6 +345,7 @@ export const trilhaFundamentos: Trilha = {
           duracaoMin: 10,
           nivel: "basico",
             imagemHeroUrl: imagensCategoria.fundamentos,
+          imagemProduto: "/imagens/produtos/eurofarma-cimegripe.webp",
           resumo:
             "O papel do atendente no ecossistema da farmácia: atribuições, limites legais, postura profissional e responsabilidades diárias.",
           resumoExecutivo: [
@@ -376,6 +413,28 @@ export const trilhaFundamentos: Trilha = {
               1,
               "Dor no peito pode indicar emergência cardíaca. Deve-se chamar o farmacêutico e sugerir pronto-socorro.",
             ),
+            q(
+              "Qual a diferença entre o papel do atendente e do farmacêutico no acolhimento?",
+              [
+                "Não há diferença, ambos fazem a mesma coisa.",
+                "O atendente acolhe e faz a triagem inicial; o farmacêutico faz a orientação clínica.",
+                "O atendente só vende, o farmacêutico só burocracia.",
+                "O atendente pode diagnosticar sintomas simples.",
+              ],
+              1,
+              "O atendente é a porta de entrada, fazendo o acolhimento e triagem; questões clínicas são do farmacêutico.",
+            ),
+            q(
+              "Cliente chega com receita de medicamento controlado tarja preta. O atendente deve:",
+              [
+                "Entregar o medicamento e registrar a venda.",
+                "Encaminhar ao farmacêutico para dispensação, pois exige retenção de receita.",
+                "Vender sem receita se o cliente disser que já usa.",
+                "Negar veementemente e mandar o cliente embora.",
+              ],
+              1,
+              "Tarja preta exige receita de controle especial com retenção obrigatória, ato do farmacêutico.",
+            ),
           ],
           xp: 55,
         },
@@ -385,6 +444,7 @@ export const trilhaFundamentos: Trilha = {
           duracaoMin: 12,
           nivel: "intermediario",
             imagemHeroUrl: imagensCategoria.fundamentos,
+          imagemProduto: "/imagens/produtos/marca-eurofarma.webp",
           resumo:
             "Entenda o papel dos órgãos reguladores: Anvisa, CRF, Vigilância Sanitária e como suas normas impactam o dia a dia da farmácia.",
           resumoExecutivo: [
@@ -470,6 +530,28 @@ export const trilhaFundamentos: Trilha = {
               ],
               1,
               "O CRF (Conselho Regional de Farmácia) é responsável pela fiscalização ética e profissional do farmacêutico.",
+            ),
+            q(
+              "O que é uma RDC emitida pela Anvisa?",
+              [
+                "Uma recomendação opcional para farmácias.",
+                "Uma Resolução da Diretoria Colegiada com força de norma regulatória.",
+                "Um certificado de qualidade.",
+                "Um documento de importação.",
+              ],
+              1,
+              "RDCs são Resoluções da Diretoria Colegiada da Anvisa com caráter normativo e força de lei.",
+            ),
+            q(
+              "Durante uma fiscalização da Vigilância Sanitária, o que NÃO pode faltar?",
+              [
+                "O celular do gerente.",
+                "O Alvará Sanitário e os registros de temperatura de termolábeis.",
+                "O cardápio do refeitório.",
+                "A lista de clientes fiéis.",
+              ],
+              1,
+              "Alvará Sanitário e registros de temperatura são documentos obrigatórios em fiscalização.",
             ),
           ],
           xp: 65,

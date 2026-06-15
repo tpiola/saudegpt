@@ -17,7 +17,7 @@ export default function HormoniosDiagram() {
             <stop offset="100%" stopColor="var(--forest-500, #0d3a32)" stopOpacity="0.08" />
           </linearGradient>
           <linearGradient id="hypothalamusGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="var(--orange-400, #f49b44)" />
+            <stop offset="0%" stopColor="var(--orange-400, #f59e0b)" />
             <stop offset="100%" stopColor="var(--orange-500, #d66e0f)" />
           </linearGradient>
           <linearGradient id="pituitaryGrad" x1="0" y1="0" x2="1" y2="1">
@@ -30,7 +30,7 @@ export default function HormoniosDiagram() {
           </linearGradient>
           <linearGradient id="adrenalGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="var(--orange-300, #f8b773)" />
-            <stop offset="100%" stopColor="var(--orange-400, #f49b44)" />
+            <stop offset="100%" stopColor="var(--orange-400, #f59e0b)" />
           </linearGradient>
           <linearGradient id="gonadGrad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="var(--green-300, #85c88b)" />
@@ -247,7 +247,7 @@ export default function HormoniosDiagram() {
 
         {/* Suprarrenais (centro) */}
         <g transform="translate(200, 195)">
-          <ellipse cx="0" cy="0" rx="25" ry="14" fill="url(#adrenalGrad)" opacity="0.3" stroke="var(--orange-400, #f49b44)" strokeWidth="1.5" />
+          <ellipse cx="0" cy="0" rx="25" ry="14" fill="url(#adrenalGrad)" opacity="0.3" stroke="var(--orange-400, #f59e0b)" strokeWidth="1.5" />
           <ellipse cx="0" cy="0" rx="12" ry="8" fill="url(#adrenalGrad)" opacity="0.7" />
           <text
             x="0" y="-16"

@@ -28,6 +28,7 @@ export const trilhaPratica: Trilha = {
           duracaoMin: 10,
           nivel: "basico",
             imagemHeroUrl: midiaPadraoPorAulaId("rotina-balcao").imagemHeroUrl,
+          imagemProduto: "/imagens/produtos/medley-dipirona.webp",
           resumo:
             "Organização do posto de trabalho, acolhimento inicial e fluxo de atendimento no balcão da farmácia.",
           resumoExecutivo: [
@@ -108,6 +109,7 @@ export const trilhaPratica: Trilha = {
           duracaoMin: 12,
           nivel: "intermediario",
             imagemHeroUrl: midiaPadraoPorAulaId("triagem-cliente").imagemHeroUrl,
+          imagemProduto: "/imagens/produtos/neo-quimica-novalgina.webp",
           resumo:
             "Técnicas de escuta ativa para identificar sintomas, histórico e necessidades reais do cliente antes de recomendar.",
           resumoExecutivo: [
@@ -190,6 +192,7 @@ export const trilhaPratica: Trilha = {
           duracaoMin: 15,
           nivel: "intermediario",
             imagemHeroUrl: midiaPadraoPorAulaId("dispensacao-segura").imagemHeroUrl,
+          imagemProduto: "/imagens/produtos/medley-losartana.webp",
           resumo:
             "Protocolo de checagem dos 7 Certos na dispensação: paciente, medicamento, dose, horário, via, forma e registro.",
           resumoExecutivo: [

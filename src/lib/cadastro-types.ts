@@ -22,11 +22,23 @@ export interface CadastroRegistro {
   notionPageId?: string;
   nome: string;
   email: string;
+  telefone?: string;
+  cargo?: string;
   apelidoRanking?: string;
   status: StatusCadastro;
-  criadoEm: string;
+  criadoEm?: string;
+  dataCadastro?: string;
   aprovadoEm?: string;
+  nivel?: number;
+  xp?: number;
   progresso: ProgressoSnapshot;
+  // Campos estendidos (Supabase)
+  cidade?: string;
+  estado?: string;
+  comoConheceu?: string;
+  experiencia?: string;
+  motivacao?: string;
+  avatar?: string;
 }
 
 export const PROGRESSO_VAZIO: ProgressoSnapshot = {

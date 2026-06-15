@@ -3,6 +3,18 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+function usePrefersReducedMotion(): boolean {
+  const [reduced, setReduced] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReduced(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setReduced(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return reduced;
+}
+
 interface FloatingRewardProps {
   xp: number;
   streak?: number;
@@ -11,6 +23,8 @@ interface FloatingRewardProps {
 
 /* ── Moedas/estrelas que flutuam em espiral ── */
 function ParticleExplosion({ count = 8 }: { count?: number }) {
+  const reduced = usePrefersReducedMotion();
+  if (reduced) return null;
   const particles = Array.from({ length: count }, (_, i) => {
     const angle = (360 / count) * i;
     const distance = 60 + Math.random() * 40;
@@ -77,6 +91,7 @@ export function XpBar({ xp, xpProximoNivel }: { xp: number; xpProximoNivel: numb
 /* ── Toast de XP com moedas ── */
 export function XpRewardToast({ xp, streak, onComplete }: FloatingRewardProps) {
   const [visivel, setVisivel] = useState(true);
+  const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,6 +100,23 @@ export function XpRewardToast({ xp, streak, onComplete }: FloatingRewardProps) {
     }, 1800);
     return () => clearTimeout(timer);
   }, [onComplete]);
+
+  if (reduced) {
+    if (!visivel) return null;
+    return (
+      <div className="fixed inset-x-0 top-1/4 z-[100] flex items-center justify-center pointer-events-none">
+        <div className="rounded-2xl bg-gradient-to-b from-forest-600 to-forest-700 px-8 py-6 text-center shadow-2xl border border-forest-400/30">
+          <div className="relative z-10">
+            <span className="text-4xl">🎉</span>
+          </div>
+          <p className="relative z-10 mt-2 text-lg font-bold text-white">+{xp} XP</p>
+          {streak && streak > 0 && (
+            <p className="relative z-10 mt-1 text-sm text-orange-300">🔥 Streak de {streak} dias!</p>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <AnimatePresence>
@@ -156,14 +188,12 @@ export function StreakFlame({ streak, size = "md" }: { streak: number; size?: "s
   return (
     <motion.div
       className={`relative inline-flex ${flameSize[size]} items-center justify-center rounded-full bg-gradient-to-br ${flameColor} shadow-lg`}
-      animate={
-        streak >= 3
+      animate={!usePrefersReducedMotion() && streak >= 3
           ? {
               scale: [1, 1.08, 1],
               transition: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
             }
-          : {}
-      }
+          : {}}
     >
       <span className={sizeMap[size]}>🔥</span>
       <motion.span

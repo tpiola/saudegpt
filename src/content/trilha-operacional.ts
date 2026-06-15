@@ -27,6 +27,7 @@ export const trilhaOperacional: Trilha = {
           nivel: "basico",
           videoUrl: videosPiloto.operacionalAbertura,
           imagemHeroUrl: midiaPadraoPorAulaId("acolhimento").imagemHeroUrl,
+          imagemProduto: "/imagens/produtos/nivea-protetor-solar.webp",
           resumo: "Como receber o cliente com empatia, atenção e postura profissional.",
           resumoExecutivo: [
             "Contato visual, cumprimento e disponibilidade genuína criam confiança em segundos.",
