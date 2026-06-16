@@ -28,7 +28,7 @@ export default function AguardandoAprovacaoPage() {
           <h1 className="mt-6 text-2xl font-extrabold">Cadastro em análise</h1>
           <p className="mt-3 text-muted">
             Sua matrícula foi recebida. O administrador do curso irá liberar seu acesso em breve.
-            Você receberá acesso ao painel, trilhas e certificados assim que for aprovado.
+            Você receberá acesso ao painel e trilhas assim que for aprovado.
           </p>
           <p className="mt-4 text-sm text-subtle">
             Dica: mantenha esta página aberta ou volte mais tarde — ao aprovar, acesse{" "}

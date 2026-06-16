@@ -89,6 +89,12 @@ export default function ContatoPage() {
         <p className="mt-1 text-sm text-white/40">
           Farmácia • Tecnologia • Educação
         </p>
+
+        {/* Disclaimer */}
+        <p className="mt-6 text-xs text-white/30 max-w-md mx-auto leading-relaxed">
+          Este treinamento não substitui o que o(a) farmacêutico(a) ensina presencialmente.
+        </p>
+
         <div className="mt-4 flex flex-wrap justify-center gap-3">
           <Link
             href="https://thiagopiola.com.br"

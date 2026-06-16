@@ -129,7 +129,7 @@ export function HeroVideo() {
         <p className="mx-auto mt-4 max-w-2xl text-base text-white/60 sm:text-lg min-h-[2em]">
           <TypewriterSubtitulo
             frases={[
-              "Do zero ao certificado, no seu ritmo.",
+              "Do zero ao balcão, no seu ritmo.",
               "Trilhas, quizzes, simulados e prática de balcão.",
               "Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
               "Aprenda, evolua e transforme sua carreira.",
@@ -181,7 +181,10 @@ export function HeroVideo() {
         </div>
 
         {/* Scroll indicator */}
-        <div className="mt-10 flex flex-col items-center gap-2">
+        <div className="mt-8 flex flex-col items-center gap-2">
+          <p className="text-[11px] text-white/30 max-w-sm leading-relaxed">
+            Este treinamento não substitui o que o(a) farmacêutico(a) ensina presencialmente.
+          </p>
           <span className="text-xs text-white/30">Role para ver mais</span>
           <div className="flex h-6 w-4 justify-center rounded-full border border-white/20">
             <div className="mt-1 h-2 w-1 rounded-full bg-white/40 animate-bounce" />

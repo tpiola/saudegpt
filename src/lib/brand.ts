@@ -11,9 +11,6 @@ export const brand = {
   /** Assinatura do criador */
   assinatura: "Criado pelo Farmacêutico Thiago B. G. Piola · CRF-SP 58.519",
 
-  /** Sponsor */
-  sponsor: "Rei das Vendas",
-  sponsorUrl: "https://www.reidasvendas.com.br",
 
   // ── Paleta de Cores ──────────────────────────────────────
 

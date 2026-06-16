@@ -37,8 +37,8 @@ const beneficios = [
   },
   {
     icone: "award" as const,
-    titulo: "Certificado",
-    desc: "Receba certificado ao concluir as trilhas.",
+    titulo: "Conquistas",
+    desc: "Ganhe badges e reconhecimento ao progredir nas trilhas.",
     cor: "from-forest-500 to-orange-500",
   },
 ];

@@ -126,8 +126,8 @@ const sabiaQuePorTrilha: Record<string, { emoji: string; titulo: string; texto: 
     },
     {
       emoji: "🏅",
-      titulo: "Certificação que abre portas",
-      texto: "Atendentes com formação estruturada se destacam em qualquer rede. Cada módulo concluído é um degrau na sua carreira — e o certificado comprova o que você sabe fazer na prática.",
+      titulo: "Conhecimento que transforma",
+      texto: "Atendentes com formação estruturada se destacam em qualquer rede. Cada módulo concluído é um degrau na sua carreira — e o conhecimento adquirido transforma seu atendimento na prática.",
     },
   ],
   "servicos-cuidado": [
@@ -203,6 +203,11 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
             <div className="mt-6">
               <ProgressoTrilhaBadge trilhaId={trilha.id} />
             </div>
+
+            {/* Disclaimer */}
+            <p className="mt-4 text-xs text-white/30 max-w-xl leading-relaxed">
+              Este treinamento não substitui o que o(a) farmacêutico(a) ensina presencialmente.
+            </p>
           </div>
         </div>
       </section>

@@ -2,14 +2,14 @@ import type { Trilha } from "./types";
 import { q } from "./_helpers";
 import { imagensCategoria, midiaPadraoPorAulaId } from "./midia-catalogo";
 
-// Trilha Prática Supervisionada — estágio virtual, simulação de balcão e certificação.
+// Trilha Prática Supervisionada — estágio virtual e simulação de balcão.
 export const trilhaPratica: Trilha = {
   id: "pratica",
   numero: 6,
   titulo: "Prática Supervisionada",
   subtitulo: "Atendente III",
   descricao:
-    "Estágio virtual, simulação realista de balcão e certificação. Aplique na prática tudo o que aprendeu — do acolhimento ao fechamento, incluindo situações de emergência, prescrições irregulares e cross-sell ético.",
+    "Estágio virtual com simulação realista de balcão. Aplique na prática tudo o que aprendeu — do acolhimento ao fechamento, incluindo situações de emergência, prescrições irregulares e cross-sell ético.",
   nivelFaixa: "Do intermediário ao avançado",
   icone: "stethoscope",
   modulos: [
@@ -948,9 +948,9 @@ export const trilhaPratica: Trilha = {
     // ── Módulo 3 ──────────────────────────────────────────────────────────
     {
       id: "projetos-certificacao",
-      titulo: "Projetos e Certificação",
+      titulo: "Projetos e Portfólio",
       descricao:
-        "Portfólio de projetos, estudo de caso integrado, revisão geral, simulado final e certificação da trilha.",
+        "Portfólio de projetos, estudo de caso integrado, revisão geral e simulado final da trilha.",
       imagemHeroUrl: imagensCategoria.equipe,
       aulas: [
         // ── Aula 12: Portfólio de Projetos ──
@@ -1295,16 +1295,16 @@ export const trilhaPratica: Trilha = {
         // ── Aula 16: Certificação ──
         {
           id: "certificacao",
-          titulo: "Certificação",
+          titulo: "Encerramento",
           duracaoMin: 10,
           nivel: "basico",
             imagemHeroUrl: midiaPadraoPorAulaId("certificacao").imagemHeroUrl,
           resumo:
-            "Etapa final da trilha: instruções para obter o certificado de conclusão, revisão dos critérios e próximos passos na carreira.",
+            "Etapa final da trilha: revisão dos aprendizados, próximos passos na carreira e como aplicar os protocolos no balcão.",
           resumoExecutivo: [
-            "Para obter o certificado: complete todas as 16 aulas com pelo menos 70% de acertos no quiz final de cada módulo.",
-            "O certificado nominal será gerado automaticamente e pode ser compartilhado no LinkedIn e em processos seletivos.",
-            "Após a certificação, você está apto(a) para aplicar os protocolos de atendimento consultivo, dispensação segura e cross-sell ético no balcão.",
+            "Complete todas as 16 aulas com pelo menos 70% de acertos no quiz final de cada módulo para concluir a trilha.",
+            "O certificado de conclusão nominal será gerado automaticamente e pode ser compartilhado no LinkedIn e em processos seletivos.",
+            "Após concluir a trilha, você está apto(a) para aplicar os protocolos de atendimento consultivo, dispensação segura e cross-sell ético no balcão.",
           ],
           comparativo: {
             titulo: "Certificado da Trilha x Certificação Profissional",
@@ -1340,7 +1340,7 @@ export const trilhaPratica: Trilha = {
             "Dúvida sobre a validade do certificado ou próximos passos na carreira.",
           ],
           errosComuns: [
-            "Pular aulas e tentar a certificação incompleto.",
+            "Pular aulas e tentar a conclusão incompleto.",
             "Não conferir o nome no certificado.",
             "Esquecer de compartilhar o certificado nas redes profissionais.",
           ],

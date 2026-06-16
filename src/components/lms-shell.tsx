@@ -282,15 +282,10 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 has-bottom-nav pb-[calc(4rem+env(safe-area-inset-bottom,0px))] sm:pb-4">
           <p className="font-semibold">{site.assinatura}</p>
           <p className="mt-1">
-            Plataforma criada por{" "}
-            <a
-              href="https://www.reidasvendas.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-600 hover:text-emerald-500 dark:text-gold-400 underline underline-offset-2"
-            >
-              Rei das Vendas
-            </a>
+            Criado por{" "}
+            <span className="text-gold-600 dark:text-gold-400 font-semibold">
+              Thiago Piola
+            </span>
           </p>
           <p className="mt-1">
             Conteúdo educativo — não substitui orientação do farmacêutico ou médico.

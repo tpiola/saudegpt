@@ -5,13 +5,8 @@ export const site = {
   nomeCurto: "SaúdeGPT",
   assinatura: "Criado pelo Farmacêutico Thiago Biasoli Garcia Piola — CRF/SP 58.519",
   descricao:
-    "Formação completa para atendentes de farmácia: aprenda atendimento humanizado, medicamentos, legislação ANVISA, dispensação segura e cuidado ao paciente. Plataforma EAD com trilhas curtas, simulações, quizzes e certificado. Desenvolvido pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
+    "Formação completa para atendentes de farmácia: aprenda atendimento humanizado, medicamentos, legislação ANVISA, dispensação segura e cuidado ao paciente. Plataforma EAD com trilhas curtas, simulações e quizzes educativos. Desenvolvido pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
   patrocinadores: [
-    {
-      nome: "Rei das Vendas",
-      url: "https://www.reidasvendas.com.br",
-      descricao: "Ecossistema de tecnologia, presença digital e crescimento empresarial.",
-    },
     {
       nome: "Thiago Piola",
       url: "https://www.thiagopiola.com.br",
@@ -20,7 +15,6 @@ export const site = {
   ],
   // Mantido apenas para o sameAs do JSON-LD (Organization). Não exibido no rodapé.
   social: [
-    { nome: "reidasvendas.com.br", url: "https://www.reidasvendas.com.br" },
     { nome: "thiagopiola.com.br", url: "https://www.thiagopiola.com.br" },
   ],
 };

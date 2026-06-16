@@ -12,7 +12,7 @@ export default function TermosPage() {
       <h1 className="text-3xl font-bold">Termos de uso</h1>
       <p className="text-muted mt-4">
         Ao utilizar {site.nome}, você concorda que o conteúdo é <strong>educativo</strong> e não
-        substitui a orientação do farmacêutico ou do médico.
+        substitui a orientação do farmacêutico ou do médico. Este treinamento não substitui o que o(a) farmacêutico(a) ensina presencialmente.
       </p>
       <h2 className="text-xl font-semibold mt-8">Responsabilidade profissional</h2>
       <p className="text-muted">

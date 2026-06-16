@@ -144,18 +144,13 @@ export function SiteFooter() {
               &copy; {ano} {site.nome}. Todos os direitos reservados.
             </p>
             <p className="mt-1 text-xs text-gold-400/60">
-              Plataforma criada por{" "}
-              <a
-                href="https://www.reidasvendas.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gold-400 hover:text-gold-300 underline underline-offset-2 transition-colors"
-              >
-                Rei das Vendas
-              </a>
-              {" · "}
+              Criado por{" "}
+              <span className="text-gold-300 font-medium">
+                Thiago Piola
+              </span>
+              {" — "}
               <span className="text-white/40">
-                Conteúdo por Thiago Piola — CRF/SP 58.519
+                CRF/SP 58.519
               </span>
             </p>
           </div>

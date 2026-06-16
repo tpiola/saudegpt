@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "Tem certificado?",
-    r: "Sim! Ao concluir as trilhas, você recebe certificado profissional.",
+    r: "Sim! Ao concluir as trilhas, você recebe um certificado de conclusão como comprovante do seu aprendizado. Lembre-se: o conteúdo é educativo e não substitui o que o(a) farmacêutico(a) ensina presencialmente.",
   },
   {
     q: "Funciona no celular?",

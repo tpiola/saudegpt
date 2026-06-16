@@ -100,7 +100,7 @@ export default function ProfessorBanner({
             Prof. Thiago Piola
           </h2>
           <p className="mt-1 text-sm font-medium text-white/80">
-            Farmacêutico CRF-SP 58.519
+            Farmacêutico Thiago Piola — CRF-SP 58.519
           </p>
           {tituloAula && (
             <p className="mt-3 text-lg font-bold text-white/95 sm:text-xl">

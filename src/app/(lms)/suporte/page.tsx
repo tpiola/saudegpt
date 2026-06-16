@@ -5,7 +5,7 @@ import ProfessorAvatar from "@/components/ProfessorAvatar";
 
 export const metadata: Metadata = {
   title: "Suporte | SaúdeGPT",
-  description: "Tire suas duvidas sobre a plataforma, trilhas, progresso e certificado.",
+  description: "Tire suas duvidas sobre a plataforma, trilhas, progresso e conteúdo educativo.",
 };
 
 const duvidas = [
@@ -27,7 +27,7 @@ const duvidas = [
   },
   {
     pergunta: "Tem certificado?",
-    resposta: "Sim! Ao concluir todas as aulas de uma trilha e fazer a prova do modulo, voce pode gerar seu certificado de conclusao. Cada trilha concluida adiciona uma conquista ao seu perfil.",
+    resposta: "Sim! Ao concluir todas as aulas de uma trilha, você recebe um certificado de conclusão como comprovante do seu aprendizado. Cada trilha concluída adiciona uma conquista ao seu perfil. Importante: o conteúdo da plataforma é educativo e não substitui o que o(a) farmacêutico(a) ensina presencialmente.",
   },
   {
     pergunta: "Como entro em contato com o professor?",
@@ -55,7 +55,7 @@ export default function SuportePage() {
           Suporte
         </h1>
         <p className="mt-2 text-base sm:text-lg text-muted max-w-xl mx-auto">
-          Tire suas duvidas sobre a plataforma, trilhas, progresso e certificado.
+          Tire suas duvidas sobre a plataforma, trilhas, progresso e conteudo educativo.
         </p>
       </div>
 
@@ -87,7 +87,7 @@ export default function SuportePage() {
           <ProfessorAvatar size="md" showName={false} />
           <div>
             <h3 className="font-bold text-foreground">Farmacêutico Thiago Piola</h3>
-            <p className="text-sm text-muted">CRF/SP 58.519 — Criador do conteudo</p>
+            <p className="text-sm text-muted">Thiago Piola — CRF/SP 58.519 — Criador do conteudo</p>
             <p className="mt-1 text-xs text-muted/70">
               Para questoes tecnicas sobre a plataforma ou sobre o conteudo, entre em contato pelo site:{" "}
               <a

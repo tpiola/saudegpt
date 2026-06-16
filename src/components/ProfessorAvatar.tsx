@@ -31,7 +31,7 @@ const SIZE_MAP: Record<AvatarSize, { avatar: number; desktop: number }> = {
 
 /* ─── Dados padrão do professor ─── */
 const PROFESSOR_NOME = "Prof. Thiago Piola";
-const PROFESSOR_LEGENDA = "Farmacêutico CRF-SP 58.519";
+const PROFESSOR_LEGENDA = "Farmacêutico Thiago Piola — CRF-SP 58.519";
 const PROFESSOR_SRC = "/images/professor-avatar.svg";
 const PROFESSOR_BIO =
   "Farmacêutico clínico e educador. Especialista em atenção farmacêutica, " +

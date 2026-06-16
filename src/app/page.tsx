@@ -3,17 +3,9 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChatBotIA } from "@/components/chatbot-ia";
 import { HeroVideo } from "@/components/hero/HeroVideo";
-import { SecaoBeneficios } from "@/components/secao-beneficios";
-import { SecaoComoFunciona } from "@/components/secao-como-funciona";
-import { SecaoFAQ } from "@/components/secao-faq";
-import { CtaSection } from "@/components/secao-cta";
 import { trilhas } from "@/content/curriculo";
 import { Icon } from "@/components/icons";
-
 import { FadeUp } from "@/components/fade-up";
-import { ScrollReveal } from "@/components/animacoes";
-import { ProvaSocial } from "@/components/prova-social";
-import { Shield } from "lucide-react";
 
 function TrilhasSection() {
   const mapaIcones: Record<string, string> = {
@@ -32,9 +24,9 @@ function TrilhasSection() {
         <FadeUp>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-              Sua{" "}
+              Escolha sua{" "}
               <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
-                jornada de aprendizado
+                trilha de aprendizado
               </span>
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
@@ -96,155 +88,13 @@ function TrilhasSection() {
   );
 }
 
-function GamificacaoSection() {
-  const itens = [
-    { icone: "star" as const, label: "XP por aula", cor: "from-gold-500 to-gold-600" },
-    { icone: "trending" as const, label: "Níveis", cor: "from-blue-500 to-indigo-600" },
-    { icone: "award" as const, label: "Streak diário", cor: "from-orange-500 to-red-500" },
-    { icone: "target" as const, label: "Badges", cor: "from-purple-500 to-pink-500" },
-    { icone: "compass" as const, label: "Missões", cor: "from-cyan-500 to-teal-500" },
-    { icone: "chart" as const, label: "Dashboard", cor: "from-gold-600 to-gold-700" },
-  ];
-
-  return (
-    <section className="py-20 sm:py-28 relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div>
-            <FadeUp>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-                Aprendizagem que{" "}
-                <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
-                  engaja
-                </span>
-              </h2>
-              <p className="mt-3 text-sm text-white/60 max-w-lg">
-                Cada aula rende XP. Suba de nível, acumule streaks, desbloqueie badges e acompanhe sua evolução.
-              </p>
-            </FadeUp>
-
-            <div className="mt-6 grid grid-cols-2 gap-3">
-              {itens.map((item) => (
-                <FadeUp key={item.label} delay={80}>
-                  <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm px-3 py-2.5 transition hover:bg-white/10 hover:-translate-y-0.5">
-                    <div className={`inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${item.cor} shadow-lg`}>
-                      <Icon name={item.icone} size={15} className="text-white" />
-                    </div>
-                    <span className="text-xs font-medium text-white/80">{item.label}</span>
-                  </div>
-                </FadeUp>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <FadeUp delay={100}>
-              <div className="rounded-2xl lg:rounded-3xl border border-white/10 glass-card p-6 sm:p-8 shadow-xl">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold-500 to-gold-400 shadow-lg">
-                    <Icon name="award" size={22} className="text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white">Dashboard do Aluno</h3>
-                    <p className="text-xs text-white/50">Evolução em tempo real</p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  {[
-                    { label: "Nível Atual", valor: "5", cor: "bg-gold-500/10 text-gold-300" },
-                    { label: "XP Total", valor: "1.250 XP", cor: "bg-white/5 text-white" },
-                    { label: "Streak", valor: "7 dias", cor: "bg-orange-500/10 text-orange-300" },
-                    { label: "Badges", valor: "8 / 12", cor: "bg-purple-500/10 text-purple-300" },
-                  ].map((item) => (
-                    <div key={item.label} className={`flex items-center justify-between rounded-xl ${item.cor} px-3 py-2.5 transition hover:scale-[1.02]`}>
-                      <span className="text-xs text-white/60">{item.label}</span>
-                      <span className="text-sm font-bold">{item.valor}</span>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-6">
-                  <div className="flex justify-between text-xs text-white/40 mb-2">
-                    <span>Próximo nível: 2.000 XP</span>
-                    <span>62%</span>
-                  </div>
-                  <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                    <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-gold-400 to-gold-500 animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            </FadeUp>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustSignalsSection() {
-  const badges = [
-    {
-      icon: "shield",
-      label: "Thiago Piola",
-      desc: "CRF/SP 58.519 — Registro profissional ativo",
-    },
-    {
-      icon: "shield",
-      label: "ANVISA",
-      desc: "Conteúdo conforme RDC vigentes",
-    },
-    {
-      icon: "shield",
-      label: "OMS",
-      desc: "Referências internacionais em saúde",
-    },
-    {
-      icon: "shield",
-      label: "Ministério da Saúde",
-      desc: "Diretrizes e protocolos oficiais",
-    },
-  ];
-
-  return (
-    <section className="py-6 sm:py-8 relative overflow-hidden border-y border-gold-500/10 bg-navy-900/60">
-      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
-        <FadeUp>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            <span className="text-xs font-bold uppercase tracking-widest text-gold-400/70">
-              Credenciado por
-            </span>
-            {badges.map((badge) => (
-              <div
-                key={badge.label}
-                className="flex items-center gap-2 rounded-xl border border-gold-500/15 bg-gold-500/[0.04] px-3.5 py-2 backdrop-blur-sm"
-              >
-                <Shield size={14} className="text-gold-400 shrink-0" />
-                <div>
-                  <span className="text-xs font-semibold text-gold-300">{badge.label}</span>
-                  <span className="ml-1.5 text-[10px] text-white/40">{badge.desc}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
-
 export default function HomePage() {
   return (
     <>
       <SiteHeader />
       <main id="conteudo-principal">
         <HeroVideo />
-        <TrustSignalsSection />
-        <SecaoBeneficios />
         <TrilhasSection />
-        <SecaoComoFunciona />
-        <ProvaSocial />
-        <GamificacaoSection />
-        <SecaoFAQ />
-        <CtaSection />
       </main>
       <SiteFooter />
       <ChatBotIA />

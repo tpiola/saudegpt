@@ -120,17 +120,6 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-10 flex flex-col gap-4 border-t border-white/8 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <p className="text-xs font-semibold text-white/50">
-              Plataforma Construída por:{" "}
-              <a
-                href="https://www.reidasvendas.com.br"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gold-400 underline-offset-2 hover:underline"
-              >
-                reidasvendas.com.br
-              </a>
-            </p>
             <p className="mt-1 text-xs leading-relaxed text-white/40">{site.assinatura}</p>
           </div>
           <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/40">

@@ -8,12 +8,6 @@ const PATROCINADORES = [
     tagline: "Web design premium",
     cor: "from-forest-600 to-navy-500",
   },
-  {
-    nome: "Rei das Vendas",
-    url: "https://www.reidasvendas.com.br",
-    tagline: "Funil + CRM",
-    cor: "from-orange-500 to-orange-600",
-  },
 ];
 
 export function BannerPatrocinio({ variante = "default" }: { variante?: "default" | "compacta" }) {
