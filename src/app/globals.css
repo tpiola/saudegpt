@@ -1122,4 +1122,3 @@ TABLET ESPECÍFICO (768px–1023px)
 /* Dark mode overrides for gamification */
 .dark .xp-toast { box-shadow: 0 8px 32px rgba(76,161,93,.25), 0 0 0 1px rgba(76,161,93,.2); }
 .dark .mobile-bottom-nav { background: rgba(4,22,19,.97); border-top-color: var(--border); }
->>>>>>> Stashed changes
