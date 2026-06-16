@@ -61,13 +61,13 @@ export class ErrorBoundary extends Component<Props, State> {
                 this.setState({ erro: null });
                 window.location.reload();
               }}
-              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-green-600 px-5 text-sm font-bold text-white transition hover:bg-green-500"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl bg-green-600 px-5 text-sm font-bold text-white transition hover:bg-gold-500"
             >
               <Icon name="refresh" size={16} /> Recarregar
             </button>
             <Link
               href="/trilhas"
-              className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-5 text-sm font-semibold text-foreground transition hover:border-green-300"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border px-5 text-sm font-semibold text-foreground transition hover:border-gold-300"
             >
               Explorar trilhas
             </Link>
@@ -78,7 +78,7 @@ export class ErrorBoundary extends Component<Props, State> {
             this.state.erro.message.includes("session")) && (
             <Link
               href="/"
-              className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-forest-500 px-5 text-sm font-bold text-white transition hover:bg-forest-600"
+              className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-xl bg-navy-800 px-5 text-sm font-bold text-white transition hover:bg-navy-600"
             >
               <Icon name="arrow" size={16} /> Fazer login
             </Link>

@@ -9,7 +9,7 @@ const beneficios = [
     icone: "graduation" as const,
     titulo: "Trilhas Completas",
     desc: "Conteúdo organizado por área: medicamentos, perfumaria, operacional.",
-    cor: "from-emerald-500 to-emerald-600",
+    cor: "from-gold-500 to-gold-600",
   },
   {
     icone: "target" as const,
@@ -21,19 +21,19 @@ const beneficios = [
     icone: "star" as const,
     titulo: "Gamificação",
     desc: "XP, níveis, streaks e badges exclusivos.",
-    cor: "from-forest-500 to-emerald-600",
+    cor: "from-navy-600 to-gold-600",
   },
   {
     icone: "chart" as const,
     titulo: "Simulados",
     desc: "Teste seus conhecimentos com provas modulares.",
-    cor: "from-emerald-600 to-forest-500",
+    cor: "from-emerald-600 to-navy-500",
   },
   {
     icone: "clock" as const,
     titulo: "No seu ritmo",
     desc: "100% online, acesso vitalício, mobile first.",
-    cor: "from-orange-600 to-forest-500",
+    cor: "from-orange-600 to-navy-500",
   },
   {
     icone: "award" as const,
@@ -81,7 +81,7 @@ export function SecaoBeneficios() {
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
             Tudo que você precisa{" "}
-            <span className="bg-gradient-to-r from-emerald-500 to-forest-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-500 to-navy-600 bg-clip-text text-transparent">
               para crescer
             </span>
           </h2>
@@ -103,7 +103,7 @@ export function SecaoBeneficios() {
               className="card-hover-premium group relative overflow-hidden rounded-2xl border border-border bg-surface p-6"
             >
               {/* Subtle gradient overlay on hover */}
-              <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-emerald-500/0 via-transparent to-emerald-500/0 opacity-0 transition-opacity duration-500 group-hover:from-emerald-500/[0.03] group-hover:to-emerald-500/[0.03] group-hover:opacity-100" />
+              <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-gold-500/0 via-transparent to-emerald-500/0 opacity-0 transition-opacity duration-500 group-hover:from-gold-500/[0.03] group-hover:to-emerald-500/[0.03] group-hover:opacity-100" />
 
               <div
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${beneficio.cor} text-white shadow-lg`}

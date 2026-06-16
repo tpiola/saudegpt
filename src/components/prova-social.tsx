@@ -71,8 +71,8 @@ function Metrica({
   label: string;
 }) {
   return (
-    <div className="flex flex-col items-center justify-center px-4 py-8 text-center sm:py-10 bg-gradient-to-b from-transparent via-emerald-500/[0.02] to-transparent">
-      <div className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl lg:text-5xl">
+    <div className="flex flex-col items-center justify-center px-4 py-8 text-center sm:py-10 bg-gradient-to-b from-transparent via-gold-500/[0.02] to-transparent">
+      <div className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-3xl font-black tracking-tight text-transparent sm:text-4xl lg:text-5xl">
         <ContadorAnimado
           valor={valor}
           prefixo={prefixo}
@@ -123,7 +123,7 @@ export function ProvaSocial() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
       {/* Gradiente de fundo sutil */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-gold-500/5 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* ── Título ── */}
@@ -131,7 +131,7 @@ export function ProvaSocial() {
           <div className="mb-12 text-center sm:mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Quem já está{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
                 transformando
               </span>{" "}
               o atendimento
@@ -172,7 +172,7 @@ export function ProvaSocial() {
 
                 {/* Autor */}
                 <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-sm font-bold text-white shadow-lg shadow-emerald-500/20">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-gold-500 to-gold-600 text-sm font-bold text-white shadow-lg shadow-gold-500/20">
                     {depoimentos[current].nome.charAt(0)}
                   </div>
                   <div>
@@ -197,7 +197,7 @@ export function ProvaSocial() {
                 onClick={() => setCurrent(idx)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   idx === current
-                    ? "w-8 bg-gradient-to-r from-emerald-400 to-green-500"
+                    ? "w-8 bg-gradient-to-r from-gold-400 to-gold-500"
                     : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Depoimento ${idx + 1}`}

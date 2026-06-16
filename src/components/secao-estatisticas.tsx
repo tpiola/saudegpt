@@ -39,7 +39,7 @@ export function SecaoEstatisticas() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
             >
-              <div className="bg-gradient-to-r from-emerald-500 to-orange-500 bg-clip-text text-transparent">
+              <div className="bg-gradient-to-r from-gold-500 to-orange-500 bg-clip-text text-transparent">
                 <ContadorAnimado valor={stat.valor} />
               </div>
               <p className="mt-1 text-sm text-muted">{stat.label}</p>

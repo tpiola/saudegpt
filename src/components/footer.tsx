@@ -10,8 +10,8 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-white/10 bg-gradient-to-b from-[#020e0c] via-[#051f1a] to-[#0a2b24]">
       {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-emerald-500/10 blur-[150px]" />
-        <div className="absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full bg-green-500/8 blur-[120px]" />
+        <div className="absolute -left-32 -top-32 h-[500px] w-[500px] rounded-full bg-gold-500/10 blur-[150px]" />
+        <div className="absolute -bottom-32 -right-32 h-[400px] w-[400px] rounded-full bg-gold-500/8 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
@@ -47,13 +47,13 @@ export function Footer() {
 
           {/* Produto */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400/80 mb-5">Produto</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gold-400/80 mb-5">Produto</h4>
             <ul className="space-y-3">
               {navPrincipal.slice(0, 6).map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/55 transition-all hover:text-emerald-400 hover:translate-x-0.5 inline-block"
+                    className="text-sm text-white/55 transition-all hover:text-gold-400 hover:translate-x-0.5 inline-block"
                   >
                     {item.label}
                   </Link>
@@ -64,7 +64,7 @@ export function Footer() {
 
           {/* Patrocinadores */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400/80 mb-5">Patrocinadores</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gold-400/80 mb-5">Patrocinadores</h4>
             <p className="mt-1 text-xs leading-relaxed text-white/45 mb-4">
               A SaúdeGPT conta com o apoio de iniciativas comprometidas com tecnologia, educação e evolução profissional em saúde.
             </p>
@@ -75,9 +75,9 @@ export function Footer() {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group block rounded-xl border border-white/8 bg-white/[0.03] p-3 transition-all hover:border-emerald-500/25 hover:bg-emerald-500/[0.05] hover:-translate-y-0.5"
+                    className="group block rounded-xl border border-white/8 bg-white/[0.03] p-3 transition-all hover:border-gold-500/25 hover:bg-gold-500/[0.05] hover:-translate-y-0.5"
                   >
-                    <p className="text-sm font-bold text-white/80 transition-colors group-hover:text-emerald-400">
+                    <p className="text-sm font-bold text-white/80 transition-colors group-hover:text-gold-400">
                       {p.nome}
                     </p>
                     <p className="mt-0.5 text-xs text-white/40">{p.descricao}</p>
@@ -89,11 +89,11 @@ export function Footer() {
 
           {/* Contato rápido */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-400/80 mb-5">Acesso</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-gold-400/80 mb-5">Acesso</h4>
             <div className="space-y-3">
               <Link
                 href="/#matricula"
-                className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98]"
+                className="inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 transition-all hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Entrar
               </Link>
@@ -110,7 +110,7 @@ export function Footer() {
         {/* Brasão central */}
         <div className="mt-14 flex justify-center">
           <div className="group relative">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-emerald-500/30 to-green-600/20 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:opacity-80" />
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-gold-500/30 to-green-600/20 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:opacity-80" />
             <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-white/15 bg-[#020e0c] shadow-xl shadow-emerald-500/10 transition-all duration-500 group-hover:border-teal-400/40 group-hover:shadow-teal-400/20">
               <LogoSaudeGPT variant="light" size="sm" showText={false} />
             </div>
@@ -126,7 +126,7 @@ export function Footer() {
                 href="https://www.reidasvendas.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-emerald-400 underline-offset-2 hover:underline"
+                className="text-gold-400 underline-offset-2 hover:underline"
               >
                 reidasvendas.com.br
               </a>

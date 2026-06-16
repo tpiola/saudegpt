@@ -115,12 +115,12 @@ export default function DiabetesPage() {
       {/* ════════════════════════════════════════════
          HERO — COM VÍDEO DE FUNDO
          ════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
         {/* Fundo gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-700 to-forest-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-800 to-navy-900" />
 
         {/* Overlay gradiente */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-red-500/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-navy-700/80 via-navy-600/50 to-red-500/20" />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
 
         {/* Conteúdo */}
@@ -201,7 +201,7 @@ export default function DiabetesPage() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-100 text-xl dark:bg-red-900/30">
                     {topico.emoji}
                   </span>
-                  <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+                  <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
                     {topico.titulo}
                   </h2>
                 </div>
@@ -226,7 +226,7 @@ export default function DiabetesPage() {
                       height={450}
                       className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 )}
               </div>
@@ -238,7 +238,7 @@ export default function DiabetesPage() {
       {/* ════════════════════════════════════════════
          SEÇÃO: CURIOSIDADES SOBRE DIABETES
          ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl mx-auto">
@@ -315,7 +315,7 @@ export default function DiabetesPage() {
             <span className="badge-green inline-flex">
               🩺 O que fazer no balcão
             </span>
-            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
               Como orientar o cliente com diabetes
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-base text-muted">
@@ -363,7 +363,7 @@ export default function DiabetesPage() {
                 <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-red-50 to-red-100 text-2xl dark:from-red-900/20 dark:to-red-900/10">
                   {card.emoji}
                 </span>
-                <h3 className="mt-4 text-sm font-bold text-forest-700 dark:text-white">{card.titulo}</h3>
+                <h3 className="mt-4 text-sm font-bold text-navy-700 dark:text-white">{card.titulo}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{card.texto}</p>
               </div>
             ))}
@@ -374,7 +374,7 @@ export default function DiabetesPage() {
       {/* ════════════════════════════════════════════
          CTA FINAL
          ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-[-0.03em] text-white">

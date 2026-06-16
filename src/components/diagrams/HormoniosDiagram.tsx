@@ -394,7 +394,7 @@ export default function HormoniosDiagram() {
       </svg>
       <figcaption className="mt-3 text-xs text-center text-muted leading-relaxed px-4">
         <strong className="text-foreground">Eixo Hipotálamo-Hipófise: a hierarquia hormonal.</strong> O <strong className="text-orange-600 dark:text-orange-400">hipotálamo</strong> 
-        (no cérebro) envia ordens à <strong className="text-green-600 dark:text-green-400">hipófise</strong> (glândula-mestra), que libera hormônios 
+        (no cérebro) envia ordens à <strong className="text-gold-600 dark:text-gold-400">hipófise</strong> (glândula-mestra), que libera hormônios 
         estimulando glândulas como tireoide, suprarrenais e gônadas. Setas tracejadas representam o feedback negativo — o sistema se autorregula.
       </figcaption>
     </figure>

@@ -29,9 +29,9 @@ function IndicadorEstacoes({
             <div
               className={`flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-300 ${
                 concluida
-                  ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+                  ? "bg-gold-100 text-gold-700 dark:bg-green-900/40 dark:text-gold-300"
                   : ativa
-                    ? "scale-110 bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md"
+                    ? "scale-110 bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-md"
                     : "bg-surface-2 text-muted"
               }`}
             >
@@ -176,7 +176,7 @@ export function OsceSimulador() {
       >
         {/* Card principal de resultado */}
         <Card
-          className={`${aprovado ? "border-green-300" : "border-orange-300"}`}
+          className={`${aprovado ? "border-gold-300" : "border-orange-300"}`}
         >
           <div className="flex flex-col items-center gap-4 text-center">
             <motion.span
@@ -185,7 +185,7 @@ export function OsceSimulador() {
               transition={{ type: "spring", stiffness: 200, damping: 12 }}
               className={`flex h-20 w-20 items-center justify-center rounded-2xl shadow-lg ${
                 aprovado
-                  ? "bg-gradient-to-r from-green-500 to-green-600"
+                  ? "bg-gradient-to-r from-gold-500 to-gold-600"
                   : "bg-gradient-to-br from-orange-400 to-orange-600"
               }`}
             >
@@ -199,7 +199,7 @@ export function OsceSimulador() {
               <div className="text-3xl font-extrabold">
                 {pct}% — OSCE
                 {aprovado && (
-                  <span className="ml-2 text-green-500">✅ Aprovado</span>
+                  <span className="ml-2 text-gold-500">✅ Aprovado</span>
                 )}
                 {!aprovado && (
                   <span className="ml-2 text-orange-500">
@@ -230,7 +230,7 @@ export function OsceSimulador() {
                   <div className="flex items-center justify-between gap-3">
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 text-[10px] font-bold text-white">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-[10px] font-bold text-white">
                           {c.estacao}
                         </span>
                         <span className="text-sm font-semibold truncate">
@@ -243,7 +243,7 @@ export function OsceSimulador() {
                       <span
                         className={`text-lg font-bold ${
                           pctCriterio >= 70
-                            ? "text-green-600"
+                            ? "text-gold-600"
                             : "text-orange-500"
                         }`}
                       >
@@ -333,18 +333,18 @@ export function OsceSimulador() {
           {caso.opcoes.map((op, i) => {
             const selecionada = escolha === i;
             const melhor = op.pontos === max;
-            let estilo = "border-border hover:border-green-300 hover:bg-green-50/20 dark:hover:bg-green-900/10";
+            let estilo = "border-border hover:border-gold-300 hover:bg-gold-50/20 dark:hover:bg-gold-900/10";
 
             if (mostrar) {
               if (melhor)
                 estilo =
-                  "border-green-400 bg-green-50/60 dark:bg-green-900/20 ring-1 ring-green-400/30";
+                  "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
               else if (selecionada)
                 estilo =
                   "border-orange-300 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
             } else if (selecionada) {
               estilo =
-                "border-green-400 bg-green-50/60 dark:bg-green-900/25 ring-1 ring-green-400/30";
+                "border-gold-400 bg-gold-50/60 dark:bg-gold-900/25 ring-1 ring-gold-400/30";
             }
 
             return (
@@ -364,7 +364,7 @@ export function OsceSimulador() {
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold ${
                     mostrar && melhor
-                      ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
+                      ? "border-transparent bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm"
                       : mostrar && selecionada && !melhor
                         ? "border-transparent bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-sm"
                         : "border-border-strong text-subtle"
@@ -386,7 +386,7 @@ export function OsceSimulador() {
                       name={melhor ? "check" : "close"}
                       size={20}
                       className={
-                        melhor ? "text-green-500" : "text-orange-500"
+                        melhor ? "text-gold-500" : "text-orange-500"
                       }
                     />
                   </motion.span>
@@ -407,12 +407,12 @@ export function OsceSimulador() {
               className="mt-4 space-y-4"
             >
               {/* Card de feedback */}
-              <div className="rounded-xl border border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5 px-4 py-4">
+              <div className="rounded-xl border border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5 px-4 py-4">
                 <div className="flex items-start gap-3">
                   <span
                     className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base ${
                       pontos === max
-                        ? "bg-green-100 dark:bg-green-900/40"
+                        ? "bg-gold-100 dark:bg-green-900/40"
                         : "bg-orange-100 dark:bg-orange-900/40"
                     }`}
                   >
@@ -431,7 +431,7 @@ export function OsceSimulador() {
                       <span
                         className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[11px] font-bold ${
                           pontos === max
-                            ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                            ? "bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-300"
                             : "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-300"
                         }`}
                       >

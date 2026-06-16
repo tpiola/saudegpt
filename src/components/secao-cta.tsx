@@ -14,14 +14,14 @@ export function CtaSection() {
       {/* Parallax background layers */}
       <motion.div
         ref={bgRef}
-        className="absolute inset-0 bg-gradient-to-br from-[#020e0c] via-[#051f1a] to-[#0a352c]"
+        className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-850"
         initial={{ scale: 1 }}
         whileInView={{ scale: 1.05 }}
         viewport={{ once: true, margin: "-20%" }}
         transition={{ duration: 4, ease: "easeOut" }}
       />
       <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(52,211,153,0.15)_0%,transparent_50%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,168,67,0.15)_0%,transparent_50%)]"
         initial={{ scale: 1, opacity: 0.8 }}
         whileInView={{ scale: 1.1, opacity: 1 }}
         viewport={{ once: true }}
@@ -29,7 +29,7 @@ export function CtaSection() {
       />
       {/* Second radial glow that shifts */}
       <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(52,211,153,0.08)_0%,transparent_50%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(212,168,67,0.08)_0%,transparent_50%)]"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -39,7 +39,7 @@ export function CtaSection() {
         <FadeUp>
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Pronto para{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
               transformar seu atendimento
             </span>
             ?
@@ -51,11 +51,11 @@ export function CtaSection() {
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             href="/trilhas"
-            className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40 active:scale-[0.98] animate-float-cta"
+            className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-gold-500/25 transition-all hover:shadow-gold-500/40 active:scale-[0.98] animate-float-cta"
           >
             <span className="relative z-10">Começar agora</span>
             <Icon name="arrow" size={18} className="relative z-10 transition-transform group-hover:translate-x-1" />
-            <div className="absolute inset-0 -translate-x-full transition-transform duration-500 group-hover:translate-x-0 bg-gradient-to-r from-emerald-600 to-green-700" />
+            <div className="absolute inset-0 -translate-x-full transition-transform duration-500 group-hover:translate-x-0 bg-gradient-to-r from-gold-600 to-gold-700" />
           </Link>
           <Link
             href="/sobre"

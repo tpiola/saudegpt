@@ -386,8 +386,8 @@ export default function AnimacaoInsulina({
           onClick={() => setComInsulina(true)}
           className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
             comInsulina
-              ? 'bg-green-500 text-white shadow-md shadow-green-500/20'
-              : 'bg-surface-2 text-muted hover:bg-green-50 hover:text-green-600'
+              ? 'bg-gold-500 text-white shadow-md shadow-gold-500/20'
+              : 'bg-surface-2 text-muted hover:bg-gold-50 hover:text-gold-600'
           }`}
           aria-pressed={comInsulina}
         >

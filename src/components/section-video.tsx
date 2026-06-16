@@ -20,12 +20,12 @@ export const SECTION_VIDEOS = {
   missao: {
     videos: [34625, 33268, 35887],
     opacity: 0.08,
-    overlay: "from-green-950 via-emerald-950/90 to-forest-950",
+    overlay: "from-green-950 via-gold-950/90 to-navy-950",
   },
   cta: {
     videos: [16533, 34269, 33245],
     opacity: 0.06,
-    overlay: "from-green-900/90 via-emerald-800/90 to-forest-900/90",
+    overlay: "from-green-900/90 via-gold-800/90 to-navy-900/90",
   },
   jornada: {
     videos: [5603, 5765, 5767],

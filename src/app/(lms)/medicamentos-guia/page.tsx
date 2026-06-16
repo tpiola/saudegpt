@@ -406,13 +406,13 @@ function SecaoConteudo({
               {bloco.badges.map((b) => (
                 <span
                   key={b}
-                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-emerald-500/10 to-green-500/10 px-3 py-1 text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 dark:from-emerald-900/20 dark:to-green-900/20"
+                  className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-gold-500/10 to-gold-500/10 px-3 py-1 text-[11px] font-semibold text-gold-700 dark:text-gold-300 dark:from-gold-900/20 dark:to-gold-900/20"
                 >
                   {b}
                 </span>
               ))}
             </div>
-            <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+            <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
               {bloco.titulo}
             </h2>
             <p className="mt-3 text-base leading-relaxed text-orange-600 font-medium dark:text-orange-400">
@@ -427,7 +427,7 @@ function SecaoConteudo({
             <FadeUp key={tIdx} delay={tIdx * 80}>
               <article className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-start">
                 <div className="lg:col-span-3">
-                  <h3 className="text-xl font-bold text-forest-700 dark:text-white/90">
+                  <h3 className="text-xl font-bold text-navy-700 dark:text-white/90">
                     {topico.titulo}
                   </h3>
                   <p className="text-sm text-subtle mt-1 mb-5">
@@ -441,7 +441,7 @@ function SecaoConteudo({
                   </div>
 
                   {topico.curiosidade && (
-                    <div className="mt-6 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-forest-800">
+                    <div className="mt-6 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-navy-800">
                       <div className="flex gap-3">
                         <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg dark:bg-orange-900/30">
                           <svg className="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -470,7 +470,7 @@ function SecaoConteudo({
                       height={450}
                       className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 </div>
               </article>
@@ -511,7 +511,7 @@ export default function MedicamentosGuiaPage() {
       {/* ════════════════════════════════════════════
           HERO
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
         <Image
           src="/imagens/hero_medicamentos.webp"
           alt="Medicamentos organizados em prateleira de farmácia"
@@ -521,13 +521,13 @@ export default function MedicamentosGuiaPage() {
           sizes="100vw"
         />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-blue-500/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-navy-700/80 via-navy-600/50 to-blue-500/20" />
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 pt-20 pb-16">
           <FadeUp>
             <div className="max-w-3xl">
               <BadgeControlados />
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-semibold text-emerald-300 ml-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-500/20 px-3 py-1 text-[11px] font-semibold text-gold-300 ml-2">
                 Guia prático
               </span>
 
@@ -604,14 +604,14 @@ export default function MedicamentosGuiaPage() {
               },
             ].map((card, i) => (
               <FadeUp key={card.titulo} delay={i * 80}>
-                <div className={`rounded-2xl border border-${card.cor}-100 bg-gradient-to-br from-${card.cor}-50 to-white p-6 dark:from-${card.cor}-900/10 dark:to-forest-500`}>
+                <div className={`rounded-2xl border border-${card.cor}-100 bg-gradient-to-br from-${card.cor}-50 to-white p-6 dark:from-${card.cor}-900/10 dark:to-navy-500`}>
                   <div className="flex items-center gap-3">
                     <span className={`flex h-10 w-10 items-center justify-center rounded-full bg-${card.cor}-100 text-${card.cor}-600 dark:bg-${card.cor}-900/30`}>
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
                       </svg>
                     </span>
-                    <h3 className="text-sm font-bold text-forest-700 dark:text-white">{card.titulo}</h3>
+                    <h3 className="text-sm font-bold text-navy-700 dark:text-white">{card.titulo}</h3>
                   </div>
                   <p className="mt-3 text-sm leading-relaxed text-muted" dangerouslySetInnerHTML={{ __html: card.texto }} />
                 </div>
@@ -624,7 +624,7 @@ export default function MedicamentosGuiaPage() {
       {/* ════════════════════════════════════════════
           SEÇÃO — O FARMACÊUTICO RECOMENDA
           ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <FadeUp>

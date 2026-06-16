@@ -36,13 +36,13 @@ const trilhaHeroImgs: Record<string, string> = {
 
 // Cores para cada trilha
 const coresBadge: Record<string, { bg: string; border: string; text: string }> = {
-  perfumaria: { bg: "from-green-100 to-green-50", border: "border-green-300/50", text: "text-green-700 dark:text-green-300" },
+  perfumaria: { bg: "from-gold-100 to-gold-50", border: "border-gold-300/50", text: "text-gold-700 dark:text-gold-300" },
   medicamentos: { bg: "from-orange-100 to-orange-50", border: "border-orange-300/50", text: "text-orange-700 dark:text-orange-300" },
-  operacional: { bg: "from-forest-100 to-green-50", border: "border-forest-300/50", text: "text-forest-700 dark:text-forest-300" },
+  operacional: { bg: "from-navy-100 to-gold-50", border: "border-navy-300/50", text: "text-navy-700 dark:text-navy-300" },
   encantamento: { bg: "from-orange-100 to-orange-50", border: "border-orange-300/50", text: "text-orange-700 dark:text-orange-300" },
-  fundamentos: { bg: "from-green-100 to-green-50", border: "border-green-300/50", text: "text-green-700 dark:text-green-300" },
-  pratica: { bg: "from-forest-100 to-green-50", border: "border-forest-300/50", text: "text-forest-700 dark:text-forest-300" },
-  "servicos-cuidado": { bg: "from-green-100 to-orange-50", border: "border-green-300/50", text: "text-green-700 dark:text-green-300" },
+  fundamentos: { bg: "from-gold-100 to-gold-50", border: "border-gold-300/50", text: "text-gold-700 dark:text-gold-300" },
+  pratica: { bg: "from-navy-100 to-gold-50", border: "border-navy-300/50", text: "text-navy-700 dark:text-navy-300" },
+  "servicos-cuidado": { bg: "from-gold-100 to-orange-50", border: "border-gold-300/50", text: "text-gold-700 dark:text-gold-300" },
 };
 
 // Mensagens de farmacêutico contextuais
@@ -159,7 +159,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
       {/* ════════════════════════════════════════════
           HERO MINIMALISTA — Imagem + Badge + Título
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700">
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900">
         <Image
           src={heroImg}
           alt={`Imagem de fundo da trilha ${trilha.titulo}`}
@@ -230,8 +230,8 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
         <div className="bg-surface-2 border-b border-border">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 py-4">
             <Link href="/comando-diario">
-              <Card className="flex items-center gap-4 border-green-300 bg-green-50/50 transition-all hover:border-green-400 dark:bg-green-900/20">
-                <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
+              <Card className="flex items-center gap-4 border-gold-300 bg-gold-50/50 transition-all hover:border-gold-400 dark:bg-gold-900/20">
+                <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white">
                   <Icon name="clock" size={22} />
                 </span>
                 <div className="min-w-0 flex-1">
@@ -240,7 +240,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
                     Checklist do turno conectado a esta trilha — marque itens e aprofunde nas aulas.
                   </p>
                 </div>
-                <Icon name="arrow" size={20} className="flex-none text-green-600" />
+                <Icon name="arrow" size={20} className="flex-none text-gold-600" />
               </Card>
             </Link>
           </div>
@@ -264,7 +264,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
           <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
             <div className="text-center fade-in-up">
               <span className="badge-green inline-flex">💡 Sabia que?</span>
-              <h2 className="mt-3 text-lg font-bold text-forest-600 dark:text-white">Saúde e cuidado no seu dia a dia</h2>
+              <h2 className="mt-3 text-lg font-bold text-navy-600 dark:text-white">Saúde e cuidado no seu dia a dia</h2>
             </div>
 
             <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -286,7 +286,7 @@ export default async function TrilhaPage({ params }: { params: Promise<{ trilhaI
       {/* ════════════════════════════════════════════
           CTA — Acessar conteúdo
           ════════════════════════════════════════════ */}
-      <section className="relative py-16 sm:py-20 bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700 overflow-hidden">
+      <section className="relative py-16 sm:py-20 bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-white">

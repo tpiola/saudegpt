@@ -88,12 +88,12 @@ export default function PressaoArterialPage() {
       {/* ════════════════════════════════════════════
          HERO — COM VÍDEO DE FUNDO
          ════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
         {/* Fundo gradiente */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-700 to-forest-900" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-800 to-navy-900" />
 
         {/* Overlay gradiente */}
-        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-orange-500/20" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-navy-700/80 via-navy-600/50 to-gold-500/20" />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
 
         {/* Conteúdo */}
@@ -182,7 +182,7 @@ export default function PressaoArterialPage() {
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-xl dark:bg-orange-900/30">
                     {topico.emoji}
                   </span>
-                  <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+                  <h2 className="text-[clamp(1.4rem,3vw,2rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
                     {topico.titulo}
                   </h2>
                 </div>
@@ -220,7 +220,7 @@ export default function PressaoArterialPage() {
                       height={450}
                       className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
                 )}
               </div>
@@ -232,7 +232,7 @@ export default function PressaoArterialPage() {
       {/* ════════════════════════════════════════════
          SEÇÃO: DIETA DASH
          ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
           <div className="max-w-3xl mx-auto">
@@ -321,12 +321,12 @@ export default function PressaoArterialPage() {
         <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12">
           <div className="grid gap-8 lg:grid-cols-3">
             {/* Card: Sabia que? */}
-            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-forest-500">
+            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-navy-500">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 text-lg">
                   💡
                 </span>
-                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Sabia que?</h3>
+                <h3 className="text-sm font-bold text-navy-700 dark:text-white">Sabia que?</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 A hipertensão é conhecida como <strong className="text-orange-600 dark:text-orange-400">"assassina silenciosa"</strong>{" "}
@@ -336,12 +336,12 @@ export default function PressaoArterialPage() {
             </div>
 
             {/* Card: Farmacêutico */}
-            <div className="rounded-2xl border border-green-100 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-500">
+            <div className="rounded-2xl border border-gold-100 bg-gradient-to-br from-gold-50 to-white p-6 dark:from-gold-900/10 dark:to-navy-500">
               <div className="flex items-center gap-3">
-                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-green-100 text-green-600 dark:bg-green-900/30 text-lg">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gold-100 text-gold-600 dark:bg-gold-900/30 text-lg">
                   🧑‍⚕️
                 </span>
-                <h3 className="text-sm font-bold text-forest-700 dark:text-white">O farmacêutico recomenda</h3>
+                <h3 className="text-sm font-bold text-navy-700 dark:text-white">O farmacêutico recomenda</h3>
               </div>
               <div className="mt-3 space-y-2">
                 <p className="text-sm leading-relaxed text-muted">
@@ -363,12 +363,12 @@ export default function PressaoArterialPage() {
             </div>
 
             {/* Card: Curiosidade */}
-            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-forest-500">
+            <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:from-orange-900/10 dark:to-navy-500">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-orange-600 dark:bg-orange-900/30 text-lg">
                   🧠
                 </span>
-                <h3 className="text-sm font-bold text-forest-700 dark:text-white">Você sabia?</h3>
+                <h3 className="text-sm font-bold text-navy-700 dark:text-white">Você sabia?</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
                 O potássio ajuda a equilibrar os efeitos do sódio no corpo. Comer alimentos ricos
@@ -389,7 +389,7 @@ export default function PressaoArterialPage() {
             <span className="badge-green inline-flex">
               🩺 O que fazer no balcão
             </span>
-            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
               Como o atendente pode ajudar
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-base text-muted">
@@ -432,12 +432,12 @@ export default function PressaoArterialPage() {
             ].map((card, idx) => (
               <div
                 key={idx}
-                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-green-300/50"
+                className="group relative rounded-2xl border border-border bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-gold-300/50"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-green-50 to-green-100 text-2xl dark:from-green-900/20 dark:to-green-900/10">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-50 to-gold-100 text-2xl dark:from-gold-900/20 dark:to-green-900/10">
                   {card.emoji}
                 </span>
-                <h3 className="mt-4 text-sm font-bold text-forest-700 dark:text-white">{card.titulo}</h3>
+                <h3 className="mt-4 text-sm font-bold text-navy-700 dark:text-white">{card.titulo}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{card.texto}</p>
               </div>
             ))}
@@ -448,7 +448,7 @@ export default function PressaoArterialPage() {
       {/* ════════════════════════════════════════════
          CTA FINAL
          ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <h2 className="text-[clamp(1.8rem,3.5vw,2.5rem)] font-extrabold tracking-[-0.03em] text-white">

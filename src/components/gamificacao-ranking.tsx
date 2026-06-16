@@ -49,9 +49,9 @@ export function GamificacaoRanking() {
         </div>
 
         <div className="card-gradient-mint p-8 sm:p-10 text-center">
-          <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400/20 to-green-500/10">
+          <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-gold-400/20 to-gold-500/10">
             <span className="text-4xl">🚀</span>
-            <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-[10px] font-bold text-white shadow-lg">
+            <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-gold-400 to-gold-500 text-[10px] font-bold text-white shadow-lg">
               NOVO
             </div>
           </div>
@@ -64,7 +64,7 @@ export function GamificacaoRanking() {
             Ative as notificações para saber quando lançar.
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gold-100 px-3 py-1 text-xs font-medium text-gold-700 dark:bg-gold-900/30 dark:text-gold-300">
               🔒 Privacidade total
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">

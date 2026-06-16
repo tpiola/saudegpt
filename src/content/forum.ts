@@ -45,7 +45,7 @@ export const categoriasForum: ForumCategoria[] = [
     nome: "Bem-vindo e Apresentações",
     descricao: "Apresente-se para a comunidade! Conte um pouco sobre sua trajetória na farmácia.",
     icone: "smile",
-    cor: "text-green-500",
+    cor: "text-gold-500",
     ordem: 1,
   },
   {

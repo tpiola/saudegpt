@@ -32,8 +32,8 @@ export function Simulador() {
   return (
     <div>
       {/* Banner da semana */}
-      <Card className="mb-6 border-l-4 border-l-green-400 bg-green-50/40 dark:bg-green-900/20">
-        <div className="flex items-center gap-2 text-sm font-semibold text-green-700 dark:text-green-200">
+      <Card className="mb-6 border-l-4 border-l-green-400 bg-gold-50/40 dark:bg-gold-900/20">
+        <div className="flex items-center gap-2 text-sm font-semibold text-gold-700 dark:text-gold-200">
           <Icon name="flame" size={16} /> Missão da semana {semanaISO()}
         </div>
         <p className="mt-1 text-sm text-muted">
@@ -45,7 +45,7 @@ export function Simulador() {
       <div className="sticky top-16 z-10 -mx-4 mb-6 flex flex-col gap-2 border-b border-border glass px-4 py-3 sm:mx-0 sm:rounded-xl sm:border">
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-sm">
-            <Icon name="target" size={18} className="text-green-600" />
+            <Icon name="target" size={18} className="text-gold-600" />
             <span className="font-semibold">
               {respondidas}/{missoes.length} missões
             </span>
@@ -82,7 +82,7 @@ export function Simulador() {
               <Card>
                 {/* Cabeçalho da missão */}
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm">
                     <Icon name="user" size={20} />
                   </span>
                   <h3 className="text-base font-bold">{m.titulo}</h3>
@@ -94,7 +94,7 @@ export function Simulador() {
                     </Etiqueta>
                   )}
                   {respondida && (
-                    <span className="text-green-500">
+                    <span className="text-gold-500">
                       <Icon name="check" size={16} />
                     </span>
                   )}
@@ -113,11 +113,11 @@ export function Simulador() {
                       op.pontos ===
                       Math.max(...m.opcoes.map((o) => o.pontos));
                     let estilo =
-                      "border-border bg-surface hover:border-green-300 hover:bg-green-50/20 dark:hover:bg-green-900/10";
+                      "border-border bg-surface hover:border-gold-300 hover:bg-gold-50/20 dark:hover:bg-gold-900/10";
                     if (respondida) {
                       if (melhor)
                         estilo =
-                          "border-green-400 bg-green-50/60 dark:bg-green-900/20 ring-1 ring-green-400/30";
+                          "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
                       else if (escolhida)
                         estilo =
                           "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
@@ -140,11 +140,11 @@ export function Simulador() {
                           <span
                             className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold ${
                               respondida && melhor
-                                ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
+                                ? "border-transparent bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm"
                                 : respondida && escolhida && !melhor
                                   ? "border-transparent bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-sm"
                                   : escolhida
-                                    ? "border-green-400 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                                    ? "border-gold-400 bg-gold-100 text-gold-700 dark:bg-gold-900/30 dark:text-gold-300"
                                     : "border-border-strong text-subtle"
                             }`}
                           >
@@ -169,7 +169,7 @@ export function Simulador() {
                               animate={{ scale: 1 }}
                               className={`shrink-0 text-xs font-bold ${
                                 melhor
-                                  ? "text-green-600"
+                                  ? "text-gold-600"
                                   : "text-subtle"
                               }`}
                             >
@@ -188,7 +188,7 @@ export function Simulador() {
                               transition={{ duration: 0.2 }}
                               className="overflow-hidden"
                             >
-                              <div className="mt-2 rounded-xl border border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5 px-4 py-3">
+                              <div className="mt-2 rounded-xl border border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5 px-4 py-3">
                                 <div className="flex items-start gap-2">
                                   <span className="mt-0.5 shrink-0 text-base">
                                     💡

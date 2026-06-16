@@ -34,7 +34,7 @@ export default function PrivacidadePage() {
       <p className="text-muted">
         Você pode zerar o progresso no painel ou limpar os dados do site nas configurações do
         navegador. Para dúvidas: contato via{" "}
-        <a href="https://www.thiagopiola.com.br" className="text-green-600">
+        <a href="https://www.thiagopiola.com.br" className="text-gold-600">
           thiagopiola.com.br
         </a>
         .

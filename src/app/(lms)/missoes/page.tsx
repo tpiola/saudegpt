@@ -44,7 +44,7 @@ export default function MissoesPage() {
           <div className="text-center">
             <span className="text-2xl">🎯</span>
             <h3 className="mt-2 text-sm font-bold">Missões disponíveis</h3>
-            <p className="mt-1 text-2xl font-bold text-green-600 dark:text-green-400">8</p>
+            <p className="mt-1 text-2xl font-bold text-gold-600 dark:text-gold-400">8</p>
             <p className="text-xs text-subtle">casos reais de balcão</p>
           </div>
         </Card>
@@ -60,7 +60,7 @@ export default function MissoesPage() {
           <div className="text-center">
             <span className="text-2xl">💡</span>
             <h3 className="mt-2 text-sm font-bold">Feedback imediato</h3>
-            <p className="mt-1 text-2xl font-bold text-forest-500">✓</p>
+            <p className="mt-1 text-2xl font-bold text-navy-500">✓</p>
             <p className="text-xs text-subtle">aprenda com cada resposta</p>
           </div>
         </Card>

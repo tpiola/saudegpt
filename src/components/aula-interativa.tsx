@@ -112,7 +112,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       {quiz.length > 0 && (
         <Card id="quiz" className="scroll-mt-24">
           <div className="flex items-center gap-2">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-900/40" aria-hidden="true">
+            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gold-50 text-gold-600 dark:bg-green-900/40" aria-hidden="true">
               <Icon name="target" size={18} aria-hidden="true" />
             </span>
             <h2 className="text-lg font-bold">Quiz rápido</h2>
@@ -128,15 +128,15 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                   {q.opcoes.map((op, j) => {
                     const selecionada = respostas[i] === j;
                     const correta = j === q.correta;
-                    let estilo = "border-border bg-surface hover:border-green-300";
+                    let estilo = "border-border bg-surface hover:border-gold-300";
                     if (enviado) {
                       if (correta)
-                        estilo = "border-green-400 bg-green-50 dark:bg-green-900/20";
+                        estilo = "border-gold-400 bg-gold-50 dark:bg-gold-900/20";
                       else if (selecionada)
                         estilo = "border-orange-400 bg-orange-50 dark:bg-orange-900/20";
                       else estilo = "border-border opacity-70";
                     } else if (selecionada) {
-                      estilo = "border-green-400 bg-green-50 dark:bg-green-900/30";
+                      estilo = "border-gold-400 bg-gold-50 dark:bg-gold-900/30";
                     }
                     return (
                       <button
@@ -149,7 +149,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                         <span
                           className={`flex h-5 w-5 flex-none items-center justify-center rounded-full border text-[11px] font-bold ${
                             selecionada || (enviado && correta)
-                              ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white"
+                              ? "border-transparent bg-gradient-to-r from-gold-500 to-gold-600 text-white"
                               : "border-border-strong text-subtle"
                           }`}
                         >
@@ -162,7 +162,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
                 </div>
                 {enviado && (
                   <p className="rounded-lg bg-surface-2 px-3 py-2 text-sm text-muted">
-                    <Icon name="sparkles" size={14} className="mr-1 inline text-green-600" />
+                    <Icon name="sparkles" size={14} className="mr-1 inline text-gold-600" />
                     {q.explicacao}
                   </p>
                 )}
@@ -178,7 +178,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
             <div className="mt-6 flex items-center gap-3 rounded-xl bg-surface-2 p-4">
               <span
                 className={`flex h-11 w-11 items-center justify-center rounded-xl text-white ${
-                  nota >= 60 ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-orange-500"
+                  nota >= 60 ? "bg-gradient-to-r from-gold-500 to-gold-600" : "bg-orange-500"
                 }`}
               >
                 <Icon name={nota >= 60 ? "award" : "target"} size={22} />
@@ -207,7 +207,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
             </Etiqueta>
           ) : (
             <span className="text-sm text-muted">
-              Conclua para ganhar <strong className="text-green-600">+{xp} XP</strong>
+              Conclua para ganhar <strong className="text-gold-600">+{xp} XP</strong>
             </span>
           )}
           <button

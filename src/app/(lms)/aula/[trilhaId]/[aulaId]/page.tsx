@@ -72,20 +72,20 @@ export default async function AulaPage({
     <div className="mx-auto max-w-3xl px-4 pb-16 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8 lg:pb-24 lg:pt-14">
       {/* ── Trilha de migalhas ── */}
       <nav className="flex flex-wrap items-center gap-1.5 text-sm text-subtle">
-        <Link href="/trilhas" className="hover:text-emerald-600 transition-colors">
+        <Link href="/trilhas" className="hover:text-gold-600 transition-colors">
           Trilhas
         </Link>
         <Icon name="arrow" size={14} />
         <Link
           href={`/trilhas/${trilha.id}`}
-          className="hover:text-emerald-600 transition-colors truncate max-w-[160px] sm:max-w-[240px]"
+          className="hover:text-gold-600 transition-colors truncate max-w-[160px] sm:max-w-[240px]"
         >
           {trilha.titulo}
         </Link>
         <Icon name="arrow" size={14} />
         <Link
           href={`/trilhas/${trilha.id}/${modulo.id}`}
-          className="text-muted hover:text-emerald-600 transition-colors truncate max-w-[120px] sm:max-w-[200px]"
+          className="text-muted hover:text-gold-600 transition-colors truncate max-w-[120px] sm:max-w-[200px]"
         >
           {modulo.titulo}
         </Link>

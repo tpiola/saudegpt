@@ -15,7 +15,7 @@ export default function AdminPage() {
           </div>
           <h1 className="text-xl font-bold text-orange-300">Painel bloqueado</h1>
           <p className="mt-2 text-sm text-muted">{MENSAGEM_ADMIN_BLOQUEADO}</p>
-          <a href="/" className="mt-4 inline-flex items-center gap-1 text-sm text-green-500 hover:text-green-400">
+          <a href="/" className="mt-4 inline-flex items-center gap-1 text-sm text-gold-500 hover:text-gold-400">
             ← Voltar ao início
           </a>
         </div>

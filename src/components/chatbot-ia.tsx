@@ -242,13 +242,13 @@ export function ChatBotIA() {
               w-full h-full sm:w-[420px] sm:h-[600px] sm:max-h-[85vh] sm:rounded-2xl sm:mb-4 sm:mr-0
               flex flex-col overflow-hidden
               bg-[#0a0f0e]/95 backdrop-blur-2xl
-              border-t border-emerald-500/20 sm:border sm:border-emerald-500/20
+              border-t border-gold-500/20 sm:border sm:border-gold-500/20
               shadow-[0_0_60px_rgba(16,185,129,0.12),0_25px_80px_rgba(0,0,0,0.5)]
               sm:shadow-[0_0_80px_rgba(16,185,129,0.15),0_30px_100px_rgba(0,0,0,0.6)]
             "
           >
             {/* Gradiente decorativo superior */}
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-emerald-400 via-50% to-transparent opacity-80" />
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 via-50% to-transparent opacity-80" />
 
             {/* ─── HEADER PREMIUM ─── */}
             <div className="relative shrink-0 px-4 sm:px-5 pt-4 sm:pt-5 pb-3 border-b border-white/[0.06]">
@@ -256,7 +256,7 @@ export function ChatBotIA() {
                 {/* Avatar robô com glow */}
                 <div className="relative shrink-0">
                   <div className="absolute inset-0 rounded-full bg-emerald-400/20 blur-md animate-pulse-slow" />
-                  <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400/30 to-emerald-600/20 ring-1 ring-emerald-400/30 overflow-hidden">
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gold-400/30 to-gold-600/20 ring-1 ring-gold-400/30 overflow-hidden">
                     <ChatBubbleIcon className="h-6 w-6" />
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export function ChatBotIA() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
                     <h2 className="text-sm font-bold text-white tracking-tight">Assistente IA</h2>
-                    <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[9px] font-semibold text-emerald-300 border border-emerald-400/15">
+                    <span className="inline-flex items-center gap-1 rounded-full bg-gold-500/10 px-2 py-0.5 text-[9px] font-semibold text-gold-300 border border-gold-400/15">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                       online
                     </span>
@@ -278,7 +278,7 @@ export function ChatBotIA() {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={ouvirUltima}
-                      className="rounded-full bg-white/[0.04] p-2 text-white/40 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all border border-white/[0.04]"
+                      className="rounded-full bg-white/[0.04] p-2 text-white/40 hover:text-gold-300 hover:bg-gold-500/10 transition-all border border-white/[0.04]"
                       title="Ouvir última resposta"
                     >
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
@@ -321,7 +321,7 @@ export function ChatBotIA() {
                 >
                   <div className="relative">
                     <div className="absolute inset-0 rounded-2xl bg-emerald-400/10 blur-xl" />
-                    <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border border-emerald-400/20 shadow-lg">
+                    <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 border border-gold-400/20 shadow-lg">
                       <ChatBubbleIcon className="h-10 w-10" />
                     </div>
                   </div>
@@ -345,7 +345,7 @@ export function ChatBotIA() {
                     <div
                       className={`max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-3 leading-relaxed text-sm ${
                         m.role === "user"
-                          ? "bg-gradient-to-br from-emerald-500/20 to-emerald-600/15 text-white/90 rounded-br-sm shadow-[0_2px_12px_rgba(16,185,129,0.1)] border border-emerald-400/10"
+                          ? "bg-gradient-to-br from-gold-500/20 to-gold-600/15 text-white/90 rounded-br-sm shadow-[0_2px_12px_rgba(16,185,129,0.1)] border border-gold-400/10"
                           : "bg-white/[0.04] text-white/80 rounded-bl-sm border border-white/[0.04] shadow-sm backdrop-blur-sm"
                       }`}
                     >
@@ -363,7 +363,7 @@ export function ChatBotIA() {
                           onClick={() =>
                             speak(m.content.replace(/[*#`>]/g, "").replace(/\n{2,}/g, ". "))
                           }
-                          className="mt-2 text-[10px] text-emerald-400/50 hover:text-emerald-300 transition-colors flex items-center gap-1.5 rounded-full bg-white/[0.02] border border-white/[0.03] px-2.5 py-1"
+                          className="mt-2 text-[10px] text-gold-400/50 hover:text-gold-300 transition-colors flex items-center gap-1.5 rounded-full bg-white/[0.02] border border-white/[0.03] px-2.5 py-1"
                         >
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-3 w-3">
                             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
@@ -401,7 +401,7 @@ export function ChatBotIA() {
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => enviar(s.label)}
-                      className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 text-[11px] text-white/50 hover:text-emerald-300 hover:border-emerald-400/25 hover:bg-emerald-500/8 transition-all backdrop-blur-sm"
+                      className="rounded-full border border-white/[0.06] bg-white/[0.02] px-3 py-1.5 text-[11px] text-white/50 hover:text-gold-300 hover:border-gold-400/25 hover:bg-gold-500/8 transition-all backdrop-blur-sm"
                     >
                       {s.icon && <Icon name={s.icon as any} size={12} className="inline mr-1" />}
                       {s.label}
@@ -421,8 +421,8 @@ export function ChatBotIA() {
                   className="overflow-hidden shrink-0"
                 >
                   <div className="px-4 sm:px-5 pb-3 space-y-2">
-                    <div className="h-px bg-gradient-to-r from-transparent via-emerald-400/20 to-transparent" />
-                    <p className="text-[10px] text-emerald-400/50 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5">
+                    <div className="h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent" />
+                    <p className="text-[10px] text-gold-400/50 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5">
                       <Icon name="camera" size={12} /> Scanner de Produto
                     </p>
                     <div className="grid grid-cols-2 gap-2">
@@ -430,17 +430,17 @@ export function ChatBotIA() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => { scannerFileRef.current?.click(); setModoScanner(false); }}
-                        className="rounded-xl border border-dashed border-emerald-400/25 bg-emerald-500/8 p-4 text-center hover:bg-emerald-500/15 hover:border-emerald-400/40 transition-all"
+                        className="rounded-xl border border-dashed border-gold-400/25 bg-gold-500/8 p-4 text-center hover:bg-gold-500/15 hover:border-gold-400/40 transition-all"
                       >
                         <span className="block mb-1"><Icon name="camera" size={28} className="mx-auto" /></span>
-                        <span className="text-xs font-semibold text-emerald-300/90">Tirar Foto</span>
+                        <span className="text-xs font-semibold text-gold-300/90">Tirar Foto</span>
                         <span className="text-[10px] text-white/30 block mt-0.5">ou enviar imagem</span>
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => { setModoScanner(false); setInput(""); setTimeout(() => inputRef.current?.focus(), 100); }}
-                        className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center hover:bg-white/[0.05] hover:border-emerald-400/15 transition-all"
+                        className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 text-center hover:bg-white/[0.05] hover:border-gold-400/15 transition-all"
                       >
                         <span className="block mb-1"><Icon name="hash" size={28} className="mx-auto" /></span>
                         <span className="text-xs font-semibold text-white/70">Código de Barras</span>
@@ -457,12 +457,12 @@ export function ChatBotIA() {
 
             {/* ─── INPUT PREMIUM ─── */}
             <div className="shrink-0 border-t border-white/[0.04] bg-black/[0.15] px-3 sm:px-4 py-3 pb-5 sm:pb-3">
-              <div className="flex items-center gap-2 bg-white/[0.03] rounded-2xl border border-white/[0.05] px-3 py-1.5 focus-within:border-emerald-400/25 focus-within:bg-white/[0.05] transition-all duration-300">
+              <div className="flex items-center gap-2 bg-white/[0.03] rounded-2xl border border-white/[0.05] px-3 py-1.5 focus-within:border-gold-400/25 focus-within:bg-white/[0.05] transition-all duration-300">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => fileRef.current?.click()}
-                  className="rounded-full p-2 text-white/35 hover:text-emerald-300 hover:bg-emerald-500/10 transition-all"
+                  className="rounded-full p-2 text-white/35 hover:text-gold-300 hover:bg-gold-500/10 transition-all"
                   title="Enviar foto"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
@@ -478,7 +478,7 @@ export function ChatBotIA() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setModoScanner(!modoScanner)}
                   className={`rounded-full p-2 transition-all ${
-                    modoScanner ? "bg-emerald-500/15 text-emerald-300" : "text-white/35 hover:text-emerald-300 hover:bg-emerald-500/10"
+                    modoScanner ? "bg-gold-500/15 text-gold-300" : "text-white/35 hover:text-gold-300 hover:bg-gold-500/10"
                   }`}
                   title="Scanner de Produto"
                 >
@@ -503,7 +503,7 @@ export function ChatBotIA() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => enviar(input)}
                   disabled={!input.trim() || digitando}
-                  className="rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-emerald-600/20 hover:from-emerald-400 hover:to-emerald-500 disabled:opacity-25 disabled:cursor-not-allowed transition-all"
+                  className="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-gold-600/20 hover:from-gold-400 hover:to-gold-500 disabled:opacity-25 disabled:cursor-not-allowed transition-all"
                 >
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
                     <line x1="22" y1="2" x2="11" y2="13" />
@@ -531,7 +531,7 @@ export function ChatBotIA() {
       >
         {/* Anéis concêntricos */}
         <span className="absolute inset-0 rounded-full bg-emerald-400/20 animate-ping opacity-25" style={{ animationDuration: "3s" }} />
-        <span className="absolute -inset-2 rounded-full border border-emerald-400/10 animate-pulse-slow" />
+        <span className="absolute -inset-2 rounded-full border border-gold-400/10 animate-pulse-slow" />
         
         <AnimatePresence mode="wait">
           {aberto ? (

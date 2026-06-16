@@ -9,8 +9,8 @@ export function SecaoCTAFinal() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative overflow-hidden bg-forest-900 py-20 sm:py-28" ref={ref}>
-      <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-500/10 blur-3xl" />
+    <section className="relative overflow-hidden bg-navy-900 py-20 sm:py-28" ref={ref}>
+      <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-gold-500/10 blur-3xl" />
       <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl" />
 
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
@@ -21,7 +21,7 @@ export function SecaoCTAFinal() {
         >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Pronto para{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-400 bg-clip-text text-transparent">
               transformar
             </span>{" "}
             seu atendimento?

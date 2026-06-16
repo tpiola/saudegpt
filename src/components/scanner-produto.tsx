@@ -256,7 +256,7 @@ export function ScannerProduto() {
             onClick={() => { setMode("foto"); setError(null); setResult(null); }}
             className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition-all ${
               mode === "foto"
-                ? "bg-emerald-500/20 text-emerald-300 shadow-sm"
+                ? "bg-gold-500/20 text-gold-300 shadow-sm"
                 : "text-muted hover:text-white/80"
             }`}
           >
@@ -266,7 +266,7 @@ export function ScannerProduto() {
             onClick={() => { setMode("barcode"); setError(null); setResult(null); }}
             className={`flex-1 rounded-xl py-2.5 text-sm font-bold transition-all ${
               mode === "barcode"
-                ? "bg-emerald-500/20 text-emerald-300 shadow-sm"
+                ? "bg-gold-500/20 text-gold-300 shadow-sm"
                 : "text-muted hover:text-white/80"
             }`}
           >
@@ -277,9 +277,9 @@ export function ScannerProduto() {
         {/* ─── Photo mode ──────────────────────────────── */}
         {mode === "foto" && (
           <div className="flex flex-col items-center gap-4">
-            <label className="flex w-full cursor-pointer flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-emerald-400/40 bg-emerald-500/5 p-8 transition hover:border-emerald-400/70">
-              <Icon name="camera" size={32} className="text-emerald-400" />
-              <span className="text-sm font-semibold text-emerald-300">
+            <label className="flex w-full cursor-pointer flex-col items-center gap-3 rounded-2xl border-2 border-dashed border-emerald-400/40 bg-gold-500/5 p-8 transition hover:border-emerald-400/70">
+              <Icon name="camera" size={32} className="text-gold-400" />
+              <span className="text-sm font-semibold text-gold-300">
                 {image ? "Trocar foto" : "Enviar foto"}
               </span>
               <input
@@ -305,7 +305,7 @@ export function ScannerProduto() {
                 <button
                   onClick={handleAnalyzePhoto}
                   disabled={loading}
-                  className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-emerald-500 px-6 py-2 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
+                  className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-gold-500 px-6 py-2 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
                 >
                   {loading ? "Analisando..." : <><Icon name="search" size={14} /> Analisar</>}
                 </button>
@@ -349,7 +349,7 @@ export function ScannerProduto() {
             <button
               onClick={handleAnalyzeBarcode}
               disabled={loading || barcode.replace(/\D/g, "").length < 8}
-              className="rounded-full bg-emerald-500 px-8 py-2.5 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
+              className="rounded-full bg-gold-500 px-8 py-2.5 text-sm font-bold text-white shadow-lg hover:bg-emerald-400 disabled:opacity-50 transition-all"
             >
               {loading ? "Consultando..." : <><Icon name="search" size={14} /> Consultar</>}
             </button>
@@ -384,17 +384,17 @@ export function ScannerProduto() {
             >
               {/* Product header */}
               <motion.div
-                className="rounded-2xl bg-emerald-500/10 border border-emerald-400/30 p-5"
+                className="rounded-2xl bg-gold-500/10 border border-emerald-400/30 p-5"
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <h3 className="text-xl font-extrabold text-emerald-300 truncate">
+                    <h3 className="text-xl font-extrabold text-gold-300 truncate">
                       {result.nome}
                     </h3>
                     {result.categoria && (
-                      <span className="inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-bold text-emerald-300 mt-2 capitalize">
+                      <span className="inline-block rounded-full bg-gold-500/20 px-3 py-1 text-xs font-bold text-gold-300 mt-2 capitalize">
                         {result.categoria}
                       </span>
                     )}
@@ -435,7 +435,7 @@ export function ScannerProduto() {
               >
                 <button
                   onClick={handleSendToChat}
-                  className="flex-1 rounded-xl bg-emerald-500/15 border border-emerald-400/25 px-5 py-3 text-sm font-bold text-emerald-300 hover:bg-emerald-500/25 transition-all"
+                  className="flex-1 rounded-xl bg-gold-500/15 border border-gold-400/25 px-5 py-3 text-sm font-bold text-gold-300 hover:bg-gold-500/25 transition-all"
                 >
                   <Icon name="message-circle" size={14} /> Perguntar ao Assistente
                 </button>
@@ -494,7 +494,7 @@ function InfoCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <h4 className="text-sm font-bold text-emerald-300 mb-1.5 flex items-center gap-1.5">
+          <h4 className="text-sm font-bold text-gold-300 mb-1.5 flex items-center gap-1.5">
             <Icon name={iconName} size={16} />
             <span>{title}</span>
           </h4>
@@ -504,7 +504,7 @@ function InfoCard({
           onClick={handleSpeak}
           className={`shrink-0 rounded-full p-2 text-xs transition-all ${
             playing
-              ? "bg-emerald-500/20 text-emerald-300"
+              ? "bg-gold-500/20 text-gold-300"
               : "bg-white/5 text-white/50 hover:bg-white/10 hover:text-white/80"
           }`}
           title={playing ? "Parar" : "Ouvir"}

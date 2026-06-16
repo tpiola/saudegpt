@@ -19,7 +19,7 @@ export function ModuloProgress({ trilhaId, moduloId, aulasIds }: ModuloProgressP
   if (!todasCompletas) return null;
 
   return (
-    <div className="my-8 rounded-2xl border border-amber-200/50 bg-gradient-to-br from-amber-50 to-white p-6 dark:from-amber-900/10 dark:to-forest-800 dark:border-amber-800/30">
+    <div className="my-8 rounded-2xl border border-amber-200/50 bg-gradient-to-br from-amber-50 to-white p-6 dark:from-amber-900/10 dark:to-navy-800 dark:border-amber-800/30">
       <Trofeu visivel={true} titulo="Módulo Completo!" />
     </div>
   );

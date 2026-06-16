@@ -216,7 +216,7 @@ export default function PressaoArterialDiagram() {
       <figcaption className="mt-3 text-xs text-center text-muted leading-relaxed px-4">
         <strong className="text-foreground">Como funciona a pressão arterial?</strong> O coração bombeia sangue sob pressão para as artérias. 
         A <strong className="text-orange-600 dark:text-orange-400">pressão sistólica</strong> (máxima) ocorre quando o coração se contrai. 
-        A <strong className="text-green-600 dark:text-green-400">pressão diastólica</strong> (mínima) ocorre quando ele relaxa entre as batidas.
+        A <strong className="text-gold-600 dark:text-gold-400">pressão diastólica</strong> (mínima) ocorre quando ele relaxa entre as batidas.
       </figcaption>
     </figure>
   );

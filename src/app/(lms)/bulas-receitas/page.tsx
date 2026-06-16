@@ -55,7 +55,7 @@ export default function BulasReceitasPage() {
       </p>
 
       {/* ── Link oficial ANVISA ── */}
-      <Card className="mt-6 border-orange-200 bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/10 dark:to-forest-500">
+      <Card className="mt-6 border-orange-200 bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/10 dark:to-navy-500">
         <div className="flex items-start gap-4">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-orange-100 text-orange-600 dark:bg-orange-900/30">
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -63,7 +63,7 @@ export default function BulasReceitasPage() {
             </svg>
           </span>
           <div className="min-w-0 flex-1">
-            <h2 className="text-base font-bold text-forest-700 dark:text-white">
+            <h2 className="text-base font-bold text-navy-700 dark:text-white">
               Bulário Eletrônico — ANVISA
             </h2>
             <p className="mt-1 text-sm text-muted">
@@ -90,7 +90,7 @@ export default function BulasReceitasPage() {
         <ol className="mt-4 space-y-4">
           {passosBula.map((p, i) => (
             <li key={p.titulo} className="flex gap-3">
-              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-gradient-to-br from-forest-700 to-green-500 text-sm font-bold text-white">
+              <span className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-gradient-to-br from-navy-700 to-gold-500 text-sm font-bold text-white">
                 {i + 1}
               </span>
               <div>
@@ -115,7 +115,7 @@ export default function BulasReceitasPage() {
         <ul className="mt-4 space-y-2">
           {checklistReceita.map((c) => (
             <li key={c} className="flex items-start gap-2 text-sm text-muted">
-              <Icon name="check" size={16} className="mt-0.5 flex-none text-green-600" />
+              <Icon name="check" size={16} className="mt-0.5 flex-none text-gold-600" />
               {c}
             </li>
           ))}
@@ -151,22 +151,22 @@ export default function BulasReceitasPage() {
 
       {/* ── Mensagem do farmacêutico ── */}
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
-        <div className="flex items-start gap-3 rounded-xl border border-green-100 bg-green-50/60 p-4 dark:border-green-900/30 dark:bg-green-900/10">
+        <div className="flex items-start gap-3 rounded-xl border border-gold-100 bg-gold-50/60 p-4 dark:border-gold-900/30 dark:bg-gold-900/10">
           <span className="mt-0.5 text-lg">🧑‍⚕️</span>
           <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-forest-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada.
+            <strong className="text-navy-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada.
           </p>
         </div>
         <div className="flex items-start gap-3 rounded-xl border border-orange-100 bg-orange-50/60 p-4 dark:border-orange-900/30 dark:bg-orange-900/10">
           <span className="mt-0.5 text-lg">📝</span>
           <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-forest-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
+            <strong className="text-navy-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
           </p>
         </div>
-        <div className="flex items-start gap-3 rounded-xl border border-green-100 bg-green-50/60 p-4 dark:border-green-900/30 dark:bg-green-900/10">
+        <div className="flex items-start gap-3 rounded-xl border border-gold-100 bg-gold-50/60 p-4 dark:border-gold-900/30 dark:bg-gold-900/10">
           <span className="mt-0.5 text-lg">🏷️</span>
           <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-forest-700 dark:text-white">Anote corretamente</strong> todas as informações na etiqueta de posologia.
+            <strong className="text-navy-700 dark:text-white">Anote corretamente</strong> todas as informações na etiqueta de posologia.
           </p>
         </div>
       </div>

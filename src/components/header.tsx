@@ -31,7 +31,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-forest-500/88 text-white backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-navy-800/88 text-white backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setAberto(false)}>
           <LogoSaudeGPT variant="light" size="sm" showIcon={true} />
@@ -52,7 +52,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <ThemeToggle className="border-white/15 bg-white text-forest-700 hover:text-forest-700 !h-10 !w-10 sm:!h-10 sm:!w-10" />
+          <ThemeToggle className="border-white/15 bg-white text-navy-700 hover:text-navy-700 !h-10 !w-10 sm:!h-10 sm:!w-10" />
           <a
             href="mailto:contato@thiagopiola.com.br"
             className="inline-flex min-h-[40px] items-center justify-center rounded-full border border-white/20 px-3 text-xs sm:text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
@@ -61,7 +61,7 @@ export function Header() {
           </a>
           <Link
             href={ctaHref}
-            className="inline-flex min-h-[40px] items-center justify-center rounded-full bg-white px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-forest-700 shadow-sm transition hover:bg-white/90"
+            className="inline-flex min-h-[40px] items-center justify-center rounded-full bg-white px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-navy-700 shadow-sm transition hover:bg-white/90"
           >
             Entrar
           </Link>
@@ -92,7 +92,7 @@ export function Header() {
           <Link
             href={ctaHref}
             onClick={() => setAberto(false)}
-            className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-white px-5 text-sm font-extrabold text-forest-700 hover:bg-white/90 transition-colors"
+            className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-white px-5 text-sm font-extrabold text-navy-700 hover:bg-white/90 transition-colors"
           >
             Fazer matrícula
           </Link>

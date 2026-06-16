@@ -66,7 +66,7 @@ export function SecaoComoFunciona() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-forest-900 py-20 sm:py-28"
+      className="relative overflow-hidden bg-navy-900 py-20 sm:py-28"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-[0.03]">
@@ -116,7 +116,7 @@ export function SecaoComoFunciona() {
                 }}
                 variants={lineVariants}
               >
-                <div className="h-full w-full bg-gradient-to-r from-emerald-500/40 to-emerald-400/20" />
+                <div className="h-full w-full bg-gradient-to-r from-gold-500/40 to-emerald-400/20" />
               </motion.div>
             ))}
           </div>
@@ -133,7 +133,7 @@ export function SecaoComoFunciona() {
                 }}
                 variants={lineVariants}
               >
-                <div className="h-full w-full bg-gradient-to-b from-emerald-500/40 to-emerald-400/20" />
+                <div className="h-full w-full bg-gradient-to-b from-gold-500/40 to-emerald-400/20" />
               </motion.div>
             ))}
           </div>
@@ -146,7 +146,7 @@ export function SecaoComoFunciona() {
                 className="group relative text-center"
               >
                 {/* Step number badge */}
-                <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-forest-600 shadow-xl shadow-emerald-500/20">
+                <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-navy-600 shadow-xl shadow-emerald-500/20">
                   <motion.span
                     className="text-lg font-black text-white"
                     initial={{ scale: 0 }}

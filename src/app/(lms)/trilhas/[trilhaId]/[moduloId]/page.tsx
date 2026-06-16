@@ -74,17 +74,17 @@ export default async function ModuloPage({
   const dicas = getDicasModulo(modulo.id);
 
   const gradColors: Record<string, string> = {
-    perfumaria: "from-emerald-500 to-emerald-600",
+    perfumaria: "from-gold-500 to-gold-600",
     medicamentos: "from-orange-500 to-orange-600",
-    operacional: "from-forest-500 to-emerald-500",
+    operacional: "from-navy-600 to-gold-500",
     encantamento: "from-orange-500 to-orange-600",
   };
-  const grad = gradColors[trilha.id] || "from-emerald-500 to-emerald-600";
+  const grad = gradColors[trilha.id] || "from-gold-500 to-gold-600";
 
   return (
     <div className="relative">
       {/* ═══ HEADER ═══ */}
-      <section className="relative overflow-hidden bg-forest-500 py-12 sm:py-16">
+      <section className="relative overflow-hidden bg-navy-800 py-12 sm:py-16">
         <Image
           src={moduloImagem(modulo.id, modulo.aulas.length)}
           alt={`Imagem de fundo do modulo ${modulo.titulo}`}
@@ -211,7 +211,7 @@ export default async function ModuloPage({
                     {idx + 1}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold text-sm sm:text-base group-hover:text-emerald-600 transition-colors">
+                    <h3 className="font-semibold text-sm sm:text-base group-hover:text-gold-600 transition-colors">
                       {aula.titulo}
                     </h3>
                     <p className="mt-0.5 text-xs sm:text-sm text-muted line-clamp-1">
@@ -239,7 +239,7 @@ export default async function ModuloPage({
           />
 
           {/* Mensagem final — sem emojis */}
-          <div className="mt-10 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-forest-800">
+          <div className="mt-10 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-navy-800">
             <div className="flex items-start gap-3">
               <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-orange-100 dark:bg-orange-900/30">
                 <Icon name="clipboard" size={18} className="text-orange-600 dark:text-orange-400" />
@@ -255,13 +255,13 @@ export default async function ModuloPage({
                   dispensacao. Sempre solicite o segundo visto para prescricoes e orientacoes clinicas.
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-gold-50 px-2.5 py-0.5 text-[10px] font-medium text-gold-700 dark:bg-gold-900/30 dark:text-gold-300">
                     <Icon name="check" size={10} /> Sempre consulte o(a) farmaceutico(a)
                   </span>
                   <span className="inline-flex items-center gap-1 rounded-full bg-orange-50 px-2.5 py-0.5 text-[10px] font-medium text-orange-700 dark:bg-orange-900/30 dark:text-orange-300">
                     <Icon name="clipboard" size={10} /> Solicite o segundo visto
                   </span>
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[10px] font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-gold-50 px-2.5 py-0.5 text-[10px] font-medium text-gold-700 dark:bg-gold-900/30 dark:text-gold-300">
                     <Icon name="book" size={10} /> Anote na etiqueta de posologia
                   </span>
                 </div>

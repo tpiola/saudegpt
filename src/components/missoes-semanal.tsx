@@ -15,14 +15,14 @@ export function MissoesSemanal() {
 
   return (
     <div className="mt-6">
-      <Card className="border-l-4 border-l-green-400 bg-green-50/40 dark:bg-green-900/20 overflow-hidden">
+      <Card className="border-l-4 border-l-green-400 bg-gold-50/40 dark:bg-gold-900/20 overflow-hidden">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white">
               <Icon name="flame" size={20} />
             </span>
             <div>
-              <h3 className="text-sm font-bold text-green-700 dark:text-green-300">
+              <h3 className="text-sm font-bold text-gold-700 dark:text-gold-300">
                 Missão da semana
               </h3>
               <p className="text-xs text-muted">
@@ -49,7 +49,7 @@ export function MissoesSemanal() {
             {missoesDaSemana.slice(0, 3).map((m) => (
               <span
                 key={m.id}
-                className="inline-flex items-center gap-1 rounded-full bg-green-100 dark:bg-green-900/30 px-2.5 py-1 text-[10px] font-medium text-green-700 dark:text-green-300"
+                className="inline-flex items-center gap-1 rounded-full bg-gold-100 dark:bg-gold-900/30 px-2.5 py-1 text-[10px] font-medium text-gold-700 dark:text-gold-300"
               >
                 {m.titulo.slice(0, 18)}{m.titulo.length > 18 ? "…" : ""}
               </span>

@@ -40,7 +40,7 @@ export function LgpdBanner() {
           </Link>
           <button
             onClick={aceitar}
-            className="rounded-xl bg-emerald-600 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-emerald-500 min-h-[44px] inline-flex items-center"
+            className="rounded-xl bg-emerald-600 px-5 py-3 text-xs font-semibold text-white transition-colors hover:bg-gold-500 min-h-[44px] inline-flex items-center"
           >
             Aceitar
           </button>

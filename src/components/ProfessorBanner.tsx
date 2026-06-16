@@ -52,7 +52,7 @@ export default function ProfessorBanner({
       ref={ref}
       className={cn(
         "relative isolate overflow-hidden rounded-2xl",
-        "bg-gradient-to-br from-forest-600 via-emerald-700 to-forest-700",
+        "bg-gradient-to-br from-forest-600 via-gold-700 to-forest-700",
         "px-5 py-8 sm:px-8 sm:py-12",
         "transition-all duration-700 ease-out",
         visivel

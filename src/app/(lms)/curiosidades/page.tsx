@@ -19,7 +19,7 @@ const curiosidades = [
     id: "emagrecimento-saudavel",
     titulo: "Emagrecimento Saudável — Sem Milagres",
     destaque: "Não existe remédio milagroso. O segredo é constância e equilíbrio.",
-    cor: "from-green-500 to-green-600",
+    cor: "from-gold-500 to-gold-600",
     badges: ["Saúde", "Alimentação", "Bem-Estar"],
     topicos: [
       {
@@ -101,7 +101,7 @@ E o potássio é o melhor amigo de quem tem pressão alta! Banana, abacate, feij
     id: "saude-coracao",
     titulo: "Saúde do Coração — Dicas que Salvam Vidas",
     destaque: "Pequenas mudanças no dia a dia protegem o coração por muitos anos.",
-    cor: "from-green-400 to-green-500",
+    cor: "from-gold-400 to-gold-500",
     badges: ["Coração", "Prevenção", "Estilo de Vida"],
     topicos: [
       {
@@ -149,7 +149,7 @@ export default function CuriosidadesPage() {
       {/* ════════════════════════════════════════════
          HERO
          ════════════════════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-forest-500">
+      <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
         <Image
           src="/imagens/hero_pills.webp"
           alt="Profissional de saúde atendendo paciente no balcão da farmácia"
@@ -159,7 +159,7 @@ export default function CuriosidadesPage() {
           sizes="100vw"
         />
         <div className="pointer-events-none absolute inset-0 z-[2] pattern-grid opacity-[0.04]" />
-        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-forest-500/80 via-forest-600/50 to-green-500/20 animate-pulse-slow" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-br from-navy-700/80 via-navy-600/50 to-gold-500/20 animate-pulse-slow" />
 
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 lg:px-12 pt-20 pb-16">
           <FadeUp>
@@ -237,7 +237,7 @@ export default function CuriosidadesPage() {
                     <span key={b} className="badge-green">{b}</span>
                   ))}
                 </div>
-                <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-700 dark:text-white">
+                <h2 className="text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-700 dark:text-white">
                   {bloco.titulo}
                 </h2>
                 <p className="mt-3 text-base leading-relaxed text-orange-600 font-medium dark:text-orange-400">
@@ -252,7 +252,7 @@ export default function CuriosidadesPage() {
                 <FadeUp key={tIdx} delay={tIdx * 80}>
                   <article className="grid gap-8 lg:grid-cols-5 lg:gap-12 items-start">
                     <div className="lg:col-span-3">
-                      <h3 className="text-xl font-bold text-forest-700 dark:text-white/90">
+                      <h3 className="text-xl font-bold text-navy-700 dark:text-white/90">
                         {topico.titulo}
                       </h3>
                       <p className="text-sm text-subtle mt-1 mb-5">{topico.subtitulo}</p>
@@ -263,7 +263,7 @@ export default function CuriosidadesPage() {
                         ))}
                       </div>
 
-                      <div className="mt-6 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-forest-800">
+                      <div className="mt-6 rounded-2xl border border-orange-200/50 bg-gradient-to-br from-orange-50 to-white p-5 dark:from-orange-900/10 dark:to-navy-800">
                         <div className="flex gap-3">
                           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-100 text-lg dark:bg-orange-900/30">
                             <svg className="h-5 w-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -291,7 +291,7 @@ export default function CuriosidadesPage() {
                           height={450}
                           className="w-full h-auto aspect-[4/3] object-cover transition-all duration-700 group-hover:scale-105"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-forest-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-navy-600/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                       </div>
                     </div>
                   </article>
@@ -325,16 +325,16 @@ export default function CuriosidadesPage() {
                 emoji: "🌿",
                 cor: "green",
                 titulo: "Cuidado que transforma",
-                texto: 'No balcão da farmácia, você é a primeira pessoa que o cliente encontra. Um atendente bem informado pode fazer a diferença entre um cliente que passa despercebido e um que <strong className="text-green-600">recebe o cuidado que merece</strong>.',
+                texto: 'No balcão da farmácia, você é a primeira pessoa que o cliente encontra. Um atendente bem informado pode fazer a diferença entre um cliente que passa despercebido e um que <strong className="text-gold-600">recebe o cuidado que merece</strong>.',
               },
             ].map((card, i) => (
               <FadeUp key={card.titulo} delay={i * 80}>
-                <div className={`rounded-2xl border border-${card.cor}-100 bg-gradient-to-br from-${card.cor}-50 to-white p-6 dark:from-${card.cor}-900/10 dark:to-forest-500`}>
+                <div className={`rounded-2xl border border-${card.cor}-100 bg-gradient-to-br from-${card.cor}-50 to-white p-6 dark:from-${card.cor}-900/10 dark:to-navy-500`}>
                   <div className="flex items-center gap-3">
                     <span className={`flex h-10 w-10 items-center justify-center rounded-full bg-${card.cor}-100 text-${card.cor}-600 dark:bg-${card.cor}-900/30 text-lg`}>
                       {card.emoji}
                     </span>
-                    <h3 className="text-sm font-bold text-forest-700 dark:text-white">{card.titulo}</h3>
+                    <h3 className="text-sm font-bold text-navy-700 dark:text-white">{card.titulo}</h3>
                   </div>
                   <div className="mt-3 space-y-2.5 text-sm leading-relaxed text-muted" dangerouslySetInnerHTML={{ __html: card.texto }} />
                 </div>
@@ -347,7 +347,7 @@ export default function CuriosidadesPage() {
       {/* ════════════════════════════════════════════
          CTA FINAL
          ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-forest-500 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-navy-800 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <FadeUp>

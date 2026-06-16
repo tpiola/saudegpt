@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════════
 // BRAND — Design System do SaúdeGPT
-// Paleta farmácia/saúde: verde menta, azul confiança, branco clínico
+// Paleta Navy Luxury: navy #0A1628 + gold #D4A843
 // ═══════════════════════════════════════════════════════════════
 
 export const brand = {
@@ -18,51 +18,74 @@ export const brand = {
   // ── Paleta de Cores ──────────────────────────────────────
 
   colors: {
-    // Verde Menta (saúde/farmácia)
+    // Gold (accent luxury)
+    gold: {
+      50: "#fef9ec",
+      100: "#fcedc8",
+      200: "#f9dc93",
+      300: "#f4c65e",
+      400: "#D4A843",
+      500: "#b8922e",
+      600: "#9a7825",
+      700: "#7d5f1e",
+      800: "#604817",
+      900: "#423010",
+    },
+
+    // Navy (base luxury)
+    navy: {
+      50: "#eef2f8",
+      100: "#d0d9e8",
+      200: "#b0bdd4",
+      300: "#8da0bd",
+      400: "#7186a8",
+      500: "#586d8f",
+      600: "#435572",
+      700: "#2f3f58",
+      800: "#1c2a40",
+      850: "#14202f",
+      900: "#0A1628",
+      950: "#060e1a",
+    },
+
+    // Platinum (neutral premium)
+    platinum: {
+      50: "#f8f9fb",
+      100: "#eef0f5",
+      200: "#dce0ea",
+      300: "#c4c9d7",
+      400: "#a8aec0",
+      500: "#8b92a5",
+      600: "#6f7689",
+      700: "#555b6d",
+      800: "#3d4352",
+      900: "#272c38",
+    },
+
+    // Emerald Health (farmácia credibilidade)
     mint: {
       50: "#ecfdf5",
       100: "#d1fae5",
       200: "#a7f3d0",
       300: "#6ee7b7",
-      400: "#4ADE80",
-      500: "#22C55E",
-      600: "#16a34a",
-      700: "#15803d",
-      800: "#166534",
-      900: "#14532d",
+      400: "#34d399",
+      500: "#10b981",
+      600: "#059669",
+      700: "#047857",
+      800: "#065f46",
+      900: "#064e3b",
     },
 
-    // Azul Confiança
-    trust: {
-      50: "#eff6ff",
-      100: "#dbeafe",
-      200: "#bfdbfe",
-      300: "#93c5fd",
-      400: "#60a5fa",
-      500: "#3B82F6",
-      600: "#2563eb",
-      700: "#1d4ed8",
-      800: "#1e40af",
-      900: "#1e3a8a",
-    },
-
-    // Branco Clínico
-    clinical: {
-      50: "#F8FAFC",
-      100: "#f1f5f9",
-      200: "#e2e8f0",
-    },
-
-    // Dark mode OLED-friendly
+    // Dark mode navy
     dark: {
-      bg: "#0F172A",
-      surface: "#1e293b",
-      border: "#334155",
+      bg: "#0A1628",
+      surface: "#14202f",
+      border: "#1c2a40",
     },
 
-    // Light mode clínico
+    // Light mode
     light: {
-      bg: "#F8FAFC",
+      bg: "#f8f9fb",
       surface: "#ffffff",
     },
   },
@@ -70,11 +93,11 @@ export const brand = {
   // ── Gradientes ───────────────────────────────────────────
 
   gradients: {
-    card: "bg-gradient-to-br from-white to-emerald-50/50 dark:from-midnight-800 dark:to-emerald-950/20",
-    hero: "bg-gradient-to-br from-emerald-500 via-emerald-600 to-forest-600",
-    accent: "bg-gradient-to-r from-emerald-400 to-green-500",
+    card: "bg-gradient-to-br from-white to-gold-50/50 dark:from-navy-800 dark:to-gold-950/20",
+    hero: "bg-gradient-to-br from-navy-800 via-navy-700 to-navy-900",
+    accent: "bg-gradient-to-r from-gold-400 to-gold-500",
     trust: "bg-gradient-to-br from-blue-500 to-indigo-600",
-    warm: "bg-gradient-to-br from-orange-500 to-yellow-500",
+    warm: "bg-gradient-to-br from-gold-500 to-gold-400",
   },
 
   // ── Tipografia ───────────────────────────────────────────

@@ -71,7 +71,7 @@ export function XpBar({ xp, xpProximoNivel }: { xp: number; xpProximoNivel: numb
 
   return (
     <div className="relative w-full">
-      <div className="h-2 w-full overflow-hidden rounded-full bg-forest-100 dark:bg-forest-800/50">
+      <div className="h-2 w-full overflow-hidden rounded-full bg-navy-100 dark:bg-navy-800/50">
         <motion.div
           className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-[length:200%_100%]"
           initial={{ width: 0 }}
@@ -197,7 +197,7 @@ export function StreakFlame({ streak, size = "md" }: { streak: number; size?: "s
     >
       <span className={sizeMap[size]}>🔥</span>
       <motion.span
-        className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-bold text-forest-700 shadow"
+        className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-bold text-navy-700 shadow"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 500, damping: 15 }}

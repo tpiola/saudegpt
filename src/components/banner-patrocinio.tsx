@@ -6,7 +6,7 @@ const PATROCINADORES = [
     nome: "Thiago Piola",
     url: "https://www.thiagopiola.com.br",
     tagline: "Web design premium",
-    cor: "from-forest-600 to-forest-500",
+    cor: "from-forest-600 to-navy-500",
   },
   {
     nome: "Rei das Vendas",
@@ -27,7 +27,7 @@ export function BannerPatrocinio({ variante = "default" }: { variante?: "default
             href={p.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 font-semibold text-foreground hover:text-forest-600 transition-colors"
+            className="inline-flex items-center gap-1.5 font-semibold text-foreground hover:text-navy-600 transition-colors"
           >
             <span className={`h-2 w-2 rounded-full bg-gradient-to-r ${p.cor}`} />
             {p.nome}
@@ -58,12 +58,12 @@ export function BannerPatrocinio({ variante = "default" }: { variante?: "default
                 {p.nome.charAt(0)}
               </span>
               <div className="min-w-0">
-                <div className="text-sm font-bold text-foreground group-hover:text-forest-600 transition-colors truncate">
+                <div className="text-sm font-bold text-foreground group-hover:text-navy-600 transition-colors truncate">
                   {p.nome}
                 </div>
                 <div className="text-[11px] text-subtle">{p.tagline}</div>
               </div>
-              <Icon name="arrow" size={14} className="ml-auto flex-none text-subtle group-hover:text-forest-500 transition-colors" />
+              <Icon name="arrow" size={14} className="ml-auto flex-none text-subtle group-hover:text-navy-500 transition-colors" />
             </Link>
           ))}
         </div>

@@ -155,7 +155,7 @@ export default function VoiceOverPlayer({
             className={cn(
               "flex h-8 w-8 items-center justify-center rounded-lg",
               playing
-                ? "bg-emerald-500/20 text-emerald-400"
+                ? "bg-gold-500/20 text-gold-400"
                 : "bg-white/10 text-white/50",
               "transition-colors duration-300",
             )}
@@ -182,7 +182,7 @@ export default function VoiceOverPlayer({
                 key={i}
                 className={cn(
                   "w-[3px] rounded-t-full transition-all duration-200",
-                  playing ? "bg-emerald-400/80" : "bg-white/15",
+                  playing ? "bg-gold-400/80" : "bg-white/15",
                 )}
                 style={{
                   height: `${h}px`,

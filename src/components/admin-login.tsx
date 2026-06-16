@@ -45,15 +45,15 @@ export function AdminLoginPage() {
     <div className="min-h-screen bg-background flex items-center justify-center p-4 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-green-500/5 blur-[100px]" />
-        <div className="absolute -bottom-48 -left-48 w-[500px] h-[500px] rounded-full bg-green-500/5 blur-[100px]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-green-500/[0.02] blur-[150px]" />
+        <div className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full bg-gold-500/5 blur-[100px]" />
+        <div className="absolute -bottom-48 -left-48 w-[500px] h-[500px] rounded-full bg-gold-500/5 blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-gold-500/[0.02] blur-[150px]" />
       </div>
 
       <div className="relative w-full max-w-[420px]">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 text-white text-2xl mb-4 shadow-lg shadow-green-500/25">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 text-white text-2xl mb-4 shadow-lg shadow-green-500/25">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 9l9-4 9 4-9 4-9-4Z" /><path d="M7 11v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4" />
             </svg>
@@ -65,7 +65,7 @@ export function AdminLoginPage() {
         {/* Form Card */}
         <div className="relative rounded-2xl border border-border bg-surface/80 backdrop-blur-xl p-8 shadow-2xl">
           {/* Glow */}
-          <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-green-500/[0.03] via-transparent to-transparent pointer-events-none" />
+          <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-gold-500/[0.03] via-transparent to-transparent pointer-events-none" />
 
           <form ref={formRef} onSubmit={handleSubmit} className="relative space-y-5">
             <div>
@@ -85,7 +85,7 @@ export function AdminLoginPage() {
                   onChange={(e) => setUsuario(e.target.value)}
                   placeholder="admin"
                   autoComplete="username"
-                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/50 transition-all text-sm"
+                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-500/50 transition-all text-sm"
                 />
               </div>
             </div>
@@ -107,7 +107,7 @@ export function AdminLoginPage() {
                   onChange={(e) => setSenha(e.target.value)}
                   placeholder="••••••"
                   autoComplete="current-password"
-                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/50 transition-all text-sm"
+                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-500/50 transition-all text-sm"
                 />
               </div>
             </div>
@@ -124,7 +124,7 @@ export function AdminLoginPage() {
             <button
               type="submit"
               disabled={carregando}
-              className="w-full h-11 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold text-sm shadow-lg shadow-green-500/25 hover:brightness-110 hover:shadow-xl hover:shadow-green-500/30 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full h-11 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white font-semibold text-sm shadow-lg shadow-green-500/25 hover:brightness-110 hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {carregando ? (
                 <span className="inline-flex items-center gap-2">
@@ -143,7 +143,7 @@ export function AdminLoginPage() {
           <p className="text-[11px] text-muted">
             {site.assinatura}
           </p>
-          <a href="/" className="inline-flex items-center gap-1 text-xs text-green-500 hover:text-green-400 transition-colors mt-2">
+          <a href="/" className="inline-flex items-center gap-1 text-xs text-gold-500 hover:text-gold-400 transition-colors mt-2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M19 12H5"/><path d="m12 5-7 7 7 7"/></svg>
             Voltar para o curso
           </a>

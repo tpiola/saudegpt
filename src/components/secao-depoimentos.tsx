@@ -48,7 +48,7 @@ export function SecaoDepoimentos() {
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               Quem já está{" "}
-              <span className="bg-gradient-to-r from-orange-500 to-emerald-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-500 to-gold-400 bg-clip-text text-transparent">
                 transformando
               </span>{" "}
               o atendimento
@@ -74,7 +74,7 @@ export function SecaoDepoimentos() {
                 <p className="mt-4 text-sm leading-relaxed text-muted">"{dep.texto}"</p>
 
                 <div className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-forest-500 to-emerald-600 text-white text-sm font-bold">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-navy-600 to-gold-600 text-white text-sm font-bold">
                     {dep.nome.charAt(0)}
                   </div>
                   <div>

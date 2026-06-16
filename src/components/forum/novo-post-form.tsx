@@ -111,7 +111,7 @@ export function NovoPostForm({ autorNome, autorId, onSuccess, onCancel }: NovoPo
         )}
 
         {xp !== null && (
-          <div className="rounded-lg bg-green-50 dark:bg-green-900/20 px-3 py-2 text-xs text-green-600 dark:text-green-400 flex items-center gap-2">
+          <div className="rounded-lg bg-gold-50 dark:bg-gold-900/20 px-3 py-2 text-xs text-gold-600 dark:text-gold-400 flex items-center gap-2">
             <Icon name="zap" size={14} />
             Post criado! +{xp} XP
           </div>

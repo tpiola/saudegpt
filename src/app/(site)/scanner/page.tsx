@@ -14,7 +14,7 @@ export default function ScannerPage() {
       <Header />
       <main className="py-16 sm:py-24 px-4">
         <div className="mx-auto max-w-7xl text-center mb-12">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-emerald-400 to-emerald-200 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 bg-gradient-to-r from-gold-400 to-gold-200 bg-clip-text text-transparent">
             📸 Scanner de Produtos
           </h1>
           <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">

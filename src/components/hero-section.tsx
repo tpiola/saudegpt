@@ -112,9 +112,9 @@ export function HeroSection() {
           style={{ backgroundImage: "url('/imagens/hero_pills.png')" }}
         />
         {/* Gradient overlay premium */}
-        <div className="absolute inset-0 bg-gradient-to-b from-forest-900/85 via-forest-800/75 to-forest-900/92" />
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/85 via-navy-800/75 to-forest-900/92" />
         {/* Radial glow no centro */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-emerald-500/8 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-gold-500/8 blur-[120px]" />
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
       </motion.div>
 
@@ -133,20 +133,20 @@ export function HeroSection() {
         >
           {/* Badge superior */}
           <motion.div
-            className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-xs font-medium text-emerald-300">
+            <span className="text-xs font-medium text-gold-300">
               Formação para atendentes de farmácia
             </span>
           </motion.div>
 
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Formação completa para{" "}
-            <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-400 bg-clip-text text-transparent">
               atendentes de farmácia
             </span>
           </h1>

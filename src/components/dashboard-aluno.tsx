@@ -211,8 +211,8 @@ export function DashboardAluno() {
   }));
 
   /* ── Classes reutilizáveis de card ── */
-  const cardGlass = "relative overflow-hidden rounded-2xl border border-border bg-surface/80 backdrop-blur-sm p-5 transition-all hover:shadow-md hover:border-emerald-500/20";
-  const gradForest = "bg-gradient-to-br from-forest-700 via-emerald-700 to-forest-800";
+  const cardGlass = "relative overflow-hidden rounded-2xl border border-border bg-surface/80 backdrop-blur-sm p-5 transition-all hover:shadow-md hover:border-gold-500/20";
+  const gradForest = "bg-gradient-to-br from-forest-700 via-gold-700 to-navy-800";
 
   return (
     <div className="mx-auto max-w-6xl px-3 sm:px-4 lg:px-6 py-4 sm:py-8 lg:py-12">
@@ -295,15 +295,15 @@ export function DashboardAluno() {
       {/* ─── VOCÊ SABIA? ─── */}
       <div className={`mb-4 sm:mb-6 ${cardGlass}`}>
         <div className="flex items-start gap-3">
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300">
+          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gold-100 text-gold-600 dark:bg-gold-900/40 dark:text-gold-300">
             <Icon name="sparkles" size={20} />
           </span>
           <div className="min-w-0 flex-1">
             <div className="mb-1 flex items-center justify-between">
-              <h3 className="text-sm font-bold text-emerald-700 dark:text-emerald-300">
+              <h3 className="text-sm font-bold text-gold-700 dark:text-gold-300">
                 Você Sabia?
               </h3>
-              <span className="text-[11px] text-emerald-400 dark:text-emerald-500">
+              <span className="text-[11px] text-gold-400 dark:text-emerald-500">
                 {indiceDica + 1}/{DICAS_SAUDE.length}
               </span>
             </div>
@@ -325,7 +325,7 @@ export function DashboardAluno() {
             <div className="mt-2 flex items-center gap-1">
               <button
                 onClick={recuarDica}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-emerald-500 transition hover:bg-emerald-100 hover:text-emerald-700 dark:hover:bg-emerald-900/40"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-emerald-500 transition hover:bg-gold-100 hover:text-gold-700 dark:hover:bg-emerald-900/40"
                 aria-label="Dica anterior"
               >
                 <ChevronLeft size={14} />
@@ -340,7 +340,7 @@ export function DashboardAluno() {
                     }}
                     className={`h-2 rounded-full transition-all ${
                       i === indiceDica
-                        ? "w-5 bg-emerald-500"
+                        ? "w-5 bg-gold-500"
                         : "w-2 bg-emerald-300/50 dark:bg-emerald-600/30"
                     }`}
                     aria-label={`Ir para dica ${i + 1}`}
@@ -349,7 +349,7 @@ export function DashboardAluno() {
               </div>
               <button
                 onClick={avancarDica}
-                className="flex h-7 w-7 items-center justify-center rounded-full text-emerald-500 transition hover:bg-emerald-100 hover:text-emerald-700 dark:hover:bg-emerald-900/40"
+                className="flex h-7 w-7 items-center justify-center rounded-full text-emerald-500 transition hover:bg-gold-100 hover:text-gold-700 dark:hover:bg-emerald-900/40"
                 aria-label="Pr\u00f3xima dica"
               >
                 <ChevronRight size={14} />
@@ -521,7 +521,7 @@ export function DashboardAluno() {
           {/* ─── 5. TEMPO DE ESTUDO ─── */}
           <div className={cardGlass}>
             <div className="flex items-center gap-4">
-              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-400/10 ring-1 ring-emerald-500/20">
+              <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500/20 to-emerald-400/10 ring-1 ring-emerald-500/20">
                 <Icon name="clock" size={28} className="text-emerald-500" />
               </span>
               <div>
@@ -557,7 +557,7 @@ export function DashboardAluno() {
                   title={b.descricao}
                   className={`flex flex-col items-center gap-1 rounded-xl p-2.5 text-center transition-all ${
                     b.ativo
-                      ? "bg-gradient-to-b from-emerald-50 to-emerald-50/40 border border-emerald-200 dark:from-emerald-900/30 dark:to-emerald-900/20 dark:border-emerald-800 shadow-sm"
+                      ? "bg-gradient-to-b from-gold-50 to-gold-50/40 border border-gold-200 dark:from-gold-900/30 dark:to-gold-900/20 dark:border-gold-800 shadow-sm"
                       : "bg-surface-2 border border-border opacity-40"
                   }`}
                 >
@@ -571,7 +571,7 @@ export function DashboardAluno() {
                   <span
                     className={`text-[10px] font-semibold leading-tight ${
                       b.ativo
-                        ? "text-emerald-700 dark:text-emerald-300"
+                        ? "text-gold-700 dark:text-gold-300"
                         : "text-subtle"
                     }`}
                   >
@@ -595,7 +595,7 @@ export function DashboardAluno() {
             </p>
             <div className="flex flex-col gap-2">
               {ultimasConcluidas.length === 0 ? (
-                <div className="rounded-xl bg-emerald-50/50 p-4 text-center text-sm font-semibold text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-300">
+                <div className="rounded-xl bg-gold-50/50 p-4 text-center text-sm font-semibold text-gold-600 dark:bg-emerald-900/20 dark:text-gold-300">
                   <Icon name="target" size={16} className="inline mr-1" />
                   Nenhuma aula conclu\u00edda ainda
                 </div>
@@ -606,13 +606,13 @@ export function DashboardAluno() {
                     <Link
                       key={item.chave}
                       href={`/aula/${item.trilha.id}/${item.aula.id}`}
-                      className="group flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition-all hover:border-emerald-300 hover:shadow-sm hover:bg-emerald-50/30 dark:hover:bg-emerald-900/10"
+                      className="group flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition-all hover:border-emerald-300 hover:shadow-sm hover:bg-gold-50/30 dark:hover:bg-emerald-900/10"
                     >
-                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-xs text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold-100 text-xs text-gold-600 dark:bg-gold-900/30 dark:text-gold-300">
                         {item.trilha.numero}
                       </span>
                       <div className="min-w-0 flex-1">
-                        <div className="truncate text-sm font-semibold group-hover:text-emerald-600 transition-colors">
+                        <div className="truncate text-sm font-semibold group-hover:text-gold-600 transition-colors">
                           {item.aula.titulo}
                         </div>
                         <div className="flex items-center gap-2 text-[11px] text-subtle">
@@ -634,7 +634,7 @@ export function DashboardAluno() {
                           )}
                         </div>
                       </div>
-                      <span className="shrink-0 rounded-md border border-emerald-200 bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-600 transition-colors group-hover:bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300">
+                      <span className="shrink-0 rounded-md border border-gold-200 bg-gold-50 px-2 py-0.5 text-[10px] font-semibold text-gold-600 transition-colors group-hover:bg-gold-100 dark:border-gold-800 dark:bg-gold-900/30 dark:text-gold-300">
                         Revisar →
                       </span>
                     </Link>
@@ -657,7 +657,7 @@ export function DashboardAluno() {
             </p>
             <div className="flex flex-col gap-2">
               {recomendadas.length === 0 ? (
-                <div className="rounded-xl bg-emerald-50/50 p-4 text-center text-sm font-semibold text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-300">
+                <div className="rounded-xl bg-gold-50/50 p-4 text-center text-sm font-semibold text-gold-600 dark:bg-emerald-900/20 dark:text-gold-300">
                   <Icon name="sparkles" size={16} className="inline mr-1" />
                   Voc\u00ea concluiu todas as aulas do curso!
                 </div>
@@ -666,13 +666,13 @@ export function DashboardAluno() {
                   <Link
                     key={chaveAula(item.trilha.id, item.aula.id)}
                     href={`/aula/${item.trilha.id}/${item.aula.id}`}
-                    className="group flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition-all hover:border-emerald-300 hover:shadow-sm hover:bg-emerald-50/30 dark:hover:bg-emerald-900/10"
+                    className="group flex items-center gap-3 rounded-xl border border-border bg-surface/60 p-3 transition-all hover:border-emerald-300 hover:shadow-sm hover:bg-gold-50/30 dark:hover:bg-emerald-900/10"
                   >
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-100 text-xs text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-300">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold-100 text-xs text-gold-600 dark:bg-gold-900/30 dark:text-gold-300">
                       {item.trilha.numero}
                     </span>
                     <div className="min-w-0 flex-1">
-                      <div className="truncate text-sm font-semibold group-hover:text-emerald-600 transition-colors">
+                      <div className="truncate text-sm font-semibold group-hover:text-gold-600 transition-colors">
                         {item.aula.titulo}
                       </div>
                       <div className="truncate text-[11px] text-subtle">
@@ -699,7 +699,7 @@ export function DashboardAluno() {
               Seu desempenho geral na plataforma
             </p>
             <div className="grid grid-cols-3 gap-3">
-              <div className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3 text-center">
+              <div className="rounded-xl bg-gold-500/5 border border-emerald-500/10 p-3 text-center">
                 <div className="text-xl font-extrabold text-emerald-500">
                   {mediaNotas != null ? `${mediaNotas}%` : "—"}
                 </div>
@@ -715,8 +715,8 @@ export function DashboardAluno() {
                   Quizzes feitos
                 </div>
               </div>
-              <div className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-3 text-center">
-                <div className="text-xl font-extrabold text-emerald-600">
+              <div className="rounded-xl bg-gold-500/5 border border-emerald-500/10 p-3 text-center">
+                <div className="text-xl font-extrabold text-gold-600">
                   {prog.missoesPontos}
                 </div>
                 <div className="mt-0.5 text-[11px] text-muted">

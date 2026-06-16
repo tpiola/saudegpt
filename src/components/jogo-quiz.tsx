@@ -24,9 +24,9 @@ function IndicadorQuestoes({
           key={i}
           className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold transition-all duration-200 ${
             i === atual
-              ? "scale-110 bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
+              ? "scale-110 bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm"
               : i < atual
-                ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+                ? "bg-gold-100 text-gold-700 dark:bg-green-900/40 dark:text-gold-300"
                 : "bg-surface-2 text-muted"
           }`}
         >
@@ -84,7 +84,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
             transition={{ type: "spring", stiffness: 200, damping: 12 }}
             className={`flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg ${
               pct >= 70
-                ? "bg-gradient-to-r from-green-500 to-green-600"
+                ? "bg-gradient-to-r from-gold-500 to-gold-600"
                 : "bg-gradient-to-br from-orange-400 to-orange-600"
             }`}
           >
@@ -94,7 +94,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
             <h3 className="text-lg font-bold">{titulo} — resultado</h3>
             <p className="mt-1 text-2xl font-extrabold">
               {pontos}/{questoes.length * 10} pts
-              <span className={`ml-2 text-sm ${pct >= 70 ? "text-green-500" : "text-orange-500"}`}>
+              <span className={`ml-2 text-sm ${pct >= 70 ? "text-gold-500" : "text-orange-500"}`}>
                 ({pct}%)
               </span>
             </p>
@@ -116,7 +116,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
                 <li key={item.id} className="text-sm">
                   <p className="font-semibold text-foreground">{item.pergunta}</p>
                   <p className="mt-0.5 text-muted leading-relaxed">
-                    <span className="font-medium text-green-600 dark:text-green-400">
+                    <span className="font-medium text-gold-600 dark:text-gold-400">
                       Resposta: {item.opcoes[item.correta]}.
                     </span>{" "}
                     {item.explicacao}
@@ -155,7 +155,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
           <div className="text-sm font-medium text-subtle">
             {titulo}
           </div>
-          <span className="text-xs font-bold text-green-600">
+          <span className="text-xs font-bold text-gold-600">
             {pontos} pts
           </span>
         </div>
@@ -175,14 +175,14 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
         {/* Opções */}
         <div className="mt-4 space-y-3">
           {q.opcoes.map((op, i) => {
-            let estilo = "border-border hover:border-green-300 hover:bg-green-50/20 dark:hover:bg-green-900/10";
+            let estilo = "border-border hover:border-gold-300 hover:bg-gold-50/20 dark:hover:bg-gold-900/10";
             if (escolha != null) {
               if (i === q.correta)
-                estilo = "border-green-400 bg-green-50/60 dark:bg-green-900/20 ring-1 ring-green-400/30";
+                estilo = "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
               else if (i === escolha)
                 estilo = "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
             } else if (i === escolha) {
-              estilo = "border-green-400 bg-green-50/60 dark:bg-green-900/25";
+              estilo = "border-gold-400 bg-gold-50/60 dark:bg-gold-900/25";
             }
             return (
               <motion.button
@@ -197,7 +197,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold ${
                     escolha != null && i === q.correta
-                      ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
+                      ? "border-transparent bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm"
                       : escolha != null && i === escolha && i !== q.correta
                         ? "border-transparent bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-sm"
                         : "border-border-strong text-subtle"
@@ -222,7 +222,7 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
                     <Icon
                       name={i === q.correta ? "check" : "close"}
                       size={20}
-                      className={i === q.correta ? "text-green-500" : "text-orange-500"}
+                      className={i === q.correta ? "text-gold-500" : "text-orange-500"}
                     />
                   </motion.span>
                 )}
@@ -244,14 +244,14 @@ export function JogoQuiz({ titulo, questoes }: { titulo: string; questoes: Quest
               <div
                 className={`rounded-xl border px-4 py-4 ${
                   acertou
-                    ? "border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5"
+                    ? "border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5"
                     : "border-orange-400/25 bg-gradient-to-br from-orange-500/10 to-amber-400/5"
                 }`}
               >
                 <div className="flex items-start gap-3">
                   <span
                     className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base ${
-                      acertou ? "bg-green-100 dark:bg-green-900/40" : "bg-orange-100 dark:bg-orange-900/40"
+                      acertou ? "bg-gold-100 dark:bg-green-900/40" : "bg-orange-100 dark:bg-orange-900/40"
                     }`}
                   >
                     {acertou ? "✅" : "💡"}

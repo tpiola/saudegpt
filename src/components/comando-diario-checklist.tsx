@@ -80,15 +80,15 @@ export function ComandoDiarioChecklist() {
                   <label
                     className={`flex cursor-pointer items-start gap-3 rounded-xl border p-4 transition-all ${
                       feito
-                        ? "border-green-300 bg-green-50/80 dark:bg-green-900/25"
-                        : "border-border bg-surface hover:border-green-300"
+                        ? "border-gold-300 bg-gold-50/80 dark:bg-gold-900/25"
+                        : "border-border bg-surface hover:border-gold-300"
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={feito}
                       onChange={() => alternar(item.id)}
-                      className="mt-1 h-4 w-4 rounded border-border-strong text-green-600 focus:ring-green-500"
+                      className="mt-1 h-4 w-4 rounded border-border-strong text-gold-600 focus:ring-green-500"
                     />
                     <span className="min-w-0 flex-1">
                       <span className="flex flex-wrap items-center gap-2">
@@ -110,7 +110,7 @@ export function ComandoDiarioChecklist() {
                         <Link
                           href={item.aulaHref}
                           onClick={(e) => e.stopPropagation()}
-                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-green-600 hover:underline"
+                          className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-gold-600 hover:underline"
                         >
                           Aprofundar na aula <Icon name="arrow" size={12} />
                         </Link>
@@ -129,10 +129,10 @@ export function ComandoDiarioChecklist() {
         <div className="mt-6 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {atalhosComando.map((a) => (
             <Link key={a.href} href={a.href}>
-              <Card className="h-full transition-all hover:border-green-400 hover:-translate-y-0.5">
-                <h4 className="font-bold text-green-600">{a.titulo}</h4>
+              <Card className="h-full transition-all hover:border-gold-400 hover:-translate-y-0.5">
+                <h4 className="font-bold text-gold-600">{a.titulo}</h4>
                 <p className="mt-1 text-sm text-muted">{a.descricao}</p>
-                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-green-600">
+                <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-gold-600">
                   Abrir <Icon name="arrow" size={14} />
                 </span>
               </Card>

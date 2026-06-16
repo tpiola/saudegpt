@@ -40,8 +40,8 @@ export function RankingBoard() {
             </div>
           </div>
 
-          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-emerald-500/20 to-green-600/10 px-4 py-2 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold-500/20 to-green-600/10 px-4 py-2 text-xs font-medium text-gold-600 dark:text-gold-400">
+            <span className="flex h-2 w-2 rounded-full bg-gold-500 animate-pulse" />
             Em breve — notificaremos você
           </div>
         </div>

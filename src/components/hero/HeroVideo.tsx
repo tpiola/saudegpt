@@ -88,7 +88,7 @@ export function HeroVideo() {
         {/* Gradient overlay layers */}
         <div
           data-hero-overlay
-          className="absolute inset-0 bg-gradient-to-b from-forest-900/70 via-forest-800/60 to-forest-900/85"
+          className="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-900/60 to-navy-950/85"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
@@ -102,7 +102,7 @@ export function HeroVideo() {
       />
 
       {/* ── Radial glow ── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] h-[600px] w-[600px] rounded-full bg-emerald-500/10 blur-[140px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] h-[600px] w-[600px] rounded-full bg-gold-500/10 blur-[140px]" />
 
       {/* ── Content (fades out on scroll via GSAP) ── */}
       <div
@@ -110,9 +110,9 @@ export function HeroVideo() {
         className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6"
       >
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs font-medium text-emerald-300">
+        <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm">
+          <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+          <span className="text-xs font-medium text-gold-300">
             Formação para atendentes de farmácia
           </span>
         </div>
@@ -120,7 +120,7 @@ export function HeroVideo() {
         {/* Title */}
         <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
           Formação completa para{" "}
-          <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-orange-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-gold-400 via-gold-300 to-gold-500 bg-clip-text text-transparent">
             atendentes de farmácia
           </span>
         </h1>
@@ -141,7 +141,7 @@ export function HeroVideo() {
         <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/trilhas"
-            className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-orange-500/25 transition-all hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]"
+            className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-gold-500/25 transition-all hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <span className="relative z-10">Começar agora</span>

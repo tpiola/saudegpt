@@ -52,13 +52,13 @@ export function VideoPlaceholder({ duracaoMin }: { duracaoMin: number }) {
   const dots = ".".repeat(dotCount);
 
   return (
-    <div className="flex aspect-video items-center justify-center rounded-2xl border border-border bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-emerald-950/30 dark:to-teal-900/20">
+    <div className="flex aspect-video items-center justify-center rounded-2xl border border-border bg-gradient-to-br from-gold-50 to-teal-100 dark:from-navy-950/30 dark:to-teal-900/20">
       <div className="flex flex-col items-center gap-4 text-center">
         {/* Loader animado */}
         <div className="relative flex items-center justify-center">
           <div className="h-16 w-16 animate-pulse rounded-full bg-emerald-200 dark:bg-emerald-800" />
           <svg
-            className="absolute h-8 w-8 text-emerald-600 dark:text-emerald-400"
+            className="absolute h-8 w-8 text-gold-600 dark:text-gold-400"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -75,10 +75,10 @@ export function VideoPlaceholder({ duracaoMin }: { duracaoMin: number }) {
         </div>
 
         <div>
-          <p className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+          <p className="text-sm font-medium text-gold-700 dark:text-gold-300">
             Vídeo principal · {duracaoMin} min
           </p>
-          <p className="mt-1 text-xs text-emerald-500 dark:text-emerald-400">
+          <p className="mt-1 text-xs text-emerald-500 dark:text-gold-400">
             Preparando vídeo{dots}
           </p>
         </div>

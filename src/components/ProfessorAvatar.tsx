@@ -135,8 +135,8 @@ export default function ProfessorAvatar({
           <p className="font-semibold text-foreground">{nome}</p>
           <p className="mt-1 text-xs text-subtle">{PROFESSOR_BIO}</p>
           <div className="mt-2 flex items-center gap-2 text-[11px] text-subtle">
-            <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            <span className="inline-flex items-center gap-1 rounded-full bg-gold-50 px-2 py-0.5 text-gold-700 dark:bg-gold-900/30 dark:text-gold-300">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
               Disponível
             </span>
           </div>

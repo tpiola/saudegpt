@@ -43,7 +43,7 @@ export default function ComandoDiarioPage() {
 
       <Card className="mt-8 border-l-4 border-l-green-500">
         <div className="flex items-start gap-3">
-          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white">
+          <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white">
             <Icon name="star" size={20} />
           </span>
           <div className="text-sm text-muted">

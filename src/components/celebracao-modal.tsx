@@ -107,7 +107,7 @@ export function CelebracaoModal({
       >
         {/* Card de celebração */}
         <div
-          className="animate-celebration-in relative mx-4 w-full max-w-sm rounded-3xl border-2 border-green-400/40 bg-gradient-to-br from-forest-700 via-green-800 to-forest-800 p-8 text-center shadow-2xl"
+          className="animate-celebration-in relative mx-4 w-full max-w-sm rounded-3xl border-2 border-gold-400/40 bg-gradient-to-br from-navy-700 via-gold-800 to-navy-800 p-8 text-center shadow-2xl"
           onClick={(e) => e.stopPropagation()}
           style={{
             boxShadow:
@@ -163,7 +163,7 @@ export function CelebracaoModal({
           {/* Botão continuar */}
           <button
             onClick={onClose}
-            className="animate-xp-celebration mt-6 w-full rounded-full bg-gradient-to-r from-green-500 to-green-600 px-6 py-3 font-bold text-white shadow-lg transition-all hover:from-green-600 hover:to-green-700 hover:shadow-xl active:scale-[0.97]"
+            className="animate-xp-celebration mt-6 w-full rounded-full bg-gradient-to-r from-gold-500 to-gold-600 px-6 py-3 font-bold text-white shadow-lg transition-all hover:from-green-600 hover:to-green-700 hover:shadow-xl active:scale-[0.97]"
           >
             Continuar 🚀
           </button>

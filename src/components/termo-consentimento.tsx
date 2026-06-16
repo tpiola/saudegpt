@@ -105,7 +105,7 @@ export function TermoConsentimento() {
 
         {/* Header */}
         <div className="relative mb-6 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg shadow-green-500/20">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 text-white shadow-lg shadow-gold-500/20">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
@@ -123,7 +123,7 @@ export function TermoConsentimento() {
           {/* LGPD */}
           <div>
             <h2 className="mb-2 flex items-center gap-2 text-base font-bold text-foreground">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-green-500"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-gold-500"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="16" r="1"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
               Proteção de Dados (LGPD)
             </h2>
             <p className="text-muted">
@@ -171,7 +171,7 @@ export function TermoConsentimento() {
           {/* Responsabilidade */}
           <div>
             <h2 className="mb-2 flex items-center gap-2 text-base font-bold text-foreground">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-green-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="text-gold-500"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               Responsabilidade do Aluno
             </h2>
             <p className="text-muted">
@@ -206,7 +206,7 @@ export function TermoConsentimento() {
                   value={assinatura}
                   onChange={(e) => { setAssinatura(e.target.value); setErro(""); }}
                   placeholder="Digite seu nome completo"
-                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500/50 transition-all text-sm"
+                  className="w-full h-11 pl-10 pr-4 rounded-xl bg-white/5 border border-border text-foreground placeholder:text-muted/50 focus:outline-none focus:ring-2 focus:ring-gold-500/30 focus:border-gold-500/50 transition-all text-sm"
                   autoComplete="name"
                 />
               </div>
@@ -228,7 +228,7 @@ export function TermoConsentimento() {
                 type="checkbox"
                 checked={liEConcordo}
                 onChange={(e) => { setLiEConcordo(e.target.checked); setErro(""); }}
-                className="mt-0.5 h-4 w-4 shrink-0 rounded border-border text-green-600 focus:ring-green-500/40 focus:ring-offset-0"
+                className="mt-0.5 h-4 w-4 shrink-0 rounded border-border text-gold-600 focus:ring-green-500/40 focus:ring-offset-0"
               />
               <span className="text-xs sm:text-sm leading-relaxed text-muted">
                 Li e concordo com os termos acima. Estou ciente de que este treinamento
@@ -252,7 +252,7 @@ export function TermoConsentimento() {
           <button
             onClick={handleAceitar}
             disabled={enviando}
-            className="w-full h-12 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold text-sm shadow-lg shadow-green-500/25 hover:brightness-110 hover:shadow-xl hover:shadow-green-500/30 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-12 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-white font-semibold text-sm shadow-lg shadow-green-500/25 hover:brightness-110 hover:shadow-xl hover:shadow-gold-500/30 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {enviando ? (
               <span className="inline-flex items-center gap-2">

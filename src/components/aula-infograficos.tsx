@@ -11,11 +11,11 @@ import { cn } from "@/lib/utils";
 /* ─── Ícone decorativo de seção ─── */
 function SecaoIcon({ icon, color = "emerald" }: { icon: IconName; color?: string }) {
   const colors: Record<string, string> = {
-    emerald: "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300",
+    emerald: "bg-gold-100 text-gold-700 dark:bg-gold-900/40 dark:text-gold-300",
     orange: "bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300",
     blue: "bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300",
     purple: "bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300",
-    green: "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300",
+    green: "bg-gold-100 text-gold-700 dark:bg-green-900/40 dark:text-gold-300",
   };
   return (
     <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${colors[color] || colors.emerald}`}>
@@ -37,12 +37,12 @@ function SecaoHeader({ icon, titulo, color = "emerald" }: { icon: IconName; titu
 /* ─── 1. Resumo Executivo — lista com ícones ─── */
 export function InfograficoResumo({ itens }: { itens: string[] }) {
   return (
-    <div className="rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50/80 to-white p-5 dark:border-emerald-900/30 dark:from-emerald-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-gold-100 bg-gradient-to-br from-gold-50/80 to-white p-5 dark:border-gold-900/30 dark:from-gold-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="book" titulo="Resumo executivo" />
       <div className="mt-4 space-y-3">
         {itens.map((item, i) => (
           <div key={i} className="flex items-start gap-3">
-            <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300">
+            <span className="mt-0.5 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-gold-100 text-gold-600 dark:bg-gold-900/40 dark:text-gold-300">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="m5 12 5 5 9-11" />
               </svg>
@@ -63,13 +63,13 @@ interface ComparativoItem {
 
 export function InfograficoComparativo({ titulo, itens }: { titulo: string; itens: ComparativoItem[] }) {
   return (
-    <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/80 to-white p-5 dark:border-blue-900/30 dark:from-blue-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50/80 to-white p-5 dark:border-blue-900/30 dark:from-blue-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="chart" titulo={titulo} color="blue" />
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         {itens.map((it) => (
           <div
             key={it.nome}
-            className="group relative overflow-hidden rounded-xl border border-blue-100 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 dark:border-blue-900/20 dark:bg-forest-800/50"
+            className="group relative overflow-hidden rounded-xl border border-blue-100 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5 dark:border-blue-900/20 dark:bg-navy-800/50"
           >
             <div className="pointer-events-none absolute -inset-px rounded-xl bg-gradient-to-br from-blue-500/0 via-transparent to-blue-500/0 opacity-0 transition-opacity duration-500 group-hover:from-blue-500/[0.03] group-hover:to-blue-500/[0.03] group-hover:opacity-100" />
             <div className="flex items-center gap-2">
@@ -100,7 +100,7 @@ export function InfograficoSimulacao({
   falaEvitar: string;
 }) {
   return (
-    <div className="rounded-2xl border border-purple-100 bg-gradient-to-br from-purple-50/80 to-white p-5 dark:border-purple-900/30 dark:from-purple-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-purple-100 bg-gradient-to-br from-purple-50/80 to-white p-5 dark:border-purple-900/30 dark:from-purple-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="user" titulo="Simulação de atendimento" color="purple" />
 
       {/* Contexto do cliente */}
@@ -115,8 +115,8 @@ export function InfograficoSimulacao({
 
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         {/* Conduta recomendada */}
-        <div className="rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-emerald-50/30 p-4 dark:border-emerald-800/30 dark:from-emerald-900/20 dark:to-forest-800/30">
-          <div className="flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-300">
+        <div className="rounded-xl border border-gold-200 bg-gradient-to-br from-gold-50 to-gold-50/30 p-4 dark:border-gold-800/30 dark:from-gold-900/20 dark:to-navy-800/30">
+          <div className="flex items-center gap-1.5 text-sm font-bold text-gold-700 dark:text-gold-300">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="m5 12 5 5 9-11" />
             </svg>
@@ -126,7 +126,7 @@ export function InfograficoSimulacao({
         </div>
 
         {/* Evite */}
-        <div className="rounded-xl border border-orange-200 bg-gradient-to-br from-orange-50 to-orange-50/30 p-4 dark:border-orange-800/30 dark:from-orange-900/20 dark:to-forest-800/30">
+        <div className="rounded-xl border border-orange-200 bg-gradient-to-br from-orange-50 to-orange-50/30 p-4 dark:border-orange-800/30 dark:from-orange-900/20 dark:to-navy-800/30">
           <div className="flex items-center gap-1.5 text-sm font-bold text-orange-700 dark:text-orange-300">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M6 6l12 12" />
@@ -144,15 +144,15 @@ export function InfograficoSimulacao({
 /* ─── 4. Checklist de Bolso ─── */
 export function InfograficoChecklist({ itens }: { itens: string[] }) {
   return (
-    <div className="rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50/80 to-white p-5 dark:border-emerald-900/30 dark:from-emerald-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-gold-100 bg-gradient-to-br from-gold-50/80 to-white p-5 dark:border-gold-900/30 dark:from-gold-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="clipboard" titulo="Checklist de bolso" />
       <div className="mt-4 grid gap-2 sm:grid-cols-2">
         {itens.map((item) => (
           <div
             key={item}
-            className="flex items-start gap-2 rounded-lg border border-emerald-100 bg-white px-3 py-2.5 text-sm shadow-sm dark:border-emerald-900/20 dark:bg-forest-800/50"
+            className="flex items-start gap-2 rounded-lg border border-gold-100 bg-white px-3 py-2.5 text-sm shadow-sm dark:border-gold-900/20 dark:bg-navy-800/50"
           >
-            <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/40 dark:text-emerald-300">
+            <span className="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-gold-100 text-gold-600 dark:bg-gold-900/40 dark:text-gold-300">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="m5 12 5 5 9-11" />
               </svg>
@@ -168,7 +168,7 @@ export function InfograficoChecklist({ itens }: { itens: string[] }) {
 /* ─── 5. Quando Chamar o Farmacêutico ─── */
 export function InfograficoChamarFarmaceutico({ itens }: { itens: string[] }) {
   return (
-    <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50/80 to-white p-5 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50/80 to-white p-5 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="alert" titulo="Quando chamar o farmacêutico" color="orange" />
       <div className="mt-4 space-y-2.5">
         {itens.map((item) => (
@@ -191,7 +191,7 @@ export function InfograficoChamarFarmaceutico({ itens }: { itens: string[] }) {
 /* ─── 6. Erros Comuns ─── */
 export function InfograficoErros({ itens }: { itens: string[] }) {
   return (
-    <div className="rounded-2xl border border-red-100 bg-gradient-to-br from-red-50/80 to-white p-5 dark:border-red-900/30 dark:from-red-900/10 dark:to-forest-800/50">
+    <div className="rounded-2xl border border-red-100 bg-gradient-to-br from-red-50/80 to-white p-5 dark:border-red-900/30 dark:from-red-900/10 dark:to-navy-800/50">
       <SecaoHeader icon="ban" titulo="Erros que não posso cometer" color="orange" />
       <div className="mt-4 space-y-2.5">
         {itens.map((item) => (
@@ -242,13 +242,13 @@ export function InfograficoDica4Ps({ semente }: { semente: string }) {
   const idx = [...semente].reduce((n, c) => n + c.charCodeAt(0), 0) % DICAS_4PS.length;
   const d = DICAS_4PS[idx];
   const corMap: Record<string, string> = {
-    emerald: "border-emerald-500/25 bg-emerald-500/[0.06]",
+    emerald: "border-gold-500/25 bg-gold-500/[0.06]",
     blue: "border-blue-500/25 bg-blue-500/[0.06]",
     orange: "border-orange-500/25 bg-orange-500/[0.06]",
     purple: "border-purple-500/25 bg-purple-500/[0.06]",
   };
   const corTextMap: Record<string, string> = {
-    emerald: "text-emerald-600 dark:text-emerald-400",
+    emerald: "text-gold-600 dark:text-gold-400",
     blue: "text-blue-600 dark:text-blue-400",
     orange: "text-orange-600 dark:text-orange-400",
     purple: "text-purple-600 dark:text-purple-400",
@@ -275,13 +275,13 @@ export function InfograficoDica4Ps({ semente }: { semente: string }) {
 /* ─── 8. Banner Mensagem do Farmacêutico ─── */
 export function InfograficoMensagemFarmaceutico() {
   return (
-    <div className="grid gap-4 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-5 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-forest-800/50 sm:grid-cols-3">
+    <div className="grid gap-4 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-5 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-navy-800/50 sm:grid-cols-3">
       <div className="flex items-start gap-3">
         <span className="mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-300">
           <Icon name="shield" size={16} />
         </span>
         <p className="text-xs leading-relaxed text-muted">
-          <strong className="text-forest-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
+          <strong className="text-navy-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
         </p>
       </div>
       <div className="flex items-start gap-3">
@@ -289,7 +289,7 @@ export function InfograficoMensagemFarmaceutico() {
           <Icon name="clipboard" size={16} />
         </span>
         <p className="text-xs leading-relaxed text-muted">
-          <strong className="text-forest-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
+          <strong className="text-navy-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
         </p>
       </div>
       <div className="flex items-start gap-3">
@@ -297,7 +297,7 @@ export function InfograficoMensagemFarmaceutico() {
           <Icon name="book" size={16} />
         </span>
         <p className="text-xs leading-relaxed text-muted">
-          <strong className="text-forest-700 dark:text-white">Anote corretamente</strong> as informações na etiqueta de posologia.
+          <strong className="text-navy-700 dark:text-white">Anote corretamente</strong> as informações na etiqueta de posologia.
         </p>
       </div>
     </div>

@@ -13,6 +13,7 @@ import { Icon } from "@/components/icons";
 import { FadeUp } from "@/components/fade-up";
 import { ScrollReveal } from "@/components/animacoes";
 import { ProvaSocial } from "@/components/prova-social";
+import { Shield } from "lucide-react";
 
 function TrilhasSection() {
   const mapaIcones: Record<string, string> = {
@@ -32,7 +33,7 @@ function TrilhasSection() {
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Sua{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
                 jornada de aprendizado
               </span>
             </h2>
@@ -47,18 +48,18 @@ function TrilhasSection() {
             <FadeUp key={trilha.id} delay={idx * 80}>
               <Link
                 href={`/trilhas/${trilha.id}`}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 glass-card p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-emerald-500/30 block"
+                className="group relative overflow-hidden rounded-2xl border border-white/10 glass-card p-5 sm:p-6 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-gold-500/30 block"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500/20 to-green-600/20 text-emerald-400">
+                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500/20 to-gold-600/20 text-gold-400">
                     <Icon
                       name={(mapaIcones[trilha.icone || ""] || "book") as any}
                       size={18}
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm sm:text-base group-hover:text-emerald-400 transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base group-hover:text-gold-400 transition-colors">
                       {trilha.titulo}
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -70,9 +71,9 @@ function TrilhasSection() {
                   {trilha.descricao}
                 </p>
                 <div className="mt-3 h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-gradient-to-r from-emerald-400 to-green-500 rounded-full animate-pulse" />
+                  <div className="h-full w-1/3 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full animate-pulse" />
                 </div>
-                <div className="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-4 flex items-center gap-2 text-xs text-gold-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                   Explorar trilha
                   <Icon name="arrow" size={12} />
                 </div>
@@ -97,23 +98,23 @@ function TrilhasSection() {
 
 function GamificacaoSection() {
   const itens = [
-    { icone: "star" as const, label: "XP por aula", cor: "from-emerald-500 to-green-600" },
+    { icone: "star" as const, label: "XP por aula", cor: "from-gold-500 to-gold-600" },
     { icone: "trending" as const, label: "Níveis", cor: "from-blue-500 to-indigo-600" },
     { icone: "award" as const, label: "Streak diário", cor: "from-orange-500 to-red-500" },
     { icone: "target" as const, label: "Badges", cor: "from-purple-500 to-pink-500" },
     { icone: "compass" as const, label: "Missões", cor: "from-cyan-500 to-teal-500" },
-    { icone: "chart" as const, label: "Dashboard", cor: "from-forest-500 to-emerald-600" },
+    { icone: "chart" as const, label: "Dashboard", cor: "from-gold-600 to-gold-700" },
   ];
 
   return (
-    <section className="py-20 sm:py-28 relative bg-gradient-to-br from-forest-900 via-[#07211c] to-forest-600">
+    <section className="py-20 sm:py-28 relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <FadeUp>
               <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Aprendizagem que{" "}
-                <span className="bg-gradient-to-r from-emerald-400 to-green-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
                   engaja
                 </span>
               </h2>
@@ -140,7 +141,7 @@ function GamificacaoSection() {
             <FadeUp delay={100}>
               <div className="rounded-2xl lg:rounded-3xl border border-white/10 glass-card p-6 sm:p-8 shadow-xl">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold-500 to-gold-400 shadow-lg">
                     <Icon name="award" size={22} className="text-white" />
                   </div>
                   <div>
@@ -150,7 +151,7 @@ function GamificacaoSection() {
                 </div>
                 <div className="space-y-3">
                   {[
-                    { label: "Nível Atual", valor: "5", cor: "bg-emerald-500/10 text-emerald-300" },
+                    { label: "Nível Atual", valor: "5", cor: "bg-gold-500/10 text-gold-300" },
                     { label: "XP Total", valor: "1.250 XP", cor: "bg-white/5 text-white" },
                     { label: "Streak", valor: "7 dias", cor: "bg-orange-500/10 text-orange-300" },
                     { label: "Badges", valor: "8 / 12", cor: "bg-purple-500/10 text-purple-300" },
@@ -167,7 +168,7 @@ function GamificacaoSection() {
                     <span>62%</span>
                   </div>
                   <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
-                    <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-emerald-400 to-green-500 animate-pulse" />
+                    <div className="h-full w-[62%] rounded-full bg-gradient-to-r from-gold-400 to-gold-500 animate-pulse" />
                   </div>
                 </div>
               </div>
@@ -179,12 +180,64 @@ function GamificacaoSection() {
   );
 }
 
+function TrustSignalsSection() {
+  const badges = [
+    {
+      icon: "shield",
+      label: "CRF/SP 58.519",
+      desc: "Registro profissional ativo",
+    },
+    {
+      icon: "shield",
+      label: "ANVISA",
+      desc: "Conteúdo conforme RDC vigentes",
+    },
+    {
+      icon: "shield",
+      label: "OMS",
+      desc: "Referências internacionais em saúde",
+    },
+    {
+      icon: "shield",
+      label: "Ministério da Saúde",
+      desc: "Diretrizes e protocolos oficiais",
+    },
+  ];
+
+  return (
+    <section className="py-6 sm:py-8 relative overflow-hidden border-y border-gold-500/10 bg-navy-900/60">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            <span className="text-xs font-bold uppercase tracking-widest text-gold-400/70">
+              Credenciado por
+            </span>
+            {badges.map((badge) => (
+              <div
+                key={badge.label}
+                className="flex items-center gap-2 rounded-xl border border-gold-500/15 bg-gold-500/[0.04] px-3.5 py-2 backdrop-blur-sm"
+              >
+                <Shield size={14} className="text-gold-400 shrink-0" />
+                <div>
+                  <span className="text-xs font-semibold text-gold-300">{badge.label}</span>
+                  <span className="ml-1.5 text-[10px] text-white/40">{badge.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
       <SiteHeader />
       <main id="conteudo-principal">
         <HeroVideo />
+        <TrustSignalsSection />
         <SecaoBeneficios />
         <TrilhasSection />
         <SecaoComoFunciona />

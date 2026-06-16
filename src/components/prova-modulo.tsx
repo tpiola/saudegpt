@@ -57,9 +57,9 @@ function ProgressoBolinhas({
           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[11px] font-bold transition-all duration-200
             ${
               i === atual
-                ? "scale-110 bg-gradient-to-r from-green-500 to-green-600 text-white shadow-md"
+                ? "scale-110 bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-md"
                 : respondidas.has(i)
-                  ? "bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-300"
+                  ? "bg-gold-100 text-gold-700 dark:bg-green-900/40 dark:text-gold-300"
                   : "bg-surface-2 text-muted hover:bg-surface-3"
             }`}
           aria-label={`Ir para questão ${i + 1}`}
@@ -228,7 +228,7 @@ export function ProvaModulo({
             <div className="min-w-0 flex-1">
               <h2 className="text-base font-bold truncate">Prova: {tituloModulo}</h2>
               <p className="text-xs text-muted">
-                {selecionadas.length} questões · Mínimo: <strong className="text-green-500">80%</strong>
+                {selecionadas.length} questões · Mínimo: <strong className="text-gold-500">80%</strong>
               </p>
             </div>
             {!enviado && (
@@ -238,7 +238,7 @@ export function ProvaModulo({
                     className={`h-full rounded-full transition-all duration-1000 ${
                       tempoCritico
                         ? "bg-orange-500"
-                        : "bg-gradient-to-r from-green-500 to-green-600"
+                        : "bg-gradient-to-r from-gold-500 to-gold-600"
                     }`}
                     style={{ width: `${porcentagemTempo}%` }}
                   />
@@ -295,11 +295,11 @@ export function ProvaModulo({
             <Card className={enviado ? "" : "scroll-mt-32"}>
               {/* Enunciado */}
               <div className="flex items-start gap-3">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-green-500 to-green-600 text-[12px] font-bold text-white shadow-sm">
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-[12px] font-bold text-white shadow-sm">
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[11px] font-medium uppercase tracking-wide text-green-600 dark:text-green-400">
+                  <p className="text-[11px] font-medium uppercase tracking-wide text-gold-600 dark:text-gold-400">
                     {q.aulaTitulo}
                   </p>
                   <p className="mt-1 text-base font-semibold leading-snug">
@@ -319,19 +319,19 @@ export function ProvaModulo({
                   const selecionada = respostas[i] === j;
                   const correta = j === q.correta;
                   let estilo =
-                    "border-border hover:border-green-300 hover:bg-green-50/30 dark:hover:bg-green-900/10";
+                    "border-border hover:border-gold-300 hover:bg-gold-50/30 dark:hover:bg-gold-900/10";
 
                   if (enviado) {
                     if (correta)
                       estilo =
-                        "border-green-400 bg-green-50/60 dark:bg-green-900/20 ring-1 ring-green-400/30";
+                        "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
                     else if (selecionada)
                       estilo =
                         "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
                     else estilo = "border-border opacity-50";
                   } else if (selecionada) {
                     estilo =
-                      "border-green-400 bg-green-50/60 dark:bg-green-900/25 ring-1 ring-green-400/30";
+                      "border-gold-400 bg-gold-50/60 dark:bg-gold-900/25 ring-1 ring-gold-400/30";
                   }
 
                   return (
@@ -351,7 +351,7 @@ export function ProvaModulo({
                       <span
                         className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[12px] font-bold transition-all ${
                           selecionada || (enviado && correta)
-                            ? "border-transparent bg-gradient-to-r from-green-500 to-green-600 text-white shadow-sm"
+                            ? "border-transparent bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-sm"
                             : enviado && selecionada && !correta
                               ? "border-transparent bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-sm"
                               : "border-border-strong text-subtle"
@@ -377,7 +377,7 @@ export function ProvaModulo({
                             name={correta ? "check" : "close"}
                             size={20}
                             className={
-                              correta ? "text-green-500" : "text-orange-500"
+                              correta ? "text-gold-500" : "text-orange-500"
                             }
                           />
                         </motion.span>
@@ -395,9 +395,9 @@ export function ProvaModulo({
                   transition={{ delay: 0.2 }}
                   className="mt-4 space-y-2"
                 >
-                  <div className="rounded-xl border border-green-400/20 bg-gradient-to-br from-green-500/10 to-emerald-400/5 px-4 py-4 shadow-sm">
+                  <div className="rounded-xl border border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5 px-4 py-4 shadow-sm">
                     <div className="flex items-start gap-3">
-                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-100 text-base dark:bg-green-900/40">
+                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gold-100 text-base dark:bg-green-900/40">
                         💡
                       </span>
                       <div className="min-w-0 flex-1">
@@ -409,11 +409,11 @@ export function ProvaModulo({
                         </p>
                         {/* Dica / Para saber mais */}
                         <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] font-medium">
-                          <span className="inline-flex items-center gap-1 text-green-600 dark:text-green-400">
+                          <span className="inline-flex items-center gap-1 text-gold-600 dark:text-gold-400">
                             <Icon name="book" size={12} />
                             Fonte: ANVISA · OMS · MS
                           </span>
-                          <span className="text-green-400/40 hidden sm:inline">|</span>
+                          <span className="text-gold-400/40 hidden sm:inline">|</span>
                           <a
                             href={`https://www.google.com/search?q=${encodeURIComponent(q.pergunta + " " + "ANVISA farmácia")}`}
                             target="_blank"
@@ -458,7 +458,7 @@ export function ProvaModulo({
       ) : (
         <Card
           className={`${
-            aprovado ? "border-green-300" : "border-orange-300"
+            aprovado ? "border-gold-300" : "border-orange-300"
           }`}
         >
           <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
@@ -468,7 +468,7 @@ export function ProvaModulo({
               transition={{ type: "spring", stiffness: 200, damping: 12 }}
               className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl shadow-lg ${
                 aprovado
-                  ? "bg-gradient-to-r from-green-500 to-green-600"
+                  ? "bg-gradient-to-r from-gold-500 to-gold-600"
                   : "bg-gradient-to-br from-orange-400 to-orange-600"
               }`}
             >
@@ -482,7 +482,7 @@ export function ProvaModulo({
               <div className="text-2xl font-extrabold">
                 {nota}% de acerto
                 {aprovado && (
-                  <span className="ml-2 text-green-500">✅ Aprovado!</span>
+                  <span className="ml-2 text-gold-500">✅ Aprovado!</span>
                 )}
                 {!aprovado && enviado && (
                   <span className="ml-2 text-orange-500">

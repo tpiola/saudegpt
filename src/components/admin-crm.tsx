@@ -268,7 +268,7 @@ function MapaCalor({ dias }: { dias: string[] }) {
               title={`${dia.data}${dia.ativo ? " — estudou" : ""}`}
               className={cn(
                 "h-3 w-3 rounded-[3px]",
-                dia.ativo ? "bg-green-500" : "bg-foreground/[0.08]",
+                dia.ativo ? "bg-gold-500" : "bg-foreground/[0.08]",
               )}
             />
           ))}
@@ -387,7 +387,7 @@ function Kpi({
   cor?: "green" | "blue" | "orange" | "red";
 }) {
   const cores = {
-    green: "text-green-600 bg-green-500/10",
+    green: "text-gold-600 bg-gold-500/10",
     blue: "text-blue-600 bg-blue-500/10",
     orange: "text-orange-600 bg-orange-500/10",
     red: "text-red-600 bg-red-500/10",
@@ -410,7 +410,7 @@ function Kpi({
 
 function StatusBadge({ status }: { status: CadastroRegistro["status"] }) {
   const estilos: Record<string, string> = {
-    aprovado: "bg-green-500/15 text-green-600",
+    aprovado: "bg-gold-500/15 text-gold-600",
     pendente: "bg-orange-500/15 text-orange-600",
     rejeitado: "bg-red-500/15 text-red-500",
   };
@@ -728,7 +728,7 @@ export function AdminCrm() {
             className="inline-flex h-10 items-center gap-2 rounded-xl border border-border bg-surface px-4 text-sm font-medium text-foreground transition hover:border-green-500/50"
             title="Exportar dados dos alunos em CSV"
           >
-            <FileSpreadsheet size={15} className="text-green-600" />
+            <FileSpreadsheet size={15} className="text-gold-600" />
             Exportar CSV
           </button>
           <button
@@ -764,14 +764,14 @@ export function AdminCrm() {
       </div>
 
       {/* Score da Equipe */}
-      <div className="mt-6 rounded-2xl border border-border bg-gradient-to-br from-green-50 to-emerald-50 bg-surface p-5 dark:from-green-950/20 dark:to-emerald-950/10">
+      <div className="mt-6 rounded-2xl border border-border bg-gradient-to-br from-gold-50 to-gold-50 bg-surface p-5 dark:from-navy-950/20 dark:to-gold-950/10">
         <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
           <Trophy size={16} className="text-amber-500" />
           Score da Equipe
         </h2>
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
           <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
-            <div className="text-2xl font-extrabold text-green-600">{kpis.mediaEngajamento}%</div>
+            <div className="text-2xl font-extrabold text-gold-600">{kpis.mediaEngajamento}%</div>
             <div className="mt-1 text-[11px] font-semibold text-muted uppercase tracking-wide">Engajamento Médio</div>
           </div>
           <div className="rounded-xl bg-white/70 p-4 text-center dark:bg-black/20">
@@ -798,7 +798,7 @@ export function AdminCrm() {
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <div className="rounded-2xl border border-border bg-surface p-5">
           <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
-            <TrendingUp size={15} className="text-green-600" />
+            <TrendingUp size={15} className="text-gold-600" />
             Alunos estudando por dia (14 dias)
           </h2>
           <div className="h-56">
@@ -822,7 +822,7 @@ export function AdminCrm() {
 
         <div className="rounded-2xl border border-border bg-surface p-5">
           <h2 className="mb-4 flex items-center gap-2 text-sm font-bold text-foreground">
-            <BookOpen size={15} className="text-green-600" />
+            <BookOpen size={15} className="text-gold-600" />
             Aulas concluídas por trilha (todos os alunos)
           </h2>
           <div className="h-56">
@@ -978,7 +978,7 @@ export function AdminCrm() {
       <div className="mt-6 rounded-2xl border border-border bg-surface p-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <h2 className="flex items-center gap-2 text-sm font-bold text-foreground">
-            <Users size={15} className="text-green-600" />
+            <Users size={15} className="text-gold-600" />
             Alunos ({filtrados.length})
           </h2>
           <div className="flex flex-wrap items-center gap-2">
@@ -988,13 +988,13 @@ export function AdminCrm() {
                 value={busca}
                 onChange={(e) => setBusca(e.target.value)}
                 placeholder="Buscar por nome ou e-mail"
-                className="h-9 w-56 rounded-xl border border-border bg-background pl-9 pr-3 text-sm text-foreground placeholder:text-muted/60 focus:border-green-500/50 focus:outline-none"
+                className="h-9 w-56 rounded-xl border border-border bg-background pl-9 pr-3 text-sm text-foreground placeholder:text-muted/60 focus:border-gold-500/50 focus:outline-none"
               />
             </div>
             <select
               value={ordenar}
               onChange={(e) => setOrdenar(e.target.value as Ordenacao)}
-              className="h-9 rounded-xl border border-border bg-background px-3 text-sm text-foreground focus:border-green-500/50 focus:outline-none"
+              className="h-9 rounded-xl border border-border bg-background px-3 text-sm text-foreground focus:border-gold-500/50 focus:outline-none"
               aria-label="Ordenar alunos"
             >
               <option value="recente">Mais recentes</option>
@@ -1036,7 +1036,7 @@ export function AdminCrm() {
                 {filtrados.map((m) => (
                   <tr
                     key={m.cad.id}
-                    className="cursor-pointer border-b border-border/50 transition hover:bg-green-500/[0.04]"
+                    className="cursor-pointer border-b border-border/50 transition hover:bg-gold-500/[0.04]"
                     onClick={() => setSelecionado(m)}
                   >
                     <td className="py-3 pr-4">
@@ -1050,7 +1050,7 @@ export function AdminCrm() {
                       <div className="mx-auto w-24">
                         <div className="h-2 overflow-hidden rounded-full bg-foreground/10">
                           <div
-                            className="h-full rounded-full bg-gradient-to-r from-green-500 to-green-600"
+                            className="h-full rounded-full bg-gradient-to-r from-gold-500 to-gold-600"
                             style={{ width: `${m.pct}%` }}
                           />
                         </div>
@@ -1081,7 +1081,7 @@ export function AdminCrm() {
                           m.notaMedia == null
                             ? "text-muted"
                             : m.notaMedia >= 80
-                              ? "text-green-600"
+                              ? "text-gold-600"
                               : m.notaMedia >= 60
                                 ? "text-orange-500"
                                 : "text-red-500",
@@ -1101,7 +1101,7 @@ export function AdminCrm() {
                         <span className="inline-flex gap-1">
                           <button
                             onClick={() => void acaoCadastro(m.cad.id, "aprovar")}
-                            className="rounded-lg bg-green-500/15 px-2.5 py-1 text-[11px] font-semibold text-green-600 transition hover:bg-green-500/25"
+                            className="rounded-lg bg-gold-500/15 px-2.5 py-1 text-[11px] font-semibold text-gold-600 transition hover:bg-gold-500/25"
                           >
                             Aprovar
                           </button>
@@ -1161,7 +1161,7 @@ export function AdminCrm() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => gerarRelatorioPdf(selecionado)}
-                  className="inline-flex h-9 items-center gap-2 rounded-xl bg-gradient-to-r from-green-500 to-green-600 px-4 text-sm font-semibold text-white transition hover:brightness-110"
+                  className="inline-flex h-9 items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 text-sm font-semibold text-white transition hover:brightness-110"
                 >
                   <Download size={14} />
                   Relatório PDF
@@ -1223,7 +1223,7 @@ export function AdminCrm() {
 
               <div className="rounded-2xl border border-border p-4">
                 <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-foreground">
-                  <Award size={14} className="text-green-600" />
+                  <Award size={14} className="text-gold-600" />
                   O que está muito bom
                 </h4>
                 {selecionado.pontosFortes.length ? (

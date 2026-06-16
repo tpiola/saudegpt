@@ -7,7 +7,7 @@ export function ScannerFloatingButton() {
   return (
     <>
       <button onClick={() => setOpen(!open)}
-        className="fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-forest-600 text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-110 hover:shadow-emerald-500/50 animate-pulse-slow"
+        className="fixed bottom-6 left-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-500 to-navy-600 text-white shadow-xl shadow-emerald-600/30 transition-all hover:scale-110 hover:shadow-emerald-500/50 animate-pulse-slow"
         aria-label="Scanner de Produto">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} className="h-6 w-6">
           <path d="M2 8V5a3 3 0 0 1 3-3h3M22 8V5a3 3 0 0 0-3-3h-3M2 16v3a3 3 0 0 0 3 3h3M22 16v3a3 3 0 0 1-3 3h-3"/>

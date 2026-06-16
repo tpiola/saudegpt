@@ -21,7 +21,7 @@ const trilhaImagens = [
 ];
 
 const coresTrilha = [
-  { barra: "bg-gradient-to-r from-green-400 to-green-500", badge: "green" },
+  { barra: "bg-gradient-to-r from-gold-400 to-gold-500", badge: "green" },
   { barra: "bg-gradient-to-r from-orange-400 to-orange-500", badge: "orange" },
   { barra: "bg-gradient-to-r from-forest-400 to-green-400", badge: "green" },
   { barra: "bg-gradient-to-r from-orange-400 to-orange-500", badge: "orange" },
@@ -71,7 +71,7 @@ export default function TrilhasPage() {
       {/* ════════════════════════════════════════════
           HERO — Forest + Emerald Gradient
           ════════════════════════════════════════════ */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700">
+      <section className="relative min-h-[70vh] flex items-center overflow-hidden bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900">
         <Image
           src="/imagens/hero_pills.webp"
           alt="Equipe de farmácia atendendo com cuidado e dedicação"
@@ -151,7 +151,7 @@ export default function TrilhasPage() {
               <Icon name="sparkles" size={12} />
               Sabia que?
             </span>
-            <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-forest-600 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.5rem,3vw,2.2rem)] font-bold tracking-[-0.02em] text-navy-600 dark:text-white">
               Saúde e bem-estar no dia a dia
             </h2>
             <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
@@ -184,7 +184,7 @@ export default function TrilhasPage() {
           </div>
 
           {/* 💊 Mensagem do farmacêutico */}
-          <div className="mt-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-50 to-green-50 border border-orange-200/50 p-5 dark:from-orange-900/10 dark:to-forest-800">
+          <div className="mt-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-50 to-gold-50 border border-orange-200/50 p-5 dark:from-orange-900/10 dark:to-navy-800">
             {/* Background image sutil */}
             <div
               className="absolute right-0 top-0 bottom-0 w-1/3 bg-cover bg-center opacity-[0.08]"
@@ -219,7 +219,7 @@ export default function TrilhasPage() {
               <Icon name="book" size={12} />
               Currículo completo
             </span>
-            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-forest-600 dark:text-white">
+            <h2 className="mt-4 text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold tracking-[-0.02em] text-navy-600 dark:text-white">
               Escolha sua trilha
             </h2>
             <p className="mt-3 text-muted max-w-xl mx-auto text-sm">
@@ -267,7 +267,7 @@ export default function TrilhasPage() {
 
                   {/* Conteúdo */}
                   <div className="p-6">
-                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors font-display">
+                    <h3 className="text-lg font-bold tracking-tight text-foreground group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors font-display">
                       {t.titulo}
                     </h3>
 
@@ -306,13 +306,13 @@ export default function TrilhasPage() {
           </div>
 
           {/* Card de sabia que? — Bioimpedância e hidratação */}
-          <div className="mt-10 rounded-2xl border border-green-200/50 bg-gradient-to-br from-green-50 to-white p-6 dark:from-green-900/10 dark:to-forest-800 glow-border">
+          <div className="mt-10 rounded-2xl border border-gold-200/50 bg-gradient-to-br from-gold-50 to-white p-6 dark:from-gold-900/10 dark:to-navy-800 glow-border">
             <div className="flex items-start gap-4">
-              <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-xl dark:bg-green-900/30">
+              <span className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-100 text-xl dark:bg-gold-900/30">
                 <Icon name="sparkles" size={20} />
               </span>
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.15em] text-green-600 dark:text-green-400">
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-gold-600 dark:text-gold-400">
                   Sabia que? A bioimpedância virou serviço de farmácia
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
@@ -323,13 +323,13 @@ export default function TrilhasPage() {
                   cuidar da saúde preventivamente. Beba água, durma bem e meça sua composição regularmente!
                 </p>
                 <div className="mt-3 flex flex-wrap gap-3">
-                  <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-gold-600 dark:text-gold-400">
                     <Icon name="check" size={12} /> Qualidade do sono
                   </span>
                   <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400">
                     <Icon name="droplet" size={12} /> Hidratação
                   </span>
-                  <span className="inline-flex items-center gap-1 text-xs font-medium text-green-600 dark:text-green-400">
+                  <span className="inline-flex items-center gap-1 text-xs font-medium text-gold-600 dark:text-gold-400">
                     <Icon name="chart" size={12} /> Bioimpedância
                   </span>
                   <span className="inline-flex items-center gap-1 text-xs font-medium text-orange-600 dark:text-orange-400">
@@ -345,7 +345,7 @@ export default function TrilhasPage() {
       {/* ════════════════════════════════════════════
           CTA FINAL
           ════════════════════════════════════════════ */}
-      <section className="relative py-20 sm:py-28 bg-gradient-to-br from-forest-500 via-forest-600 to-forest-700 overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-gradient-to-br from-navy-700 via-navy-800 to-navy-900 overflow-hidden">
         <div className="pointer-events-none absolute inset-0 pattern-grid opacity-[0.03]" />
         <div className="relative z-10 mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 text-center">
           <span className="badge-orange inline-flex">

@@ -78,7 +78,7 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
             onClick={() => setNivel(n.id)}
             className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
               nivel === n.id
-                ? "bg-gradient-to-r from-green-500 to-green-600 text-white shadow-lg shadow-green-500/20 scale-105"
+                ? "bg-gradient-to-r from-gold-500 to-gold-600 text-white shadow-lg shadow-gold-500/20 scale-105"
                 : "border border-border bg-surface/80 backdrop-blur-sm text-muted hover:border-orange-400 hover:text-orange-500 hover:shadow-md"
             }`}
           >
@@ -104,11 +104,11 @@ export function TrilhaNivelFiltro({ trilha }: { trilha: Trilha }) {
                           filter: "brightness(0.35) saturate(0.8)",
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-forest-900/95 via-forest-900/60 to-forest-900/40" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-forest-900/40 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/60 to-navy-900/40" />
+                      <div className="absolute inset-0 bg-gradient-to-r to-navy-900/40 to-transparent" />
                     </>
                   ) : (
-                    <div className="absolute inset-0 bg-gradient-to-r from-green-500 to-green-600 opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-gold-500 to-gold-600 opacity-90" />
                   )}
                 </div>
 

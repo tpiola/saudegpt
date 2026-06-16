@@ -94,7 +94,7 @@ export function SiteHeader() {
               href={link.href}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "bg-emerald-500/10 text-emerald-400"
+                  ? "bg-gold-500/10 text-gold-400"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
               }`}
             >
@@ -125,7 +125,7 @@ export function SiteHeader() {
                 onClick={() => setAberto(false)}
                 className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-emerald-500/10 text-emerald-400"
+                    ? "bg-gold-500/10 text-gold-400"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                 }`}
               >

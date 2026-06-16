@@ -31,7 +31,7 @@ function VideoBanner() {
   return (
     <div className="relative w-full overflow-hidden" style={{ height: "340px" }}>
       {/* Fundo com imagem + gradiente animado */}
-      <div className="absolute inset-0 bg-forest-500">
+      <div className="absolute inset-0 bg-navy-800">
         <Image
           src="/imagens/hero_pills.webp"
           alt="Fundos de medicamentos e prateleiras de farmácia"
@@ -41,7 +41,7 @@ function VideoBanner() {
           sizes="100vw"
         />
         {/* Gradiente pulsante sutil */}
-        <div className="absolute inset-0 bg-gradient-to-br from-forest-500/60 via-forest-600/40 to-orange-900/20 animate-pulse-slow" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-700/60 via-navy-600/40 to-gold-900/20 animate-pulse-slow" />
         {/* Grid */}
         <div className="absolute inset-0 opacity-[0.04]"
           style={{
@@ -122,11 +122,11 @@ function PortalConvidadoHero() {
   const totalAulasContagem = totalAulas();
 
   const pilares = [
-    { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-forest-500 to-green-400" },
-    { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-forest-600 to-forest-400" },
-    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-green-400 to-green-400" },
-    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-orange-500 to-orange-400" },
-    { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-forest-400 to-orange-500" },
+    { icone: "heart", titulo: "Acolhimento", desc: "Receber com excelência desde o primeiro contato", cor: "from-gold-500 to-gold-400" },
+    { icone: "shield", titulo: "Cuidado Técnico", desc: "Medicamentos, segurança, ANVISA — a base para cuidar bem", cor: "from-navy-600 to-navy-500" },
+    { icone: "message", titulo: "Comunicação Empática", desc: "Ouvir, acolher, transmitir segurança em cada palavra", cor: "from-gold-400 to-gold-400" },
+    { icone: "sparkles", titulo: "Encantamento", desc: "Surpreender, criar experiências que o paciente lembra", cor: "from-gold-500 to-gold-400" },
+    { icone: "trending", titulo: "Apoio ao Tratamento", desc: "Acompanhamento contínuo que transforma vidas", cor: "from-gold-500 to-gold-400" },
   ];
 
   return (
@@ -141,7 +141,7 @@ function PortalConvidadoHero() {
           minHeight: "78vh",
           display: "flex",
           alignItems: "center",
-          background: "var(--forest-900)",
+          background: "#0A1628",
         }}
       >
         <Image
@@ -156,7 +156,7 @@ function PortalConvidadoHero() {
         <div className="pointer-events-none absolute inset-0 z-0 grid-bg opacity-15" />
 
         {/* Orbs ambientais */}
-        <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] orb bg-forest-500/15" />
+        <div className="pointer-events-none absolute -left-40 -top-40 h-[420px] w-[420px] orb bg-navy-800/15" />
         <div className="pointer-events-none absolute -bottom-40 -right-40 h-[320px] w-[320px] orb bg-orange-500/12" />
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full py-16 sm:py-20">
@@ -353,9 +353,9 @@ function PortalConvidadoHero() {
             <ScrollReveal>
               <div
                 className="mb-4 inline-flex items-center gap-2"
-                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#7186a8" }}
               >
-                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "#7186a8", display: "inline-block" }} />
                 A solução
               </div>
               <h2
@@ -367,7 +367,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Um treinamento que{" "}
-                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">ensina a cuidar</span>
+                <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">ensina a cuidar</span>
               </h2>
               <p className="mt-6" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Não é só farmácia. É técnica, acolhimento, comunicação e cuidado contínuo —
@@ -450,7 +450,7 @@ function PortalConvidadoHero() {
                   }}
                 >
                   O profissional que o paciente{" "}
-                  <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">confia e volta</span>
+                  <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">confia e volta</span>
                 </h2>
                 <div className="mt-6 space-y-4 leading-relaxed" style={{ color: "var(--muted)" }}>
                   <p style={{ fontSize: "1.05rem" }}>
@@ -477,9 +477,9 @@ function PortalConvidadoHero() {
             <ScrollReveal>
               <div
                 className="mb-4 inline-flex items-center gap-2"
-                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#7186a8" }}
               >
-                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "#7186a8", display: "inline-block" }} />
                 A jornada
               </div>
               <h2
@@ -491,7 +491,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 O que você vai{" "}
-                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">aprender</span>
+                <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">aprender</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)" }}>
                 {totalAulasContagem} microlições em {trilhas.length} trilhas — do iniciante ao profissional de referência
@@ -503,10 +503,10 @@ function PortalConvidadoHero() {
             {trilhas.map((t, idx) => {
               const totalModAulas = t.modulos.reduce((n, m) => n + m.aulas.length, 0);
               const gradientMap = [
-                "from-forest-400 to-green-400",
-                "from-forest-500 to-forest-400",
-                "from-forest-500 to-orange-500",
-                "from-green-400 to-forest-500",
+                "from-gold-500 to-gold-400",
+                "from-gold-500 to-gold-400",
+                "from-gold-500 to-gold-400",
+                "from-gold-400 to-gold-500",
               ];
               return (
                 <ScrollReveal key={t.id} delay={idx * 80} direction="up">
@@ -518,8 +518,8 @@ function PortalConvidadoHero() {
                     >
                       <Icon name={t.icone as IconName} size={20} />
                     </span>
-                    <div                    style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--forest-500)" }}
-                    className="dark:text-forest-300"
+                    <div                    style={{ fontSize: "10px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#7186a8" }}
+                    className="dark:text-navy-300"
                   >
                       Trilha {t.numero}
                     </div>
@@ -540,8 +540,8 @@ function PortalConvidadoHero() {
             <div className="mt-10 text-center">
               <Link
                 href="/trilhas"
-                className="inline-flex items-center gap-1.5 transition-colors dark:text-forest-300"
-                style={{ fontSize: "14px", fontWeight: 600, color: "var(--forest-600)" }}
+                className="inline-flex items-center gap-1.5 transition-colors dark:text-navy-300"
+                style={{ fontSize: "14px", fontWeight: 600, color: "#586d8f" }}
               >
                 Ver currículo completo <Icon name="arrow" size={16} />
               </Link>
@@ -557,9 +557,9 @@ function PortalConvidadoHero() {
             <ScrollReveal>
               <div
                 className="mb-4 inline-flex items-center gap-2"
-                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--forest-500)" }}
+                style={{ fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "#7186a8" }}
               >
-                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "var(--forest-500)", display: "inline-block" }} />
+                <span style={{ width: "2px", height: "12px", borderRadius: "2px", background: "#7186a8", display: "inline-block" }} />
                 Para cada idade, um cuidado
               </div>
               <h2
@@ -571,7 +571,7 @@ function PortalConvidadoHero() {
                 }}
               >
                 Como atender bem{" "}
-                <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">cada fase da vida</span>
+                <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">cada fase da vida</span>
               </h2>
               <p className="mt-5" style={{ fontSize: "1.05rem", color: "var(--muted)", lineHeight: 1.65 }}>
                 Adolescente, adulto ou idoso — cada um chega ao balcão com uma história,
@@ -585,19 +585,19 @@ function PortalConvidadoHero() {
               {
                 faixa: "Adolescentes",
                 icone: "heart",
-                bg: "from-forest-500 to-green-400",
+                bg: "from-gold-500 to-gold-400",
                 dicas: ["Linguagem simples e sem julgamento", "Respeito à timidez e vergonha", "Acne, anticoncepcional, saúde íntima", "Atendimento rápido e discreto", "Orientação sem alarmismo"],
               },
               {
                 faixa: "Adultos",
                 icone: "trending",
-                bg: "from-forest-600 to-orange-500",
+                bg: "from-gold-600 to-gold-400",
                 dicas: ["Escuta ativa das queixas do dia a dia", "Produtos para rotina corrida", "Cuidado com automedicação", "Oferta de serviços complementares", "Fidelização pelo cuidado genuíno"],
               },
               {
                 faixa: "Idosos",
                 icone: "shield",
-                bg: "from-green-400 to-forest-600",
+                bg: "from-gold-400 to-navy-600",
                 dicas: ["Paciência e tom de voz adequado", "Polifarmácia e interações medicamentosas", "Letra grande nos materiais", "Acompanhamento do tratamento", "Acolhimento com respeito e dignidade"],
               },
             ].map((f, idx) => (
@@ -611,7 +611,7 @@ function PortalConvidadoHero() {
                   <ul className="mt-4 space-y-2">
                     {f.dicas.map((dica) => (
                       <li key={dica} className="flex items-start gap-2" style={{ fontSize: "14px", color: "var(--muted)" }}>
-                        <span style={{ marginTop: "6px", width: "6px", height: "6px", borderRadius: "50%", background: "var(--forest-400)", flexShrink: 0 }} />
+                        <span style={{ marginTop: "6px", width: "6px", height: "6px", borderRadius: "50%", background: "#8da0bd", flexShrink: 0 }} />
                         {dica}
                       </li>
                     ))}
@@ -633,7 +633,7 @@ function PortalConvidadoHero() {
               <div
                 className="pointer-events-none absolute inset-0"
                 style={{
-                  background: "linear-gradient(135deg, var(--forest-50), #fff, rgba(238,247,236,0.5))",
+                  background: "linear-gradient(135deg, #eef2f8, #fff, rgba(238,247,236,0.5))",
                 }}
               />
               <div
@@ -648,8 +648,8 @@ function PortalConvidadoHero() {
               <div className="relative px-6 py-12 text-center sm:px-16 sm:py-20">
                 <div className="mx-auto max-w-2xl">
                   <div
-                    className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 dark:bg-forest-800 dark:text-forest-200"
-                    style={{ background: "var(--forest-100)", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--forest-700)" }}
+                    className="mb-4 inline-flex items-center gap-2 rounded-full px-4 py-1.5 dark:bg-navy-800 dark:text-navy-200"
+                    style={{ background: "#d0d9e8", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#2f3f58" }}
                   >
                     <Icon name="sparkles" size={14} />
                     Comece agora
@@ -663,7 +663,7 @@ function PortalConvidadoHero() {
                     }}
                   >
                     Transforme seu atendimento{" "}
-                    <span className="bg-gradient-to-r from-green-500 to-green-600 bg-clip-text text-transparent">em cuidado</span>
+                    <span className="bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent">em cuidado</span>
                   </h2>
                   <p
                     className="mx-auto mt-4"

@@ -123,7 +123,7 @@ export function PainelAluno() {
     <div className="mx-auto max-w-6xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8 lg:py-20">
       {/* ── Hero Card ── */}
       <Card variante="glass" className="overflow-hidden">
-          <div className="relative rounded-2xl bg-[linear-gradient(135deg,var(--forest-600),var(--green-600)_60%,var(--orange-600))] p-6 sm:p-8">
+          <div className="relative rounded-2xl bg-[linear-gradient(135deg,#435572,#059669_60%,#9a7825)] p-6 sm:p-8">
           {/* Brilho decorativo */}
           <div
             aria-hidden
@@ -210,7 +210,7 @@ export function PainelAluno() {
                   <Icon name="flame" size={12} className="text-orange-500" /> Streak: {prog.streak} dias
                 </span>
                 <span className="flex items-center gap-1">
-                  <Icon name="award" size={12} className="text-green-500" /> {badgesTrilha.length + (prog.xp >= 250 ? 1 : 0) + (concluidasCount >= 1 ? 1 : 0) + (concluidasCount >= 10 ? 1 : 0) + (prog.missoesPontos >= 30 ? 1 : 0)} badges
+                  <Icon name="award" size={12} className="text-gold-500" /> {badgesTrilha.length + (prog.xp >= 250 ? 1 : 0) + (concluidasCount >= 1 ? 1 : 0) + (concluidasCount >= 10 ? 1 : 0) + (prog.missoesPontos >= 30 ? 1 : 0)} badges
                 </span>
               </div>
             </div>
@@ -274,7 +274,7 @@ export function PainelAluno() {
               >
                 <Card
                   variante="elevated"
-                  className="flex items-center justify-between gap-3 p-4 transition-all group-hover:border-green-400"
+                  className="flex items-center justify-between gap-3 p-4 transition-all group-hover:border-gold-400"
                 >
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
@@ -317,20 +317,20 @@ export function PainelAluno() {
             <Card key={t.id} variante="elevated" className={concluida ? "border-l-4 border-l-green-400" : ""}>
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${concluida ? "bg-gradient-to-r from-green-500 to-green-600" : "bg-gradient-to-r from-forest-500 to-green-500"} text-white`}>
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${concluida ? "bg-gradient-to-r from-gold-500 to-gold-600" : "bg-gradient-to-r from-navy-600 to-gold-500"} text-white`}>
                     <Icon name={t.icone as IconName} size={20} />
                   </span>
                   <div>
                     <div className="text-sm font-bold">{t.titulo}</div>
                     <div className="text-xs text-subtle flex items-center gap-1.5">
                       {p.feitas} de {p.total} aulas
-                      {concluida && <span className="text-green-600 font-semibold">✓ Concluída</span>}
+                      {concluida && <span className="text-gold-600 font-semibold">✓ Concluída</span>}
                     </div>
                   </div>
                 </div>
                 <Link
                   href={`/trilhas/${t.id}`}
-                  className="text-sm font-semibold text-green-600 hover:text-green-500 transition-colors"
+                  className="text-sm font-semibold text-gold-600 hover:text-gold-500 transition-colors"
                 >
                   Abrir
                 </Link>
@@ -356,14 +356,14 @@ export function PainelAluno() {
             key={m.label}
             className={`flex flex-col items-center gap-2 rounded-xl p-4 text-center transition-all ${
               m.ativo
-                ? "bg-gradient-to-b from-green-50 to-green-50/50 border border-green-200 dark:from-green-900/30 dark:to-green-900/20 dark:border-green-800"
+                ? "bg-gradient-to-b from-gold-50 / to-gold-50/50 border border-gold-200 dark:from-green-900/30 dark:to-gold-900/20 dark:border-green-800"
                 : "bg-surface-2 border border-border opacity-50 dark:bg-surface-3"
             }`}
           >
             <span className={`text-2xl flex items-center justify-center ${m.ativo ? "" : "grayscale"}`}>
               <Icon name={m.icone} size={22} />
             </span>
-            <span className={`text-[11px] font-semibold leading-tight ${m.ativo ? "text-green-700 dark:text-green-300" : "text-subtle"}`}>
+            <span className={`text-[11px] font-semibold leading-tight ${m.ativo ? "text-gold-700 dark:text-gold-300" : "text-subtle"}`}>
               {m.label}
             </span>
           </div>
@@ -394,18 +394,18 @@ export function PainelAluno() {
         <Link href="/missoes" className="block group">
           <Card className="p-6 border-l-4 border-l-green-400 transition-all group-hover:shadow-md">
             <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/20">
-                <Icon name="target" size={24} className="text-green-500" />
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-gold-500/20 to-green-400/10 text-2xl ring-1 ring-green-400/20">
+                <Icon name="target" size={24} className="text-gold-500" />
               </span>
               <div className="flex-1 min-w-0">
-                <h3 className="text-base font-bold group-hover:text-green-500 transition-colors">
+                <h3 className="text-base font-bold group-hover:text-gold-500 transition-colors">
                   Missões de balcão
                 </h3>
                 <p className="text-sm text-muted mt-1">
                   Casos reais de atendimento para testar seus conhecimentos
                 </p>
                 <div className="mt-3 flex items-center gap-2">
-                  <span className="text-sm font-bold text-green-600">{prog.missoesPontos}</span>
+                  <span className="text-sm font-bold text-gold-600">{prog.missoesPontos}</span>
                   <span className="text-xs text-subtle">pontos em missões</span>
                 </div>
                 {prog.missoesPontos > 0 && (
@@ -414,7 +414,7 @@ export function PainelAluno() {
                     <span className="text-xs text-subtle">{prog.missoesPontos}/100 pts</span>
                   </div>
                 )}
-                <div className="mt-2 text-xs font-medium text-green-500 group-hover:gap-2 transition-all inline-flex items-center gap-1">
+                <div className="mt-2 text-xs font-medium text-gold-500 group-hover:gap-2 transition-all inline-flex items-center gap-1">
                   Ir para missões →
                 </div>
               </div>

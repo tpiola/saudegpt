@@ -28,7 +28,7 @@ export function AulaStatusIcon({ trilhaId, aulaId }: { trilhaId: string; aulaId:
   return (
     <span
       className={`flex h-9 w-9 flex-none items-center justify-center rounded-xl ${
-        feita ? "bg-gradient-to-r from-green-500 to-green-600 text-white" : "bg-surface-2 text-subtle"
+        feita ? "bg-gradient-to-r from-gold-500 to-gold-600 text-white" : "bg-surface-2 text-subtle"
       }`}
     >
       <Icon name={feita ? "check" : "play"} size={16} />

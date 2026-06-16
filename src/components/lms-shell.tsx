@@ -109,11 +109,11 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         }`}
       >
         {/* Barra decorativa */}
-        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-forest-600 via-orange-400 to-forest-600 opacity-80" />
+        <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-navy-600 via-orange-400 to-navy-600 opacity-80" />
 
         {/* Header sidebar: logo */}
         <div className="relative flex h-14 items-center gap-3 border-b border-border px-4 sm:h-16">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-forest-600/[0.04] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-navy-600/[0.04] to-transparent pointer-events-none" />
           <Link
             href="/dashboard"
             className="flex min-w-0 flex-1 items-center gap-2.5"
@@ -161,7 +161,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                       onClick={navegar}
                       className={`group relative flex min-h-[44px] items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200 ${
                         ativo(item.href)
-                          ? "bg-gradient-to-r from-forest-600/[0.08] to-transparent text-foreground shadow-sm"
+                          ? "bg-gradient-to-r from-navy-600/[0.08] to-transparent text-foreground shadow-sm"
                           : "text-muted hover:bg-surface-2/50 hover:text-foreground"
                       }`}
                     >
@@ -174,7 +174,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
                         size={18}
                         className={`shrink-0 transition-colors duration-200 ${
                           ativo(item.href)
-                            ? "text-forest-500 dark:text-forest-400"
+                            ? "text-navy-500 dark:text-forest-400"
                             : "group-hover:text-foreground"
                         }`}
                       />
@@ -197,7 +197,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
         {/* Footer sidebar */}
         <div className="relative border-t border-border px-4 pb-4 pt-3">
-          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-forest-600/[0.03] to-transparent pointer-events-none" />
+          <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-t from-navy-600/[0.03] to-transparent pointer-events-none" />
 
           {perfil ? (
             <div className="relative mb-3 rounded-xl bg-surface-2/80 px-3 py-2.5 backdrop-blur-sm border border-border">
@@ -287,7 +287,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
               href="https://www.reidasvendas.com.br"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-emerald-600 hover:text-emerald-500 dark:text-emerald-400 underline underline-offset-2"
+              className="text-gold-600 hover:text-emerald-500 dark:text-gold-400 underline underline-offset-2"
             >
               Rei das Vendas
             </a>
@@ -297,7 +297,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           </p>
           <a
             href="mailto:contato@thiagopiola.com.br"
-            className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-3 text-[11px] font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-400 rounded-xl hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors"
+            className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-3 text-[11px] font-semibold text-gold-600 hover:text-emerald-500 dark:text-gold-400 rounded-xl hover:bg-gold-50 dark:hover:bg-emerald-900/20 transition-colors"
           >
             <Icon name="message" size={12} /> Contato
           </a>

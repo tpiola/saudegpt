@@ -15,12 +15,12 @@ export default function RankingPage() {
     <div className="mx-auto max-w-2xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Hero */}
       <FadeUp>
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-forest-500 to-green-600 p-8 sm:p-10 mb-8">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-600 to-gold-600 p-8 sm:p-10 mb-8">
           <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/5 blur-3xl" />
           <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-full bg-orange-400/10 blur-2xl" />
           <div className="relative">
             <div className="flex items-center gap-3 mb-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-yellow-500 shadow-lg">
+              <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-gold-500 to-gold-400 shadow-lg">
                 <Icon name="award" size={24} className="text-white" />
               </span>
               <div>
@@ -53,7 +53,7 @@ export default function RankingPage() {
       <FadeUp delay={80}>
         <div className="grid grid-cols-3 gap-3 mb-6">
           <div className="rounded-xl bg-surface-2 p-3 text-center">
-            <div className="text-lg font-extrabold text-emerald-600">🏆</div>
+            <div className="text-lg font-extrabold text-gold-600">🏆</div>
             <div className="mt-0.5 text-[10px] text-subtle">Jogadores</div>
           </div>
           <div className="rounded-xl bg-surface-2 p-3 text-center">
@@ -61,7 +61,7 @@ export default function RankingPage() {
             <div className="mt-0.5 text-[10px] text-subtle">Níveis</div>
           </div>
           <div className="rounded-xl bg-surface-2 p-3 text-center">
-            <div className="text-lg font-extrabold text-forest-500">🔥</div>
+            <div className="text-lg font-extrabold text-navy-500">🔥</div>
             <div className="mt-0.5 text-[10px] text-subtle">Streaks</div>
           </div>
         </div>

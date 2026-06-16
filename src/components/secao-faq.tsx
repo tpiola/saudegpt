@@ -63,7 +63,7 @@ export function SecaoFAQ() {
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Perguntas{" "}
-            <span className="bg-gradient-to-r from-orange-500 to-emerald-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-500 to-gold-400 bg-clip-text text-transparent">
               frequentes
             </span>
           </h2>
@@ -79,7 +79,7 @@ export function SecaoFAQ() {
             <motion.div
               key={idx}
               variants={itemVariants}
-              className="overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-forest-200"
+              className="overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-platinum-300"
             >
               <button
                 onClick={() => setAberto(aberto === idx ? null : idx)}

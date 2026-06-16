@@ -48,7 +48,7 @@ export default function SuportePage() {
     <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8 sm:py-16">
       {/* Cabecalho */}
       <div className="text-center">
-        <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white shadow-lg">
+        <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-gold-600 text-white shadow-lg">
           <Icon name="message-circle" size={30} />
         </div>
         <h1 className="mt-4 text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -64,7 +64,7 @@ export default function SuportePage() {
         {duvidas.map((item) => (
           <details
             key={item.pergunta}
-            className="group rounded-2xl border border-border bg-surface p-5 transition-all hover:border-emerald-200 hover:shadow-sm open:border-emerald-200 open:shadow-sm dark:hover:border-emerald-800 dark:open:border-emerald-800"
+            className="group rounded-2xl border border-border bg-surface p-5 transition-all hover:border-gold-200 hover:shadow-sm open:border-gold-200 open:shadow-sm dark:hover:border-emerald-800 dark:open:border-emerald-800"
           >
             <summary className="flex cursor-pointer items-center justify-between gap-4 list-none">
               <h3 className="text-sm font-semibold text-foreground sm:text-base">
@@ -82,7 +82,7 @@ export default function SuportePage() {
       </div>
 
       {/* Contato direto */}
-      <div className="mt-12 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-forest-800/50">
+      <div className="mt-12 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-navy-800/50">
         <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
           <ProfessorAvatar size="md" showName={false} />
           <div>
@@ -92,7 +92,7 @@ export default function SuportePage() {
               Para questoes tecnicas sobre a plataforma ou sobre o conteudo, entre em contato pelo site:{" "}
               <a
                 href="https://www.thiagopiola.com.br"
-                className="text-emerald-600 hover:text-emerald-700 underline"
+                className="text-gold-600 hover:text-gold-700 underline"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -107,7 +107,7 @@ export default function SuportePage() {
       <div className="mt-8 flex flex-wrap justify-center gap-4">
         <Link
           href="/trilhas"
-          className="inline-flex items-center gap-2 rounded-xl bg-emerald-500 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-600 hover:shadow-md"
+          className="inline-flex items-center gap-2 rounded-xl bg-gold-500 px-5 py-2.5 text-sm font-bold text-white transition-all hover:bg-emerald-600 hover:shadow-md"
         >
           <Icon name="book" size={16} />
           Explorar trilhas

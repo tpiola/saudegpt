@@ -57,7 +57,7 @@ export function StreakFreezeDisplay() {
           disabled={state.usadosHoje || state.disponiveis <= 0 || ativando}
           className={`rounded-xl px-3 py-2 text-[11px] font-semibold transition-all min-h-[44px] inline-flex items-center gap-1.5 ${
             state.usadosHoje
-              ? "bg-green-500/20 text-green-300 cursor-default"
+              ? "bg-gold-500/20 text-green-300 cursor-default"
               : state.disponiveis > 0
               ? "bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:scale-105 active:scale-95 shadow-lg shadow-blue-500/25"
               : "bg-white/5 text-white/30 cursor-not-allowed"

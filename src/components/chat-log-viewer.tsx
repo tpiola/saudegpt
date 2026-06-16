@@ -78,7 +78,7 @@ export function ChatLogViewer() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="flex items-center gap-2 text-lg font-bold text-white">
-            <MessageSquare className="h-5 w-5 text-emerald-400" />
+            <MessageSquare className="h-5 w-5 text-gold-400" />
             Conversas do Chat
           </h2>
           <p className="mt-1 text-sm text-white/50">
@@ -86,7 +86,7 @@ export function ChatLogViewer() {
               ? `${total} mensagens de ${alunos} alunos`
               : "Nenhuma conversa registrada"}
             {database === "supabase" && (
-              <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[11px] text-emerald-400">
+              <span className="ml-2 inline-flex items-center gap-1 rounded-full bg-gold-500/10 px-2 py-0.5 text-[11px] text-gold-400">
                 Supabase
               </span>
             )}
@@ -162,7 +162,7 @@ export function ChatLogViewer() {
               className="flex w-full items-center justify-between px-4 py-3 text-left transition hover:bg-white/[0.02]"
             >
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500/20 to-green-600/20 text-emerald-400">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-gold-500/20 to-gold-600/20 text-gold-400">
                   <User className="h-4 w-4" />
                 </div>
                 <div>
@@ -191,8 +191,8 @@ export function ChatLogViewer() {
                       Turno {msg.turno || i + 1}
                     </div>
                     <div className="space-y-2">
-                      <div className="rounded-lg bg-emerald-500/5 px-3 py-2">
-                        <p className="text-[11px] font-semibold text-emerald-400/70 uppercase tracking-wider mb-1">
+                      <div className="rounded-lg bg-gold-500/5 px-3 py-2">
+                        <p className="text-[11px] font-semibold text-gold-400/70 uppercase tracking-wider mb-1">
                           Aluno perguntou
                         </p>
                         <p className="text-sm text-white/80">{msg.pergunta}</p>

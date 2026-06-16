@@ -63,7 +63,7 @@ export function GuiaGPT() {
     <>
       <button
         onClick={() => setAberto(true)}
-        className="fixed bottom-6 left-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-green-600 text-white shadow-[0_8px_32px_rgba(52,211,153,0.35)] transition-all hover:scale-110 active:scale-95"
+        className="fixed bottom-6 left-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-500 to-gold-600 text-white shadow-[0_8px_32px_rgba(52,211,153,0.35)] transition-all hover:scale-110 active:scale-95"
         aria-label="Abrir Guia SaúdeGPT"
       >
         <Bot size={24} />
@@ -73,7 +73,7 @@ export function GuiaGPT() {
         <div className="fixed bottom-24 left-4 right-4 sm:left-6 sm:right-auto sm:w-[380px] z-[100] rounded-2xl border border-white/10 bg-background/95 backdrop-blur-xl shadow-2xl overflow-hidden">
           <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-emerald-500 to-green-600 text-white">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500 to-gold-600 text-white">
                 <Bot size={16} />
               </div>
               <div>
@@ -124,13 +124,13 @@ export function GuiaGPT() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && enviar()}
                 placeholder="Digite sua dúvida..."
-                className="flex-1 rounded-xl border border-white/10 bg-accent/30 px-3.5 py-2.5 text-sm outline-none focus:border-emerald-500/50 transition-colors"
+                className="flex-1 rounded-xl border border-white/10 bg-accent/30 px-3.5 py-2.5 text-sm outline-none focus:border-gold-500/50 transition-colors"
                 disabled={carregando}
               />
               <button
                 onClick={enviar}
                 disabled={carregando || !input.trim()}
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 disabled:opacity-40 transition-colors"
+                className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white hover:bg-gold-500 disabled:opacity-40 transition-colors"
               >
                 <Send size={16} />
               </button>
