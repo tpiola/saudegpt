@@ -167,7 +167,7 @@ export function HeroVideo() {
             { valor: "7", label: "trilhas" },
             { valor: "159+", label: "aulas" },
             { valor: "100%", label: "online" },
-            { valor: "GRÁTIS", label: "acesso" },
+            { valor: "39+", label: "módulos" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-2xl font-extrabold text-white sm:text-3xl">
