@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SobrePage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <div className="mx-auto max-w-4xl px-5 py-10 sm:px-6">
       {/* Hero */}
       <div className="relative mb-10 overflow-hidden rounded-2xl">
         <div className="absolute inset-0">

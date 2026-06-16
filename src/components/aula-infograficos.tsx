@@ -265,7 +265,7 @@ export function InfograficoDica4Ps({ semente }: { semente: string }) {
         </p>
         <p className="mt-0.5 text-sm leading-relaxed text-muted">{d.texto}</p>
         <p className="mt-1.5 text-[10px] text-muted/70">
-          Fontes: ANVISA &middot; OMS &middot; Ministério da Saúde &middot; conteúdo revisado por farmacêutico (CRF/SP 58.519)
+          Fontes: ANVISA &middot; OMS &middot; Ministério da Saúde &middot; conteúdo revisado pelo farmacêutico Thiago Piola (CRF/SP 58.519)
         </p>
       </div>
     </div>

@@ -131,7 +131,7 @@ export function HeroVideo() {
             frases={[
               "Do zero ao certificado, no seu ritmo.",
               "Trilhas, quizzes, simulados e prática de balcão.",
-              "Conteúdo criado por farmacêutico — CRF/SP 58.519.",
+              "Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
               "Aprenda, evolua e transforme sua carreira.",
             ]}
           />

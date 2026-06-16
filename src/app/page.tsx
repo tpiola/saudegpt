@@ -28,7 +28,7 @@ function TrilhasSection() {
 
   return (
     <section className="py-20 sm:py-28 relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <FadeUp>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
@@ -108,7 +108,7 @@ function GamificacaoSection() {
 
   return (
     <section className="py-20 sm:py-28 relative bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <FadeUp>
@@ -184,8 +184,8 @@ function TrustSignalsSection() {
   const badges = [
     {
       icon: "shield",
-      label: "CRF/SP 58.519",
-      desc: "Registro profissional ativo",
+      label: "Thiago Piola",
+      desc: "CRF/SP 58.519 — Registro profissional ativo",
     },
     {
       icon: "shield",
@@ -206,7 +206,7 @@ function TrustSignalsSection() {
 
   return (
     <section className="py-6 sm:py-8 relative overflow-hidden border-y border-gold-500/10 bg-navy-900/60">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-10">
         <FadeUp>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
             <span className="text-xs font-bold uppercase tracking-widest text-gold-400/70">

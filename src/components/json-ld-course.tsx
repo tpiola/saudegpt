@@ -12,7 +12,7 @@ export function JsonLdCourse() {
     provider: {
       "@type": "Organization",
       name: "Formação para Atendentes de Farmácia",
-      description: "Curso profissional criado e revisado por farmacêutico CRF/SP 58.519",
+      description: "Curso profissional criado e revisado pelo farmacêutico Thiago Piola (CRF/SP 58.519)",
     },
     inLanguage: "pt-BR",
     url,
