@@ -88,40 +88,10 @@ export async function POST(request: Request) {
   }
 
   // ── Modo PROD: enviar e-mail ──
-  // Implementar com Resend, Nodemailer ou provedor SMTP de preferência.
-  //
-  // Exemplo com Resend:
-  //
-  //   const res = await fetch("https://api.resend.com/emails", {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       from: "Cadastro App Farmácia <onboarding@seudominio.com>",
-  //       to: "sentinelasaudeambiental@gmail.com",
-  //       subject: `Novo cadastro gratuito: ${dados.nome}`,
-  //       html: `
-  //         <h2>Novo cadastro gratuito</h2>
-  //         <p><strong>Nome:</strong> ${dados.nome}</p>
-  //         <p><strong>E-mail:</strong> ${dados.email}</p>
-  //         <p><strong>WhatsApp:</strong> ${dados.whatsapp}</p>
-  //         <p><strong>Data:</strong> ${dados.criadoEm}</p>
-  //       `,
-  //     }),
-  //   });
-  //
-  //   if (!res.ok) {
-  //     console.error("[CADASTRO GRATUITO] Erro ao enviar e-mail:", await res.text());
-  //     return NextResponse.json(
-  //       { ok: false, erro: "Erro ao processar cadastro. Tente novamente." },
-  //       { status: 500 },
-  //     );
-  //   }
-
-  // Placeholder: apenas loga em produção também até configurar o SMTP
-  console.log("[CADASTRO GRATUITO - PROD]", JSON.stringify(dados, null, 2));
+  const smtpProvider = process.env.RESEND_API_KEY ? "Resend" : "nenhum (SMTP não configurado)";
+  console.log("[CADASTRO GRATUITO]", JSON.stringify({ ...dados, smtpProvider }, null, 2));
+  // TODO: Integrar com Resend ou provedor SMTP quando configurado.
+  // Apenas logamos o cadastro por enquanto — os dados não se perdem.
 
   return NextResponse.json({ ok: true });
 }
