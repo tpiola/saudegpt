@@ -1,28 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useProgresso } from "@/lib/progress";
 import { BarraProgresso } from "./ui";
-import { XpFloat } from "./xp-float";
-
-interface AlunoMock {
-  nome: string;
-  nivel: number;
-  xp: number;
-  badges: string[];
-  avatar: string;
-}
-
-const ALUNOS_MOCK: AlunoMock[] = [
-  { nome: "Ana Beatriz", nivel: 8, xp: 1950, badges: ["🔥", "⭐", "🏅", "📚"], avatar: "A" },
-  { nome: "Carlos Eduardo", nivel: 6, xp: 1420, badges: ["⭐", "🏅"], avatar: "C" },
-  { nome: "Mariana Silva", nivel: 5, xp: 1180, badges: ["🔥", "📚"], avatar: "M" },
-  { nome: "Pedro Henrique", nivel: 4, xp: 890, badges: ["⭐"], avatar: "P" },
-  { nome: "Juliana Costa", nivel: 3, xp: 620, badges: ["📚"], avatar: "J" },
-  { nome: "Rafael Oliveira", nivel: 2, xp: 410, badges: [], avatar: "R" },
-  { nome: "Fernanda Lima", nivel: 1, xp: 180, badges: [], avatar: "F" },
-  { nome: "Lucas Santos", nivel: 1, xp: 95, badges: [], avatar: "L" },
-];
 
 const XP_POR_NIVEL = 250;
 
@@ -33,37 +13,12 @@ function formatarXp(xp: number): string {
 
 export function GamificacaoRanking() {
   const { xp, nivel, carregado } = useProgresso();
-  const [xpFloatAtivo, setXpFloatAtivo] = useState(false);
-  const xpAnterior = useRef(0);
-  const xpGanhoRef = useRef(0);
-
-  useEffect(() => {
-    if (!carregado) return;
-    if (xpAnterior.current > 0 && xp > xpAnterior.current) {
-      xpGanhoRef.current = xp - xpAnterior.current;
-      setXpFloatAtivo(true);
-      setTimeout(() => setXpFloatAtivo(false), 1500);
-    }
-    xpAnterior.current = xp;
-  }, [xp, carregado]);
 
   if (!carregado) return null;
 
   const xpNoNivel = xp % XP_POR_NIVEL;
   const xpParaProximo = XP_POR_NIVEL;
   const progressoPct = Math.round((xpNoNivel / XP_POR_NIVEL) * 100);
-
-  const POSICOES: Record<number, string> = { 0: "🥇", 1: "🥈", 2: "🥉" };
-  const CLASSES_POS: Record<number, string> = {
-    0: "ranking-table-row gold",
-    1: "ranking-table-row silver",
-    2: "ranking-table-row bronze",
-  };
-  const CLASSES_CIRCLE: Record<number, string> = {
-    0: "ranking-pos top1",
-    1: "ranking-pos top2",
-    2: "ranking-pos top3",
-  };
 
   return (
     <div className="space-y-6 mb-8">
@@ -82,129 +37,43 @@ export function GamificacaoRanking() {
             <p className="mt-1 text-xs text-subtle">
               Faltam {xpParaProximo - xpNoNivel} XP para o nível {nivel + 1}
             </p>
-            {xpFloatAtivo && (
-              <XpFloat valor={xpGanhoRef.current} alinhamento="right" />
-            )}
           </div>
         </div>
       </div>
 
-      {/* 🏅 Ranking Gamificado — Alunos Mockados */}
+      {/* 🏅 Ranking — Em breve */}
       <div>
         <div className="flex items-center gap-2 mb-4">
           <span className="text-lg">🏅</span>
           <h2 className="font-bold text-base">Ranking de Alunos</h2>
         </div>
 
-        {/* Header */}
-        <div className="hidden sm:grid sm:grid-cols-[36px_1fr_60px_80px_80px_auto] gap-2 px-3 py-2 text-[10px] font-semibold uppercase tracking-wider text-subtle mb-1">
-          <span>#</span>
-          <span>Nome</span>
-          <span className="text-center">Nível</span>
-          <span className="text-right">XP</span>
-          <span className="text-right">Prog.</span>
-          <span>Badges</span>
-        </div>
-
-        <div className="space-y-1">
-          {ALUNOS_MOCK.map((aluno, i) => {
-            const ehTop3 = i < 3;
-            const xpNoNivelAluno = aluno.xp % XP_POR_NIVEL;
-            const pctAluno = Math.round((xpNoNivelAluno / XP_POR_NIVEL) * 100);
-
-            return (
-              <div key={aluno.nome}>
-                {/* Desktop */}
-                <div
-                  className={`hidden sm:grid sm:grid-cols-[36px_1fr_60px_80px_80px_auto] gap-2 items-center rounded-xl px-3 py-2.5 transition-all ${
-                    ehTop3 ? CLASSES_POS[i] : "hover:bg-surface-2"
-                  }`}
-                >
-                  <span className={ehTop3 ? CLASSES_CIRCLE[i] : "ranking-pos"}>
-                    {ehTop3 ? POSICOES[i] : i + 1}
-                  </span>
-                  <span className="font-semibold text-sm flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-[10px] font-bold text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                      {aluno.avatar}
-                    </span>
-                    {aluno.nome}
-                    {i === 0 && <span className="text-xs">👑</span>}
-                  </span>
-                  <span className="text-center text-xs font-bold text-amber-600 dark:text-amber-400">
-                    {aluno.nivel}
-                  </span>
-                  <span className="text-right text-xs font-bold text-green-600 dark:text-green-400">
-                    {formatarXp(aluno.xp)}
-                  </span>
-                  <div className="flex justify-end">
-                    <div className="ranking-progress-small">
-                      <div
-                        className="ranking-progress-small-fill"
-                        style={{ width: `${pctAluno}%` }}
-                      />
-                    </div>
-                  </div>
-                  <div className="flex gap-1">
-                    {aluno.badges.length > 0 ? (
-                      aluno.badges.map((b, bi) => (
-                        <span
-                          key={bi}
-                          className="ranking-badge"
-                          title={
-                            b === "🔥"
-                              ? "Ofensiva de estudos"
-                              : b === "⭐"
-                              ? "Destaque do mês"
-                              : b === "🏅"
-                              ? "Quiz perfeito"
-                              : b === "📚"
-                              ? "Leitor assíduo"
-                              : ""
-                          }
-                        >
-                          {b}
-                        </span>
-                      ))
-                    ) : (
-                      <span className="text-[10px] text-subtle">—</span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Mobile */}
-                <div className="ranking-mobile-gamificado sm:hidden">
-                  <div className="flex items-center gap-2">
-                    <span className="flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold bg-surface-2 text-muted">
-                      {ehTop3 ? POSICOES[i] : i + 1}
-                    </span>
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100 text-[9px] font-bold text-green-700 dark:bg-green-900/30 dark:text-green-300">
-                      {aluno.avatar}
-                    </span>
-                    <span className="font-semibold text-sm flex-1 truncate">
-                      {aluno.nome}
-                    </span>
-                    <span className="text-xs font-bold text-amber-600 dark:text-amber-400">
-                      Lv.{aluno.nivel}
-                    </span>
-                    <span className="text-xs font-bold text-green-600 dark:text-green-400">
-                      {formatarXp(aluno.xp)}
-                    </span>
-                    <div className="flex gap-0.5">
-                      {aluno.badges.map((b, bi) => (
-                        <span key={bi} className="text-xs">{b}</span>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="ranking-progress-small mt-1.5 ml-9">
-                    <div
-                      className="ranking-progress-small-fill"
-                      style={{ width: `${pctAluno}%` }}
-                    />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <div className="card-gradient-mint p-8 sm:p-10 text-center">
+          <div className="relative mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-400/20 to-green-500/10">
+            <span className="text-4xl">🚀</span>
+            <div className="absolute -right-1 -top-1 flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-[10px] font-bold text-white shadow-lg">
+              NOVO
+            </div>
+          </div>
+          <h3 className="text-lg font-bold text-foreground mb-2">
+            Ranking em breve!
+          </h3>
+          <p className="mx-auto max-w-md text-sm text-muted leading-relaxed">
+            Estamos preparando um ranking de estudos com privacidade total, 
+            gamificação e recompensas para quem se dedica. 
+            Ative as notificações para saber quando lançar.
+          </p>
+          <div className="mt-5 flex flex-wrap justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+              🔒 Privacidade total
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">
+              🏆 Gamificação
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
+              ⭐ Recompensas
+            </span>
+          </div>
         </div>
       </div>
     </div>

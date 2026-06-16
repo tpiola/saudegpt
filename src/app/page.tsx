@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChatBotIA } from "@/components/chatbot-ia";
-import { HeroSection } from "@/components/hero-section";
+import { HeroVideo } from "@/components/hero/HeroVideo";
 import { SecaoBeneficios } from "@/components/secao-beneficios";
 import { SecaoComoFunciona } from "@/components/secao-como-funciona";
 import { SecaoFAQ } from "@/components/secao-faq";
@@ -184,7 +184,7 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <main id="conteudo-principal">
-        <HeroSection />
+        <HeroVideo />
         <SecaoBeneficios />
         <TrilhasSection />
         <SecaoComoFunciona />

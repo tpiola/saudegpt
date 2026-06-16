@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  saudegpt:
+    build: .
+    image: saudegpt:latest
+    restart: unless-stopped
+    env_file: .env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.saudegpt.rule=Host(`saudegpt.com`) || Host(`www.saudegpt.com`)"
+      - "traefik.http.routers.saudegpt.entrypoints=websecure"
+      - "traefik.http.routers.saudegpt.tls.certresolver=letsencrypt"
+      - "traefik.http.services.saudegpt.loadbalancer.server.port=3000"

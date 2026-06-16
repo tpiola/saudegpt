@@ -61,6 +61,13 @@ export function SiteFooter() {
                 <p className="mt-0.5 text-[11px] text-white/40">saudegpt.com</p>
               </div>
             </div>
+
+            {/* Crédito do Farmacêutico */}
+            <div className="rounded-xl border border-emerald-500/15 bg-emerald-500/[0.04] p-3.5">
+              <p className="text-[11px] leading-relaxed text-emerald-400/80">
+                {site.assinatura}
+              </p>
+            </div>
           </div>
 
           {/* Plataforma */}
@@ -146,6 +153,10 @@ export function SiteFooter() {
               >
                 Rei das Vendas
               </a>
+              {" · "}
+              <span className="text-white/40">
+                Conteúdo por Thiago Piola — CRF/SP 58.519
+              </span>
             </p>
           </div>
           <p className="max-w-xs text-[11px] leading-relaxed text-white/35">

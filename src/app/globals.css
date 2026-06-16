@@ -14,7 +14,31 @@
   --color-forest-100: #cde8de;
   --color-forest-200: #9dd1be;
   --color-forest-300: #66b59a;
-  --color-forest-400: #3d9e4f;
+  --color-forest-400: #34d399;
+
+  /* ── Menta (saúde/farmácia frescor) ── */
+  --color-mint-50: #ecfdf5;
+  --color-mint-100: #d1fae5;
+  --color-mint-200: #bbf7d0;
+  --color-mint-300: #86efac;
+  --color-mint-400: #4ADE80;
+  --color-mint-500: #22C55E;
+  --color-mint-600: #16a34a;
+  --color-mint-700: #15803d;
+  --color-mint-800: #166534;
+  --color-mint-900: #14532d;
+
+  /* ── Azul Confiança (confiança + profissionalismo) ── */
+  --color-trust-50: #eff6ff;
+  --color-trust-100: #dbeafe;
+  --color-trust-200: #bfdbfe;
+  --color-trust-300: #93c5fd;
+  --color-trust-400: #60a5fa;
+  --color-trust-500: #3B82F6;
+  --color-trust-600: #2563eb;
+  --color-trust-700: #1d4ed8;
+  --color-trust-800: #1e40af;
+  --color-trust-900: #1e3a8a;
   --color-forest-500: #0a4d3e;
   --color-forest-600: #073d31;
   --color-forest-700: #052d24;
@@ -575,6 +599,36 @@ h4, h5, h6 {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
+}
+
+/* ── Card gradients (brand new) ── */
+.card-gradient-mint {
+  background: linear-gradient(135deg, rgba(74,222,128,0.08), rgba(34,197,94,0.04));
+  border: 1px solid rgba(74,222,128,0.15);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+.card-gradient-mint:hover {
+  border-color: rgba(74,222,128,0.3);
+  box-shadow: 0 4px 24px rgba(74,222,128,0.1);
+  transform: translateY(-2px);
+}
+.card-gradient-trust {
+  background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(37,99,235,0.04));
+  border: 1px solid rgba(59,130,246,0.15);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+.card-gradient-trust:hover {
+  border-color: rgba(59,130,246,0.3);
+  box-shadow: 0 4px 24px rgba(59,130,246,0.1);
+  transform: translateY(-2px);
+}
+.card-gradient-warm {
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(217,119,6,0.04));
+  border: 1px solid rgba(245,158,11,0.15);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
 }
 
 /* ══════════════════════════════════════════════
