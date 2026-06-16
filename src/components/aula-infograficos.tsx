@@ -213,28 +213,28 @@ export function InfograficoErros({ itens }: { itens: string[] }) {
 /* ─── 7. Dica 4 Ps — SVG-based ─── */
 const DICAS_4PS = [
   {
-    p: "Prevenção",
+    p: "Proteção",
     icone: "shield" as IconName,
+    cor: "orange",
+    texto: "Todo tema de saúde tem sinais de alerta. Reconhecê-los é o que separa orientar de arriscar — na dúvida, escalone ao farmacêutico.",
+  },
+  {
+    p: "Prevenção",
+    icone: "leaf" as IconName,
     cor: "emerald",
     texto: "Antes de indicar qualquer coisa, pergunte-se: o que essa pessoa pode fazer HOJE para evitar o problema amanhã?",
-  },
-  {
-    p: "Parâmetros",
-    icone: "ruler" as IconName,
-    cor: "blue",
-    texto: "Números orientam, não diagnosticam. Conheça os valores de referência do tema desta aula — e encaminhe quando estiverem fora.",
-  },
-  {
-    p: "Problemas",
-    icone: "alert" as IconName,
-    cor: "orange",
-    texto: "Todo tema de saúde tem sinais de alerta. Saber reconhecê-los é o que separa orientar de arriscar — na dúvida, escalone ao farmacêutico.",
   },
   {
     p: "Promoção",
     icone: "sparkles" as IconName,
     cor: "purple",
     texto: "O atendimento não termina na entrega: feche promovendo saúde — um hábito, um acompanhamento, um retorno agendado.",
+  },
+  {
+    p: "Primeira Atenção",
+    icone: "heart" as IconName,
+    cor: "blue",
+    texto: "A farmácia costuma ser o primeiro ponto de cuidado. Acolha, escute a real necessidade e dê o encaminhamento certo.",
   },
 ];
 

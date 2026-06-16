@@ -139,7 +139,7 @@ const sabiaQuePorTrilha: Record<string, { emoji: string; titulo: string; texto: 
     {
       emoji: "🧭",
       titulo: "Os 4 Ps da Saúde",
-      texto: "Prevenção, Parâmetros, Problemas e Promoção: o roteiro mental que organiza qualquer conversa de saúde no balcão. Aprenda o método uma vez e use em todos os temas — do sono à glicemia.",
+      texto: "Proteção, Prevenção, Promoção e Primeira Atenção: o roteiro mental que organiza qualquer conversa de saúde no balcão. Aprenda o método uma vez e use em todos os temas — do sono à glicemia.",
     },
   ],
 };

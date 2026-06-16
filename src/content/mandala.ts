@@ -26,7 +26,7 @@ export const mandalaAneis: AnelMandala[] = [
   },
   {
     nivel: 4,
-    titulo: "Operação de loja",
+    titulo: "Operação de farmácia",
     itens: ["Balcão", "Perfumaria", "Medicamentos", "Serviços", "Adesão", "Dados"],
   },
 ];

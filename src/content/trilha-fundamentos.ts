@@ -184,7 +184,7 @@ export const trilhaFundamentos: Trilha = {
                 "O proprietário do estabelecimento.",
                 "O farmacêutico Responsável Técnico (RT).",
                 "O atendente mais antigo.",
-                "O gerente da loja.",
+                "O gerente da farmácia.",
               ],
               1,
               "O RT é o profissional que responde técnica e legalmente pela farmácia junto ao CRF e Vigilância Sanitária.",
@@ -364,7 +364,7 @@ export const trilhaFundamentos: Trilha = {
           checklist: [
             "Recepcionar o cliente com cordialidade e atenção.",
             "Identificar rapidamente se a solicitação requer farmacêutico.",
-            "Conhecer os produtos da loja (MIPs, perfumaria, correlatos).",
+            "Conhecer os produtos da farmácia (MIPs, perfumaria, correlatos).",
             "Manter expositores organizados e precificados.",
             "Nunca opinar sobre diagnósticos ou trocar medicamentos prescritos.",
             "Registrar sugestões e reclamações no canal adequado.",
@@ -384,7 +384,7 @@ export const trilhaFundamentos: Trilha = {
               "Qual a principal função do atendente de farmácia?",
               [
                 "Substituir o farmacêutico quando ele não está.",
-                "Acolher o cliente, organizar a loja e indicar MIPs/ perfumaria dentro dos limites legais.",
+                "Acolher o cliente, organizar a farmácia e indicar MIPs/ perfumaria dentro dos limites legais.",
                 "Prescrever medicamentos para sintomas comuns.",
                 "Alterar receitas médicas a pedido do cliente.",
               ],
@@ -2233,7 +2233,7 @@ export const trilhaFundamentos: Trilha = {
               [
                 "Responder com agressividade também.",
                 "Chamar o farmacêutico ou gerente para mediar a situação.",
-                "Expulsar o cliente da loja.",
+                "Expulsar o cliente da farmácia.",
                 "Ignorar o cliente até ele se acalmar.",
               ],
               1,

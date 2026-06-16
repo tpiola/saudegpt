@@ -35,7 +35,7 @@ export const comandoDiarioMeta = {
   titulo: "Comando Diário de Operação",
   subtitulo: "Rotina de excelência no balcão",
   descricao:
-    "Checklist diário para acolher, orientar com segurança, organizar a loja e evoluir na formação — conectado à trilha de Excelência Operacional e aos recursos da plataforma.",
+    "Checklist diário para acolher, orientar com segurança, organizar a farmácia e evoluir na formação — conectado à trilha de Excelência Operacional e aos recursos da plataforma.",
   fonteNotion:
     "Estrutura inspirada no Comando Diário Operação (Notion). Conteúdo pedagógico alinhado ao currículo publicado; atualize via export ou integração Notion quando disponível.",
 };
@@ -89,7 +89,7 @@ export const secoesComando: SecaoComando[] = [
     itens: [
       {
         id: "ab-1",
-        texto: "Conferir aparência da loja e do balcão (limpeza, organização, iluminação).",
+        texto: "Conferir aparência da farmácia e do balcão (limpeza, organização, iluminação).",
         categoria: "abertura",
       },
       {
@@ -152,7 +152,7 @@ export const secoesComando: SecaoComando[] = [
   {
     id: "estoque",
     titulo: "Organização e segurança sanitária",
-    descricao: "Manter a loja pronta para autosserviço assistido.",
+    descricao: "Manter a farmácia pronta para autosserviço assistido.",
     itens: [
       {
         id: "es-1",

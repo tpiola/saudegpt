@@ -10,7 +10,7 @@ export const trilhaOperacional: Trilha = {
   titulo: "Excelência Operacional e Atendimento Consultivo",
   subtitulo: "Padrão de atendimento 5 estrelas",
   descricao:
-    "Acolhimento, escuta ativa, cross-sell ético, organização de loja, planograma e o padrão de encantamento — sem slogans, com excelência real.",
+    "Acolhimento, escuta ativa, cross-sell ético, organização de farmácia, planograma e o padrão de encantamento — sem slogans, com excelência real.",
   nivelFaixa: "Todos os níveis",
   icone: "star",
   modulos: [
@@ -63,7 +63,7 @@ export const trilhaOperacional: Trilha = {
               [
                 "Preço",
                 "Acolhimento e disponibilidade genuína",
-                "Tamanho da loja",
+                "Tamanho da farmácia",
                 "Quantidade de produtos",
               ],
               1,
@@ -357,7 +357,7 @@ export const trilhaOperacional: Trilha = {
     },
     {
       id: "operacao-loja",
-      titulo: "Operação e Organização de Loja",
+      titulo: "Operação e Organização de Farmácia",
       descricao: "Rotina, planograma, exposição e gestão de picos sazonais.",
       imagemHeroUrl: imagensCategoria.operacionalLoja,
       aulas: [
@@ -432,7 +432,7 @@ export const trilhaOperacional: Trilha = {
               "Produto vencido deve ser imediatamente segregado, registrado e descartado conforme as normas da ANVISA.",
             ),
             q(
-              "Qual o principal benefício de um checklist de abertura de loja?",
+              "Qual o principal benefício de um checklist de abertura de farmácia?",
               [
                 "Atrasar a abertura",
                 "Padronizar a rotina e evitar esquecimentos que geram perdas e riscos",
@@ -581,14 +581,14 @@ export const trilhaOperacional: Trilha = {
                 "Funcionários trabalham menos",
               ],
               1,
-              "Ruptura sazonal é evitável. Antecipar o pedido com base no calendário é obrigação da gestão de loja.",
+              "Ruptura sazonal é evitável. Antecipar o pedido com base no calendário é obrigação da gestão de farmácia.",
             ),
             q(
               "Durante um pico de atendimento, a prioridade da equipe deve ser:",
               [
                 "Cada um cuidar da sua tarefa individual",
                 "Dividir funções estrategicamente: um na fila, um na reposição, um no suporte",
-                "Fechar a loja temporariamente",
+                "Fechar a farmácia temporariamente",
                 "Todos atenderem ao mesmo tempo sem divisão",
               ],
               1,

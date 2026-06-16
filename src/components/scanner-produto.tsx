@@ -112,9 +112,9 @@ const FIELDS: FieldDef[] = [
   { key: "interacoes_alimentos", label: "Interações com alimentos", iconName: "message" },
   { key: "idade_minima", label: "Idade mínima", iconName: "user" },
   { key: "sintomas_alergia", label: "Sintomas de alergia", iconName: "alert" },
-  { key: "ps_prevencao", label: "4Ps — Prevenção", iconName: "shield" },
-  { key: "ps_parametros", label: "4Ps — Parâmetros", iconName: "chart" },
-  { key: "ps_problemas", label: "4Ps — Problemas", iconName: "search" },
+  { key: "ps_prevencao", label: "4Ps — Proteção", iconName: "shield" },
+  { key: "ps_parametros", label: "4Ps — Prevenção", iconName: "chart" },
+  { key: "ps_problemas", label: "4Ps — Primeira Atenção", iconName: "search" },
   { key: "ps_promocao", label: "4Ps — Promoção", iconName: "sparkles" },
 ];
 
