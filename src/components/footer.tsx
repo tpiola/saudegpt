@@ -97,12 +97,12 @@ export function Footer() {
               >
                 Entrar
               </Link>
-              <a
-                href="mailto:contato@thiagopiola.com.br"
+              <Link
+                href="/contato"
                 className="inline-flex min-h-11 w-full items-center justify-center rounded-xl border border-white/20 px-5 py-2.5 text-sm font-semibold text-white/80 transition-all hover:border-white/40 hover:text-white"
               >
                 Contato
-              </a>
+              </Link>
             </div>
           </div>
         </div>
