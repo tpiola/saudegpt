@@ -1,11 +1,10 @@
 version: '3.8'
-
 services:
-  saudegpt:
+  app:
     build: .
-    image: saudegpt:latest
     restart: unless-stopped
-    env_file: .env
+    ports:
+      - "3000:3000"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.saudegpt.rule=Host(`saudegpt.com`) || Host(`www.saudegpt.com`)"
