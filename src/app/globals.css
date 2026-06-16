@@ -74,8 +74,8 @@
   --color-border: #dce0ea;
   --color-border-strong: #a8aec0;
   --color-foreground: #0A1628;
-  --color-muted: #6f7689;
-  --color-subtle: #8b92a5;
+  --color-muted: #4e5668;
+  --color-subtle: #5a6174;
 }
 
 :root {
@@ -89,9 +89,9 @@
   --border-strong: #a8aec0;
 
   --foreground: #0A1628;
-  --muted: #6f7689;
-  --subtle: #8b92a5;
-  --muted-foreground: #8b92a5;
+  --muted: #4e5668;
+  --subtle: #5a6174;
+  --muted-foreground: #5a6174;
   --card: #ffffff;
   --accent: #eef2f8;
 

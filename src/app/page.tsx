@@ -25,7 +25,7 @@ function TrilhasSection() {
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
               Escolha sua{" "}
-              <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-gold-600 to-gold-700 bg-clip-text text-transparent dark:from-gold-400 dark:to-gold-500">
                 trilha de aprendizado
               </span>
             </h2>
@@ -44,14 +44,14 @@ function TrilhasSection() {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500/20 to-gold-600/20 text-gold-400">
+                  <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-gold-500/20 to-gold-600/20 text-gold-600 dark:text-gold-400">
                     <Icon
                       name={(mapaIcones[trilha.icone || ""] || "book") as any}
                       size={18}
                     />
                   </div>
                   <div>
-                    <h3 className="font-bold text-sm sm:text-base group-hover:text-gold-400 transition-colors">
+                    <h3 className="font-bold text-sm sm:text-base group-hover:text-gold-600 dark:group-hover:text-gold-400 transition-colors">
                       {trilha.titulo}
                     </h3>
                     <p className="text-xs text-muted-foreground">
@@ -63,9 +63,9 @@ function TrilhasSection() {
                   {trilha.descricao}
                 </p>
                 <div className="mt-3 h-1 w-full bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full w-1/3 bg-gradient-to-r from-gold-400 to-gold-500 rounded-full animate-pulse" />
+                  <div className="h-full w-1/3 bg-gradient-to-r from-gold-600 to-gold-700 dark:from-gold-400 dark:to-gold-500 rounded-full animate-pulse" />
                 </div>
-                <div className="mt-4 flex items-center gap-2 text-xs text-gold-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-4 flex items-center gap-2 text-xs text-gold-600 dark:text-gold-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
                   Explorar trilha
                   <Icon name="arrow" size={12} />
                 </div>
