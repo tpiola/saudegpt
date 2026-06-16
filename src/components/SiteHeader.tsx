@@ -116,7 +116,7 @@ export function SiteHeader() {
       </nav>
 
       {aberto && (
-        <div className="md:hidden border-t border-white/10 bg-background/95 backdrop-blur-xl">
+        <div className="md:hidden border-t border-white/10 bg-background backdrop-blur-xl shadow-lg shadow-black/20">
           <div className="space-y-1 px-4 py-4">
             {links.map((link) => (
               <Link
