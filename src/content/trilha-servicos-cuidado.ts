@@ -12,7 +12,7 @@ export const trilhaServicosCuidado: Trilha = {
   titulo: "Serviços Farmacêuticos & Cuidado na Prática",
   subtitulo: "Os 4 Ps da Saúde aplicados ao balcão",
   descricao:
-    "O método dos 4 Ps (Prevenção, Parâmetros, Problemas e Promoção) + as orientações que todo cliente precisa ouvir: como usar suspensão oral, onde guardar o soro depois de aberto, como se preparar para exames e o que são os serviços farmacêuticos da farmácia.",
+    "O método dos 4 Ps (Proteção, Prevenção, Promoção e Primeira Atenção) + as orientações que todo cliente precisa ouvir: como usar suspensão oral, onde guardar o soro depois de aberto, como se preparar para exames e o que são os serviços farmacêuticos da farmácia.",
   nivelFaixa: "Todos os níveis",
   icone: "heart",
   modulos: [
@@ -20,7 +20,7 @@ export const trilhaServicosCuidado: Trilha = {
       id: "metodo-4ps",
       titulo: "Os 4 Ps da Saúde — Seu Método de Cuidado",
       descricao:
-        "Um jeito simples de pensar qualquer tema de saúde: Prevenção, Parâmetros, Problemas e Promoção. Aprenda o método uma vez e use para sempre.",
+        "Um jeito simples de pensar qualquer atendimento: Proteção, Prevenção, Promoção e Primeira Atenção. Aprenda o método uma vez e use para sempre.",
       imagemHeroUrl: imagensCategoria.atendimento,
       aulas: [
         {
@@ -31,13 +31,13 @@ export const trilhaServicosCuidado: Trilha = {
           imagemHeroUrl: imagensCategoria.atendimento,
           imagemProduto: "/imagens/produtos/ems-omeprazol.webp",
           resumo:
-            "Prevenção, Parâmetros, Problemas e Promoção: quatro perguntas que transformam um atendimento comum em uma orientação profissional.",
+            "Proteção, Prevenção, Promoção e Primeira Atenção: quatro pilares que transformam um atendimento comum em uma orientação profissional e segura.",
           resumoExecutivo: [
-            "Os 4 Ps são um roteiro mental: para qualquer tema de saúde, pergunte-se como PREVENIR, quais são os PARÂMETROS normais, quais PROBLEMAS podem aparecer e como PROMOVER mais saúde.",
-            "PREVENÇÃO: o que a pessoa pode fazer hoje para evitar o problema amanhã (hábitos, proteção, acompanhamento).",
-            "PARÂMETROS: os números e sinais de referência — eles dizem se está tudo bem ou se é hora de procurar um profissional.",
-            "PROBLEMAS: as condições mais comuns do tema e os sinais de alerta que pedem encaminhamento.",
-            "PROMOÇÃO: o passo além — hábitos, acompanhamento regular e, quando indicado pelo farmacêutico, suplementação e produtos de apoio.",
+            "Os 4 Ps são um roteiro mental: em qualquer atendimento, pense em PROTEÇÃO, PREVENÇÃO, PROMOÇÃO e PRIMEIRA ATENÇÃO.",
+            "PROTEÇÃO: proteger o cliente de riscos — reconhecer sinais de alerta e os seus limites, saber o que NÃO fazer e quando chamar o farmacêutico.",
+            "PREVENÇÃO: o que a pessoa pode fazer hoje para evitar o problema amanhã (hábitos, proteção solar, vacinação, acompanhamento).",
+            "PROMOÇÃO: promover mais saúde — educação, acompanhamento regular e, quando indicado pelo farmacêutico, suplementação e produtos de apoio.",
+            "PRIMEIRA ATENÇÃO: a farmácia é o primeiro ponto de cuidado do bairro — acolher, escutar a real necessidade e dar o encaminhamento certo.",
             "Com o método, você nunca trava no balcão: sempre há um próximo passo claro e seguro para orientar.",
           ],
           comparativo: {
@@ -46,7 +46,7 @@ export const trilhaServicosCuidado: Trilha = {
               {
                 nome: "Com os 4 Ps",
                 quando:
-                  "O atendente organiza a conversa: previne, mostra os valores de referência, reconhece sinais de alerta e sugere o próximo passo com o farmacêutico.",
+                  "O atendente acolhe (primeira atenção), reconhece sinais de alerta (proteção), orienta hábitos (prevenção) e sugere o próximo passo de saúde com o farmacêutico (promoção).",
               },
               {
                 nome: "Sem método",
@@ -56,12 +56,12 @@ export const trilhaServicosCuidado: Trilha = {
               {
                 nome: "Exemplo — sono",
                 quando:
-                  "Prevenção: rotina noturna sem telas. Parâmetros: 7 a 9 horas por noite para adultos. Problemas: insônia persistente é sinal de alerta. Promoção: higiene do sono e orientação do farmacêutico sobre opções.",
+                  "Primeira Atenção: escutar a queixa de cansaço. Proteção: insônia persistente é sinal de alerta para encaminhar. Prevenção: rotina noturna sem telas. Promoção: higiene do sono e orientação do farmacêutico sobre opções.",
               },
               {
                 nome: "Exemplo — hidratação",
                 quando:
-                  "Prevenção: água ao longo do dia. Parâmetros: urina clara é um bom sinal prático. Problemas: desidratação em idosos e crianças. Promoção: lembrar o cliente de que água melhora até a absorção de medicamentos.",
+                  "Primeira Atenção: perceber o cliente idoso com pouca ingestão de água. Proteção: sinais de desidratação pedem atenção médica. Prevenção: água ao longo do dia. Promoção: lembrar que a água melhora até a absorção de medicamentos.",
               },
             ],
           },
@@ -74,32 +74,32 @@ export const trilhaServicosCuidado: Trilha = {
               '"Ah, pré-diabetes quase todo mundo tem, é só comer menos açúcar." (minimiza a condição, não orienta parâmetros nem encaminha)',
           },
           checklist: [
-            "Memorizar os 4 Ps: Prevenção, Parâmetros, Problemas, Promoção.",
+            "Memorizar os 4 Ps: Proteção, Prevenção, Promoção, Primeira Atenção.",
             "Aplicar o método em qualquer tema antes de responder ao cliente.",
-            "Sempre fechar com um próximo passo: medir, acompanhar ou falar com o farmacêutico.",
-            "Nunca usar os parâmetros para dar diagnóstico — eles orientam, quem diagnostica é o médico.",
+            "Sempre fechar com um próximo passo: orientar, acompanhar ou falar com o farmacêutico.",
+            "Nunca dar diagnóstico — o atendente orienta e acolhe; quem diagnostica é o médico.",
           ],
           quandoChamarFarmaceutico: [
             "Sempre que o cliente quiser interpretar resultados de exames.",
-            "Quando houver sinais de alerta em qualquer um dos 4 Ps.",
+            "Quando houver sinais de alerta (o P de Proteção pede encaminhamento).",
             "Antes de sugerir qualquer suplemento ou produto de apoio à saúde.",
           ],
           errosComuns: [
-            "Pular direto para o produto sem entender o contexto do cliente.",
-            "Citar valores de referência como se fossem diagnóstico.",
-            "Esquecer o quarto P: o atendimento termina com promoção de saúde, não com a venda.",
+            "Pular direto para o produto sem acolher e entender o contexto (faltou Primeira Atenção).",
+            "Ignorar sinais de alerta que pedem encaminhamento (faltou Proteção).",
+            "Encerrar na venda em vez de promover saúde e acompanhamento (faltou Promoção).",
           ],
           quiz: [
             q(
               "O que significam os 4 Ps da Saúde?",
               [
                 "Preço, Produto, Praça e Promoção",
-                "Prevenção, Parâmetros, Problemas e Promoção",
+                "Proteção, Prevenção, Promoção e Primeira Atenção",
                 "Pressa, Paciência, Postura e Presença",
                 "Prescrição, Posologia, Princípio ativo e Padrão",
               ],
               1,
-              "Os 4 Ps da Saúde organizam o cuidado: prevenir, conhecer os parâmetros, reconhecer problemas e promover saúde. Não confunda com os 4 Ps do marketing!",
+              "Os 4 Ps da Saúde organizam o cuidado: proteger o cliente, prevenir problemas, promover saúde e oferecer a primeira atenção. Não confunda com os 4 Ps do marketing!",
             ),
             q(
               "Um cliente comenta que a glicemia de jejum da esposa deu 110 mg/dL. Qual é a conduta correta do atendente?",
@@ -113,15 +113,15 @@ export const trilhaServicosCuidado: Trilha = {
               "Entre 100 e 125 mg/dL em jejum é faixa de atenção (pré-diabetes). O atendente orienta o acompanhamento e encaminha — nunca diagnostica nem indica tratamento.",
             ),
             q(
-              "No método dos 4 Ps, o que entra em 'Promoção'?",
+              "No método dos 4 Ps, o que entra em 'Primeira Atenção'?",
               [
-                "Descontos e ofertas da semana",
-                "Hábitos saudáveis, acompanhamento regular e apoio orientado pelo farmacêutico",
-                "Propaganda de medicamentos tarjados",
-                "Promessas de cura rápida",
+                "Ser o primeiro a oferecer um desconto",
+                "Acolher, escutar a real necessidade e dar o encaminhamento certo — a farmácia como primeiro ponto de cuidado",
+                "Atender o mais rápido possível, sem perguntas",
+                "Indicar sempre o medicamento mais caro",
               ],
               1,
-              "Promoção é promover SAÚDE: hábitos, acompanhamento e orientação profissional. Nada de promessas ou propaganda indevida.",
+              "Primeira Atenção é o acolhimento inicial: a farmácia costuma ser o primeiro lugar que a pessoa procura. Escutar com cuidado e encaminhar bem faz toda a diferença.",
             ),
             q(
               "Por que os 4 Ps ajudam o atendente no dia a dia?",
@@ -147,11 +147,11 @@ export const trilhaServicosCuidado: Trilha = {
             "Dois temas reais do balcão passados pelo filtro dos 4 Ps: controle de glicemia e cuidado com a visão.",
           resumoExecutivo: [
             "GLICEMIA — Prevenção: alimentação com carboidratos complexos, atividade física regular (150 minutos por semana) e controle de peso protegem o metabolismo.",
-            "GLICEMIA — Parâmetros: jejum de 70 a 99 mg/dL é normal; 100 a 125 é pré-diabetes; 126 ou mais pede confirmação médica. Abaixo de 70 é hipoglicemia: agir na hora.",
-            "GLICEMIA — Problemas: muita sede, muita urina, fome excessiva, visão turva e cansaço são sinais clássicos de glicose alta; tremor, suor frio e confusão indicam glicose baixa.",
+            "GLICEMIA — valores de referência: jejum de 70 a 99 mg/dL é normal; 100 a 125 é pré-diabetes; 126 ou mais pede confirmação médica. Abaixo de 70 é hipoglicemia: agir na hora.",
+            "GLICEMIA — Proteção: muita sede, muita urina, fome excessiva, visão turva e cansaço são sinais de alerta de glicose alta; tremor, suor frio e confusão indicam glicose baixa — encaminhe.",
             "OLHOS — Prevenção: óculos de sol com proteção UV, não coçar os olhos com mãos sujas e a regra 20-20-20 nas telas (a cada 20 minutos, olhar algo a 6 metros por 20 segundos).",
-            "OLHOS — Parâmetros e Problemas: consulta oftalmológica anual detecta cedo catarata, glaucoma e alterações da retina — especialmente em quem tem diabetes ou hipertensão.",
-            "PROMOÇÃO nos dois temas: hidratação, boa alimentação e, com orientação do farmacêutico, suplementos com evidência (como luteína e ômega-3 para os olhos).",
+            "OLHOS — Proteção: consulta oftalmológica anual detecta cedo catarata, glaucoma e alterações da retina — especialmente em quem tem diabetes ou hipertensão.",
+            "PROMOÇÃO nos dois temas: hidratação, boa alimentação e, com orientação do farmacêutico, suplementos com evidência (como luteína e ômega-3 para os olhos). PRIMEIRA ATENÇÃO: acolher a queixa e encaminhar bem.",
           ],
           comparativo: {
             titulo: "Sinais que orientam a conversa no balcão",
@@ -174,7 +174,7 @@ export const trilhaServicosCuidado: Trilha = {
               {
                 nome: "Sinal de alerta ocular",
                 quando:
-                  "Dor ocular, perda súbita de visão ou halos de luz: encaminhamento médico imediato, sem testes na loja.",
+                  "Dor ocular, perda súbita de visão ou halos de luz: encaminhamento médico imediato, sem testes na farmácia.",
               },
             ],
           },
@@ -602,7 +602,7 @@ export const trilhaServicosCuidado: Trilha = {
           resumo:
             "A farmácia moderna vai muito além da prateleira: é um ponto de cuidado com serviços de saúde. Conheça o portfólio — como o divulgado pela Droga Raia — e o seu papel nele.",
           resumoExecutivo: [
-            "Grandes redes, como a Droga Raia, oferecem um portfólio de serviços de saúde: vacinação, testes rápidos (como o de COVID-19), exames clínicos, serviços farmacêuticos como aferição de pressão e glicemia, aplicação de injetáveis, telessaúde e manipulação — a disponibilidade varia por loja.",
+            "Grandes redes, como a Droga Raia, oferecem um portfólio de serviços de saúde: vacinação, testes rápidos (como o de COVID-19), exames clínicos, serviços farmacêuticos como aferição de pressão e glicemia, aplicação de injetáveis, telessaúde e manipulação — a disponibilidade varia por farmácia.",
             "Base legal existe e é sólida: a RDC 197/2017 regula serviços como vacinação e aplicação de injetáveis; a RDC 978/2025 trata dos testes e exames; as Resoluções CFF 585 e 586 definem as atribuições clínicas do farmacêutico.",
             "Quem EXECUTA os serviços é o farmacêutico. O atendente é a porta de entrada: identifica a necessidade, apresenta o serviço, agenda e prepara o cliente.",
             "Serviço é cuidado contínuo: o cliente que afere a pressão todo mês cria vínculo com a farmácia — e tem a saúde acompanhada de verdade.",
@@ -638,12 +638,12 @@ export const trilhaServicosCuidado: Trilha = {
               {
                 nome: "Telessaúde e manipulação",
                 quando:
-                  "Consulta a distância com profissional de saúde e fórmulas personalizadas sob prescrição — conforme disponibilidade da loja.",
+                  "Consulta a distância com profissional de saúde e fórmulas personalizadas sob prescrição — conforme disponibilidade da farmácia.",
               },
             ],
           },
           checklist: [
-            "Conhecer a lista de serviços disponíveis NA SUA loja (varia por unidade).",
+            "Conhecer a lista de serviços disponíveis NA SUA farmácia (varia por unidade).",
             "Saber apresentar cada serviço em uma frase simples e verdadeira.",
             "Identificar oportunidades de cuidado na conversa e oferecer o serviço certo.",
             "Encaminhar a execução sempre ao farmacêutico.",
@@ -652,10 +652,10 @@ export const trilhaServicosCuidado: Trilha = {
           quandoChamarFarmaceutico: [
             "Execução de qualquer serviço: vacina, teste, aferição, aplicação.",
             "Dúvida clínica sobre qual serviço atende a necessidade do cliente.",
-            "Resultados alterados em qualquer teste realizado na loja.",
+            "Resultados alterados em qualquer teste realizado na farmácia.",
           ],
           errosComuns: [
-            "Não conhecer os serviços da própria loja e perder a chance de cuidar.",
+            "Não conhecer os serviços da própria farmácia e perder a chance de cuidar.",
             "Prometer serviço que a unidade não oferece.",
             "Tratar o serviço como item de venda em vez de ato de cuidado.",
             "Tentar executar um serviço que é privativo do farmacêutico.",
@@ -666,7 +666,7 @@ export const trilhaServicosCuidado: Trilha = {
               [
                 "Qualquer funcionário treinado",
                 "O farmacêutico habilitado",
-                "O gerente da loja",
+                "O gerente da farmácia",
                 "O próprio cliente, com supervisão",
               ],
               1,
@@ -919,7 +919,7 @@ export const trilhaServicosCuidado: Trilha = {
             "Cadeia do frio é inegociável: vacinas vivem entre +2 °C e +8 °C, nunca congelam, e a temperatura da geladeira é registrada todos os dias — rotina que também aparece no checklist diário da farmácia.",
             "Estrutura exigida (RDC 197/2017): sala exclusiva, pia, materiais adequados e plano para emergências, incluindo medicação e procedimento para reação alérgica grave.",
             "Aplicação é ato do farmacêutico habilitado, com registro no sistema (como o Conecte SUS, no caso de vacinas) e no cartão do cliente.",
-            "Depois da aplicação, o cliente permanece 20 minutos em observação na loja — a maioria das reações graves, embora raras, acontece nesse período.",
+            "Depois da aplicação, o cliente permanece 20 minutos em observação na farmácia — a maioria das reações graves, embora raras, acontece nesse período.",
             "Orientações pós-vacina para o cliente: reações leves como dor local e febre baixa podem ocorrer; compressa fria ajuda no local; sintomas intensos pedem contato com o serviço de saúde.",
             "O atendente brilha aqui no acolhimento: organiza o fluxo, tranquiliza quem tem medo de agulha e garante que ninguém vá embora antes dos 20 minutos.",
           ],
@@ -978,7 +978,7 @@ export const trilhaServicosCuidado: Trilha = {
               "Entre +2 °C e +8 °C, sem nunca congelar. Congelamento inutiliza a vacina, mesmo que ela 'pareça' normal depois.",
             ),
             q(
-              "Por que o cliente deve aguardar 20 minutos na loja após a vacina?",
+              "Por que o cliente deve aguardar 20 minutos na farmácia após a vacina?",
               [
                 "Para preencher a pesquisa de satisfação",
                 "Porque as reações graves, embora raras, costumam ocorrer nesse período inicial",
@@ -989,7 +989,7 @@ export const trilhaServicosCuidado: Trilha = {
               "A observação de 20 minutos permite resposta imediata da equipe em caso de reação alérgica grave — que é rara, mas acontece tipicamente logo após a aplicação.",
             ),
             q(
-              "A energia da loja caiu durante a madrugada. Qual é a preocupação imediata com a geladeira de vacinas?",
+              "A energia da farmácia caiu durante a madrugada. Qual é a preocupação imediata com a geladeira de vacinas?",
               [
                 "Nenhuma, vacina aguenta qualquer temperatura por um dia",
                 "Verificar o registro de temperatura e acionar o plano de contingência — a cadeia do frio pode ter sido quebrada",

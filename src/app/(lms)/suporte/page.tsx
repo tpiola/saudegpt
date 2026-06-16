@@ -19,7 +19,7 @@ const duvidas = [
   },
   {
     pergunta: "O que sao os 4 Ps?",
-    resposta: "O metodo dos 4 Ps (Prevencao, Parametros, Problemas e Promocao) e a base do atendimento consultivo que ensinamos na plataforma. Cada aula traz uma dica pratica de um dos 4 Ps para aplicar no balcao.",
+    resposta: "O metodo dos 4 Ps (Protecao, Prevencao, Promocao e Primeira Atencao) e a base do atendimento consultivo que ensinamos na plataforma. Cada aula traz uma dica pratica de um dos 4 Ps para aplicar no balcao.",
   },
   {
     pergunta: "Como funciona o quiz?",

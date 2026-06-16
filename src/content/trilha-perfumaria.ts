@@ -1574,7 +1574,7 @@ export const trilhaPerfumaria: Trilha = {
             q(
               "Qual a melhor abordagem de cross-sell?",
               [
-                "Oferecer tudo que a loja tem.",
+                "Oferecer tudo que a farmácia tem.",
                 "Sugerir 1-2 complementos que agregam valor e pedir permissão.",
                 "Não oferecer nada além do pedido.",
                 "Empurrar o mais caro primeiro.",

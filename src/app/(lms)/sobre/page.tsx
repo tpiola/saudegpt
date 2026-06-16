@@ -57,7 +57,7 @@ export default function SobrePage() {
       <div className="mt-12">
         <h2 className="text-lg font-bold">Mandala pedagógica</h2>
         <p className="mt-2 text-sm text-muted">
-          Saúde integral no centro: pessoa, valores, responsabilidades e operação de loja.
+          Saúde integral no centro: pessoa, valores, responsabilidades e operação de farmácia.
         </p>
         <div className="mt-6 max-w-md mx-auto">
           <Mandala />

@@ -367,7 +367,7 @@ export const trilhaVendas: Trilha = {
                 "O cliente diz 'esta caro'",
                 "O cliente diz 'nao sei se preciso disso' ou 'sera que resolve?'",
                 "O cliente pergunta o preco",
-                "O cliente sai da loja",
+                "O cliente sai da farmácia",
               ],
               1,
               'Objeção de necessidade aparece como duvida sobre a utilidade. "Sera que resolve?" e diferente de "esta caro".',
