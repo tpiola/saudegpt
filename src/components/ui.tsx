@@ -7,15 +7,15 @@ type Tamanho = "sm" | "md" | "lg" | "xl";
 
 const variantes: Record<Variante, string> = {
   primary:
-    "bg-orange-500 text-white shadow-[0_4px_20px_rgba(214,110,15,0.3)] hover:bg-orange-600 hover:shadow-[0_8px_32px_rgba(214,110,15,0.4)]",
+    "bg-gold-500 text-white shadow-[0_4px_20px_rgba(212,168,67,0.3)] hover:bg-gold-600 hover:shadow-[0_8px_32px_rgba(212,168,67,0.4)]",
   secondary:
-    "bg-surface text-foreground border border-border-strong hover:border-orange-400 hover:text-orange-600 hover:shadow-sm",
+    "bg-surface text-foreground border border-border-strong hover:border-gold-400 hover:text-gold-600 hover:shadow-sm",
   ghost: "text-muted hover:text-foreground hover:bg-surface-2",
-  soft: "bg-orange-50 text-orange-700 hover:bg-orange-100 dark:bg-orange-900/20 dark:text-orange-300 dark:hover:bg-orange-900/30",
+  soft: "bg-gold-50 text-gold-700 hover:bg-gold-100 dark:bg-gold-900/20 dark:text-gold-300 dark:hover:bg-gold-900/30",
   glass:
-    "glass-heavy text-foreground hover:border-orange-300 hover:shadow-lg",
+    "glass-heavy text-foreground hover:border-gold-400 hover:shadow-lg",
   "outline-white":
-    "bg-transparent text-white border border-white/25 hover:border-orange-400 hover:text-orange-400 hover:bg-orange-500/10",
+    "bg-transparent text-white border border-white/25 hover:border-gold-400 hover:text-gold-400 hover:bg-gold-500/10",
 };
 
 const tamanhos: Record<Tamanho, string> = {
