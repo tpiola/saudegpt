@@ -109,7 +109,7 @@ export function HeroSection() {
       <motion.div className="absolute inset-0 z-0" style={{ scale: useTransform(scrollYProgress, [0, 1], [1, 1.1]) }}>
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/imagens/hero_pills.png')" }}
+          style={{ backgroundImage: "url('/imagens/hero_pills.webp')" }}
         />
         {/* Gradient overlay premium */}
         <div className="absolute inset-0 bg-gradient-to-b from-navy-900/85 via-navy-800/75 to-forest-900/92" />
@@ -166,7 +166,7 @@ export function HeroSection() {
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <Link
               href="/trilhas"
-              className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-orange-500/25 transition-all hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative inline-flex h-12 sm:h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 sm:px-8 text-sm sm:text-base font-bold text-white shadow-xl shadow-gold-500/25 transition-all hover:shadow-gold-500/40 hover:scale-[1.02] active:scale-[0.98]"
             >
               {/* Shimmer effect */}
               <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />

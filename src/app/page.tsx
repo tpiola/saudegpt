@@ -2,7 +2,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChatBotIA } from "@/components/chatbot-ia";
-import { HeroVideo } from "@/components/hero/HeroVideo";
+import { HeroSection } from "@/components/hero-section";
 import { trilhas } from "@/content/curriculo";
 import { Icon } from "@/components/icons";
 import { FadeUp } from "@/components/fade-up";
@@ -93,7 +93,7 @@ export default function HomePage() {
     <>
       <SiteHeader />
       <main id="conteudo-principal">
-        <HeroVideo />
+        <HeroSection />
         <TrilhasSection />
       </main>
       <SiteFooter />
