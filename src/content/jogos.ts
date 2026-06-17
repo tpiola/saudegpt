@@ -2066,6 +2066,28 @@ export const jogosCatalogo: JogoCatalogo[] = [
     recorde: "—",
     componente: "cenario",
   },
+  {
+    id: "stop",
+    titulo: "Stop Farma",
+    descricao: "Uma letra é sorteada. Você tem 45 segundos para preencher 10 categorias de medicamentos. Clássico Stop com tema farmacêutico!",
+    icone: "zap",
+    gradient: "from-gold-500 to-amber-600",
+    nivel: "Intermediário",
+    questoes: 10,
+    recorde: "—",
+    componente: "stop",
+  },
+  {
+    id: "forca",
+    titulo: "Força Farma",
+    descricao: "Descubra o medicamento oculto antes que o boneco seja completo. Cada letra errada custa uma parte do corpo!",
+    icone: "target",
+    gradient: "from-emerald-500 to-teal-600",
+    nivel: "Intermediário",
+    questoes: 24,
+    recorde: "—",
+    componente: "forca",
+  },
 ];
 
 /* ─── Aliases de compatibilidade ─── */

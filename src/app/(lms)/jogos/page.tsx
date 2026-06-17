@@ -12,6 +12,8 @@ import { SpeedChallenge } from "@/components/jogos/SpeedChallenge";
 import { FatoOuFake } from "@/components/jogos/FatoOuFake";
 import { ModoSobrevivencia } from "@/components/jogos/ModoSobrevivencia";
 import { CenarioBalcao } from "@/components/jogos/CenarioBalcao";
+import { StopFarma } from "@/components/jogos/StopFarma";
+import { ForcaFarma } from "@/components/jogos/ForcaFarma";
 import { Icon } from "@/components/icons";
 import { Botao } from "@/components/ui";
 
@@ -55,6 +57,10 @@ function renderizarJogo(id: string, titulo: string) {
       return <ModoSobrevivencia titulo={titulo} questoes={questoes} />;
     case "cenario":
       return <CenarioBalcao titulo={titulo} questoes={questoes} />;
+    case "stop":
+      return <StopFarma />;
+    case "forca":
+      return <ForcaFarma onVoltar={() => window.history.back()} />;
     default:
       return <JogoQuiz titulo={titulo} questoes={questoes} />;
   }
