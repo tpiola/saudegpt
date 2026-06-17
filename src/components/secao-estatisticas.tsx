@@ -4,9 +4,9 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const estatisticas = [
-  { valor: "15+", label: "Trilhas completas" },
-  { valor: "200+", label: "Aulas disponíveis" },
-  { valor: "50+", label: "Jogos interativos" },
+  { valor: "7", label: "Trilhas completas" },
+  { valor: "159+", label: "Aulas disponíveis" },
+  { valor: "39+", label: "Módulos interativos" },
   { valor: "100%", label: "Online e mobile" },
 ];
 
@@ -24,7 +24,7 @@ export function SecaoEstatisticas() {
 
   return (
     <section className="border-y border-border bg-surface-2" ref={ref}>
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-16 sm:px-8 lg:px-12">
         <motion.div
           className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
           initial={{ opacity: 0 }}
@@ -37,9 +37,9 @@ export function SecaoEstatisticas() {
               className="text-center"
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.1 }}
             >
-              <div className="bg-gradient-to-r from-gold-500 to-orange-500 bg-clip-text text-transparent">
+              <div className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
                 <ContadorAnimado valor={stat.valor} />
               </div>
               <p className="mt-1 text-sm text-muted">{stat.label}</p>

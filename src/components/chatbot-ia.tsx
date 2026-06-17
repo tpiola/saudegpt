@@ -25,46 +25,6 @@ interface Mensagem {
 
 const STORAGE_KEY = "appfarmacia_chat";
 
-/* ── Ícone Robô (SVG premium) ── */
-function ChatBubbleIcon({ className }: { className?: string }) {
-  return (
-    <div className={`relative ${className}`}>
-      <img
-        src="/imagens/suporte_robo.webp"
-        alt="Suporte"
-        className="h-full w-full object-contain drop-shadow-lg"
-      />
-    </div>
-  );
-}
-
-/* ── Partículas de fundo ── */
-function ParticleBg() {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-      {Array.from({ length: 6 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute h-1 w-1 rounded-full bg-emerald-400/20"
-          style={{
-            left: `${10 + Math.random() * 80}%`,
-            top: `${10 + Math.random() * 80}%`,
-          }}
-          animate={{
-            y: [0, -20, 0],
-            opacity: [0.2, 0.6, 0.2],
-          }}
-          transition={{
-            duration: 3 + Math.random() * 4,
-            repeat: Infinity,
-            delay: Math.random() * 2,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 const SUGESTOES: { icon?: string; label: string }[] = [
   { icon: "camera", label: "Analisar foto de medicamento" },
   { icon: "search", label: "Buscar bula de medicamento" },
@@ -241,31 +201,29 @@ export function ChatBotIA() {
             className="
               w-full h-full sm:w-[420px] sm:h-[600px] sm:max-h-[85vh] sm:rounded-2xl sm:mb-4 sm:mr-0
               flex flex-col overflow-hidden
-              bg-[#0a0f0e]/95 backdrop-blur-2xl
-              border-t border-gold-500/20 sm:border sm:border-gold-500/20
-              shadow-[0_0_60px_rgba(16,185,129,0.12),0_25px_80px_rgba(0,0,0,0.5)]
-              sm:shadow-[0_0_80px_rgba(16,185,129,0.15),0_30px_100px_rgba(0,0,0,0.6)]
+              bg-navy-950/95 backdrop-blur-2xl
+              border-t border-gold-500/15 sm:border sm:border-gold-500/15
+              shadow-[0_0_60px_rgba(10,22,40,0.3),0_25px_80px_rgba(0,0,0,0.5)]
             "
           >
-            {/* Gradiente decorativo superior */}
-            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 via-50% to-transparent opacity-80" />
+            {/* Gradiente decorativo gold */}
+            <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/80 via-50% to-transparent opacity-60" />
 
-            {/* ─── HEADER PREMIUM ─── */}
-            <div className="relative shrink-0 px-4 sm:px-5 pt-4 sm:pt-5 pb-3 border-b border-white/[0.06]">
+            {/* ─── HEADER ─── */}
+            <div className="relative shrink-0 px-5 pt-5 pb-3 border-b border-white/[0.06]">
               <div className="flex items-center gap-3">
-                {/* Avatar robô com glow */}
+                {/* Avatar farmácia — ícone de suporte, sem robô */}
                 <div className="relative shrink-0">
-                  <div className="absolute inset-0 rounded-full bg-emerald-400/20 blur-md animate-pulse-slow" />
-                  <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gold-400/30 to-gold-600/20 ring-1 ring-gold-400/30 overflow-hidden">
-                    <ChatBubbleIcon className="h-6 w-6" />
+                  <div className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-gold-400/20 to-gold-600/10 ring-1 ring-gold-400/20">
+                    <Icon name="message" size={20} className="text-gold-400" />
                   </div>
                 </div>
 
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-sm font-bold text-white tracking-tight">Assistente IA</h2>
+                    <h2 className="text-sm font-bold text-white tracking-tight">Suporte</h2>
                     <span className="inline-flex items-center gap-1 rounded-full bg-gold-500/10 px-2 py-0.5 text-[9px] font-semibold text-gold-300 border border-gold-400/15">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
                       online
                     </span>
                   </div>
@@ -308,25 +266,21 @@ export function ChatBotIA() {
             {/* ─── MENSAGENS ─── */}
             <div
               ref={listaRef}
-              className="flex-1 overflow-y-auto overscroll-contain scroll-smooth px-4 sm:px-5 py-4 space-y-3"
-              style={{
-                background: "radial-gradient(ellipse at top, rgba(16,185,129,0.03), transparent 60%)",
-              }}
+              className="flex-1 overflow-y-auto overscroll-contain scroll-smooth px-5 py-4 space-y-3"
             >
               {mensagens.length === 0 && !digitando && !modoScanner && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="flex flex-col items-center justify-center py-12 sm:py-16 space-y-5"
+                  className="flex flex-col items-center justify-center py-16 space-y-5"
                 >
                   <div className="relative">
-                    <div className="absolute inset-0 rounded-2xl bg-emerald-400/10 blur-xl" />
-                    <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500/20 to-gold-600/10 border border-gold-400/20 shadow-lg">
-                      <ChatBubbleIcon className="h-10 w-10" />
+                    <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500/15 to-gold-600/5 border border-gold-400/15">
+                      <Icon name="message" size={36} className="text-gold-400" />
                     </div>
                   </div>
                   <div className="text-center max-w-[240px]">
-                    <p className="text-sm font-semibold text-white/90 flex items-center gap-1.5"><Icon name="smile" size={16} /> Olá! Como posso ajudar?</p>
+                    <p className="text-sm font-semibold text-white/90">Olá! Como posso ajudar?</p>
                     <p className="text-xs text-white/40 mt-2 leading-relaxed">
                       Pergunte sobre medicamentos, legislação ANVISA, ou escaneie produtos para análise completa.
                     </p>
@@ -345,7 +299,7 @@ export function ChatBotIA() {
                     <div
                       className={`max-w-[85%] sm:max-w-[78%] rounded-2xl px-4 py-3 leading-relaxed text-sm ${
                         m.role === "user"
-                          ? "bg-gradient-to-br from-gold-500/20 to-gold-600/15 text-white/90 rounded-br-sm shadow-[0_2px_12px_rgba(16,185,129,0.1)] border border-gold-400/10"
+                          ? "bg-gradient-to-br from-gold-500/20 to-gold-600/15 text-white/90 rounded-br-sm border border-gold-400/10"
                           : "bg-white/[0.04] text-white/80 rounded-bl-sm border border-white/[0.04] shadow-sm backdrop-blur-sm"
                       }`}
                     >
@@ -381,9 +335,9 @@ export function ChatBotIA() {
               {digitando && (
                 <div className="flex items-center gap-3 px-1 py-1">
                   <div className="flex items-center gap-1.5 rounded-full bg-white/[0.04] px-4 py-2.5 border border-white/[0.04]">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400/70 animate-bounce" style={{ animationDelay: "0ms" }} />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400/70 animate-bounce" style={{ animationDelay: "150ms" }} />
-                    <span className="h-2 w-2 rounded-full bg-emerald-400/70 animate-bounce" style={{ animationDelay: "300ms" }} />
+                    <span className="h-2 w-2 rounded-full bg-gold-400/70 animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="h-2 w-2 rounded-full bg-gold-400/70 animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="h-2 w-2 rounded-full bg-gold-400/70 animate-bounce" style={{ animationDelay: "300ms" }} />
                     <span className="ml-2 text-[11px] text-white/30 font-medium">Assistente pensando...</span>
                   </div>
                 </div>
@@ -392,7 +346,7 @@ export function ChatBotIA() {
 
             {/* ─── SUGESTÕES ─── */}
             {mostrarSugestoes && !modoScanner && (
-              <div className="shrink-0 px-4 sm:px-5 pb-2">
+              <div className="shrink-0 px-5 pb-2">
                 <p className="text-[9px] text-white/25 font-bold uppercase tracking-[0.2em] mb-2.5">Sugestões rápidas</p>
                 <div className="flex flex-wrap gap-1.5">
                   {SUGESTOES.map((s) => (
@@ -420,7 +374,7 @@ export function ChatBotIA() {
                   exit={{ height: 0, opacity: 0 }}
                   className="overflow-hidden shrink-0"
                 >
-                  <div className="px-4 sm:px-5 pb-3 space-y-2">
+                  <div className="px-5 pb-3 space-y-2">
                     <div className="h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent" />
                     <p className="text-[10px] text-gold-400/50 font-bold uppercase tracking-[0.15em] flex items-center gap-1.5">
                       <Icon name="camera" size={12} /> Scanner de Produto
@@ -455,8 +409,8 @@ export function ChatBotIA() {
               )}
             </AnimatePresence>
 
-            {/* ─── INPUT PREMIUM ─── */}
-            <div className="shrink-0 border-t border-white/[0.04] bg-black/[0.15] px-3 sm:px-4 py-3 pb-5 sm:pb-3">
+            {/* ─── INPUT ─── */}
+            <div className="shrink-0 border-t border-white/[0.04] bg-black/[0.15] px-4 py-3 pb-5 sm:pb-3">
               <div className="flex items-center gap-2 bg-white/[0.03] rounded-2xl border border-white/[0.05] px-3 py-1.5 focus-within:border-gold-400/25 focus-within:bg-white/[0.05] transition-all duration-300">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
@@ -503,9 +457,10 @@ export function ChatBotIA() {
                   whileTap={{ scale: 0.95 }}
                   onClick={() => enviar(input)}
                   disabled={!input.trim() || digitando}
-                  className="rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-gold-600/20 hover:from-gold-400 hover:to-gold-500 disabled:opacity-25 disabled:cursor-not-allowed transition-all"
+                  className="rounded-full bg-gold-500/20 p-2 text-gold-400 hover:bg-gold-500/30 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+                  title="Enviar"
                 >
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-4 w-4">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="h-4 w-4">
                     <line x1="22" y1="2" x2="11" y2="13" />
                     <polygon points="22 2 15 22 11 13 2 9 22 2" />
                   </svg>
@@ -516,52 +471,22 @@ export function ChatBotIA() {
         )}
       </AnimatePresence>
 
-      {/* ─── BOTÃO FLUTUANTE PREMIUM ─── */}
-      <motion.button
-        key="chat-button"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.92 }}
-        onClick={() => setAberto(!aberto)}
-        className="relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full text-white shadow-2xl transition-all active:shadow-emerald-400/20 m-3 sm:m-0 sm:mb-0"
-        style={{
-          background: "linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)",
-          boxShadow: "0 8px 32px rgba(16,185,129,0.35), 0 0 0 1px rgba(16,185,129,0.15)",
-        }}
-        aria-label={aberto ? "Fechar chat" : "Abrir chat IA"}
-      >
-        {/* Anéis concêntricos */}
-        <span className="absolute inset-0 rounded-full bg-emerald-400/20 animate-ping opacity-25" style={{ animationDuration: "3s" }} />
-        <span className="absolute -inset-2 rounded-full border border-gold-400/10 animate-pulse-slow" />
-        
-        <AnimatePresence mode="wait">
-          {aberto ? (
-            <motion.svg
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              className="h-6 w-6 sm:h-7 sm:w-7"
-            >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </motion.svg>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-              className="relative"
-            >
-              <ChatBubbleIcon className="h-7 w-7 sm:h-8 sm:w-8" />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+      {/* ─── FAB BOTÃO FLUTUANTE ─── */}
+      {!aberto && (
+        <motion.button
+          className="relative flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-gold-500 to-gold-600 shadow-xl shadow-gold-500/25 hover:shadow-gold-500/40 transition-all sm:mb-0 mb-4 mr-4 sm:mr-0"
+          onClick={() => setAberto(true)}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.92 }}
+          aria-label="Abrir chat"
+        >
+          {/* Glow ring */}
+          <div className="absolute inset-0 rounded-full bg-gold-400/20 blur-md" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={1.5} className="relative h-6 w-6">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+          </svg>
+        </motion.button>
+      )}
     </div>
   );
 }

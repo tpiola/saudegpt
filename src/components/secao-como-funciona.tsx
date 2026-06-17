@@ -46,7 +46,7 @@ const stepVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { type: "spring" as const, stiffness: 100, damping: 20, mass: 0.8 },
   },
 };
 
@@ -55,7 +55,7 @@ const lineVariants = {
   visible: {
     scaleX: 1,
     scaleY: 1,
-    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -66,30 +66,30 @@ export function SecaoComoFunciona() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-navy-900 py-20 sm:py-28"
+      className="relative overflow-hidden bg-navy-900 py-24 sm:py-32"
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
+      {/* Background pattern sutil */}
+      <div className="absolute inset-0 opacity-[0.02]">
         <div
           className="h-full w-full"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.5) 1px, transparent 0)",
+              "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)",
             backgroundSize: "40px 40px",
           }}
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-6 sm:px-8 lg:px-12">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{ type: "spring", stiffness: 80, damping: 18 }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Começar é{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
               simples e rápido
             </span>
           </h2>
@@ -99,7 +99,7 @@ export function SecaoComoFunciona() {
         </motion.div>
 
         <motion.div
-          className="relative mt-14"
+          className="relative mt-16"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -116,12 +116,12 @@ export function SecaoComoFunciona() {
                 }}
                 variants={lineVariants}
               >
-                <div className="h-full w-full bg-gradient-to-r from-gold-500/40 to-emerald-400/20" />
+                <div className="h-full w-full bg-gradient-to-r from-gold-500/40 to-gold-500/10" />
               </motion.div>
             ))}
           </div>
 
-          {/* Connecting lines — visible on mobile (< lg) */}
+          {/* Connecting lines — mobile */}
           <div className="absolute left-7 top-14 hidden w-0.5 h-[calc(100%-4rem)] sm:block lg:hidden">
             {[0, 1, 2].map((i) => (
               <motion.div
@@ -133,12 +133,12 @@ export function SecaoComoFunciona() {
                 }}
                 variants={lineVariants}
               >
-                <div className="h-full w-full bg-gradient-to-b from-gold-500/40 to-emerald-400/20" />
+                <div className="h-full w-full bg-gradient-to-b from-gold-500/40 to-gold-500/10" />
               </motion.div>
             ))}
           </div>
 
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {passos.map((passo, idx) => (
               <motion.div
                 key={passo.etapa}
@@ -146,7 +146,7 @@ export function SecaoComoFunciona() {
                 className="group relative text-center"
               >
                 {/* Step number badge */}
-                <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-navy-600 shadow-xl shadow-emerald-500/20">
+                <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-500 to-navy-600 shadow-xl shadow-gold-500/10">
                   <motion.span
                     className="text-lg font-black text-white"
                     initial={{ scale: 0 }}
@@ -156,16 +156,16 @@ export function SecaoComoFunciona() {
                     {passo.etapa}
                   </motion.span>
 
-                  {/* Glow dot */}
+                  {/* Glow sutil gold */}
                   <motion.div
-                    className="absolute -inset-1 rounded-2xl bg-emerald-400/20 blur-sm"
+                    className="absolute -inset-1 rounded-2xl bg-gold-400/10 blur-sm"
                     initial={{ opacity: 0 }}
-                    animate={inView ? { opacity: [0, 0.6, 0] } : {}}
-                    transition={{ delay: 0.5 + idx * 0.2, duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    animate={inView ? { opacity: [0, 0.4, 0] } : {}}
+                    transition={{ delay: 0.5 + idx * 0.2, duration: 3, repeat: Infinity, ease: "easeInOut" }}
                   />
                 </div>
 
-                <div className="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/60">
+                <div className="mt-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-gold-400/60">
                   <Icon name={passo.icone} size={16} />
                 </div>
 

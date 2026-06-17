@@ -1,117 +1,75 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
-import { useHeroParallax, useAnimatedParticles } from "./hero-animations";
 
 /* ── Mixkit video URL ── */
 const VIDEO_MP4 =
   "https://assets.mixkit.co/videos/preview/mixkit-dark-tech-circuit-board-data-processing-43777-large.mp4";
 
-/* ── Typewriter subtitles ── */
-function TypewriterSubtitulo({
-  frases,
-  className = "",
-}: {
-  frases: string[];
-  className?: string;
-}) {
+/* ── Frases rotativas (sem typewriter, alterna suavemente) ── */
+const FRASES = [
+  "Do zero ao balcão, no seu ritmo.",
+  "Trilhas, quizzes, simulados e prática de balcão.",
+  "Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
+];
+
+function FraseRotativa() {
   const [idx, setIdx] = useState(0);
-  const [sub, setSub] = useState(0);
-  const [deletando, setDeletando] = useState(false);
 
   useEffect(() => {
-    const fraseAtual = frases[idx];
-    const terminou = !deletando && sub === fraseAtual.length;
-    const zerou = deletando && sub === 0;
-
-    if (zerou) {
-      setDeletando(false);
-      setIdx((i) => (i + 1) % frases.length);
-      return;
-    }
-
-    const timer = setTimeout(
-      () => {
-        if (terminou) {
-          setTimeout(() => setDeletando(true), 2500);
-          return;
-        }
-        setSub((s) => (deletando ? s - 1 : s + 1));
-      },
-      terminou ? 0 : deletando ? 30 : 60,
-    );
-    return () => clearTimeout(timer);
-  }, [sub, idx, deletando, frases]);
+    const timer = setInterval(() => {
+      setIdx((i) => (i + 1) % FRASES.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <span className={className}>
-      {frases[idx].substring(0, sub)}
-      <span className="animate-pulse">|</span>
+    <span
+      key={idx}
+      className="inline-block transition-opacity duration-700"
+    >
+      {FRASES[idx]}
     </span>
   );
 }
 
 export function HeroVideo() {
   const sectionRef = useRef<HTMLElement>(null);
-  const particlesRef = useRef<HTMLDivElement>(null);
-
-  // GSAP ScrollTrigger parallax: background + content fade
-  useHeroParallax(sectionRef);
-
-  // GSAP animated floating particles
-  useAnimatedParticles(particlesRef, { count: 30 });
 
   return (
     <section
       ref={sectionRef}
       className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* ── Video Background with parallax ── */}
-      <div
-        data-hero-bg
-        className="absolute inset-0 z-0 will-change-transform"
-      >
+      {/* ── Video Background ── */}
+      <div className="absolute inset-0 z-0">
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover opacity-40"
           poster="/imagens/hero_pills.png"
         >
           <source src={VIDEO_MP4} type="video/mp4" />
         </video>
 
-        {/* Gradient overlay layers */}
-        <div
-          data-hero-overlay
-          className="absolute inset-0 bg-gradient-to-b from-navy-950/70 via-navy-900/60 to-navy-950/85"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+        {/* Gradient overlay layers — mais limpo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/80 via-navy-900/70 to-navy-950/90" />
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background to-transparent" />
       </div>
 
-      {/* ── GSAP-animated particles ── */}
-      <div
-        ref={particlesRef}
-        className="pointer-events-none absolute inset-0 z-[1] overflow-hidden"
-        aria-hidden
-      />
+      {/* ── Radial glow sutil ── */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] h-[500px] w-[500px] rounded-full bg-gold-500/8 blur-[140px]" />
 
-      {/* ── Radial glow ── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1] h-[600px] w-[600px] rounded-full bg-gold-500/10 blur-[140px]" />
-
-      {/* ── Content (fades out on scroll via GSAP) ── */}
-      <div
-        data-hero-content
-        className="relative z-10 mx-auto max-w-5xl px-4 text-center sm:px-6"
-      >
+      {/* ── Content ── */}
+      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center sm:px-8">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+        <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-500/10 px-4 py-1.5 mb-8">
+          <span className="h-1.5 w-1.5 rounded-full bg-gold-400" />
           <span className="text-xs font-medium text-gold-300">
             Formação para atendentes de farmácia
           </span>
@@ -125,16 +83,9 @@ export function HeroVideo() {
           </span>
         </h1>
 
-        {/* Subtitle with typewriter */}
+        {/* Subtitle rotativo */}
         <p className="mx-auto mt-4 max-w-2xl text-base text-white/60 sm:text-lg min-h-[2em]">
-          <TypewriterSubtitulo
-            frases={[
-              "Do zero ao balcão, no seu ritmo.",
-              "Trilhas, quizzes, simulados e prática de balcão.",
-              "Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
-              "Aprenda, evolua e transforme sua carreira.",
-            ]}
-          />
+          <FraseRotativa />
         </p>
 
         {/* CTAs */}
@@ -162,7 +113,7 @@ export function HeroVideo() {
         </div>
 
         {/* Stats */}
-        <div className="mt-12 flex flex-wrap justify-center gap-8 sm:gap-12">
+        <div className="mt-14 flex flex-wrap justify-center gap-8 sm:gap-12">
           {[
             { valor: "7", label: "trilhas" },
             { valor: "159+", label: "aulas" },

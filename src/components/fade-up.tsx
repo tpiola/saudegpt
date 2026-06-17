@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect, type ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
+import { motion, useInView } from "framer-motion";
 
-/** Fade-up animation on scroll. Wraps children and animates in on first view. */
+/** Fade-up animation on scroll using spring physics. Wraps children and animates in on first view. */
 export function FadeUp({
   children,
   delay = 0,
@@ -13,33 +14,23 @@ export function FadeUp({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visivel, setVisivel] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => {
-        if (e.isIntersecting) {
-          setVisivel(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.05 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visivel ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      } ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      className={className}
+      initial={{ opacity: 0, y: 28 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+      transition={{
+        type: "spring",
+        stiffness: 100,
+        damping: 22,
+        mass: 0.8,
+        delay: delay / 1000,
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

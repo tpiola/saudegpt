@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { Icon } from "./icons";
 
 const faqs = [
   {
@@ -43,7 +42,7 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { type: "spring" as const, stiffness: 100, damping: 22, mass: 0.8 },
   },
 };
 
@@ -53,24 +52,24 @@ export function SecaoFAQ() {
   const inView = useInView(sectionRef, { once: true, margin: "-60px" });
 
   return (
-    <section className="bg-surface py-20 sm:py-28" ref={sectionRef}>
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <section className="bg-surface py-24 sm:py-32" ref={sectionRef}>
+      <div className="mx-auto max-w-3xl px-6 sm:px-8 lg:px-12">
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] as const }}
+          transition={{ type: "spring", stiffness: 80, damping: 18 }}
         >
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Perguntas{" "}
-            <span className="bg-gradient-to-r from-gold-500 to-gold-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent">
               frequentes
             </span>
           </h2>
         </motion.div>
 
         <motion.div
-          className="mt-10 space-y-3"
+          className="mt-12 space-y-3"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -83,13 +82,13 @@ export function SecaoFAQ() {
             >
               <button
                 onClick={() => setAberto(aberto === idx ? null : idx)}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
                 aria-expanded={aberto === idx}
               >
                 <span className="text-sm font-semibold text-foreground">{faq.q}</span>
                 <motion.div
                   animate={{ rotate: aberto === idx ? 180 : 0 }}
-                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
                   className="shrink-0"
                 >
                   <svg
@@ -117,22 +116,22 @@ export function SecaoFAQ() {
                       height: "auto",
                       opacity: 1,
                       transition: {
-                        height: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
-                        opacity: { duration: 0.25, delay: 0.1 },
+                        height: { type: "spring", stiffness: 200, damping: 25 },
+                        opacity: { duration: 0.25, delay: 0.08 },
                       },
                     }}
                     exit={{
                       height: 0,
                       opacity: 0,
                       transition: {
-                        height: { duration: 0.3, ease: [0.16, 1, 0.3, 1] as const },
+                        height: { type: "spring", stiffness: 300, damping: 30 },
                         opacity: { duration: 0.15 },
                       },
                     }}
                     className="overflow-hidden"
                   >
                     <motion.p
-                      className="px-5 pb-4 text-sm text-muted"
+                      className="px-6 pb-5 text-sm text-muted"
                       initial={{ y: -8 }}
                       animate={{ y: 0 }}
                       transition={{ duration: 0.25, ease: "easeOut" }}
