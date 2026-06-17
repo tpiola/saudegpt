@@ -6,8 +6,9 @@ import { Confetti } from "@/components/confetti";
 import { Botao, Card } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { somSucesso, somQuaseLa } from "@/lib/som";
+import { addXp } from "@/lib/sov-xp";
 
-/* ─── Dados Inline: 24 palavras temáticas de farmácia ─── */
+/* ─── Dados Inline: 39 palavras temáticas de farmácia ─── */
 interface PalavraForca {
   palavra: string;
   dica: string;
@@ -15,6 +16,7 @@ interface PalavraForca {
 }
 
 const PALAVRAS_FARMACIA: PalavraForca[] = [
+  // 01-08 — Originais
   { palavra: "AMOXICILINA", dica: "Antibiótico penicilínico de amplo espectro", categoria: "Antibiótico" },
   { palavra: "PARACETAMOL", dica: "Analgésico e antitérmico comum", categoria: "Analgésico" },
   { palavra: "IBUPROFENO", dica: "Anti-inflamatório não esteroidal", categoria: "Anti-inflamatório" },
@@ -23,6 +25,7 @@ const PALAVRAS_FARMACIA: PalavraForca[] = [
   { palavra: "SERTRALINA", dica: "Antidepressivo ISRS de primeira linha", categoria: "Tarja Preta — Antidepressivo" },
   { palavra: "LOSARTANA", dica: "Anti-hipertensivo bloqueador do receptor AT1", categoria: "Anti-hipertensivo" },
   { palavra: "METFORMINA", dica: "Antidiabético oral biguanida de primeira escolha", categoria: "Antidiabético" },
+  // 09-16
   { palavra: "SIMVASTATINA", dica: "Estatina para controle do colesterol", categoria: "Hipolipemiante" },
   { palavra: "AZITROMICINA", dica: "Macrolídeo para infecções respiratórias", categoria: "Antibiótico" },
   { palavra: "PREDNISONA", dica: "Corticosteroide de amplo uso", categoria: "Corticosteroide" },
@@ -31,6 +34,7 @@ const PALAVRAS_FARMACIA: PalavraForca[] = [
   { palavra: "CAPTOPRIL", dica: "IECA para hipertensão e insuficiência cardíaca", categoria: "Anti-hipertensivo" },
   { palavra: "CLONAZEPAM", dica: "Benzodiazepínico de longa duração", categoria: "Tarja Preta — Ansiolítico" },
   { palavra: "FLUOXETINA", dica: "ISRS clássico para depressão e TOC", categoria: "Tarja Preta — Antidepressivo" },
+  // 17-24
   { palavra: "NAPROXENO", dica: "AINE com meia-vida longa", categoria: "Anti-inflamatório" },
   { palavra: "HIOSCINA", dica: "Antiespasmódico para cólicas viscerais", categoria: "Antiespasmódico" },
   { palavra: "ENALAPRIL", dica: "IECA amplamente prescrito na hipertensão", categoria: "Anti-hipertensivo" },
@@ -39,39 +43,68 @@ const PALAVRAS_FARMACIA: PalavraForca[] = [
   { palavra: "GEMFIBROZILA", dica: "Fibrato para triglicerídeos altos", categoria: "Hipolipemiante" },
   { palavra: "HIDROCLOROTIAZIDA", dica: "Diurético tiazídico para hipertensão", categoria: "Diurético" },
   { palavra: "LEVOTIROXINA", dica: "Reposição hormonal para hipotireoidismo", categoria: "Hormônio Tireoidiano" },
+  // 25-39 — Novas 15 palavras
+  { palavra: "METOPROLOL", dica: "Beta-bloqueador seletivo para hipertensão", categoria: "Anti-hipertensivo" },
+  { palavra: "FUROSEMIDA", dica: "Diurético de alça potente para edema", categoria: "Diurético" },
+  { palavra: "CIPROFLOXACINO", dica: "Fluoroquinolona de amplo espectro", categoria: "Antibiótico" },
+  { palavra: "DOXICICLINA", dica: "Tetraciclina para infecções bacterianas", categoria: "Antibiótico" },
+  { palavra: "CLINDAMICINA", dica: "Lincosamida para infecções anaeróbicas", categoria: "Antibiótico" },
+  { palavra: "VENLAFAXINA", dica: "Antidepressivo IRSN duplo", categoria: "Tarja Preta — Antidepressivo" },
+  { palavra: "LORATADINA", dica: "Anti-histamínico não sedante", categoria: "Antialérgico" },
+  { palavra: "ONDANSETRONA", dica: "Antiemético antagonista 5-HT3", categoria: "Antiemético" },
+  { palavra: "ESPIRONOLACTONA", dica: "Diurético poupador de potássio", categoria: "Diurético" },
+  { palavra: "PROPRANOLOL", dica: "Beta-bloqueador não seletivo", categoria: "Anti-hipertensivo" },
+  { palavra: "CARBAMAZEPINA", dica: "Anticonvulsivante estabilizador de humor", categoria: "Tarja Preta — Anticonvulsivante" },
+  { palavra: "PREDNISOLONA", dica: "Corticosteroide anti-inflamatório potente", categoria: "Corticosteroide" },
+  { palavra: "TRAMADOL", dica: "Analgésico opioide atípico", categoria: "Tarja Preta — Analgésico" },
+  { palavra: "NALOXONA", dica: "Antagonista opioide de reversão rápida", categoria: "Antídoto" },
+  { palavra: "MIRTAZAPINA", dica: "Antidepressivo noradrenérgico e serotoninérgico", categoria: "Tarja Preta — Antidepressivo" },
 ];
 
-/* ─── Hangman SVG: 6 partes do boneco (0 = cabeca, 1 = corpo, 2 = bracoE, 3 = bracoD, 4 = pernaE, 5 = pernaD) ─── */
-const PARTES_FORCA = [
+/* ─── Boneco em CSS Puro (divs animadas) ─── */
+const PARTES_CSS = [
   // 0 — Cabeça
-  <circle key="cabeca" cx="100" cy="40" r="16" fill="none" stroke="currentColor" strokeWidth="3" />,
-  // 1 — Corpo
-  <line key="corpo" x1="100" y1="56" x2="100" y2="105" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />,
+  { name: "Cabeça", emoji: "😵", css: "top-[0px] left-1/2 -translate-x-1/2 w-10 h-10 rounded-full" },
+  // 1 — Tronco
+  { name: "Corpo", emoji: "👕", css: "top-[40px] left-1/2 -translate-x-1/2 w-3 h-14 rounded-md" },
   // 2 — Braço esquerdo
-  <line key="bracoE" x1="100" y1="67" x2="75" y2="90" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />,
+  { name: "Braço E.", emoji: "💪", css: "top-[44px] right-1/2 mr-[4px] w-10 h-2.5 rounded-full origin-right -rotate-[35deg]" },
   // 3 — Braço direito
-  <line key="bracoD" x1="100" y1="67" x2="125" y2="90" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />,
+  { name: "Braço D.", emoji: "💪", css: "top-[44px] left-1/2 ml-[4px] w-10 h-2.5 rounded-full origin-left rotate-[35deg]" },
   // 4 — Perna esquerda
-  <line key="pernaE" x1="100" y1="105" x2="78" y2="135" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />,
+  { name: "Perna E.", emoji: "🦵", css: "top-[82px] right-1/2 mr-[2px] w-3 h-12 rounded-md origin-top -rotate-[20deg]" },
   // 5 — Perna direita
-  <line key="pernaD" x1="100" y1="105" x2="122" y2="135" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />,
+  { name: "Perna D.", emoji: "🦵", css: "top-[82px] left-1/2 ml-[2px] w-3 h-12 rounded-md origin-top rotate-[20deg]" },
 ];
 
-/* ─── Partes do boneco com nomes descritivos ─── */
-const PARTES_NOMES = ["Cabeça", "Corpo", "Braço E.", "Braço D.", "Perna E.", "Perna D."];
+/* ─── Partículas douradas ─── */
+function GoldParticles({ x, y }: { x: number; y: number }) {
+  const particles = Array.from({ length: 8 }, (_, i) => i);
+  return (
+    <div
+      className="pointer-events-none absolute z-50"
+      style={{ left: x, top: y }}
+    >
+      {particles.map((i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+          animate={{
+            opacity: 0,
+            x: (Math.random() - 0.5) * 80,
+            y: -Math.random() * 60 - 20,
+            scale: 0,
+          }}
+          transition={{ duration: 0.6 + Math.random() * 0.3, ease: "easeOut" }}
+          className="absolute h-2 w-2 rounded-full bg-gold-400 shadow-[0_0_6px_rgba(212,168,67,0.8)]"
+        />
+      ))}
+    </div>
+  );
+}
 
 /* ─── Letras do alfabeto ─── */
 const ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-/* ─── Emojis para cada parte ─── */
-const PARTE_EMOJI: Record<string, string> = {
-  "Cabeça": "😵",
-  "Corpo": "👕",
-  "Braço E.": "💪",
-  "Braço D.": "💪",
-  "Perna E.": "🦵",
-  "Perna D.": "🦵",
-};
 
 /* ─── Props ─── */
 interface ForcaFarmaProps {
@@ -94,6 +127,9 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [totalAcertos, setTotalAcertos] = useState(0);
   const [totalPartidas, setTotalPartidas] = useState(0);
+  const [goldParticles, setGoldParticles] = useState<{ x: number; y: number; id: number }[]>([]);
+  const goldIdRef = useRef(0);
+  const forcaRef = useRef<HTMLDivElement>(null);
 
   const palavraAtual = PALAVRAS_FARMACIA[palavraIdx];
   const letrasPalavra = palavraAtual.palavra.split("");
@@ -107,7 +143,6 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
   useEffect(() => {
     if (!timerAtivo || !jogoAtivo || venceu || perdeu) return;
     if (tempoRestante <= 0) {
-      // Tempo esgotado = derrota
       setErros(6);
       setJogoAtivo(false);
       setTimerAtivo(false);
@@ -132,6 +167,10 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
       setTimerAtivo(false);
       if (timerRef.current) clearInterval(timerRef.current);
       somSucesso();
+      // XP ao vencer
+      const acertosLetras = letrasUnicas.length;
+      addXp(50 as any, 'game_complete' as any);
+      addXp((10 * acertosLetras) as any, 'game_question' as any);
     }
     if (perdeu) {
       setVitoria(false);
@@ -150,13 +189,19 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
     setLetrasAdivinhadas((prev) => new Set(prev).add(letra));
     setPulsoLetra(letra);
 
-    // Iniciar timer na primeira jogada
-    if (timerAtivo && !timerRef.current && jogoAtivo) {
-      // Timer já iniciado
-    }
-
     if (letrasPalavra.includes(letra)) {
-      // Acertou!
+      // Acertou! — Spawn gold particles
+      if (forcaRef.current) {
+        const rect = forcaRef.current.getBoundingClientRect();
+        const parent = forcaRef.current.parentElement?.getBoundingClientRect();
+        if (parent) {
+          const id = ++goldIdRef.current;
+          setGoldParticles((prev) => [...prev.slice(-4), { x: rect.left - parent.left + rect.width / 2, y: rect.top - parent.top + 20, id }]);
+          setTimeout(() => {
+            setGoldParticles((prev) => prev.filter((p) => p.id !== id));
+          }, 1000);
+        }
+      }
       setTimeout(() => setPulsoLetra(null), 600);
     } else {
       // Errou
@@ -178,6 +223,7 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
     setCelebrar(false);
     setPulsoLetra(null);
     setUltimaParte(null);
+    setGoldParticles([]);
     if (!manterScore) setScore(0);
     setTotalPartidas((p) => p + 1);
     setTempoRestante(60);
@@ -196,12 +242,19 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
     }
   }
 
-  /* ─── Forca SVG ─── */
+  /* ─── Boneco CSS ─── */
   const partesVisiveis = jogoAtivo ? Math.min(erros, 6) : 6;
 
   return (
     <Card className="relative overflow-hidden border-navy-800/80 bg-gradient-to-br from-navy-900 via-navy-850 to-navy-900 shadow-[0_0_60px_-12px_rgba(212,168,67,0.12)]">
       <Confetti ativo={celebrar} duracao={4000} />
+
+      {/* Gold particles */}
+      <AnimatePresence>
+        {goldParticles.map((p) => (
+          <GoldParticles key={String(p.id)} x={p.x} y={p.y} />
+        ))}
+      </AnimatePresence>
 
       {/* Glow decorativo */}
       <div className="pointer-events-none absolute -inset-1">
@@ -279,60 +332,136 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
           </span>
         </motion.div>
 
-        {/* ─── Grid do jogo: Forca + Palavra ─── */}
+        {/* ─── Grid do jogo: Forca CSS + Palavra ─── */}
         <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start sm:justify-center">
-          {/* Forca SVG */}
-          <div className="relative shrink-0">
-            <svg
-              viewBox="0 0 160 150"
-              className="h-36 w-36 sm:h-44 sm:w-44"
-              aria-label="Boneco da forca"
-            >
-              {/* Forca fixa */}
-              <line x1="20" y1="145" x2="120" y2="145" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
-              <line x1="100" y1="10" x2="100" y2="145" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
-              <line x1="30" y1="10" x2="100" y2="10" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
-              <line x1="30" y1="10" x2="30" y2="24" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
+          {/* Forca CSS Puro */}
+          <div className="relative shrink-0" ref={forcaRef}>
+            <div className="relative h-44 w-36 sm:h-52 sm:w-44">
+              {/* Estrutura fixa da forca */}
+              <div className="absolute bottom-0 left-[15px] right-[15px] h-[3px] rounded-full bg-navy-600" />
+              <div className="absolute bottom-0 left-[30px] top-0 w-[3px] rounded-full bg-navy-600" />
+              <div className="absolute left-[30px] right-[15px] top-0 h-[3px] rounded-full bg-navy-600" />
+              <div className="absolute left-[30px] top-0 h-[16px] w-[3px] rounded-full bg-navy-600" />
 
-              {/* Partes do boneco com animação */}
-              {PARTES_FORCA.map((parte, i) => {
-                const visivel = partesVisiveis > i;
-                const estaAparecendo = ultimaParte === i && erros <= 6;
-                return (
-                  <g
-                    key={i}
-                    className={`transition-opacity duration-500 ${
-                      visivel ? "opacity-100" : "opacity-0"
-                    } ${estaAparecendo ? "text-red-400" : "text-gold-400"}`}
+              {/* Corda */}
+              <div className="absolute left-[90px] top-[16px] h-[8px] w-[2px] rounded-full bg-navy-500" />
+
+              {/* Partes do boneco em CSS */}
+              {(() => {
+                const items: React.ReactNode[] = [];
+                // Cabeça (índice 0)
+                const cabVis = partesVisiveis > 0;
+                const cabAp = ultimaParte === 0 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="cabeca"
+                    initial={cabAp ? { scale: 0 } : false}
+                    animate={cabAp ? { scale: 1 } : cabVis ? { scale: 1 } : { scale: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 12 }}
+                    className={`absolute top-[24px] left-1/2 -translate-x-1/2 z-10 ${
+                      cabAp ? "text-red-400" : cabVis ? "text-gold-400" : "text-navy-900"
+                    }`}
                   >
-                    {estaAparecendo && (
-                      <motion.g
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ type: "spring", stiffness: 300, damping: 12 }}
-                      >
-                        {parte}
-                      </motion.g>
-                    )}
-                    {!estaAparecendo && visivel && parte}
-                  </g>
+                    <div className={`w-11 h-11 rounded-full border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
                 );
-              })}
-            </svg>
+                // Tronco (índice 1)
+                const tronVis = partesVisiveis > 1;
+                const tronAp = ultimaParte === 1 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="tronco"
+                    initial={tronAp ? { scaleY: 0 } : false}
+                    animate={tronAp ? { scaleY: 1 } : tronVis ? { scaleY: 1 } : { scaleY: 0 }}
+                    transition={{ type: "spring", stiffness: 250, damping: 15 }}
+                    className={`absolute top-[57px] left-1/2 -translate-x-1/2 z-10 origin-top ${
+                      tronAp ? "text-red-400" : tronVis ? "text-gold-400" : "text-navy-900"
+                    }`}
+                  >
+                    <div className={`w-[5px] h-[36px] rounded-md border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
+                );
+                // Braço esquerdo (índice 2)
+                const bEVis = partesVisiveis > 2;
+                const bEAp = ultimaParte === 2 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="bracoE"
+                    initial={bEAp ? { rotate: 0, scale: 0 } : false}
+                    animate={bEAp ? { rotate: -35, scale: 1 } : bEVis ? { rotate: -35, scale: 1 } : { rotate: 0, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className={`absolute top-[60px] right-1/2 mr-[-2px] z-10 origin-right ${
+                      bEAp ? "text-red-400" : bEVis ? "text-gold-400" : "text-navy-900"
+                    }`}
+                  >
+                    <div className={`w-[32px] h-[4px] rounded-full border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
+                );
+                // Braço direito (índice 3)
+                const bDVis = partesVisiveis > 3;
+                const bDAp = ultimaParte === 3 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="bracoD"
+                    initial={bDAp ? { rotate: 0, scale: 0 } : false}
+                    animate={bDAp ? { rotate: 35, scale: 1 } : bDVis ? { rotate: 35, scale: 1 } : { rotate: 0, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className={`absolute top-[60px] left-1/2 ml-[-2px] z-10 origin-left ${
+                      bDAp ? "text-red-400" : bDVis ? "text-gold-400" : "text-navy-900"
+                    }`}
+                  >
+                    <div className={`w-[32px] h-[4px] rounded-full border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
+                );
+                // Perna esquerda (índice 4)
+                const pEVis = partesVisiveis > 4;
+                const pEAp = ultimaParte === 4 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="pernaE"
+                    initial={pEAp ? { rotate: 0, scale: 0 } : false}
+                    animate={pEAp ? { rotate: -20, scale: 1 } : pEVis ? { rotate: -20, scale: 1 } : { rotate: 0, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className={`absolute top-[93px] right-1/2 mr-[1px] z-10 origin-top ${
+                      pEAp ? "text-red-400" : pEVis ? "text-gold-400" : "text-navy-900"
+                    }`}
+                  >
+                    <div className={`w-[4px] h-[28px] rounded-md border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
+                );
+                // Perna direita (índice 5)
+                const pDVis = partesVisiveis > 5;
+                const pDAp = ultimaParte === 5 && erros <= 6;
+                items.push(
+                  <motion.div
+                    key="pernaD"
+                    initial={pDAp ? { rotate: 0, scale: 0 } : false}
+                    animate={pDAp ? { rotate: 20, scale: 1 } : pDVis ? { rotate: 20, scale: 1 } : { rotate: 0, scale: 0 }}
+                    transition={{ type: "spring", stiffness: 200, damping: 14 }}
+                    className={`absolute top-[93px] left-1/2 ml-[1px] z-10 origin-top ${
+                      pDAp ? "text-red-400" : pDVis ? "text-gold-400" : "text-navy-900"
+                    }`}
+                  >
+                    <div className={`w-[4px] h-[28px] rounded-md border-[3px] border-current bg-navy-800/60`} />
+                  </motion.div>
+                );
+                return items;
+              })()}
 
-            {/* Label da última parte errada */}
-            <AnimatePresence>
-              {ultimaParte != null && ultimaParte < erros && jogoAtivo && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-center text-[10px] font-bold text-red-400"
-                >
-                  {PARTE_EMOJI[PARTES_NOMES[ultimaParte]]} {PARTES_NOMES[ultimaParte]}!
-                </motion.div>
-              )}
-            </AnimatePresence>
+              {/* Label da última parte errada */}
+              <AnimatePresence>
+                {ultimaParte != null && ultimaParte < erros && jogoAtivo && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap text-center text-[10px] font-bold text-red-400"
+                  >
+                    {PARTES_CSS[ultimaParte].emoji} {PARTES_CSS[ultimaParte].name}!
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Palavra revelada */}

@@ -6,6 +6,8 @@ import { Icon } from "@/components/icons";
 import { Card, Botao, BarraProgresso } from "@/components/ui";
 import { Confetti } from "@/components/confetti";
 import { somSucesso, somQuaseLa } from "@/lib/som";
+import { addXpAcerto, addXpCompletarJogo } from "@/lib/sov-xp";
+import "./game-design-tokens.css";
 
 /* ─── Tipos ─── */
 interface QuestaoRapida {
@@ -134,6 +136,8 @@ export function SpeedChallenge({
   const [ultimoScore, setUltimoScore] = useState(0);
   const [ultimoAcerto, setUltimoAcerto] = useState(false);
   const [acertos, setAcertos] = useState(0);
+  const [animacaoIdx, setAnimacaoIdx] = useState<number | null>(null);
+  const [animacaoTipo, setAnimacaoTipo] = useState<"correct" | "shake" | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const q = questoes[idx];
@@ -181,12 +185,22 @@ export function SpeedChallenge({
       setAcertos((a) => a + 1);
       setCelebrar(true);
       somSucesso();
+      // XP Sovereign
+      addXpAcerto(streak, tempoRestante, tempoPorQuestao);
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("correct");
     } else {
       setStreak(0);
       setUltimoScore(0);
       setUltimoAcerto(false);
       somQuaseLa();
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("shake");
     }
+    setTimeout(() => {
+      setAnimacaoIdx(null);
+      setAnimacaoTipo(null);
+    }, 600);
   }
 
   function proxima() {
@@ -194,6 +208,8 @@ export function SpeedChallenge({
     setCelebrar(false);
     setUltimoScore(0);
     if (idx + 1 >= questoes.length) {
+      // Jogo completo — registrar XP
+      addXpCompletarJogo(questoes.length, acertos);
       setFim(true);
       return;
     }
@@ -220,7 +236,7 @@ export function SpeedChallenge({
             transition={{ type: "spring", stiffness: 300, damping: 12, delay: 0.1 }}
             className={`flex h-20 w-20 items-center justify-center rounded-2xl shadow-xl ${
               pctAcerto >= 70
-                ? "bg-gradient-to-br from-gold-500 via-gold-400 to-amber-400"
+                ? "bg-gradient-to-br from-gold-500 via-gold-400 to-gold-700"
                 : "bg-gradient-to-br from-navy-600 to-navy-800"
             }`}
           >
@@ -231,7 +247,7 @@ export function SpeedChallenge({
             />
           </motion.span>
           <div>
-            <h3 className="text-xl font-bold">{titulo} — Speed Result</h3>
+            <h3 className="text-xl font-bold text-foreground">{titulo} — Speed Result</h3>
             <motion.p
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
@@ -257,7 +273,7 @@ export function SpeedChallenge({
               <div className="text-xs text-muted">Acertos</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-orange-400">
+              <div className="text-2xl font-bold text-gold-400">
                 x{streak}
               </div>
               <div className="text-xs text-muted">Max Streak</div>
@@ -331,7 +347,7 @@ export function SpeedChallenge({
         animate={{ opacity: 1, x: 0 }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
-        <h3 className="mt-4 text-base font-bold leading-snug">
+        <h3 className="mt-4 text-base font-bold leading-snug text-foreground">
           {q.pergunta}
         </h3>
 
@@ -346,8 +362,14 @@ export function SpeedChallenge({
                   "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
               else if (i === escolha)
                 estilo =
-                  "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
+                  "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
             }
+            const isAnimating = animacaoIdx === i;
+            const animClass = isAnimating
+              ? animacaoTipo === "correct"
+                ? "animate-correct-pulse"
+                : "animate-shake"
+              : "";
             return (
               <motion.button
                 key={op}
@@ -358,14 +380,14 @@ export function SpeedChallenge({
                   escolha != null ? {} : { scale: 1.01, x: 4 }
                 }
                 whileTap={escolha != null ? {} : { scale: 0.97 }}
-                className={`flex min-h-[2.8rem] w-full items-center gap-3 rounded-xl border px-4 py-2.5 text-left text-sm transition-all ${estilo}`}
+                className={`flex min-h-[2.8rem] w-full items-center gap-3 rounded-xl border px-4 py-2.5 text-left text-sm transition-all ${estilo} ${animClass}`}
               >
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold ${
                     escolha != null && i === q.correta
                       ? "border-transparent bg-gold-400 text-white shadow-sm"
                       : escolha != null && i === escolha && i !== q.correta
-                        ? "border-transparent bg-orange-400 text-white shadow-sm"
+                        ? "border-transparent bg-gold-400 text-white shadow-sm"
                         : "border-border-strong text-subtle"
                   }`}
                 >
@@ -377,7 +399,7 @@ export function SpeedChallenge({
                     String.fromCharCode(65 + i)
                   )}
                 </span>
-                <span className="flex-1 break-words leading-snug">
+                <span className="flex-1 break-words leading-snug text-foreground">
                   {op}
                 </span>
               </motion.button>
@@ -410,7 +432,7 @@ export function SpeedChallenge({
                 className={`rounded-xl border px-4 py-3 ${
                   ultimoAcerto
                     ? "border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5"
-                    : "border-orange-400/25 bg-gradient-to-br from-orange-500/10 to-amber-400/5"
+                    : "border-gold-400/25 bg-gradient-to-br from-gold-500/10 to-gold-400/5"
                 }`}
               >
                 <div className="flex items-start gap-3">
@@ -418,13 +440,13 @@ export function SpeedChallenge({
                     className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base ${
                       ultimoAcerto
                         ? "bg-gold-100 dark:bg-gold-900/40"
-                        : "bg-orange-100 dark:bg-orange-900/40"
+                        : "bg-gold-100 dark:bg-gold-900/40"
                     }`}
                   >
                     {ultimoAcerto ? "⚡" : "💡"}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold">
+                    <p className="text-sm font-semibold text-foreground">
                       {ultimoAcerto
                         ? `Correto! +${Math.round(ultimoScore)} pts${
                             streak >= 2 ? ` (x${streak} streak)` : ""

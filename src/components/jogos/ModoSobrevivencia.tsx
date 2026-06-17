@@ -7,6 +7,34 @@ import { Confetti } from "@/components/confetti";
 import { Botao, Card, BarraProgresso } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { somSucesso, somQuaseLa } from "@/lib/som";
+import { addXpAcerto, addXpCompletarJogo } from "@/lib/sov-xp";
+import "./game-design-tokens.css";
+
+/* ─── Score Flutuante ─── */
+function ScoreFloat({
+  valor,
+  cor = "var(--gold-400)",
+  id,
+}: {
+  valor: number;
+  cor?: string;
+  id: string | number;
+}) {
+  return (
+    <motion.span
+      key={id}
+      initial={{ opacity: 1, y: 0, scale: 0.5 }}
+      animate={{ opacity: 0, y: -60, scale: 1.3 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="pointer-events-none absolute right-0 top-0 z-50 font-extrabold text-lg"
+      style={{ color: cor, textShadow: `0 0 12px ${cor}60` }}
+      aria-hidden
+    >
+      +{valor}
+    </motion.span>
+  );
+}
 
 interface ModoSobrevivenciaProps {
   titulo: string;
@@ -21,6 +49,9 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
   const [celebrar, setCelebrar] = useState(false);
   const [acertos, setAcertos] = useState(0);
   const [vidas, setVidas] = useState(3);
+  const [ultimoScore, setUltimoScore] = useState(0);
+  const [animacaoIdx, setAnimacaoIdx] = useState<number | null>(null);
+  const [animacaoTipo, setAnimacaoTipo] = useState<"correct" | "shake" | null>(null);
 
   const q = questoes[idx];
 
@@ -31,21 +62,39 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
       setPontos((p) => p + 10);
       setAcertos((a) => a + 1);
       setCelebrar(true);
+      setUltimoScore(10);
       somSucesso();
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("correct");
+      // XP Sovereign
+      addXpAcerto(0);
     } else {
       const novasVidas = vidas - 1;
       setVidas(novasVidas);
+      setUltimoScore(0);
       somQuaseLa();
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("shake");
       if (novasVidas <= 0) {
-        setTimeout(() => setFim(true), 1200);
+        setTimeout(() => {
+          addXpCompletarJogo(questoes.length, acertos);
+          setFim(true);
+        }, 1200);
       }
     }
+    setTimeout(() => {
+      setAnimacaoIdx(null);
+      setAnimacaoTipo(null);
+    }, 600);
   }
 
   function proxima() {
     setEscolha(null);
     setCelebrar(false);
+    setUltimoScore(0);
     if (idx + 1 >= questoes.length || vidas <= 0) {
+      // Jogo completo — registrar XP
+      addXpCompletarJogo(questoes.length, acertos);
       setFim(true);
       return;
     }
@@ -67,14 +116,14 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
             className={`flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg ${
               sobreviveu
                 ? "bg-gradient-to-r from-emerald-500 to-teal-600"
-                : "bg-gradient-to-br from-red-500 to-orange-600"
+                : "bg-gradient-to-br from-red-500 to-gold-700"
             }`}
           >
             <Icon name={sobreviveu ? "award" : "flame"} size={28} className="text-white" />
           </motion.span>
           <div>
-            <h3 className="text-lg font-bold">{titulo} — {sobreviveu ? "Sobreviveu! 🎉" : "Game Over 💀"}</h3>
-            <p className="mt-1 text-2xl font-extrabold">
+            <h3 className="text-lg font-bold text-foreground">{titulo} — {sobreviveu ? "Sobreviveu! 🎉" : "Game Over 💀"}</h3>
+            <p className="mt-1 text-2xl font-extrabold text-foreground">
               {acertos}/{questoes.length} corretas
               <span className={`ml-2 text-sm ${pct >= 70 ? "text-emerald-500" : "text-red-500"}`}>
                 ({pct}%)
@@ -92,6 +141,7 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
             setCelebrar(false);
             setAcertos(0);
             setVidas(3);
+            setUltimoScore(0);
           }}
           icone="repeat"
           tamanho="lg"
@@ -123,7 +173,7 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
               ))}
             </div>
           </div>
-          <span className="text-xs font-bold text-red-600">{pontos} pts</span>
+          <span className="text-xs font-bold text-gold-400">{pontos} pts</span>
         </div>
         <BarraProgresso pct={((idx + 1) / questoes.length) * 100} height={3} />
         <p className="text-xs text-muted">
@@ -137,17 +187,23 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <h3 className="mt-4 text-base font-bold leading-snug">{q.pergunta}</h3>
+        <h3 className="mt-4 text-base font-bold leading-snug text-foreground">{q.pergunta}</h3>
 
         <div className="mt-4 space-y-3">
           {q.opcoes.map((op, i) => {
-            let estilo = "border-border hover:border-red-300 hover:bg-red-50/20 dark:hover:bg-red-900/10";
+            let estilo = "border-border hover:border-gold-300 hover:bg-gold-50/20 dark:hover:bg-gold-900/10";
             if (escolha != null) {
               if (i === q.correta)
                 estilo = "border-emerald-400 bg-emerald-50/60 dark:bg-emerald-900/20 ring-1 ring-emerald-400/30";
               else if (i === escolha)
                 estilo = "border-red-400 bg-red-50/60 dark:bg-red-900/20 ring-1 ring-red-400/30";
             }
+            const isAnimating = animacaoIdx === i;
+            const animClass = isAnimating
+              ? animacaoTipo === "correct"
+                ? "animate-correct-pulse"
+                : "animate-shake"
+              : "";
             return (
               <motion.button
                 key={op}
@@ -156,7 +212,7 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
                 onClick={() => responder(i)}
                 whileHover={escolha != null ? {} : { scale: 1.01 }}
                 whileTap={escolha != null ? {} : { scale: 0.98 }}
-                className={`flex min-h-[3rem] w-full items-center gap-3 rounded-xl border px-4 py-2.5 text-left text-sm transition-all ${estilo}`}
+                className={`flex min-h-[3rem] w-full items-center gap-3 rounded-xl border px-4 py-2.5 text-left text-sm transition-all ${estilo} ${animClass}`}
               >
                 <span
                   className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold ${
@@ -175,11 +231,22 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
                     String.fromCharCode(65 + i)
                   )}
                 </span>
-                <span className="flex-1 break-words leading-snug">{op}</span>
+                <span className="flex-1 break-words leading-snug text-foreground">{op}</span>
               </motion.button>
             );
           })}
         </div>
+
+        {/* Score Float */}
+        <AnimatePresence>
+          {ultimoScore > 0 && (
+            <ScoreFloat
+              valor={ultimoScore}
+              cor="var(--gold-400)"
+              id={`score-${idx}`}
+            />
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {escolha != null && (
@@ -194,7 +261,7 @@ export function ModoSobrevivencia({ titulo, questoes }: ModoSobrevivenciaProps) 
                 className={`rounded-xl border px-4 py-4 ${
                   acertou
                     ? "border-emerald-400/20 bg-gradient-to-br from-emerald-500/10 to-emerald-400/5"
-                    : "border-red-400/25 bg-gradient-to-br from-red-500/10 to-amber-400/5"
+                    : "border-red-400/25 bg-gradient-to-br from-red-500/10 to-gold-400/5"
                 }`}
               >
                 <div className="flex items-start gap-3">

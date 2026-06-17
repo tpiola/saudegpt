@@ -7,6 +7,34 @@ import { Confetti } from "@/components/confetti";
 import { Botao, Card, BarraProgresso } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { somSucesso, somQuaseLa } from "@/lib/som";
+import { addXpAcerto, addXpCompletarJogo } from "@/lib/sov-xp";
+import "./game-design-tokens.css";
+
+/* ─── Score Flutuante ─── */
+function ScoreFloat({
+  valor,
+  cor = "var(--gold-400)",
+  id,
+}: {
+  valor: number;
+  cor?: string;
+  id: string | number;
+}) {
+  return (
+    <motion.span
+      key={id}
+      initial={{ opacity: 1, y: 0, scale: 0.5 }}
+      animate={{ opacity: 0, y: -60, scale: 1.3 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1, ease: "easeOut" }}
+      className="pointer-events-none absolute right-0 top-0 z-50 font-extrabold text-lg"
+      style={{ color: cor, textShadow: `0 0 12px ${cor}60` }}
+      aria-hidden
+    >
+      +{valor}
+    </motion.span>
+  );
+}
 
 interface FatoOuFakeProps {
   titulo: string;
@@ -20,6 +48,9 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
   const [fim, setFim] = useState(false);
   const [celebrar, setCelebrar] = useState(false);
   const [acertos, setAcertos] = useState(0);
+  const [ultimoScore, setUltimoScore] = useState(0);
+  const [animacaoIdx, setAnimacaoIdx] = useState<number | null>(null);
+  const [animacaoTipo, setAnimacaoTipo] = useState<"correct" | "shake" | null>(null);
 
   const q = questoes[idx];
 
@@ -30,16 +61,31 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
       setPontos((p) => p + 10);
       setAcertos((a) => a + 1);
       setCelebrar(true);
+      setUltimoScore(10);
       somSucesso();
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("correct");
+      // XP Sovereign
+      addXpAcerto(0);
     } else {
+      setUltimoScore(0);
       somQuaseLa();
+      setAnimacaoIdx(i);
+      setAnimacaoTipo("shake");
     }
+    setTimeout(() => {
+      setAnimacaoIdx(null);
+      setAnimacaoTipo(null);
+    }, 600);
   }
 
   function proxima() {
     setEscolha(null);
     setCelebrar(false);
+    setUltimoScore(0);
     if (idx + 1 >= questoes.length) {
+      // Jogo completo — registrar XP
+      addXpCompletarJogo(questoes.length, acertos);
       setFim(true);
       return;
     }
@@ -59,17 +105,17 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
             transition={{ type: "spring", stiffness: 200, damping: 12 }}
             className={`flex h-16 w-16 items-center justify-center rounded-2xl shadow-lg ${
               pct >= 70
-                ? "bg-gradient-to-r from-violet-500 to-purple-600"
-                : "bg-gradient-to-br from-orange-400 to-orange-600"
+                ? "bg-gradient-to-r from-gold-500 to-gold-600"
+                : "bg-gradient-to-br from-gold-600 to-gold-800"
             }`}
           >
             <Icon name={pct >= 70 ? "award" : "target"} size={28} className="text-white" />
           </motion.span>
           <div>
-            <h3 className="text-lg font-bold">{titulo} — resultado</h3>
-            <p className="mt-1 text-2xl font-extrabold">
+            <h3 className="text-lg font-bold text-foreground">{titulo} — resultado</h3>
+            <p className="mt-1 text-2xl font-extrabold text-foreground">
               {acertos}/{questoes.length} corretas
-              <span className={`ml-2 text-sm ${pct >= 70 ? "text-violet-500" : "text-orange-500"}`}>
+              <span className={`ml-2 text-sm ${pct >= 70 ? "text-gold-400" : "text-gold-400"}`}>
                 ({pct}%)
               </span>
             </p>
@@ -84,6 +130,7 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
             setFim(false);
             setCelebrar(false);
             setAcertos(0);
+            setUltimoScore(0);
           }}
           icone="repeat"
           tamanho="lg"
@@ -100,7 +147,7 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="text-sm font-medium text-subtle">{titulo}</div>
-          <span className="text-xs font-bold text-violet-600">{pontos} pts</span>
+          <span className="text-xs font-bold text-gold-400">{pontos} pts</span>
         </div>
         <BarraProgresso pct={((idx + 1) / questoes.length) * 100} height={3} />
         <p className="text-xs text-muted">
@@ -114,17 +161,23 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <h3 className="mt-4 text-base font-bold leading-snug">{q.pergunta}</h3>
+        <h3 className="mt-4 text-base font-bold leading-snug text-foreground">{q.pergunta}</h3>
 
         <div className="mt-4 space-y-3">
           {q.opcoes.map((op, i) => {
-            let estilo = "border-border hover:border-violet-300 hover:bg-violet-50/20 dark:hover:bg-violet-900/10";
+            let estilo = "border-border hover:border-gold-300 hover:bg-gold-50/20 dark:hover:bg-gold-900/10";
             if (escolha != null) {
               if (i === q.correta)
-                estilo = "border-violet-400 bg-violet-50/60 dark:bg-violet-900/20 ring-1 ring-violet-400/30";
+                estilo = "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
               else if (i === escolha)
-                estilo = "border-orange-400 bg-orange-50/60 dark:bg-orange-900/20 ring-1 ring-orange-400/30";
+                estilo = "border-gold-400 bg-gold-50/60 dark:bg-gold-900/20 ring-1 ring-gold-400/30";
             }
+            const isAnimating = animacaoIdx === i;
+            const animClass = isAnimating
+              ? animacaoTipo === "correct"
+                ? "animate-correct-pulse"
+                : "animate-shake"
+              : "";
             return (
               <motion.button
                 key={op}
@@ -133,19 +186,30 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
                 onClick={() => responder(i)}
                 whileHover={escolha != null ? {} : { scale: 1.01 }}
                 whileTap={escolha != null ? {} : { scale: 0.98 }}
-                className={`flex min-h-[3.5rem] w-full items-center justify-center gap-3 rounded-xl border px-4 py-3 text-center text-sm font-semibold transition-all ${estilo}`}
+                className={`flex min-h-[3.5rem] w-full items-center justify-center gap-3 rounded-xl border px-4 py-3 text-center text-sm font-semibold transition-all ${estilo} ${animClass}`}
               >
                 {escolha != null && i === q.correta && (
-                  <Icon name="check" size={18} className="text-violet-500" />
+                  <Icon name="check" size={18} className="text-gold-500" />
                 )}
                 {escolha != null && i === escolha && i !== q.correta && (
-                  <Icon name="close" size={18} className="text-orange-500" />
+                  <Icon name="close" size={18} className="text-gold-500" />
                 )}
-                <span className="flex-1">{op}</span>
+                <span className="flex-1 text-foreground">{op}</span>
               </motion.button>
             );
           })}
         </div>
+
+        {/* Score Float */}
+        <AnimatePresence>
+          {ultimoScore > 0 && (
+            <ScoreFloat
+              valor={ultimoScore}
+              cor="var(--gold-400)"
+              id={`score-${idx}`}
+            />
+          )}
+        </AnimatePresence>
 
         <AnimatePresence>
           {escolha != null && (
@@ -159,14 +223,14 @@ export function FatoOuFake({ titulo, questoes }: FatoOuFakeProps) {
               <div
                 className={`rounded-xl border px-4 py-4 ${
                   acertou
-                    ? "border-violet-400/20 bg-gradient-to-br from-violet-500/10 to-violet-400/5"
-                    : "border-orange-400/25 bg-gradient-to-br from-orange-500/10 to-amber-400/5"
+                    ? "border-gold-400/20 bg-gradient-to-br from-gold-500/10 to-gold-400/5"
+                    : "border-gold-400/25 bg-gradient-to-br from-gold-500/10 to-gold-400/5"
                 }`}
               >
                 <div className="flex items-start gap-3">
                   <span
                     className={`mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-base ${
-                      acertou ? "bg-violet-100 dark:bg-violet-900/40" : "bg-orange-100 dark:bg-orange-900/40"
+                      acertou ? "bg-gold-100 dark:bg-gold-900/40" : "bg-gold-100 dark:bg-gold-900/40"
                     }`}
                   >
                     {acertou ? "✅" : "💡"}

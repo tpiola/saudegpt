@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Icon } from "@/components/icons";
 import { Card, Botao, BarraProgresso } from "@/components/ui";
 import { Confetti } from "@/components/confetti";
+import { addXp } from "@/lib/sov-xp";
+import { somQuaseLa } from "@/lib/som";
 
 /* ─── Constantes ─── */
 
@@ -325,13 +327,13 @@ function BarraTimer({ pct }: { pct: number }) {
   const cor = urgente
     ? "from-red-500 to-red-600"
     : alerta
-      ? "from-orange-400 to-orange-500"
+      ? "from-gold-400 to-gold-500"
       : "from-emerald-400 to-emerald-500";
 
   const sombra = urgente
     ? "shadow-[0_0_20px_rgba(239,68,68,0.4)]"
     : alerta
-      ? "shadow-[0_0_16px_rgba(249,115,22,0.3)]"
+      ? "shadow-[0_0_16px_rgba(212,168,67,0.3)]"
       : "shadow-[0_0_12px_rgba(52,211,153,0.2)]";
 
   return (
@@ -431,6 +433,17 @@ export function StopFarma() {
     };
   }, [ativo, fim, letra]);
 
+  /* Tick sonoro <10s */
+  const ultimoTick = useRef<number>(-1);
+  useEffect(() => {
+    if (!ativo || fim || tempo <= 0) return;
+    const segInt = Math.floor(tempo);
+    if (tempo < 10 && segInt !== ultimoTick.current) {
+      ultimoTick.current = segInt;
+      somQuaseLa();
+    }
+  }, [tempo, ativo, fim]);
+
   /* Tempo esgotou */
   useEffect(() => {
     if (tempo <= 0 && ativo && !fim) {
@@ -450,6 +463,9 @@ export function StopFarma() {
     setJogou(true);
     const preenchidos = CAMPOS.filter((c) => valores[c.key]?.trim().length > 0).length;
     if (preenchidos >= 7) setCelebrar(true);
+    // XP: base + bônus por acertos
+    addXp(50 as any, 'game_complete' as any);
+    addXp((10 * preenchidos) as any, 'game_question' as any);
   }
 
   function handleReiniciar() {
@@ -500,7 +516,7 @@ export function StopFarma() {
             animate={{ scale: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 12, delay: 0.15 }}
             className="flex h-20 w-20 items-center justify-center rounded-2xl shadow-xl
-              bg-gradient-to-br from-gold-500 via-amber-400 to-gold-600"
+              bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600"
           >
             <Icon name={nota.icone} size={34} className="text-white" />
           </motion.span>
@@ -525,11 +541,14 @@ export function StopFarma() {
           </div>
         </motion.div>
 
-        {/* Grid de campos preenchidos vs vazios */}
+        {/* Grid de campos preenchidos vs vazios — stagger spring reveal */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", stiffness: 150, damping: 18, delay: 0.4 }}
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.4 } },
+          }}
           className="mt-6 space-y-1.5"
         >
           {CAMPOS.map((campo, i) => {
@@ -537,22 +556,33 @@ export function StopFarma() {
             return (
               <motion.div
                 key={campo.key}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + i * 0.05, type: "spring", stiffness: 200, damping: 20 }}
+                variants={{
+                  hidden: { opacity: 0, x: -30, scale: 0.95 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    scale: 1,
+                    transition: { type: "spring", stiffness: 200, damping: 20 },
+                  },
+                }}
                 className={`flex items-center gap-3 rounded-xl border px-4 py-2.5 text-sm ${
                   preenchido
                     ? "border-emerald-500/30 bg-emerald-500/5"
                     : "border-red-500/20 bg-red-500/5"
                 }`}
               >
-                <span className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs ${
-                  preenchido
-                    ? "bg-emerald-500/20 text-emerald-400"
-                    : "bg-red-500/20 text-red-400"
-                }`}>
+                <motion.span
+                  initial={{ scale: 0, rotate: -90 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 14, delay: 0.1 + i * 0.04 }}
+                  className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-lg text-xs ${
+                    preenchido
+                      ? "bg-emerald-500/20 text-emerald-400"
+                      : "bg-red-500/20 text-red-400"
+                  }`}
+                >
                   <Icon name={preenchido ? "check" : "close"} size={14} />
-                </span>
+                </motion.span>
                 <span className="font-medium min-w-[120px] text-xs text-muted">{campo.emoji} {campo.label}</span>
                 <span className="flex-1 truncate text-right text-xs">
                   {preenchido ? (
@@ -630,7 +660,7 @@ export function StopFarma() {
             animate={timerUrgente ? { scale: [1, 1.06, 1] } : {}}
             transition={timerUrgente ? { repeat: Infinity, duration: 0.5, ease: "easeInOut" } : {}}
             className={`mt-1 text-right text-sm font-bold tabular-nums ${
-              timerUrgente ? "text-red-400" : tempo < 20 ? "text-orange-400" : "text-emerald-400"
+              timerUrgente ? "text-red-400" : tempo < 20 ? "text-gold-400" : "text-emerald-400"
             }`}
           >
             {tempo.toFixed(1)}s

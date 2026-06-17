@@ -1,0 +1,124 @@
+/* ══════════════════════════════════════════════════════════
+   SOVEREIGN GAME OS — Design Tokens & Animations
+   ══════════════════════════════════════════════════════════ */
+
+/* ─── Sovereign Game OS Pallete ─── */
+:root {
+  --sovereign-bg: #060e1a;
+  --sovereign-surface: #0A1628;
+  --sovereign-surface-2: #14202f;
+  --sovereign-surface-3: #1c2a40;
+  --sovereign-gold: #D4A843;
+  --sovereign-gold-light: #f4c65e;
+  --sovereign-gold-dark: #b8922e;
+  --sovereign-teal: #14b8a6;
+  --sovereign-teal-dark: #0d9488;
+  --sovereign-emerald: #10b981;
+  --sovereign-emerald-dark: #059669;
+  --sovereign-cyan: #22d3ee;
+  --sovereign-blue: #3b82f6;
+  --sovereign-navy: #0A1628;
+  --sovereign-navy-dark: #060e1a;
+  --sovereign-graphite: #2f3f58;
+  --sovereign-titanium: #8b92a5;
+  --sovereign-gelo: #eef0f5;
+  --sovereign-white: #ffffff;
+  --sovereign-error: #ef4444;
+  --sovereign-error-dark: #dc2626;
+  --sovereign-success: #10b981;
+  --sovereign-warning: #f59e0b;
+
+  /* Glow effects */
+  --sovereign-glow-gold: 0 0 20px rgba(212, 168, 67, 0.25);
+  --sovereign-glow-gold-strong: 0 0 40px rgba(212, 168, 67, 0.4);
+  --sovereign-glow-teal: 0 0 20px rgba(20, 184, 166, 0.25);
+  --sovereign-glow-emerald: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+.dark {
+  --sovereign-gold: #f4c65e;
+  --sovereign-gold-dark: #d4a843;
+}
+
+/* ─── Animações de Acerto ─── */
+
+/* Green pulse + scale 1.05 para resposta correta */
+@keyframes correct-pulse {
+  0% {
+    background-color: rgba(16, 185, 129, 0);
+    transform: scale(1);
+  }
+  30% {
+    background-color: rgba(16, 185, 129, 0.15);
+    transform: scale(1.05);
+    box-shadow: 0 0 24px rgba(16, 185, 129, 0.25);
+  }
+  60% {
+    background-color: rgba(16, 185, 129, 0.08);
+    transform: scale(1.02);
+  }
+  100% {
+    background-color: rgba(16, 185, 129, 0);
+    transform: scale(1);
+  }
+}
+
+.animate-correct-pulse {
+  animation: correct-pulse 0.6s ease-out;
+}
+
+/* ─── Animações de Erro ─── */
+
+/* Shake horizontal suave */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-4px); }
+  30% { transform: translateX(4px); }
+  45% { transform: translateX(-4px); }
+  60% { transform: translateX(4px); }
+  75% { transform: translateX(-2px); }
+  90% { transform: translateX(2px); }
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-out;
+}
+
+/* ─── Score Float Animation ─── */
+@keyframes score-float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-30px) scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.3);
+  }
+}
+
+.animate-score-float {
+  animation: score-float-up 1s ease-out forwards;
+}
+
+/* ─── Gold shimmer (para badges e destaques) ─── */
+@keyframes gold-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(212, 168, 67, 0.1) 25%,
+    rgba(212, 168, 67, 0.2) 50%,
+    rgba(212, 168, 67, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: gold-shimmer 2s ease-in-out infinite;
+}
