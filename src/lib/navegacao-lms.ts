@@ -29,7 +29,7 @@ export const secoesNavLms: SecaoNavLms[] = [
       { href: "/comando-diario", label: "Comando diário", icone: "check" },
       { href: "/curiosidades", label: "Curiosidades", icone: "compass" },
       { href: "/missoes", label: "Missões", icone: "target" },
-      { href: "/jogos", label: "Simuladores", icone: "zap" },
+      { href: "/jogos", label: "Jogos", icone: "zap" },
       { href: "/osce", label: "OSCE prático", icone: "shield" },
     ],
   },
