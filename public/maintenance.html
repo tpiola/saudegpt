@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAÚDE GPT — Em Manutenção</title>
+<meta name="theme-color" content="#0A1628">
+<meta name="color-scheme" content="dark">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:#0A1628;
+  color:#E8EDF5;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  overflow:hidden
+}
+.bg-grid{
+  position:fixed;
+  inset:0;
+  background-image:linear-gradient(rgba(56,189,248,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  z-index:0
+}
+.bg-gradient{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% -20%,rgba(56,189,248,.08),transparent);
+  z-index:0
+}
+.container{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  max-width:520px;
+  padding:2rem
+}
+.icon-wrap{
+  width:80px;height:80px;
+  margin:0 auto 2rem;
+  position:relative
+}
+.pulse-ring{
+  position:absolute;
+  inset:-8px;
+  border-radius:50%;
+  border:1.5px solid rgba(56,189,248,.15);
+  animation:pulse 2.5s ease-in-out infinite
+}
+.pulse-ring:nth-child(2){animation-delay:.8s}
+.pulse-ring:nth-child(3){animation-delay:1.6s}
+.cross-icon{
+  position:relative;
+  width:100%;height:100%;
+  background:linear-gradient(135deg,rgba(56,189,248,.12),rgba(56,189,248,.04));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(56,189,248,.15);
+  backdrop-filter:blur(8px)
+}
+.cross-icon svg{width:36px;height:36px}
+h1{
+  font-size:2rem;font-weight:700;
+  background:linear-gradient(135deg,#E8EDF5,#94A3B8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:.75rem;
+  letter-spacing:-.02em
+}
+p{
+  color:#64748B;
+  font-size:1.05rem;
+  line-height:1.6;
+  margin-bottom:.5rem
+}
+.badge{
+  display:inline-block;
+  margin-top:2rem;
+  padding:.5rem 1.25rem;
+  border-radius:100px;
+  background:rgba(56,189,248,.08);
+  border:1px solid rgba(56,189,248,.12);
+  font-size:.825rem;font-weight:500;
+  color:#38BDF8;
+  letter-spacing:.5px
+}
+.dot-pulse{
+  display:inline-flex;gap:4px;
+  margin-left:8px;
+  vertical-align:middle
+}
+.dot-pulse span{
+  width:5px;height:5px;
+  border-radius:50%;
+  background:#38BDF8;
+  animation:dotPulse 1.4s ease-in-out infinite
+}
+.dot-pulse span:nth-child(2){animation-delay:.2s}
+.dot-pulse span:nth-child(3){animation-delay:.4s}
+@keyframes pulse{
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:0;transform:scale(1.25)}
+}
+@keyframes dotPulse{
+  0%,80%,100%{opacity:.2;transform:scale(.8)}
+  40%{opacity:1;transform:scale(1.2)}
+}
+@media(max-width:480px){
+  h1{font-size:1.6rem}
+  .container{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-gradient"></div>
+<div class="container">
+  <div class="icon-wrap">
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring"></div>
+    <div class="cross-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-linecap="round">
+        <path d="M12 2L12 22M2 12L22 12"/>
+      </svg>
+    </div>
+  </div>
+  <h1>Em manutenção</h1>
+  <p>Estamos aplicando melhorias na plataforma<br>para oferecer uma experiência ainda melhor.</p>
+  <p style="font-size:.9rem;color:#475569">Voltamos em breve.</p>
+  <span class="badge">
+    SAÚDE GPT
+    <span class="dot-pulse"><span></span><span></span><span></span></span>
+  </span>
+</div>
+</body>
+</html>
