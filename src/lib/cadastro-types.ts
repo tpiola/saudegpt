@@ -16,6 +16,21 @@ export interface ProgressoSnapshot {
 
 export type StatusCadastro = "pendente" | "aprovado" | "rejeitado";
 
+/** Ficha cadastral completa do aluno (preenchida durante matrícula) */
+export interface FichaCadastral {
+  nome: string;
+  email: string;
+  whatsapp: string;
+  cpf: string;
+  rg: string;
+  endereco: string;
+  selfieUrl: string;
+  motivacao: string;
+  objetivo: string;
+  horasDia: string;
+  diasDisponiveis: string[];
+}
+
 export interface CadastroRegistro {
   id: string;
   /** ID da página no Notion (quando sincronizado). */
@@ -23,6 +38,7 @@ export interface CadastroRegistro {
   nome: string;
   email: string;
   telefone?: string;
+  whatsapp?: string;
   cargo?: string;
   apelidoRanking?: string;
   status: StatusCadastro;
@@ -32,13 +48,20 @@ export interface CadastroRegistro {
   nivel?: number;
   xp?: number;
   progresso: ProgressoSnapshot;
-  // Campos estendidos (Supabase)
+  // Campos estendidos (Supabase + ficha cadastral)
   cidade?: string;
   estado?: string;
   comoConheceu?: string;
   experiencia?: string;
   motivacao?: string;
+  objetivo?: string;
   avatar?: string;
+  selfieUrl?: string;
+  cpf?: string;
+  rg?: string;
+  endereco?: string;
+  horasDia?: string;
+  diasDisponiveis?: string[];
 }
 
 export const PROGRESSO_VAZIO: ProgressoSnapshot = {

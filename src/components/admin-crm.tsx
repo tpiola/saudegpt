@@ -33,6 +33,16 @@ import {
   FileSpreadsheet,
   Users,
   X,
+  Eye,
+  CreditCard,
+  Camera,
+  CheckCircle,
+  XCircle,
+  IdCard,
+  Mail,
+  Phone,
+  MapPin,
+  FileText,
 } from "lucide-react";
 import { listarAulas, trilhas } from "@/content/curriculo";
 import type { CadastroRegistro } from "@/lib/cadastro-types";
@@ -54,7 +64,7 @@ interface AlunoMetricas {
   nivel: number;
   tempoSegundos: number;
   tentativas: number;
-  tentativasExtras: number; // tentativas além da 1ª por aula (proxy de erros)
+  tentativasExtras: number;
   quizzesAbaixo60: number;
   notaMedia: number | null;
   streak: number;
@@ -66,6 +76,20 @@ interface AlunoMetricas {
   ondeParouTitulo: string | null;
   recomendacoes: string[];
   pontosFortes: string[];
+}
+
+interface FichaCadastral {
+  nome: string;
+  email: string;
+  whatsapp: string;
+  cpf: string;
+  rg: string;
+  endereco: string;
+  motivacao: string;
+  objetivo: string;
+  horasDia: string;
+  diasDisponiveis: string[];
+  selfieUrl: string;
 }
 
 const mapaAulas = new Map(
@@ -103,7 +127,6 @@ function calcularMetricas(cad: CadastroRegistro): AlunoMetricas {
   const { streak } = calcularStreak(p.diasEstudo ?? []);
   const diasSemEstudar = diasDesde(p.ultimaSincronizacao);
 
-  // Trilha com mais aulas concluídas = principal interesse demonstrado.
   const porTrilha = new Map<string, number>();
   for (const chave of p.concluidas ?? []) {
     const trilhaId = chave.split("/")[0];
@@ -124,7 +147,6 @@ function calcularMetricas(cad: CadastroRegistro): AlunoMetricas {
 
   const ondeParou = p.ultima ? mapaAulas.get(`${p.ultima.trilhaId}/${p.ultima.aulaId}`) : undefined;
 
-  // Recomendações pedagógicas automáticas (regras transparentes).
   const recomendacoes: string[] = [];
   const pontosFortes: string[] = [];
   if (notaMedia != null && notaMedia >= 85) {
@@ -184,7 +206,7 @@ function calcularMetricas(cad: CadastroRegistro): AlunoMetricas {
 }
 
 /* ════════════════════════════════════════════════════════════
-   INSIGHTS AGREGADOS — onde a PLATAFORMA pode melhorar.
+   INSIGHTS AGREGADOS
    ════════════════════════════════════════════════════════════ */
 
 interface InsightAula {
@@ -220,7 +242,6 @@ function insightsPlataforma(metricas: AlunoMetricas[]): InsightAula[] {
     if (!aula) continue;
     const notaMedia = v.nNotas ? Math.round(v.somaNotas / v.nNotas) : null;
     const tentativasMedia = v.nTent ? v.somaTent / v.nTent : 0;
-    // Só entra no radar de melhoria se houver sinal de dificuldade real.
     if ((notaMedia != null && notaMedia < 75) || tentativasMedia > 1.5) {
       lista.push({
         chave,
@@ -238,14 +259,13 @@ function insightsPlataforma(metricas: AlunoMetricas[]): InsightAula[] {
 }
 
 /* ════════════════════════════════════════════════════════════
-   MAPA DE CALOR — 12 semanas de atividade, estilo GitHub.
+   MAPA DE CALOR
    ════════════════════════════════════════════════════════════ */
 
 function MapaCalor({ dias }: { dias: string[] }) {
   const set = new Set(dias);
   const hoje = new Date();
   const semanas: { data: string; ativo: boolean }[][] = [];
-  // Alinha a grade para terminar no sábado da semana atual.
   const fim = new Date(hoje);
   fim.setDate(fim.getDate() + (6 - fim.getDay()));
   for (let s = 11; s >= 0; s -= 1) {
@@ -279,94 +299,173 @@ function MapaCalor({ dias }: { dias: string[] }) {
 }
 
 /* ════════════════════════════════════════════════════════════
-   RELATÓRIO PDF — janela de impressão com layout profissional.
+   CARTEIRINHA — geração inline
    ════════════════════════════════════════════════════════════ */
 
-function gerarRelatorioPdf(m: AlunoMetricas) {
-  const dataRel = new Date().toLocaleDateString("pt-BR");
-  const ultimoAcesso = m.ultimoAcesso
-    ? new Date(m.ultimoAcesso).toLocaleString("pt-BR")
-    : "sem registro";
-  const linhaTrilhas = trilhas
-    .map((t) => {
-      const total = t.modulos.reduce((n, mod) => n + mod.aulas.length, 0);
-      const feitas = (m.cad.progresso?.concluidas ?? []).filter((c) =>
-        c.startsWith(`${t.id}/`),
-      ).length;
-      const pct = total ? Math.round((feitas / total) * 100) : 0;
-      return `<tr><td>${t.titulo}</td><td style="text-align:center">${feitas}/${total}</td><td style="text-align:center">${pct}%</td></tr>`;
-    })
-    .join("");
-  const fortes = m.pontosFortes.length
-    ? m.pontosFortes.map((p) => `<li>${p}</li>`).join("")
-    : "<li>Aluno em fase inicial — ainda sem destaques registrados.</li>";
-  const melhorias = m.recomendacoes.map((r) => `<li>${r}</li>`).join("");
-
+function gerarCarteirinha(aluno: { nome: string; email: string; selfieUrl?: string; curso?: string }) {
   const html = `<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><title>Relatório — ${m.cad.nome}</title>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Carteirinha — ${aluno.nome}</title>
 <style>
-  body{font-family:Arial,Helvetica,sans-serif;color:#10241b;margin:32px;line-height:1.5}
-  h1{font-size:20px;border-bottom:3px solid #16a34a;padding-bottom:8px;margin-bottom:2px}
-  .sub{color:#56705f;font-size:12px;margin-bottom:20px}
-  h2{font-size:14px;color:#16a34a;margin:22px 0 8px;text-transform:uppercase;letter-spacing:.06em}
-  table{width:100%;border-collapse:collapse;font-size:12px}
-  td,th{border:1px solid #d8e5dc;padding:6px 10px;text-align:left}
-  th{background:#f0f7f2}
-  .grid{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-  .kpi{flex:1;min-width:120px;border:1px solid #d8e5dc;border-radius:10px;padding:10px}
-  .kpi b{display:block;font-size:18px;color:#16a34a}
-  .kpi span{font-size:10px;color:#56705f;text-transform:uppercase;letter-spacing:.05em}
-  ul{margin:6px 0;padding-left:18px;font-size:12px}
-  .rodape{margin-top:28px;font-size:10px;color:#56705f;border-top:1px solid #d8e5dc;padding-top:10px}
+  @page { size: 85.6mm 54mm; margin: 0; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 85.6mm; height: 54mm;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #0f261a 0%, #1a3a2a 50%, #0f261a 100%);
+    color: #fff;
+    display: flex;
+    overflow: hidden;
+  }
+  .card {
+    width: 100%; height: 100%;
+    padding: 5mm 6mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(212,168,67,0.15), transparent 70%);
+    pointer-events: none;
+  }
+  .topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+  }
+  .logo {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #d4a843;
+  }
+  .logo span { display: block; font-size: 6px; font-weight: 400; color: rgba(255,255,255,0.5); letter-spacing: .08em; }
+  .foto {
+    width: 20mm; height: 20mm;
+    border-radius: 50%;
+    border: 2px solid #d4a843;
+    object-fit: cover;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .foto-placeholder {
+    font-size: 18px;
+    color: rgba(255,255,255,0.3);
+  }
+  .info {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nome {
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1px;
+  }
+  .label {
+    font-size: 6px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: #d4a843;
+    margin-bottom: 0.5mm;
+  }
+  .detalhe {
+    font-size: 7px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 1mm;
+  }
+  .curso-nome {
+    font-size: 7px;
+    font-weight: 600;
+    color: #d4a843;
+    margin-top: 1mm;
+  }
+  .rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 1;
+  }
+  .validade {
+    font-size: 5px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .qr-placeholder {
+    width: 8mm; height: 8mm;
+    border: 1px solid rgba(212,168,67,0.3);
+    border-radius: 1mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4px;
+    color: rgba(212,168,67,0.4);
+  }
 </style></head><body>
-<h1>Relatório Individual do Aluno — SaúdeGPT</h1>
-<div class="sub">Gerado em ${dataRel} · Painel do Diretor</div>
-
-<h2>Identificação</h2>
-<table>
-  <tr><th>Nome</th><td>${m.cad.nome}</td><th>E-mail</th><td>${m.cad.email}</td></tr>
-  <tr><th>Status</th><td>${m.cad.status}</td><th>Último acesso</th><td>${ultimoAcesso}</td></tr>
-</table>
-
-<h2>Indicadores gerais</h2>
-<div class="grid">
-  <div class="kpi"><b>${m.pct}%</b><span>Progresso do curso</span></div>
-  <div class="kpi"><b>${m.concluidas}/${totalAulasCurso}</b><span>Aulas concluídas</span></div>
-  <div class="kpi"><b>${m.cad.progresso?.xp ?? 0}</b><span>XP · Nível ${m.nivel}</span></div>
-  <div class="kpi"><b>${formatarTempoEstudo(m.tempoSegundos)}</b><span>Tempo na plataforma</span></div>
-  <div class="kpi"><b>${m.tentativas}</b><span>Tentativas de quiz</span></div>
-  <div class="kpi"><b>${m.notaMedia != null ? `${m.notaMedia}%` : "—"}</b><span>Taxa de acerto média</span></div>
-  <div class="kpi"><b>${m.tentativasExtras}</b><span>Retentativas (erros)</span></div>
-  <div class="kpi"><b>${m.diasAtivos}</b><span>Dias ativos · streak ${m.streak}</span></div>
+<div class="card">
+  <div class="topo">
+    <div class="logo">
+      SaúdeGPT
+      <span>Formação para Atendentes</span>
+    </div>
+    ${aluno.selfieUrl
+      ? `<img class="foto" src="${aluno.selfieUrl}" alt="foto" />`
+      : `<div class="foto"><span class="foto-placeholder">&#x1F464;</span></div>`
+    }
+  </div>
+  <div class="info">
+    <div class="label">Aluno(a)</div>
+    <div class="nome">${aluno.nome}</div>
+    <div class="curso-nome">${aluno.curso || "Formação para Atendentes de Farmácia"}</div>
+    <div class="detalhe">${aluno.email}</div>
+  </div>
+  <div class="rodape">
+    <div class="validade">
+      Emitido em ${new Date().toLocaleDateString("pt-BR")}
+      <br>Válido por 12 meses
+    </div>
+    <div class="qr-placeholder">ID</div>
+  </div>
 </div>
-
-<h2>Progresso por trilha</h2>
-<table><tr><th>Trilha</th><th style="text-align:center">Aulas</th><th style="text-align:center">%</th></tr>${linhaTrilhas}</table>
-
-<h2>Interesses demonstrados</h2>
-<ul>
-  <li>Trilha com maior engajamento: <b>${m.trilhaFavoritaTitulo ?? "ainda não definido"}</b></li>
-  <li>Aulas favoritas: ${m.favoritasTitulos.length ? m.favoritasTitulos.join("; ") : "nenhuma marcada"}</li>
-  <li>Onde parou: ${m.ondeParouTitulo ?? "—"}</li>
-</ul>
-
-<h2>O que está muito bom</h2>
-<ul>${fortes}</ul>
-
-<h2>O que pode melhorar — plano sugerido</h2>
-<ul>${melhorias}</ul>
-
-<div class="rodape">
-  Relatório educacional gerado automaticamente pela plataforma SaúdeGPT a partir dos dados de uso do aluno.
-  Conteúdo revisado por farmacêutico; não substitui avaliação individual presencial.
-</div>
-<script>window.onload=function(){window.print()}</script>
 </body></html>`;
 
-  const win = window.open("", "_blank", "width=900,height=700");
+  const win = window.open("", "_blank", "width=400,height=280");
   if (!win) return;
   win.document.write(html);
   win.document.close();
+}
+
+/* ════════════════════════════════════════════════════════════
+   CARREGAR FICHA CADASTRAL DO localStorage
+   ════════════════════════════════════════════════════════════ */
+
+function carregarFichaLocal(email: string): FichaCadastral | null {
+  try {
+    const raw = localStorage.getItem("fap-ficha-dados");
+    if (!raw) return null;
+    const dados = JSON.parse(raw) as FichaCadastral;
+    // Checa se o email bate
+    if (dados.email?.toLowerCase() !== email?.toLowerCase()) return null;
+    return dados;
+  } catch {
+    return null;
+  }
 }
 
 /* ════════════════════════════════════════════════════════════
@@ -422,6 +521,143 @@ function StatusBadge({ status }: { status: CadastroRegistro["status"] }) {
 }
 
 /* ════════════════════════════════════════════════════════════
+   DRAWER DE FICHA CADASTRAL
+   ════════════════════════════════════════════════════════════ */
+
+function FichaCadastralDrawer({
+  ficha,
+  onClose,
+}: {
+  ficha: FichaCadastral;
+  onClose: () => void;
+}) {
+  const DIAS_MAP: Record<string, string> = {
+    dom: "Domingo", seg: "Segunda", ter: "Terça",
+    qua: "Quarta", qui: "Quinta", sex: "Sexta", sab: "Sábado",
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-0 sm:items-center sm:p-6"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Ficha cadastral completa"
+    >
+      <div
+        className="max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-t-3xl border border-border bg-surface p-6 sm:rounded-3xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="mb-5 flex items-center justify-between">
+          <h3 className="flex items-center gap-2 text-lg font-bold text-foreground">
+            <FileText size={18} className="text-gold-600" />
+            Ficha Cadastral
+          </h3>
+          <button
+            onClick={onClose}
+            className="flex h-8 w-8 items-center justify-center rounded-lg border border-border text-muted transition hover:text-foreground"
+          >
+            <X size={14} />
+          </button>
+        </div>
+
+        <div className="space-y-4">
+          {/* Selfie */}
+          {ficha.selfieUrl && (
+            <div className="flex justify-center">
+              <div className="h-28 w-28 overflow-hidden rounded-2xl border-2 border-gold-500/30">
+                <img
+                  src={ficha.selfieUrl}
+                  alt="Selfie do aluno"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Dados pessoais */}
+          <div className="rounded-xl border border-border bg-surface-2 p-4">
+            <h4 className="mb-3 text-xs font-bold uppercase tracking-wide text-muted">Identificação</h4>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-sm">
+                <Users size={14} className="shrink-0 text-muted" />
+                <span className="font-medium text-foreground">{ficha.nome}</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm">
+                <Mail size={14} className="shrink-0 text-muted" />
+                <span className="text-foreground">{ficha.email}</span>
+              </div>
+              {ficha.whatsapp && (
+                <div className="flex items-center gap-2 text-sm">
+                  <Phone size={14} className="shrink-0 text-muted" />
+                  <span className="text-foreground">{ficha.whatsapp}</span>
+                </div>
+              )}
+              {ficha.cpf && (
+                <div className="flex items-center gap-2 text-sm">
+                  <IdCard size={14} className="shrink-0 text-muted" />
+                  <span className="text-foreground">CPF: {ficha.cpf}</span>
+                </div>
+              )}
+              {ficha.rg && (
+                <div className="flex items-center gap-2 text-sm">
+                  <IdCard size={14} className="shrink-0 text-muted" />
+                  <span className="text-foreground">RG: {ficha.rg}</span>
+                </div>
+              )}
+              {ficha.endereco && (
+                <div className="flex items-center gap-2 text-sm">
+                  <MapPin size={14} className="shrink-0 text-muted" />
+                  <span className="text-foreground">{ficha.endereco}</span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Perfil educacional */}
+          <div className="rounded-xl border border-border bg-surface-2 p-4">
+            <h4 className="mb-3 text-xs font-bold uppercase tracking-wide text-muted">Perfil Educacional</h4>
+            <div className="space-y-3 text-sm">
+              {ficha.motivacao && (
+                <div>
+                  <p className="text-[11px] font-medium text-muted">Motivação</p>
+                  <p className="text-foreground">{ficha.motivacao}</p>
+                </div>
+              )}
+              {ficha.objetivo && (
+                <div>
+                  <p className="text-[11px] font-medium text-muted">Objetivo</p>
+                  <p className="text-foreground">{ficha.objetivo}</p>
+                </div>
+              )}
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <p className="text-[11px] font-medium text-muted">Horas/dia</p>
+                  <p className="font-semibold text-foreground">{ficha.horasDia}h</p>
+                </div>
+                <div>
+                  <p className="text-[11px] font-medium text-muted">Dias disponíveis</p>
+                  <div className="flex flex-wrap gap-1">
+                    {ficha.diasDisponiveis?.map((d) => (
+                      <span
+                        key={d}
+                        className="rounded-md bg-gold-500/10 px-1.5 py-0.5 text-[10px] font-medium text-gold-600"
+                      >
+                        {DIAS_MAP[d] || d}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ════════════════════════════════════════════════════════════
    PÁGINA PRINCIPAL — CRM do Diretor
    ════════════════════════════════════════════════════════════ */
 
@@ -437,6 +673,7 @@ export function AdminCrm() {
   const [busca, setBusca] = useState("");
   const [ordenar, setOrdenar] = useState<Ordenacao>("recente");
   const [selecionado, setSelecionado] = useState<AlunoMetricas | null>(null);
+  const [fichaAberta, setFichaAberta] = useState<FichaCadastral | null>(null);
 
   useEffect(() => {
     const t = localStorage.getItem("fap-admin-token");
@@ -536,7 +773,6 @@ export function AdminCrm() {
       (m) => (m.diasSemEstudar ?? 0) >= 7 || m.quizzesAbaixo60 >= 2,
     ).length;
 
-    // Score da Equipe — métricas agregadas
     const totalAlunos = metricas.length || 1;
     const streakMedio = Math.round(
       metricas.reduce((a, m) => a + m.streak, 0) / totalAlunos,
@@ -586,7 +822,7 @@ export function AdminCrm() {
   const insights = useMemo(() => insightsPlataforma(metricas), [metricas]);
   const pendentes = metricas.filter((m) => m.cad.status === "pendente");
 
-  // Top 5 rankings
+  /* Top 5 rankings */
   const topXp = useMemo(
     () => [...metricas].sort((a, b) => (b.cad.progresso?.xp ?? 0) - (a.cad.progresso?.xp ?? 0)).slice(0, 5),
     [metricas],
@@ -600,19 +836,17 @@ export function AdminCrm() {
     [metricas],
   );
 
-  // Insight da Semana — análise textual automática
+  /* Insight da Semana */
   const insightSemana = useMemo(() => {
     if (metricas.length === 0) return "Nenhum dado disponível para gerar o Insight da Semana.";
     const partes: string[] = [];
     const total = metricas.length;
 
-    // Conclusões recentes (últimas aulas no progresso de cada aluno)
     const totalConclusoes = kpis.totalAulasFeitas;
     if (totalConclusoes > 0) {
       partes.push(`Nesta semana, ${totalConclusoes} aulas foram concluídas no total.`);
     }
 
-    // Desempenho geral
     if (kpis.notaGeral != null) {
       if (kpis.notaGeral >= 85) {
         partes.push(`A nota média geral é de ${kpis.notaGeral}% — excelente desempenho da turma!`);
@@ -623,23 +857,19 @@ export function AdminCrm() {
       }
     }
 
-    // Trilhas com mais atividade
     const trilhaAtiva = [...porTrilha].sort((a, b) => b.conclusoes - a.conclusoes);
     if (trilhaAtiva.length > 0 && trilhaAtiva[0].conclusoes > 0) {
       partes.push(`A trilha mais estudada foi "${trilhaAtiva[0].nome}", com ${trilhaAtiva[0].conclusoes} aulas concluídas.`);
     }
 
-    // Engajamento
     if (kpis.streakMedio > 0) {
       partes.push(`O streak médio da equipe é de ${kpis.streakMedio} dias — ${kpis.streakMedio >= 3 ? "ótima constância!" : "incentive os alunos a estudarem diariamente."}`);
     }
 
-    // Taxa de conclusão
     if (kpis.taxaConclusao > 0) {
       partes.push(`${kpis.taxaConclusao}% dos alunos já concluíram mais da metade do curso.`);
     }
 
-    // Alunos em risco
     if (kpis.emRisco > 0) {
       partes.push(`${kpis.emRisco} aluno(s) estão em risco de desengajamento — considere um acompanhamento personalizado.`);
     }
@@ -651,14 +881,15 @@ export function AdminCrm() {
     return partes.join(" ");
   }, [metricas, kpis, porTrilha]);
 
-  // Export CSV
+  /* Export CSV */
   function exportarCSV() {
     const linhas: string[] = [];
-    // Cabeçalho
     const cabecalho = [
       "Nome",
       "Email",
       "Status",
+      "WhatsApp",
+      "CPF",
       "Aulas Concluídas",
       "Progresso (%)",
       "XP Total",
@@ -674,10 +905,13 @@ export function AdminCrm() {
     linhas.push(cabecalho.map((c) => `"${c}"`).join(","));
 
     for (const m of metricas) {
+      const ficha = carregarFichaLocal(m.cad.email);
       const linha = [
         m.cad.nome,
         m.cad.email,
         m.cad.status,
+        ficha?.whatsapp || m.cad.telefone || "",
+        ficha?.cpf || "",
         m.concluidas,
         m.pct,
         m.cad.progresso?.xp ?? 0,
@@ -719,7 +953,12 @@ export function AdminCrm() {
         <div>
           <h1 className="text-2xl font-bold text-foreground">Painel do Diretor</h1>
           <p className="text-sm text-muted">
-            Visão completa dos alunos — tempo, desempenho, interesses e plano de ação.
+            Visão completa dos alunos — cadastro, matrícula, aprovação e desempenho.
+            {pendentes.length > 0 && (
+              <span className="ml-1 font-semibold text-orange-500">
+                {pendentes.length} pendente(s)
+              </span>
+            )}
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -980,6 +1219,11 @@ export function AdminCrm() {
           <h2 className="flex items-center gap-2 text-sm font-bold text-foreground">
             <Users size={15} className="text-gold-600" />
             Alunos ({filtrados.length})
+            {pendentes.length > 0 && (
+              <span className="rounded-full bg-orange-500/15 px-2 py-0.5 text-[11px] font-semibold text-orange-600">
+                {pendentes.length} pendentes
+              </span>
+            )}
           </h2>
           <div className="flex flex-wrap items-center gap-2">
             <div className="relative">
@@ -1097,31 +1341,69 @@ export function AdminCrm() {
                       </span>
                     </td>
                     <td className="py-3 text-right" onClick={(e) => e.stopPropagation()}>
-                      {m.cad.status === "pendente" ? (
-                        <span className="inline-flex gap-1">
-                          <button
-                            onClick={() => void acaoCadastro(m.cad.id, "aprovar")}
-                            className="rounded-lg bg-gold-500/15 px-2.5 py-1 text-[11px] font-semibold text-gold-600 transition hover:bg-gold-500/25"
-                          >
-                            Aprovar
-                          </button>
-                          <button
-                            onClick={() => void acaoCadastro(m.cad.id, "rejeitar")}
-                            className="rounded-lg bg-red-500/15 px-2.5 py-1 text-[11px] font-semibold text-red-500 transition hover:bg-red-500/25"
-                          >
-                            Rejeitar
-                          </button>
-                        </span>
-                      ) : (
-                        <button
-                          onClick={() => gerarRelatorioPdf(m)}
-                          className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[11px] font-semibold text-foreground transition hover:border-green-500/50"
-                          title="Gerar relatório em PDF"
-                        >
-                          <Download size={12} />
-                          PDF
-                        </button>
-                      )}
+                      <div className="flex items-center justify-end gap-1">
+                        {m.cad.status === "pendente" ? (
+                          <>
+                            <button
+                              onClick={() => void acaoCadastro(m.cad.id, "aprovar")}
+                              className="inline-flex items-center gap-1 rounded-lg bg-green-500/15 px-2.5 py-1 text-[11px] font-semibold text-green-600 transition hover:bg-green-500/25"
+                              title="Aprovar matrícula"
+                            >
+                              <CheckCircle size={12} />
+                              Aprovar
+                            </button>
+                            <button
+                              onClick={() => void acaoCadastro(m.cad.id, "rejeitar")}
+                              className="inline-flex items-center gap-1 rounded-lg bg-red-500/15 px-2.5 py-1 text-[11px] font-semibold text-red-500 transition hover:bg-red-500/25"
+                              title="Rejeitar matrícula"
+                            >
+                              <XCircle size={12} />
+                              Rejeitar
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              onClick={() => {
+                                const ficha = carregarFichaLocal(m.cad.email);
+                                if (ficha) {
+                                  setFichaAberta(ficha);
+                                } else {
+                                  setErro("Ficha cadastral não encontrada localmente.");
+                                }
+                              }}
+                              className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[11px] font-semibold text-foreground transition hover:border-blue-500/50 hover:text-blue-500"
+                              title="Ver ficha cadastral"
+                            >
+                              <Eye size={12} />
+                              Ficha
+                            </button>
+                            <button
+                              onClick={() => {
+                                const ficha = carregarFichaLocal(m.cad.email);
+                                gerarCarteirinha({
+                                  nome: m.cad.nome,
+                                  email: m.cad.email,
+                                  selfieUrl: ficha?.selfieUrl,
+                                });
+                              }}
+                              className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[11px] font-semibold text-foreground transition hover:border-gold-500/50 hover:text-gold-600"
+                              title="Gerar carteirinha do aluno"
+                            >
+                              <CreditCard size={12} />
+                              Carteirinha
+                            </button>
+                            <button
+                              onClick={() => gerarRelatorioPdf(m)}
+                              className="inline-flex items-center gap-1 rounded-lg border border-border px-2.5 py-1 text-[11px] font-semibold text-foreground transition hover:border-green-500/50"
+                              title="Gerar relatório em PDF"
+                            >
+                              <Download size={12} />
+                              PDF
+                            </button>
+                          </>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -1159,6 +1441,16 @@ export function AdminCrm() {
                 </div>
               </div>
               <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    const ficha = carregarFichaLocal(selecionado.cad.email);
+                    if (ficha) setFichaAberta(ficha);
+                  }}
+                  className="inline-flex h-9 items-center gap-2 rounded-xl border border-border px-3 text-sm font-medium text-foreground transition hover:border-blue-500/50"
+                >
+                  <Eye size={14} />
+                  Ficha
+                </button>
                 <button
                   onClick={() => gerarRelatorioPdf(selecionado)}
                   className="inline-flex h-9 items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 text-sm font-semibold text-white transition hover:brightness-110"
@@ -1249,8 +1541,36 @@ export function AdminCrm() {
                 ))}
               </ul>
             </div>
+
+            {/* Botão aprovar/rejeitar no drawer */}
+            {selecionado.cad.status === "pendente" && (
+              <div className="mt-4 flex justify-end gap-2">
+                <button
+                  onClick={() => { void acaoCadastro(selecionado.cad.id, "rejeitar"); setSelecionado(null); }}
+                  className="inline-flex h-9 items-center gap-1.5 rounded-xl border border-red-500/30 bg-red-500/10 px-4 text-sm font-semibold text-red-500 transition hover:bg-red-500/20"
+                >
+                  <XCircle size={14} />
+                  Rejeitar
+                </button>
+                <button
+                  onClick={() => { void acaoCadastro(selecionado.cad.id, "aprovar"); setSelecionado(null); }}
+                  className="inline-flex h-9 items-center gap-1.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-4 text-sm font-semibold text-white transition hover:brightness-110"
+                >
+                  <CheckCircle size={14} />
+                  Aprovar
+                </button>
+              </div>
+            )}
           </div>
         </div>
+      )}
+
+      {/* Drawer de ficha cadastral */}
+      {fichaAberta && (
+        <FichaCadastralDrawer
+          ficha={fichaAberta}
+          onClose={() => setFichaAberta(null)}
+        />
       )}
 
       <p className="mt-8 text-center text-[11px] text-muted">
@@ -1259,4 +1579,95 @@ export function AdminCrm() {
       </p>
     </div>
   );
+}
+
+// ═══════════════════════════════════════════════════════════════
+// Função de relatório PDF (mantida do original)
+// ═══════════════════════════════════════════════════════════════
+
+function gerarRelatorioPdf(m: AlunoMetricas) {
+  const dataRel = new Date().toLocaleDateString("pt-BR");
+  const ultimoAcesso = m.ultimoAcesso
+    ? new Date(m.ultimoAcesso).toLocaleString("pt-BR")
+    : "sem registro";
+  const linhaTrilhas = trilhas
+    .map((t) => {
+      const total = t.modulos.reduce((n, mod) => n + mod.aulas.length, 0);
+      const feitas = (m.cad.progresso?.concluidas ?? []).filter((c) =>
+        c.startsWith(`${t.id}/`),
+      ).length;
+      const pct = total ? Math.round((feitas / total) * 100) : 0;
+      return `<tr><td>${t.titulo}</td><td style="text-align:center">${feitas}/${total}</td><td style="text-align:center">${pct}%</td></tr>`;
+    })
+    .join("");
+  const fortes = m.pontosFortes.length
+    ? m.pontosFortes.map((p) => `<li>${p}</li>`).join("")
+    : "<li>Aluno em fase inicial — ainda sem destaques registrados.</li>";
+  const melhorias = m.recomendacoes.map((r) => `<li>${r}</li>`).join("");
+
+  const html = `<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Relatório — ${m.cad.nome}</title>
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;color:#10241b;margin:32px;line-height:1.5}
+  h1{font-size:20px;border-bottom:3px solid #16a34a;padding-bottom:8px;margin-bottom:2px}
+  .sub{color:#56705f;font-size:12px;margin-bottom:20px}
+  h2{font-size:14px;color:#16a34a;margin:22px 0 8px;text-transform:uppercase;letter-spacing:.06em}
+  table{width:100%;border-collapse:collapse;font-size:12px}
+  td,th{border:1px solid #d8e5dc;padding:6px 10px;text-align:left}
+  th{background:#f0f7f2}
+  .grid{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .kpi{flex:1;min-width:120px;border:1px solid #d8e5dc;border-radius:10px;padding:10px}
+  .kpi b{display:block;font-size:18px;color:#16a34a}
+  .kpi span{font-size:10px;color:#56705f;text-transform:uppercase;letter-spacing:.05em}
+  ul{margin:6px 0;padding-left:18px;font-size:12px}
+  .rodape{margin-top:28px;font-size:10px;color:#56705f;border-top:1px solid #d8e5dc;padding-top:10px}
+</style></head><body>
+<h1>Relatório Individual do Aluno — SaúdeGPT</h1>
+<div class="sub">Gerado em ${dataRel} · Painel do Diretor</div>
+
+<h2>Identificação</h2>
+<table>
+  <tr><th>Nome</th><td>${m.cad.nome}</td><th>E-mail</th><td>${m.cad.email}</td></tr>
+  <tr><th>Status</th><td>${m.cad.status}</td><th>Último acesso</th><td>${ultimoAcesso}</td></tr>
+</table>
+
+<h2>Indicadores gerais</h2>
+<div class="grid">
+  <div class="kpi"><b>${m.pct}%</b><span>Progresso do curso</span></div>
+  <div class="kpi"><b>${m.concluidas}/${totalAulasCurso}</b><span>Aulas concluídas</span></div>
+  <div class="kpi"><b>${m.cad.progresso?.xp ?? 0}</b><span>XP · Nível ${m.nivel}</span></div>
+  <div class="kpi"><b>${formatarTempoEstudo(m.tempoSegundos)}</b><span>Tempo na plataforma</span></div>
+  <div class="kpi"><b>${m.tentativas}</b><span>Tentativas de quiz</span></div>
+  <div class="kpi"><b>${m.notaMedia != null ? `${m.notaMedia}%` : "—"}</b><span>Taxa de acerto média</span></div>
+  <div class="kpi"><b>${m.tentativasExtras}</b><span>Retentativas (erros)</span></div>
+  <div class="kpi"><b>${m.diasAtivos}</b><span>Dias ativos · streak ${m.streak}</span></div>
+</div>
+
+<h2>Progresso por trilha</h2>
+<table><tr><th>Trilha</th><th style="text-align:center">Aulas</th><th style="text-align:center">%</th></tr>${linhaTrilhas}</table>
+
+<h2>Interesses demonstrados</h2>
+<ul>
+  <li>Trilha com maior engajamento: <b>${m.trilhaFavoritaTitulo ?? "ainda não definido"}</b></li>
+  <li>Aulas favoritas: ${m.favoritasTitulos.length ? m.favoritasTitulos.join("; ") : "nenhuma marcada"}</li>
+  <li>Onde parou: ${m.ondeParouTitulo ?? "—"}</li>
+</ul>
+
+<h2>O que está muito bom</h2>
+<ul>${fortes}</ul>
+
+<h2>O que pode melhorar — plano sugerido</h2>
+<ul>${melhorias}</ul>
+
+<div class="rodape">
+  Relatório educacional gerado automaticamente pela plataforma SaúdeGPT a partir dos dados de uso do aluno.
+  Conteúdo revisado por farmacêutico; não substitui avaliação individual presencial.
+</div>
+<script>window.onload=function(){window.print()}</script>
+</body></html>`;
+
+  const win = window.open("", "_blank", "width=900,height=700");
+  if (!win) return;
+  win.document.write(html);
+  win.document.close();
 }
