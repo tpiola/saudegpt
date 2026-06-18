@@ -65,7 +65,7 @@ function TrilhasSection() {
                 <div className="mt-3 h-1 w-full bg-white/10 rounded-full overflow-hidden">
                   <div className="h-full w-1/3 bg-gradient-to-r from-gold-600 to-gold-700 dark:from-gold-400 dark:to-gold-500 rounded-full animate-pulse" />
                 </div>
-                <div className="mt-4 flex items-center gap-2 text-xs text-gold-600 dark:text-gold-400 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="mt-4 flex items-center gap-2 text-xs text-gold-600 dark:text-gold-400 font-medium opacity-70 sm:opacity-0 group-hover:opacity-100 transition-opacity">
                   Explorar trilha
                   <Icon name="arrow" size={12} />
                 </div>
