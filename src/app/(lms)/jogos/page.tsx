@@ -197,7 +197,7 @@ export default function JogosPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-400/20 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold text-gold-300 backdrop-blur-sm">
               <Icon name="sparkles" size={12} />

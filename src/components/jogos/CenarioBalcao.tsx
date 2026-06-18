@@ -26,7 +26,7 @@ function ScoreFloat({
       initial={{ opacity: 1, y: 0, scale: 0.5 }}
       animate={{ opacity: 0, y: -60, scale: 1.3 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] as const }}
       className="pointer-events-none absolute right-0 top-0 z-50 font-extrabold text-lg"
       style={{ color: cor, textShadow: `0 0 12px ${cor}60` }}
       aria-hidden

@@ -134,7 +134,7 @@ export function SecaoFAQ() {
                       className="px-6 pb-5 text-sm text-muted"
                       initial={{ y: -8 }}
                       animate={{ y: 0 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] as const }}
                     >
                       {faq.r}
                     </motion.p>

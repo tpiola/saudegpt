@@ -18,14 +18,14 @@ export function CtaSection() {
         initial={{ scale: 1 }}
         whileInView={{ scale: 1.05 }}
         viewport={{ once: true, margin: "-20%" }}
-        transition={{ duration: 4, ease: "easeOut" }}
+        transition={{ duration: 4, ease: [0.25, 0.1, 0.25, 1] as const }}
       />
       <motion.div
         className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,168,67,0.15)_0%,transparent_50%)]"
         initial={{ scale: 1, opacity: 0.8 }}
         whileInView={{ scale: 1.1, opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 5, ease: "easeOut" }}
+        transition={{ duration: 5, ease: [0.25, 0.1, 0.25, 1] as const }}
       />
       {/* Second radial glow that shifts */}
       <motion.div

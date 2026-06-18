@@ -95,7 +95,7 @@ function GoldParticles({ x, y }: { x: number; y: number }) {
             y: -Math.random() * 60 - 20,
             scale: 0,
           }}
-          transition={{ duration: 0.6 + Math.random() * 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.6 + Math.random() * 0.3, ease: [0.25, 0.1, 0.25, 1] as const }}
           className="absolute h-2 w-2 rounded-full bg-gold-400 shadow-[0_0_6px_rgba(212,168,67,0.8)]"
         />
       ))}
@@ -485,7 +485,7 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
                       stiffness: 200,
                       damping: 15,
                       delay: i * 0.03,
-                      scale: acertouAgora ? { duration: 0.4, ease: "easeOut" } : { duration: 0.3 },
+                      scale: acertouAgora ? { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as const } : { duration: 0.3 },
                     }}
                     className={`flex h-9 w-7 items-center justify-center rounded-lg border text-sm font-extrabold transition-all duration-300 sm:h-11 sm:w-9 sm:text-base ${
                       revelada

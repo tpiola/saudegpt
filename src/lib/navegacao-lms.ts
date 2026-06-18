@@ -21,6 +21,8 @@ export const secoesNavLms: SecaoNavLms[] = [
       { href: "/pressao-arterial", label: "Pressão Arterial", icone: "heart" },
       { href: "/diabetes", label: "Diabetes", icone: "droplet" },
       { href: "/hormonios", label: "Hormônios", icone: "zap" },
+      { href: "/saude-mental", label: "Saúde Mental", icone: "smile" },
+      { href: "/literacia-digital", label: "Literacia Digital", icone: "globe" },
     ],
   },
   {

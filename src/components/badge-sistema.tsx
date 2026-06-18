@@ -404,7 +404,7 @@ export function CelebracaoBadge({ badge, onClose, duracao = 4000 }: CelebracaoBa
                   scale: [0, 1.5, 0],
                   opacity: [1, 0.8, 0],
                 }}
-                transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+                transition={{ duration: 1.2, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] as const }}
               >
                 {["✨", "⭐", "💫", "🌟", "✨", "⭐", "💫", "🌟"][i]}
               </motion.span>
@@ -563,7 +563,7 @@ export function BadgeSistema({
             animate={{
               width: `${badges.length > 0 ? (desbloqueados.length / badges.length) * 100 : 0}%`,
             }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
           />
         </div>
 

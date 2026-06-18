@@ -169,7 +169,7 @@ function TopCard({ jogador, pos, index }: { jogador: JogadorRanking; pos: number
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35, delay: index * 0.06, ease: "easeOut" }}
+      transition={{ duration: 0.35, delay: index * 0.06, ease: [0.25, 0.1, 0.25, 1] as const }}
       className={`group relative flex items-center gap-3 rounded-xl border bg-white/80 p-3 backdrop-blur-sm transition-all duration-300 hover:border-gold-400/30 hover:shadow-[0_0_28px_-8px_rgba(212,168,67,0.18)] dark:bg-navy-900/70 ${borda}`}
     >
       {/* Glow sutil no hover */}
@@ -380,7 +380,7 @@ export default function RankingPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
           >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold-400/20 bg-gold-500/10 px-4 py-1.5 text-xs font-semibold text-gold-300 backdrop-blur-sm">
               <Icon name="award" size={12} />

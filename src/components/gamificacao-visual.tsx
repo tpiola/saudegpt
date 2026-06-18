@@ -55,7 +55,7 @@ function ParticleExplosion({ count = 8 }: { count?: number }) {
           transition={{
             duration: 0.8,
             delay: p.delay,
-            ease: "easeOut",
+            ease: [0.25, 0.1, 0.25, 1] as const,
           }}
         >
           {p.emoji}
@@ -76,7 +76,7 @@ export function XpBar({ xp, xpProximoNivel }: { xp: number; xpProximoNivel: numb
           className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-[length:200%_100%]"
           initial={{ width: 0 }}
           animate={{ width: `${porcento}%` }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
           style={{ animation: "gradient-shift 3s linear infinite" }}
         />
       </div>
