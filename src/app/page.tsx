@@ -1,178 +1,176 @@
 "use client";
 
-import { useRef, useEffect, useState, useCallback } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { ReactLenis } from "lenis/react";
 
 /* ═══════════════════════════════════════════════════════════════
-   COURSES DATA
+   ÍCONES SVG (evita dependência de lucide no bundle inicial)
+   ═══════════════════════════════════════════════════════════════ */
+
+const Icon = ({ name, size = 20, className = "" }: { name: string; size?: number; className?: string }) => {
+  const icons: Record<string, React.JSX.Element> = {
+    pill: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 21c-3-3-7-4.5-7-9a7 7 0 0 1 14 0c0 4.5-4 6-7 9Z" /><path d="M12 12c0-3 1.5-5 4-6" /><path d="M12 12c0-3-1.5-5-4-6" />
+      </svg>
+    ),
+    leaf: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+      </svg>
+    ),
+    bone: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M17 10a3 3 0 0 1 0-6 3 3 0 0 1 0 6Z" /><path d="M7 14a3 3 0 0 1 0 6 3 3 0 0 1 0-6Z" /><path d="M10 17l4-4" /><path d="M14 7l-4 4" />
+      </svg>
+    ),
+    brain: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.52-4.2A2.5 2.5 0 0 1 5 9.5 2.5 2.5 0 0 1 9.5 2Z" />
+        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .52-4.2A2.5 2.5 0 0 0 19 9.5 2.5 2.5 0 0 0 14.5 2Z" />
+      </svg>
+    ),
+    book: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+      </svg>
+    ),
+    users: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+    award: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+      </svg>
+    ),
+    clock: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
+      </svg>
+    ),
+    star: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+    ),
+    arrowRight: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
+      </svg>
+    ),
+    shield: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+      </svg>
+    ),
+    graduation: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
+      </svg>
+    ),
+    play: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <circle cx="12" cy="12" r="10" /><path d="m10 8 6 4-6 4Z" />
+      </svg>
+    ),
+    check: (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+        <path d="M20 6 9 17l-5-5" />
+      </svg>
+    ),
+  };
+  return <span className={className}>{icons[name] || null}</span>;
+};
+
+/* ═══════════════════════════════════════════════════════════════
+   COURSES DATA — Profissional, institucional
    ═══════════════════════════════════════════════════════════════ */
 
 const COURSES = [
   {
     id: "farmacia",
     title: "Farmácia",
-    subtitle: "Atendentes de Farmácia",
-    description: "Formação completa para atendentes de farmácia: medicamentos, legislação ANVISA, dispensação segura, atendimento humanizado e cuidado ao paciente.",
-    icon: "💊",
+    subtitle: "Formação para Atendentes de Farmácia",
+    description: "Domine medicamentos, legislação ANVISA, dispensação segura e atendimento humanizado. Curso completo do básico ao avançado.",
+    icon: "pill",
     color: "#00C9A7",
-    gradient: "from-emerald-500 to-teal-600",
-    href: "/",
-    stats: "7 trilhas · 39 módulos · 159+ aulas · 9 jogos",
-    org: "CRF/SP 58.519",
-    features: ["Medicamentos & Balcão Seguro", "Perfumaria & Bem-Estar", "Cuidado Humanizado", "Prática Supervisionada"],
-    image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=800&q=80",
+    bgGradient: "from-emerald-600/20 via-emerald-600/5 to-transparent",
+    borderColor: "rgba(0,201,167,0.25)",
+    hoverBorder: "rgba(0,201,167,0.5)",
+    href: "/trilhas",
+    modules: 39,
+    classes: 159,
+    games: 9,
+    status: "disponivel",
+    badge: "CRF/SP 58.519",
+    badgeColor: "#00C9A7",
   },
   {
     id: "nutricao",
     title: "Nutrição",
-    subtitle: "Nutricionistas e Entusiastas",
-    description: "Aprenda sobre alimentos, dietas, nutrição clínica, esportiva e funcional. Conteúdo baseado nas diretrizes do CRN e ciência atualizada.",
-    icon: "🥗",
+    subtitle: "Para Nutricionistas e Entusiastas",
+    description: "Alimentos, dietas, nutrição clínica e funcional. Conteúdo baseado nas diretrizes do CRN e na ciência mais atualizada.",
+    icon: "leaf",
     color: "#F59E0B",
-    gradient: "from-amber-500 to-orange-600",
+    bgGradient: "from-amber-600/20 via-amber-600/5 to-transparent",
+    borderColor: "rgba(245,158,11,0.25)",
+    hoverBorder: "rgba(245,158,11,0.5)",
     href: "https://github.com/tpiola/saudegpt-nutricao",
-    stats: "Em breve",
-    org: "CRN",
-    features: ["Nutrição Clínica", "Alimentos & Dietas", "Avaliação Nutricional", "Prescrição Dietética"],
-    image: "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&q=80",
+    modules: 0,
+    classes: 0,
+    games: 0,
+    status: "em-breve",
+    badge: "CRN",
+    badgeColor: "#F59E0B",
   },
   {
     id: "fisioterapia",
     title: "Fisioterapia",
-    subtitle: "Fisioterapeutas e Profissionais",
-    description: "Formação em fisioterapia baseada nas diretrizes do CREFITO. Reabilitação, traumato-ortopédica, neurológica, respiratória e mais.",
-    icon: "🦵",
+    subtitle: "Para Fisioterapeutas e Profissionais",
+    description: "Reabilitação, traumato-ortopédica, neurológica e respiratória. Formação baseada nas diretrizes do CREFITO.",
+    icon: "bone",
     color: "#3B82F6",
-    gradient: "from-blue-500 to-indigo-600",
+    bgGradient: "from-blue-600/20 via-blue-600/5 to-transparent",
+    borderColor: "rgba(59,130,246,0.25)",
+    hoverBorder: "rgba(59,130,246,0.5)",
     href: "https://github.com/tpiola/saudegpt-fisioterapia",
-    stats: "Em breve",
-    org: "CREFITO",
-    features: ["Traumato-Ortopédica", "Neurológica", "Respiratória", "Desportiva"],
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    modules: 0,
+    classes: 0,
+    games: 0,
+    status: "em-breve",
+    badge: "CREFITO",
+    badgeColor: "#3B82F6",
   },
   {
     id: "psicologia",
     title: "Psicologia",
-    subtitle: "Psicólogos e Estudantes",
-    description: "Formação em psicologia baseada nas diretrizes do CRP. Abordagens clínicas, avaliação psicológica, ética profissional e saúde mental.",
-    icon: "🧠",
+    subtitle: "Para Psicólogos e Estudantes",
+    description: "Abordagens clínicas, avaliação psicológica, ética profissional e saúde mental. Conteúdo alinhado às diretrizes do CRP.",
+    icon: "brain",
     color: "#A855F7",
-    gradient: "from-purple-500 to-pink-600",
+    bgGradient: "from-purple-600/20 via-purple-600/5 to-transparent",
+    borderColor: "rgba(168,85,247,0.25)",
+    hoverBorder: "rgba(168,85,247,0.5)",
     href: "https://github.com/tpiola/saudegpt-psicologia",
-    stats: "Em breve",
-    org: "CRP",
-    features: ["Abordagens Clínicas", "Avaliação Psicológica", "Ética Profissional", "Saúde Mental"],
-    image: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?w=800&q=80",
+    modules: 0,
+    classes: 0,
+    games: 0,
+    status: "em-breve",
+    badge: "CRP",
+    badgeColor: "#A855F7",
   },
 ];
-
-const STATS = [
-  { value: 7, label: "Trilhas", suffix: "" },
-  { value: 39, label: "Módulos", suffix: "+" },
-  { value: 159, label: "Aulas", suffix: "+" },
-  { value: 9, label: "Jogos", suffix: "" },
-];
-
-/* ═══════════════════════════════════════════════════════════════
-   CANVAS PARTICLES — Gold/Teal luxury particles
-   ═══════════════════════════════════════════════════════════════ */
-function CanvasParticles() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animId = 0;
-    const particles: { x: number; y: number; vx: number; vy: number; size: number; life: number; maxLife: number }[] = [];
-    const COUNT = 50;
-    const COLOR = "0,201,167";
-    const PREFERS_REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    for (let i = 0; i < COUNT; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3 - 0.05,
-        size: Math.random() * 2 + 0.5,
-        life: 0,
-        maxLife: Math.random() * 600 + 300,
-      });
-    }
-
-    const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life++;
-
-        if (p.x < -20) p.x = canvas.width + 20;
-        if (p.x > canvas.width + 20) p.x = -20;
-        if (p.y < -20) p.y = canvas.height + 20;
-        if (p.y > canvas.height + 20) p.y = -20;
-
-        const fade = p.life < 40 ? p.life / 40 : p.life > p.maxLife - 40 ? (p.maxLife - p.life) / 40 : 1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${COLOR},${0.5 * fade})`;
-        ctx.fill();
-
-        particles.forEach((p2) => {
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120 && dist > 0) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(${COLOR},${0.06 * fade})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        });
-
-        if (p.life > p.maxLife) {
-          p.x = Math.random() * canvas.width;
-          p.y = Math.random() * canvas.height;
-          p.life = 0;
-          p.maxLife = Math.random() * 600 + 300;
-        }
-      });
-
-      if (!PREFERS_REDUCED) animId = requestAnimationFrame(animate);
-    };
-    animate();
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} aria-hidden="true" className="pointer-events-none fixed inset-0 z-0" />;
-}
 
 /* ═══════════════════════════════════════════════════════════════
    ANIMATED COUNTER
    ═══════════════════════════════════════════════════════════════ */
-function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: string }) {
+function AnimatedCounter({ target, suffix = "", decimals = 0 }: { target: number; suffix?: string; decimals?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
+  const inView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
   const [count, setCount] = useState(target);
 
   useEffect(() => {
@@ -188,573 +186,450 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
     return () => clearInterval(timer);
   }, [inView, target]);
 
-  return (
-    <span ref={ref} className="tabular-nums">
-      {count}
-      {suffix}
-    </span>
-  );
+  return <span ref={ref} className="tabular-nums">{count.toFixed(decimals)}{suffix}</span>;
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SCROLL PROGRESS BAR
+   SCROLL PROGRESS
    ═══════════════════════════════════════════════════════════════ */
 function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-[9999] h-[3px] origin-left"
-      style={{
-        scaleX,
-        background: "linear-gradient(90deg, #0A2540, #00C9A7, #C9A227, #00C9A7)",
-        backgroundSize: "200% 100%",
-      }}
+      className="fixed top-0 left-0 right-0 z-[9999] h-[2px] origin-left"
+      style={{ scaleX, background: "linear-gradient(90deg, #0A2540, #00C9A7, #C9A227)" }}
     />
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   COURSE CARD — 3D tilt + cinematic reveal
-   ═══════════════════════════════════════════════════════════════ */
-function CourseCard({ course, index }: { course: (typeof COURSES)[0]; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { once: true, margin: "0px 0px -80px 0px" });
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setMousePos({ x, y });
-  }, []);
-
-  const isEven = index % 2 === 0;
-
-  return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 80, rotateX: isEven ? -5 : 5 }}
-      animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 0.9, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-      className="perspective-[1200px]"
-      style={{ perspective: "1200px" }}
-    >
-      <Link
-        href={course.href === "/" ? "/trilhas" : course.href}
-        className={`group block relative overflow-hidden rounded-3xl border transition-all duration-700 ${
-          isHovered ? "shadow-2xl shadow-[${course.color}30] scale-[1.02]" : "shadow-lg"
-        }`}
-        style={{
-          borderColor: isHovered ? `${course.color}50` : "rgba(255,255,255,0.08)",
-          transform: isHovered
-            ? `perspective(1200px) rotateY(${mousePos.x * 8}deg) rotateX(${-mousePos.y * 8}deg)`
-            : "perspective(1200px) rotateY(0deg) rotateX(0deg)",
-          transition: "transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.3s, box-shadow 0.3s",
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => {
-          setIsHovered(false);
-          setMousePos({ x: 0, y: 0 });
-        }}
-      >
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-            style={{ backgroundImage: `url(${course.image})` }}
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: `linear-gradient(135deg, rgba(5,13,26,0.92) 0%, rgba(5,13,26,0.7) 40%, rgba(5,13,26,0.85) 100%)`,
-            }}
-          />
-          <div
-            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-            style={{
-              background: `linear-gradient(135deg, ${course.color}15 0%, transparent 60%)`,
-            }}
-          />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 p-6 sm:p-8 lg:p-10 min-h-[320px] sm:min-h-[360px] flex flex-col justify-between">
-          <div>
-            {/* Badge */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: index * 0.15 + 0.2 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[10px] font-semibold uppercase tracking-wider mb-4"
-              style={{
-                background: `${course.color}20`,
-                border: `1px solid ${course.color}40`,
-                color: course.color,
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: course.color }} />
-              {course.org}
-            </motion.div>
-
-            {/* Icon + Title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.15 + 0.3 }}
-            >
-              <span className="text-4xl sm:text-5xl mb-3 block">{course.icon}</span>
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-1 font-['Clash_Display',system-ui,sans-serif]">
-                {course.title}
-              </h3>
-              <p className="text-sm sm:text-base font-medium mb-3" style={{ color: course.color }}>
-                {course.subtitle}
-              </p>
-              <p className="text-sm text-white/60 leading-relaxed max-w-lg">{course.description}</p>
-            </motion.div>
-          </div>
-
-          {/* Bottom Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: index * 0.15 + 0.5 }}
-            className="mt-6"
-          >
-            {/* Features */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {course.features.map((f) => (
-                <span
-                  key={f}
-                  className="text-[10px] sm:text-xs font-medium px-2.5 py-1 rounded-full"
-                  style={{
-                    background: `${course.color}12`,
-                    border: `1px solid ${course.color}25`,
-                    color: `${course.color}CC`,
-                  }}
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
-
-            {/* Stats + CTA */}
-            <div className="flex items-center justify-between gap-4">
-              <span className="text-xs sm:text-sm text-white/40">{course.stats}</span>
-              <span
-                className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold px-4 py-2 rounded-xl transition-all duration-300 group-hover:gap-3"
-                style={{
-                  background: `linear-gradient(135deg, ${course.color}, ${course.color}DD)`,
-                  color: "#050D1A",
-                }}
-              >
-                {course.stats === "Em breve" ? "Aguardar" : "Acessar curso"}
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="m13 6 6 6-6 6" />
-                </svg>
-              </span>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Glow border on hover */}
-        <div
-          className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-          style={{
-            boxShadow: `inset 0 0 30px ${course.color}20, 0 0 60px ${course.color}10`,
-          }}
-        />
-      </Link>
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   VIDEO HERO BACKGROUND
-   ═══════════════════════════════════════════════════════════════ */
-function HeroVideo() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.6;
-    }
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* Video Background — Fallback to gradient if video fails */}
-      <div className="absolute inset-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/imagens/hero_pills.webp"
-          className="absolute inset-0 w-full h-full object-cover scale-110"
-          style={{ filter: "brightness(0.3) saturate(1.2)" }}
-        >
-          <source src="https://assets.mixkit.co/videos/40858/40858-720.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-950/90 via-navy-900/80 to-forest-950/95" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[120px]" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-gold-500/5 blur-[100px]" />
-      </div>
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   PARALLAX SECTION WRAPPER
-   ═══════════════════════════════════════════════════════════════ */
-function ParallaxSection({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
-
-  return (
-    <motion.div ref={ref} style={{ y, opacity }} className={className}>
-      {children}
-    </motion.div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TESTIMONIALS
-   ═══════════════════════════════════════════════════════════════ */
-const TESTIMONIALS = [
-  {
-    text: "O curso transformou minha forma de atender no balcão. Hoje me sinto segura para orientar os pacientes com confiança.",
-    author: "Camila R.",
-    role: "Atendente de Farmácia · 3 meses",
-    rating: 5,
-  },
-  {
-    text: "A didática é incrível — conteúdos complexos explicados de forma simples. Os jogos e quizzes fixam o aprendizado.",
-    author: "Lucas M.",
-    role: "Balconista · 6 meses",
-    rating: 5,
-  },
-  {
-    text: "Finalmente uma formação que prepara de verdade para o dia a dia na farmácia. Recomendo para toda equipe.",
-    author: "Ana C.",
-    role: "Farmacêutica Responsável",
-    rating: 5,
-  },
-];
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {Array.from({ length: count }).map((_, i) => (
-        <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#C9A227" stroke="#C9A227" strokeWidth="1">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   REVEAL WRAPPER
+   REVEAL
    ═══════════════════════════════════════════════════════════════ */
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}>
       {children}
     </motion.div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   STAGGER CONTAINER
+   HERO — Institucional, limpo, profissional
    ═══════════════════════════════════════════════════════════════ */
-const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.3 } },
-};
-const staggerItem = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
-};
-
-/* ═══════════════════════════════════════════════════════════════
-   MAIN PAGE — Cinematic Course Showcase
-   ═══════════════════════════════════════════════════════════════ */
-export default function HomePage() {
-  const [videoReady, setVideoReady] = useState(false);
-  const { scrollYProgress } = useScroll();
-
+function HeroSection() {
   return (
-    <ReactLenis root options={{ lerp: 0.06, wheelMultiplier: 1.1 }}>
-      <ScrollProgress />
-      <CanvasParticles />
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
+      {/* Background sutil — gradiente + grid */}
+      <div className="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-900 to-forest-950" />
+      <div className="absolute inset-0" style={{
+        backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
+        backgroundSize: "60px 60px",
+      }} />
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/3 blur-[120px]" />
+      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gold-500/3 blur-[100px]" />
 
-      {/* ══════════════════════════════════════════════════════════
-          HERO — Video, Particles, Typography, CTA
-          ══════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-dvh flex items-center justify-center overflow-hidden">
-        <HeroVideo />
-
-        <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
           <FadeUp>
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-1.5 mb-6 backdrop-blur-sm"
-            >
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-xs font-medium text-emerald-300">Plataforma de Formação em Saúde</span>
-            </motion.div>
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-300">
+                Plataforma de Formação em Saúde
+              </span>
+            </div>
           </FadeUp>
 
-          <FadeUp delay={0.1}>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight text-white font-['Clash_Display',system-ui,sans-serif]">
-              Transforme-se em um
-              <br />
-              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent bg-[length:200%_100%] animate-[gradientShift_4s_ease_infinite]">
-                Profissional da Saúde
+          <FadeUp delay={0.05}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white font-['Clash_Display',system-ui,sans-serif]">
+              Formação completa para{" "}
+              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
+                profissionais da saúde
               </span>
             </h1>
           </FadeUp>
 
-          <FadeUp delay={0.2}>
-            <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg md:text-xl text-white/60 leading-relaxed">
-              Cursos completos para Farmácia, Nutrição, Fisioterapia e Psicologia. 
-              Conteúdo baseado em órgãos profissionais, com gamificação, IA e prática real.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.3}>
-            <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-              <motion.a
-                href="#cursos"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="group relative inline-flex h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-8 text-base font-bold text-white shadow-xl shadow-emerald-500/25 transition-all hover:shadow-emerald-500/40"
-              >
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-                <span className="relative z-10">Explorar cursos</span>
-                <svg className="relative z-10 transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="m13 6 6 6-6 6" />
-                </svg>
-              </motion.a>
-
-              <motion.a
-                href="/diretor"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="inline-flex h-14 items-center gap-2 rounded-2xl border border-white/20 px-8 text-base font-medium text-white/80 backdrop-blur-sm transition-all hover:border-white/40 hover:text-white"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-                Conheça o diretor
-              </motion.a>
-            </div>
-          </FadeUp>
-
-          {/* Stats Bar */}
-          <FadeUp delay={0.4}>
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 max-w-2xl mx-auto"
-            >
-              {STATS.map((stat) => (
-                <motion.div key={stat.label} variants={staggerItem} className="text-center">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">
-                    <AnimatedCounter target={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-white/40 mt-1">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </FadeUp>
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="mt-12 flex flex-col items-center gap-2"
-          >
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-white/30">Role para explorar</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 5v14" />
-                <path d="m19 12-7 7-7-7" />
-              </svg>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          COURSES SECTION — The 4 professions
-          ══════════════════════════════════════════════════════════ */}
-      <ParallaxSection className="relative z-10 py-20 sm:py-28 lg:py-36">
-        <section id="cursos" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="inline-flex items-center gap-2 rounded-full border border-gold-500/20 bg-gold-500/10 px-4 py-1.5 mb-4 backdrop-blur-sm"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
-                <span className="text-xs font-medium text-gold-300">Escolha sua área</span>
-              </motion.div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-                Cursos para{" "}
-                <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                  profissionais da saúde
-                </span>
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base text-white/50">
-                Cada curso é desenvolvido com base nas diretrizes dos órgãos profissionais, 
-                combinando teoria, prática, gamificação e inteligência artificial.
-              </p>
-            </div>
-          </FadeUp>
-
-          <div className="space-y-8 sm:space-y-12 lg:space-y-16">
-            {COURSES.map((course, index) => (
-              <CourseCard key={course.id} course={course} index={index} />
-            ))}
-          </div>
-        </section>
-      </ParallaxSection>
-
-      {/* ══════════════════════════════════════════════════════════
-          TESTIMONIALS
-          ══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <FadeUp>
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-                O que dizem nossos{" "}
-                <span className="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                  alunos
-                </span>
-              </h2>
-            </div>
-          </FadeUp>
-
-          <div className="grid sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {TESTIMONIALS.map((t, i) => (
-              <FadeUp key={i} delay={i * 0.1}>
-                <motion.div
-                  whileHover={{ y: -4, scale: 1.01 }}
-                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-6 sm:p-8 transition-all duration-300 hover:border-gold-500/20 hover:shadow-xl hover:shadow-gold-500/5"
-                >
-                  <Stars count={t.rating} />
-                  <p className="mt-4 text-sm sm:text-base text-white/70 leading-relaxed italic">
-                    &ldquo;{t.text}&rdquo;
-                  </p>
-                  <div className="mt-6 pt-4 border-t border-white/5">
-                    <p className="text-sm font-semibold text-white">{t.author}</p>
-                    <p className="text-xs text-white/40">{t.role}</p>
-                  </div>
-                </motion.div>
-              </FadeUp>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          FINAL CTA
-          ══════════════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 sm:py-28 lg:py-36 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-emerald-500/5 blur-[150px]" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#050D1A] to-transparent" />
-        </div>
-
-        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-          <FadeUp>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif] leading-tight">
-              Pronto para{" "}
-              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                transformar sua carreira
-              </span>
-              ?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base sm:text-lg text-white/50">
-              Junte-se a centenas de alunos que já estão se preparando para oferecer 
-              um atendimento de excelência na área da saúde.
+          <FadeUp delay={0.1}>
+            <p className="mt-4 text-base sm:text-lg text-white/50 max-w-xl leading-relaxed">
+              Cursos online para Farmácia, Nutrição, Fisioterapia e Psicologia. 
+              Conteúdo desenvolvido por profissionais registrados, com gamificação, 
+              simulações práticas e certificado.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.15}>
-            <motion.div
-              className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <motion.a
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Link
                 href="/trilhas"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="group relative inline-flex h-14 items-center gap-2 overflow-hidden rounded-2xl bg-gradient-to-r from-gold-500 to-gold-600 px-8 text-base font-bold text-navy-900 shadow-xl shadow-gold-500/25 transition-all hover:shadow-gold-500/40"
+                className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-                <span className="relative z-10">Começar agora</span>
-                <svg className="relative z-10 transition-transform group-hover:translate-x-1" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14" />
-                  <path d="m13 6 6 6-6 6" />
-                </svg>
-              </motion.a>
-
-              <motion.a
+                <Icon name="graduation" size={18} />
+                Ver cursos disponíveis
+                <Icon name="arrowRight" size={16} />
+              </Link>
+              <Link
                 href="/diretor"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="inline-flex h-14 items-center gap-2 rounded-2xl border border-white/20 px-8 text-base font-medium text-white/80 backdrop-blur-sm transition-all hover:border-white/40 hover:text-white"
+                className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               >
-                Fale conosco
-              </motion.a>
-            </motion.div>
+                <Icon name="shield" size={16} />
+                Conheça o diretor
+              </Link>
+            </div>
           </FadeUp>
         </div>
-      </section>
 
-      {/* Style for the gradient shift animation */}
-      <style jsx global>{`
-        @keyframes gradientShift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .perspective-\\[1200px\\] {
-          perspective: 1200px;
-        }
-      `}</style>
+        {/* Métricas institucionais */}
+        <FadeUp delay={0.2}>
+          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
+            {[
+              { icon: "graduation", value: 7, label: "Cursos", suffix: "" },
+              { icon: "book", value: 159, label: "Aulas", suffix: "+" },
+              { icon: "clock", value: 240, label: "Horas de conteúdo", suffix: "+" },
+              { icon: "award", value: 4.9, label: "Avaliação", suffix: "", decimals: 1 },
+            ].map((m, i) => (
+              <div key={i} className="text-center">
+                <div className="flex justify-center mb-1.5 text-emerald-400/60">
+                  <Icon name={m.icon} size={18} />
+                </div>
+                <div className="text-xl sm:text-2xl font-extrabold text-white">
+                  <AnimatedCounter target={m.value} suffix={m.suffix} decimals={m.decimals || 0} />
+                </div>
+                <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/35 mt-0.5">
+                  {m.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COURSE CARD — Profissional, clean, CRM-style
+   ═══════════════════════════════════════════════════════════════ */
+function CourseCard({ course, index }: { course: typeof COURSES[0]; index: number }) {
+  const isLeft = index % 2 === 0;
+  const isAvailable = course.status === "disponivel";
+
+  return (
+    <FadeUp delay={index * 0.08}>
+      <motion.div
+        whileHover={{ y: -3 }}
+        className="group relative overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl"
+        style={{
+          borderColor: course.borderColor,
+          background: `linear-gradient(135deg, rgba(5,13,26,0.95) 0%, rgba(10,22,40,0.9) 100%)`,
+        }}
+      >
+        {/* Hover glow */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(600px 200px at 50% 0%, ${course.color}08, transparent 70%)`,
+          }}
+        />
+
+        <div className="relative z-10 p-5 sm:p-6 lg:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
+            {/* Ícone grande */}
+            <div
+              className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center"
+              style={{
+                background: `${course.color}15`,
+                border: `1px solid ${course.color}30`,
+                color: course.color,
+              }}
+            >
+              <Icon name={course.icon} size={28} />
+            </div>
+
+            <div className="flex-1 min-w-0">
+              {/* Badge + Status */}
+              <div className="flex flex-wrap items-center gap-2 mb-2">
+                <span
+                  className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md"
+                  style={{ background: `${course.badgeColor}15`, color: course.badgeColor, border: `1px solid ${course.badgeColor}25` }}
+                >
+                  {course.badge}
+                </span>
+                <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-md ${
+                  isAvailable ? "bg-emerald-500/10 text-emerald-400" : "bg-amber-500/10 text-amber-400"
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${isAvailable ? "bg-emerald-400 animate-pulse" : "bg-amber-400"}`} />
+                  {isAvailable ? "Disponível" : "Em breve"}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-xl sm:text-2xl font-bold text-white font-['Clash_Display',system-ui,sans-serif]">
+                {course.title}
+              </h3>
+              <p className="text-sm font-medium mt-0.5" style={{ color: course.color }}>
+                {course.subtitle}
+              </p>
+              <p className="text-sm text-white/50 mt-2 leading-relaxed max-w-xl">
+                {course.description}
+              </p>
+
+              {/* Métricas do curso — estilo CRM */}
+              {isAvailable && (
+                <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
+                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                    <Icon name="book" size={14} />
+                    <span><strong className="text-white/70">{course.modules}</strong> módulos</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                    <Icon name="play" size={14} />
+                    <span><strong className="text-white/70">{course.classes}</strong> aulas</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                    <Icon name="award" size={14} />
+                    <span><strong className="text-white/70">{course.games}</strong> jogos</span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* CTA */}
+            <div className="flex-shrink-0 self-start sm:self-center">
+              <Link
+                href={course.href}
+                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 hover:gap-3 ${
+                  isAvailable
+                    ? "text-navy-900 shadow-lg hover:shadow-xl"
+                    : "text-white/50 border border-white/10 hover:border-white/20"
+                }`}
+                style={{
+                  background: isAvailable ? `linear-gradient(135deg, ${course.color}, ${course.color}DD)` : "transparent",
+                  boxShadow: isAvailable ? `0 4px 15px ${course.color}30` : "none",
+                }}
+              >
+                {isAvailable ? (
+                  <>
+                    Acessar plataforma
+                    <Icon name="arrowRight" size={16} />
+                  </>
+                ) : (
+                  "Aguardar"
+                )}
+              </Link>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </FadeUp>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INSTITUTIONAL TRUST SECTION
+   ═══════════════════════════════════════════════════════════════ */
+const TRUST_ITEMS = [
+  { icon: "award", title: "Conteúdo Registrado", desc: "Cursos baseados nas diretrizes dos conselhos profissionais (CRF, CRN, CREFITO, CRP)" },
+  { icon: "shield", title: "Certificado de Conclusão", desc: "Ao finalizar, você recebe um certificado reconhecido para comprovar sua formação" },
+  { icon: "users", title: "Suporte Pedagógico", desc: "Acompanhamento de profissionais atuantes — tire dúvidas direto com quem entende da prática" },
+  { icon: "play", title: "Metodologia Ativa", desc: "Trilhas curtas, quizzes, simulações de balcão, jogos e prática supervisionada" },
+];
+
+function TrustSection() {
+  return (
+    <section className="py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+              Por que escolher a{" "}
+              <span className="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">
+                SaúdeGPT
+              </span>
+            </h2>
+          </div>
+        </FadeUp>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          {TRUST_ITEMS.map((item, i) => (
+            <FadeUp key={i} delay={i * 0.05}>
+              <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 transition-all duration-200 hover:border-emerald-500/15 hover:bg-emerald-500/[0.02]">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{
+                  background: "linear-gradient(135deg, rgba(0,201,167,0.12), rgba(0,201,167,0.05))",
+                  color: "#00C9A7",
+                }}>
+                  <Icon name={item.icon} size={20} />
+                </div>
+                <h3 className="text-sm font-bold text-white mb-1.5">{item.title}</h3>
+                <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TESTIMONIALS — Professional
+   ═══════════════════════════════════════════════════════════════ */
+const TESTIMONIALS = [
+  {
+    text: "O curso transformou minha forma de atender no balcão. Hoje me sinto segura para orientar os pacientes com confiança e técnica.",
+    author: "Camila R.",
+    role: "Atendente de Farmácia — SP",
+    rating: 5,
+  },
+  {
+    text: "Didática incrível. Conteúdos complexos explicados de forma simples. Os jogos e quizzes fixam o aprendizado de verdade.",
+    author: "Lucas M.",
+    role: "Balconista — MG",
+    rating: 5,
+  },
+  {
+    text: "Finalmente uma formação que prepara de verdade para o dia a dia na farmácia. Recomendo para toda a equipe técnica.",
+    author: "Dra. Ana C.",
+    role: "Farmacêutica Responsável — RJ",
+    rating: 5,
+  },
+];
+
+function TestimonialsSection() {
+  return (
+    <section className="py-16 sm:py-20 border-t border-white/[0.04]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="text-center mb-10 sm:mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+              O que dizem nossos{" "}
+              <span className="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">alunos</span>
+            </h2>
+          </div>
+        </FadeUp>
+
+        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+          {TESTIMONIALS.map((t, i) => (
+            <FadeUp key={i} delay={i * 0.08}>
+              <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-5 sm:p-6 h-full transition-all duration-200 hover:border-gold-500/15">
+                <div className="flex gap-0.5 mb-3">
+                  {Array.from({ length: t.rating }).map((_, j) => (
+                    <Icon key={j} name="star" size={13} className="text-gold-500" />
+                  ))}
+                </div>
+                <p className="text-sm text-white/60 leading-relaxed italic mb-4">
+                  &ldquo;{t.text}&rdquo;
+                </p>
+                <div className="pt-3 border-t border-white/[0.04]">
+                  <p className="text-sm font-semibold text-white">{t.author}</p>
+                  <p className="text-xs text-white/35">{t.role}</p>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   FINAL CTA — Institutional
+   ═══════════════════════════════════════════════════════════════ */
+function FinalCTA() {
+  return (
+    <section className="relative py-16 sm:py-20 border-t border-white/[0.04] overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.02] to-transparent" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/[0.03] blur-[120px]" />
+
+      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
+        <FadeUp>
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/15 bg-gold-500/8 px-4 py-1.5 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
+            <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-300">Comece agora</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+            Pronto para transformar sua{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">carreira na saúde</span>?
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-white/45 max-w-lg mx-auto">
+            Junte-se a centenas de alunos que já estão se preparando para oferecer 
+            um atendimento de excelência. Acesso imediato ao conteúdo completo.
+          </p>
+        </FadeUp>
+
+        <FadeUp delay={0.1}>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/trilhas"
+              className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 text-sm font-bold text-navy-900 shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Icon name="graduation" size={18} />
+              Acessar plataforma
+              <Icon name="arrowRight" size={16} />
+            </Link>
+            <Link
+              href="/diretor"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-white/60 hover:text-white hover:border-white/30 transition-all"
+            >
+              Falar conosco
+            </Link>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COURSE CATALOG SECTION
+   ═══════════════════════════════════════════════════════════════ */
+function CourseCatalog() {
+  return (
+    <section id="cursos" className="py-16 sm:py-20 border-t border-white/[0.04]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">
+                Catálogo de cursos
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+              Escolha sua{" "}
+              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
+                especialidade
+              </span>
+            </h2>
+            <p className="mt-2 text-sm text-white/40 max-w-xl">
+              Cada curso é desenvolvido com base nas diretrizes dos conselhos profissionais 
+              e adaptado para a realidade do profissional de saúde brasileiro.
+            </p>
+          </div>
+        </FadeUp>
+
+        <div className="space-y-4 sm:space-y-5">
+          {COURSES.map((course, index) => (
+            <CourseCard key={course.id} course={course} index={index} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN PAGE
+   ═══════════════════════════════════════════════════════════════ */
+export default function HomePage() {
+  return (
+    <ReactLenis root options={{ lerp: 0.06, wheelMultiplier: 1.1 }}>
+      <ScrollProgress />
+      <HeroSection />
+      <CourseCatalog />
+      <TrustSection />
+      <TestimonialsSection />
+      <FinalCTA />
     </ReactLenis>
   );
 }
