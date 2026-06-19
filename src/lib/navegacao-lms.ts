@@ -29,6 +29,7 @@ export const secoesNavLms: SecaoNavLms[] = [
     titulo: "Prática no balcão",
     itens: [
       { href: "/comando-diario", label: "Comando diário", icone: "check" },
+      { href: "/leitura-rapida", label: "Leitura Rápida", icone: "sparkles" },
       { href: "/curiosidades", label: "Curiosidades", icone: "compass" },
       { href: "/missoes", label: "Missões", icone: "target" },
       { href: "/jogos", label: "Jogos", icone: "zap" },
