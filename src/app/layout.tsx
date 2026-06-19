@@ -128,7 +128,6 @@ export default function RootLayout({
                 url: baseUrl,
                 sameAs: site.social.map((item) => item.url),
               },
-              educationalCredentialAwarded: "Certificado de Conclusão — SaúdeGPT",
               hasCourseInstance: {
                 "@type": "CourseInstance",
                 courseMode: "Online",

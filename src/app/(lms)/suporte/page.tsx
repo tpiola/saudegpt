@@ -26,10 +26,6 @@ const duvidas = [
     resposta: "Ao final de cada aula, um quiz rapido testa seu conhecimento. Responda todas as perguntas para ganhar XP. Se errar, veja a explicacao e tente de novo — o aprendizado vem da pratica.",
   },
   {
-    pergunta: "Tem certificado?",
-    resposta: "Sim! Ao concluir todas as aulas de uma trilha, você recebe um certificado de conclusão como comprovante do seu aprendizado. Cada trilha concluída adiciona uma conquista ao seu perfil. Importante: o conteúdo da plataforma é educativo e não substitui o que o(a) farmacêutico(a) ensina presencialmente.",
-  },
-  {
     pergunta: "Como entro em contato com o professor?",
     resposta: "O conteudo da plataforma foi criado pelo farmaceutico Thiago Piola (CRF/SP 58.519). Para duvidas especificas sobre o conteudo, consulte o farmaceutico responsavel da sua farmacia ou o CRF da sua regiao.",
   },

@@ -281,12 +281,11 @@ function HeroSection() {
 
         {/* Métricas institucionais */}
         <FadeUp delay={0.2}>
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-3xl bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
+          <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-6 max-w-3xl bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
             {[
               { icon: "graduation", value: 7, label: "Cursos", suffix: "" },
               { icon: "book", value: 159, label: "Aulas", suffix: "+" },
               { icon: "clock", value: 240, label: "Horas de conteúdo", suffix: "+" },
-              { icon: "award", value: 4.9, label: "Avaliação", suffix: "", decimals: 1 },
             ].map((m, i) => (
               <div key={i} className="text-center">
                 <div className="flex justify-center mb-1.5 text-emerald-400/60">
@@ -429,7 +428,6 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
    ═══════════════════════════════════════════════════════════════ */
 const TRUST_ITEMS = [
   { icon: "award", title: "Conteúdo Registrado", desc: "Cursos baseados nas diretrizes dos conselhos profissionais (CRF, CRN, CREFITO, CRP)" },
-  { icon: "shield", title: "Certificado de Conclusão", desc: "Ao finalizar, você recebe um certificado reconhecido para comprovar sua formação" },
   { icon: "users", title: "Suporte Pedagógico", desc: "Acompanhamento de profissionais atuantes — tire dúvidas direto com quem entende da prática" },
   { icon: "play", title: "Metodologia Ativa", desc: "Trilhas curtas, quizzes, simulações de balcão, jogos e prática supervisionada" },
 ];
@@ -449,7 +447,7 @@ function TrustSection() {
           </div>
         </FadeUp>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {TRUST_ITEMS.map((item, i) => (
             <FadeUp key={i} delay={i * 0.05}>
               <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 transition-all duration-200 hover:border-emerald-500/15 hover:bg-emerald-500/[0.02]">
@@ -573,68 +571,6 @@ function DrogaRaiaSection() {
                       </li>
                     ))}
                   </ul>
-                </div>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TESTIMONIALS — Professional
-   ═══════════════════════════════════════════════════════════════ */
-const TESTIMONIALS = [
-  {
-    text: "O curso transformou minha forma de atender no balcão. Hoje me sinto segura para orientar os pacientes com confiança e técnica.",
-    author: "Camila R.",
-    role: "Atendente de Farmácia — SP",
-    rating: 5,
-  },
-  {
-    text: "Didática incrível. Conteúdos complexos explicados de forma simples. Os jogos e quizzes fixam o aprendizado de verdade.",
-    author: "Lucas M.",
-    role: "Balconista — MG",
-    rating: 5,
-  },
-  {
-    text: "Finalmente uma formação que prepara de verdade para o dia a dia na farmácia. Recomendo para toda a equipe técnica.",
-    author: "Dra. Ana C.",
-    role: "Farmacêutica Responsável — RJ",
-    rating: 5,
-  },
-];
-
-function TestimonialsSection() {
-  return (
-    <section className="py-16 sm:py-20 border-t border-white/[0.04]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp>
-          <div className="text-center mb-10 sm:mb-14">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-              O que dizem nossos{" "}
-              <span className="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">alunos</span>
-            </h2>
-          </div>
-        </FadeUp>
-
-        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <FadeUp key={i} delay={i * 0.08}>
-              <div className="rounded-xl border border-white/[0.06] bg-white/[0.015] p-5 sm:p-6 h-full transition-all duration-200 hover:border-gold-500/15">
-                <div className="flex gap-0.5 mb-3">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Icon key={j} name="star" size={13} className="text-gold-500" />
-                  ))}
-                </div>
-                <p className="text-sm text-emerald-50/70 leading-relaxed italic mb-4">
-                  &ldquo;{t.text}&rdquo;
-                </p>
-                <div className="pt-3 border-t border-white/[0.04]">
-                  <p className="text-sm font-semibold text-white">{t.author}</p>
-                  <p className="text-xs text-emerald-50/50">{t.role}</p>
                 </div>
               </div>
             </FadeUp>
@@ -795,7 +731,6 @@ export default function HomePage() {
       <CourseCatalog />
       <TrustSection />
       <DrogaRaiaSection />
-      <TestimonialsSection />
       <FinalCTA />
     </ReactLenis>
   );
