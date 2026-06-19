@@ -374,7 +374,24 @@ h4, h5, h6 {
   opacity: 0.35;
 }
 
-/* Landscape hero fix */
+/* Scrolling marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+  width: fit-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Landscape fix */
 @media (orientation: landscape) and (max-height: 600px) {
   .hero-health { min-height: 100vh; }
   .hero-navy { min-height: 100vh; }

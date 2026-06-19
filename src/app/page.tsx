@@ -581,6 +581,58 @@ function FinalCTA() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   TICKER BANNER — Rolagem infinita
+   ═══════════════════════════════════════════════════════════════ */
+
+const TICKER_ITEMS = [
+  "CIDADE DOS MÉDICOS",
+  "•",
+  "MEDICAMENTOS",
+  "•",
+  "SAÚDE",
+  "•",
+  "BEM-ESTAR",
+  "•",
+  "FARMÁCIA",
+  "•",
+  "ATENDIMENTO HUMANIZADO",
+  "•",
+  "CIDADE DOS MÉDICOS",
+  "•",
+  "MEDICAMENTOS",
+  "•",
+  "SAÚDE",
+  "•",
+  "BEM-ESTAR",
+  "•",
+  "FARMÁCIA",
+  "•",
+  "ATENDIMENTO HUMANIZADO",
+  "•",
+];
+
+function TickerBanner() {
+  return (
+    <div className="relative w-full overflow-hidden border-t border-b border-emerald-500/10 bg-gradient-to-r from-emerald-500/5 via-forest-900 to-emerald-500/5 py-3">
+      <div className="marquee-track">
+        {TICKER_ITEMS.map((item, i) => (
+          <span
+            key={i}
+            className={`mx-3 text-xs sm:text-sm font-bold uppercase tracking-[0.15em] ${
+              item === "•"
+                ? "text-emerald-500/40"
+                : "bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent"
+            }`}
+          >
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    COURSE CATALOG SECTION
    ═══════════════════════════════════════════════════════════════ */
 function CourseCatalog() {
@@ -626,6 +678,7 @@ export default function HomePage() {
     <ReactLenis root options={{ lerp: 0.06, wheelMultiplier: 1.1 }}>
       <ScrollProgress />
       <HeroSection />
+      <TickerBanner />
       <CourseCatalog />
       <TrustSection />
       <TestimonialsSection />
