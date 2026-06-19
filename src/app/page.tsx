@@ -119,7 +119,7 @@ const COURSES = [
     bgGradient: "from-amber-600/20 via-amber-600/5 to-transparent",
     borderColor: "rgba(245,158,11,0.25)",
     hoverBorder: "rgba(245,158,11,0.5)",
-    href: "https://github.com/tpiola/saudegpt-nutricao",
+    href: "https://saudegpt-nutricao.vercel.app",
     modules: 0,
     classes: 0,
     games: 0,
@@ -137,7 +137,7 @@ const COURSES = [
     bgGradient: "from-blue-600/20 via-blue-600/5 to-transparent",
     borderColor: "rgba(59,130,246,0.25)",
     hoverBorder: "rgba(59,130,246,0.5)",
-    href: "https://github.com/tpiola/saudegpt-fisioterapia",
+    href: "https://saudegpt-fisioterapia.vercel.app",
     modules: 0,
     classes: 0,
     games: 0,
@@ -155,7 +155,7 @@ const COURSES = [
     bgGradient: "from-purple-600/20 via-purple-600/5 to-transparent",
     borderColor: "rgba(168,85,247,0.25)",
     hoverBorder: "rgba(168,85,247,0.5)",
-    href: "https://github.com/tpiola/saudegpt-psicologia",
+    href: "https://saudegpt-psicologia.vercel.app",
     modules: 0,
     classes: 0,
     games: 0,
@@ -471,6 +471,119 @@ function TrustSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   DROGA RAIA — Treinamentos Corporativos
+   ═══════════════════════════════════════════════════════════════ */
+
+const DROGA_RAIA_SECTIONS = [
+  {
+    title: "GEA — Conversas de Saúde",
+    subtitle: "Atendimento MIP e Balcão",
+    items: [
+      "Perceber clientes, cumprimentar de forma ATIVA",
+      "Escutar a necessidade, oferecer se necessário",
+      "Conhecimento do produto, chamar farmacêutico se necessário",
+      "Orientar sobre serviços farmacêuticos e acompanhamento",
+      "Perguntar sobre alergias, hipertensão, diabetes e uso de controlados",
+    ],
+  },
+  {
+    title: "PAS — Protocolo de Atendimento de Saúde",
+    subtitle: "5 passos do atendimento humanizado",
+    items: [
+      "Agendamento e Recepção — receber com acolhimento",
+      "Preparação — equipamentos, salas e documentação prontos",
+      "Realização do Serviço — procedimentos estabelecidos",
+      "Finalização — revisão e feedback com o cliente",
+      "Pós-Serviço — contato para avaliação e satisfação",
+    ],
+  },
+  {
+    title: "Pentágono do Varejo",
+    subtitle: "Os 5 pilares da farmácia",
+    items: [
+      "Preço — indicadores e dúvidas sobre valor",
+      "Ambiente — limpeza e organização da loja",
+      "Produto — sortimento e exposição adequados",
+      "Atendimento — recepção e acolhimento do cliente",
+      "Serviço/Conveniência — facilidade de acesso e serviços",
+    ],
+  },
+  {
+    title: "Cultura RD Saúde",
+    subtitle: "Propósito, valores e comportamento",
+    items: [
+      "Propósito: Juntos por uma sociedade mais saudável",
+      "3 Super Poderes + 6 Competências + 9 Princípios de Liderança",
+      "Cuidar de perto das nossas pessoas e dos nossos clientes",
+      "Aplicação de Tecnologia e Inteligência Artificial (Tema 2026)",
+      "Embaixador da Cultura — Ciclo de Melhoria Contínua",
+    ],
+  },
+];
+
+function DrogaRaiaSection() {
+  return (
+    <section className="relative py-16 sm:py-20 border-t border-white/[0.04] overflow-hidden">
+      {/* Background sutil */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-emerald-950/20" />
+        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full bg-gold-500/[0.02] blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-gold-500/15 bg-gold-500/8 px-4 py-1.5 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400">
+                RD Saúde — Treinamentos Corporativos
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+              Metodologia de{" "}
+              <span className="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">
+                Atendimento Droga Raia
+              </span>
+            </h2>
+            <p className="mt-2 text-sm text-emerald-50/55 max-w-2xl">
+              Protocolos, valores e técnicas de atendimento inspirados na maior rede de farmácias do Brasil, 
+              integrados à formação SaúdeGPT para preparar profissionais de excelência.
+            </p>
+          </div>
+        </FadeUp>
+
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
+          {DROGA_RAIA_SECTIONS.map((sec, i) => (
+            <FadeUp key={sec.title} delay={i * 0.06}>
+              <div className="group relative overflow-hidden rounded-2xl border border-gold-500/10 bg-gradient-to-br from-white/[0.02] to-gold-500/[0.02] p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/25 hover:shadow-lg hover:shadow-gold-500/5">
+                <div className="absolute inset-0 bg-gradient-to-br from-gold-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative z-10">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="flex h-2 w-2 rounded-full bg-gold-400" />
+                    <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400/70">
+                      {sec.subtitle}
+                    </span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-bold text-white mt-2 mb-3">{sec.title}</h3>
+                  <ul className="space-y-2">
+                    {sec.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-emerald-50/60">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400/50" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    TESTIMONIALS — Professional
    ═══════════════════════════════════════════════════════════════ */
 const TESTIMONIALS = [
@@ -681,6 +794,7 @@ export default function HomePage() {
       <TickerBanner />
       <CourseCatalog />
       <TrustSection />
+      <DrogaRaiaSection />
       <TestimonialsSection />
       <FinalCTA />
     </ReactLenis>
