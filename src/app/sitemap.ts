@@ -23,6 +23,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/pressao-arterial`, lastModified: new Date("2026-06-05"), changeFrequency: "monthly" as const, priority: 0.65 },
     { url: `${base}/diabetes`, lastModified: new Date("2026-06-01"), changeFrequency: "monthly" as const, priority: 0.65 },
     { url: `${base}/hormonios`, lastModified: new Date("2026-06-01"), changeFrequency: "monthly" as const, priority: 0.65 },
+    { url: `${base}/medicamentos-guia`, lastModified: new Date("2026-06-15"), changeFrequency: "monthly" as const, priority: 0.65 },
+    { url: `${base}/saude-mental`, lastModified: new Date("2026-06-15"), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${base}/literacia-digital`, lastModified: new Date("2026-06-15"), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${base}/mentoria`, lastModified: new Date("2026-06-15"), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${base}/certificados`, lastModified: new Date("2026-06-15"), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${base}/desempenho`, lastModified: new Date("2026-06-15"), changeFrequency: "weekly" as const, priority: 0.7 },
+    { url: `${base}/forum`, lastModified: new Date("2026-06-10"), changeFrequency: "always" as const, priority: 0.5 },
+    { url: `${base}/scanner`, lastModified: new Date("2026-06-10"), changeFrequency: "monthly" as const, priority: 0.5 },
+    { url: `${base}/suporte`, lastModified: new Date("2026-06-01"), changeFrequency: "monthly" as const, priority: 0.4 },
+    { url: `${base}/cuidado-humanizado`, lastModified: new Date("2026-06-01"), changeFrequency: "monthly" as const, priority: 0.65 },
   ];
 
   const TRILHAS: MetadataRoute.Sitemap = trilhas.flatMap((t) => [

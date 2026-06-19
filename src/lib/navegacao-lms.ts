@@ -38,6 +38,7 @@ export const secoesNavLms: SecaoNavLms[] = [
   {
     titulo: "Referência",
     itens: [
+      { href: "/medicamentos-guia", label: "Guia de Medicamentos", icone: "pill" },
       { href: "/bulas-receitas", label: "Bulas e receitas", icone: "clipboard" },
       { href: "/biblioteca", label: "Biblioteca regulatória", icone: "search" },
     ],

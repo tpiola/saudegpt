@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "./icons";
+import { Icon } from "../icons";
 
 const PATROCINADORES = [
   {
