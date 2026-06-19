@@ -20,7 +20,7 @@ export function SiteHeader() {
   const [aberto, setAberto] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-emerald-500/10 bg-background/85 backdrop-blur-xl supports-[backdrop-filter]:bg-background/70">
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2.5">
@@ -28,7 +28,7 @@ export function SiteHeader() {
           </Link>
 
           {/* Divider */}
-          <div className="hidden sm:block h-6 w-px bg-border/50" />
+          <div className="hidden sm:block h-6 w-px bg-border" />
 
 
         </div>
@@ -40,7 +40,7 @@ export function SiteHeader() {
               href={link.href}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? "bg-gold-500/10 text-gold-500 dark:text-gold-400"
+                  ? "bg-emerald-500/10 text-emerald-400"
                   : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
               }`}
             >
@@ -62,7 +62,7 @@ export function SiteHeader() {
       </nav>
 
       {aberto && (
-        <div className="md:hidden border-t border-white/10 bg-background backdrop-blur-xl shadow-lg shadow-black/20">
+        <div className="md:hidden border-t border-emerald-500/10 bg-background backdrop-blur-xl shadow-lg shadow-black/20">
           <div className="space-y-1 px-4 py-4">
             {links.map((link) => (
               <Link
@@ -71,7 +71,7 @@ export function SiteHeader() {
                 onClick={() => setAberto(false)}
                 className={`block px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-gold-500/10 text-gold-500 dark:text-gold-400"
+                    ? "bg-emerald-500/10 text-emerald-400"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
                 }`}
               >

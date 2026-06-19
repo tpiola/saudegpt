@@ -30,10 +30,7 @@ const dmSans = DM_Sans({
 const baseUrl = getSiteUrl();
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#020e0c" },
-  ],
+  themeColor: "#050F0D",
   initialScale: 1,
   width: "device-width",
   viewportFit: "cover",

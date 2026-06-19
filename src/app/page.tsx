@@ -198,7 +198,7 @@ function ScrollProgress() {
   return (
     <motion.div
       className="fixed top-0 left-0 right-0 z-[9999] h-[2px] origin-left"
-      style={{ scaleX, background: "linear-gradient(90deg, #0A2540, #00C9A7, #C9A227)" }}
+      style={{ scaleX, background: "linear-gradient(90deg, #042F29, #00C9A7, #D4A843)" }}
     />
   );
 }
@@ -222,7 +222,7 @@ function HeroSection() {
   return (
     <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
       {/* Background sutil — gradiente + grid */}
-      <div className="absolute inset-0 bg-gradient-to-b from-navy-950 via-navy-900 to-forest-950" />
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-900 to-forest-950" />
       <div className="absolute inset-0" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
         backgroundSize: "60px 60px",

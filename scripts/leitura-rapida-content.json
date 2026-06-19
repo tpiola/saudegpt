@@ -1,0 +1,192 @@
+{
+  "objetivo": "O módulo 'Leitura Rápida do Paciente' tem como objetivo capacitar os atendentes de farmácia a identificar rapidamente o estado emocional, comportamental e cognitivo dos clientes em apenas 30 segundos. Essa habilidade é crucial para adaptar a comunicação de forma eficaz, garantindo que o cliente se sinta acolhido e compreendido, enquanto o atendente se mantém dentro dos limites éticos e profissionais. Ao final deste módulo, você estará apto a observar sinais sutis que podem indicar o estado mental do cliente, permitindo que você ofereça um atendimento mais personalizado e eficaz, sempre encaminhando ao farmacêutico quando necessário.",
+  "principiosEticos": {
+    "introducao": "O atendente de farmácia deve atuar dentro de um escopo bem definido, focando na orientação básica e no encaminhamento ao farmacêutico para questões mais complexas ou para a avaliação clínica. É essencial respeitar a privacidade do cliente e agir com empatia e profissionalismo.",
+    "frasaObrigatoria": "Com base no que você me conta, recomendo que o farmacêutico avalie pessoalmente",
+    "diretrizes": [
+      "Mantenha sempre a confidencialidade das informações dos clientes.",
+      "Nunca ofereça diagnósticos ou prescreva medicamentos.",
+      "Encaminhe ao farmacêutico se o cliente apresentar sinais de angústia ou dúvidas complexas.",
+      "Seja sempre respeitoso e empático, reconhecendo as limitações do seu papel.",
+      "Mantenha-se atualizado sobre as políticas de saúde e diretrizes éticas.",
+      "Evite julgamentos pessoais ou preconceitos nas interações com os clientes."
+    ]
+  },
+  "frameworkABC": {
+    "introducao": "O framework ABC é uma ferramenta adaptada para o ambiente da farmácia que ajuda a avaliar rapidamente o estado do cliente. Ele se concentra em três áreas principais: Afeto (estado emocional), Comportamento (ações e atitudes) e Cognição (pensamentos e crenças).",
+    "afeto": {
+      "titulo": "A — Afeto (Estado Emocional)",
+      "descricao": "Avaliar o estado emocional do paciente pode ajudar a entender melhor suas necessidades e preocupações. Observe expressões faciais, tom de voz e postura.",
+      "sinais": [
+        "Expressão facial tensa ou preocupada",
+        "Tom de voz hesitante ou trêmulo",
+        "Postura corporal fechada ou retraída",
+        "Olhar fixo ou evitativo"
+      ],
+      "comoResponder": [
+        "Use um tom de voz calmo e acolhedor",
+        "Faça contato visual de forma respeitosa",
+        "Ofereça um sorriso gentil para transmitir segurança",
+        "Use frases que demonstrem empatia e compreensão"
+      ]
+    },
+    "comportamento": {
+      "titulo": "B — Comportamento (Ações e Atitudes)",
+      "descricao": "Observar o comportamento do cliente pode fornecer pistas sobre seu estado mental e como ele está lidando com a situação.",
+      "sinais": [
+        "Movimentos agitados ou repetitivos",
+        "Falta de atenção ou distração",
+        "Interrupção frequente na fala",
+        "Respostas evasivas ou inconsistentes"
+      ],
+      "comoResponder": [
+        "Dê tempo para o cliente processar a informação",
+        "Evite interromper enquanto ele fala",
+        "Reforce as informações importantes de forma clara",
+        "Ofereça ajuda para esclarecer dúvidas"
+      ]
+    },
+    "cognicao": {
+      "titulo": "C — Cognição (Pensamentos e Crenças)",
+      "descricao": "Identificar os padrões de pensamento do cliente pode ajudar a adaptar sua abordagem e garantir que a comunicação seja eficaz.",
+      "sinais": [
+        "Perguntas repetitivas sobre o mesmo tópico",
+        "Confusão sobre informações básicas",
+        "Crenças errôneas sobre medicamentos",
+        "Preocupações excessivas com efeitos colaterais"
+      ],
+      "comoResponder": [
+        "Forneça informações claras e concisas",
+        "Use exemplos práticos para explicar conceitos",
+        "Corrija gentilmente concepções erradas",
+        "Tranquilize o cliente sobre preocupações comuns"
+      ]
+    }
+  },
+  "padroesPensamento": [
+    {
+      "titulo": "Medo do desconhecido",
+      "descricao": "O medo do desconhecido pode se manifestar quando o cliente está preocupado com novos medicamentos ou diagnósticos desconhecidos.",
+      "sinaisBalcao": [
+        "Eu nunca tomei isso antes, é seguro?",
+        "Estou com medo dos efeitos colaterais.",
+        "Será que isso vai mesmo funcionar?"
+      ],
+      "comoResponder": [
+        "Escute atentamente as preocupações do cliente.",
+        "Explique como o medicamento funciona de forma simples.",
+        "Reforce a segurança e eficácia com base em orientações do farmacêutico.",
+        "Encaminhe ao farmacêutico para mais informações detalhadas."
+      ],
+      "oQueDizer": "Entendo que você esteja preocupado. Esse medicamento é seguro e eficaz quando usado conforme orientação médica. Vamos falar com o farmacêutico para mais detalhes.",
+      "oQueEvitar": "Não se preocupe, é só tomar e vai ficar tudo bem."
+    },
+    {
+      "titulo": "Negação / Minimização",
+      "descricao": "A negação ou minimização ocorre quando o cliente tenta reduzir a importância de um sintoma ou diagnóstico.",
+      "sinaisBalcao": [
+        "Ah, não é nada demais.",
+        "Eu não acho que preciso disso.",
+        "Isso é só um resfriadinho."
+      ],
+      "comoResponder": [
+        "Valide os sentimentos do cliente sem julgar.",
+        "Explique a importância de seguir as orientações médicas.",
+        "Ofereça informações sobre os riscos de não tratar adequadamente.",
+        "Encaminhe ao farmacêutico para uma avaliação mais detalhada."
+      ],
+      "oQueDizer": "Entendo que você se sinta assim, mas é importante seguir as orientações para evitar complicações. Vamos ver com o farmacêutico a melhor abordagem.",
+      "oQueEvitar": "Você está errado, isso é sério."
+    },
+    {
+      "titulo": "Sobrecarga de Informação",
+      "descricao": "A sobrecarga de informação pode ocorrer quando o cliente recebe muita informação de uma só vez e não consegue processá-la adequadamente.",
+      "sinaisBalcao": [
+        "Isso é muita informação para processar.",
+        "Não sei por onde começar.",
+        "Estou confuso com tudo isso."
+      ],
+      "comoResponder": [
+        "Divida a informação em partes menores e mais gerenciáveis.",
+        "Pergunte se o cliente tem dúvidas específicas.",
+        "Reitere informações importantes de forma clara e concisa.",
+        "Ofereça folhetos ou materiais escritos que o cliente possa levar."
+      ],
+      "oQueDizer": "Vamos por partes. Primeiro, vamos falar sobre como você deve tomar o medicamento. Depois, podemos ver o restante.",
+      "oQueEvitar": "É simples, é só seguir as instruções."
+    },
+    {
+      "titulo": "Baixo Letramento em Saúde / Crenças Culturais",
+      "descricao": "Clientes com baixo letramento em saúde ou crenças culturais específicas podem ter dificuldade em compreender orientações médicas padrão.",
+      "sinaisBalcao": [
+        "Não sei ler direito essas instruções.",
+        "Na minha família, usamos remédios naturais.",
+        "Não acredito em medicamentos industriais."
+      ],
+      "comoResponder": [
+        "Adapte a linguagem para ser mais acessível.",
+        "Respeite as crenças culturais, mas ofereça informações baseadas em evidências.",
+        "Use analogias simples para explicar conceitos complexos.",
+        "Encaminhe ao farmacêutico para uma abordagem mais personalizada."
+      ],
+      "oQueDizer": "Respeito suas crenças e vamos trabalhar juntos para encontrar uma solução que funcione para você. Posso explicar como este medicamento pode ajudar.",
+      "oQueEvitar": "Isso que você acredita não faz sentido."
+    }
+  ],
+  "exerciciosPraticos": [
+    {
+      "titulo": "Exercício 1: Cliente Preocupado",
+      "contexto": "Um cliente chega à farmácia visivelmente ansioso, olhando frequentemente para o relógio.",
+      "falaCliente": "Estou com pressa, mas preciso saber se esse medicamento é seguro.",
+      "pergunta": "Como o atendente deve reagir à preocupação e pressa do cliente?",
+      "respostaEsperada": "O atendente deve manter a calma, responder de forma clara e concisa, e encaminhar ao farmacêutico para mais detalhes.",
+      "oQueObservar": "Afeto: Ansiedade e pressa; Comportamento: Olhar para o relógio, fala rápida."
+    },
+    {
+      "titulo": "Exercício 2: Cliente em Negação",
+      "contexto": "Um cliente parece minimizar seus sintomas, apesar de ter uma receita para um medicamento importante.",
+      "falaCliente": "Isso é só para garantir, eu nem acho que preciso disso.",
+      "pergunta": "Como o atendente pode abordar a minimização do cliente?",
+      "respostaEsperada": "O atendente deve validar os sentimentos do cliente, mas explicar a importância de seguir a prescrição médica.",
+      "oQueObservar": "Cognição: Negação dos sintomas; Comportamento: Falta de preocupação aparente."
+    },
+    {
+      "titulo": "Exercício 3: Sobrecarga de Informação",
+      "contexto": "Um cliente recebeu várias instruções do médico e parece confuso ao perguntar sobre um dos medicamentos.",
+      "falaCliente": "Eu não sei por onde começar com todos esses remédios.",
+      "pergunta": "Como o atendente pode ajudar a simplificar as informações para o cliente?",
+      "respostaEsperada": "O atendente deve dividir as informações em partes menores, focando em um medicamento por vez, e oferecer materiais de apoio por escrito.",
+      "oQueObservar": "Cognição: Confusão e sobrecarga de informação; Comportamento: Incapacidade de processar instruções."
+    }
+  ],
+  "checklist": {
+    "titulo": "Checklist Rápido (30 segundos) para usar no Balcão",
+    "passos": [
+      "Observe a expressão facial e o tom de voz do cliente.",
+      "Identifique comportamentos como agitação ou distração.",
+      "Escute ativamente para compreender preocupações ou dúvidas.",
+      "Use linguagem simples e clara para se comunicar.",
+      "Avalie se há necessidade de encaminhamento ao farmacêutico.",
+      "Ofereça material escrito ou folhetos informativos quando apropriado.",
+      "Mantenha uma postura acolhedora e respeitosa.",
+      "Reforce sempre a importância de seguir as orientações médicas."
+    ]
+  },
+  "referencias": {
+    "titulo": "Referências Curriculares",
+    "itens": [
+      {
+        "area": "Técnico em Farmácia",
+        "descricao": "Conteúdos sobre comunicação e atendimento ao cliente em farmácias, conforme diretrizes do Ministério da Educação."
+      },
+      {
+        "area": "Psicologia Aplicada à Saúde",
+        "descricao": "Estudos sobre a importância da comunicação interpessoal e compreensão emocional no atendimento ao paciente."
+      },
+      {
+        "area": "Legislação e Ética (CRF)",
+        "descricao": "Normas e orientações do Conselho Regional de Farmácia para o atendimento ao público."
+      }
+    ]
+  }
+}

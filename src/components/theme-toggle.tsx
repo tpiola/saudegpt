@@ -1,32 +1,14 @@
 "use client";
 
-import { useTheme } from "@/lib/theme";
-import { Moon, Sun } from "lucide-react";
+import { Heart } from "lucide-react";
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
-  const { theme, toggleTheme } = useTheme();
-  const isDark = theme === "dark";
-
   return (
-    <button
-      type="button"
-      onClick={toggleTheme}
-      aria-label={isDark ? "Ativar modo claro" : "Ativar modo escuro"}
-      className={`group inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border-strong bg-surface text-muted transition-colors hover:text-navy-500 dark:hover:text-gold-400 ${className}`}
+    <div
+      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-500/20 bg-surface text-emerald-400 ${className}`}
+      title="Modo escuro — saúde visual"
     >
-      <span className="transition-transform duration-500 ease-in-out rotate-0 group-hover:scale-110">
-        {isDark ? (
-          <Sun
-            size={18}
-            className="transition-all duration-500 ease-in-out rotate-0 group-hover:rotate-90"
-          />
-        ) : (
-          <Moon
-            size={18}
-            className="transition-all duration-500 ease-in-out rotate-0 group-hover:-rotate-12"
-          />
-        )}
-      </span>
-    </button>
+      <Heart size={16} className="animate-pulse-soft" />
+    </div>
   );
 }
