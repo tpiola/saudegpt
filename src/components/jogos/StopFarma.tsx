@@ -6,7 +6,7 @@ import { Icon } from "@/components/icons";
 import { Card, Botao, BarraProgresso } from "@/components/ui";
 import { Confetti } from "@/components/confetti";
 import { addXp } from "@/lib/sov-xp";
-import { somQuaseLa } from "@/lib/som";
+import { somQuaseLa, somSucesso } from "@/lib/som";
 
 /* ─── Constantes ─── */
 
@@ -319,6 +319,36 @@ function gerarPlaceholder(campoKey: string, letra: string): string {
   return `Ex: ${ex[campoKey as keyof ExemplosLetra] || `${letra}...`}`;
 }
 
+/* ─── Emojis de reação ao preencher campo ─── */
+
+function EmojiReacao({ x, y, emoji }: { x: number; y: number; emoji: string }) {
+  return (
+    <motion.span
+      className="pointer-events-none fixed z-[60] text-2xl"
+      initial={{ x, y, opacity: 1, scale: 0 }}
+      animate={{
+        y: y - 80,
+        opacity: 0,
+        scale: [0, 1.3, 1, 0],
+      }}
+      transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+    >
+      {emoji}
+    </motion.span>
+  );
+}
+
+const REACOES = ["🎉", "✨", "🔥", "💪", "⭐", "👏", "🎊", "💥"];
+
+/* ─── Timer divertido com emoji ─── */
+
+function TimerEmoji({ pct }: { pct: number }) {
+  if (pct > 70) return <span>🟢</span>;
+  if (pct > 40) return <span>🟡</span>;
+  if (pct > 15) return <span>🔴</span>;
+  return <span>🚨</span>;
+}
+
 /* ─── Barra de Timer Animada (verde → laranja → vermelho) ─── */
 
 function BarraTimer({ pct }: { pct: number }) {
@@ -405,6 +435,19 @@ export function StopFarma() {
 
   const [valores, setValores] = useState<Record<string, string>>({});
   const [jogou, setJogou] = useState(false);
+  const [reacoes, setReacoes] = useState<{ id: number; x: number; y: number; emoji: string }[]>([]);
+  const reacaoIdRef = useRef(0);
+
+  /* Dispara emoji de reação ao preencher campo */
+  function dispararReacao(x: number, y: number) {
+    const id = ++reacaoIdRef.current;
+    const emoji = REACOES[Math.floor(Math.random() * REACOES.length)];
+    setReacoes((prev) => [...prev.slice(-5), { id, x, y, emoji }]);
+    somSucesso();
+    setTimeout(() => {
+      setReacoes((prev) => prev.filter((r) => r.id !== id));
+    }, 1500);
+  }
 
   /* Inicializar/resetar campos */
   function resetarCampos() {
@@ -480,7 +523,13 @@ export function StopFarma() {
   }
 
   function atualizarValor(key: string, v: string) {
+    const estavaVazio = !valores[key]?.trim();
     setValores((prev) => ({ ...prev, [key]: v }));
+    // Dispara reação quando o usuário preenche um campo vazio
+    if (estavaVazio && v.trim().length > 0) {
+      // Pega posição do clique (fallback para centro da tela)
+      dispararReacao(window.innerWidth / 2, window.innerHeight / 2);
+    }
   }
 
   const preenchidos = CAMPOS.filter((c) => valores[c.key]?.trim().length > 0).length;
@@ -636,6 +685,13 @@ export function StopFarma() {
     <Card className="relative overflow-hidden border-gold-400/10">
       <Confetti ativo={celebrar} duracao={2000} />
 
+      {/* Reações emoji */}
+      <AnimatePresence>
+        {reacoes.map((r) => (
+          <EmojiReacao key={r.id} x={r.x} y={r.y} emoji={r.emoji} />
+        ))}
+      </AnimatePresence>
+
       {/* Background glamour */}
       <div className="pointer-events-none absolute -inset-20 bg-[radial-gradient(ellipse_at_center,rgba(212,168,67,0.04)_0%,transparent_70%)]" />
 
@@ -655,7 +711,10 @@ export function StopFarma() {
 
         {/* Timer */}
         <div className="flex-1 max-w-[200px]">
-          <BarraTimer pct={pctTempo} />
+          <div className="flex items-center gap-2 mb-1">
+            <TimerEmoji pct={pctTempo} />
+            <BarraTimer pct={pctTempo} />
+          </div>
           <motion.div
             animate={timerUrgente ? { scale: [1, 1.06, 1] } : {}}
             transition={timerUrgente ? { repeat: Infinity, duration: 0.5, ease: "easeInOut" } : {}}

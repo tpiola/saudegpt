@@ -329,9 +329,9 @@ export default function CuriosidadesPage() {
               },
             ].map((card, i) => (
               <FadeUp key={card.titulo} delay={i * 80}>
-                <div className={`rounded-2xl border border-${card.cor}-100 bg-gradient-to-br from-${card.cor}-50 to-white p-6 dark:from-${card.cor}-900/10 dark:to-navy-500`}>
+                <div className={`rounded-2xl border ${card.cor === "green" ? "border-green-100" : "border-orange-100"} bg-gradient-to-br ${card.cor === "green" ? "from-green-50" : "from-orange-50"} to-white p-6 ${card.cor === "green" ? "dark:from-green-900/10" : "dark:from-orange-900/10"} dark:to-navy-500`}>
                   <div className="flex items-center gap-3">
-                    <span className={`flex h-10 w-10 items-center justify-center rounded-full bg-${card.cor}-100 text-${card.cor}-600 dark:bg-${card.cor}-900/30 text-lg`}>
+                    <span className={`flex h-10 w-10 items-center justify-center rounded-full ${card.cor === "green" ? "bg-green-100 text-green-600 dark:bg-green-900/30" : "bg-orange-100 text-orange-600 dark:bg-orange-900/30"} text-lg`}>
                       {card.emoji}
                     </span>
                     <h3 className="text-sm font-bold text-navy-700 dark:text-white">{card.titulo}</h3>

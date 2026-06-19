@@ -362,7 +362,20 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
                       cabAp ? "text-red-400" : cabVis ? "text-gold-400" : "text-navy-900"
                     }`}
                   >
-                    <div className={`w-11 h-11 rounded-full border-[3px] border-current bg-navy-800/60`} />
+                    <div className={`w-11 h-11 rounded-full border-[3px] border-current bg-navy-800/60 flex items-center justify-center text-xs`}>
+                      {/* Rosto expressivo baseado no estado do jogo */}
+                      {vitoria ? (
+                        <span className="text-emerald-300">😄</span>
+                      ) : erros >= 6 ? (
+                        <span className="text-red-400">😵</span>
+                      ) : erros >= 4 ? (
+                        <span className="text-orange-300">😰</span>
+                      ) : erros >= 2 ? (
+                        <span className="text-gold-300">😅</span>
+                      ) : (
+                        <span className="text-emerald-300">🙂</span>
+                      )}
+                    </div>
                   </motion.div>
                 );
                 // Tronco (índice 1)
@@ -568,18 +581,40 @@ export function ForcaFarma({ onVoltar }: ForcaFarmaProps) {
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 12 }}
                     className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-400 to-gold-600 shadow-lg shadow-gold-500/25"
+                    style={{ animation: "trophy-glow 2s ease-in-out infinite" }}
                   >
                     <Icon name="award" size={28} className="text-white" />
                   </motion.div>
-                  <h3 className="text-xl font-extrabold text-gold-300">
-                    🎉 Vitória!
-                  </h3>
+                  <motion.h3
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="text-xl font-extrabold text-gold-300"
+                    style={{ animation: "gold-shimmer 3s linear infinite" }}
+                  >
+                    🎉 Vitória! 🎉
+                  </motion.h3>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="flex justify-center gap-2 text-lg"
+                    style={{ animation: "xp-jump 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both" }}
+                  >
+                    <span>🎊</span><span>✨</span><span>🎉</span><span>💫</span><span>🎊</span>
+                  </motion.div>
                   <p className="text-sm text-navy-300">
                     Você acertou <strong className="text-gold-400">{palavraAtual.palavra}</strong>
                   </p>
-                  <p className="text-2xl font-extrabold text-gold-400">
+                  <motion.p
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10, delay: 0.5 }}
+                    className="text-2xl font-extrabold"
+                    style={{ color: "#D4A843", animation: "joy-glow 2s ease-in-out infinite" }}
+                  >
                     +{Math.max(10, 100 - (perdeu ? 6 : erros) * 10) + (timerAtivo ? Math.max(0, Math.floor(tempoRestante / 2)) : 0)} pts
-                  </p>
+                  </motion.p>
                 </>
               ) : (
                 <>

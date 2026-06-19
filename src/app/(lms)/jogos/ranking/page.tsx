@@ -74,31 +74,7 @@ function formatarXp(xp: number): string {
   return String(xp);
 }
 
-/* ─── Geração de dados mock ─── */
-const NOMES_MOCK = [
-  "Carlos Farmacêutico", "Ana Atendente", "Pedro Medley",
-  "Julia Receituário", "Marcos Tarja", "Larissa Balcão",
-  "Rafael Genérico", "Beatriz Similar", "Thiago Manipulado",
-  "Camila Fitoterápico", "Gustavo Anvisa", "Isabela Prescrito",
-];
-
-function gerarMockJogadores(): JogadorRanking[] {
-  const jogadores: JogadorRanking[] = [];
-  for (let i = 0; i < NOMES_MOCK.length; i++) {
-    const xp = Math.floor(Math.random() * 5000) + 200;
-    jogadores.push({
-      id: `mock-${i + 1}`,
-      nome: NOMES_MOCK[i],
-      nivel: Math.floor(xp / 250) + 1,
-      xp,
-      precisao: Math.floor(Math.random() * 30) + 65,
-      streak: Math.floor(Math.random() * 20),
-      badges: Math.floor(Math.random() * 8) + 1,
-    });
-  }
-  return jogadores.sort((a, b) => b.xp - a.xp);
-}
-
+/* ─── Carregamento (sem mock — só dados reais) ─── */
 const CHAVE_RANKING = "fap-ranking";
 
 function carregarRanking(): JogadorRanking[] {
@@ -107,9 +83,7 @@ function carregarRanking(): JogadorRanking[] {
     const raw = localStorage.getItem(CHAVE_RANKING);
     if (raw) return JSON.parse(raw) as JogadorRanking[];
   } catch { /* ignora */ }
-  const mock = gerarMockJogadores();
-  try { localStorage.setItem(CHAVE_RANKING, JSON.stringify(mock)); } catch { /* */ }
-  return mock;
+  return [];
 }
 
 /* ─── Componentes ─── */
@@ -489,7 +463,7 @@ export default function RankingPage() {
             ) : (
               /* ═══ ABA SEMANAL / MENSAL — Top 10 + Sua Posição ═══ */
               <div className="space-y-6">
-                {/* Grid Top 10 */}
+                {/* Grid Top 10 / Placeholder */}
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
                     <Icon name="award" size={16} className="text-gold-400" />
@@ -497,11 +471,31 @@ export default function RankingPage() {
                       Top 10 — {aba === "semanal" ? "Semanal" : "Mensal"}
                     </h2>
                   </div>
-                  <div className="space-y-2">
-                    {top10.map((jogador, i) => (
-                      <TopCard key={jogador.id} jogador={jogador} pos={i + 1} index={i} />
-                    ))}
-                  </div>
+                  {jogadores.length === 0 ? (
+                    <div className="rounded-xl border border-dashed border-gold-400/20 bg-gold-500/3 p-10 text-center">
+                      <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-gold-400/20 to-gold-500/10">
+                        <span className="text-3xl">🏆</span>
+                      </div>
+                      <h3 className="text-base font-bold text-foreground mb-2">
+                        Ranking em breve
+                      </h3>
+                      <p className="mx-auto max-w-md text-sm text-muted leading-relaxed">
+                        Convide colegas para ativar o ranking! 
+                        Quando outros profissionais começarem a estudar, 
+                        o ranking será populado automaticamente.
+                      </p>
+                      <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold-500/10 px-4 py-1.5 text-xs font-medium text-gold-500">
+                        <span className="flex h-2 w-2 rounded-full bg-gold-500 animate-pulse" />
+                        Aguardando participantes
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      {top10.map((jogador, i) => (
+                        <TopCard key={jogador.id} jogador={jogador} pos={i + 1} index={i} />
+                      ))}
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Sua Posição */}

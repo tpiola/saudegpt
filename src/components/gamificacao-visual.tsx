@@ -65,20 +65,62 @@ function ParticleExplosion({ count = 8 }: { count?: number }) {
   );
 }
 
+/* ── Glitter particles para a barra de XP ── */
+function GlitterSparkles() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
+      {Array.from({ length: 5 }, (_, i) => (
+        <motion.span
+          key={i}
+          className="absolute h-1 w-1 rounded-full"
+          style={{
+            left: `${15 + Math.random() * 70}%`,
+            top: `${10 + Math.random() * 80}%`,
+            backgroundColor: i % 2 === 0 ? "#34d399" : "#D4A843",
+            boxShadow: `0 0 4px ${i % 2 === 0 ? "#34d399" : "#D4A843"}`,
+            animation: "glitter-sparkle 2s ease-in-out infinite",
+            animationDelay: `${Math.random() * 2}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ── Barra de progresso animada para próximo nível ── */
 export function XpBar({ xp, xpProximoNivel }: { xp: number; xpProximoNivel: number }) {
   const porcento = Math.min((xp / (xpProximoNivel || 1)) * 100, 100);
+  const [animKey, setAnimKey] = useState(0);
+  const prevXp = useRef(xp);
+
+  // Detecta quando XP aumenta para animar glitter
+  useEffect(() => {
+    if (xp > prevXp.current) {
+      setAnimKey((k) => k + 1);
+    }
+    prevXp.current = xp;
+  }, [xp]);
 
   return (
     <div className="relative w-full">
       <div className="h-2 w-full overflow-hidden rounded-full bg-navy-100 dark:bg-navy-800/50">
-        <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-orange-400 to-emerald-400 bg-[length:200%_100%]"
-          initial={{ width: 0 }}
-          animate={{ width: `${porcento}%` }}
-          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
-          style={{ animation: "gradient-shift 3s linear infinite" }}
-        />
+        <div className="relative h-full w-full">
+          <motion.div
+            key={animKey}
+            className="h-full rounded-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-gold-400 bg-[length:200%_100%]"
+            initial={{ width: 0 }}
+            animate={{
+              width: `${porcento}%`,
+            }}
+            transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }}
+            style={{
+              animation: "gold-shimmer 2s linear infinite",
+              boxShadow: animKey > 0 ? "0 0 12px rgba(0, 201, 167, 0.4)" : "none",
+            }}
+          />
+          {/* Glitter na barra quando ganha XP */}
+          {animKey > 0 && <GlitterSparkles />}
+        </div>
       </div>
       <div className="mt-1 flex items-center justify-between text-[10px] text-subtle">
         <span>{xp.toLocaleString()} XP</span>
@@ -171,10 +213,55 @@ export function XpRewardToast({ xp, streak, onComplete }: FloatingRewardProps) {
   );
 }
 
-/* ── Contador animado de streak ── */
+/* ── Chama realista para o streak (fogo com animação CSS) ── */
+function RealisticFlame({ size }: { size: number }) {
+  return (
+    <div className="relative pointer-events-none" style={{ width: size, height: size * 1.4 }}>
+      {/* Chama principal */}
+      <motion.div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full"
+        style={{
+          width: size * 0.6,
+          height: size * 1.1,
+          background: "radial-gradient(ellipse at 50% 80%, #ff6b35 0%, #ff4500 40%, #ff8c00 70%, transparent 100%)",
+          filter: "blur(2px)",
+          animation: "flame-dance 1.5s ease-in-out infinite",
+        }}
+      />
+      {/* Chama interna (mais clara) */}
+      <motion.div
+        className="absolute bottom-1 left-1/2 -translate-x-1/2 rounded-full"
+        style={{
+          width: size * 0.3,
+          height: size * 0.7,
+          background: "radial-gradient(ellipse at 50% 80%, #fff5e6 0%, #ffdd00 40%, #ff8c00 70%, transparent 100%)",
+          filter: "blur(1px)",
+          animation: "flame-dance 1.2s ease-in-out infinite",
+          animationDelay: "-0.3s",
+        }}
+      />
+      {/* Brilho ao redor */}
+      <div
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full"
+        style={{
+          width: size * 0.8,
+          height: size * 0.4,
+          background: "radial-gradient(ellipse, rgba(255, 107, 53, 0.4) 0%, transparent 70%)",
+          filter: "blur(8px)",
+        }}
+      />
+    </div>
+  );
+}
+
+/* ── Contador animado de streak com chama realista ── */
 export function StreakFlame({ streak, size = "md" }: { streak: number; size?: "sm" | "md" | "lg" }) {
   const sizeMap = { sm: "text-lg", md: "text-2xl", lg: "text-4xl" };
-  const flameSize = { sm: "h-8 w-8", md: "h-12 w-12", lg: "h-16 w-16" };
+  const flameSize = {
+    sm: 24,
+    md: 36,
+    lg: 52,
+  };
 
   const flameColor =
     streak === 0
@@ -187,7 +274,7 @@ export function StreakFlame({ streak, size = "md" }: { streak: number; size?: "s
 
   return (
     <motion.div
-      className={`relative inline-flex ${flameSize[size]} items-center justify-center rounded-full bg-gradient-to-br ${flameColor} shadow-lg`}
+      className={`relative inline-flex items-center justify-center`}
       animate={!usePrefersReducedMotion() && streak >= 3
           ? {
               scale: [1, 1.08, 1],
@@ -195,15 +282,35 @@ export function StreakFlame({ streak, size = "md" }: { streak: number; size?: "s
             }
           : {}}
     >
-      <span className={sizeMap[size]}>🔥</span>
-      <motion.span
-        className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-bold text-navy-700 shadow"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 500, damping: 15 }}
+      {/* Chama realista CSS */}
+      {streak > 0 && (
+        <div className="absolute -inset-2 flex items-center justify-center">
+          <RealisticFlame size={flameSize[size]} />
+        </div>
+      )}
+
+      {/* Ícone fire sobre a chama */}
+      <span
+        className={`relative z-10 ${sizeMap[size]}`}
+        style={{
+          filter: streak >= 3 ? "drop-shadow(0 0 6px rgba(255, 107, 53, 0.6))" : "none",
+        }}
       >
-        {streak}
-      </motion.span>
+        🔥
+      </span>
+
+      {/* Badge do contador */}
+      {streak > 0 && (
+        <motion.span
+          key={streak}
+          className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] font-bold text-navy-700 shadow z-20"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: "spring", stiffness: 500, damping: 15 }}
+        >
+          {streak}
+        </motion.span>
+      )}
     </motion.div>
   );
 }
