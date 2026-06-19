@@ -374,9 +374,71 @@ h4, h5, h6 {
   opacity: 0.35;
 }
 
-/* Landscape fix */
+/* Landscape hero fix */
 @media (orientation: landscape) and (max-height: 600px) {
   .hero-health { min-height: 100vh; }
+  .hero-navy { min-height: 100vh; }
+  section.relative.min-h-\[85vh\] {
+    min-height: 120vh !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  .text-3xl { font-size: 1.5rem !important; }
+  .text-4xl { font-size: 1.75rem !important; }
+  .sm\:text-5xl { font-size: 2rem !important; }
+  .sm\:text-lg { font-size: 0.875rem !important; }
+  .gap-8 { gap: 0.75rem !important; }
+  .gap-12 { gap: 1rem !important; }
+  .mt-16 { margin-top: 1rem !important; }
+  .mt-12 { margin-top: 0.75rem !important; }
+  .mt-8 { margin-top: 0.5rem !important; }
+  .py-16 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+  .max-w-3xl { max-width: 100% !important; }
+  .grid.sm\:grid-cols-4 { grid-template-columns: repeat(4, 1fr) !important; gap: 0.5rem !important; }
+}
+
+/* Landscape tablets */
+@media (orientation: landscape) and (min-height: 601px) and (max-height: 800px) {
+  section.relative.min-h-\[85vh\] {
+    min-height: 100vh !important;
+    padding-top: 1.5rem !important;
+  }
+  .mt-16 { margin-top: 1.5rem !important; }
+  .mt-12 { margin-top: 1rem !important; }
+  .py-16 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+}
+
+/* Small phones portrait */
+@media (max-width: 380px) {
+  .text-3xl { font-size: 1.25rem !important; }
+  .text-2xl { font-size: 1.1rem !important; }
+  .sm\:text-lg { font-size: 0.8rem !important; }
+  .gap-3 { gap: 0.5rem !important; }
+  .px-4 { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+  .p-5 { padding: 0.75rem !important; }
+}
+
+/* Ensure course cards stack properly on small screens */
+@media (max-width: 480px) {
+  .grid.gap-4.sm\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Stats grid - single column on tiny screens */
+@media (max-width: 360px) {
+  .grid.grid-cols-2 {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+}
+
+/* Footer - compact on landscape mobile */
+@media (orientation: landscape) and (max-height: 500px) {
+  footer .py-16 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+  footer .gap-10 { gap: 1rem !important; }
+  footer .mt-14 { margin-top: 1rem !important; }
+  footer .mt-10 { margin-top: 0.75rem !important; }
 }
 
 /* ══════════════════════════════════════════════════════════

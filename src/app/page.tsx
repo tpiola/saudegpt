@@ -235,7 +235,7 @@ function HeroSection() {
           <FadeUp>
             <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-300">
+              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-400">
                 Plataforma de Formação em Saúde
               </span>
             </div>
@@ -251,7 +251,7 @@ function HeroSection() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <p className="mt-4 text-base sm:text-lg text-white/50 max-w-xl leading-relaxed">
+            <p className="mt-4 text-base sm:text-lg text-emerald-50/60 max-w-xl leading-relaxed">
               Cursos online para Farmácia, Nutrição, Fisioterapia e Psicologia. 
               Conteúdo desenvolvido por profissionais registrados, com gamificação, 
               simulações práticas e certificado.
@@ -295,7 +295,7 @@ function HeroSection() {
                 <div className="text-xl sm:text-2xl font-extrabold text-white">
                   <AnimatedCounter target={m.value} suffix={m.suffix} decimals={m.decimals || 0} />
                 </div>
-                <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-white/35 mt-0.5">
+                <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-emerald-50/45 mt-0.5">
                   {m.label}
                 </div>
               </div>
@@ -370,22 +370,22 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
               <p className="text-sm font-medium mt-0.5" style={{ color: course.color }}>
                 {course.subtitle}
               </p>
-              <p className="text-sm text-white/50 mt-2 leading-relaxed max-w-xl">
+              <p className="text-sm text-emerald-50/60 mt-2 leading-relaxed max-w-xl">
                 {course.description}
               </p>
 
               {/* Métricas do curso — estilo CRM */}
               {isAvailable && (
                 <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
-                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
                     <Icon name="book" size={14} />
                     <span><strong className="text-white/70">{course.modules}</strong> módulos</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
                     <Icon name="play" size={14} />
                     <span><strong className="text-white/70">{course.classes}</strong> aulas</span>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-white/40">
+                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
                     <Icon name="award" size={14} />
                     <span><strong className="text-white/70">{course.games}</strong> jogos</span>
                   </div>
@@ -400,7 +400,7 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
                 className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 hover:gap-3 ${
                   isAvailable
                     ? "text-navy-900 shadow-lg hover:shadow-xl"
-                    : "text-white/50 border border-white/10 hover:border-white/20"
+                    : "text-emerald-50/60 border border-white/10 hover:border-white/20"
                 }`}
                 style={{
                   background: isAvailable ? `linear-gradient(135deg, ${course.color}, ${course.color}DD)` : "transparent",
@@ -460,7 +460,7 @@ function TrustSection() {
                   <Icon name={item.icon} size={20} />
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1.5">{item.title}</h3>
-                <p className="text-xs text-white/40 leading-relaxed">{item.desc}</p>
+                <p className="text-xs text-emerald-50/55 leading-relaxed">{item.desc}</p>
               </div>
             </FadeUp>
           ))}
@@ -516,12 +516,12 @@ function TestimonialsSection() {
                     <Icon key={j} name="star" size={13} className="text-gold-500" />
                   ))}
                 </div>
-                <p className="text-sm text-white/60 leading-relaxed italic mb-4">
+                <p className="text-sm text-emerald-50/70 leading-relaxed italic mb-4">
                   &ldquo;{t.text}&rdquo;
                 </p>
                 <div className="pt-3 border-t border-white/[0.04]">
                   <p className="text-sm font-semibold text-white">{t.author}</p>
-                  <p className="text-xs text-white/35">{t.role}</p>
+                  <p className="text-xs text-emerald-50/50">{t.role}</p>
                 </div>
               </div>
             </FadeUp>
@@ -544,14 +544,14 @@ function FinalCTA() {
       <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
         <FadeUp>
           <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/15 bg-gold-500/8 px-4 py-1.5 mb-4">
-            <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
-            <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-300">Comece agora</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400">Comece agora</span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
             Pronto para transformar sua{" "}
             <span className="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">carreira na saúde</span>?
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-white/45 max-w-lg mx-auto">
+          <p className="mt-3 text-sm sm:text-base text-emerald-50/60 max-w-lg mx-auto">
             Junte-se a centenas de alunos que já estão se preparando para oferecer 
             um atendimento de excelência. Acesso imediato ao conteúdo completo.
           </p>
@@ -569,7 +569,7 @@ function FinalCTA() {
             </Link>
             <Link
               href="/diretor"
-              className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-white/60 hover:text-white hover:border-white/30 transition-all"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-emerald-50/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
             >
               Falar conosco
             </Link>
@@ -601,7 +601,7 @@ function CourseCatalog() {
                 especialidade
               </span>
             </h2>
-            <p className="mt-2 text-sm text-white/40 max-w-xl">
+            <p className="mt-2 text-sm text-emerald-50/55 max-w-xl">
               Cada curso é desenvolvido com base nas diretrizes dos conselhos profissionais 
               e adaptado para a realidade do profissional de saúde brasileiro.
             </p>
