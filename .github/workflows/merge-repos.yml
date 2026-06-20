@@ -3,89 +3,84 @@ name: Merge Sub-Repos into Monorepo
 on:
   workflow_dispatch:
 
-  jobs:
-    merge-repos:
-        runs-on: ubuntu-latest
-            permissions:
-                  contents: write
+jobs:
+  merge-repos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-                      steps:
-                            - name: Checkout saudegpt (monorepo)
-                                    uses: actions/checkout@v4
-                                            with:
-                                                      token: ${{ secrets.GITHUB_TOKEN }}
-                                                                fetch-depth: 0
+    steps:
+      - name: Checkout saudegpt (monorepo)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-                                                                      - name: Configure Git
-                                                                              run: |
-                                                                                        git config user.name "github-actions[bot]"
-                                                                                                  git config user.email "github-actions[bot]@users.noreply.github.com"
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
-                                                                                                        - name: Clone saudegpt-psicologia
-                                                                                                                uses: actions/checkout@v4
-                                                                                                                        with:
-                                                                                                                                  repository: tpiola/saudegpt-psicologia
-                                                                                                                                            token: ${{ secrets.GITHUB_TOKEN }}
-                                                                                                                                                      path: _tmp_psicologia
-                                                                                                                                                      
-                                                                                                                                                            - name: Clone saudegpt-nutricao
-                                                                                                                                                                    uses: actions/checkout@v4
-                                                                                                                                                                            with:
-                                                                                                                                                                                      repository: tpiola/saudegpt-nutricao
-                                                                                                                                                                                                token: ${{ secrets.GITHUB_TOKEN }}
-                                                                                                                                                                                                          path: _tmp_nutricao
-                                                                                                                                                                                                          
-                                                                                                                                                                                                                - name: Clone saudegpt-fisioterapia
-                                                                                                                                                                                                                        uses: actions/checkout@v4
-                                                                                                                                                                                                                                with:
-                                                                                                                                                                                                                                          repository: tpiola/saudegpt-fisioterapia
-                                                                                                                                                                                                                                                    token: ${{ secrets.GITHUB_TOKEN }}
-                                                                                                                                                                                                                                                              path: _tmp_fisioterapia
-                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                    - name: Clone saudegpt-core
-                                                                                                                                                                                                                                                                            uses: actions/checkout@v4
-                                                                                                                                                                                                                                                                                    with:
-                                                                                                                                                                                                                                                                                              repository: tpiola/saudegpt-core
-                                                                                                                                                                                                                                                                                                        token: ${{ secrets.GITHUB_TOKEN }}
-                                                                                                                                                                                                                                                                                                                  path: _tmp_core
-                                                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                                                        - name: Copy psicologia files
-                                                                                                                                                                                                                                                                                                                                run: |
-                                                                                                                                                                                                                                                                                                                                          mkdir -p apps/psicologia
-                                                                                                                                                                                                                                                                                                                                                    rsync -av --exclude='.git' _tmp_psicologia/ apps/psicologia/
-                                                                                                                                                                                                                                                                                                                                                              rm -rf _tmp_psicologia
-                                                                                                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                                                                                                                    - name: Copy nutricao files
-                                                                                                                                                                                                                                                                                                                                                                            run: |
-                                                                                                                                                                                                                                                                                                                                                                                      mkdir -p apps/nutricao
-                                                                                                                                                                                                                                                                                                                                                                                                rsync -av --exclude='.git' _tmp_nutricao/ apps/nutricao/
-                                                                                                                                                                                                                                                                                                                                                                                                          rm -rf _tmp_nutricao
-                                                                                                                                                                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                                                                                                                - name: Copy fisioterapia files
-                                                                                                                                                                                                                                                                                                                                                                                                                        run: |
-                                                                                                                                                                                                                                                                                                                                                                                                                                  mkdir -p apps/fisioterapia
-                                                                                                                                                                                                                                                                                                                                                                                                                                            rsync -av --exclude='.git' _tmp_fisioterapia/ apps/fisioterapia/
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      rm -rf _tmp_fisioterapia
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            - name: Copy core files
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    run: |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              mkdir -p packages/core
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        rsync -av --exclude='.git' _tmp_core/ packages/core/
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  rm -rf _tmp_core
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        - name: Commit and push
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                run: |
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          git add apps/ packages/
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    git status
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              git diff --cached --stat
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        if git diff --cached --quiet; then
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    echo "No changes to commit"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              else
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          git commit -m "feat: merge saudegpt-psicologia, nutricao, fisioterapia and core into monorepo
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      - apps/psicologia <- saudegpt-psicologia
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  - apps/nutricao <- saudegpt-nutricao
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              - apps/fisioterapia <- saudegpt-fisioterapia
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          - packages/core <- saudegpt-core"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      git push
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                fi
+      - name: Clone saudegpt-psicologia
+        uses: actions/checkout@v4
+        with:
+          repository: tpiola/saudegpt-psicologia
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: _tmp_psicologia
+
+      - name: Clone saudegpt-nutricao
+        uses: actions/checkout@v4
+        with:
+          repository: tpiola/saudegpt-nutricao
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: _tmp_nutricao
+
+      - name: Clone saudegpt-fisioterapia
+        uses: actions/checkout@v4
+        with:
+          repository: tpiola/saudegpt-fisioterapia
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: _tmp_fisioterapia
+
+      - name: Clone saudegpt-core
+        uses: actions/checkout@v4
+        with:
+          repository: tpiola/saudegpt-core
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: _tmp_core
+
+      - name: Copy psicologia files
+        run: |
+          mkdir -p apps/psicologia
+          rsync -av --exclude='.git' _tmp_psicologia/ apps/psicologia/
+          rm -rf _tmp_psicologia
+
+      - name: Copy nutricao files
+        run: |
+          mkdir -p apps/nutricao
+          rsync -av --exclude='.git' _tmp_nutricao/ apps/nutricao/
+          rm -rf _tmp_nutricao
+
+      - name: Copy fisioterapia files
+        run: |
+          mkdir -p apps/fisioterapia
+          rsync -av --exclude='.git' _tmp_fisioterapia/ apps/fisioterapia/
+          rm -rf _tmp_fisioterapia
+
+      - name: Copy core files
+        run: |
+          mkdir -p packages/core
+          rsync -av --exclude='.git' _tmp_core/ packages/core/
+          rm -rf _tmp_core
+
+      - name: Commit and push
+        run: |
+          git add apps/ packages/
+          git status
+          git diff --cached --stat
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "feat: merge psicologia, nutricao, fisioterapia and core into monorepo"
+            git push
+          fi
