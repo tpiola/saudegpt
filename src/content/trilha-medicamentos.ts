@@ -2343,5 +2343,183 @@ export const trilhaMedicamentos: Trilha = {
         },
       ],
     },
+    // ═══════════════════════════════════════════════════════════════
+    // NOVO MÓDULO: Condições Clínicas no Balcão
+    // Pressão arterial, diabetes e outras condições para atendimento seguro.
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: "condicoes-clinicas",
+      titulo: "Condições Clínicas no Balcão",
+      descricao:
+        "Pressão arterial, diabetes e outras condições para atendimento seguro.",
+      imagemHeroUrl: imagensCategoria.medicamentos,
+      aulas: [
+        {
+          id: "pressao-arterial",
+          titulo: "Pressão Arterial no Balcão da Farmácia",
+          duracaoMin: 8,
+          nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.medicamentos,
+          produtos: [],
+          marcas: [],
+          resumo:
+            "Entenda a hipertensão, os novos parâmetros de referência e como orientar clientes que medem a pressão na farmácia.",
+          resumoExecutivo: [
+            "Hipertensão é uma condição silenciosa; muitos clientes só descobrem na farmácia durante a aferição.",
+            "Parâmetros atualizados: pressão normal < 130/85; estágio 1: 130-139/85-89; hipertensão: ≥ 140/90.",
+            "O atendente NUNCA deve sugerir medicamento para pressão — apenas orientar encaminhamento médico e farmacêutico.",
+            "Medir a pressão corretamente: cliente sentado, pernas descruzadas, braço apoiado na altura do coração, repouso de 5 minutos.",
+          ],
+          comparativo: {
+            titulo: "Classificação da Pressão Arterial",
+            itens: [
+              { nome: "Normal", quando: "Pressão < 130/85 mmHg" },
+              { nome: "Pré-hipertensão", quando: "130-139 / 85-89 mmHg" },
+              { nome: "Hipertensão estágio 1", quando: "140-159 / 90-99 mmHg" },
+              { nome: "Hipertensão estágio 2", quando: "≥ 160 / ≥ 100 mmHg" },
+            ],
+          },
+          simulacao: {
+            cliente:
+              "Cliente aferiu a pressão na farmácia e deu 150/95. Pergunta se precisa de remédio.",
+            falaBoa:
+              "Sua pressao esta elevada hoje, mas apenas uma medicao nao diagnostica hipertensao. O ideal e procurar um medico para avaliacao completa. Vou chamar o farmaceutico para orientar voce com seguranca.",
+            falaEvitar: "Vou te indicar um remedio para baixar a pressao.",
+          },
+          checklist: [
+            "Perguntar se cliente está em acompanhamento médico",
+            "Nunca sugerir medicamento para pressão",
+            "Encaminhar ao farmacêutico para aferição",
+          ],
+          quandoChamarFarmaceutico: [
+            "Cliente com pressão > 140/90",
+            "Cliente com sintomas de crise hipertensiva (cefaleia intensa, tontura, visão turva)",
+            "Dúvida sobre interação medicamentosa",
+          ],
+          errosComuns: [
+            "Recomendar chás ou remédios caseiros para pressão",
+            "Ignorar sintomas associados",
+          ],
+          quiz: [
+            q(
+              "Qual o valor de pressão arterial que já é considerado hipertensão?",
+              ["< 120/80", "130-139/85-89", "≥ 140/90", "≥ 180/110"],
+              2,
+              "A partir de 140/90 mmHg considera-se hipertensão; valores entre 130-139/85-89 são pré-hipertensão.",
+            ),
+            q(
+              "O que o atendente deve fazer se um cliente mede a pressão na farmácia e obtém 160/100?",
+              [
+                "Indicar um anti-hipertensivo imediatamente",
+                "Encaminhar ao farmacêutico e orientar busca de avaliação médica",
+                "Dizer que é normal e mandar para casa",
+                "Recomendar chá de alho",
+              ],
+              1,
+              "Pressão ≥ 140/90 exige avaliação profissional; o farmacêutico deve ser acionado para orientação.",
+            ),
+            q(
+              "Um cliente com pressão controlada quer comprar um anti-inflamatório. Qual o cuidado?",
+              [
+                "Pode vender qualquer anti-inflamatório sem preocupação",
+                "Anti-inflamatórios (AINEs) podem reduzir o efeito dos anti-hipertensivos — chamar o farmacêutico",
+                "O anti-inflamatório não interfere na pressão",
+                "Dobrar a dose do anti-hipertensivo",
+              ],
+              1,
+              "AINEs podem reduzir a eficácia de anti-hipertensivos como IECA, BRA e diuréticos, além de risco renal.",
+            ),
+          ],
+          xp: 60,
+        },
+        {
+          id: "diabetes",
+          titulo: "Diabetes no Balcão da Farmácia",
+          duracaoMin: 10,
+          nivel: "avancado",
+          imagemHeroUrl: imagensCategoria.medicamentos,
+          produtos: [],
+          marcas: [],
+          resumo:
+            "Conheça os tipos de diabetes, sinais de alerta, medicamentos e a importância do encaminhamento médico.",
+          resumoExecutivo: [
+            "Diabetes tipo 1: geralmente diagnosticado na infância/adolescência, depende de insulina — não orientar sem médico.",
+            "Diabetes tipo 2: mais comum em adultos, associado a sobrepeso e sedentarismo; controle com dieta, exercício e medicamentos orais/injetáveis.",
+            "Sinais de alerta: sede excessiva, urinar muito, perda de peso sem motivo, feridas que não cicatrizam, visão turva.",
+            "Hipoglicemia (açúcar baixo): tontura, suor frio, tremores, confusão — oferecer açúcar rápido (suco, bala) e encaminhar.",
+            "O atendente NUNCA deve sugerir ajuste de dose de insulina ou antidiabéticos — apenas orientar encaminhamento médico.",
+          ],
+          comparativo: {
+            titulo: "Tipo de Diabetes x Característica",
+            itens: [
+              { nome: "Tipo 1", quando: "Autoimune, diagnóstico precoce, depende de insulina, maior risco de hipoglicemia." },
+              { nome: "Tipo 2", quando: "Resistência insulínica, associado a obesidade, controle com dieta + oral/injetável." },
+              { nome: "Gestacional", quando: "Surge na gestação, requer monitoramento rigoroso, geralmente resolve após o parto." },
+            ],
+          },
+          simulacao: {
+            cliente:
+              "Cliente diabético tipo 2 quer comprar um suco detox para 'curar' a diabetes.",
+            falaBoa:
+              "Diabetes nao tem cura mas tem controle. Suco detox nao substitui medicacao e acompanhamento medico. Continue o tratamento prescrito e, se quiser dicas de alimentacao, o farmaceutico pode orientar.",
+            falaEvitar:
+              "Pode comprar, isso ai cura diabetes sim.",
+          },
+          checklist: [
+            "Perguntar se cliente está em acompanhamento com médico",
+            "Identificar sinais de alerta de hipoglicemia",
+            "Nunca sugerir medicamento ou ajuste de dose para diabetes",
+            "Encaminhar ao farmacêutico para orientação sobre medicamentos e monitoramento",
+          ],
+          quandoChamarFarmaceutico: [
+            "Cliente com sintomas de hipoglicemia (tontura, suor frio, confusão)",
+            "Cliente com feridas que não cicatrizam",
+            "Dúvida sobre medicamentos para diabetes",
+            "Cliente diabético comprando medicamento que pode interagir",
+          ],
+          errosComuns: [
+            "Sugerir chás ou produtos naturais como cura para diabetes",
+            "Indicar ajuste de dose de insulina ou antidiabéticos",
+            "Ignorar sinais de hipoglicemia no balcão",
+          ],
+          quiz: [
+            q(
+              "Qual a conduta correta se um cliente diabético apresenta sinais de hipoglicemia (tontura, suor frio, tremores) no balcão?",
+              [
+                "Ignorar e continuar o atendimento normal",
+                "Oferecer açúcar rápido (suco, bala, água com açúcar) e chamar o farmacêutico",
+                "Dar insulina imediatamente",
+                "Mandar o cliente ir para casa deitar",
+              ],
+              1,
+              "Hipoglicemia é emergência: oferecer carboidrato de absorção rápida e acionar o farmacêutico.",
+            ),
+            q(
+              "Qual a principal diferença entre diabetes tipo 1 e tipo 2?",
+              [
+                "Não há diferença, o tratamento é o mesmo",
+                "Tipo 1 é autoimune e depende de insulina; tipo 2 é resistência insulínica e pode ser controlado com dieta e medicamentos orais",
+                "Tipo 1 só aparece em idosos",
+                "Tipo 2 é mais grave que tipo 1",
+              ],
+              1,
+              "DM1 é deficiência absoluta de insulina (autoimune); DM2 é resistência insulínica progressiva.",
+            ),
+            q(
+              "Um cliente diabético quer comprar um MIP antigripal que contém açúcar. O que o atendente deve fazer?",
+              [
+                "Vender sem preocupação",
+                "Verificar a composição, orientar sobre versões sem açúcar se disponíveis e chamar o farmacêutico se necessário",
+                "Proibir qualquer medicamento para diabéticos",
+                "Dizer que açúcar não faz mal para diabético",
+              ],
+              1,
+              "Diabéticos precisam de atenção com açúcar em medicamentos; versões sem açúcar ou alternativas devem ser avaliadas com o farmacêutico.",
+            ),
+          ],
+          xp: 65,
+        },
+      ],
+    },
   ],
 };

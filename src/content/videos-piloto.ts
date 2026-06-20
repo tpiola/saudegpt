@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════
 // VÍDEOS EDUCATIVOS — Canais oficiais da indústria farmacêutica
 // Fontes: Vida de Farmácia, CRF-SP, CFF, Sarah Faria Mentora Farma
-// NÃO incluídos: RD Saúde, Raia Drogasil ou propagandas comerciais
+// NÃO incluídos: propagandas de redes específicas
 // ═══════════════════════════════════════════════════════════════
 
 export const videosPiloto = {

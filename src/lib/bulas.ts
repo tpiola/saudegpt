@@ -1,7 +1,7 @@
 /**
  * Serviço de Bulas + Scanner Avançado
  * Busca informações estendidas de medicamentos/produtos via APIs públicas,
- * ANVISA, Droga Raia e DeepSeek Vision.
+ * ANVISA e DeepSeek Vision.
  */
 
 export interface ProductInfo {
@@ -166,7 +166,7 @@ export async function searchAnvisaBula(
 }
 
 // ---------------------------------------------------------------------------
-// 3. Busca no site da Droga Raia
+// 3. Busca em sites de farmácias
 // ---------------------------------------------------------------------------
 
 export async function searchDrogaRaia(

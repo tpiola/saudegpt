@@ -5,37 +5,37 @@ import ProfessorAvatar from "@/components/ProfessorAvatar";
 
 export const metadata: Metadata = {
   title: "Suporte | SaúdeGPT",
-  description: "Tire suas duvidas sobre a plataforma, trilhas, progresso e conteúdo educativo.",
+  description: "Tire suas dúvidas sobre a plataforma, trilhas, progresso e conteúdo educativo.",
 };
 
 const duvidas = [
   {
-    pergunta: "Como comecar a estudar?",
-    resposta: "Va ate a pagina Trilhas e modulos, escolha uma trilha e clique no primeiro modulo. Dentro de cada modulo voce encontra as aulas organizadas por ordem pedagogica. Cada aula tem video, resumo executivo, quiz e XP.",
+    pergunta: "Como começar a estudar?",
+    resposta: "Vá até a página Trilhas e módulos, escolha uma trilha e clique no primeiro módulo. Dentro de cada módulo você encontra as aulas organizadas por ordem pedagógica. Cada aula tem vídeo, resumo executivo, quiz e XP.",
   },
   {
     pergunta: "Como funciona o progresso?",
-    resposta: "Seu progresso e salvo automaticamente no navegador. Cada aula concluida rende XP, que acumula para subir de nivel. Voce tambem ganha streaks (dias consecutivos estudando) e badges ao atingir marcos.",
+    resposta: "Seu progresso é salvo automaticamente no navegador. Cada aula concluída rende XP, que acumula para subir de nível. Você também ganha streaks (dias consecutivos estudando) e badges ao atingir marcos.",
   },
   {
     pergunta: "O que sao os 4 Ps?",
-    resposta: "O metodo dos 4 Ps (Protecao, Prevencao, Promocao e Primeira Atencao) e a base do atendimento consultivo que ensinamos na plataforma. Cada aula traz uma dica pratica de um dos 4 Ps para aplicar no balcao.",
+    resposta: "O método dos 4 Ps (Proteção, Prevenção, Promoção e Primeira Atenção) é a base do atendimento consultivo que ensinamos na plataforma. Cada aula traz uma dica prática de um dos 4 Ps para aplicar no balcão.",
   },
   {
     pergunta: "Como funciona o quiz?",
-    resposta: "Ao final de cada aula, um quiz rapido testa seu conhecimento. Responda todas as perguntas para ganhar XP. Se errar, veja a explicacao e tente de novo — o aprendizado vem da pratica.",
+    resposta: "Ao final de cada aula, um quiz rápido testa seu conhecimento. Responda todas as perguntas para ganhar XP. Se errar, veja a explicação e tente de novo — o aprendizado vem da prática.",
   },
   {
     pergunta: "Como entro em contato com o professor?",
-    resposta: "O conteudo da plataforma foi criado pelo farmaceutico Thiago Piola (CRF/SP 58.519). Para duvidas especificas sobre o conteudo, consulte o farmaceutico responsavel da sua farmacia ou o CRF da sua regiao.",
+    resposta: "O conteúdo da plataforma foi criado pelo farmacêutico Thiago Piola (CRF/SP 58.519). Para dúvidas específicas sobre o conteúdo, consulte o farmacêutico responsável da sua farmácia ou o CRF da sua região.",
   },
   {
     pergunta: "Meus dados estao seguros?",
-    resposta: "Sim. Seguimos a LGPD (Lei Geral de Protecao de Dados). Seus dados de progresso ficam armazenados localmente no navegador. Nao compartilhamos informacoes com terceiros. Veja nossa Politica de Privacidade para mais detalhes.",
+    resposta: "Sim. Seguimos a LGPD (Lei Geral de Proteção de Dados). Seus dados de progresso ficam armazenados localmente no navegador. Não compartilhamos informações com terceiros. Veja nossa Política de Privacidade para mais detalhes.",
   },
   {
     pergunta: "Preciso pagar para usar?",
-    resposta: "A plataforma esta disponivel para formacao de atendentes de farmacia. Consulte a pagina inicial para informacoes sobre acesso e planos.",
+    resposta: "A plataforma está disponível para formação de atendentes de farmácia. Consulte a página inicial para informações sobre acesso e planos.",
   },
 ];
 
@@ -51,7 +51,7 @@ export default function SuportePage() {
           Suporte
         </h1>
         <p className="mt-2 text-base sm:text-lg text-muted max-w-xl mx-auto">
-          Tire suas duvidas sobre a plataforma, trilhas, progresso e conteudo educativo.
+          Tire suas dúvidas sobre a plataforma, trilhas, progresso e conteúdo educativo.
         </p>
       </div>
 
@@ -83,9 +83,9 @@ export default function SuportePage() {
           <ProfessorAvatar size="md" showName={false} />
           <div>
             <h3 className="font-bold text-foreground">Farmacêutico Thiago Piola</h3>
-            <p className="text-sm text-muted">Thiago Piola — CRF/SP 58.519 — Criador do conteudo</p>
+            <p className="text-sm text-muted">Thiago Piola — CRF/SP 58.519 — Criador do conteúdo</p>
             <p className="mt-1 text-xs text-muted/70">
-              Para questoes tecnicas sobre a plataforma ou sobre o conteudo, entre em contato pelo site:{" "}
+              Para questões técnicas sobre a plataforma ou sobre o conteúdo, entre em contato pelo site:{" "}
               <a
                 href="https://www.thiagopiola.com.br"
                 className="text-gold-600 hover:text-gold-700 underline"

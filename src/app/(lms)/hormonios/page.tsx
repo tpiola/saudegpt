@@ -197,7 +197,7 @@ export default function HormoniosPage() {
                   href={`#${t.id}`}
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 backdrop-blur-sm hover:bg-white/10 hover:text-white transition-all"
                 >
-                  {t.emoji} {t.titulo.split(" ")[0]}
+                  {t.emoji} {t.titulo.replace(/ —.*$/, "").replace(/\?$/, "")}
                 </a>
               ))}
             </div>

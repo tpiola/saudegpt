@@ -600,9 +600,9 @@ export const trilhaServicosCuidado: Trilha = {
           nivel: "basico",
           imagemHeroUrl: imagensCategoria.atendimentoAvancado,
           resumo:
-            "A farmácia moderna vai muito além da prateleira: é um ponto de cuidado com serviços de saúde. Conheça o portfólio — como o divulgado pela Droga Raia — e o seu papel nele.",
+            "A farmácia moderna vai muito além da prateleira: é um ponto de cuidado com serviços de saúde. Conheça o portfólio — divulgado por grandes redes farmacêuticas — e o seu papel nele.",
           resumoExecutivo: [
-            "Grandes redes, como a Droga Raia, oferecem um portfólio de serviços de saúde: vacinação, testes rápidos (como o de COVID-19), exames clínicos, serviços farmacêuticos como aferição de pressão e glicemia, aplicação de injetáveis, telessaúde e manipulação — a disponibilidade varia por farmácia.",
+            "Grandes redes farmacêuticas oferecem um portfólio de serviços de saúde: vacinação, testes rápidos (como o de COVID-19), exames clínicos, serviços farmacêuticos como aferição de pressão e glicemia, aplicação de injetáveis, telessaúde e manipulação — a disponibilidade varia por farmácia.",
             "Base legal existe e é sólida: a RDC 197/2017 regula serviços como vacinação e aplicação de injetáveis; a RDC 978/2025 trata dos testes e exames; as Resoluções CFF 585 e 586 definem as atribuições clínicas do farmacêutico.",
             "Quem EXECUTA os serviços é o farmacêutico. O atendente é a porta de entrada: identifica a necessidade, apresenta o serviço, agenda e prepara o cliente.",
             "Serviço é cuidado contínuo: o cliente que afere a pressão todo mês cria vínculo com a farmácia — e tem a saúde acompanhada de verdade.",

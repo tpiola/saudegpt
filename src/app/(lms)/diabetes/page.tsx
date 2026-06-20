@@ -113,6 +113,24 @@ export default function DiabetesPage() {
   return (
     <div className="relative">
       {/* ════════════════════════════════════════════
+         BANNER — Curso Completo
+         ════════════════════════════════════════════ */}
+      <div className="relative z-20 bg-gradient-to-r from-emerald-600/20 via-emerald-500/10 to-emerald-600/20 border-b border-emerald-500/20">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-200/80">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span>Este conteúdo faz parte do <strong className="text-emerald-200">Curso Completo de Atendente de Farmácia</strong></span>
+          </div>
+          <Link
+            href="/trilhas"
+            className="shrink-0 inline-flex items-center gap-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/20 px-3 py-1.5 text-xs font-semibold text-emerald-300 transition-all hover:text-emerald-200"
+          >
+            Ver curso completo →
+          </Link>
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════════
          HERO — COM VÍDEO DE FUNDO
          ════════════════════════════════════════════ */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
@@ -170,7 +188,7 @@ export default function DiabetesPage() {
                   href={`#${t.id}`}
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 backdrop-blur-sm hover:bg-white/10 hover:text-white transition-all"
                 >
-                  {t.emoji} {t.titulo.split(" ")[0]}
+                  {t.emoji} {t.titulo.replace(/ —.*$/, "").replace(/\?$/, "")}
                 </a>
               ))}
             </div>
@@ -261,7 +279,7 @@ export default function DiabetesPage() {
                     <span>📊</span> Diabetes afeta mais de 530 milhões de pessoas no mundo
                   </li>
                   <li className="flex items-center gap-2">
-                    <span>🇧🇷</span> O Brasil está entre os 5 países com mais casos
+                    <span>🇧🇷</span> O Brasil é o 6º país com mais casos no mundo
                   </li>
                   <li className="flex items-center gap-2">
                     <span>🧬</span> 1 em cada 2 pessoas com diabetes não sabe que tem
@@ -295,9 +313,11 @@ export default function DiabetesPage() {
                     Você sabia?
                   </p>
                   <p className="text-sm leading-relaxed text-white/70">
-                    A canela pode ajudar a controlar a glicemia? Estudos mostram que o consumo regular
-                    ajuda a melhorar a sensibilidade à insulina. Mas atenção: não substitui o tratamento
-                    médico!
+                    Você já ouviu falar que a canela pode ajudar no controle da glicemia? 
+                    Embora alguns estudos preliminares sugiram possível benefício, as evidências 
+                    ainda não são conclusivas e a canela NÃO substitui o tratamento médico 
+                    convencional. Consulte sempre um médico ou nutricionista antes de usar 
+                    qualquer recurso complementar.
                   </p>
                 </div>
               </div>

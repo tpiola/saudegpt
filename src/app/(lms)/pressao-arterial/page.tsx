@@ -70,14 +70,14 @@ Os dois são importantes! Um coração saudável precisa dos dois números dentr
   {
     id: "limite-sbc",
     emoji: "🩺",
-    titulo: "Novo limite SBC 2026 — o que mudou?",
-    texto: `A Sociedade Brasileira de Cardiologia (SBC) atualizou as diretrizes em 2026. Agora:
+    titulo: "Limites da pressão arterial",
+    texto: `A Sociedade Brasileira de Cardiologia (SBC) revisa periodicamente as diretrizes de pressão arterial. Segundo as referências mais recentes, os valores de referência são:
 
-✅ Pressão NORMAL: abaixo de 130/80 mmHg
+✅ Pressão ótima: abaixo de 120/80 mmHg
 ⚠️ Atenção: entre 130/80 e 139/89
-🔴 Hipertensão: acima de 140/90
+🔴 Hipertensão: a partir de 140/90
 
-Antes o limite era 140/90. Agora é 130/80. Isso significa que mais pessoas precisam de cuidado e acompanhamento — e o farmacêutico tem um papel fundamental nisso!`,
+É importante lembrar que esses valores são referências gerais. Cada pessoa pode ter metas diferentes definidas pelo seu médico. O farmacêutico tem um papel fundamental em incentivar o acompanhamento médico regular!`,
     imagem: "/imagens/sleep_hygiene.webp",
   },
 ];
@@ -85,6 +85,24 @@ Antes o limite era 140/90. Agora é 130/80. Isso significa que mais pessoas prec
 export default function PressaoArterialPage() {
   return (
     <div className="relative">
+      {/* ════════════════════════════════════════════
+         BANNER — Curso Completo
+         ════════════════════════════════════════════ */}
+      <div className="relative z-20 bg-gradient-to-r from-emerald-600/20 via-emerald-500/10 to-emerald-600/20 border-b border-emerald-500/20">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 lg:px-12 py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-emerald-200/80">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span>Este conteúdo faz parte do <strong className="text-emerald-200">Curso Completo de Atendente de Farmácia</strong></span>
+          </div>
+          <Link
+            href="/trilhas"
+            className="shrink-0 inline-flex items-center gap-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 border border-emerald-400/20 px-3 py-1.5 text-xs font-semibold text-emerald-300 transition-all hover:text-emerald-200"
+          >
+            Ver curso completo →
+          </Link>
+        </div>
+      </div>
+
       {/* ════════════════════════════════════════════
          HERO — COM VÍDEO DE FUNDO
          ════════════════════════════════════════════ */}
@@ -122,7 +140,7 @@ export default function PressaoArterialPage() {
               <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
                 {[
                   { value: "5", label: "tópicos" },
-                  { value: "130/80", label: "novo limite SBC" },
+                  { value: "140/90", label: "referência SBC" },
                   { value: "Fácil", label: "de entender" },
                 ].map((s) => (
                   <div key={s.label} className="flex items-center gap-2">
@@ -152,7 +170,7 @@ export default function PressaoArterialPage() {
                   href={`#${t.id}`}
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-medium text-white/70 backdrop-blur-sm hover:bg-white/10 hover:text-white transition-all"
                 >
-                  {t.emoji} {t.titulo.split(" ")[0]}
+                  {t.emoji} {t.titulo.replace(/ —.*$/, "").replace(/\?$/, "")}
                 </a>
               ))}
             </div>

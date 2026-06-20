@@ -1,6 +1,6 @@
-# Treinamentos Droga Raia — Material Extraído
+# Treinamentos Corporativos — Material Extraído
 
-Material de treinamento da **RD Saúde / Droga Raia** extraído de imagens do acervo do Thiago Piola. Conteúdo aplicável ao treinamento comercial farmacêutico.
+Material de treinamento aplicável ao treinamento comercial farmacêutico.
 
 ---
 
@@ -76,7 +76,7 @@ Atendimento e cuidado em todos os ambientes:
 
 ---
 
-## 5. Propósito e Valores RD Saúde
+## 5. Propósito e Valores Corporativos
 
 **Propósito:** Juntos por uma sociedade mais saudável.
 - Cultura de trabalho
@@ -101,7 +101,7 @@ Atendimento e cuidado em todos os ambientes:
 
 ---
 
-## 7. 3x6x9 — Mantra de Liderança RD Saúde
+## 7. 3x6x9 — Mantra de Liderança Corporativo
 
 **3 Super Poderes + 6 Competências + 9 Princípios da Liderança**
 
@@ -110,7 +110,7 @@ Atendimento e cuidado em todos os ambientes:
 - Caminhamos juntos
 - Cultivamos relações
 
-### 9 Princípios da Liderança RD Saúde
+### 9 Princípios da Liderança Corporativa
 
 **Cuidamos de Gente:**
 1. Crescemos juntos

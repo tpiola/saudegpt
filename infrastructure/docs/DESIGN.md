@@ -79,7 +79,7 @@ components:
 ## Overview
 
 Design system para plataforma EAD de formação de atendentes de farmácia.
-Inspirado no RD Saúde. Posicionamento: saúde-first (cuidado sobre venda).
+Inspirado em grandes redes farmacêuticas. Posicionamento: saúde-first (cuidado sobre venda).
 
 ## Colors
 

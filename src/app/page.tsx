@@ -95,7 +95,7 @@ const COURSES = [
     id: "farmacia",
     title: "Farmácia",
     subtitle: "Formação para Atendentes de Farmácia",
-    description: "Domine medicamentos, legislação ANVISA, dispensação segura e atendimento humanizado. Curso completo do básico ao avançado.",
+    description: "39 módulos · 159 aulas · 7 trilhas · jogos · OSCE · certificado de conclusão",
     icon: "pill",
     color: "#00C9A7",
     bgGradient: "from-emerald-600/20 via-emerald-600/5 to-transparent",
@@ -105,6 +105,7 @@ const COURSES = [
     modules: 39,
     classes: 159,
     games: 9,
+    professor: "Farmacêutico Thiago Piola — CRF/SP 58.519",
     status: "disponivel",
     badge: "CRF/SP 58.519",
     badgeColor: "#00C9A7",
@@ -119,7 +120,7 @@ const COURSES = [
     bgGradient: "from-amber-600/20 via-amber-600/5 to-transparent",
     borderColor: "rgba(245,158,11,0.25)",
     hoverBorder: "rgba(245,158,11,0.5)",
-    href: "https://saudegpt-nutricao.vercel.app",
+    href: "#",
     modules: 0,
     classes: 0,
     games: 0,
@@ -137,7 +138,7 @@ const COURSES = [
     bgGradient: "from-blue-600/20 via-blue-600/5 to-transparent",
     borderColor: "rgba(59,130,246,0.25)",
     hoverBorder: "rgba(59,130,246,0.5)",
-    href: "https://saudegpt-fisioterapia.vercel.app",
+    href: "#",
     modules: 0,
     classes: 0,
     games: 0,
@@ -155,7 +156,7 @@ const COURSES = [
     bgGradient: "from-purple-600/20 via-purple-600/5 to-transparent",
     borderColor: "rgba(168,85,247,0.25)",
     hoverBorder: "rgba(168,85,247,0.5)",
-    href: "https://saudegpt-psicologia.vercel.app",
+    href: "#",
     modules: 0,
     classes: 0,
     games: 0,
@@ -236,32 +237,30 @@ function HeroSection() {
             <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-400">
-                Plataforma de Formação em Saúde
+                Catálogo de Cursos
               </span>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.05}>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white font-['Clash_Display',system-ui,sans-serif]">
-              Formação completa para{" "}
+              A plataforma brasileira de{" "}
               <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                profissionais da saúde
+                cursos práticos para a saúde
               </span>
             </h1>
           </FadeUp>
 
           <FadeUp delay={0.1}>
             <p className="mt-4 text-base sm:text-lg text-emerald-50/60 max-w-xl leading-relaxed">
-              Cursos online para Farmácia, Nutrição, Fisioterapia e Psicologia. 
-              Conteúdo desenvolvido por profissionais registrados, com gamificação, 
-              simulações práticas e certificado.
+              Escolha sua área, matricule-se em uma formação e aprenda com trilhas, simulações, jogos, biblioteca regulatória e certificado de conclusão.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.15}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
-                href="/trilhas"
+                href="#cursos"
                 className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <Icon name="graduation" size={18} />
@@ -269,11 +268,11 @@ function HeroSection() {
                 <Icon name="arrowRight" size={16} />
               </Link>
               <Link
-                href="/diretor"
+                href="/trilhas"
                 className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
               >
-                <Icon name="shield" size={16} />
-                Conheça o diretor
+                <Icon name="arrowRight" size={16} />
+                Começar por Farmácia
               </Link>
             </div>
           </FadeUp>
@@ -292,7 +291,7 @@ function HeroSection() {
                   <Icon name={m.icon} size={18} />
                 </div>
                 <div className="text-xl sm:text-2xl font-extrabold text-white">
-                  <AnimatedCounter target={m.value} suffix={m.suffix} decimals={m.decimals || 0} />
+                  <AnimatedCounter target={m.value} suffix={m.suffix} decimals={0} />
                 </div>
                 <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-emerald-50/45 mt-0.5">
                   {m.label}
@@ -373,6 +372,14 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
                 {course.description}
               </p>
 
+              {/* Professor */}
+              {course.professor && (
+                <p className="text-xs text-emerald-50/45 mt-2 flex items-center gap-1.5">
+                  <Icon name="graduation" size={12} />
+                  {course.professor}
+                </p>
+              )}
+
               {/* Métricas do curso — estilo CRM */}
               {isAvailable && (
                 <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
@@ -408,11 +415,11 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
               >
                 {isAvailable ? (
                   <>
-                    Acessar plataforma
+                    Matricular agora
                     <Icon name="arrowRight" size={16} />
                   </>
                 ) : (
-                  "Aguardar"
+                  "Entrar na lista de espera"
                 )}
               </Link>
             </div>
@@ -428,7 +435,6 @@ function CourseCard({ course, index }: { course: typeof COURSES[0]; index: numbe
    ═══════════════════════════════════════════════════════════════ */
 const TRUST_ITEMS = [
   { icon: "award", title: "Conteúdo Registrado", desc: "Cursos baseados nas diretrizes dos conselhos profissionais (CRF, CRN, CREFITO, CRP)" },
-  { icon: "users", title: "Suporte Pedagógico", desc: "Acompanhamento de profissionais atuantes — tire dúvidas direto com quem entende da prática" },
   { icon: "play", title: "Metodologia Ativa", desc: "Trilhas curtas, quizzes, simulações de balcão, jogos e prática supervisionada" },
 ];
 
@@ -447,7 +453,7 @@ function TrustSection() {
           </div>
         </FadeUp>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
           {TRUST_ITEMS.map((item, i) => (
             <FadeUp key={i} delay={i * 0.05}>
               <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 transition-all duration-200 hover:border-emerald-500/15 hover:bg-emerald-500/[0.02]">
@@ -459,119 +465,6 @@ function TrustSection() {
                 </div>
                 <h3 className="text-sm font-bold text-white mb-1.5">{item.title}</h3>
                 <p className="text-xs text-emerald-50/55 leading-relaxed">{item.desc}</p>
-              </div>
-            </FadeUp>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   DROGA RAIA — Treinamentos Corporativos
-   ═══════════════════════════════════════════════════════════════ */
-
-const DROGA_RAIA_SECTIONS = [
-  {
-    title: "GEA — Conversas de Saúde",
-    subtitle: "Atendimento MIP e Balcão",
-    items: [
-      "Perceber clientes, cumprimentar de forma ATIVA",
-      "Escutar a necessidade, oferecer se necessário",
-      "Conhecimento do produto, chamar farmacêutico se necessário",
-      "Orientar sobre serviços farmacêuticos e acompanhamento",
-      "Perguntar sobre alergias, hipertensão, diabetes e uso de controlados",
-    ],
-  },
-  {
-    title: "PAS — Protocolo de Atendimento de Saúde",
-    subtitle: "5 passos do atendimento humanizado",
-    items: [
-      "Agendamento e Recepção — receber com acolhimento",
-      "Preparação — equipamentos, salas e documentação prontos",
-      "Realização do Serviço — procedimentos estabelecidos",
-      "Finalização — revisão e feedback com o cliente",
-      "Pós-Serviço — contato para avaliação e satisfação",
-    ],
-  },
-  {
-    title: "Pentágono do Varejo",
-    subtitle: "Os 5 pilares da farmácia",
-    items: [
-      "Preço — indicadores e dúvidas sobre valor",
-      "Ambiente — limpeza e organização da loja",
-      "Produto — sortimento e exposição adequados",
-      "Atendimento — recepção e acolhimento do cliente",
-      "Serviço/Conveniência — facilidade de acesso e serviços",
-    ],
-  },
-  {
-    title: "Cultura RD Saúde",
-    subtitle: "Propósito, valores e comportamento",
-    items: [
-      "Propósito: Juntos por uma sociedade mais saudável",
-      "3 Super Poderes + 6 Competências + 9 Princípios de Liderança",
-      "Cuidar de perto das nossas pessoas e dos nossos clientes",
-      "Aplicação de Tecnologia e Inteligência Artificial (Tema 2026)",
-      "Embaixador da Cultura — Ciclo de Melhoria Contínua",
-    ],
-  },
-];
-
-function DrogaRaiaSection() {
-  return (
-    <section className="relative py-16 sm:py-20 border-t border-white/[0.04] overflow-hidden">
-      {/* Background sutil */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 via-transparent to-emerald-950/20" />
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] rounded-full bg-gold-500/[0.02] blur-[120px]" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp>
-          <div className="mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-gold-500/15 bg-gold-500/8 px-4 py-1.5 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400">
-                RD Saúde — Treinamentos Corporativos
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-              Metodologia de{" "}
-              <span className="bg-gradient-to-r from-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                Atendimento Droga Raia
-              </span>
-            </h2>
-            <p className="mt-2 text-sm text-emerald-50/55 max-w-2xl">
-              Protocolos, valores e técnicas de atendimento inspirados na maior rede de farmácias do Brasil, 
-              integrados à formação SaúdeGPT para preparar profissionais de excelência.
-            </p>
-          </div>
-        </FadeUp>
-
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
-          {DROGA_RAIA_SECTIONS.map((sec, i) => (
-            <FadeUp key={sec.title} delay={i * 0.06}>
-              <div className="group relative overflow-hidden rounded-2xl border border-gold-500/10 bg-gradient-to-br from-white/[0.02] to-gold-500/[0.02] p-5 sm:p-6 transition-all duration-300 hover:border-gold-500/25 hover:shadow-lg hover:shadow-gold-500/5">
-                <div className="absolute inset-0 bg-gradient-to-br from-gold-500/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative z-10">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="flex h-2 w-2 rounded-full bg-gold-400" />
-                    <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400/70">
-                      {sec.subtitle}
-                    </span>
-                  </div>
-                  <h3 className="text-base sm:text-lg font-bold text-white mt-2 mb-3">{sec.title}</h3>
-                  <ul className="space-y-2">
-                    {sec.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2 text-sm text-emerald-50/60">
-                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-400/50" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
               </div>
             </FadeUp>
           ))}
@@ -609,15 +502,15 @@ function FinalCTA() {
         <FadeUp delay={0.1}>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/trilhas"
+              href="#cursos"
               className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 text-sm font-bold text-navy-900 shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Icon name="graduation" size={18} />
-              Acessar plataforma
+              Matricular agora
               <Icon name="arrowRight" size={16} />
             </Link>
             <Link
-              href="/diretor"
+              href="/contato"
               className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-emerald-50/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
             >
               Falar conosco
@@ -682,6 +575,103 @@ function TickerBanner() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
+   HOW IT WORKS — 3 passos simples
+   ═══════════════════════════════════════════════════════════════ */
+
+const STEPS = [
+  {
+    icon: "book",
+    title: "Escolha sua área",
+    desc: "Farmácia, Nutrição, Fisioterapia ou Psicologia — escolha a formação ideal para você.",
+    color: "#00C9A7",
+  },
+  {
+    icon: "graduation",
+    title: "Matricule-se e comece",
+    desc: "Acesso imediato a todas as trilhas, aulas e materiais do curso escolhido.",
+    color: "#D4A843",
+  },
+  {
+    icon: "award",
+    title: "Aprenda com jogos e certificado",
+    desc: "Simulações de balcão, quizzes, OSCE e certificado de conclusão ao final.",
+    color: "#3B82F6",
+  },
+];
+
+function HowItWorks() {
+  return (
+    <section className="py-16 sm:py-20 border-t border-white/[0.04]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <FadeUp>
+          <div className="text-center mb-10 sm:mb-14">
+            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">
+                Como funciona
+              </span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
+              Começar é{" "}
+              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
+                simples e rápido
+              </span>
+            </h2>
+            <p className="mt-2 text-sm text-emerald-50/55 max-w-xl mx-auto">
+              Em três passos você transforma sua carreira na saúde.
+            </p>
+          </div>
+        </FadeUp>
+
+        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+          {STEPS.map((step, i) => (
+            <FadeUp key={i} delay={i * 0.08}>
+              <div className="relative group h-full">
+                {/* Step number */}
+                <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold text-navy-950"
+                  style={{ background: step.color }}
+                >
+                  {i + 1}
+                </div>
+                <div
+                  className="relative h-full rounded-2xl border p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    borderColor: `${step.color}20`,
+                    background: `linear-gradient(135deg, rgba(5,13,26,0.95) 0%, rgba(10,22,40,0.9) 100%)`,
+                  }}
+                >
+                  {/* Hover glow */}
+                  <div
+                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    style={{
+                      background: `radial-gradient(400px 200px at 50% 0%, ${step.color}08, transparent 70%)`,
+                    }}
+                  />
+                  <div className="relative z-10">
+                    <div
+                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
+                      style={{
+                        background: `${step.color}15`,
+                        border: `1px solid ${step.color}30`,
+                        color: step.color,
+                      }}
+                    >
+                      <Icon name={step.icon} size={24} />
+                    </div>
+                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
+                    <p className="text-sm text-emerald-50/60 leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
    COURSE CATALOG SECTION
    ═══════════════════════════════════════════════════════════════ */
 function CourseCatalog() {
@@ -703,8 +693,7 @@ function CourseCatalog() {
               </span>
             </h2>
             <p className="mt-2 text-sm text-emerald-50/55 max-w-xl">
-              Cada curso é desenvolvido com base nas diretrizes dos conselhos profissionais 
-              e adaptado para a realidade do profissional de saúde brasileiro.
+              Escolha sua área e comece a aprender hoje — trilhas, simulações, jogos e certificado de conclusão.
             </p>
           </div>
         </FadeUp>
@@ -728,9 +717,9 @@ export default function HomePage() {
       <ScrollProgress />
       <HeroSection />
       <TickerBanner />
+      <HowItWorks />
       <CourseCatalog />
       <TrustSection />
-      <DrogaRaiaSection />
       <FinalCTA />
     </ReactLenis>
   );
