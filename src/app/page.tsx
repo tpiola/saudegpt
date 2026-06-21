@@ -578,10 +578,27 @@ export default function SaudegptHome() {
       <DiferenciaisSection />
       <CtaFinalSection />
 
-      {/* Footer */}
-      <div className="text-center pb-10 text-[10px] tracking-[3px] uppercase text-subtle">
-        © {new Date().getFullYear()} SaúdeGPT • Plataforma de excelência para profissionais da saúde
-      </div>
+      {/* Footer com disclaimer legal */}
+      <footer className="border-t border-emerald-500/10 py-10 px-6">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <p className="text-sm text-emerald-400 font-display font-medium tracking-wide">
+            SaúdeGPT — Plataforma de Formação para Profissionais da Saúde
+          </p>
+          <p className="text-xs text-subtle leading-relaxed max-w-xl mx-auto">
+            Conteúdo criado pelo farmacêutico <strong className="text-emerald-50/70">Thiago Piola — CRF/SP 58.519</strong>.
+            Este material é educativo e não substitui orientação profissional presencial.
+            Consulte sempre o(a) farmacêutico(a) para recomendações individualizadas.
+          </p>
+          <div className="flex items-center justify-center gap-6 text-[10px] text-subtle/60 tracking-wider uppercase">
+            <a href="/termos" className="hover:text-emerald-400 transition-colors no-underline">Termos de Uso</a>
+            <a href="/privacidade" className="hover:text-emerald-400 transition-colors no-underline">Privacidade</a>
+            <a href="/contato" className="hover:text-emerald-400 transition-colors no-underline">Contato</a>
+          </div>
+          <p className="text-[10px] text-subtle/40 tracking-[2px] uppercase pt-2">
+            © {new Date().getFullYear()} SaúdeGPT • Todos os direitos reservados
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
