@@ -540,7 +540,7 @@ h4, h5, h6 {
   right: 0;
   height: 2px;
   z-index: 9999;
-  background: linear-gradient(90deg, #00C9A7, #D4A843);
+  background: linear-gradient(90deg, #042F29, #00C9A7, #D4A843);
   transform-origin: left;
   scale: 0 1;
   transition: scale 0.1s linear;

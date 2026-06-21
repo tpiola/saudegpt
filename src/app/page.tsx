@@ -1,263 +1,567 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import {
+  Pill,
+  GraduationCap,
+  Award,
+  Star,
+  Clock,
+  Apple,
+  Activity,
+  Brain,
+  ShieldCheck,
+  BookOpen,
+  ArrowRight,
+  Sparkles,
+  ChevronDown,
+} from "lucide-react";
 
 /* ═══════════════════════════════════════════════════════════════
-   DESIGN SYSTEM TOKENS (inline for zero external dep)
-   Navy + Gold Premium (from saudegpt-design-system)
+   DESIGN SYSTEM — Forest + Emerald + Gold (dark-only premium)
    ═══════════════════════════════════════════════════════════════ */
-const TOKENS = {
-  navy: { 950: "#0A1324", 900: "#0F1C36", 800: "#15294D", 700: "#1C3563" },
-  gold: { 500: "#C3904D", 400: "#D4A96C", 300: "#E1C38F" },
-  text: { primary: "#E8EDF5", secondary: "#98A9C9", tertiary: "#6D89B7" },
-  border: { subtle: "#25467F", default: "#2F588C" },
-};
 
-/* ── Trilhas Data (real content) ── */
-const TRILHAS = [
+/* ── Cursos (dados reais do design system) ── */
+const CURSOS = [
   {
-    id: "medicamentos",
-    titulo: "Medicamentos & Interações",
-    modulos: 8,
-    aulas: 47,
-    horas: 12,
-    nivel: "Intermediário",
+    id: "farmacia",
+    titulo: "Farmácia",
+    conselho: "CRF/SP 58.519",
     cor: "#00C9A7",
-    icone: "💊",
-    descricao: "Dominar interações medicamentosas, classes farmacológicas e posologia com segurança total.",
+    corTailwind: "emerald-500",
+    modulos: 39,
+    aulas: 159,
+    trilhas: 7,
+    jogos: 9,
+    status: "disponivel" as const,
+    icone: Pill,
+    descricao:
+      "Formação completa para atendentes de farmácia: medicamentos, interações, legislação ANVISA, prática no balcão e atendimento humanizado.",
   },
   {
-    id: "fundamentos",
-    titulo: "Fundamentos da Farmácia",
-    modulos: 6,
-    aulas: 32,
-    horas: 9,
-    nivel: "Iniciante",
-    cor: "#4A9EFF",
-    icone: "📚",
-    descricao: "Base legal, ética, atendimento humanizado e técnicas de balcão.",
+    id: "nutricao",
+    titulo: "Nutrição",
+    conselho: "CRN",
+    cor: "#F59E0B",
+    corTailwind: "amber-500",
+    status: "embreve" as const,
+    icone: Apple,
+    descricao:
+      "Fundamentos da nutrição clínica, avaliação nutricional, dietoterapia e suplementação baseada em evidências científicas.",
   },
   {
-    id: "pratica",
-    titulo: "Prática no Balcão",
-    modulos: 5,
-    aulas: 28,
-    horas: 8,
-    nivel: "Intermediário",
-    cor: "#FF9F4A",
-    icone: "🛒",
-    descricao: "Simulações reais de atendimento, OSCE e comunicação efetiva.",
+    id: "fisioterapia",
+    titulo: "Fisioterapia",
+    conselho: "CREFITO",
+    cor: "#3B82F6",
+    corTailwind: "blue-500",
+    status: "embreve" as const,
+    icone: Activity,
+    descricao:
+      "Formação em fisioterapia: anatomia, cinesiologia, reabilitação motora, terapia manual e eletrotermofototerapia.",
   },
   {
-    id: "operacional",
-    titulo: "Gestão Operacional",
-    modulos: 4,
-    aulas: 22,
-    horas: 7,
-    nivel: "Avançado",
-    cor: "#9B6BFF",
-    icone: "⚙️",
-    descricao: "Estoque, precificação, vigilância e rotinas da farmácia.",
+    id: "psicologia",
+    titulo: "Psicologia",
+    conselho: "CRP",
+    cor: "#A855F7",
+    corTailwind: "purple-500",
+    status: "embreve" as const,
+    icone: Brain,
+    descricao:
+      "Psicologia clínica, terapia cognitivo-comportamental, psicopatologia e atendimento humanizado em saúde mental.",
   },
 ];
 
-/* ── Trust Signals (credibilidade real) ── */
+/* ── Stats ── */
 const STATS = [
-  { value: "2.847", label: "Alunos formados", suffix: "+" },
-  { value: "94", label: "Taxa de aprovação em provas", suffix: "%" },
-  { value: "4.97", label: "Avaliação média dos alunos", suffix: "/5" },
-  { value: "159", label: "Aulas em vídeo 4K", suffix: "" },
+  { value: "2.847", label: "Alunos formados", suffix: "+", icone: GraduationCap },
+  { value: "94", label: "Taxa de aprovação", suffix: "%", icone: Award },
+  { value: "4.97", label: "Avaliação média", suffix: "/5", icone: Star },
+  { value: "159", label: "Horas de conteúdo", suffix: "h", icone: Clock },
 ];
 
-const TRUST = [
-  "Certificado reconhecido pelo MEC",
-  "Conteúdo atualizado com Anvisa 2025",
-  "Suporte de tutores farmacêuticos",
-  "Garantia de 30 dias ou dinheiro de volta",
+/* ── Marquee Keywords (duplicadas para scroll infinito) ── */
+const MARQUEE_KEYWORDS = [
+  "CIDADE DOS MÉDICOS",
+  "MEDICAMENTOS",
+  "SAÚDE",
+  "BEM-ESTAR",
+  "FARMÁCIA",
+  "ATENDIMENTO HUMANIZADO",
 ];
 
-/* ── Parallax Hero Component ── */
-function HeroParallax() {
+const MARQUEE_DUPLICATED = [...MARQUEE_KEYWORDS, ...MARQUEE_KEYWORDS];
+
+/* ═══════════════════════════════════════════════════════════════
+   FADE-UP ANIMATION HELPER
+   ═══════════════════════════════════════════════════════════════ */
+function FadeUp({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 1 — HERO
+   ═══════════════════════════════════════════════════════════════ */
+function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const yTitle = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const yContent = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#0A1324]"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
     >
-      {/* 8K-style background with gradient + subtle texture */}
-      <div className="absolute inset-0 bg-[radial-gradient(#1C3563_0.8px,transparent_1px)] bg-[length:4px_4px] opacity-40" />
-      
-      {/* Parallax Background Layer */}
+      {/* ── Background Gradient ── */}
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-900 to-forest-950" />
+
+      {/* ── Grid Pattern Overlay ── */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(0,201,167,0.06)_1px,transparent_1px)] bg-[length:24px_24px]" />
+
+      {/* ── Blur Orbs: Emerald ── */}
       <motion.div
         style={{ y: yBg }}
-        className="absolute inset-0 bg-[linear-gradient(160deg,#0A1324_0%,#15294D_50%,#0F1C36_100%)]"
+        className="absolute -top-40 left-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/8 blur-[120px]"
+      />
+      {/* ── Blur Orbs: Gold ── */}
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-gold-400/6 blur-[100px]"
+      />
+      {/* ── Blur Orbs: Emerald (bottom) ── */}
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute -bottom-40 right-1/3 w-[450px] h-[450px] rounded-full bg-emerald-500/5 blur-[130px]"
       />
 
-      {/* Animated Gold Accent Line */}
-      <div className="absolute inset-x-0 top-1/3 h-px bg-gradient-to-r from-transparent via-[#C3904D] to-transparent opacity-60" />
+      {/* ── Animated Accent Lines ── */}
+      <div className="absolute inset-x-0 top-1/4 h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent opacity-50" />
+      <div className="absolute inset-x-0 bottom-1/3 h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent opacity-40" />
 
-      {/* Hero Content */}
+      {/* ── Hero Content ── */}
       <motion.div
-        style={{ y: yTitle, opacity }}
-        className="relative z-10 px-6 text-center max-w-5xl"
+        style={{ y: yContent, opacity }}
+        className="relative z-10 px-6 text-center max-w-5xl mx-auto"
       >
-        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1 rounded-full border border-[#C3904D]/30 bg-[#0F1C36]/60 text-[#C3904D] text-xs tracking-[3px] font-medium">
-          PLATAFORMA PREMIUM DE FORMAÇÃO FARMACÊUTICA
-        </div>
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-emerald-500/15 bg-emerald-500/5 backdrop-blur-sm"
+        >
+          <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+          <span className="text-emerald-400 text-xs tracking-[4px] font-semibold uppercase">
+            Plataforma Premium de Saúde
+          </span>
+        </motion.div>
 
-        <h1 className="font-serif text-[72px] md:text-[92px] leading-[0.92] tracking-[-4.5px] text-[#E8EDF5] mb-4">
-          Torne-se o melhor<br />atendente de farmácia<br />do Brasil.
-        </h1>
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="font-display text-[48px] sm:text-[64px] md:text-[80px] lg:text-[92px] leading-[0.95] tracking-[-3.5px] text-emerald-50 mb-6"
+        >
+          Transforme sua carreira
+          <br />
+          na área da{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400">
+            saúde
+          </span>
+        </motion.h1>
 
-        <p className="max-w-[620px] mx-auto mt-3 text-xl text-[#98A9C9] tracking-tight">
-          Formação premium com 159 aulas, 39 módulos, simulações OSCE, jogos e certificado reconhecido.
-        </p>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-[640px] mx-auto text-lg sm:text-xl text-muted leading-relaxed font-body"
+        >
+          Formação premium com conteúdo criado por especialistas registrados.
+          Aulas em vídeo, simulações práticas, jogos interativos e certificado
+          reconhecido.
+        </motion.p>
 
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center"
+        >
           <Link
             href="/(lms)/cadastro"
-            className="inline-flex h-14 items-center justify-center rounded-2xl bg-[#C3904D] px-10 text-lg font-semibold text-[#0A1324] hover:bg-[#D4A96C] active:scale-[0.985] transition-all shadow-[0_0_0_1px_#C3904D]"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-10 text-base font-semibold text-forest-950 hover:bg-emerald-400 active:scale-[0.98] transition-all shadow-[0_0_40px_rgba(0,201,167,0.15)]"
           >
-            Começar minha formação agora
+            Começar agora
+            <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
-            href="#trilhas"
-            className="inline-flex h-14 items-center justify-center rounded-2xl border border-[#C3904D]/60 px-8 text-lg text-[#E8EDF5] hover:bg-white/5 transition-all"
+            href="#cursos"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-emerald-500/25 px-8 text-base text-emerald-50 hover:bg-emerald-500/5 transition-all"
           >
-            Ver todas as trilhas
+            Ver trilhas
+            <ChevronDown className="w-4 h-4" />
           </Link>
-        </div>
+        </motion.div>
 
-        <div className="mt-8 text-xs text-[#6D89B7] tracking-[2px]">Matrículas abertas • Acesso imediato</div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[#6D89B7] text-xs tracking-widest"
-      >
-        ROLE PARA EXPLORAR <div className="h-px w-8 bg-current" />
-      </motion.div>
-    </div>
-  );
-}
-
-/* ── Interactive Stats Component ── */
-function InteractiveStats() {
-  const [hovered, setHovered] = useState<number | null>(null);
-
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#15294D]">
-      {STATS.map((stat, i) => (
-        <div
-          key={i}
-          onMouseEnter={() => setHovered(i)}
-          onMouseLeave={() => setHovered(null)}
-          className="group bg-[#0A1324] p-8 md:p-10 transition-all hover:bg-[#0F1C36] border-b border-[#15294D] md:border-b-0 md:border-r last:border-r-0"
+        {/* Trust line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
+          className="mt-8 text-xs text-subtle tracking-[2px] uppercase"
         >
-          <div className="font-serif text-[56px] leading-none tracking-[-3.5px] text-[#E8EDF5] tabular-nums">
-            {stat.value}
-            <span className="text-[#C3904D] text-4xl align-super ml-px">{stat.suffix}</span>
-          </div>
-          <div className="mt-3 text-sm text-[#98A9C9] tracking-tight">{stat.label}</div>
-          {hovered === i && (
-            <div className="mt-4 text-[10px] text-[#C3904D] tracking-[1px] opacity-75">DADOS ATUALIZADOS HOJE</div>
-          )}
-        </div>
-      ))}
+          Matrículas abertas • Acesso imediato • 7 dias de garantia
+        </motion.p>
+      </motion.div>
+
+      {/* ── Scroll Indicator ── */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-subtle text-[10px] tracking-[4px] uppercase"
+      >
+        Role para explorar
+        <div className="w-px h-6 bg-gradient-to-b from-emerald-500/40 to-transparent" />
+      </motion.div>
     </div>
   );
 }
 
-/* ── Beautiful Trilhas Grid ── */
-function TrilhasGrid() {
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 2 — MARQUEE TICKER
+   ═══════════════════════════════════════════════════════════════ */
+function MarqueeTicker() {
   return (
-    <div id="trilhas" className="max-w-7xl mx-auto px-6 pt-20 pb-24">
-      <div className="flex items-end justify-between mb-10">
-        <div>
-          <div className="text-[#C3904D] tracking-[3px] text-xs font-medium mb-2">CURRICULO PREMIUM</div>
-          <h2 className="font-serif text-6xl tracking-[-2.8px] text-[#E8EDF5]">Trilhas de Aprendizado</h2>
-        </div>
-        <Link href="/(lms)/trilhas" className="hidden md:flex items-center gap-2 text-sm text-[#98A9C9] hover:text-[#C3904D] group">
-          VER TODAS AS TRILHAS <span className="group-hover:translate-x-0.5 transition">→</span>
-        </Link>
-      </div>
+    <div className="relative overflow-hidden border-y border-emerald-500/10 bg-forest-950/50">
+      {/* Gradient fade edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-forest-950 to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-forest-950 to-transparent pointer-events-none" />
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {TRILHAS.map((trilha, idx) => (
-          <Link
-            key={idx}
-            href={`/(lms)/trilhas/${trilha.id}`}
-            className="group block rounded-3xl border border-[#25467F] bg-[#0F1C36] p-7 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_45px_-15px_rgb(0,0,0,0.5)] hover:border-[#C3904D]/50"
-          >
-            <div className="flex items-center justify-between">
-              <div className="text-5xl">{trilha.icone}</div>
-              <div
-                className="rounded-full px-3.5 py-px text-xs font-medium tracking-widest border"
-                style={{ borderColor: trilha.cor + "40", color: trilha.cor }}
-              >
-                {trilha.nivel}
-              </div>
-            </div>
-
-            <h3 className="font-serif text-[27px] leading-tight tracking-[-1.1px] mt-8 text-[#E8EDF5] group-hover:text-[#C3904D] transition-colors">
-              {trilha.titulo}
-            </h3>
-            <p className="mt-3 text-sm text-[#98A9C9] line-clamp-3 pr-2">{trilha.descricao}</p>
-
-            <div className="mt-8 flex items-center gap-x-5 text-xs text-[#6D89B7]">
-              <div><span className="font-mono text-[#E8EDF5]">{trilha.modulos}</span> módulos</div>
-              <div><span className="font-mono text-[#E8EDF5]">{trilha.aulas}</span> aulas</div>
-              <div><span className="font-mono text-[#E8EDF5]">{trilha.horas}</span>h</div>
-            </div>
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ── Trust Signals / High-Conversion Footer Section ── */
-function TrustSignals() {
-  return (
-    <div className="border-t border-[#25467F] bg-[#0A1324] py-14">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="text-center mb-7">
-          <div className="uppercase tracking-[4px] text-xs text-[#C3904D]">CONFIANÇA INSTITUCIONAL</div>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-y-4 text-sm text-[#98A9C9]">
-          {TRUST.map((t, i) => (
-            <div key={i} className="flex items-start gap-4">
-              <div className="mt-1 text-[#C3904D]">✓</div>
-              <div>{t}</div>
-            </div>
+      <div className="flex py-5">
+        <div className="marquee-track flex gap-12">
+          {MARQUEE_DUPLICATED.map((word, i) => (
+            <span
+              key={i}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400 text-sm sm:text-base font-display font-bold tracking-[3px] whitespace-nowrap"
+            >
+              {word}
+            </span>
           ))}
         </div>
-
-        <div className="mt-14 text-center">
-          <Link
-            href="/(lms)/cadastro"
-            className="inline-block rounded-2xl bg-white text-[#0A1324] text-lg font-semibold tracking-[-0.2px] px-16 py-4 active:scale-[0.985] hover:bg-[#C3904D] hover:text-white transition-all shadow-[inset_0_0_0_1px_#C3904D]"
-          >
-            Matricular agora — R$ 97/mês
-          </Link>
-          <p className="text-[10px] text-[#6D89B7] mt-3 tracking-wide">Sem cartão • 7 dias grátis • Cancele quando quiser</p>
+        {/* Second copy for seamless loop */}
+        <div className="marquee-track flex gap-12" aria-hidden="true">
+          {MARQUEE_DUPLICATED.map((word, i) => (
+            <span
+              key={`dup-${i}`}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400 text-sm sm:text-base font-display font-bold tracking-[3px] whitespace-nowrap"
+            >
+              {word}
+            </span>
+          ))}
         </div>
       </div>
     </div>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 3 — STATS BAR
+   ═══════════════════════════════════════════════════════════════ */
+function StatsBar() {
+  return (
+    <section className="py-16 sm:py-20 bg-forest-950">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-emerald-500/5 rounded-2xl overflow-hidden border border-emerald-500/10">
+          {STATS.map((stat, i) => (
+            <FadeUp key={i} delay={i * 0.1} className="h-full">
+              <div className="group bg-forest-900/80 backdrop-blur-sm p-8 lg:p-10 h-full transition-all hover:bg-forest-900">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400">
+                    <stat.icone className="w-5 h-5" />
+                  </div>
+                </div>
+                <div className="font-display text-[42px] sm:text-[52px] leading-none tracking-[-2.5px] text-emerald-50 tabular-nums">
+                  {stat.value}
+                  <span className="text-emerald-400 text-2xl sm:text-3xl align-super ml-0.5">
+                    {stat.suffix}
+                  </span>
+                </div>
+                <div className="mt-2 text-sm text-muted font-body">{stat.label}</div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 4 — CURSOS
+   ═══════════════════════════════════════════════════════════════ */
+function CursosSection() {
+  return (
+    <section id="cursos" className="py-20 sm:py-28 bg-forest-950/70">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <FadeUp className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-emerald-500/10 bg-emerald-500/5">
+            <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="text-emerald-400 text-xs tracking-[3px] font-semibold uppercase">
+              Nossos Cursos
+            </span>
+          </div>
+          <h2 className="font-display text-[36px] sm:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-2px] text-emerald-50">
+            Formação de{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-gold-400">
+              excelência
+            </span>
+          </h2>
+          <p className="mt-3 text-muted text-base sm:text-lg max-w-xl mx-auto">
+            Cursos criados por profissionais registrados nos conselhos de classe
+          </p>
+        </FadeUp>
+
+        {/* Cursos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {CURSOS.map((curso, i) => (
+            <FadeUp key={curso.id} delay={i * 0.1}>
+              <div className="group relative bg-forest-900/80 border border-emerald-500/8 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-emerald-500/25 hover:shadow-[0_12px_40px_-8px_rgba(0,201,167,0.08)] h-full flex flex-col">
+                {/* Top accent line */}
+                <div
+                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${curso.cor}40, transparent)`,
+                  }}
+                />
+
+                {/* Icon + Badge */}
+                <div className="flex items-start justify-between mb-5">
+                  <div
+                    className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${curso.cor}12` }}
+                  >
+                    <curso.icone
+                      className="w-6 h-6"
+                      style={{ color: curso.cor }}
+                    />
+                  </div>
+                  <span
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase ${
+                      curso.status === "disponivel"
+                        ? "bg-emerald-500/10 text-emerald-400"
+                        : "bg-forest-800 text-subtle"
+                    }`}
+                  >
+                    {curso.status === "disponivel" ? "Disponível" : "Em breve"}
+                  </span>
+                </div>
+
+                {/* Titulo */}
+                <h3 className="font-display text-[26px] leading-tight tracking-[-1px] text-emerald-50 group-hover:text-emerald-400 transition-colors duration-300">
+                  {curso.titulo}
+                </h3>
+
+                {/* Conselho */}
+                <p className="mt-1 text-xs text-subtle tracking-wide uppercase font-medium">
+                  {curso.conselho}
+                </p>
+
+                {/* Descrição */}
+                <p className="mt-3 text-sm text-muted leading-relaxed line-clamp-3 flex-1">
+                  {curso.descricao}
+                </p>
+
+                {/* Stats (only for Farmácia) */}
+                {curso.status === "disponivel" && curso.modulos && (
+                  <div className="mt-5 pt-4 border-t border-emerald-500/8 grid grid-cols-2 gap-x-4 gap-y-2">
+                    <div className="flex items-center gap-1.5 text-xs text-muted">
+                      <BookOpen className="w-3.5 h-3.5 text-emerald-400/70" />
+                      <span className="text-emerald-50 font-semibold">{curso.modulos}</span> módulos
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-muted">
+                      <Sparkles className="w-3.5 h-3.5 text-emerald-400/70" />
+                      <span className="text-emerald-50 font-semibold">{curso.aulas}</span> aulas
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-muted">
+                      <ChevronDown className="w-3.5 h-3.5 text-emerald-400/70" />
+                      <span className="text-emerald-50 font-semibold">{curso.trilhas}</span> trilhas
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-muted">
+                      <Activity className="w-3.5 h-3.5 text-emerald-400/70" />
+                      <span className="text-emerald-50 font-semibold">{curso.jogos}</span> jogos
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="mt-5">
+                  {curso.status === "disponivel" ? (
+                    <Link
+                      href="/(lms)/cadastro"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-sm font-semibold text-forest-950 hover:bg-emerald-400 active:scale-[0.98] transition-all"
+                    >
+                      Matricular agora
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  ) : (
+                    <button
+                      disabled
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-emerald-500/15 bg-forest-800/50 py-3 text-sm text-subtle cursor-not-allowed"
+                    >
+                      Lista de espera
+                    </button>
+                  )}
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 5 — DIFERENCIAIS
+   ═══════════════════════════════════════════════════════════════ */
+function DiferenciaisSection() {
+  const diferenciais = [
+    {
+      titulo: "Conteúdo Registrado",
+      descricao:
+        "Todo o conteúdo é produzido por profissionais com registro ativo nos conselhos de classe (CRF, CRN, CREFITO, CRP). Qualidade técnica e científica comprovada.",
+      icone: ShieldCheck,
+    },
+    {
+      titulo: "Metodologia Ativa",
+      descricao:
+        "Aprendizado baseado em casos clínicos reais, simulações práticas, quizzes gamificados e avaliações formativas. Você aprende fazendo, não apenas assistindo.",
+      icone: BookOpen,
+    },
+  ];
+
+  return (
+    <section className="py-20 sm:py-28 bg-forest-900/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeUp className="text-center mb-14">
+          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-2px] text-emerald-50">
+            Por que escolher o{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-gold-400">
+              SaúdeGPT
+            </span>
+          </h2>
+        </FadeUp>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {diferenciais.map((diff, i) => (
+            <FadeUp key={i} delay={i * 0.15}>
+              <div className="group bg-forest-900/80 border border-emerald-500/8 rounded-2xl p-8 sm:p-10 transition-all duration-500 hover:border-emerald-500/20 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(0,201,167,0.06)]">
+                <div className="flex items-start gap-5">
+                  <div className="p-3.5 rounded-xl bg-emerald-500/10 text-emerald-400 group-hover:scale-110 transition-transform duration-300 shrink-0">
+                    <diff.icone className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-[24px] leading-tight tracking-[-1px] text-emerald-50 mb-3">
+                      {diff.titulo}
+                    </h3>
+                    <p className="text-muted leading-relaxed">{diff.descricao}</p>
+                  </div>
+                </div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 6 — CTA FINAL
+   ═══════════════════════════════════════════════════════════════ */
+function CtaFinalSection() {
+  return (
+    <section className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-900 to-forest-950" />
+
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-[150px]" />
+      <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-gold-400/5 blur-[100px]" />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(0,201,167,0.04)_1px,transparent_1px)] bg-[length:20px_20px]" />
+
+      <FadeUp className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border border-gold-400/20 bg-gold-400/5">
+          <Sparkles className="w-3.5 h-3.5 text-gold-400" />
+          <span className="text-gold-400 text-xs tracking-[4px] font-semibold uppercase">
+            Comece sua jornada
+          </span>
+        </div>
+
+        <h2 className="font-display text-[36px] sm:text-[48px] lg:text-[58px] leading-[1.05] tracking-[-2.5px] text-emerald-50 mb-6">
+          Pronto para transformar
+          <br />
+          sua{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-emerald-300 to-gold-400">
+            carreira na saúde
+          </span>
+          ?
+        </h2>
+
+        <p className="text-lg text-muted mb-10 max-w-xl mx-auto leading-relaxed">
+          Junte-se a mais de 2.800 alunos que já estão transformando suas carreiras com
+          conteúdo de qualidade criado por especialistas.
+        </p>
+
+        <Link
+          href="/(lms)/cadastro"
+          className="inline-flex h-16 items-center justify-center gap-3 rounded-2xl bg-gold-400 px-12 text-lg font-bold text-forest-950 hover:bg-gold-500 active:scale-[0.98] transition-all shadow-[0_0_60px_rgba(212,168,67,0.15)]"
+        >
+          Matricular agora
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+
+        <p className="mt-6 text-xs text-subtle tracking-wide">
+          Acesso imediato • 7 dias de garantia • Cancele quando quiser
+        </p>
+      </FadeUp>
+    </section>
   );
 }
 
@@ -266,15 +570,17 @@ function TrustSignals() {
    ═══════════════════════════════════════════════════════════════ */
 export default function SaudegptHome() {
   return (
-    <div className="bg-[#0A1324] text-[#E8EDF5] overflow-x-hidden font-sans">
-      <HeroParallax />
-      <InteractiveStats />
-      <TrilhasGrid />
-      <TrustSignals />
+    <div id="conteudo-principal" className="bg-forest-950 overflow-x-hidden font-body">
+      <HeroSection />
+      <MarqueeTicker />
+      <StatsBar />
+      <CursosSection />
+      <DiferenciaisSection />
+      <CtaFinalSection />
 
-      {/* Subtle footer note */}
-      <div className="text-center pb-12 text-[10px] tracking-widest text-[#6D89B7]">
-        © {new Date().getFullYear()} SaúdeGPT • Plataforma de excelência para atendentes de farmácia
+      {/* Footer */}
+      <div className="text-center pb-10 text-[10px] tracking-[3px] uppercase text-subtle">
+        © {new Date().getFullYear()} SaúdeGPT • Plataforma de excelência para profissionais da saúde
       </div>
     </div>
   );
