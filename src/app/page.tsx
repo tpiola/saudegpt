@@ -221,7 +221,7 @@ function HeroSection() {
           className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center"
         >
           <Link
-            href="/(lms)/cadastro"
+            href="/login"
             className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-emerald-500 px-10 text-base font-semibold text-forest-950 hover:bg-emerald-400 active:scale-[0.98] transition-all shadow-[0_0_40px_rgba(0,201,167,0.15)]"
           >
             Começar agora
@@ -431,7 +431,7 @@ function CursosSection() {
                 <div className="mt-5">
                   {curso.status === "disponivel" ? (
                     <Link
-                      href="/(lms)/cadastro"
+                      href="/login"
                       className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3 text-sm font-semibold text-forest-950 hover:bg-emerald-400 active:scale-[0.98] transition-all"
                     >
                       Matricular agora
@@ -550,7 +550,7 @@ function CtaFinalSection() {
         </p>
 
         <Link
-          href="/(lms)/cadastro"
+          href="/login"
           className="inline-flex h-16 items-center justify-center gap-3 rounded-2xl bg-gold-400 px-12 text-lg font-bold text-forest-950 hover:bg-gold-500 active:scale-[0.98] transition-all shadow-[0_0_60px_rgba(212,168,67,0.15)]"
         >
           Matricular agora
