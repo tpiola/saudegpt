@@ -3,9 +3,9 @@
 export const site = {
   nome: "SaúdeGPT",
   nomeCurto: "SaúdeGPT",
-  assinatura: "Criado pelo Farmacêutico Thiago Biasoli Garcia Piola — CRF/SP 58.519",
+  assinatura: "Curadoria do Farmacêutico Thiago Biasoli Garcia Piola — CRF/SP 58.519",
   descricao:
-    "Formação completa para atendentes de farmácia: aprenda atendimento humanizado, medicamentos, legislação ANVISA, dispensação segura e cuidado ao paciente. Plataforma EAD com trilhas curtas, simulações e quizzes educativos. Desenvolvido pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
+    "Marketplace de cursos em saúde: Farmácia, Nutrição, Fisioterapia e Psicologia. Conteúdo criado por profissionais registrados nos conselhos de classe. Formação de qualidade com certificado digital.",
   patrocinadores: [
     {
       nome: "Thiago Piola",

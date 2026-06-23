@@ -1,666 +1,499 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { ReactLenis } from "lenis/react";
+import {
+  Pill,
+  Heart,
+  GraduationCap,
+  BookOpen,
+  Apple,
+  Activity,
+  Brain,
+  ShieldCheck,
+  ArrowRight,
+  Sparkles,
+  ChevronDown,
+  Gamepad2,
+  Clock,
+  Users,
+  Zap,
+  Flame,
+} from "lucide-react";
+import {
+  FarmaciaVector,
+  NutricaoVector,
+  ReabilitacaoVector,
+  SaudeMentalVector,
+  CuidadorVector,
+} from "@/components/health-vectors";
 
 /* ═══════════════════════════════════════════════════════════════
-   ÍCONES SVG (evita dependência de lucide no bundle inicial)
+   DESIGN SYSTEM — Cyan + Coral + Purple (Gen Z neon dark)
    ═══════════════════════════════════════════════════════════════ */
 
-const Icon = ({ name, size = 20, className = "" }: { name: string; size?: number; className?: string }) => {
-  const icons: Record<string, React.JSX.Element> = {
-    pill: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 21c-3-3-7-4.5-7-9a7 7 0 0 1 14 0c0 4.5-4 6-7 9Z" /><path d="M12 12c0-3 1.5-5 4-6" /><path d="M12 12c0-3-1.5-5-4-6" />
-      </svg>
-    ),
-    leaf: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.78 10-10 10Z" /><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-      </svg>
-    ),
-    bone: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 10a3 3 0 0 1 0-6 3 3 0 0 1 0 6Z" /><path d="M7 14a3 3 0 0 1 0 6 3 3 0 0 1 0-6Z" /><path d="M10 17l4-4" /><path d="M14 7l-4 4" />
-      </svg>
-    ),
-    brain: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.52-4.2A2.5 2.5 0 0 1 5 9.5 2.5 2.5 0 0 1 9.5 2Z" />
-        <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .52-4.2A2.5 2.5 0 0 0 19 9.5 2.5 2.5 0 0 0 14.5 2Z" />
-      </svg>
-    ),
-    book: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-      </svg>
-    ),
-    users: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    award: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="8" r="6" /><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
-      </svg>
-    ),
-    clock: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" />
-      </svg>
-    ),
-    star: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    ),
-    arrowRight: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
-      </svg>
-    ),
-    shield: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
-      </svg>
-    ),
-    graduation: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" />
-      </svg>
-    ),
-    play: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="12" cy="12" r="10" /><path d="m10 8 6 4-6 4Z" />
-      </svg>
-    ),
-    check: (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-        <path d="M20 6 9 17l-5-5" />
-      </svg>
-    ),
-  };
-  return <span className={className}>{icons[name] || null}</span>;
-};
-
-/* ═══════════════════════════════════════════════════════════════
-   COURSES DATA — Profissional, institucional
-   ═══════════════════════════════════════════════════════════════ */
-
-const COURSES = [
+/* ── Cursos (com nova paleta Gen Z) ── */
+const CURSOS = [
   {
     id: "farmacia",
-    title: "Farmácia",
-    subtitle: "Formação para Atendentes de Farmácia",
-    description: "39 módulos · 159 aulas · 7 trilhas · jogos · OSCE · certificado de conclusão",
-    icon: "pill",
-    color: "#00C9A7",
-    bgGradient: "from-emerald-600/20 via-emerald-600/5 to-transparent",
-    borderColor: "rgba(0,201,167,0.25)",
-    hoverBorder: "rgba(0,201,167,0.5)",
-    href: "/trilhas",
-    modules: 39,
-    classes: 159,
-    games: 9,
-    professor: "Farmacêutico Thiago Piola — CRF/SP 58.519",
-    status: "disponivel",
-    badge: "CRF/SP 58.519",
-    badgeColor: "#00C9A7",
+    titulo: "Farmácia",
+    conselho: "CRF/SP 58.519",
+    cor: "#06B6D4",       // cyan
+    corTailwind: "cyan-500",
+    modulos: 39,
+    aulas: 159,
+    trilhas: 7,
+    jogos: 9,
+    status: "disponivel" as const,
+    icone: Pill,
+    vector: FarmaciaVector,
+    descricao:
+      "Formação completa para atendentes de farmácia: medicamentos, interações, legislação ANVISA, prática no balcão e atendimento humanizado.",
   },
   {
     id: "nutricao",
-    title: "Nutrição",
-    subtitle: "Para Nutricionistas e Entusiastas",
-    description: "Alimentos, dietas, nutrição clínica e funcional. Conteúdo baseado nas diretrizes do CRN e na ciência mais atualizada.",
-    icon: "leaf",
-    color: "#F59E0B",
-    bgGradient: "from-amber-600/20 via-amber-600/5 to-transparent",
-    borderColor: "rgba(245,158,11,0.25)",
-    hoverBorder: "rgba(245,158,11,0.5)",
-    href: "#",
-    modules: 0,
-    classes: 0,
-    games: 0,
-    status: "em-breve",
-    badge: "CRN",
-    badgeColor: "#F59E0B",
+    titulo: "Nutrição",
+    conselho: "CRN",
+    cor: "#F59E0B",       // amber
+    corTailwind: "amber-500",
+    status: "disponivel" as const,
+    icone: Apple,
+    vector: NutricaoVector,
+    modulos: 17,
+    aulas: 25,
+    trilhas: 1,
+    jogos: 0,
+    descricao:
+      "Fundamentos da nutrição clínica, avaliação nutricional, dietoterapia e suplementação baseada em evidências científicas.",
   },
   {
     id: "fisioterapia",
-    title: "Fisioterapia",
-    subtitle: "Para Fisioterapeutas e Profissionais",
-    description: "Reabilitação, traumato-ortopédica, neurológica e respiratória. Formação baseada nas diretrizes do CREFITO.",
-    icon: "bone",
-    color: "#3B82F6",
-    bgGradient: "from-blue-600/20 via-blue-600/5 to-transparent",
-    borderColor: "rgba(59,130,246,0.25)",
-    hoverBorder: "rgba(59,130,246,0.5)",
-    href: "#",
-    modules: 0,
-    classes: 0,
-    games: 0,
-    status: "em-breve",
-    badge: "CREFITO",
-    badgeColor: "#3B82F6",
+    titulo: "Orientação em Reabilitação",
+    conselho: "CREFITO",
+    cor: "#3B82F6",       // blue
+    corTailwind: "blue-500",
+    status: "disponivel" as const,
+    icone: Activity,
+    vector: ReabilitacaoVector,
+    modulos: 12,
+    aulas: 12,
+    trilhas: 1,
+    jogos: 0,
+    descricao:
+      "Orientação sobre produtos ortopédicos, órteses, próteses e auxiliares de reabilitação. Capacitação para venda consultiva e encaminhamento ético ao fisioterapeuta.",
   },
   {
     id: "psicologia",
-    title: "Psicologia",
-    subtitle: "Para Psicólogos e Estudantes",
-    description: "Abordagens clínicas, avaliação psicológica, ética profissional e saúde mental. Conteúdo alinhado às diretrizes do CRP.",
-    icon: "brain",
-    color: "#A855F7",
-    bgGradient: "from-purple-600/20 via-purple-600/5 to-transparent",
-    borderColor: "rgba(168,85,247,0.25)",
-    hoverBorder: "rgba(168,85,247,0.5)",
-    href: "#",
-    modules: 0,
-    classes: 0,
-    games: 0,
-    status: "em-breve",
-    badge: "CRP",
-    badgeColor: "#A855F7",
+    titulo: "Acolhimento e Saúde Mental",
+    conselho: "CRP",
+    cor: "#A855F7",       // purple
+    corTailwind: "purple-500",
+    status: "disponivel" as const,
+    icone: Brain,
+    vector: SaudeMentalVector,
+    modulos: 12,
+    aulas: 12,
+    trilhas: 1,
+    jogos: 0,
+    descricao:
+      "Acolhimento humanizado, identificação de sinais de sofrimento psíquico, orientação sobre adesão medicamentosa e encaminhamento à rede de saúde mental.",
+  },
+  {
+    id: "cuidador-idosos",
+    titulo: "Cuidador de Idosos",
+    conselho: "SBGG",
+    cor: "#FF6B6B",       // coral
+    corTailwind: "coral",
+    status: "disponivel" as const,
+    icone: Heart,
+    vector: CuidadorVector,
+    modulos: 15,
+    aulas: 15,
+    trilhas: 1,
+    jogos: 0,
+    descricao:
+      "Formação completa para cuidadores de idosos: saúde do idoso, cuidados diários, prevenção de quedas, nutrição geriátrica e apoio psicossocial.",
   },
 ];
 
-/* ═══════════════════════════════════════════════════════════════
-   ANIMATED COUNTER
-   ═══════════════════════════════════════════════════════════════ */
-function AnimatedCounter({ target, suffix = "", decimals = 0 }: { target: number; suffix?: string; decimals?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
-  const [count, setCount] = useState(target);
+/* ── Stats atualizados (Gen Z: rápido, direto, com streak) ── */
+const STATS = [
+  { value: "5", label: "Cursos disponíveis", suffix: "", icone: GraduationCap },
+  { value: "95", label: "Módulos", suffix: "+", icone: BookOpen },
+  { value: "0", label: "Investimento", suffix: "R$", icone: Sparkles },
+  { value: "7", label: "Dias de streak", suffix: "", icone: Flame },
+];
 
-  useEffect(() => {
-    if (!inView) return;
-    setCount(0);
-    let current = 0;
-    const increment = target / (1500 / 16);
-    const timer = setInterval(() => {
-      current += increment;
-      setCount(current >= target ? target : Math.floor(current));
-      if (current >= target) clearInterval(timer);
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, target]);
+/* ── Marquee Keywords ── */
+const MARQUEE_KEYWORDS = [
+  "FARMÁCIA",
+  "NUTRIÇÃO",
+  "FISIOTERAPIA",
+  "PSICOLOGIA",
+  "SAÚDE",
+  "BEM-ESTAR",
+];
 
-  return <span ref={ref} className="tabular-nums">{count.toFixed(decimals)}{suffix}</span>;
-}
+const MARQUEE_DUPLICATED = [...MARQUEE_KEYWORDS, ...MARQUEE_KEYWORDS];
 
 /* ═══════════════════════════════════════════════════════════════
-   SCROLL PROGRESS
+   FADE-UP ANIMATION HELPER
    ═══════════════════════════════════════════════════════════════ */
-function ScrollProgress() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+function FadeUp({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 z-[9999] h-[2px] origin-left"
-      style={{ scaleX, background: "linear-gradient(90deg, #042F29, #00C9A7, #D4A843)" }}
-    />
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   REVEAL
-   ═══════════════════════════════════════════════════════════════ */
-function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  return (
-    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }}>
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+      transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={className}
+    >
       {children}
     </motion.div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HERO — Institucional, limpo, profissional
+   SECTION 1 — HERO (Gen Z neon)
    ═══════════════════════════════════════════════════════════════ */
 function HeroSection() {
-  return (
-    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
-      {/* Background sutil — gradiente + grid */}
-      <div className="absolute inset-0 bg-gradient-to-b from-forest-950 via-forest-900 to-forest-950" />
-      <div className="absolute inset-0" style={{
-        backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
-        backgroundSize: "60px 60px",
-      }} />
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-emerald-500/3 blur-[120px]" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] rounded-full bg-gold-500/3 blur-[100px]" />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <FadeUp>
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-widest text-emerald-400">
-                Catálogo de Cursos
-              </span>
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.05}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white font-['Clash_Display',system-ui,sans-serif]">
-              A plataforma brasileira de{" "}
-              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                cursos práticos para a saúde
-              </span>
-            </h1>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <p className="mt-4 text-base sm:text-lg text-emerald-50/60 max-w-xl leading-relaxed">
-              Escolha sua área, matricule-se em uma formação e aprenda com trilhas, simulações, jogos, biblioteca regulatória e certificado de conclusão.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.15}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link
-                href="#cursos"
-                className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-6 text-sm font-bold text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
-              >
-                <Icon name="graduation" size={18} />
-                Ver cursos disponíveis
-                <Icon name="arrowRight" size={16} />
-              </Link>
-              <Link
-                href="/trilhas"
-                className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-white/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
-              >
-                <Icon name="arrowRight" size={16} />
-                Começar por Farmácia
-              </Link>
-            </div>
-          </FadeUp>
-        </div>
-
-        {/* Métricas institucionais */}
-        <FadeUp delay={0.2}>
-          <div className="mt-16 grid grid-cols-3 gap-4 sm:gap-6 max-w-3xl bg-white/[0.02] border border-white/[0.04] rounded-2xl p-5 sm:p-6 backdrop-blur-sm">
-            {[
-              { icon: "graduation", value: 7, label: "Cursos", suffix: "" },
-              { icon: "book", value: 159, label: "Aulas", suffix: "+" },
-              { icon: "clock", value: 240, label: "Horas de conteúdo", suffix: "+" },
-            ].map((m, i) => (
-              <div key={i} className="text-center">
-                <div className="flex justify-center mb-1.5 text-emerald-400/60">
-                  <Icon name={m.icon} size={18} />
-                </div>
-                <div className="text-xl sm:text-2xl font-extrabold text-white">
-                  <AnimatedCounter target={m.value} suffix={m.suffix} decimals={0} />
-                </div>
-                <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-emerald-50/45 mt-0.5">
-                  {m.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   COURSE CARD — Profissional, clean, CRM-style
-   ═══════════════════════════════════════════════════════════════ */
-function CourseCard({ course, index }: { course: typeof COURSES[0]; index: number }) {
-  const isLeft = index % 2 === 0;
-  const isAvailable = course.status === "disponivel";
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 140]);
+  const yContent = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
-    <FadeUp delay={index * 0.08}>
+    <div
+      ref={containerRef}
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
+    >
+      {/* ── Background Gradient ── */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080C14] via-[#0D1520] to-[#080C14]" />
+
+      {/* ── Grid Pattern Overlay ── */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(6,182,212,0.05)_1px,transparent_1px)] bg-[length:24px_24px]" />
+
+      {/* ── Blur Orbs: Cyan ── */}
       <motion.div
-        whileHover={{ y: -3 }}
-        className="group relative overflow-hidden rounded-2xl border transition-all duration-300 hover:shadow-xl"
-        style={{
-          borderColor: course.borderColor,
-          background: `linear-gradient(135deg, rgba(5,13,26,0.95) 0%, rgba(10,22,40,0.9) 100%)`,
-        }}
+        style={{ y: yBg }}
+        className="absolute -top-40 left-1/4 w-[500px] h-[500px] rounded-full bg-cyan-500/10 blur-[120px]"
+      />
+      {/* ── Blur Orbs: Coral ── */}
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#FF6B6B]/8 blur-[100px]"
+      />
+      {/* ── Blur Orbs: Purple (bottom) ── */}
+      <motion.div
+        style={{ y: yBg }}
+        className="absolute -bottom-40 right-1/3 w-[450px] h-[450px] rounded-full bg-purple-500/6 blur-[130px]"
+      />
+
+      {/* ── Animated Accent Lines ── */}
+      <div className="absolute inset-x-0 top-1/4 h-px bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent opacity-50" />
+      <div className="absolute inset-x-0 bottom-1/3 h-px bg-gradient-to-r from-transparent via-[#FF6B6B]/20 to-transparent opacity-40" />
+
+      {/* ── Hero Content ── */}
+      <motion.div
+        style={{ y: yContent, opacity }}
+        className="relative z-10 px-6 text-center max-w-5xl mx-auto"
       >
-        {/* Hover glow */}
-        <div
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-          style={{
-            background: `radial-gradient(600px 200px at 50% 0%, ${course.color}08, transparent 70%)`,
-          }}
-        />
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.34, 1.56, 0.64, 1] }}
+          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-[#FF6B6B]/20 bg-[#FF6B6B]/8 backdrop-blur-sm"
+        >
+          <span className="text-base">🔥</span>
+          <span className="text-[#FF6B6B] text-xs tracking-[4px] font-semibold uppercase">
+            MATRÍCULAS ABERTAS
+          </span>
+        </motion.div>
 
-        <div className="relative z-10 p-5 sm:p-6 lg:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
-            {/* Ícone grande */}
-            <div
-              className="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center"
-              style={{
-                background: `${course.color}15`,
-                border: `1px solid ${course.color}30`,
-                color: course.color,
-              }}
-            >
-              <Icon name={course.icon} size={28} />
-            </div>
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="font-display text-[42px] sm:text-[56px] md:text-[72px] lg:text-[86px] leading-[0.95] tracking-[-3px] text-[#F0F4F8] mb-6"
+        >
+          Saúde que vicia.
+          <br />
+          Aprenda jogando.{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B]">
+            100% grátis
+          </span>{" "}
+          🔥
+        </motion.h1>
 
-            <div className="flex-1 min-w-0">
-              {/* Badge + Status */}
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span
-                  className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md"
-                  style={{ background: `${course.badgeColor}15`, color: course.badgeColor, border: `1px solid ${course.badgeColor}25` }}
-                >
-                  {course.badge}
-                </span>
-                <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold px-2.5 py-1 rounded-md ${
-                  isAvailable ? "bg-emerald-500/10 text-emerald-400" : "bg-amber-500/10 text-amber-400"
-                }`}>
-                  <span className={`w-1.5 h-1.5 rounded-full ${isAvailable ? "bg-emerald-400 animate-pulse" : "bg-amber-400"}`} />
-                  {isAvailable ? "Disponível" : "Em breve"}
-                </span>
-              </div>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-[640px] mx-auto text-lg sm:text-xl text-[#94A3B8] leading-relaxed font-body"
+        >
+          Microaulas + jogos por curso. Certificado na hora. Up sua carreira.
+        </motion.p>
 
-              {/* Title */}
-              <h3 className="text-xl sm:text-2xl font-bold text-white font-['Clash_Display',system-ui,sans-serif]">
-                {course.title}
-              </h3>
-              <p className="text-sm font-medium mt-0.5" style={{ color: course.color }}>
-                {course.subtitle}
-              </p>
-              <p className="text-sm text-emerald-50/60 mt-2 leading-relaxed max-w-xl">
-                {course.description}
-              </p>
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center"
+        >
+          <Link
+            href="/trilhas"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-cyan-500 px-10 text-base font-semibold text-[#080C14] hover:bg-cyan-400 active:scale-[0.98] transition-all shadow-[0_0_40px_rgba(6,182,212,0.25)]"
+          >
+            Jogar agora em 2 min
+            <Zap className="w-4 h-4" />
+          </Link>
+          <Link
+            href="#cursos"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-cyan-500/25 px-8 text-base text-[#F0F4F8] hover:bg-cyan-500/5 transition-all"
+          >
+            Ver cursos
+            <ChevronDown className="w-4 h-4" />
+          </Link>
+        </motion.div>
 
-              {/* Professor */}
-              {course.professor && (
-                <p className="text-xs text-emerald-50/45 mt-2 flex items-center gap-1.5">
-                  <Icon name="graduation" size={12} />
-                  {course.professor}
-                </p>
-              )}
-
-              {/* Métricas do curso — estilo CRM */}
-              {isAvailable && (
-                <div className="flex flex-wrap gap-3 sm:gap-4 mt-4">
-                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
-                    <Icon name="book" size={14} />
-                    <span><strong className="text-white/70">{course.modules}</strong> módulos</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
-                    <Icon name="play" size={14} />
-                    <span><strong className="text-white/70">{course.classes}</strong> aulas</span>
-                  </div>
-                  <div className="flex items-center gap-1.5 text-xs text-emerald-50/55">
-                    <Icon name="award" size={14} />
-                    <span><strong className="text-white/70">{course.games}</strong> jogos</span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* CTA */}
-            <div className="flex-shrink-0 self-start sm:self-center">
-              <Link
-                href={course.href}
-                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-200 hover:gap-3 ${
-                  isAvailable
-                    ? "text-navy-900 shadow-lg hover:shadow-xl"
-                    : "text-emerald-50/60 border border-white/10 hover:border-white/20"
-                }`}
-                style={{
-                  background: isAvailable ? `linear-gradient(135deg, ${course.color}, ${course.color}DD)` : "transparent",
-                  boxShadow: isAvailable ? `0 4px 15px ${course.color}30` : "none",
-                }}
-              >
-                {isAvailable ? (
-                  <>
-                    Matricular agora
-                    <Icon name="arrowRight" size={16} />
-                  </>
-                ) : (
-                  "Entrar na lista de espera"
-                )}
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* Trust line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.9 }}
+          className="mt-8 text-xs text-[#64748B] tracking-[2px] uppercase"
+        >
+          Acesso gratuito • Conteúdo profissional • Certificado digital
+        </motion.p>
       </motion.div>
-    </FadeUp>
+
+      {/* ── Scroll Indicator ── */}
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#64748B] text-[10px] tracking-[4px] uppercase"
+      >
+        Role para explorar
+        <div className="w-px h-6 bg-gradient-to-b from-cyan-500/40 to-transparent" />
+      </motion.div>
+    </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   INSTITUTIONAL TRUST SECTION
+   SECTION 2 — MARQUEE TICKER
    ═══════════════════════════════════════════════════════════════ */
-const TRUST_ITEMS = [
-  { icon: "award", title: "Conteúdo Registrado", desc: "Cursos baseados nas diretrizes dos conselhos profissionais (CRF, CRN, CREFITO, CRP)" },
-  { icon: "play", title: "Metodologia Ativa", desc: "Trilhas curtas, quizzes, simulações de balcão, jogos e prática supervisionada" },
-];
-
-function TrustSection() {
+function MarqueeTicker() {
   return (
-    <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp>
-          <div className="text-center mb-10 sm:mb-14">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-              Por que escolher a{" "}
-              <span className="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">
-                SaúdeGPT
-              </span>
-            </h2>
-          </div>
-        </FadeUp>
+    <div className="relative overflow-hidden border-y border-cyan-500/10 bg-[#0D1520]/50">
+      {/* Gradient fade edges */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-[#0D1520] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-[#0D1520] to-transparent pointer-events-none" />
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-2xl mx-auto">
-          {TRUST_ITEMS.map((item, i) => (
-            <FadeUp key={i} delay={i * 0.05}>
-              <div className="relative overflow-hidden rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 sm:p-6 transition-all duration-200 hover:border-emerald-500/15 hover:bg-emerald-500/[0.02]">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-3" style={{
-                  background: "linear-gradient(135deg, rgba(0,201,167,0.12), rgba(0,201,167,0.05))",
-                  color: "#00C9A7",
-                }}>
-                  <Icon name={item.icon} size={20} />
-                </div>
-                <h3 className="text-sm font-bold text-white mb-1.5">{item.title}</h3>
-                <p className="text-xs text-emerald-50/55 leading-relaxed">{item.desc}</p>
-              </div>
-            </FadeUp>
+      <div className="flex py-5">
+        <div className="marquee-track flex gap-12">
+          {MARQUEE_DUPLICATED.map((word, i) => (
+            <span
+              key={i}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B] text-sm sm:text-base font-display font-bold tracking-[3px] whitespace-nowrap"
+            >
+              {word}
+            </span>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   FINAL CTA — Institutional
-   ═══════════════════════════════════════════════════════════════ */
-function FinalCTA() {
-  return (
-    <section className="relative py-16 sm:py-20 border-t border-white/[0.04] overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/[0.02] to-transparent" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/[0.03] blur-[120px]" />
-
-      <div className="relative z-10 mx-auto max-w-3xl px-4 sm:px-6 text-center">
-        <FadeUp>
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold-500/15 bg-gold-500/8 px-4 py-1.5 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-gold-400">Comece agora</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-            Pronto para transformar sua{" "}
-            <span className="bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent">carreira na saúde</span>?
-          </h2>
-          <p className="mt-3 text-sm sm:text-base text-emerald-50/60 max-w-lg mx-auto">
-            Junte-se a centenas de alunos que já estão se preparando para oferecer 
-            um atendimento de excelência. Acesso imediato ao conteúdo completo.
-          </p>
-        </FadeUp>
-
-        <FadeUp delay={0.1}>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              href="#cursos"
-              className="inline-flex h-12 items-center gap-2 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 px-6 text-sm font-bold text-navy-900 shadow-lg shadow-gold-500/20 hover:shadow-gold-500/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+        {/* Second copy for seamless loop */}
+        <div className="marquee-track flex gap-12" aria-hidden="true">
+          {MARQUEE_DUPLICATED.map((word, i) => (
+            <span
+              key={`dup-${i}`}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B] text-sm sm:text-base font-display font-bold tracking-[3px] whitespace-nowrap"
             >
-              <Icon name="graduation" size={18} />
-              Matricular agora
-              <Icon name="arrowRight" size={16} />
-            </Link>
-            <Link
-              href="/contato"
-              className="inline-flex h-12 items-center gap-2 rounded-xl border border-white/15 px-6 text-sm font-medium text-emerald-50/70 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all"
-            >
-              Falar conosco
-            </Link>
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
-
-/* ═══════════════════════════════════════════════════════════════
-   TICKER BANNER — Rolagem infinita
-   ═══════════════════════════════════════════════════════════════ */
-
-const TICKER_ITEMS = [
-  "CIDADE DOS MÉDICOS",
-  "•",
-  "MEDICAMENTOS",
-  "•",
-  "SAÚDE",
-  "•",
-  "BEM-ESTAR",
-  "•",
-  "FARMÁCIA",
-  "•",
-  "ATENDIMENTO HUMANIZADO",
-  "•",
-  "CIDADE DOS MÉDICOS",
-  "•",
-  "MEDICAMENTOS",
-  "•",
-  "SAÚDE",
-  "•",
-  "BEM-ESTAR",
-  "•",
-  "FARMÁCIA",
-  "•",
-  "ATENDIMENTO HUMANIZADO",
-  "•",
-];
-
-function TickerBanner() {
-  return (
-    <div className="relative w-full overflow-hidden border-t border-b border-emerald-500/10 bg-gradient-to-r from-emerald-500/5 via-forest-900 to-emerald-500/5 py-3">
-      <div className="marquee-track">
-        {TICKER_ITEMS.map((item, i) => (
-          <span
-            key={i}
-            className={`mx-3 text-xs sm:text-sm font-bold uppercase tracking-[0.15em] ${
-              item === "•"
-                ? "text-emerald-500/40"
-                : "bg-gradient-to-r from-emerald-400 to-gold-400 bg-clip-text text-transparent"
-            }`}
-          >
-            {item}
-          </span>
-        ))}
+              {word}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   HOW IT WORKS — 3 passos simples
+   SECTION 3 — STATS BAR (atualizado)
    ═══════════════════════════════════════════════════════════════ */
-
-const STEPS = [
-  {
-    icon: "book",
-    title: "Escolha sua área",
-    desc: "Farmácia, Nutrição, Fisioterapia ou Psicologia — escolha a formação ideal para você.",
-    color: "#00C9A7",
-  },
-  {
-    icon: "graduation",
-    title: "Matricule-se e comece",
-    desc: "Acesso imediato a todas as trilhas, aulas e materiais do curso escolhido.",
-    color: "#D4A843",
-  },
-  {
-    icon: "award",
-    title: "Aprenda com jogos e certificado",
-    desc: "Simulações de balcão, quizzes, OSCE e certificado de conclusão ao final.",
-    color: "#3B82F6",
-  },
-];
-
-function HowItWorks() {
+function StatsBar() {
   return (
-    <section className="py-16 sm:py-20 border-t border-white/[0.04]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp>
-          <div className="text-center mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">
-                Como funciona
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-              Começar é{" "}
-              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                simples e rápido
-              </span>
-            </h2>
-            <p className="mt-2 text-sm text-emerald-50/55 max-w-xl mx-auto">
-              Em três passos você transforma sua carreira na saúde.
-            </p>
+    <section className="py-16 sm:py-20 bg-[#080C14]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-cyan-500/5 rounded-2xl overflow-hidden border border-cyan-500/10">
+          {STATS.map((stat, i) => (
+            <FadeUp key={i} delay={i * 0.1} className="h-full">
+              <div className="group bg-[#0D1520]/80 backdrop-blur-sm p-8 lg:p-10 h-full transition-all hover:bg-[#0D1520]">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`p-2.5 rounded-xl ${stat.icone === Flame ? "bg-[#FF6B6B]/10 text-[#FF6B6B]" : "bg-cyan-500/10 text-cyan-400"}`}>
+                    <stat.icone className={`w-5 h-5 ${stat.icone === Flame ? "joy-flame" : ""}`} />
+                  </div>
+                </div>
+                <div className="font-display text-[42px] sm:text-[52px] leading-none tracking-[-2.5px] text-[#F0F4F8] tabular-nums">
+                  {stat.value}
+                  <span className="text-cyan-400 text-2xl sm:text-3xl align-super ml-0.5">
+                    {stat.suffix}
+                  </span>
+                </div>
+                <div className="mt-2 text-sm text-[#94A3B8] font-body">{stat.label}</div>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 4 — CURSOS (com nova paleta por card)
+   ═══════════════════════════════════════════════════════════════ */
+function CursosSection() {
+  return (
+    <section id="cursos" className="py-20 sm:py-28 bg-[#080C14]/70">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <FadeUp className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-cyan-500/10 bg-cyan-500/5">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <span className="text-cyan-400 text-xs tracking-[3px] font-semibold uppercase">
+              Nossos Cursos
+            </span>
           </div>
+          <h2 className="font-display text-[36px] sm:text-[48px] lg:text-[56px] leading-[1.05] tracking-[-2px] text-[#F0F4F8]">
+            Formação de{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-[#FF6B6B]">
+              excelência
+            </span>
+          </h2>
+          <p className="mt-3 text-[#94A3B8] text-base sm:text-lg max-w-xl mx-auto">
+            Cursos criados por profissionais registrados nos conselhos de classe
+          </p>
         </FadeUp>
 
-        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
-          {STEPS.map((step, i) => (
-            <FadeUp key={i} delay={i * 0.08}>
-              <div className="relative group h-full">
-                {/* Step number */}
-                <div className="absolute -top-2 -left-2 w-8 h-8 rounded-full flex items-center justify-center text-xs font-extrabold text-navy-950"
-                  style={{ background: step.color }}
-                >
-                  {i + 1}
-                </div>
+        {/* Cursos Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {CURSOS.map((curso, i) => (
+            <FadeUp key={curso.id} delay={i * 0.1}>
+              <div className="group relative bg-[#0D1520]/80 border border-cyan-500/8 rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-500/25 hover:shadow-[0_12px_40px_-8px_rgba(6,182,212,0.08)] h-full flex flex-col overflow-hidden">
+                {/* Top accent line — usa a cor do curso */}
                 <div
-                  className="relative h-full rounded-2xl border p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1"
+                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    borderColor: `${step.color}20`,
-                    background: `linear-gradient(135deg, rgba(5,13,26,0.95) 0%, rgba(10,22,40,0.9) 100%)`,
+                    background: `linear-gradient(90deg, transparent, ${curso.cor}40, transparent)`,
                   }}
+                />
+
+                {/* Vector Illustration */}
+                <div className="relative w-full h-28 mb-4 rounded-xl overflow-hidden flex items-center justify-center"
+                  style={{ background: `radial-gradient(circle at 50% 50%, ${curso.cor}10 0%, transparent 70%)` }}
                 >
-                  {/* Hover glow */}
+                  <curso.vector className="w-full h-full max-w-[180px] mx-auto" />
+                </div>
+
+                {/* Icon + Badge */}
+                <div className="flex items-start justify-between mb-5">
                   <div
-                    className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                    style={{
-                      background: `radial-gradient(400px 200px at 50% 0%, ${step.color}08, transparent 70%)`,
-                    }}
-                  />
-                  <div className="relative z-10">
-                    <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4"
-                      style={{
-                        background: `${step.color}15`,
-                        border: `1px solid ${step.color}30`,
-                        color: step.color,
-                      }}
-                    >
-                      <Icon name={step.icon} size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-white mb-2">{step.title}</h3>
-                    <p className="text-sm text-emerald-50/60 leading-relaxed">{step.desc}</p>
+                    className="p-3 rounded-xl transition-all duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${curso.cor}18` }}
+                  >
+                    <curso.icone
+                      className="w-6 h-6"
+                      style={{ color: curso.cor }}
+                    />
                   </div>
+                  <span
+                    className={`inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase ${
+                      curso.status === "disponivel"
+                        ? "bg-cyan-500/10 text-cyan-400"
+                        : "bg-[#0D1520] text-[#64748B]"
+                    }`}
+                  >
+                    {curso.status === "disponivel" ? "Disponível" : "Em breve"}
+                  </span>
+                </div>
+
+                {/* Titulo */}
+                <h3 className="font-display text-[26px] leading-tight tracking-[-1px] text-[#F0F4F8] group-hover:text-cyan-400 transition-colors duration-300">
+                  {curso.titulo}
+                </h3>
+
+                {/* Conselho */}
+                <p className="mt-1 text-xs text-[#64748B] tracking-wide uppercase font-medium">
+                  {curso.conselho}
+                </p>
+
+                {/* Descrição */}
+                <p className="mt-3 text-sm text-[#94A3B8] leading-relaxed line-clamp-3 flex-1">
+                  {curso.descricao}
+                </p>
+
+                {/* Stats */}
+                {curso.status === "disponivel" && curso.modulos && (
+                  <div className="mt-5 pt-4 border-t border-cyan-500/8 grid grid-cols-2 gap-x-4 gap-y-2">
+                    <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+                      <BookOpen className="w-3.5 h-3.5 text-cyan-400/70" />
+                      <span className="text-[#F0F4F8] font-semibold">{curso.modulos}</span> módulos
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-400/70" />
+                      <span className="text-[#F0F4F8] font-semibold">{curso.aulas}</span> aulas
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+                      <ChevronDown className="w-3.5 h-3.5 text-cyan-400/70" />
+                      <span className="text-[#F0F4F8] font-semibold">{curso.trilhas}</span> trilhas
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+                      <Activity className="w-3.5 h-3.5 text-cyan-400/70" />
+                      <span className="text-[#F0F4F8] font-semibold">{curso.jogos}</span> jogos
+                    </div>
+                  </div>
+                )}
+
+                {/* CTA — cor por curso */}
+                <div className="mt-5">
+                  {curso.status === "disponivel" ? (
+                    <Link
+                      href="/trilhas"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold text-white hover:brightness-110 active:scale-[0.98] transition-all"
+                      style={{ backgroundColor: curso.cor }}
+                    >
+                      Matricular agora
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  ) : (
+                    <button
+                      disabled
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-500/15 bg-[#0D1520]/50 py-3 text-sm text-[#64748B] cursor-not-allowed"
+                    >
+                      Lista de espera
+                    </button>
+                  )}
                 </div>
               </div>
             </FadeUp>
@@ -672,35 +505,92 @@ function HowItWorks() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   COURSE CATALOG SECTION
+   SECTION 5 — POR QUE BOMBA (nova seção Gen Z)
    ═══════════════════════════════════════════════════════════════ */
-function CourseCatalog() {
+function PorQueBombaSection() {
+  const cards = [
+    {
+      titulo: "Profissionais registrados",
+      descricao:
+        "Conteúdo criado por especialistas com registro ativo nos conselhos de classe. Qualidade técnica e científica comprovada.",
+      icone: ShieldCheck,
+      cor: "#06B6D4", // cyan
+    },
+    {
+      titulo: "Jogos reais",
+      descricao:
+        "Quizzes, simulações clínicas e desafios interativos que viciam. Aprenda na prática com gameplays que testam seu conhecimento.",
+      icone: Gamepad2,
+      cor: "#A855F7", // purple
+    },
+    {
+      titulo: "Micro wins 5-15min",
+      descricao:
+        "Aulas curtas e diretas. Dá pra upar sua carreira no intervalo do café. Progresso visível a cada sessão.",
+      icone: Clock,
+      cor: "#FF6B6B", // coral
+    },
+    {
+      titulo: "Comunidade",
+      descricao:
+        "Troque experiências com outros alunos, compartilhe streaks e conquistas. Sua tribo da saúde te espera.",
+      icone: Users,
+      cor: "#3B82F6", // blue
+    },
+  ];
+
   return (
-    <section id="cursos" className="py-16 sm:py-20 border-t border-white/[0.04]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeUp>
-          <div className="mb-10 sm:mb-14">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/15 bg-emerald-500/8 px-4 py-1.5 mb-4">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[10px] font-semibold uppercase tracking-widest text-emerald-300">
-                Catálogo de cursos
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white font-['Clash_Display',system-ui,sans-serif]">
-              Escolha sua{" "}
-              <span className="bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
-                especialidade
-              </span>
-            </h2>
-            <p className="mt-2 text-sm text-emerald-50/55 max-w-xl">
-              Escolha sua área e comece a aprender hoje — trilhas, simulações, jogos e certificado de conclusão.
-            </p>
+    <section className="py-20 sm:py-28 bg-[#0D1520]/60">
+      <div className="max-w-7xl mx-auto px-6">
+        <FadeUp className="text-center mb-14">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#FF6B6B]/15 bg-[#FF6B6B]/5">
+            <Zap className="w-3.5 h-3.5 text-[#FF6B6B]" />
+            <span className="text-[#FF6B6B] text-xs tracking-[3px] font-semibold uppercase">
+              Por que bomba
+            </span>
           </div>
+          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-2px] text-[#F0F4F8]">
+            A plataforma que{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B]">
+              todo mundo quer
+            </span>
+          </h2>
+          <p className="mt-4 text-[#94A3B8] text-base sm:text-lg max-w-xl mx-auto">
+            Educação em saúde do jeito que a nova geração aprende: rápido, divertido e direto ao ponto.
+          </p>
         </FadeUp>
 
-        <div className="space-y-4 sm:space-y-5">
-          {COURSES.map((course, index) => (
-            <CourseCard key={course.id} course={course} index={index} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {cards.map((card, i) => (
+            <FadeUp key={i} delay={i * 0.12}>
+              <div className="group relative bg-[#0D1520]/80 border border-cyan-500/8 rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1 hover:border-cyan-500/25 hover:shadow-[0_12px_40px_-8px_rgba(6,182,212,0.08)] h-full flex flex-col">
+                {/* Top accent */}
+                <div
+                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `linear-gradient(90deg, transparent, ${card.cor}40, transparent)`,
+                  }}
+                />
+
+                {/* Icon */}
+                <div
+                  className="p-3.5 rounded-xl transition-all duration-300 group-hover:scale-110 mb-5 self-start"
+                  style={{ backgroundColor: `${card.cor}15` }}
+                >
+                  <card.icone className="w-6 h-6" style={{ color: card.cor }} />
+                </div>
+
+                {/* Title */}
+                <h3 className="font-display text-[20px] leading-tight tracking-[-0.5px] text-[#F0F4F8] mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                  {card.titulo}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-[#94A3B8] leading-relaxed flex-1">
+                  {card.descricao}
+                </p>
+              </div>
+            </FadeUp>
           ))}
         </div>
       </div>
@@ -709,18 +599,245 @@ function CourseCatalog() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MAIN PAGE
+   SECTION — COMO FUNCIONA (Mockup visual)
    ═══════════════════════════════════════════════════════════════ */
-export default function HomePage() {
+function ComoFuncionaSection() {
+  const steps = [
+    {
+      step: "01",
+      titulo: "Escolha seu curso",
+      desc: "5 cursos disponíveis em saúde. Comece pelo que mais combina com você. Todos 100% gratuitos.",
+      icon: (
+        <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+          <rect x="8" y="6" width="24" height="28" rx="3" />
+          <path d="M14 16h12M14 22h8" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      step: "02",
+      titulo: "Aprenda jogando",
+      desc: "Microaulas de 5-15 min com quizzes, simulações e desafios. Ganhe XP e suba no ranking.",
+      icon: (
+        <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+          <path d="M12 26V14l12 6-12 6Z" fill="currentColor" fillOpacity="0.3" />
+          <circle cx="30" cy="12" r="4" />
+        </svg>
+      ),
+    },
+    {
+      step: "03",
+      titulo: "Ganhe certificado",
+      desc: "Complete os módulos e conquiste seu certificado digital. Compartilhe no LinkedIn e impulsione sua carreira.",
+      icon: (
+        <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+          <path d="M10 34V12l10-8 10 8v22" />
+          <path d="M16 28h8M16 22h8" strokeLinecap="round" />
+          <circle cx="20" cy="20" r="8" opacity="0.3" />
+        </svg>
+      ),
+    },
+    {
+      step: "04",
+      titulo: "Upe sua carreira",
+      desc: "Conhecimento prático que faz diferença no dia a dia. Destaque-se no mercado de trabalho em saúde.",
+      icon: (
+        <svg viewBox="0 0 40 40" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+          <path d="M20 6l4 8 8 1-5.5 5.5L28 28l-8-4-8 4 1.5-7.5L8 15l8-1z" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
-    <ReactLenis root options={{ lerp: 0.06, wheelMultiplier: 1.1 }}>
-      <ScrollProgress />
+    <section className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080C14]/70 via-[#0D1520] to-[#080C14]/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[length:20px_20px]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <FadeUp className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-purple-500/15 bg-purple-500/5">
+            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <span className="text-purple-400 text-xs tracking-[3px] font-semibold uppercase">
+              Como Funciona
+            </span>
+          </div>
+          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-2px] text-[#F0F4F8]">
+            Do zero ao certificado em{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B]">
+              4 passos
+            </span>
+          </h2>
+          <p className="mt-4 text-[#94A3B8] text-base sm:text-lg max-w-xl mx-auto">
+            Simples, rápido e gamificado. Sua jornada de aprendizado começa aqui.
+          </p>
+        </FadeUp>
+
+        {/* ── Steps Grid ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {steps.map((s, i) => (
+            <FadeUp key={i} delay={i * 0.12}>
+              <div className="group relative bg-[#0D1520]/80 border border-cyan-500/8 rounded-2xl p-7 transition-all duration-500 hover:-translate-y-1.5 hover:border-cyan-500/20 hover:shadow-[0_16px_48px_-8px_rgba(6,182,212,0.06)] h-full">
+                {/* Step number */}
+                <div className="flex items-center justify-between mb-5">
+                  <div className="p-3 rounded-xl bg-cyan-500/10">
+                    {s.icon}
+                  </div>
+                  <span className="font-display text-[40px] leading-none tracking-[-3px] text-[#F0F4F8]/5 font-bold select-none">
+                    {s.step}
+                  </span>
+                </div>
+
+                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#F0F4F8] mb-2 group-hover:text-cyan-400 transition-colors">
+                  {s.titulo}
+                </h3>
+                <p className="text-sm text-[#94A3B8] leading-relaxed">
+                  {s.desc}
+                </p>
+              </div>
+            </FadeUp>
+          ))}
+        </div>
+
+        {/* ── Mockup Device Frame ── */}
+        <FadeUp delay={0.5} className="mt-14">
+          <div className="mx-auto max-w-md">
+            <div className="relative rounded-[28px] border-2 border-cyan-500/15 bg-gradient-to-b from-[#0D1520] to-[#080C14] p-3 shadow-[0_0_80px_rgba(6,182,212,0.06)]">
+              {/* Notch */}
+              <div className="mx-auto mb-3 h-1.5 w-24 rounded-full bg-[#F0F4F8]/10" />
+              {/* Screen content */}
+              <div className="aspect-[9/16] rounded-2xl bg-[#020508] overflow-hidden border border-cyan-500/5">
+                <div className="h-full flex flex-col items-center justify-center gap-4 p-6">
+                  {/* Mini course preview */}
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-400 to-purple-400 flex items-center justify-center">
+                    <GraduationCap className="w-8 h-8 text-[#020508]" />
+                  </div>
+                  <div className="w-3/4 h-2 rounded-full bg-[#F0F4F8]/15" />
+                  <div className="w-1/2 h-2 rounded-full bg-[#F0F4F8]/10" />
+                  {/* XP bar */}
+                  <div className="w-3/4 mt-4">
+                    <div className="flex justify-between text-[9px] text-[#64748B] mb-1">
+                      <span>Progresso</span>
+                      <span>68%</span>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-[#F0F4F8]/5 overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-400"
+                        initial={{ width: "0%" }}
+                        whileInView={{ width: "68%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
+                      />
+                    </div>
+                  </div>
+                  {/* Mini CTA */}
+                  <div className="w-2/3 h-8 rounded-xl bg-cyan-500/80 flex items-center justify-center mt-2">
+                    <span className="text-[10px] font-bold text-[#020508]">Continuar</span>
+                  </div>
+                </div>
+              </div>
+              {/* Home indicator */}
+              <div className="mx-auto mt-3 h-1 w-28 rounded-full bg-[#F0F4F8]/15" />
+            </div>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION 6 — CTA FINAL
+   ═══════════════════════════════════════════════════════════════ */
+function CtaFinalSection() {
+  return (
+    <section className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080C14] via-[#0D1520] to-[#080C14]" />
+
+      {/* Decorative Orbs */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-cyan-500/6 blur-[150px]" />
+      <div className="absolute top-0 right-0 w-[350px] h-[350px] rounded-full bg-[#FF6B6B]/6 blur-[100px]" />
+
+      {/* Grid overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(6,182,212,0.04)_1px,transparent_1px)] bg-[length:20px_20px]" />
+
+      <FadeUp className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border border-[#FF6B6B]/20 bg-[#FF6B6B]/5">
+          <Zap className="w-3.5 h-3.5 text-[#FF6B6B]" />
+          <span className="text-[#FF6B6B] text-xs tracking-[4px] font-semibold uppercase">
+            Comece sua jornada
+          </span>
+        </div>
+
+        <h2 className="font-display text-[36px] sm:text-[48px] lg:text-[58px] leading-[1.05] tracking-[-2.5px] text-[#F0F4F8] mb-6">
+          Pronto para dar
+          <br />
+          um{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-[#FF6B6B]">
+            up na carreira
+          </span>
+          ?
+        </h2>
+
+        <p className="text-lg text-[#94A3B8] mb-10 max-w-xl mx-auto leading-relaxed">
+          Jogue, aprenda e conquiste seu certificado. A saúde precisa de gente como você — preparada, rápida e conectada.
+        </p>
+
+        <Link
+          href="/trilhas"
+          className="inline-flex h-16 items-center justify-center gap-3 rounded-2xl bg-cyan-500 px-12 text-lg font-bold text-[#080C14] hover:bg-cyan-400 active:scale-[0.98] transition-all shadow-[0_0_60px_rgba(6,182,212,0.25)]"
+        >
+          Jogar agora em 2 min
+          <ArrowRight className="w-5 h-5" />
+        </Link>
+
+        <p className="mt-6 text-xs text-[#64748B] tracking-wide">
+          Acesso gratuito • Conteúdo profissional • Certificado digital
+        </p>
+      </FadeUp>
+    </section>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   MAIN HOME PAGE
+   ═══════════════════════════════════════════════════════════════ */
+export default function SaudegptHome() {
+  return (
+    <div id="conteudo-principal" className="bg-[#080C14] overflow-x-hidden font-body">
       <HeroSection />
-      <TickerBanner />
-      <HowItWorks />
-      <CourseCatalog />
-      <TrustSection />
-      <FinalCTA />
-    </ReactLenis>
+      <MarqueeTicker />
+      <StatsBar />
+      <CursosSection />
+      <PorQueBombaSection />
+
+      {/* ── COMO FUNCIONA — Mockup visual do fluxo de aprendizado ── */}
+      <ComoFuncionaSection />
+
+      <CtaFinalSection />
+
+      {/* Footer com disclaimer legal */}
+      <footer className="border-t border-cyan-500/10 py-10 px-6">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <p className="text-sm text-cyan-400 font-display font-medium tracking-wide">
+            SaúdeGPT — Plataforma de Formação para Profissionais da Saúde
+          </p>
+          <p className="text-xs text-[#64748B] leading-relaxed max-w-xl mx-auto">
+            Conteúdo criado pelo farmacêutico <strong className="text-[#F0F4F8]/70">Thiago Piola — CRF/SP 58.519</strong>.
+            Este material é educativo e não substitui orientação profissional presencial.
+            Consulte sempre o(a) farmacêutico(a) para recomendações individualizadas.
+          </p>
+          <div className="flex items-center justify-center gap-6 text-[10px] text-[#64748B]/60 tracking-wider uppercase">
+            <a href="/termos" className="hover:text-cyan-400 transition-colors no-underline">Termos de Uso</a>
+            <a href="/privacidade" className="hover:text-cyan-400 transition-colors no-underline">Privacidade</a>
+            <a href="/contato" className="hover:text-cyan-400 transition-colors no-underline">Contato</a>
+          </div>
+          <p className="text-[10px] text-[#64748B]/40 tracking-[2px] uppercase pt-2">
+            © {new Date().getFullYear()} SaúdeGPT • Todos os direitos reservados
+          </p>
+        </div>
+      </footer>
+    </div>
   );
 }

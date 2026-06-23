@@ -6,6 +6,10 @@ import { trilhaVendas } from "./trilha-encantamento";
 import { trilhaFundamentos } from "./trilha-fundamentos";
 import { trilhaPratica } from "./trilha-pratica";
 import { trilhaServicosCuidado } from "./trilha-servicos-cuidado";
+import { trilhaNutricaoFundamentos } from "./trilha-nutricao-fundamentos";
+import { trilhaFisioterapiaReabilitacao } from "./trilha-fisioterapia-reabilitacao";
+import { trilhaPsicologiaSaudeMental } from "./trilha-psicologia-saude-mental";
+import { trilhaCuidadorIdosos } from "./trilha-cuidador-idosos";
 
 export const trilhas: Trilha[] = [
   trilhaPerfumaria,
@@ -15,6 +19,10 @@ export const trilhas: Trilha[] = [
   trilhaFundamentos,
   trilhaPratica,
   trilhaServicosCuidado,
+  trilhaNutricaoFundamentos,
+  trilhaFisioterapiaReabilitacao,
+  trilhaPsicologiaSaudeMental,
+  trilhaCuidadorIdosos,
 ];
 
 export function getTrilha(id: string): Trilha | undefined {

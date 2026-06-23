@@ -9,7 +9,7 @@ import { ProgressoTrilhaBadge } from "@/components/progresso-cliente";
 export const metadata: Metadata = {
   title: "Trilhas da Formação",
   description:
-    "Explore as trilhas da formação completa para atendentes de farmácia — da perfumaria aos medicamentos, serviços farmacêuticos, excelência operacional e atendimento humanizado.",
+    "Explore as trilhas da plataforma SaúdeGPT — Farmácia, Nutrição e outras áreas da saúde. Conteúdo criado por profissionais registrados nos conselhos de classe.",
 };
 
 // Imagens de trilha disponíveis em /public/
@@ -355,7 +355,7 @@ export default function TrilhasPage() {
           Pronto para transformar seu atendimento?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base text-white/50">
-            Transforme seu atendimento e sua carreira com a formação mais completa para atendentes de farmácia.
+            Transforme seu atendimento e sua carreira com a formação mais completa em saúde.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link href="/" className="btn-rd-white text-base px-10 py-3">
