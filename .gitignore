@@ -12,3 +12,4 @@ __pycache__
 public/videos/src-*
 public/videos/*-480p.mp4
 public/videos/*-720p.mp4
+.vercel
