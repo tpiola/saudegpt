@@ -30,7 +30,7 @@ const dmSans = DM_Sans({
 const baseUrl = getSiteUrl();
 
 export const viewport: Viewport = {
-  themeColor: "#FFF8F0",
+  themeColor: "#FFFFFF",
   initialScale: 1,
   width: "device-width",
   viewportFit: "cover",
@@ -39,18 +39,18 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
+    default: "SaúdeGPT | Escola Profissional de Saúde | Cursos Gratuitos",
     template: `%s · SaúdeGPT`,
   },
   description:
-    "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade. Conteúdo criado por profissionais registrados nos conselhos de classe.",
+    "Escola profissional de saúde com cursos 100% gratuitos. Formação em Farmácia, Nutrição, Reabilitação, Saúde Mental e Cuidados com Idosos. Conteúdo criado por especialistas registrados nos conselhos de classe.",
   keywords: [
+    "escola profissional saúde",
     "cursos saúde gratuitos",
     "ead saúde",
     "curso farmácia online grátis",
-    "curso nutrição",
+    "curso nutrição gratuito",
     "plataforma saúde",
-    "microlearning saúde",
     "certificado saúde digital",
   ],
   authors: [{ name: site.nome }],
@@ -87,8 +87,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.webp" }],
   },
   other: {
-    "theme-color": "#FFF8F0",
-    "msapplication-TileColor": "#FFF8F0",
+    "theme-color": "#FFFFFF",
+    "msapplication-TileColor": "#FFFFFF",
   },
   manifest: "/manifest.webmanifest",
 };

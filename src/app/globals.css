@@ -1,118 +1,77 @@
 @import "tailwindcss";
 
 /* ══════════════════════════════════════════════════════════
-   SAÚDEGPT — Premium White + Olive + Gold
-   Jack Roberts style: clean, bold, sophisticated
+   SAÚDEGPT — Premium Navy + White + Subtle Gold
+   Escola Profissional de Saúde de Elite
+   Design: limpo, institucional, impactante
    ══════════════════════════════════════════════════════════ */
 
 @theme inline {
-  /* ── Premium White ── */
-  --color-cream-50: #FFFFFF;
-  --color-cream-100: #FAFAFA;
-  --color-cream-200: #F5F5F5;
-  --color-cream-300: #EEEEEE;
-  --color-cream-400: #E0E0E0;
-
-  /* ── Olive Green (accent primário) ── */
-  --color-olive-50: #F0F5F2;
-  --color-olive-100: #E0EBE4;
-  --color-olive-200: #C0D7C8;
-  --color-olive-300: #A0C3AC;
-  --color-olive-400: #80AF90;
-  --color-olive-500: #3D6B4F;
-  --color-olive-600: #2E5A3E;
-  --color-olive-700: #1F492D;
-  --color-olive-800: #10381C;
+  /* ── Navy Premium (accent primário) ── */
+  --color-navy-50: #E8ECF2;
+  --color-navy-100: #D0D9E5;
+  --color-navy-200: #A0B3CB;
+  --color-navy-300: #708DB1;
+  --color-navy-400: #406797;
+  --color-navy-500: #0A2540;
+  --color-navy-600: #081E33;
+  --color-navy-700: #061726;
+  --color-navy-800: #04101A;
 
   /* ── Warm Gold (accent secundário) ── */
-  --color-gold-100: #F8F0E0;
-  --color-gold-200: #F0E0C0;
+  --color-gold-100: #F8F2E8;
+  --color-gold-200: #F0E5D0;
   --color-gold-300: #E8D0A0;
   --color-gold-400: #D4B880;
   --color-gold-500: #C4A97D;
   --color-gold-600: #B09860;
 
-  /* ── Dark Text ── */
-  --color-brown-500: #1A1A1A;
-  --color-brown-400: #333333;
-  --color-brown-300: #555555;
-  --color-brown-200: #777777;
-  --color-brown-100: #999999;
-
-  /* ── Terracotta Suave ── */
-  --color-terracotta-100: #F5E0D8;
-  --color-terracotta-200: #EDC9BC;
-  --color-terracotta-300: #E5B2A0;
-  --color-terracotta-400: #D49B84;
-  --color-terracotta-500: #C67B5C;
-  --color-terracotta-600: #B0654A;
-
-  /* ── Serene Blue ── */
-  --color-serene-100: #E8F0F8;
-  --color-serene-200: #D0E0F0;
-  --color-serene-300: #A8C8E0;
-  --color-serene-400: #8AB4D4;
-  --color-serene-500: #6B9AC4;
-  --color-serene-600: #5A85B0;
-
-  /* ── Soft Lavender ── */
-  --color-lavender-100: #F0ECF8;
-  --color-lavender-200: #E0D8F0;
-  --color-lavender-300: #C8B8E8;
-  --color-lavender-400: #B0A0D8;
-  --color-lavender-500: #9B8EC4;
-  --color-lavender-600: #8878B0;
-
-  /* ── Warm Amber ── */
-  --color-amber-warm-100: #FDF0E0;
-  --color-amber-warm-200: #FAE0C0;
-  --color-amber-warm-300: #F5D0A0;
-  --color-amber-warm-400: #E8C080;
-  --color-amber-warm-500: #D4A574;
-  --color-amber-warm-600: #C09060;
+  /* ── Text Colors ── */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #4A4A5E;
+  --color-text-muted: #8A8A9E;
 
   /* ── Status ── */
-  --color-success: #5B8C5A;
+  --color-success: #2D8B5E;
   --color-warning: #C67B5C;
   --color-error: #C4554A;
   --color-info: #6B9AC4;
 }
 
 /* ══════════════════════════════════════════════════════════
-   DESIGN TOKENS — Light Calm Theme
+   DESIGN TOKENS — Clean Professional Theme
    ══════════════════════════════════════════════════════════ */
 
 :root {
-  /* Fundo cream quente */
-  --background: #FFF8F0;
-  --surface: #FEF0E0;
-  --surface-2: #FDE8D0;
-  --surface-3: #FCE0C0;
+  /* Fundo limpo */
+  --background: #FFFFFF;
+  --surface: #F8F9FB;
+  --surface-2: #F0F2F5;
   --surface-card: #FFFFFF;
-  --surface-card-hover: #FFFDF9;
-  --border: rgba(61, 44, 46, 0.08);
-  --border-strong: rgba(61, 44, 46, 0.15);
+  --surface-card-hover: #FAFBFC;
+  --border: rgba(10, 37, 64, 0.08);
+  --border-strong: rgba(10, 37, 64, 0.15);
 
   /* Texto */
-  --foreground: #3D2C2E;
-  --muted: #6B5D5F;
-  --subtle: #8B7B7D;
-  --muted-foreground: #6B5D5F;
+  --foreground: #1A1A2E;
+  --muted: #4A4A5E;
+  --subtle: #8A8A9E;
+  --muted-foreground: #4A4A5E;
   --card: #FFFFFF;
-  --accent: rgba(91, 140, 90, 0.08);
+  --accent: #0A2540;
 
   /* Tipografia */
   --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 
-  /* Shadows — suaves, nada agressivo */
-  --shadow-xs: 0 1px 2px rgba(61, 44, 46, 0.04);
-  --shadow-sm: 0 2px 8px rgba(61, 44, 46, 0.06);
-  --shadow-md: 0 4px 16px rgba(61, 44, 46, 0.08);
-  --shadow-lg: 0 8px 32px rgba(61, 44, 46, 0.10);
-  --shadow-xl: 0 16px 48px rgba(61, 44, 46, 0.12);
-  --shadow-olive: 0 4px 20px rgba(91, 140, 90, 0.12);
-  --shadow-warm: 0 4px 20px rgba(212, 165, 116, 0.15);
+  /* Shadows — institucionais, elegantes */
+  --shadow-xs: 0 1px 2px rgba(10, 37, 64, 0.04);
+  --shadow-sm: 0 2px 8px rgba(10, 37, 64, 0.06);
+  --shadow-md: 0 4px 16px rgba(10, 37, 64, 0.08);
+  --shadow-lg: 0 8px 32px rgba(10, 37, 64, 0.10);
+  --shadow-xl: 0 16px 48px rgba(10, 37, 64, 0.12);
+  --shadow-navy: 0 4px 24px rgba(10, 37, 64, 0.15);
+  --shadow-gold: 0 4px 20px rgba(196, 169, 125, 0.15);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -171,10 +130,10 @@ img, video {
 }
 
 /* ══════════════════════════════════════════════════════════
-   CARDS — Warm & Calm
+   CARDS — Clean & Professional
    ══════════════════════════════════════════════════════════ */
 
-.card-warm {
+.card-premium {
   background: var(--surface-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -182,7 +141,7 @@ img, video {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.card-warm:hover {
+.card-premium:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
   border-color: var(--border-strong);
@@ -190,7 +149,7 @@ img, video {
 
 /* ═══ Selection ═══ */
 ::selection {
-  background: rgba(91, 140, 90, 0.2);
+  background: rgba(10, 37, 64, 0.15);
   color: var(--foreground);
 }
 
@@ -214,7 +173,7 @@ h4, h5, h6 {
 .font-body    { font-family: var(--font-body) !important; }
 
 /* ══════════════════════════════════════════════════════════
-   ANIMATIONS — Sutis e Calmas
+   ANIMATIONS — Sutis e Profissionais
    ══════════════════════════════════════════════════════════ */
 
 @keyframes float {
@@ -268,7 +227,7 @@ h4, h5, h6 {
   animation-play-state: paused;
 }
 
-/* ═══ Warm scrollbar ═══ */
+/* ═══ Scrollbar elegante ═══ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
@@ -289,7 +248,7 @@ h4, h5, h6 {
 }
 
 /* ══════════════════════════════════════════════════════════
-   SCROLL PROGRESS — Olive gradient
+   SCROLL PROGRESS — Navy + Gold gradient
    ══════════════════════════════════════════════════════════ */
 
 .scroll-progress {
@@ -299,7 +258,7 @@ h4, h5, h6 {
   right: 0;
   height: 2.5px;
   z-index: 9999;
-  background: linear-gradient(90deg, #5B8C5A, #D4A574);
+  background: linear-gradient(90deg, #0A2540, #C4A97D);
   transform-origin: left;
   scale: 0 1;
   transition: scale 0.1s linear;
