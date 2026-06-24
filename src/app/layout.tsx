@@ -30,7 +30,7 @@ const dmSans = DM_Sans({
 const baseUrl = getSiteUrl();
 
 export const viewport: Viewport = {
-  themeColor: "#050F0D",
+  themeColor: "#FFF8F0",
   initialScale: 1,
   width: "device-width",
   viewportFit: "cover",
@@ -39,37 +39,44 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "SaúdeGPT | Cursos de Saúde Gamificados | 100% Grátis",
+    default: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
     template: `%s · SaúdeGPT`,
   },
   description:
-    "Plataforma EAD #1 em saúde para Gen Z. Aprenda farmácia, nutrição, fisioterapia, saúde mental e cuidados com idosos jogando. Microaulas de 5-15min com gamificação.",
+    "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade. Conteúdo criado por profissionais registrados nos conselhos de classe.",
   keywords: [
-    "cursos saúde gamificados",
-    "ead saúde gen z",
+    "cursos saúde gratuitos",
+    "ead saúde",
     "curso farmácia online grátis",
-    "curso nutrição gamificado",
-    "plataforma saúde interativa",
+    "curso nutrição",
+    "plataforma saúde",
     "microlearning saúde",
     "certificado saúde digital",
   ],
   authors: [{ name: site.nome }],
+  alternates: {
+    canonical: baseUrl,
+    languages: {
+      "pt-BR": baseUrl,
+      "x-default": baseUrl,
+    },
+  },
   openGraph: {
-    title: "SaúdeGPT | Cursos de Saúde Gamificados | 100% Grátis",
+    title: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
     description:
-      "Plataforma EAD #1 em saúde para Gen Z. Aprenda farmácia, nutrição, fisioterapia, saúde mental e cuidados com idosos jogando. Microaulas de 5-15min com gamificação.",
+      "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade.",
     locale: "pt_BR",
     type: "website",
     siteName: "SaúdeGPT",
     images: [
-      { url: "/opengraph-image", width: 1200, height: 630, alt: "SaúdeGPT — Cursos de Saúde Gamificados para Gen Z" },
+      { url: "/opengraph-image", width: 1200, height: 630, alt: "SaúdeGPT — Cursos de Saúde Gratuitos" },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaúdeGPT | Cursos de Saúde Gamificados | 100% Grátis",
+    title: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
     description:
-      "Plataforma EAD #1 em saúde para Gen Z. Aprenda farmácia, nutrição, fisioterapia, saúde mental e cuidados com idosos jogando. Microaulas de 5-15min com gamificação.",
+      "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade.",
     images: ["/opengraph-image"],
   },
   icons: {
@@ -80,8 +87,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.webp" }],
   },
   other: {
-    "theme-color": "#0A2540",
-    "msapplication-TileColor": "#0A2540",
+    "theme-color": "#FFF8F0",
+    "msapplication-TileColor": "#FFF8F0",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -94,7 +101,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${dmSans.variable} ${inter.variable} h-full`}
+      className={`${dmSans.variable} ${inter.variable} h-full light`}
       data-scroll-behavior="smooth"
       suppressHydrationWarning
     >
@@ -107,7 +114,12 @@ export default function RootLayout({
         <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ""} />
         <meta name="geo.region" content="BR" />
         <meta name="geo.placename" content="Brasil" />
-        <meta name="robots" content="index, follow" />
+        <meta name="geo.position" content="-14.2350;-51.9253" />
+        <meta name="ICBM" content="-14.2350, -51.9253" />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <link rel="alternate" href={baseUrl} hrefLang="pt-BR" />
+        <link rel="alternate" href={baseUrl} hrefLang="x-default" />
         <meta name="language" content="pt-BR" />
         <script
           type="application/ld+json"
@@ -115,6 +127,24 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@graph": [
+                {
+                  "@type": "EducationalOrganization",
+                  name: "SaúdeGPT",
+                  description:
+                    "Plataforma EAD de cursos de saúde gamificados. Formação para atendentes de farmácia, nutrição, fisioterapia e saúde mental. Conteúdo criado por profissionais registrados nos conselhos de classe.",
+                  url: baseUrl,
+                  sameAs: ["https://www.thiagopiola.com.br"],
+                  founder: {
+                    "@type": "Person",
+                    name: "Thiago Piola",
+                    description: "Farmacêutico CRF/SP 58.519",
+                    jobTitle: "Farmacêutico",
+                  },
+                  areaServed: {
+                    "@type": "Country",
+                    name: "Brasil",
+                  },
+                },
                 {
                   "@type": "Organization",
                   name: "SaúdeGPT",
@@ -261,12 +291,6 @@ export default function RootLayout({
                     {
                       "@type": "ListItem",
                       position: 2,
-                      name: "Cursos",
-                      item: `${baseUrl}/trilhas`,
-                    },
-                    {
-                      "@type": "ListItem",
-                      position: 3,
                       name: "Cursos de Saúde Gratuitos",
                       item: `${baseUrl}/trilhas`,
                     },

@@ -2,30 +2,31 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 
-type Theme = "dark";
+type Theme = "light" | "dark";
 
 interface ThemeContextValue {
   theme: Theme;
-  isDark: true;
+  isDark: boolean;
 }
 
 const ThemeCtx = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "saudegpt-theme";
 
-// Script injected inline in <head> to prevent FOUC — always dark mode
-export const scriptAntiFlash = `(function(){try{document.documentElement.classList.add('dark');localStorage.setItem('${STORAGE_KEY}','dark');}catch(e){}})();`;
+// Script injected inline in <head> to prevent FOUC — default light mode
+export const scriptAntiFlash = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}')||'light';document.documentElement.classList.add(t);}catch(e){}})();`;
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    document.documentElement.classList.add("dark");
+    const stored = localStorage.getItem(STORAGE_KEY) || "light";
+    document.documentElement.classList.add(stored);
     setMounted(true);
   }, []);
 
   return (
-    <ThemeCtx.Provider value={{ theme: "dark", isDark: true }}>
+    <ThemeCtx.Provider value={{ theme: "light", isDark: false }}>
       {children}
     </ThemeCtx.Provider>
   );
@@ -38,5 +39,5 @@ export function useTheme(): ThemeContextValue {
 }
 
 export function useTema() {
-  return { tema: "dark" as const, isDark: true };
+  return { tema: "light" as const, isDark: false };
 }

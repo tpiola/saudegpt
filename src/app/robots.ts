@@ -12,4 +12,3 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${base}/sitemap.xml`,
   };
 }
-// re-deploy trigger Thu Jun  4 12:35:38 UTC 2026
