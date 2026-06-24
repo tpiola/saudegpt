@@ -33,7 +33,7 @@ import {
 
 /* ═══════════════════════════════════════════════════════════════
    DESIGN SYSTEM — Cream Calmo & Acolhedor
-   Paleta: bg #FFF8F0 · texto #3D2C2E · accent #5B8C5A · bege #D4A574
+   Paleta: bg #FAFAFA · texto #1A1A1A · accent #3D6B4F · bege #C4A97D
    ═══════════════════════════════════════════════════════════════ */
 
 /* ── Cursos ── */
@@ -42,7 +42,7 @@ const CURSOS = [
     id: "farmacia",
     titulo: "Farmácia",
     conselho: "CRF/SP 58.519",
-    cor: "#5B8C5A",
+    cor: "#3D6B4F",
     corBg: "rgba(91,140,90,0.08)",
     corBorder: "rgba(91,140,90,0.2)",
     corHover: "rgba(91,140,90,0.12)",
@@ -114,7 +114,7 @@ const CURSOS = [
     id: "cuidador-idosos",
     titulo: "Cuidador de Idosos",
     conselho: "SBGG",
-    cor: "#D4A574",
+    cor: "#C4A97D",
     corBg: "rgba(212,165,116,0.08)",
     corBorder: "rgba(212,165,116,0.2)",
     corHover: "rgba(212,165,116,0.12)",
@@ -207,8 +207,8 @@ function ImageBanner({ src, alt, height = "h-48 sm:h-64" }: { src: string; alt: 
         decoding="async"
       />
       {/* Overlay suave para integração com o fundo */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#FFF8F0] via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F0] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-transparent to-transparent pointer-events-none" />
     </div>
   );
 }
@@ -230,7 +230,7 @@ function HeroSection() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FFF8F0]"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FAFAFA]"
     >
       {/* ── Background Image (Farmácia/Laboratório) ── */}
       <motion.div style={{ y: yBg }} className="absolute inset-0">
@@ -244,7 +244,7 @@ function HeroSection() {
       </motion.div>
 
       {/* ── Overlay gradiente suave ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F0]/60 via-[#FFF8F0]/40 to-[#FFF8F0]/90" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA]/60 via-[#FAFAFA]/40 to-[#FAFAFA]/90" />
 
       {/* ── Decorative leaf pattern ── */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(91,140,90,0.04)_1px,transparent_1px)] bg-[length:28px_28px]" />
@@ -252,11 +252,11 @@ function HeroSection() {
       {/* ── Subtle warm orb ── */}
       <motion.div
         style={{ y: yBg }}
-        className="absolute -top-20 left-1/4 w-[400px] h-[400px] rounded-full bg-[#D4A574]/6 blur-[100px]"
+        className="absolute -top-20 left-1/4 w-[400px] h-[400px] rounded-full bg-[#C4A97D]/6 blur-[100px]"
       />
       <motion.div
         style={{ y: yBg }}
-        className="absolute -bottom-20 right-1/4 w-[350px] h-[350px] rounded-full bg-[#5B8C5A]/5 blur-[80px]"
+        className="absolute -bottom-20 right-1/4 w-[350px] h-[350px] rounded-full bg-[#3D6B4F]/5 blur-[80px]"
       />
 
       {/* ── Hero Content ── */}
@@ -269,10 +269,10 @@ function HeroSection() {
           initial={{ opacity: 0, y: 16, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-[#5B8C5A]/20 bg-[#5B8C5A]/6"
+          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-[#3D6B4F]/20 bg-[#3D6B4F]/6"
         >
-          <Leaf className="w-4 h-4 text-[#5B8C5A]" />
-          <span className="text-[#5B8C5A] text-xs tracking-[3px] font-semibold uppercase">
+          <Leaf className="w-4 h-4 text-[#3D6B4F]" />
+          <span className="text-[#3D6B4F] text-xs tracking-[3px] font-semibold uppercase">
             MATRÍCULAS ABERTAS
           </span>
         </motion.div>
@@ -282,12 +282,12 @@ function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-[38px] sm:text-[52px] md:text-[64px] lg:text-[78px] leading-[1.02] tracking-[-2.5px] text-[#3D2C2E] mb-6"
+          className="font-display text-[38px] sm:text-[52px] md:text-[64px] lg:text-[78px] leading-[1.02] tracking-[-2.5px] text-[#1A1A1A] mb-6"
         >
           Estude saúde com
           <br />
           tranquilidade.{" "}
-          <span className="text-[#5B8C5A]">
+          <span className="text-[#3D6B4F]">
             Seu futuro
           </span>
           <br />
@@ -313,14 +313,14 @@ function HeroSection() {
         >
           <Link
             href="/trilhas"
-            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl bg-[#5B8C5A] px-10 text-base font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(91,140,90,0.2)]"
+            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl bg-[#3D6B4F] px-10 text-base font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(91,140,90,0.2)]"
           >
             Começar a estudar
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="#cursos"
-            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[#5B8C5A]/20 px-8 text-base text-[#3D2C2E] hover:bg-[#5B8C5A]/5 transition-all"
+            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[#3D6B4F]/20 px-8 text-base text-[#1A1A1A] hover:bg-[#3D6B4F]/5 transition-all"
           >
             Ver cursos
             <ChevronDown className="w-4 h-4" />
@@ -332,7 +332,7 @@ function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="mt-8 text-xs text-[#8B7B7D] tracking-[2px] uppercase"
+          className="mt-8 text-xs text-[#777777] tracking-[2px] uppercase"
         >
           Acesso gratuito · Conteúdo profissional · Certificado digital
         </motion.p>
@@ -342,10 +342,10 @@ function HeroSection() {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#8B7B7D] text-[10px] tracking-[4px] uppercase"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#777777] text-[10px] tracking-[4px] uppercase"
       >
         Role para explorar
-        <div className="w-px h-6 bg-gradient-to-b from-[#5B8C5A]/30 to-transparent" />
+        <div className="w-px h-6 bg-gradient-to-b from-[#3D6B4F]/30 to-transparent" />
       </motion.div>
     </div>
   );
@@ -356,17 +356,17 @@ function HeroSection() {
    ═══════════════════════════════════════════════════════════════ */
 function MarqueeTicker() {
   return (
-    <div className="relative overflow-hidden border-y border-[#5B8C5A]/8 bg-[#FEF0E0]">
+    <div className="relative overflow-hidden border-y border-[#3D6B4F]/8 bg-[#F5F5F5]">
       {/* Gradient fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#FEF0E0] to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#FEF0E0] to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#F5F5F5] to-transparent pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#F5F5F5] to-transparent pointer-events-none" />
 
       <div className="flex py-4">
         <div className="marquee-track flex gap-10">
           {MARQUEE_DUPLICATED.map((word, i) => (
             <span
               key={i}
-              className="text-[#5B8C5A] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              className="text-[#3D6B4F] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
             >
               {word}
             </span>
@@ -376,7 +376,7 @@ function MarqueeTicker() {
           {MARQUEE_DUPLICATED.map((word, i) => (
             <span
               key={`dup-${i}`}
-              className="text-[#5B8C5A] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              className="text-[#3D6B4F] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
             >
               {word}
             </span>
@@ -392,20 +392,20 @@ function MarqueeTicker() {
    ═══════════════════════════════════════════════════════════════ */
 function StatsBar() {
   return (
-    <section id="stats" className="py-16 sm:py-20 bg-[#FFF8F0]">
+    <section id="stats" className="py-16 sm:py-20 bg-[#FAFAFA]">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {STATS.map((stat, i) => (
             <FadeUp key={i} delay={i * 0.08} className="h-full">
-              <div className="group bg-white border border-[#3D2C2E]/6 rounded-2xl p-6 sm:p-8 h-full transition-all hover:shadow-[0_8px_30px_rgba(91,140,90,0.08)] hover:border-[#5B8C5A]/20">
+              <div className="group bg-white border border-[#1A1A1A]/6 rounded-2xl p-6 sm:p-8 h-full transition-all hover:shadow-[0_8px_30px_rgba(91,140,90,0.08)] hover:border-[#3D6B4F]/20">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 rounded-xl bg-[#5B8C5A]/8 text-[#5B8C5A]">
+                  <div className="p-2.5 rounded-xl bg-[#3D6B4F]/8 text-[#3D6B4F]">
                     <stat.icone className="w-5 h-5" />
                   </div>
                 </div>
-                <div className="font-display text-[36px] sm:text-[44px] leading-none tracking-[-2px] text-[#3D2C2E] tabular-nums">
+                <div className="font-display text-[36px] sm:text-[44px] leading-none tracking-[-2px] text-[#1A1A1A] tabular-nums">
                   {stat.value}
-                  <span className="text-[#5B8C5A] text-xl sm:text-2xl align-super ml-0.5">
+                  <span className="text-[#3D6B4F] text-xl sm:text-2xl align-super ml-0.5">
                     {stat.suffix}
                   </span>
                 </div>
@@ -424,19 +424,19 @@ function StatsBar() {
    ═══════════════════════════════════════════════════════════════ */
 function CursosSection() {
   return (
-    <section id="cursos" className="py-20 sm:py-28 bg-[#FFF8F0]">
+    <section id="cursos" className="py-20 sm:py-28 bg-[#FAFAFA]">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <FadeUp className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#5B8C5A]/15 bg-[#5B8C5A]/5">
-            <BookOpen className="w-3.5 h-3.5 text-[#5B8C5A]" />
-            <span className="text-[#5B8C5A] text-xs tracking-[3px] font-semibold uppercase">
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#3D6B4F]/15 bg-[#3D6B4F]/5">
+            <BookOpen className="w-3.5 h-3.5 text-[#3D6B4F]" />
+            <span className="text-[#3D6B4F] text-xs tracking-[3px] font-semibold uppercase">
               Nossos Cursos
             </span>
           </div>
-          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-1.5px] text-[#3D2C2E]">
+          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-1.5px] text-[#1A1A1A]">
             Formação de{" "}
-            <span className="text-[#5B8C5A]">
+            <span className="text-[#3D6B4F]">
               excelência
             </span>
           </h2>
@@ -450,7 +450,7 @@ function CursosSection() {
           {CURSOS.map((curso, i) => (
             <FadeUp key={curso.id} delay={i * 0.08}>
               <div
-                className="group relative bg-white border border-[#3D2C2E]/6 rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(91,140,90,0.1)] h-full flex flex-col overflow-hidden"
+                className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(91,140,90,0.1)] h-full flex flex-col overflow-hidden"
                 style={{ borderColor: "rgba(61,44,46,0.06)" }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.borderColor = curso.corBorder;
@@ -498,12 +498,12 @@ function CursosSection() {
                 </div>
 
                 {/* Titulo */}
-                <h3 className="font-display text-[22px] leading-tight tracking-[-0.5px] text-[#3D2C2E] group-hover:text-[#5B8C5A] transition-colors duration-300">
+                <h3 className="font-display text-[22px] leading-tight tracking-[-0.5px] text-[#1A1A1A] group-hover:text-[#3D6B4F] transition-colors duration-300">
                   {curso.titulo}
                 </h3>
 
                 {/* Conselho */}
-                <p className="mt-1 text-xs text-[#8B7B7D] tracking-wide uppercase font-medium">
+                <p className="mt-1 text-xs text-[#777777] tracking-wide uppercase font-medium">
                   {curso.conselho}
                 </p>
 
@@ -514,22 +514,22 @@ function CursosSection() {
 
                 {/* Stats */}
                 {curso.status === "disponivel" && curso.modulos && (
-                  <div className="mt-4 pt-4 border-t border-[#3D2C2E]/6 grid grid-cols-2 gap-x-4 gap-y-2">
+                  <div className="mt-4 pt-4 border-t border-[#1A1A1A]/6 grid grid-cols-2 gap-x-4 gap-y-2">
                     <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
                       <BookOpen className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#3D2C2E] font-semibold">{curso.modulos}</span> módulos
+                      <span className="text-[#1A1A1A] font-semibold">{curso.modulos}</span> módulos
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
                       <Sparkles className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#3D2C2E] font-semibold">{curso.aulas}</span> aulas
+                      <span className="text-[#1A1A1A] font-semibold">{curso.aulas}</span> aulas
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
                       <Leaf className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#3D2C2E] font-semibold">{curso.trilhas}</span> trilhas
+                      <span className="text-[#1A1A1A] font-semibold">{curso.trilhas}</span> trilhas
                     </div>
                     <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
                       <Gamepad2 className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#3D2C2E] font-semibold">{curso.jogos}</span> jogos
+                      <span className="text-[#1A1A1A] font-semibold">{curso.jogos}</span> jogos
                     </div>
                   </div>
                 )}
@@ -548,7 +548,7 @@ function CursosSection() {
                   ) : (
                     <button
                       disabled
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#3D2C2E]/10 bg-[#FEF0E0] py-3 min-h-[44px] text-sm text-[#8B7B7D] cursor-not-allowed"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#1A1A1A]/10 bg-[#F5F5F5] py-3 min-h-[44px] text-sm text-[#777777] cursor-not-allowed"
                     >
                       Lista de espera
                     </button>
@@ -574,7 +574,7 @@ function PorQueEstudarSection() {
       descricao:
         "Conteúdo criado por especialistas com registro ativo nos conselhos de classe. Qualidade técnica e científica comprovada.",
       icone: ShieldCheck,
-      cor: "#5B8C5A",
+      cor: "#3D6B4F",
     },
     {
       titulo: "Aprendizado interativo",
@@ -600,18 +600,18 @@ function PorQueEstudarSection() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#FEF0E0]">
+    <section className="py-20 sm:py-28 bg-[#F5F5F5]">
       <div className="max-w-7xl mx-auto px-6">
         <FadeUp className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#D4A574]/25 bg-[#D4A574]/8">
-            <HeartHandshake className="w-3.5 h-3.5 text-[#D4A574]" />
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#C4A97D]/25 bg-[#C4A97D]/8">
+            <HeartHandshake className="w-3.5 h-3.5 text-[#C4A97D]" />
             <span className="text-[#B0854A] text-xs tracking-[3px] font-semibold uppercase">
               Por que estudar aqui
             </span>
           </div>
-          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#3D2C2E]">
+          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A1A]">
             Uma plataforma que{" "}
-            <span className="text-[#5B8C5A]">
+            <span className="text-[#3D6B4F]">
               respeita seu tempo
             </span>
           </h2>
@@ -623,7 +623,7 @@ function PorQueEstudarSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {cards.map((card, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group relative bg-white border border-[#3D2C2E]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(91,140,90,0.06)] h-full flex flex-col">
+              <div className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(91,140,90,0.06)] h-full flex flex-col">
                 {/* Top accent */}
                 <div
                   className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"
@@ -641,7 +641,7 @@ function PorQueEstudarSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#3D2C2E] mb-3 group-hover:text-[#5B8C5A] transition-colors duration-300">
+                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#1A1A1A] mb-3 group-hover:text-[#3D6B4F] transition-colors duration-300">
                   {card.titulo}
                 </h3>
 
@@ -710,21 +710,21 @@ function ComoFuncionaSection() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-28 bg-[#FFF8F0] overflow-hidden">
+    <section className="relative py-20 sm:py-28 bg-[#FAFAFA] overflow-hidden">
       {/* Subtle decorative pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(212,165,116,0.05)_1px,transparent_1px)] bg-[length:22px_22px]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <FadeUp className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#D4A574]/25 bg-[#D4A574]/8">
-            <Star className="w-3.5 h-3.5 text-[#D4A574]" />
+          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#C4A97D]/25 bg-[#C4A97D]/8">
+            <Star className="w-3.5 h-3.5 text-[#C4A97D]" />
             <span className="text-[#B0854A] text-xs tracking-[3px] font-semibold uppercase">
               Como Funciona
             </span>
           </div>
-          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#3D2C2E]">
+          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A1A]">
             Do zero ao certificado em{" "}
-            <span className="text-[#5B8C5A]">
+            <span className="text-[#3D6B4F]">
               4 passos
             </span>
           </h2>
@@ -737,18 +737,18 @@ function ComoFuncionaSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((s, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <div className="group relative bg-white border border-[#3D2C2E]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_12px_36px_-8px_rgba(91,140,90,0.08)] h-full">
+              <div className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_12px_36px_-8px_rgba(91,140,90,0.08)] h-full">
                 {/* Step number */}
                 <div className="flex items-center justify-between mb-5">
-                  <div className="p-3 rounded-xl bg-[#5B8C5A]/8 text-[#5B8C5A] min-h-[44px] min-w-[44px] flex items-center justify-center">
+                  <div className="p-3 rounded-xl bg-[#3D6B4F]/8 text-[#3D6B4F] min-h-[44px] min-w-[44px] flex items-center justify-center">
                     {s.icon}
                   </div>
-                  <span className="font-display text-[36px] leading-none tracking-[-2px] text-[#3D2C2E]/5 font-bold select-none">
+                  <span className="font-display text-[36px] leading-none tracking-[-2px] text-[#1A1A1A]/5 font-bold select-none">
                     {s.step}
                   </span>
                 </div>
 
-                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#3D2C2E] mb-2 group-hover:text-[#5B8C5A] transition-colors">
+                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#1A1A1A] mb-2 group-hover:text-[#3D6B4F] transition-colors">
                   {s.titulo}
                 </h3>
                 <p className="text-sm text-[#6B5D5F] leading-relaxed">
@@ -768,27 +768,27 @@ function ComoFuncionaSection() {
    ═══════════════════════════════════════════════════════════════ */
 function CtaFinalSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-[#FFF8F0]">
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-[#FAFAFA]">
       {/* Background decorative */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF8F0] via-[#FEF0E0]/50 to-[#FFF8F0]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-[#F5F5F5]/50 to-[#FAFAFA]" />
 
       {/* Subtle warm orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#D4A574]/6 blur-[120px]" />
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#5B8C5A]/4 blur-[80px]" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C4A97D]/6 blur-[120px]" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#3D6B4F]/4 blur-[80px]" />
 
       <FadeUp className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border border-[#5B8C5A]/20 bg-[#5B8C5A]/6">
-          <Leaf className="w-3.5 h-3.5 text-[#5B8C5A]" />
-          <span className="text-[#5B8C5A] text-xs tracking-[4px] font-semibold uppercase">
+        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border border-[#3D6B4F]/20 bg-[#3D6B4F]/6">
+          <Leaf className="w-3.5 h-3.5 text-[#3D6B4F]" />
+          <span className="text-[#3D6B4F] text-xs tracking-[4px] font-semibold uppercase">
             Comece sua jornada
           </span>
         </div>
 
-        <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-2px] text-[#3D2C2E] mb-6">
+        <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-2px] text-[#1A1A1A] mb-6">
           Pronto para cuidar
           <br />
           da sua{" "}
-          <span className="text-[#5B8C5A]">
+          <span className="text-[#3D6B4F]">
             carreira na saúde
           </span>
           ?
@@ -800,13 +800,13 @@ function CtaFinalSection() {
 
         <Link
           href="/trilhas"
-          className="inline-flex h-16 min-h-[44px] items-center justify-center gap-3 rounded-2xl bg-[#5B8C5A] px-12 text-lg font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_28px_rgba(91,140,90,0.2)]"
+          className="inline-flex h-16 min-h-[44px] items-center justify-center gap-3 rounded-2xl bg-[#3D6B4F] px-12 text-lg font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_28px_rgba(91,140,90,0.2)]"
         >
           Começar a estudar agora
           <ArrowRight className="w-5 h-5" />
         </Link>
 
-        <p className="mt-6 text-xs text-[#8B7B7D] tracking-wide">
+        <p className="mt-6 text-xs text-[#777777] tracking-wide">
           Acesso gratuito · Conteúdo profissional · Certificado digital
         </p>
       </FadeUp>
@@ -820,7 +820,7 @@ function CtaFinalSection() {
    ═══════════════════════════════════════════════════════════════ */
 export default function SaudegptHome() {
   return (
-    <div id="conteudo-principal" className="bg-[#FFF8F0] overflow-x-hidden font-body text-[#3D2C2E]">
+    <div id="conteudo-principal" className="bg-[#FAFAFA] overflow-x-hidden font-body text-[#1A1A1A]">
       {/* ── Hero ── */}
       <HeroSection />
 
@@ -867,23 +867,23 @@ export default function SaudegptHome() {
       <CtaFinalSection />
 
       {/* ── Footer ── */}
-      <footer className="border-t border-[#5B8C5A]/8 bg-[#FEF0E0] py-12 px-6">
+      <footer className="border-t border-[#3D6B4F]/8 bg-[#F5F5F5] py-12 px-6">
         <div className="max-w-3xl mx-auto text-center space-y-4">
-          <p className="text-sm text-[#5B8C5A] font-display font-medium tracking-wide">
+          <p className="text-sm text-[#3D6B4F] font-display font-medium tracking-wide">
             SaúdeGPT — Plataforma de Formação para Profissionais da Saúde
           </p>
           <p className="text-xs text-[#6B5D5F] leading-relaxed max-w-xl mx-auto">
             Conteúdo criado pelo farmacêutico{" "}
-            <strong className="text-[#3D2C2E]">Thiago Piola — CRF/SP 58.519</strong>.
+            <strong className="text-[#1A1A1A]">Thiago Piola — CRF/SP 58.519</strong>.
             {" "}Este material é educativo e não substitui orientação profissional presencial.
             Consulte sempre o(a) farmacêutico(a) para recomendações individualizadas.
           </p>
-          <div className="flex items-center justify-center gap-6 text-[10px] text-[#8B7B7D] tracking-wider uppercase pt-2">
-            <a href="/termos" className="hover:text-[#5B8C5A] transition-colors no-underline">Termos de Uso</a>
-            <a href="/privacidade" className="hover:text-[#5B8C5A] transition-colors no-underline">Privacidade</a>
-            <a href="/contato" className="hover:text-[#5B8C5A] transition-colors no-underline">Contato</a>
+          <div className="flex items-center justify-center gap-6 text-[10px] text-[#777777] tracking-wider uppercase pt-2">
+            <a href="/termos" className="hover:text-[#3D6B4F] transition-colors no-underline">Termos de Uso</a>
+            <a href="/privacidade" className="hover:text-[#3D6B4F] transition-colors no-underline">Privacidade</a>
+            <a href="/contato" className="hover:text-[#3D6B4F] transition-colors no-underline">Contato</a>
           </div>
-          <p className="text-[10px] text-[#8B7B7D]/50 tracking-[2px] uppercase pt-2">
+          <p className="text-[10px] text-[#777777]/50 tracking-[2px] uppercase pt-2">
             © {new Date().getFullYear()} SaúdeGPT · Todos os direitos reservados
           </p>
         </div>
