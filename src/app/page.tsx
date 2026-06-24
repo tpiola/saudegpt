@@ -1,8 +1,18 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState, useCallback, useEffect } from "react";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+  useSpring,
+  useMotionValue,
+  useAnimationFrame,
+  AnimatePresence,
+  type SpringOptions,
+} from "framer-motion";
 import {
   Pill,
   Heart,
@@ -32,9 +42,29 @@ import {
 } from "@/components/health-vectors";
 
 /* ═══════════════════════════════════════════════════════════════
-   DESIGN SYSTEM — Cream Calmo & Acolhedor
-   Paleta: bg #FAFAFA · texto #1A1A1A · accent #3D6B4F · bege #C4A97D
+   DESIGN SYSTEM — Premium White + Olive Green + Subtle Gold
+   bg:   #FAFAFA (premium white)
+   card: #FFFFFF (pure white) + subtle shadows
+   accent: #3D6B4F (dark olive green)
+   gold:  #C4A97D (subtle gold)
+   text:  #1A1A1A (primary) · #555555 (secondary) · #888888 (muted)
    ═══════════════════════════════════════════════════════════════ */
+
+const COLORS = {
+  bg: "#FAFAFA",
+  card: "#FFFFFF",
+  accent: "#3D6B4F",
+  accentLight: "rgba(61,107,79,0.08)",
+  accentBorder: "rgba(61,107,79,0.18)",
+  gold: "#C4A97D",
+  goldLight: "rgba(196,169,125,0.10)",
+  text: "#1A1A1A",
+  textSecondary: "#555555",
+  textMuted: "#888888",
+} as const;
+
+/* ── Spring Physics (Jack Roberts / Gravity Claw style) ── */
+const SPRING: SpringOptions = { stiffness: 100, damping: 20, mass: 0.8 };
 
 /* ── Cursos ── */
 const CURSOS = [
@@ -43,9 +73,9 @@ const CURSOS = [
     titulo: "Farmácia",
     conselho: "CRF/SP 58.519",
     cor: "#3D6B4F",
-    corBg: "rgba(91,140,90,0.08)",
-    corBorder: "rgba(91,140,90,0.2)",
-    corHover: "rgba(91,140,90,0.12)",
+    corBg: "rgba(61,107,79,0.07)",
+    corBorder: "rgba(61,107,79,0.25)",
+    corHover: "rgba(61,107,79,0.10)",
     modulos: 39,
     aulas: 159,
     trilhas: 7,
@@ -60,10 +90,10 @@ const CURSOS = [
     id: "nutricao",
     titulo: "Nutrição",
     conselho: "CRN",
-    cor: "#C67B5C",
-    corBg: "rgba(198,123,92,0.08)",
-    corBorder: "rgba(198,123,92,0.2)",
-    corHover: "rgba(198,123,92,0.12)",
+    cor: "#3D6B4F",
+    corBg: "rgba(61,107,79,0.07)",
+    corBorder: "rgba(61,107,79,0.25)",
+    corHover: "rgba(61,107,79,0.10)",
     status: "disponivel" as const,
     icone: Apple,
     vector: NutricaoVector,
@@ -78,10 +108,10 @@ const CURSOS = [
     id: "fisioterapia",
     titulo: "Orientação em Reabilitação",
     conselho: "CREFITO",
-    cor: "#6B9AC4",
-    corBg: "rgba(107,154,196,0.08)",
-    corBorder: "rgba(107,154,196,0.2)",
-    corHover: "rgba(107,154,196,0.12)",
+    cor: "#3D6B4F",
+    corBg: "rgba(61,107,79,0.07)",
+    corBorder: "rgba(61,107,79,0.25)",
+    corHover: "rgba(61,107,79,0.10)",
     status: "disponivel" as const,
     icone: Activity,
     vector: ReabilitacaoVector,
@@ -96,10 +126,10 @@ const CURSOS = [
     id: "psicologia",
     titulo: "Acolhimento e Saúde Mental",
     conselho: "CRP",
-    cor: "#9B8EC4",
-    corBg: "rgba(155,142,196,0.08)",
-    corBorder: "rgba(155,142,196,0.2)",
-    corHover: "rgba(155,142,196,0.12)",
+    cor: "#3D6B4F",
+    corBg: "rgba(61,107,79,0.07)",
+    corBorder: "rgba(61,107,79,0.25)",
+    corHover: "rgba(61,107,79,0.10)",
     status: "disponivel" as const,
     icone: Brain,
     vector: SaudeMentalVector,
@@ -114,10 +144,10 @@ const CURSOS = [
     id: "cuidador-idosos",
     titulo: "Cuidador de Idosos",
     conselho: "SBGG",
-    cor: "#C4A97D",
-    corBg: "rgba(212,165,116,0.08)",
-    corBorder: "rgba(212,165,116,0.2)",
-    corHover: "rgba(212,165,116,0.12)",
+    cor: "#3D6B4F",
+    corBg: "rgba(61,107,79,0.07)",
+    corBorder: "rgba(61,107,79,0.25)",
+    corHover: "rgba(61,107,79,0.10)",
     status: "disponivel" as const,
     icone: Heart,
     vector: CuidadorVector,
@@ -132,10 +162,10 @@ const CURSOS = [
 
 /* ── Stats ── */
 const STATS = [
-  { value: "5", label: "Cursos disponíveis", suffix: "", icone: GraduationCap },
-  { value: "95", label: "Módulos", suffix: "+", icone: BookOpen },
-  { value: "0", label: "Investimento", suffix: "R$", icone: Sparkles },
-  { value: "Multi", label: "Conselhos de classe", suffix: "", icone: ShieldCheck },
+  { value: 5, label: "Cursos disponíveis", suffix: "", icone: GraduationCap },
+  { value: 95, label: "Módulos", suffix: "+", icone: BookOpen },
+  { value: 0, label: "Investimento", suffix: "R$", icone: Sparkles, prefix: true },
+  { value: 0, label: "Conselhos de classe", suffix: "", icone: ShieldCheck, displayText: "Multi" },
 ];
 
 /* ── Marquee Keywords ── */
@@ -149,7 +179,7 @@ const MARQUEE_KEYWORDS = [
 ];
 const MARQUEE_DUPLICATED = [...MARQUEE_KEYWORDS, ...MARQUEE_KEYWORDS];
 
-/* ── Unsplash Image URLs (reais, sem IA) ── */
+/* ── Unsplash Image URLs ── */
 const UNSPLASH = {
   heroBg:
     "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=1200&q=80&auto=format&fit=crop",
@@ -166,8 +196,99 @@ const UNSPLASH = {
 };
 
 /* ═══════════════════════════════════════════════════════════════
-   FADE-UP ANIMATION HELPER (sutil, nada agressivo)
+   REUSABLE ANIMATION COMPONENTS
    ═══════════════════════════════════════════════════════════════ */
+
+/* ── Animated Counter ── */
+function AnimatedCounter({
+  from = 0,
+  to,
+  duration = 2.0,
+  suffix = "",
+  prefix = "",
+  displayText,
+}: {
+  from?: number;
+  to: number;
+  duration?: number;
+  suffix?: string;
+  prefix?: string;
+  displayText?: string;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const motionVal = useMotionValue(from);
+  const springVal = useSpring(motionVal, { stiffness: 60, damping: 15 });
+
+  useEffect(() => {
+    if (isInView) {
+      motionVal.set(to);
+    }
+  }, [isInView, to, motionVal]);
+
+  useAnimationFrame(() => {
+    if (ref.current && isInView) {
+      const val = springVal.get();
+      if (displayText !== undefined) {
+        ref.current!.textContent = displayText;
+      } else {
+        ref.current!.textContent = `${prefix}${Math.round(val)}${suffix}`;
+      }
+    }
+  });
+
+  if (!isInView && displayText === undefined) {
+    return (
+      <span ref={ref as React.RefObject<HTMLSpanElement>}>
+        {prefix}0{suffix}
+      </span>
+    );
+  }
+
+  return <span ref={ref as React.RefObject<HTMLSpanElement>}>{prefix}0{suffix}</span>;
+}
+
+/* ── Scroll-Driven Stagger Reveal Container ── */
+function StaggerContainer({
+  children,
+  className,
+  staggerDelay = 0.08,
+  once = true,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  staggerDelay?: number;
+  once?: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once, margin: "-60px" });
+
+  return (
+    <div ref={ref} className={className}>
+      {React.Children.map(children, (child, i) => {
+        if (!React.isValidElement(child)) return child;
+        return (
+          <motion.div
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            animate={
+              isInView
+                ? { opacity: 1, y: 0, scale: 1 }
+                : { opacity: 0, y: 32, scale: 0.97 }
+            }
+            transition={{
+              ...SPRING,
+              delay: i * staggerDelay,
+            }}
+          >
+            {child}
+          </motion.div>
+        );
+      })}
+    </div>
+  );
+}
+
+/* ── Fade-Up (single element, spring) ── */
 function FadeUp({
   children,
   className,
@@ -183,9 +304,13 @@ function FadeUp({
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
-      transition={{ duration: 0.6, delay, ease: [0.4, 0, 0.2, 1] }}
+      initial={{ opacity: 0, y: 28, scale: 0.97 }}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0, scale: 1 }
+          : { opacity: 0, y: 28, scale: 0.97 }
+      }
+      transition={{ ...SPRING, delay }}
       className={className}
     >
       {children}
@@ -193,28 +318,144 @@ function FadeUp({
   );
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   BANNER DE IMAGEM ENTRE SEÇÕES
-   ═══════════════════════════════════════════════════════════════ */
-function ImageBanner({ src, alt, height = "h-48 sm:h-64" }: { src: string; alt: string; height?: string }) {
+/* ── 3D Tilt Card Wrapper ── */
+function TiltCard({
+  children,
+  className,
+  tiltAmount = 6,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  tiltAmount?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [tiltAmount, -tiltAmount]), SPRING);
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-tiltAmount, tiltAmount]), SPRING);
+  const scale = useSpring(1, SPRING);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!ref.current) return;
+      const rect = ref.current.getBoundingClientRect();
+      const cx = (e.clientX - rect.left) / rect.width - 0.5;
+      const cy = (e.clientY - rect.top) / rect.height - 0.5;
+      x.set(cx);
+      y.set(cy);
+    },
+    [x, y]
+  );
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+    scale.set(1.02);
+  }, [scale]);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+    x.set(0);
+    y.set(0);
+    scale.set(1);
+  }, [x, y, scale]);
+
   return (
-    <div className={`relative ${height} overflow-hidden`}>
-      <img
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        scale,
+        transformStyle: "preserve-3d",
+        perspective: 1000,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ── Gradient Text Reveal ── */
+function GradientText({
+  children,
+  className,
+  as: Tag = "h1",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  as?: "h1" | "h2" | "h3" | "span";
+}) {
+  return (
+    <Tag
+      className={className}
+      style={{
+        background: `linear-gradient(135deg, ${COLORS.accent} 0%, ${COLORS.gold} 50%, ${COLORS.accent} 100%)`,
+        backgroundSize: "200% 200%",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        backgroundClip: "text",
+        display: "inline",
+      }}
+    >
+      <motion.span
+        style={{ display: "inline" }}
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+      >
+        {children}
+      </motion.span>
+    </Tag>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   PARALLAX IMAGE BANNER
+   ═══════════════════════════════════════════════════════════════ */
+function ImageBanner({
+  src,
+  alt,
+  height = "h-48 sm:h-64",
+}: {
+  src: string;
+  alt: string;
+  height?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.1, 1, 1.1]);
+
+  return (
+    <div ref={ref} className={`relative ${height} overflow-hidden`}>
+      <motion.img
         src={src}
         alt={alt}
         className="w-full h-full object-cover"
         loading="lazy"
         decoding="async"
+        style={{ y, scale }}
       />
-      {/* Overlay suave para integração com o fundo */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-transparent to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-transparent to-transparent pointer-events-none" />
+      {/* Overlay gradients blending into bg */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-[#FAFAFA] via-transparent to-transparent pointer-events-none"
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-transparent to-transparent pointer-events-none"
+      />
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SECTION 1 — HERO (Calmo, Acolhedor)
+   SECTION 1 — HERO (Premium, with gradient text reveal)
    ═══════════════════════════════════════════════════════════════ */
 function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -223,43 +464,62 @@ function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const yContent = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const yContent = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-[#FAFAFA]"
+      className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: COLORS.bg }}
     >
-      {/* ── Background Image (Farmácia/Laboratório) ── */}
-      <motion.div style={{ y: yBg }} className="absolute inset-0">
+      {/* Background Image with parallax + scale */}
+      <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
         <img
           src={UNSPLASH.heroBg}
           alt="Farmácia e medicamentos"
-          className="w-full h-full object-cover opacity-[0.12]"
+          className="w-full h-full object-cover opacity-[0.10]"
           loading="eager"
           decoding="async"
         />
       </motion.div>
 
-      {/* ── Overlay gradiente suave ── */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA]/60 via-[#FAFAFA]/40 to-[#FAFAFA]/90" />
-
-      {/* ── Decorative leaf pattern ── */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(91,140,90,0.04)_1px,transparent_1px)] bg-[length:28px_28px]" />
-
-      {/* ── Subtle warm orb ── */}
-      <motion.div
-        style={{ y: yBg }}
-        className="absolute -top-20 left-1/4 w-[400px] h-[400px] rounded-full bg-[#C4A97D]/6 blur-[100px]"
-      />
-      <motion.div
-        style={{ y: yBg }}
-        className="absolute -bottom-20 right-1/4 w-[350px] h-[350px] rounded-full bg-[#3D6B4F]/5 blur-[80px]"
+      {/* Overlay gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom, ${COLORS.bg}99, ${COLORS.bg}66, ${COLORS.bg}f2)`,
+        }}
       />
 
-      {/* ── Hero Content ── */}
+      {/* Decorative dot pattern */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(rgba(61,107,79,0.04) 1px, transparent 1px)`,
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      {/* Subtle orbs */}
+      <motion.div
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], [0, 60]),
+          backgroundColor: "rgba(196,169,125,0.06)",
+        }}
+        className="absolute -top-20 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none"
+      />
+      <motion.div
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], [0, 80]),
+          backgroundColor: "rgba(61,107,79,0.05)",
+        }}
+        className="absolute -bottom-20 right-1/4 w-[350px] h-[350px] rounded-full blur-[100px] pointer-events-none"
+      />
+
+      {/* Hero Content */}
       <motion.div
         style={{ y: yContent, opacity }}
         className="relative z-10 px-6 text-center max-w-5xl mx-auto"
@@ -268,28 +528,36 @@ function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 16, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1, ease: [0.4, 0, 0.2, 1] }}
-          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border border-[#3D6B4F]/20 bg-[#3D6B4F]/6"
+          transition={{ ...SPRING, delay: 0.1 }}
+          className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full border"
+          style={{
+            borderColor: COLORS.accentBorder,
+            backgroundColor: COLORS.accentLight,
+          }}
         >
-          <Leaf className="w-4 h-4 text-[#3D6B4F]" />
-          <span className="text-[#3D6B4F] text-xs tracking-[3px] font-semibold uppercase">
+          <Leaf className="w-4 h-4" style={{ color: COLORS.accent }} />
+          <span
+            className="text-xs tracking-[3px] font-semibold uppercase"
+            style={{ color: COLORS.accent }}
+          >
             MATRÍCULAS ABERTAS
           </span>
         </motion.div>
 
-        {/* Headline */}
+        {/* Headline with gradient text reveal */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="font-display text-[38px] sm:text-[52px] md:text-[64px] lg:text-[78px] leading-[1.02] tracking-[-2.5px] text-[#1A1A1A] mb-6"
+          transition={{ ...SPRING, delay: 0.2 }}
+          className="font-display text-[38px] sm:text-[52px] md:text-[64px] lg:text-[78px] leading-[1.02] tracking-[-2.5px] mb-6"
+          style={{ color: COLORS.text }}
         >
           Estude saúde com
           <br />
           tranquilidade.{" "}
-          <span className="text-[#3D6B4F]">
+          <GradientText as="span">
             Seu futuro
-          </span>
+          </GradientText>
           <br />
           começa aqui.
         </motion.h1>
@@ -298,8 +566,9 @@ function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-[580px] mx-auto text-base sm:text-lg text-[#6B5D5F] leading-relaxed font-body"
+          transition={{ ...SPRING, delay: 0.4 }}
+          className="max-w-[580px] mx-auto text-base sm:text-lg leading-relaxed font-body"
+          style={{ color: COLORS.textSecondary }}
         >
           Cursos 100% gratuitos com certificado digital. Conteúdo criado por profissionais registrados nos conselhos de classe. Estude no seu ritmo, com calma e qualidade.
         </motion.p>
@@ -308,19 +577,28 @@ function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          transition={{ ...SPRING, delay: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row items-center gap-4 justify-center"
         >
           <Link
             href="/trilhas"
-            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl bg-[#3D6B4F] px-10 text-base font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_24px_rgba(91,140,90,0.2)]"
+            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl px-10 text-base font-semibold text-white active:scale-[0.98] transition-transform"
+            style={{
+              backgroundColor: COLORS.accent,
+              boxShadow: "0 4px 24px rgba(61,107,79,0.25)",
+            }}
           >
             Começar a estudar
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="#cursos"
-            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl border border-[#3D6B4F]/20 px-8 text-base text-[#1A1A1A] hover:bg-[#3D6B4F]/5 transition-all"
+            className="inline-flex h-14 min-h-[44px] items-center justify-center gap-2 rounded-2xl border px-8 text-base transition-all active:scale-[0.98]"
+            style={{
+              borderColor: COLORS.accentBorder,
+              color: COLORS.text,
+              backgroundColor: "transparent",
+            }}
           >
             Ver cursos
             <ChevronDown className="w-4 h-4" />
@@ -332,41 +610,57 @@ function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
-          className="mt-8 text-xs text-[#777777] tracking-[2px] uppercase"
+          className="mt-8 text-xs tracking-[2px] uppercase"
+          style={{ color: COLORS.textMuted }}
         >
           Acesso gratuito · Conteúdo profissional · Certificado digital
         </motion.p>
       </motion.div>
 
-      {/* ── Scroll Indicator ── */}
+      {/* Scroll Indicator */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#777777] text-[10px] tracking-[4px] uppercase"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[10px] tracking-[4px] uppercase"
+        style={{ color: COLORS.textMuted }}
       >
         Role para explorar
-        <div className="w-px h-6 bg-gradient-to-b from-[#3D6B4F]/30 to-transparent" />
+        <div
+          className="w-px h-6 bg-gradient-to-b to-transparent"
+          style={{ backgroundImage: `linear-gradient(to bottom, ${COLORS.accent}4D, transparent)` }}
+        />
       </motion.div>
     </div>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MARQUEE TICKER (Entre Hero e Stats)
+   MARQUEE TICKER
    ═══════════════════════════════════════════════════════════════ */
 function MarqueeTicker() {
   return (
-    <div className="relative overflow-hidden border-y border-[#3D6B4F]/8 bg-[#F5F5F5]">
+    <div
+      className="relative overflow-hidden border-y"
+      style={{
+        borderColor: "rgba(61,107,79,0.08)",
+        backgroundColor: "#F5F5F0",
+      }}
+    >
       {/* Gradient fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-[#F5F5F5] to-transparent pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-[#F5F5F5] to-transparent pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to right, #F5F5F0, transparent)" }}
+      />
+      <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+        style={{ background: "linear-gradient(to left, #F5F5F0, transparent)" }}
+      />
 
       <div className="flex py-4">
         <div className="marquee-track flex gap-10">
           {MARQUEE_DUPLICATED.map((word, i) => (
             <span
               key={i}
-              className="text-[#3D6B4F] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              className="text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              style={{ color: COLORS.accent }}
             >
               {word}
             </span>
@@ -376,7 +670,8 @@ function MarqueeTicker() {
           {MARQUEE_DUPLICATED.map((word, i) => (
             <span
               key={`dup-${i}`}
-              className="text-[#3D6B4F] text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              className="text-sm sm:text-base font-display font-semibold tracking-[2px] whitespace-nowrap"
+              style={{ color: COLORS.accent }}
             >
               {word}
             </span>
@@ -388,82 +683,144 @@ function MarqueeTicker() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SECTION 2 — STATS BAR
+   SECTION 2 — STATS BAR (with animated counters)
    ═══════════════════════════════════════════════════════════════ */
 function StatsBar() {
   return (
-    <section id="stats" className="py-16 sm:py-20 bg-[#FAFAFA]">
+    <section id="stats" className="py-16 sm:py-20" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StaggerContainer className="grid grid-cols-2 lg:grid-cols-4 gap-4" staggerDelay={0.06}>
           {STATS.map((stat, i) => (
-            <FadeUp key={i} delay={i * 0.08} className="h-full">
-              <div className="group bg-white border border-[#1A1A1A]/6 rounded-2xl p-6 sm:p-8 h-full transition-all hover:shadow-[0_8px_30px_rgba(91,140,90,0.08)] hover:border-[#3D6B4F]/20">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 rounded-xl bg-[#3D6B4F]/8 text-[#3D6B4F]">
-                    <stat.icone className="w-5 h-5" />
-                  </div>
+            <div
+              key={i}
+              className="group rounded-2xl p-6 sm:p-8 h-full transition-shadow duration-500 border"
+              style={{
+                backgroundColor: COLORS.card,
+                borderColor: "rgba(0,0,0,0.06)",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(61,107,79,0.10)";
+                e.currentTarget.style.borderColor = "rgba(61,107,79,0.20)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
+              }}
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="p-2.5 rounded-xl"
+                  style={{ backgroundColor: COLORS.accentLight, color: COLORS.accent }}
+                >
+                  <stat.icone className="w-5 h-5" />
                 </div>
-                <div className="font-display text-[36px] sm:text-[44px] leading-none tracking-[-2px] text-[#1A1A1A] tabular-nums">
-                  {stat.value}
-                  <span className="text-[#3D6B4F] text-xl sm:text-2xl align-super ml-0.5">
+              </div>
+              <div
+                className="font-display text-[36px] sm:text-[44px] leading-none tracking-[-2px] tabular-nums"
+                style={{ color: COLORS.text }}
+              >
+                {stat.displayText ? (
+                  stat.displayText
+                ) : (
+                  <>
+                    {stat.prefix ? stat.suffix : ""}
+                    <AnimatedCounter
+                      from={0}
+                      to={stat.value}
+                      duration={1.8}
+                      suffix={stat.prefix ? "" : stat.suffix}
+                      prefix={stat.prefix ? stat.suffix : ""}
+                    />
+                  </>
+                )}
+                {stat.suffix && !stat.prefix && !stat.displayText && (
+                  <span className="text-xl sm:text-2xl align-super ml-0.5" style={{ color: COLORS.accent }}>
                     {stat.suffix}
                   </span>
-                </div>
-                <div className="mt-2 text-sm text-[#6B5D5F] font-body">{stat.label}</div>
+                )}
               </div>
-            </FadeUp>
+              <div className="mt-2 text-sm font-body" style={{ color: COLORS.textSecondary }}>
+                {stat.label}
+              </div>
+            </div>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   SECTION 3 — CURSOS (5 cards)
+   SECTION 3 — CURSOS (5 cards with 3D tilt)
    ═══════════════════════════════════════════════════════════════ */
 function CursosSection() {
   return (
-    <section id="cursos" className="py-20 sm:py-28 bg-[#FAFAFA]">
+    <section id="cursos" className="py-20 sm:py-28" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <FadeUp className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#3D6B4F]/15 bg-[#3D6B4F]/5">
-            <BookOpen className="w-3.5 h-3.5 text-[#3D6B4F]" />
-            <span className="text-[#3D6B4F] text-xs tracking-[3px] font-semibold uppercase">
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border"
+            style={{
+              borderColor: COLORS.accentBorder,
+              backgroundColor: COLORS.accentLight,
+            }}
+          >
+            <BookOpen className="w-3.5 h-3.5" style={{ color: COLORS.accent }} />
+            <span
+              className="text-xs tracking-[3px] font-semibold uppercase"
+              style={{ color: COLORS.accent }}
+            >
               Nossos Cursos
             </span>
           </div>
-          <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-1.5px] text-[#1A1A1A]">
+          <h2
+            className="font-display text-[32px] sm:text-[44px] lg:text-[52px] leading-[1.1] tracking-[-1.5px]"
+            style={{ color: COLORS.text }}
+          >
             Formação de{" "}
-            <span className="text-[#3D6B4F]">
+            <GradientText as="span">
               excelência
-            </span>
+            </GradientText>
           </h2>
-          <p className="mt-3 text-[#6B5D5F] text-base sm:text-lg max-w-xl mx-auto">
+          <p
+            className="mt-3 text-base sm:text-lg max-w-xl mx-auto"
+            style={{ color: COLORS.textSecondary }}
+          >
             Cursos criados por profissionais registrados nos conselhos de classe
           </p>
         </FadeUp>
 
-        {/* Cursos Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* Cursos Grid with 3D Tilt */}
+        <StaggerContainer
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          staggerDelay={0.06}
+        >
           {CURSOS.map((curso, i) => (
-            <FadeUp key={curso.id} delay={i * 0.08}>
+            <TiltCard key={curso.id} tiltAmount={5}>
               <div
-                className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-6 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(91,140,90,0.1)] h-full flex flex-col overflow-hidden"
-                style={{ borderColor: "rgba(61,44,46,0.06)" }}
+                className="group relative rounded-2xl p-6 transition-shadow duration-500 h-full flex flex-col overflow-hidden border"
+                style={{
+                  backgroundColor: COLORS.card,
+                  borderColor: "rgba(0,0,0,0.06)",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
+                }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = curso.corBorder;
+                  e.currentTarget.style.boxShadow =
+                    "0 16px 40px -8px rgba(61,107,79,0.15)";
+                  e.currentTarget.style.borderColor = curso.corBorder;
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.borderColor = "rgba(61,44,46,0.06)";
+                  e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.04)";
+                  e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
                 }}
               >
                 {/* Top accent line */}
                 <div
-                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
-                    background: `linear-gradient(90deg, transparent, ${curso.cor}60, transparent)`,
+                    background: `linear-gradient(90deg, transparent, ${COLORS.gold}99, transparent)`,
                   }}
                 />
 
@@ -478,13 +835,10 @@ function CursosSection() {
                 {/* Icon + Badge */}
                 <div className="flex items-start justify-between mb-4">
                   <div
-                    className="p-3 rounded-xl transition-all duration-300 group-hover:scale-105 min-h-[44px] min-w-[44px] flex items-center justify-center"
+                    className="p-3 rounded-xl transition-transform duration-300 group-hover:scale-105 min-h-[44px] min-w-[44px] flex items-center justify-center"
                     style={{ backgroundColor: curso.corBg }}
                   >
-                    <curso.icone
-                      className="w-6 h-6"
-                      style={{ color: curso.cor }}
-                    />
+                    <curso.icone className="w-6 h-6" style={{ color: curso.cor }} />
                   </div>
                   <span
                     className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold tracking-wider uppercase"
@@ -498,38 +852,68 @@ function CursosSection() {
                 </div>
 
                 {/* Titulo */}
-                <h3 className="font-display text-[22px] leading-tight tracking-[-0.5px] text-[#1A1A1A] group-hover:text-[#3D6B4F] transition-colors duration-300">
+                <h3
+                  className="font-display text-[22px] leading-tight tracking-[-0.5px] transition-colors duration-300"
+                  style={{ color: COLORS.text }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = COLORS.accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = COLORS.text;
+                  }}
+                >
                   {curso.titulo}
                 </h3>
 
                 {/* Conselho */}
-                <p className="mt-1 text-xs text-[#777777] tracking-wide uppercase font-medium">
+                <p
+                  className="mt-1 text-xs tracking-wide uppercase font-medium"
+                  style={{ color: COLORS.textMuted }}
+                >
                   {curso.conselho}
                 </p>
 
                 {/* Descrição */}
-                <p className="mt-3 text-sm text-[#6B5D5F] leading-relaxed line-clamp-3 flex-1">
+                <p
+                  className="mt-3 text-sm leading-relaxed line-clamp-3 flex-1"
+                  style={{ color: COLORS.textSecondary }}
+                >
                   {curso.descricao}
                 </p>
 
                 {/* Stats */}
                 {curso.status === "disponivel" && curso.modulos && (
-                  <div className="mt-4 pt-4 border-t border-[#1A1A1A]/6 grid grid-cols-2 gap-x-4 gap-y-2">
-                    <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
+                  <div
+                    className="mt-4 pt-4 grid grid-cols-2 gap-x-4 gap-y-2"
+                    style={{ borderTop: "1px solid rgba(0,0,0,0.06)" }}
+                  >
+                    <div className="flex items-center gap-1.5 text-xs" style={{ color: COLORS.textSecondary }}>
                       <BookOpen className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#1A1A1A] font-semibold">{curso.modulos}</span> módulos
+                      <span className="font-semibold" style={{ color: COLORS.text }}>
+                        {curso.modulos}
+                      </span>{" "}
+                      módulos
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
+                    <div className="flex items-center gap-1.5 text-xs" style={{ color: COLORS.textSecondary }}>
                       <Sparkles className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#1A1A1A] font-semibold">{curso.aulas}</span> aulas
+                      <span className="font-semibold" style={{ color: COLORS.text }}>
+                        {curso.aulas}
+                      </span>{" "}
+                      aulas
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
+                    <div className="flex items-center gap-1.5 text-xs" style={{ color: COLORS.textSecondary }}>
                       <Leaf className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#1A1A1A] font-semibold">{curso.trilhas}</span> trilhas
+                      <span className="font-semibold" style={{ color: COLORS.text }}>
+                        {curso.trilhas}
+                      </span>{" "}
+                      trilhas
                     </div>
-                    <div className="flex items-center gap-1.5 text-xs text-[#6B5D5F]">
+                    <div className="flex items-center gap-1.5 text-xs" style={{ color: COLORS.textSecondary }}>
                       <Gamepad2 className="w-3.5 h-3.5" style={{ color: `${curso.cor}99` }} />
-                      <span className="text-[#1A1A1A] font-semibold">{curso.jogos}</span> jogos
+                      <span className="font-semibold" style={{ color: COLORS.text }}>
+                        {curso.jogos}
+                      </span>{" "}
+                      jogos
                     </div>
                   </div>
                 )}
@@ -539,8 +923,11 @@ function CursosSection() {
                   {curso.status === "disponivel" ? (
                     <Link
                       href="/trilhas"
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 min-h-[44px] text-sm font-semibold text-white hover:brightness-105 active:scale-[0.98] transition-all"
-                      style={{ backgroundColor: curso.cor }}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl py-3 min-h-[44px] text-sm font-semibold text-white active:scale-[0.98] transition-transform"
+                      style={{
+                        backgroundColor: COLORS.accent,
+                        boxShadow: "0 2px 12px rgba(61,107,79,0.15)",
+                      }}
                     >
                       Matricular agora
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -548,17 +935,21 @@ function CursosSection() {
                   ) : (
                     <button
                       disabled
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-[#1A1A1A]/10 bg-[#F5F5F5] py-3 min-h-[44px] text-sm text-[#777777] cursor-not-allowed"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border py-3 min-h-[44px] text-sm cursor-not-allowed"
+                      style={{
+                        borderColor: "rgba(0,0,0,0.08)",
+                        backgroundColor: "#F5F5F0",
+                        color: COLORS.textMuted,
+                      }}
                     >
                       Lista de espera
                     </button>
                   )}
                 </div>
               </div>
-            </FadeUp>
+            </TiltCard>
           ))}
-          {/* Card de benefício extra (5 cards total, um "Why" integrado) */}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
@@ -574,85 +965,128 @@ function PorQueEstudarSection() {
       descricao:
         "Conteúdo criado por especialistas com registro ativo nos conselhos de classe. Qualidade técnica e científica comprovada.",
       icone: ShieldCheck,
-      cor: "#3D6B4F",
+      cor: COLORS.accent,
     },
     {
       titulo: "Aprendizado interativo",
       descricao:
         "Quizzes, simulações e desafios que tornam o estudo leve e envolvente. Aprenda com tranquilidade e retenha mais.",
       icone: Gamepad2,
-      cor: "#9B8EC4",
+      cor: COLORS.gold,
     },
     {
       titulo: "Estudos de 5-15 min",
       descricao:
         "Aulas curtas e objetivas. Encaixe o estudo na sua rotina sem pressa. Progresso visível a cada sessão.",
       icone: Clock,
-      cor: "#C67B5C",
+      cor: COLORS.accent,
     },
     {
       titulo: "Comunidade acolhedora",
       descricao:
         "Troque experiências com outros alunos, compartilhe conquistas. Um ambiente de apoio mútuo para sua jornada.",
       icone: Users,
-      cor: "#6B9AC4",
+      cor: COLORS.gold,
     },
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#F5F5F5]">
+    <section className="py-20 sm:py-28" style={{ backgroundColor: "#F5F5F0" }}>
       <div className="max-w-7xl mx-auto px-6">
         <FadeUp className="text-center mb-14">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#C4A97D]/25 bg-[#C4A97D]/8">
-            <HeartHandshake className="w-3.5 h-3.5 text-[#C4A97D]" />
-            <span className="text-[#B0854A] text-xs tracking-[3px] font-semibold uppercase">
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border"
+            style={{
+              borderColor: "rgba(196,169,125,0.30)",
+              backgroundColor: COLORS.goldLight,
+            }}
+          >
+            <HeartHandshake className="w-3.5 h-3.5" style={{ color: COLORS.gold }} />
+            <span
+              className="text-xs tracking-[3px] font-semibold uppercase"
+              style={{ color: "#9B7E5A" }}
+            >
               Por que estudar aqui
             </span>
           </div>
-          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A1A]">
+          <h2
+            className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px]"
+            style={{ color: COLORS.text }}
+          >
             Uma plataforma que{" "}
-            <span className="text-[#3D6B4F]">
+            <GradientText as="span">
               respeita seu tempo
-            </span>
+            </GradientText>
           </h2>
-          <p className="mt-4 text-[#6B5D5F] text-base sm:text-lg max-w-xl mx-auto">
+          <p
+            className="mt-4 text-base sm:text-lg max-w-xl mx-auto"
+            style={{ color: COLORS.textSecondary }}
+          >
             Educação em saúde pensada para quem busca qualidade com calma e profundidade.
           </p>
         </FadeUp>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <StaggerContainer
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
+          staggerDelay={0.08}
+        >
           {cards.map((card, i) => (
-            <FadeUp key={i} delay={i * 0.1}>
-              <div className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(91,140,90,0.06)] h-full flex flex-col">
-                {/* Top accent */}
-                <div
-                  className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-400"
-                  style={{
-                    background: `linear-gradient(90deg, transparent, ${card.cor}40, transparent)`,
-                  }}
-                />
+            <div
+              key={i}
+              className="group relative rounded-2xl p-7 transition-all duration-500 h-full flex flex-col border"
+              style={{
+                backgroundColor: COLORS.card,
+                borderColor: "rgba(0,0,0,0.06)",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 8px 30px rgba(61,107,79,0.08)";
+                e.currentTarget.style.transform = "translateY(-4px)";
+                e.currentTarget.style.borderColor = "rgba(61,107,79,0.18)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
+              }}
+            >
+              {/* Top accent */}
+              <div
+                className="absolute top-0 left-4 right-4 h-px rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${card.cor}66, transparent)`,
+                }}
+              />
 
-                {/* Icon */}
-                <div
-                  className="p-3.5 rounded-xl transition-all duration-300 group-hover:scale-105 mb-5 self-start min-h-[44px] min-w-[44px] flex items-center justify-center"
-                  style={{ backgroundColor: `${card.cor}12` }}
-                >
-                  <card.icone className="w-6 h-6" style={{ color: card.cor }} />
-                </div>
-
-                {/* Title */}
-                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#1A1A1A] mb-3 group-hover:text-[#3D6B4F] transition-colors duration-300">
-                  {card.titulo}
-                </h3>
-
-                {/* Description */}
-                <p className="text-sm text-[#6B5D5F] leading-relaxed flex-1">
-                  {card.descricao}
-                </p>
+              {/* Icon */}
+              <div
+                className="p-3.5 rounded-xl transition-transform duration-300 group-hover:scale-105 mb-5 self-start min-h-[44px] min-w-[44px] flex items-center justify-center"
+                style={{ backgroundColor: `${card.cor}14` }}
+              >
+                <card.icone className="w-6 h-6" style={{ color: card.cor }} />
               </div>
-            </FadeUp>
+
+              {/* Title */}
+              <h3
+                className="font-display text-[18px] leading-tight tracking-[-0.5px] mb-3 transition-colors duration-300"
+                style={{ color: COLORS.text }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = COLORS.accent;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = COLORS.text;
+                }}
+              >
+                {card.titulo}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm leading-relaxed flex-1" style={{ color: COLORS.textSecondary }}>
+                {card.descricao}
+              </p>
+            </div>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
@@ -710,54 +1144,112 @@ function ComoFuncionaSection() {
   ];
 
   return (
-    <section className="relative py-20 sm:py-28 bg-[#FAFAFA] overflow-hidden">
+    <section
+      className="relative py-20 sm:py-28 overflow-hidden"
+      style={{ backgroundColor: COLORS.bg }}
+    >
       {/* Subtle decorative pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(212,165,116,0.05)_1px,transparent_1px)] bg-[length:22px_22px]" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(rgba(196,169,125,0.05) 1px, transparent 1px)`,
+          backgroundSize: "22px 22px",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <FadeUp className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border border-[#C4A97D]/25 bg-[#C4A97D]/8">
-            <Star className="w-3.5 h-3.5 text-[#C4A97D]" />
-            <span className="text-[#B0854A] text-xs tracking-[3px] font-semibold uppercase">
+          <div
+            className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border"
+            style={{
+              borderColor: "rgba(196,169,125,0.30)",
+              backgroundColor: COLORS.goldLight,
+            }}
+          >
+            <Star className="w-3.5 h-3.5" style={{ color: COLORS.gold }} />
+            <span
+              className="text-xs tracking-[3px] font-semibold uppercase"
+              style={{ color: "#9B7E5A" }}
+            >
               Como Funciona
             </span>
           </div>
-          <h2 className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A1A]">
+          <h2
+            className="font-display text-[30px] sm:text-[40px] lg:text-[48px] leading-[1.12] tracking-[-1.5px]"
+            style={{ color: COLORS.text }}
+          >
             Do zero ao certificado em{" "}
-            <span className="text-[#3D6B4F]">
+            <GradientText as="span">
               4 passos
-            </span>
+            </GradientText>
           </h2>
-          <p className="mt-4 text-[#6B5D5F] text-base sm:text-lg max-w-xl mx-auto">
+          <p
+            className="mt-4 text-base sm:text-lg max-w-xl mx-auto"
+            style={{ color: COLORS.textSecondary }}
+          >
             Simples, tranquilo e acolhedor. Sua jornada de aprendizado começa aqui.
           </p>
         </FadeUp>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          staggerDelay={0.08}
+        >
           {steps.map((s, i) => (
-            <FadeUp key={i} delay={i * 0.1}>
-              <div className="group relative bg-white border border-[#1A1A1A]/6 rounded-2xl p-7 transition-all duration-400 hover:-translate-y-1.5 hover:shadow-[0_12px_36px_-8px_rgba(91,140,90,0.08)] h-full">
-                {/* Step number */}
-                <div className="flex items-center justify-between mb-5">
-                  <div className="p-3 rounded-xl bg-[#3D6B4F]/8 text-[#3D6B4F] min-h-[44px] min-w-[44px] flex items-center justify-center">
-                    {s.icon}
-                  </div>
-                  <span className="font-display text-[36px] leading-none tracking-[-2px] text-[#1A1A1A]/5 font-bold select-none">
-                    {s.step}
-                  </span>
+            <div
+              key={i}
+              className="group relative rounded-2xl p-7 transition-all duration-500 h-full border"
+              style={{
+                backgroundColor: COLORS.card,
+                borderColor: "rgba(0,0,0,0.06)",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 12px 36px -8px rgba(61,107,79,0.10)";
+                e.currentTarget.style.transform = "translateY(-6px)";
+                e.currentTarget.style.borderColor = "rgba(61,107,79,0.18)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.04)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)";
+              }}
+            >
+              {/* Step number */}
+              <div className="flex items-center justify-between mb-5">
+                <div
+                  className="p-3 rounded-xl min-h-[44px] min-w-[44px] flex items-center justify-center"
+                  style={{ backgroundColor: COLORS.accentLight, color: COLORS.accent }}
+                >
+                  {s.icon}
                 </div>
-
-                <h3 className="font-display text-[18px] leading-tight tracking-[-0.5px] text-[#1A1A1A] mb-2 group-hover:text-[#3D6B4F] transition-colors">
-                  {s.titulo}
-                </h3>
-                <p className="text-sm text-[#6B5D5F] leading-relaxed">
-                  {s.desc}
-                </p>
+                <span
+                  className="font-display text-[36px] leading-none tracking-[-2px] font-bold select-none"
+                  style={{ color: "rgba(0,0,0,0.04)" }}
+                >
+                  {s.step}
+                </span>
               </div>
-            </FadeUp>
+
+              <h3
+                className="font-display text-[18px] leading-tight tracking-[-0.5px] mb-2 transition-colors"
+                style={{ color: COLORS.text }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = COLORS.accent;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = COLORS.text;
+                }}
+              >
+                {s.titulo}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: COLORS.textSecondary }}>
+                {s.desc}
+              </p>
+            </div>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
@@ -768,45 +1260,78 @@ function ComoFuncionaSection() {
    ═══════════════════════════════════════════════════════════════ */
 function CtaFinalSection() {
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-[#FAFAFA]">
+    <section
+      className="relative py-24 sm:py-32 overflow-hidden"
+      style={{ backgroundColor: COLORS.bg }}
+    >
       {/* Background decorative */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FAFAFA] via-[#F5F5F5]/50 to-[#FAFAFA]" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(to bottom, ${COLORS.bg}, #F5F5F0, ${COLORS.bg})`,
+        }}
+      />
 
-      {/* Subtle warm orb */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#C4A97D]/6 blur-[120px]" />
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-[#3D6B4F]/4 blur-[80px]" />
+      {/* Subtle orbs */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none"
+        style={{ backgroundColor: COLORS.goldLight }}
+      />
+      <div
+        className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full blur-[80px] pointer-events-none"
+        style={{ backgroundColor: "rgba(61,107,79,0.04)" }}
+      />
 
       <FadeUp className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border border-[#3D6B4F]/20 bg-[#3D6B4F]/6">
-          <Leaf className="w-3.5 h-3.5 text-[#3D6B4F]" />
-          <span className="text-[#3D6B4F] text-xs tracking-[4px] font-semibold uppercase">
+        <div
+          className="inline-flex items-center gap-2 mb-6 px-5 py-2 rounded-full border"
+          style={{
+            borderColor: COLORS.accentBorder,
+            backgroundColor: COLORS.accentLight,
+          }}
+        >
+          <Leaf className="w-3.5 h-3.5" style={{ color: COLORS.accent }} />
+          <span
+            className="text-xs tracking-[4px] font-semibold uppercase"
+            style={{ color: COLORS.accent }}
+          >
             Comece sua jornada
           </span>
         </div>
 
-        <h2 className="font-display text-[32px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-2px] text-[#1A1A1A] mb-6">
+        <h2
+          className="font-display text-[32px] sm:text-[44px] lg:text-[54px] leading-[1.08] tracking-[-2px] mb-6"
+          style={{ color: COLORS.text }}
+        >
           Pronto para cuidar
           <br />
           da sua{" "}
-          <span className="text-[#3D6B4F]">
+          <GradientText as="span">
             carreira na saúde
-          </span>
+          </GradientText>
           ?
         </h2>
 
-        <p className="text-lg text-[#6B5D5F] mb-10 max-w-xl mx-auto leading-relaxed">
+        <p
+          className="text-lg mb-10 max-w-xl mx-auto leading-relaxed"
+          style={{ color: COLORS.textSecondary }}
+        >
           Estude com tranquilidade, conquiste seu certificado. A saúde precisa de profissionais preparados e humanos como você.
         </p>
 
         <Link
           href="/trilhas"
-          className="inline-flex h-16 min-h-[44px] items-center justify-center gap-3 rounded-2xl bg-[#3D6B4F] px-12 text-lg font-semibold text-white hover:bg-[#4A7A49] active:scale-[0.98] transition-all shadow-[0_4px_28px_rgba(91,140,90,0.2)]"
+          className="inline-flex h-16 min-h-[44px] items-center justify-center gap-3 rounded-2xl px-12 text-lg font-semibold text-white active:scale-[0.98] transition-transform"
+          style={{
+            backgroundColor: COLORS.accent,
+            boxShadow: "0 4px 28px rgba(61,107,79,0.25)",
+          }}
         >
           Começar a estudar agora
           <ArrowRight className="w-5 h-5" />
         </Link>
 
-        <p className="mt-6 text-xs text-[#777777] tracking-wide">
+        <p className="mt-6 text-xs tracking-wide" style={{ color: COLORS.textMuted }}>
           Acesso gratuito · Conteúdo profissional · Certificado digital
         </p>
       </FadeUp>
@@ -815,79 +1340,143 @@ function CtaFinalSection() {
 }
 
 /* ═══════════════════════════════════════════════════════════════
-   MAIN HOME PAGE
-   Estrutura: Hero → Marquee → Natureza Img → Stats → Lab Img → Cursos → Farmácia Img → Por que → Natureza Img → Como Funciona → CTA → Footer
+   MAIN HOME PAGE (with AnimatePresence for smooth transitions)
    ═══════════════════════════════════════════════════════════════ */
 export default function SaudegptHome() {
   return (
-    <div id="conteudo-principal" className="bg-[#FAFAFA] overflow-x-hidden font-body text-[#1A1A1A]">
-      {/* ── Hero ── */}
-      <HeroSection />
+    <AnimatePresence mode="wait">
+      <motion.div
+        key="home-page"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        id="conteudo-principal"
+        className="overflow-x-hidden font-body"
+        style={{ backgroundColor: COLORS.bg, color: COLORS.text }}
+      >
+        {/* Hero */}
+        <HeroSection />
 
-      {/* ── Marquee ── */}
-      <MarqueeTicker />
+        {/* Marquee */}
+        <MarqueeTicker />
 
-      {/* ── Imagem: Natureza calmante ── */}
-      <ImageBanner
-        src={UNSPLASH.natureza1}
-        alt="Natureza tranquila para inspirar seus estudos"
-      />
+        {/* Imagem: Natureza calmante */}
+        <ImageBanner
+          src={UNSPLASH.natureza1}
+          alt="Natureza tranquila para inspirar seus estudos"
+        />
 
-      {/* ── Stats ── */}
-      <StatsBar />
+        {/* Stats */}
+        <StatsBar />
 
-      {/* ── Imagem: Laboratório ── */}
-      <ImageBanner
-        src={UNSPLASH.laboratorio}
-        alt="Laboratório científico de saúde"
-      />
+        {/* Imagem: Laboratório */}
+        <ImageBanner
+          src={UNSPLASH.laboratorio}
+          alt="Laboratório científico de saúde"
+        />
 
-      {/* ── Cursos ── */}
-      <CursosSection />
+        {/* Cursos */}
+        <CursosSection />
 
-      {/* ── Imagem: Farmácia interior ── */}
-      <ImageBanner
-        src={UNSPLASH.farmaciaInterior}
-        alt="Interior de farmácia"
-      />
+        {/* Imagem: Farmácia interior */}
+        <ImageBanner
+          src={UNSPLASH.farmaciaInterior}
+          alt="Interior de farmácia"
+        />
 
-      {/* ── Por que estudar aqui ── */}
-      <PorQueEstudarSection />
+        {/* Por que estudar aqui */}
+        <PorQueEstudarSection />
 
-      {/* ── Imagem: Natureza calmante 2 ── */}
-      <ImageBanner
-        src={UNSPLASH.natureza2}
-        alt="Floresta tranquila para acalmar"
-      />
+        {/* Imagem: Natureza calmante 2 */}
+        <ImageBanner
+          src={UNSPLASH.natureza2}
+          alt="Floresta tranquila para acalmar"
+        />
 
-      {/* ── Como Funciona ── */}
-      <ComoFuncionaSection />
+        {/* Como Funciona */}
+        <ComoFuncionaSection />
 
-      {/* ── CTA Final ── */}
-      <CtaFinalSection />
+        {/* CTA Final */}
+        <CtaFinalSection />
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-[#3D6B4F]/8 bg-[#F5F5F5] py-12 px-6">
-        <div className="max-w-3xl mx-auto text-center space-y-4">
-          <p className="text-sm text-[#3D6B4F] font-display font-medium tracking-wide">
-            SaúdeGPT — Plataforma de Formação para Profissionais da Saúde
-          </p>
-          <p className="text-xs text-[#6B5D5F] leading-relaxed max-w-xl mx-auto">
-            Conteúdo criado pelo farmacêutico{" "}
-            <strong className="text-[#1A1A1A]">Thiago Piola — CRF/SP 58.519</strong>.
-            {" "}Este material é educativo e não substitui orientação profissional presencial.
-            Consulte sempre o(a) farmacêutico(a) para recomendações individualizadas.
-          </p>
-          <div className="flex items-center justify-center gap-6 text-[10px] text-[#777777] tracking-wider uppercase pt-2">
-            <a href="/termos" className="hover:text-[#3D6B4F] transition-colors no-underline">Termos de Uso</a>
-            <a href="/privacidade" className="hover:text-[#3D6B4F] transition-colors no-underline">Privacidade</a>
-            <a href="/contato" className="hover:text-[#3D6B4F] transition-colors no-underline">Contato</a>
+        {/* Footer */}
+        <footer
+          className="border-t py-12 px-6"
+          style={{
+            borderColor: "rgba(61,107,79,0.08)",
+            backgroundColor: "#F5F5F0",
+          }}
+        >
+          <div className="max-w-3xl mx-auto text-center space-y-4">
+            <p
+              className="text-sm font-display font-medium tracking-wide"
+              style={{ color: COLORS.accent }}
+            >
+              SaúdeGPT — Plataforma de Formação para Profissionais da Saúde
+            </p>
+            <p
+              className="text-xs leading-relaxed max-w-xl mx-auto"
+              style={{ color: COLORS.textSecondary }}
+            >
+              Conteúdo criado pelo farmacêutico{" "}
+              <strong style={{ color: COLORS.text }}>Thiago Piola — CRF/SP 58.519</strong>.
+              {" "}Este material é educativo e não substitui orientação profissional presencial.
+              Consulte sempre o(a) farmacêutico(a) para recomendações individualizadas.
+            </p>
+            <div
+              className="flex items-center justify-center gap-6 text-[10px] tracking-wider uppercase pt-2"
+              style={{ color: COLORS.textMuted }}
+            >
+              <a
+                href="/termos"
+                className="transition-colors no-underline"
+                style={{ color: COLORS.textMuted }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = COLORS.accent;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = COLORS.textMuted;
+                }}
+              >
+                Termos de Uso
+              </a>
+              <a
+                href="/privacidade"
+                className="transition-colors no-underline"
+                style={{ color: COLORS.textMuted }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = COLORS.accent;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = COLORS.textMuted;
+                }}
+              >
+                Privacidade
+              </a>
+              <a
+                href="/contato"
+                className="transition-colors no-underline"
+                style={{ color: COLORS.textMuted }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = COLORS.accent;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = COLORS.textMuted;
+                }}
+              >
+                Contato
+              </a>
+            </div>
+            <p
+              className="text-[10px] tracking-[2px] uppercase pt-2"
+              style={{ color: "rgba(0,0,0,0.25)" }}
+            >
+              © {new Date().getFullYear()} SaúdeGPT · Todos os direitos reservados
+            </p>
           </div>
-          <p className="text-[10px] text-[#777777]/50 tracking-[2px] uppercase pt-2">
-            © {new Date().getFullYear()} SaúdeGPT · Todos os direitos reservados
-          </p>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </motion.div>
+    </AnimatePresence>
   );
 }
