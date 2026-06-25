@@ -404,7 +404,7 @@ function HeroSection() {
           A nova geração da
           <br />
           <span className="relative inline-block">
-            educação{" "}
+            educação&nbsp;
             <span
               style={{
                 background: "linear-gradient(135deg, #C4A97D, #E8D5A3, #C4A97D)",
@@ -569,7 +569,7 @@ function CursosSection() {
             <span className="text-xs tracking-[3px] font-semibold uppercase text-[#0A2540]">Nossos Cursos</span>
           </div>
           <h2 className="font-display text-[30px] sm:text-[42px] lg:text-[48px] leading-[1.1] tracking-[-1.5px] text-[#1A1A2E]">
-            Formação de{" "}
+            Formação de&nbsp;
             <GradientText as="span">excelência</GradientText>
           </h2>
           <p className="mt-4 text-base sm:text-lg max-w-xl mx-auto text-[#4A4A5E]">
@@ -689,7 +689,7 @@ function DiferenciaisSection() {
             <span className="text-xs tracking-[3px] font-semibold uppercase text-[#8A7A5E]">Diferenciais</span>
           </div>
           <h2 className="font-display text-[30px] sm:text-[42px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A2E]">
-            Uma instituição que{" "}
+            Uma instituição que&nbsp;
             <GradientText as="span">eleva o padrão</GradientText>
           </h2>
           <p className="mt-4 text-base sm:text-lg max-w-xl mx-auto text-[#4A4A5E]">
@@ -768,7 +768,7 @@ function ProvaSocialSection() {
             <span className="text-xs tracking-[3px] font-semibold uppercase text-[#0A2540]">Credibilidade</span>
           </div>
           <h2 className="font-display text-[30px] sm:text-[42px] lg:text-[48px] leading-[1.12] tracking-[-1.5px] text-[#1A1A2E]">
-            Construído sobre{" "}
+            Construído sobre&nbsp;
             <GradientText as="span">evidências</GradientText>
           </h2>
           <p className="mt-4 text-base sm:text-lg max-w-xl mx-auto text-[#4A4A5E]">
@@ -848,7 +848,7 @@ function CtaFinalSection() {
         <h2 className="font-display text-[30px] sm:text-[42px] lg:text-[52px] leading-[1.08] tracking-[-2px] mb-6 text-[#1A1A2E]">
           Pronto para transformar
           <br />
-          sua{" "}
+          sua&nbsp;
           <GradientText as="span">carreira na saúde</GradientText>
           ?
         </h2>
