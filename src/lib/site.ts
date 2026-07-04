@@ -37,3 +37,33 @@ export const linksLegais = [
   { href: "/privacidade", label: "Privacidade" },
   { href: "/termos", label: "Termos de uso" },
 ];
+
+/**
+ * Verticais do marketplace SaúdeGPT.
+ * Cada vertical é uma landing page unificada em /(site)/[slug].
+ */
+export const verticais = [
+  {
+    slug: "nutricao",
+    href: "/nutricao",
+    label: "Nutrição",
+    icone: "🥬",
+    descricao: "Suplementação, fitoterapia e nutrição clínica aplicada à farmácia.",
+  },
+  {
+    slug: "fisioterapia",
+    href: "/fisioterapia",
+    label: "Fisioterapia",
+    icone: "🏃",
+    descricao: "Órteses, coletes, reabilitação básica e produtos ortopédicos.",
+  },
+  {
+    slug: "psicologia",
+    href: "/psicologia",
+    label: "Psicologia",
+    icone: "🧠",
+    descricao: "Saúde mental, psicofármacos e atendimento humanizado.",
+  },
+] as const;
+
+export type Vertical = (typeof verticais)[number];

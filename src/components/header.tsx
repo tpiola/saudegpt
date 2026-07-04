@@ -3,15 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { navPrincipal, site } from "@/lib/site";
+import { navPrincipal, site, verticais } from "@/lib/site";
 import { Icon } from "./icons";
 import { LogoSaudeGPT } from "./logo-saudegpt";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLanding = [
   { href: "#trilhas", label: "Trilhas" },
-  { href: "#conteudo", label: "Conteúdo" },
-  { href: "#seguranca", label: "Segurança" },
+  { href: "/nutricao", label: "Nutrição" },
+  { href: "/fisioterapia", label: "Fisioterapia" },
+  { href: "/psicologia", label: "Psicologia" },
   { href: "#matricula", label: "Matrícula" },
 ];
 
@@ -89,6 +90,22 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+          {!isLanding && (
+            <>
+              <div className="mt-2 px-4 text-[11px] font-bold uppercase tracking-wider text-white/40">Verticais</div>
+              {verticais.map((v) => (
+                <Link
+                  key={v.slug}
+                  href={v.href}
+                  onClick={() => setAberto(false)}
+                  className="flex min-h-[48px] items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white transition-colors"
+                >
+                  <span aria-hidden>{v.icone}</span>
+                  {v.label}
+                </Link>
+              ))}
+            </>
+          )}
           <Link
             href={ctaHref}
             onClick={() => setAberto(false)}
