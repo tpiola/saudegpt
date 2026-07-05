@@ -78,8 +78,7 @@ export function Header() {
         </div>
       </div>
 
-      <div className={`overflow-hidden transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-[30rem]" : "max-h-0"}`}>
-        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-4" aria-label="Menu mobile">
+        <div className={`overflow-y-auto transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-[calc(100vh-3.5rem)]" : "max-h-0"}`}>        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-4" aria-label="Menu mobile">
           {itens.map((item) => (
             <Link
               key={item.href}
