@@ -50,7 +50,7 @@
     "@types/node": "^25.9.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^10.4.1",
+    "eslint": "9.39.4",
     "eslint-config-next": "^16.2.7",
     "prettier": "^3.8.3",
     "tailwindcss": "^4",
@@ -68,7 +68,6 @@
     "smol-toml": "^1.6.1",
     "srvx": "^0.11.16",
     "uuid": "^11.1.1",
-    "ajv": "^8.20.0",
     "@tootallnate/once": "^3.0.1"
   }
 }
