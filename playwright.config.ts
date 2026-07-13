@@ -17,5 +17,10 @@ export default defineConfig({
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
+    env: {
+      ...process.env,
+      ADMIN_USER: "e2e-admin",
+      ADMIN_PASSWORD: "e2e-only-strong-password",
+    },
   },
 });
