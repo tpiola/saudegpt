@@ -18,7 +18,6 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
     timeout: 180_000,
     env: {
-      ...process.env,
       ADMIN_USER: "e2e-admin",
       ADMIN_PASSWORD: "e2e-only-strong-password",
     },
