@@ -32,10 +32,10 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-navy-800/88 text-white backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-navy-100 bg-white/95 text-navy-800 backdrop-blur-xl shadow-sm">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:px-8">
         <Link href="/" className="flex min-w-0 items-center gap-2.5" onClick={() => setAberto(false)}>
-          <LogoSaudeGPT variant="light" size="sm" showIcon={true} />
+          <LogoSaudeGPT variant="dark" size="sm" showIcon={true} />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Navegação principal">
@@ -44,7 +44,7 @@ export function Header() {
               key={item.href}
               href={item.href}
               className={`rounded-full px-3 py-2 text-sm font-semibold transition-colors ${
-                ativo(item.href) ? "bg-white/12 text-white" : "text-white/66 hover:bg-white/8 hover:text-white"
+                ativo(item.href) ? "bg-navy-50 text-navy-800" : "text-navy-600 hover:bg-navy-50 hover:text-navy-800"
               }`}
             >
               {item.label}
@@ -53,22 +53,22 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-1.5 sm:gap-2">
-          <ThemeToggle className="border-white/15 bg-white text-navy-700 hover:text-navy-700 !h-10 !w-10 sm:!h-10 sm:!w-10" />
+          <ThemeToggle className="border-navy-100 bg-navy-50 text-navy-700 !h-10 !w-10 sm:!h-10 sm:!w-10" />
           <a
             href="mailto:contato@thiagopiola.com.br"
-            className="inline-flex min-h-[40px] items-center justify-center rounded-full border border-white/20 px-3 text-xs sm:text-sm font-semibold text-white/85 transition hover:border-white/40 hover:text-white sm:px-4"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full border border-navy-200 px-3 text-xs sm:text-sm font-semibold text-navy-700 transition hover:border-navy-300 hover:bg-navy-50 sm:px-4"
           >
             Contato
           </a>
           <Link
             href={ctaHref}
-            className="inline-flex min-h-[40px] items-center justify-center rounded-full bg-white px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-navy-700 shadow-sm transition hover:bg-white/90"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-navy-800 px-3.5 sm:px-4 text-xs sm:text-sm font-extrabold text-white shadow-sm transition hover:bg-navy-700"
           >
             Entrar
           </Link>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white/75 lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-navy-200 text-navy-700 lg:hidden min-touch"
             onClick={() => setAberto((v) => !v)}
             aria-label="Abrir menu"
             aria-expanded={aberto}
@@ -78,27 +78,27 @@ export function Header() {
         </div>
       </div>
 
-        <div className={`overflow-y-auto transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-[calc(100vh-3.5rem)]" : "max-h-0"}`}>        
-          <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-white/10 px-4 py-4" aria-label="Menu mobile">
+      <div className={`overflow-y-auto transition-[max-height] duration-300 lg:hidden ${aberto ? "max-h-[calc(100vh-3.5rem)]" : "max-h-0"}`}>
+        <nav className="mx-auto flex max-w-7xl flex-col gap-1 border-t border-navy-100 px-4 py-4 bg-white" aria-label="Menu mobile">
           {itens.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               onClick={() => setAberto(false)}
-              className="flex min-h-[48px] items-center rounded-xl px-4 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white transition-colors"
+              className="flex min-h-[48px] items-center rounded-xl px-4 py-3 text-sm font-semibold text-navy-700 hover:bg-navy-50 hover:text-navy-900 transition-colors"
             >
               {item.label}
             </Link>
           ))}
           {!isLanding && (
             <>
-              <div className="mt-2 px-4 text-[11px] font-bold uppercase tracking-wider text-white/40">Verticais</div>
+              <div className="mt-2 px-4 text-[11px] font-bold uppercase tracking-wider text-navy-400">Verticais</div>
               {verticais.map((v) => (
                 <Link
                   key={v.slug}
                   href={v.href}
                   onClick={() => setAberto(false)}
-                  className="flex min-h-[48px] items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white/78 hover:bg-white/8 hover:text-white transition-colors"
+                  className="flex min-h-[48px] items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-navy-700 hover:bg-navy-50 hover:text-navy-900 transition-colors"
                 >
                   <span aria-hidden>{v.icone}</span>
                   {v.label}
@@ -109,7 +109,7 @@ export function Header() {
           <Link
             href={ctaHref}
             onClick={() => setAberto(false)}
-            className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-white px-5 text-sm font-extrabold text-navy-700 hover:bg-white/90 transition-colors"
+            className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-navy-800 px-5 text-sm font-extrabold text-white hover:bg-navy-700 transition-colors"
           >
             Fazer matrícula
           </Link>

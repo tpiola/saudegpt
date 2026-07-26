@@ -1,8 +1,8 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark";
+type Theme = "light";
 
 interface ThemeContextValue {
   theme: Theme;
@@ -13,15 +13,16 @@ const ThemeCtx = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "saudegpt-theme";
 
-// Script injected inline in <head> to prevent FOUC — default light mode
-export const scriptAntiFlash = `(function(){try{var t=localStorage.getItem('${STORAGE_KEY}')||'light';document.documentElement.classList.add(t);}catch(e){}})();`;
+// Always light — health design requires clean white + navy
+export const scriptAntiFlash = `(function(){try{document.documentElement.classList.add('light');document.documentElement.classList.remove('dark');localStorage.setItem('${STORAGE_KEY}','light');}catch(e){}})();`;
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY) || "light";
-    document.documentElement.classList.add(stored);
+    document.documentElement.classList.add("light");
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem(STORAGE_KEY, "light");
     setMounted(true);
   }, []);
 
