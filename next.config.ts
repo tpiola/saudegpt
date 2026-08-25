@@ -29,8 +29,6 @@ const securityHeaders = [
 
 let nextConfig: NextConfig = {
     // ── Output ─────────────────────────────────────────────────────────────────
-    output: "standalone",
-
     // ── Performance ────────────────────────────────────────────────────────────
     compress: true,
     poweredByHeader: false,
