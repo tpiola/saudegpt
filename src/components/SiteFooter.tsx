@@ -141,7 +141,7 @@ export function SiteFooter() {
         <div className="mt-10 border-t border-emerald-500/8 pt-6 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between">
           <div>
             <p className="text-xs text-emerald-50/55">
-              &copy; {ano} {site.nome}. Todos os direitos reservados.
+              &copy; {ano} {site.nome}. Todos os direitos reservados. · Construído por Hermes Agent
             </p>
             <p className="mt-1 text-xs text-emerald-400/60">
               Criado por{" "}

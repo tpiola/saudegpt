@@ -44,6 +44,7 @@ export const metadata: Metadata = {
   },
   description:
     "Escola profissional de saúde com cursos 100% gratuitos. Formação em Farmácia, Nutrição, Reabilitação, Saúde Mental e Cuidados com Idosos. Conteúdo criado por especialistas registrados nos conselhos de classe.",
+  generator: "Hermes Agent",
   keywords: [
     "escola profissional saúde",
     "cursos saúde gratuitos",
