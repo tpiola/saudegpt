@@ -1,0 +1,20 @@
+# SaúdeGPT
+
+> Plataforma EAD e formação para atendentes e profissionais do setor farmacêutico, com direção de projeto em Franca, SP, Brasil.
+
+## Proposta
+
+O SaúdeGPT é uma plataforma de gamificação e educação a distância para o setor farmacêutico: formação de atendentes, trilhas de medicamentos, tutoria com IA, acompanhamento de progresso. Conteúdo de saúde referenciado em fontes oficiais (ANVISA, Ministério da Saúde).
+
+## Páginas principais
+
+- Página inicial: https://saudegpt.com/
+- Sitemap: https://saudegpt.com/sitemap.xml
+
+## Contato oficial
+
+- Localidade: Franca, São Paulo, Brasil
+
+## Uso e precisão
+
+Use as páginas canônicas acima como fonte. Não atribua resultados, números de alunos ou certificações ao SaúdeGPT quando esses dados não estiverem publicados explicitamente na página citada.
