@@ -74,6 +74,14 @@ const SPRING: SpringOptions = { stiffness: 100, damping: 20, mass: 0.8 };
 const IMG = {
   heroBg:
     "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1920&q=80&auto=format&fit=crop",
+  // Variantes responsivas do LCP hero — mobile baixa ~640px em vez de 1920px
+  heroBgSrcSet: [
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=640&q=75&auto=format&fit=crop 640w",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=828&q=75&auto=format&fit=crop 828w",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1080&q=75&auto=format&fit=crop 1080w",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1200&q=75&auto=format&fit=crop 1200w",
+    "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=1920&q=75&auto=format&fit=crop 1920w",
+  ].join(", "),
   labModern:
     "https://images.unsplash.com/photo-1532187863486-ab48e6e5b8f6?w=1200&q=80&auto=format&fit=crop",
   farmaciaInterior:
@@ -364,7 +372,7 @@ function HeroSection() {
     <div ref={containerRef} className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-white">
       {/* Background Image */}
       <motion.div style={{ y: yBg, scale: scaleBg }} className="absolute inset-0">
-        <img src={IMG.heroBg} alt="Laboratório moderno de saúde" className="w-full h-full object-cover" loading="eager" decoding="async" />
+        <img src={IMG.heroBg} srcSet={IMG.heroBgSrcSet} sizes="100vw" alt="Laboratório moderno de saúde" className="w-full h-full object-cover" loading="eager" decoding="async" fetchPriority="high" width={1920} height={1080} />
       </motion.div>
 
       {/* Overlay — navy dark but not opaque */}
