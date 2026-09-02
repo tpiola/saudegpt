@@ -131,6 +131,18 @@ export function Footer() {
           </div>
         </div>
 
+        <p className="mt-5 text-center text-xs text-white/40">
+          Criado por{" "}
+          <a
+            href="https://reidasvendas.com.br"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-teal-300/80 underline underline-offset-2 transition-colors hover:text-teal-200"
+          >
+            reidasvendas.com.br
+          </a>
+        </p>
+
         <p className="mt-4 text-xs leading-relaxed text-white/30">
           Conteúdo educativo. Não substitui consulta médica nem orientação do farmacêutico responsável. Em caso de emergência, ligue 192.
         </p>

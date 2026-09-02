@@ -953,6 +953,17 @@ export default function SaudegptHome() {
             <p className="text-[10px] tracking-[2px] uppercase pt-2 text-black/20">
               © {new Date().getFullYear()} SaúdeGPT · Todos os direitos reservados
             </p>
+            <p className="text-xs pt-1 text-[#8A8A9E]">
+              Criado por{" "}
+              <a
+                href="https://reidasvendas.com.br"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[#0A2540] underline underline-offset-2 hover:text-[#2E5C8A]"
+              >
+                reidasvendas.com.br
+              </a>
+            </p>
           </div>
         </footer>
       </motion.div>

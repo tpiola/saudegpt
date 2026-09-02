@@ -283,9 +283,14 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <p className="font-semibold">{site.assinatura}</p>
           <p className="mt-1">
             Criado por{" "}
-            <span className="text-gold-600 dark:text-gold-400 font-semibold">
-              Thiago Piola
-            </span>
+            <a
+              href="https://reidasvendas.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gold-600 dark:text-gold-400 font-semibold underline underline-offset-2"
+            >
+              reidasvendas.com.br
+            </a>
           </p>
           <p className="mt-1">
             Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
