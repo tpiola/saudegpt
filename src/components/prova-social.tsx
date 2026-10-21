@@ -42,7 +42,7 @@ export function ProvaSocial() {
               </span>
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground">
-              Conteúdo completo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.
+              Aprendizado em saúde para aplicar com responsabilidade.
             </p>
           </div>
         </FadeUp>

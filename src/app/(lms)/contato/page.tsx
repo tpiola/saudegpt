@@ -82,9 +82,9 @@ export default function ContatoPage() {
 
       {/* Criador */}
       <div className="rounded-xl border border-white/10 bg-white/[0.03] p-8 text-center">
-        <h2 className="text-lg font-semibold text-white">Criado pelo Farmacêutico</h2>
+        <h2 className="text-lg font-semibold text-white">Conhecimento com responsabilidade</h2>
         <p className="mt-2 text-white/60">
-          <strong className="text-white/80">Thiago B. G. Piola</strong> — CRF/SP 58.519
+          Conte com o farmacêutico para orientações individualizadas.
         </p>
         <p className="mt-1 text-sm text-white/40">
           Farmácia • Tecnologia • Educação

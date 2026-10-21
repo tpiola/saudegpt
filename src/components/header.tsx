@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { navPrincipal, site, verticais } from "@/lib/site";
+import { navPrincipal, verticais } from "@/lib/site";
 import { Icon } from "./icons";
 import { LogoSaudeGPT } from "./logo-saudegpt";
 import { ThemeToggle } from "./theme-toggle";
@@ -13,7 +13,7 @@ const navLanding = [
   { href: "/nutricao", label: "Nutrição" },
   { href: "/fisioterapia", label: "Fisioterapia" },
   { href: "/psicologia", label: "Psicologia" },
-  { href: "#matricula", label: "Matrícula" },
+  { href: "/trilhas", label: "Iniciar" },
 ];
 
 export function Header() {
@@ -21,7 +21,7 @@ export function Header() {
   const [aberto, setAberto] = useState(false);
   const isLanding = pathname === "/";
   const itens = isLanding ? navLanding : navPrincipal.slice(0, 5);
-  const ctaHref = isLanding ? "#matricula" : "/#matricula";
+  const ctaHref = isLanding ? "/trilhas" : "/trilhas";
 
   useEffect(() => {
     setAberto(false);
@@ -111,7 +111,7 @@ export function Header() {
             onClick={() => setAberto(false)}
             className="mt-2 inline-flex min-h-[48px] items-center justify-center rounded-full bg-navy-800 px-5 text-sm font-extrabold text-white hover:bg-navy-700 transition-colors"
           >
-            Fazer matrícula
+            Iniciar
           </Link>
         </nav>
       </div>

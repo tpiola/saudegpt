@@ -68,7 +68,7 @@ Insulinas (essenciais no Tipo 1 e em alguns casos de Tipo 2):
 • Insulinas pré-misturadas
 
 Importante: insulinas devem ser armazenadas na geladeira (não no congelador!) e não podem ser agitadas com força.`,
-    imagem: "/imagens/trilha_medicamentos.webp",
+    imagem: "/imagens/equipamento_glicosimetro.webp",
   },
   {
     id: "cuidados-balao",
@@ -313,10 +313,10 @@ export default function DiabetesPage() {
                     Você sabia?
                   </p>
                   <p className="text-sm leading-relaxed text-white/70">
-                    Você já ouviu falar que a canela pode ajudar no controle da glicemia? 
-                    Embora alguns estudos preliminares sugiram possível benefício, as evidências 
-                    ainda não são conclusivas e a canela NÃO substitui o tratamento médico 
-                    convencional. Consulte sempre um médico ou nutricionista antes de usar 
+                    Você já ouviu falar que a canela pode ajudar no controle da glicemia?
+                    Embora alguns estudos preliminares sugiram possível benefício, as evidências
+                    ainda não são conclusivas e a canela NÃO substitui o tratamento médico
+                    convencional. Consulte sempre um médico ou nutricionista antes de usar
                     qualquer recurso complementar.
                   </p>
                 </div>

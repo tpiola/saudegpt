@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { EcosystemFooter } from "./ecosystem-footer";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { secoesNavLms } from "@/lib/navegacao-lms";
@@ -17,7 +18,7 @@ import dynamic from "next/dynamic";
 const FULL_WIDTH_ROUTES = new Set(["/sobre", "/"]);
 
 function tituloPagina(pathname: string): string {
-  if (pathname === "/") return "Matrícula";
+  if (pathname === "/") return "Iniciar";
   const flat = secoesNavLms.flatMap((s) => s.itens);
   const exato = flat.find((i) => i.href === pathname);
   if (exato) return exato.label;
@@ -80,7 +81,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
 
   /* ── FULL WIDTH: landing page sem sidebar ── */
   if (FULL_WIDTH_ROUTES.has(pathname)) {
-    return <>{children}</>;
+    return <>{children}<EcosystemFooter /></>;
   }
 
   function ativo(href: string) {
@@ -96,7 +97,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
   const titulo = tituloPagina(pathname);
 
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
+    <div className="eco-lms flex min-h-screen flex-col md:flex-row">
       {/* ── TERMO DE CONSENTIMENTO ── */}
       <TermoConsentimento />
 
@@ -268,7 +269,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
           <div className="flex items-center gap-1.5 sm:gap-2">
             <ThemeToggle />
             {!perfil && (
-              <Botao href="/" tamanho="sm" className="hidden sm:inline-flex">
+              <Botao href="/trilhas" tamanho="sm" className="hidden sm:inline-flex">
                 Explorar trilhas
               </Botao>
             )}
@@ -279,29 +280,7 @@ export function LmsShell({ children }: { children: React.ReactNode }) {
         <div className="flex-1 bg-background overflow-x-clip">{children}</div>
 
         {/* Footer */}
-        <footer className="border-t border-border bg-surface px-4 py-4 text-center text-[11px] text-subtle sm:px-6 has-bottom-nav pb-[calc(4rem+env(safe-area-inset-bottom,0px))] sm:pb-4">
-          <p className="font-semibold">{site.assinatura}</p>
-          <p className="mt-1">
-            Criado por{" "}
-            <a
-              href="https://reidasvendas.com.br"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-600 dark:text-gold-400 font-semibold underline underline-offset-2"
-            >
-              reidasvendas.com.br
-            </a>
-          </p>
-          <p className="mt-1">
-            Conteúdo educativo — não substitui orientação do farmacêutico ou médico.
-          </p>
-          <a
-            href="mailto:contato@thiagopiola.com.br"
-            className="mt-1 inline-flex min-h-[44px] items-center gap-1.5 px-3 text-[11px] font-semibold text-gold-600 hover:text-emerald-500 dark:text-gold-400 rounded-xl hover:bg-gold-50 dark:hover:bg-emerald-900/20 transition-colors"
-          >
-            <Icon name="message" size={12} /> Contato
-          </a>
-        </footer>
+        <EcosystemFooter />
       </div>
 
       <MobileBottomNav />

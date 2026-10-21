@@ -103,7 +103,7 @@ Glucagon — o hormônio que libera reserva:
 • Funciona como o "puxadinho de emergência" de energia
 
 No diabetes Tipo 1, o pâncreas não produz insulina. No Tipo 2, o corpo produz, mas as células não respondem bem (resistência insulínica). Entender essa diferença é essencial para orientar o cliente no balcão.`,
-    imagem: "/imagens/hero_pills.webp",
+    imagem: "/imagens/hero_anatomia.webp",
   },
   {
     id: "cortisol-estresse",
@@ -293,7 +293,7 @@ export default function HormoniosPage() {
                 <h3 className="text-sm font-bold text-navy-700 dark:text-white">Sabia que?</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                O hormônio do crescimento (GH) é produzido principalmente durante o sono profundo. 
+                O hormônio do crescimento (GH) é produzido principalmente durante o sono profundo.
                 <strong className="text-orange-600 dark:text-orange-400"> Dormir bem</strong> é essencial para o equilíbrio hormonal do corpo inteiro!
               </p>
             </div>
@@ -307,8 +307,8 @@ export default function HormoniosPage() {
                 <h3 className="text-sm font-bold text-navy-700 dark:text-white">Você sabia?</h3>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-muted">
-                A tireoide é uma das glândulas mais sensíveis do corpo. 
-                <strong className="text-gold-600 dark:text-gold-400"> Estresse, dieta e até o clima</strong> podem influenciar seu funcionamento. 
+                A tireoide é uma das glândulas mais sensíveis do corpo.
+                <strong className="text-gold-600 dark:text-gold-400"> Estresse, dieta e até o clima</strong> podem influenciar seu funcionamento.
                 Por isso os exames de rotina são tão importantes!
               </p>
             </div>

@@ -15,17 +15,17 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "center",
         padding: 64,
-        background: "linear-gradient(135deg, #1d4ed8 0%, #2563eb 45%, #1fb6c9 100%)",
+        background: "#123e36",
         color: "white",
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>Plataforma-escola</div>
+      <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>SaúdeGPT · Conhecimento que cuida</div>
       <div style={{ fontSize: 52, fontWeight: 800, lineHeight: 1.15, maxWidth: 900 }}>
-        Atendentes de Farmácia
+        Conhecimento que aproxima. Cuidado que fica.
       </div>
       <div style={{ fontSize: 24, marginTop: 24, opacity: 0.92, maxWidth: 800 }}>
-        Saúde integral, balcão seguro e formação do iniciante ao avançado
+        Trilhas de aprendizado, situações de balcão e cuidado responsável.
       </div>
     </div>,
     { ...size },

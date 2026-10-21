@@ -151,7 +151,7 @@ export default function CuriosidadesPage() {
          ════════════════════════════════════════════ */}
       <section className="relative min-h-[75vh] flex items-center overflow-hidden bg-navy-800">
         <Image
-          src="/imagens/hero_pills.webp"
+          src="/imagens/hero_organizacao.webp"
           alt="Profissional de saúde atendendo paciente no balcão da farmácia"
           fill
           className="hero-bg"

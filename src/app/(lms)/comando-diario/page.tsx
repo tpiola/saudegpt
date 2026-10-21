@@ -58,7 +58,7 @@ export default function ComandoDiarioPage() {
         <ComandoDiarioChecklist />
       </div>
 
-      <p className="mt-12 text-center text-xs text-subtle">{site.assinatura}</p>
+
     </div>
   );
 }

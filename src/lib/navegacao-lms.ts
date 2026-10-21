@@ -28,6 +28,7 @@ export const secoesNavLms: SecaoNavLms[] = [
   {
     titulo: "Prática no balcão",
     itens: [
+      { href: "/praticar", label: "Exercícios de balcão", icone: "target" },
       { href: "/comando-diario", label: "Comando diário", icone: "check" },
       { href: "/leitura-rapida", label: "Leitura Rápida", icone: "sparkles" },
       { href: "/curiosidades", label: "Curiosidades", icone: "compass" },

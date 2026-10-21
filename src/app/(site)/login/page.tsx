@@ -200,7 +200,7 @@ export default function LoginPage() {
               <p className="text-sm text-muted">
                 Ainda não tem conta?{" "}
                 <Link
-                  href="/#matricula"
+                  href="/trilhas"
                   className="font-semibold text-gold-400 transition-colors hover:text-gold-300"
                 >
                   Criar conta

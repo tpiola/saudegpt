@@ -13,18 +13,18 @@
   --color-navy-200: #A0B3CB;
   --color-navy-300: #708DB1;
   --color-navy-400: #406797;
-  --color-navy-500: #0A2540;
-  --color-navy-600: #081E33;
-  --color-navy-700: #061726;
-  --color-navy-800: #04101A;
+  --color-navy-500: #246348;
+  --color-navy-600: #20573f;
+  --color-navy-700: #174a38;
+  --color-navy-800: #123e36;
 
   /* ── Warm Gold (accent secundário) ── */
-  --color-gold-100: #F8F2E8;
-  --color-gold-200: #F0E5D0;
-  --color-gold-300: #E8D0A0;
-  --color-gold-400: #D4B880;
-  --color-gold-500: #C4A97D;
-  --color-gold-600: #B09860;
+  --color-gold-100: #eff5e9;
+  --color-gold-200: #deebd0;
+  --color-gold-300: #c2d8ac;
+  --color-gold-400: #99ba7e;
+  --color-gold-500: #33784f;
+  --color-gold-600: #27633e;
 
   /* ── Text Colors ── */
   --color-text-primary: #1A1A2E;
@@ -45,20 +45,20 @@
 :root {
   /* Fundo limpo */
   --background: #FFFFFF;
-  --surface: #F8F9FB;
-  --surface-2: #F0F2F5;
+  --surface: #FFFFFF;
+  --surface-2: #F2F6EE;
   --surface-card: #FFFFFF;
   --surface-card-hover: #FAFBFC;
   --border: rgba(10, 37, 64, 0.08);
   --border-strong: rgba(10, 37, 64, 0.15);
 
   /* Texto */
-  --foreground: #1A1A2E;
-  --muted: #4A4A5E;
-  --subtle: #8A8A9E;
+  --foreground: #173e33;
+  --muted: #52665f;
+  --subtle: #61756a;
   --muted-foreground: #4A4A5E;
   --card: #FFFFFF;
-  --accent: #0A2540;
+  --accent: #246348;
 
   /* Tipografia */
   --font-display: 'DM Sans', 'Inter', system-ui, sans-serif;
@@ -258,7 +258,7 @@ h4, h5, h6 {
   right: 0;
   height: 2.5px;
   z-index: 9999;
-  background: linear-gradient(90deg, #0A2540, #C4A97D);
+  background: linear-gradient(90deg, #246348, #33784f);
   transform-origin: left;
   scale: 0 1;
   transition: scale 0.1s linear;

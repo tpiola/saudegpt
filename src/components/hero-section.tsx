@@ -17,7 +17,7 @@ function TypewriterSubtitulo({
   const [idx, setIdx] = useState(0);
   const [sub, setSub] = useState(0);
   const [deletando, setDeletando] = useState(false);
-  
+
   useEffect(() => {
     const fraseAtual = frases[idx];
     const terminou = !deletando && sub === fraseAtual.length;
@@ -156,7 +156,7 @@ export function HeroSection() {
               frases={[
                 "Do zero ao balcão, no seu ritmo.",
                 "Trilhas, quizzes, simulados e prática de balcão.",
-                "Conteúdo criado pelo farmacêutico Thiago Piola — CRF/SP 58.519.",
+                "Conteúdo educativo para o cuidado responsável.",
                 "Aprenda, evolua e transforme sua carreira.",
               ]}
             />

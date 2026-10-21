@@ -24,7 +24,7 @@ export default function TermosPage() {
         O currículo, textos e identidade visual são protegidos. É vedada a reprodução comercial sem
         autorização.
       </p>
-      <p className="text-sm text-subtle mt-8">{site.assinatura}</p>
+
     </article>
   );
 }

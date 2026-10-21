@@ -27,7 +27,7 @@ const duvidas = [
   },
   {
     pergunta: "Como entro em contato com o professor?",
-    resposta: "O conteúdo da plataforma foi criado pelo farmacêutico Thiago Piola (CRF/SP 58.519). Para dúvidas específicas sobre o conteúdo, consulte o farmacêutico responsável da sua farmácia ou o CRF da sua região.",
+    resposta: "O SaúdeGPT é um ambiente de aprendizado em saúde. Para dúvidas específicas sobre o conteúdo, consulte o farmacêutico responsável da sua farmácia ou o CRF da sua região.",
   },
   {
     pergunta: "Meus dados estao seguros?",
@@ -80,10 +80,10 @@ export default function SuportePage() {
       {/* Contato direto */}
       <div className="mt-12 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 dark:border-orange-900/30 dark:from-orange-900/10 dark:to-navy-800/50">
         <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-          <ProfessorAvatar size="md" showName={false} />
+
           <div>
-            <h3 className="font-bold text-foreground">Farmacêutico Thiago Piola</h3>
-            <p className="text-sm text-muted">Thiago Piola — CRF/SP 58.519 — Criador do conteúdo</p>
+            <h3 className="font-bold text-foreground">Suporte do SaúdeGPT</h3>
+
             <p className="mt-1 text-xs text-muted/70">
               Para questões técnicas sobre a plataforma ou sobre o conteúdo, entre em contato pelo site:{" "}
               <a

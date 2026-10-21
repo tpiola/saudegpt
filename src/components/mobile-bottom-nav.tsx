@@ -8,7 +8,7 @@ import { Icon, type IconName } from "@/components/icons";
 const NAV_ITEMS = [
   { href: "/dashboard", icon: "home" as IconName, label: "Início" },
   { href: "/trilhas",   icon: "book" as IconName, label: "Trilhas" },
-  { href: "/missoes",   icon: "target" as IconName, label: "Missões" },
+  { href: "/praticar",   icon: "target" as IconName, label: "Praticar" },
   { href: "/jogos",     icon: "zap" as IconName, label: "Jogos" },
   { href: "/ranking",   icon: "award" as IconName, label: "Ranking" },
 ];

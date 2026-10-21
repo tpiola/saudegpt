@@ -199,6 +199,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
       )}
 
       {/* Ações: concluir / favoritar / continuar */}
+      {enviado && nota < 60 && <Botao onClick={() => {setEnviado(false);setRespostas({});}}>Tentar o quiz novamente</Botao>}
       <Card className="flex flex-col gap-4 sm:gap-6 md:gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center gap-3">
           {concluida ? (
@@ -226,6 +227,7 @@ export function AulaInterativa({ trilhaId, aulaId, xp, quiz, proxima }: Props) {
           {!concluida && (
             <Botao
               onClick={concluir}
+              disabled={quiz.length > 0 && (!enviado || nota < 60)}
               icone="check"
               variante={quiz.length && !enviado ? "secondary" : "primary"}
             >

@@ -6,7 +6,7 @@ const base = getSiteUrl();
 export const metadata: Metadata = {
   title: "Psicologia para Farmacêuticos | SaúdeGPT",
   description:
-    "Curso de Saúde Mental aplicada à farmácia: transtornos mentais comuns, psicofármacos, ansiedade, depressão e atendimento humanizado. Certificado digital.",
+    "Curso de Saúde Mental aplicada à farmácia: transtornos mentais comuns, psicofármacos, ansiedade, depressão e atendimento humanizado. Conteúdo educativo e exercícios.",
   keywords: [
     "curso de psicologia para farmacêutico",
     "saúde mental farmácia",

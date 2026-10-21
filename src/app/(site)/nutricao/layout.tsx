@@ -6,7 +6,7 @@ const base = getSiteUrl();
 export const metadata: Metadata = {
   title: "Nutrição para Farmacêuticos | SaúdeGPT",
   description:
-    "Curso de Nutrição aplicada à farmácia: suplementação, fitoterapia, interações medicamento-nutriente e nutrição esportiva. Certificado digital reconhecido.",
+    "Curso de Nutrição aplicada à farmácia: suplementação, fitoterapia, interações medicamento-nutriente e nutrição esportiva. Conteúdo educativo e exercícios.",
   keywords: [
     "curso de nutrição para farmacêutico",
     "suplementação farmácia",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nutrição para Farmacêuticos | SaúdeGPT",
     description:
-      "Domine suplementação, fitoterapia e nutrição clínica aplicada ao balcão da farmácia. Curso online com certificado.",
+      "Domine suplementação, fitoterapia e nutrição clínica aplicada ao balcão da farmácia. Aprendizado gratuito e exercícios.",
     url: `${base}/nutricao`,
     siteName: "SaúdeGPT",
     locale: "pt_BR",

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
+import "./ecosystem.css";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
@@ -39,11 +40,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "SaúdeGPT | Escola Profissional de Saúde | Cursos Gratuitos",
+    default: "SaúdeGPT | Conhecimento que cuida",
     template: `%s · SaúdeGPT`,
   },
   description:
-    "Escola profissional de saúde com cursos 100% gratuitos. Formação em Farmácia, Nutrição, Reabilitação, Saúde Mental e Cuidados com Idosos. Conteúdo criado por especialistas registrados nos conselhos de classe.",
+    "Aprendizado gratuito em saúde para a rotina da drogaria. Trilhas, exercícios de balcão e apoio ao tratamento, com clareza e responsabilidade.",
   generator: "Hermes Agent",
   keywords: [
     "escola profissional saúde",
@@ -52,7 +53,6 @@ export const metadata: Metadata = {
     "curso farmácia online grátis",
     "curso nutrição gratuito",
     "plataforma saúde",
-    "certificado saúde digital",
   ],
   authors: [{ name: site.nome }],
   alternates: {
@@ -70,7 +70,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "SaúdeGPT",
     images: [
-      { url: "/opengraph-image", width: 1200, height: 630, alt: "SaúdeGPT — Cursos de Saúde Gratuitos" },
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "SaúdeGPT — Cursos de Saúde Gratuitos",
+      },
     ],
   },
   twitter: {
@@ -109,16 +114,29 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: scriptAntiFlash }} />
         <link rel="icon" href="/icon-saudegpt.svg" type="image/svg+xml" />
-        <link rel="shortcut icon" href="/icon-saudegpt.svg" type="image/svg+xml" />
+        <link
+          rel="shortcut icon"
+          href="/icon-saudegpt.svg"
+          type="image/svg+xml"
+        />
         <link rel="alternate icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.webp" />
-        <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ""} />
+        <meta
+          name="google-site-verification"
+          content={process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || ""}
+        />
         <meta name="geo.region" content="BR" />
         <meta name="geo.placename" content="Brasil" />
         <meta name="geo.position" content="-14.2350;-51.9253" />
         <meta name="ICBM" content="-14.2350, -51.9253" />
-        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-        <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large" />
+        <meta
+          name="robots"
+          content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        />
+        <meta
+          name="googlebot"
+          content="index, follow, max-snippet:-1, max-image-preview:large"
+        />
         <link rel="alternate" href={baseUrl} hrefLang="pt-BR" />
         <link rel="alternate" href={baseUrl} hrefLang="x-default" />
         <meta name="language" content="pt-BR" />
@@ -127,177 +145,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@graph": [
-                {
-                  "@type": "EducationalOrganization",
-                  name: "SaúdeGPT",
-                  description:
-                    "Plataforma EAD de cursos de saúde gamificados. Formação para atendentes de farmácia, nutrição, fisioterapia e saúde mental. Conteúdo criado por profissionais registrados nos conselhos de classe.",
-                  url: baseUrl,
-                  sameAs: ["https://www.thiagopiola.com.br"],
-                  founder: {
-                    "@type": "Person",
-                    name: "Thiago Piola",
-                    description: "Farmacêutico CRF/SP 58.519",
-                    jobTitle: "Farmacêutico",
-                  },
-                  areaServed: {
-                    "@type": "Country",
-                    name: "Brasil",
-                  },
-                },
-                {
-                  "@type": "Organization",
-                  name: "SaúdeGPT",
-                  description:
-                    "Plataforma EAD #1 em saúde para Gen Z. Cursos gamificados com microaulas de 5-15min. Farmácia, Nutrição, Fisioterapia, Saúde Mental e Cuidados com Idosos.",
-                  url: baseUrl,
-                  sameAs: ["https://www.thiagopiola.com.br"],
-                  founder: {
-                    "@type": "Person",
-                    name: "Thiago Piola",
-                    description: "Farmacêutico CRF/SP 58.519",
-                    jobTitle: "Farmacêutico",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Farmácia — Atendente de Farmácia e Drogaria",
-                  description:
-                    "Formação completa em farmácia com gamificação: medicamentos, interações, legislação ANVISA, prática no balcão e atendimento humanizado. Microaulas de 5-15min.",
-                  courseMode: "Online",
-                  inLanguage: "pt-BR",
-                  provider: { "@type": "Organization", name: "SaúdeGPT" },
-                  educationalCredentialAwarded: "Certificado Digital SaúdeGPT",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "BRL",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Nutrição — Fundamentos e Dietoterapia",
-                  description:
-                    "Nutrição clínica gamificada: avaliação nutricional, dietoterapia, suplementação e prescrição de dietas. Aprenda jogando com microaulas interativas.",
-                  courseMode: "Online",
-                  inLanguage: "pt-BR",
-                  provider: { "@type": "Organization", name: "SaúdeGPT" },
-                  educationalCredentialAwarded: "Certificado Digital SaúdeGPT",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "BRL",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Fisioterapia — Reabilitação e Terapia Manual",
-                  description:
-                    "Fisioterapia prática e gamificada: anatomia, cinesiologia, reabilitação motora e terapia manual. Formato microlearning com quizzes e desafios.",
-                  courseMode: "Online",
-                  inLanguage: "pt-BR",
-                  provider: { "@type": "Organization", name: "SaúdeGPT" },
-                  educationalCredentialAwarded: "Certificado Digital SaúdeGPT",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "BRL",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Saúde Mental — Psicologia Clínica e TCC",
-                  description:
-                    "Saúde mental para Gen Z: psicologia clínica, terapia cognitivo-comportamental, psicopatologia e bem-estar emocional. Abordagem interativa e gamificada.",
-                  courseMode: "Online",
-                  inLanguage: "pt-BR",
-                  provider: { "@type": "Organization", name: "SaúdeGPT" },
-                  educationalCredentialAwarded: "Certificado Digital SaúdeGPT",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "BRL",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Cuidados com Idosos — Cuidador Humanizado",
-                  description:
-                    "Formação gamificada para cuidadores de idosos: mobilização, medicação, alimentação, prevenção de quedas e cuidado humanizado. Microaulas práticas de 5-15min.",
-                  courseMode: "Online",
-                  inLanguage: "pt-BR",
-                  provider: { "@type": "Organization", name: "SaúdeGPT" },
-                  educationalCredentialAwarded: "Certificado Digital SaúdeGPT",
-                  offers: {
-                    "@type": "Offer",
-                    price: "0",
-                    priceCurrency: "BRL",
-                  },
-                },
-                {
-                  "@type": "FAQPage",
-                  mainEntity: [
-                    {
-                      "@type": "Question",
-                      name: "Os cursos do SaúdeGPT são realmente gratuitos?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Sim! Todos os cursos do SaúdeGPT são 100% gratuitos. Você estuda no seu ritmo, joga quizzes interativos e recebe certificado digital ao concluir cada trilha — sem pagar nada.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Como funciona a gamificação nas aulas?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "A plataforma transforma o aprendizado em saúde em uma experiência de jogo: você ganha XP ao completar microaulas de 5-15min, sobe no ranking, desbloqueia badges e compete em desafios com outros alunos. Aprender vira um game!",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Quanto tempo dura cada curso?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Cada curso é dividido em microaulas de 5 a 15 minutos. Você pode estudar no ônibus, no intervalo do trabalho ou em qualquer momento livre. O formato microlearning foi pensado para a rotina acelerada da Gen Z.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Os certificados são válidos?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Sim! Emitimos certificado digital ao final de cada trilha concluída. Os cursos são supervisionados pelo farmacêutico Thiago Piola (CRF/SP 58.519) e o conteúdo é criado por profissionais registrados nos conselhos de classe.",
-                      },
-                    },
-                    {
-                      "@type": "Question",
-                      name: "Preciso de algum conhecimento prévio para começar?",
-                      acceptedAnswer: {
-                        "@type": "Answer",
-                        text: "Não! Nossos cursos foram desenhados para todos os níveis — do iniciante ao avançado. Você começa do zero e avança no seu ritmo. A plataforma se adapta ao seu nível com quizzes inteligentes e revisão espaçada.",
-                      },
-                    },
-                  ],
-                },
-                {
-                  "@type": "BreadcrumbList",
-                  itemListElement: [
-                    {
-                      "@type": "ListItem",
-                      position: 1,
-                      name: "SaúdeGPT",
-                      item: baseUrl,
-                    },
-                    {
-                      "@type": "ListItem",
-                      position: 2,
-                      name: "Cursos de Saúde Gratuitos",
-                      item: `${baseUrl}/trilhas`,
-                    },
-                  ],
-                },
-              ],
+              "@type": "EducationalOrganization",
+              name: "SaúdeGPT",
+              url: baseUrl,
+              description:
+                "Ecossistema de aprendizado em saúde para a rotina da drogaria. Conteúdo educativo e exercícios de atendimento responsável.",
+              areaServed: { "@type": "Country", name: "Brasil" },
             }),
           }}
         />

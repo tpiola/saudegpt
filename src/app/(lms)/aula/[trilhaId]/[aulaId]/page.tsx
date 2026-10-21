@@ -6,12 +6,11 @@ import { getAula, listarAulas, proximaAula } from "@/content/curriculo";
 import { Etiqueta, NivelBadge } from "@/components/ui";
 import { Icon } from "@/components/icons";
 import { AulaInterativa } from "@/components/aula-interativa";
-import { VideoPlayer, VideoPlaceholder } from "@/components/video-player";
-import { ProdutoShowcase } from "@/components/produto-showcase";
+import { ApoioTratamento } from "@/components/apoio-tratamento";
+import { fontesPratica } from "@/content/pratica-balcao";
+
 import { AnimarEntrada } from "@/components/animar-entrada";
-import { midiaPadraoPorAulaId } from "@/content/midia-catalogo";
-import ProfessorBanner from "@/components/ProfessorBanner";
-import VoiceOverPlayer from "@/components/VoiceOverPlayer";
+
 import {
   InfograficoResumo,
   InfograficoComparativo,
@@ -22,18 +21,6 @@ import {
   InfograficoDica4Ps,
   InfograficoMensagemFarmaceutico,
 } from "@/components/aula-infograficos";
-import { imagemAula } from "@/lib/aula-imagens";
-
-/* ─── Mapa de narração por trilha ─── */
-const NARRACAO_MAP: Record<string, string> = {
-  fundamentos: "/audio/narracao-fundamentos-boasvindas.mp3",
-  medicamentos: "/audio/narracao-medicamentos-intro.mp3",
-  vendas: "/audio/narracao-encantamento-atendimento.mp3",
-  perfumaria: "/audio/narracao-perfumaria-cosmeticos.mp3",
-  operacional: "/audio/narracao-operacional-rotina.mp3",
-  pratica: "/audio/narracao-fundamentos-boasvindas.mp3",
-  "servicos-cuidado": "/audio/narracao-encantamento-atendimento.mp3",
-};
 
 export function generateStaticParams() {
   return listarAulas().map((i) => ({
@@ -63,10 +50,7 @@ export default async function AulaPage({
   if (!loc) notFound();
   const { aula, modulo, trilha } = loc;
   const prox = proximaAula(trilhaId, aulaId);
-  const midiaExtra = midiaPadraoPorAulaId(aula.id);
-  const heroSrc = aula.imagemHeroUrl ?? midiaExtra.imagemHeroUrl ?? imagemAula(trilha.id);
-  const produtos = aula.produtos ?? midiaExtra.produtos;
-  const marcas = aula.marcas ?? midiaExtra.marcas;
+  const heroSrc = `/ilustracoes/${trilha.id}-${aula.id}.svg`;
 
   return (
     <div className="mx-auto max-w-3xl px-4 pb-16 pt-6 sm:px-6 sm:pb-20 sm:pt-10 lg:px-8 lg:pb-24 lg:pt-14">
@@ -100,11 +84,6 @@ export default async function AulaPage({
         <Etiqueta tom="green">
           <Icon name="sparkles" size={12} /> +{aula.xp} XP
         </Etiqueta>
-        {aula.videoUrl && (
-          <Etiqueta tom="neutral">
-            <Icon name="play" size={12} /> Video
-          </Etiqueta>
-        )}
       </div>
 
       {/* ── Título + Resumo ── */}
@@ -115,11 +94,6 @@ export default async function AulaPage({
         {aula.resumo}
       </p>
 
-      {/* ── Banner do Professor ── */}
-      <div className="mt-6">
-        <ProfessorBanner tituloAula={aula.titulo} />
-      </div>
-
       {/* ── Imagem Hero ── */}
       <AnimarEntrada>
         <div className="mt-6 overflow-hidden rounded-2xl border border-border shadow-card">
@@ -128,7 +102,8 @@ export default async function AulaPage({
             alt={`Referência visual: ${aula.titulo}`}
             width={1280}
             height={640}
-            className="h-48 w-full object-cover sm:h-56 lg:h-64"
+            className="h-auto w-full"
+            unoptimized
             priority
           />
         </div>
@@ -139,21 +114,7 @@ export default async function AulaPage({
         <InfograficoDica4Ps semente={aula.id} />
       </div>
 
-      {/* ── Produtos Showcase ── */}
-      {produtos && produtos.length > 0 && (
-        <div className="mt-6">
-          <ProdutoShowcase produtos={produtos} marcas={marcas} />
-        </div>
-      )}
-
-      {/* ── Vídeo ── */}
-      <div className="mt-6">
-        {aula.videoUrl ? (
-          <VideoPlayer url={aula.videoUrl} titulo={aula.titulo} />
-        ) : (
-          <VideoPlaceholder duracaoMin={aula.duracaoMin} />
-        )}
-      </div>
+      <ApoioTratamento />
 
       {/* ── Blocos de Conteúdo ── */}
       <div className="mt-8 space-y-6">
@@ -187,7 +148,9 @@ export default async function AulaPage({
         {/* Grid: Chamar farmacêutico + Erros */}
         <div className="grid gap-6 sm:grid-cols-2">
           {aula.quandoChamarFarmaceutico.length > 0 && (
-            <InfograficoChamarFarmaceutico itens={aula.quandoChamarFarmaceutico} />
+            <InfograficoChamarFarmaceutico
+              itens={aula.quandoChamarFarmaceutico}
+            />
           )}
           {aula.errosComuns.length > 0 && (
             <InfograficoErros itens={aula.errosComuns} />
@@ -212,14 +175,26 @@ export default async function AulaPage({
         />
       </div>
 
-      {/* ── Narração ── */}
-      <div className="mt-6">
-        <VoiceOverPlayer
-          src={NARRACAO_MAP[trilha.id] ?? NARRACAO_MAP.fundamentos}
-          title={`Narração: ${aula.titulo}`}
-        />
-      </div>
-
+      <section className="eco-sources">
+        <h2>Conferir antes de orientar</h2>
+        <p>
+          Material educativo. A prescrição, a bula vigente e o protocolo da
+          unidade devem ser avaliados pelo farmacêutico. As fontes abaixo apoiam
+          a consulta; não substituem a avaliação individual.
+        </p>
+        {fontesPratica
+          .slice(0, trilha.id === "cuidado-no-balcao" ? 3 : 2)
+          .map((f) => (
+            <a
+              key={f.url}
+              href={f.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {f.nome} ↗
+            </a>
+          ))}
+      </section>
       {/* ── Mensagem do farmacêutico ── */}
       <div className="mt-8">
         <InfograficoMensagemFarmaceutico />

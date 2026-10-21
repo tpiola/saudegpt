@@ -53,7 +53,7 @@ const topicos = [
       "🩸 Anemia (falta de ferro no sangue)",
       "🍽️ Ficar muito tempo sem comer",
     ],
-    imagem: "/imagens/hero_pills.webp",
+    imagem: "/imagens/equipamento_pressao.webp",
   },
   {
     id: "sistolica-diastolica",

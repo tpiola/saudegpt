@@ -6,7 +6,7 @@ const base = getSiteUrl();
 export const metadata: Metadata = {
   title: "Fisioterapia para Farmacêuticos | SaúdeGPT",
   description:
-    "Curso de Fisioterapia aplicada à farmácia: equipamentos ortopédicos, reabilitação básica, prevenção de quedas e produtos para bem-estar físico. Certificado digital.",
+    "Curso de Fisioterapia aplicada à farmácia: equipamentos ortopédicos, reabilitação básica, prevenção de quedas e produtos para bem-estar físico. Conteúdo educativo e exercícios.",
   keywords: [
     "curso de fisioterapia para farmacêutico",
     "equipamentos ortopédicos farmácia",

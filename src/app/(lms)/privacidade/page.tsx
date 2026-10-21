@@ -39,7 +39,7 @@ export default function PrivacidadePage() {
         </a>
         .
       </p>
-      <p className="text-sm text-subtle mt-8">{site.assinatura}</p>
+
     </article>
   );
 }

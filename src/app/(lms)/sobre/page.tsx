@@ -1,102 +1,75 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { trilhas, totalAulas } from "@/content/curriculo";
-import { Mandala } from "@/components/mandala";
-import { Botao, Card, TituloSecao } from "@/components/ui";
-import { site } from "@/lib/site";
-
+import { EcosystemHeader } from "@/components/ecosystem-header";
+import { ApoioTratamento } from "@/components/apoio-tratamento";
+import { fontesPratica } from "@/content/pratica-balcao";
 export const metadata: Metadata = {
-  title: "Sobre o curso",
-  description: site.descricao,
+  title: "Sobre o SaúdeGPT",
+  description:
+    "Um ecossistema de aprendizado em saúde para a rotina da drogaria.",
 };
-
-export default function SobrePage() {
+export default function Page() {
   return (
-    <div className="mx-auto max-w-4xl px-5 py-10 sm:px-6">
-      {/* Hero */}
-      <div className="relative mb-10 overflow-hidden rounded-2xl">
-        <div className="absolute inset-0">
-          <Image
-            src="/imagens/hero_surgeons.webp"
-            alt="Equipe de farmácia unida atendendo pacientes"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-midnight-900/85 via-midnight-900/60 to-transparent" />
-        </div>
-        <div className="relative px-6 py-14 sm:px-10 sm:py-20">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/80 backdrop-blur-sm">
-            Institucional
-          </span>
-          <h1 className="mt-4 max-w-xl text-2xl font-black text-white sm:text-3xl">
-            Formação para Atendentes de Farmácia
-          </h1>
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/70">
-            {site.descricao}
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-8 grid gap-4 sm:grid-cols-3">
-        <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-gold-600">{trilhas.length}</div>
-          <div className="text-xs text-subtle">trilhas</div>
-        </Card>
-        <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-gold-600">{totalAulas()}+</div>
-          <div className="text-xs text-subtle">aulas</div>
-        </Card>
-        <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-gold-600">3</div>
-          <div className="text-xs text-subtle">níveis por módulo</div>
-        </Card>
-      </div>
-
-      <div className="mt-12">
-        <h2 className="text-lg font-bold">Mandala pedagógica</h2>
-        <p className="mt-2 text-sm text-muted">
-          Saúde integral no centro: pessoa, valores, responsabilidades e operação de farmácia.
+    <>
+      <EcosystemHeader />
+      <div className="eco-container eco-section">
+        <p className="eco-kicker">Sobre o SaúdeGPT</p>
+        <h1 className="eco-title">
+          Aprender para
+          <br />
+          atender melhor.
+        </h1>
+        <p className="eco-lead">
+          Um ambiente gratuito para quem trabalha em drogaria e quer aprender a
+          acolher, entender necessidades e apoiar o uso seguro de medicamentos.
         </p>
-        <div className="mt-6 max-w-md mx-auto">
-          <Mandala />
+        <div className="eco-modules">
+          <article className="eco-module">
+            <h2>Como aprender por aqui</h2>
+            <p className="eco-lead">
+              Escolha uma trilha, leia as aulas e responda aos exercícios.
+              Depois, pratique situações de balcão e confira as explicações.
+              Revise o que ainda não ficou claro e converse com o farmacêutico
+              da sua unidade.
+            </p>
+            <Link className="eco-text-link" href="/trilhas">
+              Iniciar →
+            </Link>
+          </article>
+          <article className="eco-module">
+            <h2>O cuidado tem limites claros</h2>
+            <p className="eco-lead">
+              O conteúdo é educativo. Não substitui graduação, habilitação
+              profissional, avaliação clínica nem o protocolo da unidade. O
+              atendente acolhe e identifica dúvidas; o farmacêutico avalia a
+              prescrição e realiza as orientações individualizadas dentro de
+              suas atribuições.
+            </p>
+          </article>
+          <article className="eco-module">
+            <h2>Verdade, clareza e respeito</h2>
+            <p className="eco-lead">
+              Verifique informações em fontes oficiais, não prometa resultados e
+              respeite as escolhas e a privacidade de cada pessoa. O SaúdeGPT é
+              independente e não é uma plataforma oficial da RD Saúde.
+            </p>
+          </article>
+        </div>
+        <ApoioTratamento />
+        <div className="eco-sources">
+          <h2>Fontes para continuar aprendendo</h2>
+          {fontesPratica.map((f) => (
+            <a
+              key={f.url}
+              href={f.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {f.nome} ↗
+            </a>
+          ))}
         </div>
       </div>
-
-      {/* 🧑‍⚕️ Mensagens do farmacêutico */}
-      <div className="mt-12 grid gap-4 sm:grid-cols-3">
-        <div className="flex items-start gap-3 rounded-xl border border-gold-100 bg-gold-50/60 p-4 dark:border-gold-900/30 dark:bg-gold-900/10">
-          <span className="mt-0.5 text-lg">🧑‍⚕️</span>
-          <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-navy-700 dark:text-white">Sempre consulte</strong> o(a) farmacêutico(a) para orientação personalizada sobre medicamentos.
-          </p>
-        </div>
-        <div className="flex items-start gap-3 rounded-xl border border-orange-100 bg-orange-50/60 p-4 dark:border-orange-900/30 dark:bg-orange-900/10">
-          <span className="mt-0.5 text-lg">📝</span>
-          <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-navy-700 dark:text-white">Solicite o segundo visto</strong> do farmacêutico(a) para prescrições.
-          </p>
-        </div>
-        <div className="flex items-start gap-3 rounded-xl border border-gold-100 bg-gold-50/60 p-4 dark:border-gold-900/30 dark:bg-gold-900/10">
-          <span className="mt-0.5 text-lg">🏷️</span>
-          <p className="text-xs leading-relaxed text-muted">
-            <strong className="text-navy-700 dark:text-white">Anote corretamente</strong> as informações na etiqueta de posologia.
-          </p>
-        </div>
-      </div>
-
-      <p className="mt-10 text-center text-sm text-subtle">{site.assinatura}</p>
-      <div className="mt-6 flex justify-center">
-        <Botao href="/" iconeFim="arrow">
-          Explorar trilhas
-        </Botao>
-      </div>
-      <p className="mt-4 text-center text-sm">
-        <Link href="/dashboard" className="text-gold-600 hover:underline">
-          Voltar ao ambiente de estudos
-        </Link>
-      </p>
-    </div>
+    </>
   );
 }

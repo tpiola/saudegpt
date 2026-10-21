@@ -73,11 +73,11 @@ export default function LgpdPage() {
 
       <h2 className="text-xl font-semibold mt-8">5. Responsável</h2>
       <p className="text-muted">
-        {site.assinatura}. O encarregado pelo tratamento de dados (DPO) pode
+        O encarregado pelo tratamento de dados (DPO) pode
         ser contatado pelo mesmo canal acima.
       </p>
 
-      <p className="text-sm text-subtle mt-8">{site.assinatura}</p>
+
     </article>
   );
 }
