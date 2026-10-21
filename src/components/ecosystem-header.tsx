@@ -7,18 +7,18 @@ export function EcosystemHeader() {
   return (
     <header className="eco-header">
       <div className="eco-container eco-header-row">
-        <Link className="eco-logo" href="/" aria-label="SaúdeGPT — início">
+        <Link className="eco-logo" href="/" aria-label="Escola de Saúde - Franca J — início">
           <span className="eco-symbol" aria-hidden="true">
-            s<span>+</span>
+            e<span>+</span>
           </span>
           <span>
-            saúde<span className="eco-logo-gpt">gpt</span>
-            <small>conhecimento que cuida</small>
+            Escola de Saúde
+            <small>Franca J · conhecimento que cuida</small>
           </span>
         </Link>
         <nav className="eco-desktop-nav" aria-label="Navegação principal">
           <Link href="/trilhas">Aprender</Link>
-          <Link href="/praticar">Praticar</Link>
+          <Link href="/campus">Meu campus</Link>
           <Link href="/biblioteca">Consultar</Link>
           <Link href="/dashboard">Meu aprendizado</Link>
         </nav>
@@ -48,7 +48,7 @@ export function EcosystemHeader() {
         >
           {[
             ["Aprender", "/trilhas"],
-            ["Praticar", "/praticar"],
+            ["Meu campus", "/campus"],
             ["Consultar", "/biblioteca"],
             ["Meu aprendizado", "/dashboard"],
           ].map(([label, href]) => (

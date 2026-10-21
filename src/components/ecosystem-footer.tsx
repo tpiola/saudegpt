@@ -7,7 +7,7 @@ export function EcosystemFooter() {
         <div className="eco-footer-top">
           <div>
             <Link href="/" className="eco-footer-brand">
-              saúdegpt
+              Escola de Saúde - Franca J
             </Link>
             <p>
               Aprender para atender melhor.
@@ -26,8 +26,7 @@ export function EcosystemFooter() {
             <p className="eco-footer-note">
               Conteúdo educativo. As orientações individualizadas e a avaliação
               da prescrição cabem ao farmacêutico e aos demais profissionais
-              habilitados. Plataforma independente, sem vínculo institucional
-              com a RD Saúde.
+              habilitados. Formação continuada para a rotina da drogaria.
             </p>
           </div>
         </div>

@@ -579,7 +579,7 @@ export const trilhaServicosCuidado: Trilha = {
                 "Fique em pé durante a medida",
               ],
               1,
-              "Repouso de 5 minutos, bexiga vazia e 30 minutos sem café, cigarro ou exercício garantem uma medida confiável.",
+              "O preparo, a postura, o manguito e a técnica influenciam o resultado. Siga o protocolo vigente da equipe e informe fatores que possam alterar a medição.",
             ),
           ],
           xp: 70,
@@ -914,14 +914,14 @@ export const trilhaServicosCuidado: Trilha = {
           nivel: "avancado",
           imagemHeroUrl: imagensCategoria.injetaveis,
           resumo:
-            "Vacina é tecnologia sensível: do armazenamento entre 2 e 8 °C até os 20 minutos de observação após a aplicação, cada detalhe protege o cliente.",
+            "Conservação, avaliação antes da aplicação e observação após a vacina exigem protocolos específicos e uma equipe habilitada.",
           resumoExecutivo: [
-            "Cadeia do frio é inegociável: vacinas vivem entre +2 °C e +8 °C, nunca congelam, e a temperatura da geladeira é registrada todos os dias — rotina que também aparece no checklist diário da farmácia.",
+            "A conservação segue a bula de cada vacina e o protocolo vigente de rede de frio. Monitore e registre a temperatura; diante de desvio, separe os produtos e acione o responsável técnico.",
             "Estrutura exigida (RDC 197/2017): sala exclusiva, pia, materiais adequados e plano para emergências, incluindo medicação e procedimento para reação alérgica grave.",
-            "Aplicação é ato do farmacêutico habilitado, com registro no sistema (como o Conecte SUS, no caso de vacinas) e no cartão do cliente.",
-            "Depois da aplicação, o cliente permanece 20 minutos em observação na farmácia — a maioria das reações graves, embora raras, acontece nesse período.",
+            "Na farmácia, a vacinação deve ser realizada por profissional legalmente habilitado e capacitado, com registro da dose nos sistemas exigidos e no comprovante do cliente.",
+            "O tempo de observação é definido pela equipe conforme a vacina, o histórico da pessoa e o protocolo vigente. Oriente como reconhecer sinais de alerta também após sair da unidade.",
             "Orientações pós-vacina para o cliente: reações leves como dor local e febre baixa podem ocorrer; compressa fria ajuda no local; sintomas intensos pedem contato com o serviço de saúde.",
-            "O atendente brilha aqui no acolhimento: organiza o fluxo, tranquiliza quem tem medo de agulha e garante que ninguém vá embora antes dos 20 minutos.",
+            "O atendente acolhe, organiza o fluxo e reforça o tempo de observação informado pela equipe habilitada, sem substituir a avaliação profissional.",
           ],
           simulacao: {
             cliente:
@@ -936,7 +936,7 @@ export const trilhaServicosCuidado: Trilha = {
             itens: [
               {
                 nome: "Temperatura",
-                quando: "Sempre entre +2 °C e +8 °C. Congelou? A vacina perde a validade — descarte e registro.",
+                quando: "Conforme a bula e o protocolo da vacina. Se houver desvio, mantenha os produtos separados, identificados e nas condições orientadas; não use nem descarte por conta própria.",
               },
               {
                 nome: "Monitoramento",
@@ -955,38 +955,38 @@ export const trilhaServicosCuidado: Trilha = {
           checklist: [
             "Conferir e registrar a temperatura da geladeira de vacinas diariamente.",
             "Manter a sala de aplicação organizada e abastecida.",
-            "Acolher o cliente e explicar o fluxo: aplicação + 20 minutos de observação.",
+            "Acolher e explicar o fluxo, incluindo o período de observação definido pela equipe.",
             "Garantir o registro da dose no sistema e no cartão do cliente.",
             "Orientar reações esperadas e sinais que pedem atenção.",
           ],
           quandoChamarFarmaceutico: [
-            "Toda aplicação — é ato privativo dele.",
+            "Antes de qualquer aplicação na farmácia, para conferir a avaliação e o fluxo com a equipe habilitada.",
             "Qualquer sinal de reação durante a observação: acionar imediatamente.",
             "Dúvidas sobre calendário vacinal, doses e intervalos.",
           ],
           errosComuns: [
-            "Deixar o cliente ir embora logo após a aplicação, sem os 20 minutos de observação.",
+            "Omitir o período de observação indicado pela equipe ou os sinais de alerta após a saída.",
             "Esquecer o registro diário de temperatura da geladeira.",
             "Guardar alimentos ou outros itens na geladeira de vacinas.",
             "Minimizar o medo de agulha em vez de acolher.",
           ],
           quiz: [
             q(
-              "Qual é a faixa de temperatura correta para conservar vacinas?",
-              ["0 °C a +2 °C", "+2 °C a +8 °C", "+8 °C a +15 °C", "-18 °C (congeladas)"],
+              "Como confirmar a conservação adequada de uma vacina?",
+              ["Usar a mesma faixa para qualquer produto", "Conferir a bula e o protocolo vigente da vacina", "Avaliar somente a aparência da embalagem", "Congelar para conservar por mais tempo"],
               1,
-              "Entre +2 °C e +8 °C, sem nunca congelar. Congelamento inutiliza a vacina, mesmo que ela 'pareça' normal depois.",
+              "As condições devem ser confirmadas para o produto específico. Desvios de temperatura exigem avaliação técnica e registro, sem liberação ou descarte pelo atendente.",
             ),
             q(
-              "Por que o cliente deve aguardar 20 minutos na farmácia após a vacina?",
+              "Por que respeitar o período de observação definido pela equipe após a vacina?",
               [
                 "Para preencher a pesquisa de satisfação",
-                "Porque as reações graves, embora raras, costumam ocorrer nesse período inicial",
+                "Para permitir que a equipe reconheça e atenda reações que surjam nesse período",
                 "Para a vacina 'assentar' no braço",
                 "Por exigência do plano de saúde",
               ],
               1,
-              "A observação de 20 minutos permite resposta imediata da equipe em caso de reação alérgica grave — que é rara, mas acontece tipicamente logo após a aplicação.",
+              "A observação favorece resposta rápida da equipe. O tempo segue a vacina, o histórico e o protocolo vigente; também é preciso orientar sinais de alerta após a saída.",
             ),
             q(
               "A energia da farmácia caiu durante a madrugada. Qual é a preocupação imediata com a geladeira de vacinas?",
@@ -997,7 +997,7 @@ export const trilhaServicosCuidado: Trilha = {
                 "Apenas limpar a geladeira",
               ],
               1,
-              "Queda de energia ameaça a faixa de +2 °C a +8 °C. Verifica-se o histórico de temperatura e o farmacêutico decide o destino das doses conforme o protocolo.",
+              "Acione o plano de contingência, registre o ocorrido e peça avaliação do responsável técnico. A liberação ou o descarte segue a análise do desvio e as orientações aplicáveis.",
             ),
             q(
               "Cliente vacinado ontem relata dor leve no braço. Qual é a orientação adequada?",

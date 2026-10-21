@@ -97,10 +97,10 @@ export default function ProfessorBanner({
           )}
         >
           <h2 className="text-xl font-extrabold text-white sm:text-2xl md:text-3xl">
-            Prof. Thiago Piola
+            Guia de aprendizagem
           </h2>
           <p className="mt-1 text-sm font-medium text-white/80">
-            Farmacêutico Thiago Piola — CRF-SP 58.519
+            Conteúdo educativo em saúde
           </p>
           {tituloAula && (
             <p className="mt-3 text-lg font-bold text-white/95 sm:text-xl">
@@ -115,13 +115,13 @@ export default function ProfessorBanner({
           <div className="mt-4 flex flex-wrap items-center gap-2 justify-center sm:justify-start">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-              Online agora
+              Aprendizado aplicado
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
-              <Icon name="award" size={11} /> 10+ anos
+              <Icon name="award" size={11} /> Estudo contínuo
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-sm">
-              <Icon name="book" size={11} /> Farmácia Clínica
+              <Icon name="book" size={11} /> Rotina da drogaria
             </span>
           </div>
         </div>

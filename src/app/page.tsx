@@ -7,6 +7,8 @@ import {
   HeartHandshake,
   ClipboardCheck,
 } from "lucide-react";
+import { CampusSummary } from "@/components/campus-summary";
+import { niveisCampus } from "@/content/campus";
 import { EcosystemHeader } from "@/components/ecosystem-header";
 import { EcosystemFooter } from "@/components/ecosystem-footer";
 import { ApoioTratamento } from "@/components/apoio-tratamento";
@@ -20,15 +22,15 @@ const entradas = [
       "Trilhas organizadas em módulos, com explicações simples para você construir uma base segura.",
     href: "/trilhas",
     link: "Explorar trilhas",
-    foto: "/imagens/receituarios.webp",
-    alt: "Mesa de estudo com materiais de anotação",
+    foto: "/campus/consulta-digital.webp",
+    alt: "Materiais de cuidado e computador em uma mesa de trabalho",
   },
   {
     numero: "02",
     titulo: "Pratique antes do balcão",
     texto:
       "Situações que você reconhece: uma receita, uma dúvida, uma pessoa que precisa ser ouvida.",
-    href: "/praticar",
+    href: "/campus",
     link: "Resolver situações",
     foto: "/imagens/hero_comunicacao.webp",
     alt: "Conversa entre profissionais em uma farmácia",
@@ -117,10 +119,13 @@ export default function Home() {
               <span>aulas para explorar</span>
             </div>
             <div>
-              <strong>12</strong>
-              <span>novas situações de balcão</span>
+              <strong>24</strong>
+              <span>simulações de atendimento</span>
             </div>
           </div>
+        </section>
+        <section className="eco-container">
+          <CampusSummary />
         </section>
         <section id="ecossistema" className="eco-container eco-section">
           <div className="eco-section-head">
@@ -157,6 +162,32 @@ export default function Home() {
                     <ArrowUpRight size={20} />
                   </Link>
                 </div>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section className="eco-container eco-section">
+          <div className="eco-section-head">
+            <div>
+              <p className="eco-kicker">Uma base sólida. Novos desafios.</p>
+              <h2 className="eco-title">
+                Cresça em cada
+                <br />
+                conversa.
+              </h2>
+            </div>
+            <Link href="/campus" className="eco-text-link">
+              Escolher meu nível <ArrowUpRight size={20} />
+            </Link>
+          </div>
+          <div className="campus-home-levels">
+            {niveisCampus.map((n, i) => (
+              <article key={n.id}>
+                <span>
+                  0{i + 1} · {n.nome}
+                </span>
+                <h3>{n.titulo}</h3>
+                <p>{n.descricao}</p>
               </article>
             ))}
           </div>
@@ -220,14 +251,14 @@ export default function Home() {
                 texto:
                   "Conceitos essenciais e o momento certo de chamar o farmacêutico.",
                 href: "/trilhas/medicamentos",
-                foto: "/imagens/antibioticos.webp",
+                foto: "/campus/medicamentos-estudo.webp",
               },
               {
                 icon: ClipboardCheck,
                 titulo: "Praticar e entender",
                 texto:
-                  "12 situações para testar suas escolhas e aprender com o retorno.",
-                href: "/praticar",
+                  "24 conversas, três níveis e retorno explicado para cada decisão.",
+                href: "/campus",
                 foto: "/imagens/atendimento-avancado.webp",
               },
             ].map((t) => (
@@ -306,7 +337,7 @@ export default function Home() {
               Entregue mais cuidado.
             </h2>
           </div>
-          <Link className="eco-button" href="/praticar">
+          <Link className="eco-button" href="/campus">
             Iniciar uma prática <ArrowUpRight size={20} />
           </Link>
         </section>

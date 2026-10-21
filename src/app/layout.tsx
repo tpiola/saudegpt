@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import "./globals.css";
 import "./ecosystem.css";
+import "./campus.css";
 import { ProgressProvider } from "@/lib/progress";
 import { ProgressSync } from "@/components/progress-sync";
 import { PwaRegister } from "@/components/pwa-register";
@@ -40,12 +41,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "SaúdeGPT | Conhecimento que cuida",
-    template: `%s · SaúdeGPT`,
+    default: "Escola de Saúde - Franca J | Conhecimento que cuida",
+    template: `%s · Escola de Saúde - Franca J`,
   },
   description:
     "Aprendizado gratuito em saúde para a rotina da drogaria. Trilhas, exercícios de balcão e apoio ao tratamento, com clareza e responsabilidade.",
-  generator: "Hermes Agent",
+
   keywords: [
     "escola profissional saúde",
     "cursos saúde gratuitos",
@@ -63,24 +64,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
+    title: "Escola de Saúde - Franca J | Cursos de Saúde Gratuitos | Estude com Calma",
     description:
       "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade.",
     locale: "pt_BR",
     type: "website",
-    siteName: "SaúdeGPT",
+    siteName: "Escola de Saúde - Franca J",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "SaúdeGPT — Cursos de Saúde Gratuitos",
+        alt: "Escola de Saúde - Franca J — Cursos de Saúde Gratuitos",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaúdeGPT | Cursos de Saúde Gratuitos | Estude com Calma",
+    title: "Escola de Saúde - Franca J | Cursos de Saúde Gratuitos | Estude com Calma",
     description:
       "Plataforma EAD de cursos de saúde gratuitos. Aprenda farmácia, nutrição, reabilitação, saúde mental e cuidados com idosos no seu ritmo, com calma e qualidade.",
     images: ["/opengraph-image"],
@@ -146,7 +147,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
-              name: "SaúdeGPT",
+              name: "Escola de Saúde - Franca J",
               url: baseUrl,
               description:
                 "Ecossistema de aprendizado em saúde para a rotina da drogaria. Conteúdo educativo e exercícios de atendimento responsável.",

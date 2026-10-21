@@ -1188,7 +1188,7 @@ export const trilhaPratica: Trilha = {
               "CAR = Contexto, Ação, Resultado — metodologia para estruturar exemplos e cases no portfólio profissional.",
             ),
           q("Pilar mais importante do atendimento:",["Preco","Acolhimento e escuta ativa","Velocidade","Quantidade"],1,"Acolhimento e escuta sao a base do atendimento consultivo."),
-          q("Se cliente nao entendeu a orientacao:",["Repetir igual","Simplificar e verificar","Ignorar","Falar mais alto"],1,"Simplificar garante uso correto do medicamento.")],
+          q("Se cliente nao entendeu a orientacao:",["Repetir igual","Simplificar e verificar","Ignorar","Falar mais alto"],1,"Simplificar e confirmar a compreensão ajuda a reduzir dúvidas. Questões clínicas devem ser avaliadas pelo farmacêutico.")],
           xp: 70,
         },
 

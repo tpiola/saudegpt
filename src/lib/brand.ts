@@ -1,15 +1,15 @@
 // ═══════════════════════════════════════════════════════════════
-// BRAND — Design System do SaúdeGPT
+// BRAND — Design System da Escola de Saúde - Franca J
 // Paleta Navy Luxury: navy #0A1628 + gold #D4A843
 // ═══════════════════════════════════════════════════════════════
 
 export const brand = {
   /** Nome institucional */
-  nome: "SaúdeGPT",
-  nomeCurto: "SaúdeGPT",
+  nome: "Escola de Saúde - Franca J",
+  nomeCurto: "Escola de Saúde - Franca J",
 
   /** Assinatura do criador */
-  assinatura: "Criado pelo Farmacêutico Thiago B. G. Piola · CRF-SP 58.519",
+  assinatura: "Criado e revisado pelo farmacêutico: Thiago Biasoli Garcia Piola — Farmacêutico CRF/SP: 58.519",
 
 
   // ── Paleta de Cores ──────────────────────────────────────

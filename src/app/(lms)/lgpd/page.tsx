@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Política de Privacidade (LGPD)",
   description:
-    "Política de Privacidade da plataforma SaúdeGPT em conformidade com a Lei Geral de Proteção de Dados (LGPD).",
+    "Política de Privacidade da plataforma Escola de Saúde - Franca J em conformidade com a Lei Geral de Proteção de Dados (LGPD).",
 };
 
 export default function LgpdPage() {

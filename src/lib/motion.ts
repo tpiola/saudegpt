@@ -1,6 +1,6 @@
 /**
  * Premium Framer Motion Animation Variants
- * SaúdeGPT — Navy + Gold Luxury Minimalista
+ * Escola de Saúde - Franca J — Navy + Gold Luxury Minimalista
  * Optimized for 60fps, accessibility-respectful, micro-interactions
  */
 

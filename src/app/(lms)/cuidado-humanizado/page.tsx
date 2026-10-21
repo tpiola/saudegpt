@@ -64,7 +64,7 @@ export default function CuidadoHumanizadoPage() {
       <div className="mt-8 rounded-2xl bg-gradient-to-br from-pink-50 to-white p-6 border border-pink-200/50 dark:from-pink-900/10 dark:to-navy-800">
         <h2 className="text-base font-bold">📖 Na prática</h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-          O cuidado humanizado está presente em todas as trilhas da SaúdeGPT.
+          O cuidado humanizado está presente em todas as trilhas da Escola de Saúde - Franca J.
           Da perfumaria aos medicamentos, passando pela excelência operacional
           e pelo encantamento do cliente — cada módulo reforça a importância de
           tratar cada pessoa com dignidade e respeito.

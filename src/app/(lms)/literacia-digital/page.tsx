@@ -23,7 +23,7 @@ const sections = [
     bg: "bg-blue-50 dark:bg-blue-950/30",
     border: "border-blue-200 dark:border-blue-800",
     title: "Apps de Saúde Essenciais",
-    text: "O atendente de farmácia moderno precisa conhecer os aplicativos que os clientes usam no dia a dia. O Meu SUS Digital (antigo ConecteSUS) permite acesso a histórico vacinal, exames e receitas. O e-SUS APS é usado nas UBS para registro de atendimentos. Apps de redes de farmácia (Drogasil, Pague Menos, etc.) oferecem programas de fidelidade e descontos. Conhecer essas ferramentas ajuda a orientar o cliente com segurança.",
+    text: "O atendente de farmácia moderno precisa conhecer os aplicativos que os clientes usam no dia a dia. O Meu SUS Digital (antigo ConecteSUS) permite acesso a histórico vacinal, exames e receitas. O e-SUS APS é usado nas UBS para registro de atendimentos. Aplicativos de farmácias oferecem programas de fidelidade e descontos. Conhecer essas ferramentas ajuda a orientar o cliente com segurança.",
     topicos: [
       "Meu SUS Digital — histórico clínico, vacinas e receitas",
       "Daf — Portal de Medicamentos do SUS (acesso a protocolos)",

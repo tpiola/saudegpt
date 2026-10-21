@@ -1,8 +1,8 @@
-// Service worker — PWA SaúdeGPT.
+// Service worker — PWA Escola de Saúde - Franca J.
 // HTML/navegação: rede primeiro (conteúdo sempre atualizado; cache só como fallback offline).
 // Assets imutáveis (/_next/static): cache primeiro.
 // IMPORTANTE: ao mudar a estratégia, troque a versão do cache para invalidar os antigos.
-const CACHE = "saudegpt-ecosystem-v3";
+const CACHE = "franca-j-campus-v4";
 const OFFLINE_FALLBACK = "/";
 
 self.addEventListener("install", (event) => {

@@ -30,13 +30,10 @@ const SIZE_MAP: Record<AvatarSize, { avatar: number; desktop: number }> = {
 };
 
 /* ─── Dados padrão do professor ─── */
-const PROFESSOR_NOME = "Prof. Thiago Piola";
-const PROFESSOR_LEGENDA = "Farmacêutico Thiago Piola — CRF-SP 58.519";
+const PROFESSOR_NOME = "Guia de aprendizagem";
+const PROFESSOR_LEGENDA = "Conteúdo educativo em saúde";
 const PROFESSOR_SRC = "/images/professor-avatar.svg";
-const PROFESSOR_BIO =
-  "Farmacêutico clínico e educador. Especialista em atenção farmacêutica, " +
-  "com mais de 10 anos de experiência em farmácia comunitária e hospitalar. " +
-  "Criador do método SaúdeGPT de formação de atendentes de farmácia.";
+const PROFESSOR_BIO = "Um apoio para estudar os conteúdos da Escola de Saúde - Franca J. Questões clínicas e orientações individuais devem ser encaminhadas ao farmacêutico.";
 
 /* ═══════════════════════════════════════════════════
    ProfessorAvatar

@@ -20,7 +20,7 @@ export default function OpenGraphImage() {
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>SaúdeGPT · Conhecimento que cuida</div>
+      <div style={{ fontSize: 28, opacity: 0.9, marginBottom: 16 }}>Escola de Saúde - Franca J · Conhecimento que cuida</div>
       <div style={{ fontSize: 52, fontWeight: 800, lineHeight: 1.15, maxWidth: 900 }}>
         Conhecimento que aproxima. Cuidado que fica.
       </div>

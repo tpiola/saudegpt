@@ -1659,7 +1659,7 @@ export const trilhaMedicamentos: Trilha = {
                 "Não precisa conferir",
               ],
               1,
-              "Carimbo e assinatura garantem que a prescrição foi emitida por profissional habilitado e responsável.",
+              "A identificação do prescritor e a assinatura devem ser conferidas pelo farmacêutico, junto aos demais requisitos aplicáveis. A aparência do documento, sozinha, não comprova sua autenticidade.",
             ),
           ],
           xp: 75,

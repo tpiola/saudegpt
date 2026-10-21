@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { CampusSummary } from "@/components/campus-summary";
 import { JsonLdCourse } from "@/components/json-ld-course";
 import { DashboardAlunoLazy } from "@/components/dashboard-aluno-lazy";
 import { ErrorBoundary } from "@/components/error-boundary";
@@ -14,6 +15,7 @@ export default function DashboardPage() {
   return (
     <>
       <JsonLdCourse />
+      <div className="eco-container"><CampusSummary /></div>
       <ErrorBoundary mensagem="Não foi possível carregar seu painel.">
         <DashboardAlunoLazy />
       </ErrorBoundary>

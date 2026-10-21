@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Bulas — Consulta de Bulas de Medicamentos",
   description:
-    "Consulte bulas de medicamentos de forma rápida e prática. Tire dúvidas sobre indicações, contraindicações, posologia e reações adversas diretamente na plataforma SaúdeGPT.",
+    "Consulte bulas de medicamentos de forma rápida e prática. Tire dúvidas sobre indicações, contraindicações, posologia e reações adversas diretamente na plataforma Escola de Saúde - Franca J.",
 };
 
 export default function BulasPage() {

@@ -4,7 +4,7 @@ import { EcosystemHeader } from "@/components/ecosystem-header";
 import { ApoioTratamento } from "@/components/apoio-tratamento";
 import { fontesPratica } from "@/content/pratica-balcao";
 export const metadata: Metadata = {
-  title: "Sobre o SaúdeGPT",
+  title: "Sobre a Escola de Saúde - Franca J",
   description:
     "Um ecossistema de aprendizado em saúde para a rotina da drogaria.",
 };
@@ -13,7 +13,7 @@ export default function Page() {
     <>
       <EcosystemHeader />
       <div className="eco-container eco-section">
-        <p className="eco-kicker">Sobre o SaúdeGPT</p>
+        <p className="eco-kicker">Sobre a Escola de Saúde - Franca J</p>
         <h1 className="eco-title">
           Aprender para
           <br />
@@ -50,8 +50,8 @@ export default function Page() {
             <h2>Verdade, clareza e respeito</h2>
             <p className="eco-lead">
               Verifique informações em fontes oficiais, não prometa resultados e
-              respeite as escolhas e a privacidade de cada pessoa. O SaúdeGPT é
-              independente e não é uma plataforma oficial da RD Saúde.
+              respeite as escolhas e a privacidade de cada pessoa. A Escola de Saúde - Franca J é
+              voltado à formação continuada dos colaboradores da Franca J.
             </p>
           </article>
         </div>

@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
-import ProfessorAvatar from "@/components/ProfessorAvatar";
 
 export const metadata: Metadata = {
-  title: "Suporte | SaúdeGPT",
+  title: "Suporte | Escola de Saúde - Franca J",
   description: "Tire suas dúvidas sobre a plataforma, trilhas, progresso e conteúdo educativo.",
 };
 
 const duvidas = [
   {
     pergunta: "Como começar a estudar?",
-    resposta: "Vá até a página Trilhas e módulos, escolha uma trilha e clique no primeiro módulo. Dentro de cada módulo você encontra as aulas organizadas por ordem pedagógica. Cada aula tem vídeo, resumo executivo, quiz e XP.",
+    resposta: "Vá até a página Trilhas e módulos, escolha uma trilha e clique no primeiro módulo. Dentro de cada módulo você encontra as aulas organizadas por ordem pedagógica. As aulas têm explicações, ilustrações e exercícios com retorno. No Meu campus, você também treina conversas em três níveis.",
   },
   {
     pergunta: "Como funciona o progresso?",
@@ -23,19 +22,19 @@ const duvidas = [
   },
   {
     pergunta: "Como funciona o quiz?",
-    resposta: "Ao final de cada aula, um quiz rápido testa seu conhecimento. Responda todas as perguntas para ganhar XP. Se errar, veja a explicação e tente de novo — o aprendizado vem da prática.",
+    resposta: "Ao final da aula, responda ao quiz e alcance pelo menos 60% para concluir. Se precisar, reveja a explicação e tente novamente. No campus, avance após compreender cada decisão.",
   },
   {
     pergunta: "Como entro em contato com o professor?",
-    resposta: "O SaúdeGPT é um ambiente de aprendizado em saúde. Para dúvidas específicas sobre o conteúdo, consulte o farmacêutico responsável da sua farmácia ou o CRF da sua região.",
+    resposta: "A Escola de Saúde - Franca J é um ambiente de aprendizado em saúde. Para dúvidas específicas sobre o conteúdo, consulte o farmacêutico responsável da sua farmácia ou o CRF da sua região.",
   },
   {
     pergunta: "Meus dados estao seguros?",
-    resposta: "Sim. Seguimos a LGPD (Lei Geral de Proteção de Dados). Seus dados de progresso ficam armazenados localmente no navegador. Não compartilhamos informações com terceiros. Veja nossa Política de Privacidade para mais detalhes.",
+    resposta: "O progresso das atividades fica neste navegador. Não insira dados de clientes, receitas ou outras informações de saúde nos exercícios. Consulte a Política de Privacidade para entender os recursos e tratamentos de dados da plataforma.",
   },
   {
     pergunta: "Preciso pagar para usar?",
-    resposta: "A plataforma está disponível para formação de atendentes de farmácia. Consulte a página inicial para informações sobre acesso e planos.",
+    resposta: "O acesso às trilhas, aulas e atividades educativas é gratuito. Use o botão Iniciar ou entre no Meu campus.",
   },
 ];
 
@@ -82,7 +81,7 @@ export default function SuportePage() {
         <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
 
           <div>
-            <h3 className="font-bold text-foreground">Suporte do SaúdeGPT</h3>
+            <h3 className="font-bold text-foreground">Suporte da Escola de Saúde - Franca J</h3>
 
             <p className="mt-1 text-xs text-muted/70">
               Para questões técnicas sobre a plataforma ou sobre o conteúdo, entre em contato pelo site:{" "}

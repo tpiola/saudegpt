@@ -421,7 +421,7 @@ function gerarCarteirinha(aluno: { nome: string; email: string; selfieUrl?: stri
 <div class="card">
   <div class="topo">
     <div class="logo">
-      SaúdeGPT
+      Escola de Saúde - Franca J
       <span>Formação para Atendentes</span>
     </div>
     ${aluno.selfieUrl
@@ -1622,7 +1622,7 @@ function gerarRelatorioPdf(m: AlunoMetricas) {
   ul{margin:6px 0;padding-left:18px;font-size:12px}
   .rodape{margin-top:28px;font-size:10px;color:#56705f;border-top:1px solid #d8e5dc;padding-top:10px}
 </style></head><body>
-<h1>Relatório Individual do Aluno — SaúdeGPT</h1>
+<h1>Relatório Individual do Aluno — Escola de Saúde - Franca J</h1>
 <div class="sub">Gerado em ${dataRel} · Painel do Diretor</div>
 
 <h2>Identificação</h2>
@@ -1660,7 +1660,7 @@ function gerarRelatorioPdf(m: AlunoMetricas) {
 <ul>${melhorias}</ul>
 
 <div class="rodape">
-  Relatório educacional gerado automaticamente pela plataforma SaúdeGPT a partir dos dados de uso do aluno.
+  Relatório educacional gerado automaticamente pela plataforma Escola de Saúde - Franca J a partir dos dados de uso do aluno.
   Conteúdo revisado por farmacêutico; não substitui avaliação individual presencial.
 </div>
 <script>window.onload=function(){window.print()}</script>

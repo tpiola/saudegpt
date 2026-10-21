@@ -1,4 +1,5 @@
 export const fotosTrilhas: Record<string, string> = {
+  "atendimento-profissional": "/campus/consulta-digital.webp",
   "cuidado-no-balcao": "/imagens/hero_vendas.webp",
   perfumaria: "/imagens/trilha_perfumaria.webp",
   medicamentos: "/imagens/trilha_medicamentos.webp",

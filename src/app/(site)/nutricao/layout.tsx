@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/site-url";
 const base = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Nutrição para Farmacêuticos | SaúdeGPT",
+  title: "Nutrição para Farmacêuticos | Escola de Saúde - Franca J",
   description:
     "Curso de Nutrição aplicada à farmácia: suplementação, fitoterapia, interações medicamento-nutriente e nutrição esportiva. Conteúdo educativo e exercícios.",
   keywords: [
@@ -13,21 +13,21 @@ export const metadata: Metadata = {
     "fitoterapia",
     "interação medicamento nutriente",
     "nutrição esportiva",
-    "SaúdeGPT Nutrição",
+    "Escola de Saúde - Franca J Nutrição",
   ],
   alternates: { canonical: `${base}/nutricao` },
   openGraph: {
-    title: "Nutrição para Farmacêuticos | SaúdeGPT",
+    title: "Nutrição para Farmacêuticos | Escola de Saúde - Franca J",
     description:
       "Domine suplementação, fitoterapia e nutrição clínica aplicada ao balcão da farmácia. Aprendizado gratuito e exercícios.",
     url: `${base}/nutricao`,
-    siteName: "SaúdeGPT",
+    siteName: "Escola de Saúde - Franca J",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nutrição para Farmacêuticos | SaúdeGPT",
+    title: "Nutrição para Farmacêuticos | Escola de Saúde - Franca J",
     description:
       "Curso online completo de nutrição para o farmacêutico moderno.",
   },

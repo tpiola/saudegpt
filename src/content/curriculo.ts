@@ -11,10 +11,12 @@ import { trilhaFisioterapiaReabilitacao } from "./trilha-fisioterapia-reabilitac
 import { trilhaPsicologiaSaudeMental } from "./trilha-psicologia-saude-mental";
 import { trilhaCuidadorIdosos } from "./trilha-cuidador-idosos";
 
+import { trilhaAtendimentoAvancado } from "./campus";
 import { trilhaBalcao } from "./pratica-balcao";
 
 export const trilhas: Trilha[] = [
   trilhaBalcao,
+  trilhaAtendimentoAvancado,
   trilhaPerfumaria,
   trilhaMedicamentos,
   trilhaOperacional,

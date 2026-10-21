@@ -27,7 +27,7 @@ export async function notificarNovoCadastro(dados: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.RESEND_FROM ?? "SaúdeGPT <onboarding@resend.dev>",
+        from: process.env.RESEND_FROM ?? "Escola de Saúde - Franca J <onboarding@resend.dev>",
         to: [DESTINO],
         subject: `🎓 Novo cadastro aguardando aprovação — ${dados.nome.replace(/[\r\n]/g, " ")}`,
         html: `

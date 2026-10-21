@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
 
   const ESTATICAS: MetadataRoute.Sitemap = [
-    {url: `${base}/praticar`,lastModified:new Date("2026-10-21"),changeFrequency:"monthly",priority:0.9},
+    {url: `${base}/campus`,lastModified:new Date("2026-10-21"),changeFrequency:"monthly",priority:0.9},
     { url: `${base}`, lastModified: new Date("2026-06-05"), changeFrequency: "weekly" as const, priority: 1 },
     { url: `${base}/trilhas`, lastModified: new Date("2026-06-05"), changeFrequency: "weekly" as const, priority: 0.8 },
     { url: `${base}/dashboard`, lastModified: new Date("2026-06-05"), changeFrequency: "weekly" as const, priority: 0.8 },

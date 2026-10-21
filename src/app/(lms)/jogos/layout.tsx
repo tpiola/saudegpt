@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
-  title: "Jogos Interativos | SaúdeGPT",
+  title: "Jogos Interativos | Escola de Saúde - Franca J",
   description:
     "Domine o atendimento de balcão com jogos educativos: quizzes de tarjas, speed challenge, fatos científicos, modo sobrevivência e simulações reais de farmácia. Treinamento gamificado para atendentes.",
   keywords: [
@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     "atendimento balcão",
     "treinamento farmacêutico",
     "educação farmácia",
-    "SaúdeGPT",
+    "Escola de Saúde - Franca J",
     "jogos educativos farmácia",
   ],
   openGraph: {
-    title: "Jogos Interativos — SaúdeGPT",
+    title: "Jogos Interativos — Escola de Saúde - Franca J",
     description:
       "Treine atendimento de farmácia com jogos: quizzes, speed challenge, modo sobrevivência e simulações de balcão.",
     type: "website",

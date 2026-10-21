@@ -18,11 +18,11 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Leitura Rápida do Paciente | SaúdeGPT — Formação para Atendentes de Farmácia",
+  title: "Leitura Rápida do Paciente | Escola de Saúde - Franca J — Formação para Atendentes de Farmácia",
   description:
     "Módulo Avançado: aprenda a avaliar em 30-90 segundos o estado cognitivo, emocional e de saúde do cliente no balcão da farmácia. Framework ABC, ética no atendimento e sinais de alerta.",
   openGraph: {
-    title: "Leitura Rápida do Paciente | SaúdeGPT",
+    title: "Leitura Rápida do Paciente | Escola de Saúde - Franca J",
     description:
       "Framework ABC para atendentes de farmácia: identifique padrões de pensamento, emoções e sinais de doença no balcão.",
   },
@@ -579,7 +579,7 @@ export default function LeituraRapidaPage() {
         <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
           <FileText className="h-3.5 w-3.5" />
           <span>
-            SaúdeGPT — Formação para Atendentes de Farmácia | Módulo alinhado às diretrizes CRF/SP
+            Escola de Saúde - Franca J — Formação para Atendentes de Farmácia | Módulo alinhado às diretrizes CRF/SP
           </span>
         </div>
       </div>

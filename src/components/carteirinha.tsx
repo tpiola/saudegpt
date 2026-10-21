@@ -132,7 +132,7 @@ export function Carteirinha({
             {/* Curso */}
             <div className="max-w-[60%]">
               <p className="text-[5px] font-medium uppercase tracking-wider text-gold-400/70">
-                SaúdeGPT
+                Escola de Saúde - Franca J
               </p>
               <p className="text-[5px] leading-tight text-white/30">
                 farmácia, atendimento e segurança

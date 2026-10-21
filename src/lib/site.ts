@@ -1,9 +1,9 @@
 // Constantes institucionais do produto.
 
 export const site = {
-  nome: "SaúdeGPT",
-  nomeCurto: "SaúdeGPT",
-  assinatura: "Desenvolvido e revisado pelo farmacêutico Thiago Biasoli Garcia Piola — CRF/SP 58.519",
+  nome: "Escola de Saúde - Franca J",
+  nomeCurto: "Escola de Saúde - Franca J",
+  assinatura: "Criado e revisado pelo farmacêutico: Thiago Biasoli Garcia Piola — Farmacêutico CRF/SP: 58.519",
   descricao:
     "Ecossistema de aprendizado em saúde para a rotina da drogaria. Trilhas, exercícios e consultas para acolher, apoiar o tratamento e atender com segurança.",
   patrocinadores: [
@@ -39,7 +39,7 @@ export const linksLegais = [
 ];
 
 /**
- * Verticais do marketplace SaúdeGPT.
+ * Verticais do marketplace Escola de Saúde - Franca J.
  * Cada vertical é uma landing page unificada em /(site)/[slug].
  */
 export const verticais = [

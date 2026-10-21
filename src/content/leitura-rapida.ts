@@ -243,7 +243,7 @@ export const conteudoLeituraRapida: ConteudoLeituraRapida = {
       pergunta:
         "Usando o framework ABC, o que o atendente deve observar e como deve responder?",
       respostaEsperada:
-        "O atendente deve primeiro acolher a preocupação (Afeto — ansiedade visível), validar o sentimento com empatia, explicar de forma simples que o medicamento é seguro e amplamente utilizado, e encaminhar ao farmacêutico para orientação completa sobre horários, alimentação e acompanhamento. A frase obrigatória deve ser usada ao final.",
+        "O atendente deve primeiro acolher a preocupação (Afeto — ansiedade visível), validar o sentimento com empatia, explicar que dúvidas sobre benefícios e riscos devem ser avaliadas individualmente pelo farmacêutico, e encaminhar para orientação sobre uso e acompanhamento. Encerre confirmando o entendimento e o próximo passo.",
       oQueObservar:
         "Afeto: Tensão nas mãos, olhar evitativo, fala hesitante. Comportamento: Aperta a receita, movimentos rígidos. Cognição: Preocupação com o novo, possíveis crenças sobre medicamentos de uso contínuo.",
     },

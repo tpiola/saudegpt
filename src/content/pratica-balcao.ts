@@ -1,6 +1,8 @@
 import type { Trilha } from "./types";
 
 export const fontesPratica = [
+ {nome:"Ministério da Saúde · Segurança e notas técnicas de vacinação",url:"https://www.gov.br/saude/pt-br/vacinacao/esavi/notas-tecnicas"},
+ {nome:"Anvisa · Prescrição e retenção de receita para GLP-1",url:"https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2025/entra-em-vigor-norma-que-preve-retencao-de-receita-para-medicamentos-agonistas-glp-1"},
   {
     nome: "Ministério da Saúde · Uso racional de medicamentos",
     url: "https://www.gov.br/saude/pt-br/composicao/sectics/daf/uso-racional-de-medicamentos",
@@ -9,10 +11,8 @@ export const fontesPratica = [
     nome: "Anvisa · Bulário eletrônico",
     url: "https://consultas.anvisa.gov.br/#/bulario/",
   },
-  {
-    nome: "RD Saúde · Regulamento Mais Saúde e Na Rotina",
-    url: "https://rdsaude.com.br/wp-content/uploads/2025/01/1e0ff8b5-regulamento-programa-mais-sau%CC%81de_rev07012025.pdf",
-  },
+  {nome: "Anvisa · Cinco momentos para medicação segura", url:"https://www.gov.br/anvisa/pt-br/centraisdeconteudo/publicacoes/servicosdesaude/5-momentos-para-medicacao-segura-em-servicos-de-saude"},
+  {nome: "Anvisa · Segurança no uso de agonistas de GLP-1", url:"https://www.gov.br/anvisa/pt-br/assuntos/noticias-anvisa/2026/anvisa-emite-alerta-para-risco-de-pancreatite-aguda-associada-ao-uso-indevido-de-canetas-emagrecedoras"},
 ];
 export const casosBalcao = [
   {

@@ -1,11 +1,11 @@
 {
-  "name": "Atendentes Premium de Farmácia",
-  "short_name": "Premium Farmácia",
+  "name": "Escola de Saúde - Franca J",
+  "short_name": "Escola Franca J",
   "description": "Formação em saúde integral, balcão seguro e excelência no atendimento em farmácia.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f8fc",
-  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "theme_color": "#123e36",
   "lang": "pt-BR",
   "icons": [
     {

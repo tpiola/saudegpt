@@ -138,8 +138,8 @@ export default function GamePage() {
   // Ajusta document title quando client-side
   useEffect(() => {
     document.title = jogoAtivo
-      ? `${jogoAtivo.titulo} · Jogos · SaúdeGPT`
-      : "Jogos Interativos · SaúdeGPT";
+      ? `${jogoAtivo.titulo} · Jogos · Escola de Saúde - Franca J`
+      : "Jogos Interativos · Escola de Saúde - Franca J";
   }, [jogoAtivo]);
 
   /* ─── Tela de jogo ativo ─── */

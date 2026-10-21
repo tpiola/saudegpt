@@ -152,7 +152,7 @@ export function LogoSaudeGPT({
               variant === "dark" ? "text-[#0A2540]" : "text-white",
             )}
           >
-            Saúde<span className="text-[#00C9A7]">GPT</span>
+            Escola de Saúde
           </span>
           <span
             className={cn(
@@ -161,7 +161,7 @@ export function LogoSaudeGPT({
               variant === "dark" ? "text-[#4A5568]" : "text-white/55",
             )}
           >
-            Farmácia, atendimento e segurança
+            Franca J · aprender para cuidar
           </span>
         </span>
       )}

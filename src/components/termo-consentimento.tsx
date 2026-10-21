@@ -127,7 +127,7 @@ export function TermoConsentimento() {
               Proteção de Dados (LGPD)
             </h2>
             <p className="text-muted">
-              Ao utilizar esta plataforma, você autoriza o SaúdeGPT a coletar e armazenar
+              Ao utilizar esta plataforma, você autoriza a Escola de Saúde - Franca J a coletar e armazenar
               seus dados de navegação, progresso acadêmico e desempenho para fins exclusivos
               de melhoria do ensino e acompanhamento pedagógico. Seus dados não serão
               compartilhados com terceiros sem seu consentimento expresso, conforme a
@@ -177,7 +177,7 @@ export function TermoConsentimento() {
             <p className="text-muted">
               O aluno declara estar ciente de que o conhecimento adquirido nesta plataforma
               é de natureza teórica e introdutória, e que sua aplicação prática depende
-              de supervisão profissional qualificada. O SaúdeGPT não se responsabiliza
+              de supervisão profissional qualificada. A Escola de Saúde - Franca J não se responsabiliza
               por atos praticados fora do escopo da atuação legal do atendente de farmácia.
             </p>
           </div>
